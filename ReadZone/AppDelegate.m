@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "RZBaseNavigationController.h"
+#import "RZRootViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    RZRootViewController *rootVC = [[RZRootViewController alloc] init];
+    RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = rootNav;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
