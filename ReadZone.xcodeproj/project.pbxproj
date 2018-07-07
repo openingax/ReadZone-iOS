@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60B42CF87C9894CC0ABBF5B9 /* Pods_ReadZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5ED64B58ED871F542C485D /* Pods_ReadZoneUITests.framework */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
+		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1120C3EE7F005DF168 /* AppDelegate.m */; };
 		B2F14D1A20C3EE81005DF168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1920C3EE81005DF168 /* Assets.xcassets */; };
 		B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */; };
@@ -17,7 +18,7 @@
 		B2F14D3520C3EE81005DF168 /* ReadZoneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D3420C3EE81005DF168 /* ReadZoneUITests.m */; };
 		B2F14D4620C3FA98005DF168 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D4420C3F2B2005DF168 /* Apple Chancery.ttf */; };
 		B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D4520C3F936005DF168 /* AdobeSongStd-Light.otf */; };
-		B2F14D4B20C44BCE005DF168 /* RZRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4A20C44BCE005DF168 /* RZRootViewController.m */; };
+		B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */; };
 		B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
 		B2FFF03420E4798C008CD245 /* YMFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* YMFoundationLog.m */; };
 		B2FFF03720E47AE8008CD245 /* YMLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03620E47AE8008CD245 /* YMLocationModel.m */; };
@@ -65,6 +66,8 @@
 		B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadZone.entitlements; sourceTree = "<group>"; };
 		B20AC21420EBC9DB008043C7 /* NSString+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+RZ.h"; sourceTree = "<group>"; };
 		B20AC21520EBC9DB008043C7 /* NSString+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+RZ.m"; sourceTree = "<group>"; };
+		B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRegisterViewController.h; sourceTree = "<group>"; };
+		B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRegisterViewController.m; sourceTree = "<group>"; };
 		B2F14D0D20C3EE7F005DF168 /* ReadZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D1020C3EE7F005DF168 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2F14D1120C3EE7F005DF168 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,8 +83,8 @@
 		B2F14D3620C3EE81005DF168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2F14D4420C3F2B2005DF168 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
 		B2F14D4520C3F936005DF168 /* AdobeSongStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeSongStd-Light.otf"; sourceTree = "<group>"; };
-		B2F14D4920C44BCE005DF168 /* RZRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRootViewController.h; sourceTree = "<group>"; };
-		B2F14D4A20C44BCE005DF168 /* RZRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRootViewController.m; sourceTree = "<group>"; };
+		B2F14D4920C44BCE005DF168 /* RZLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZLoginViewController.h; sourceTree = "<group>"; };
+		B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZLoginViewController.m; sourceTree = "<group>"; };
 		B2F14D4C20C44BEB005DF168 /* RZBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseNavigationController.h; sourceTree = "<group>"; };
 		B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseNavigationController.m; sourceTree = "<group>"; };
 		B2FFF03320E4798C008CD245 /* YMFoundationLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMFoundationLog.m; sourceTree = "<group>"; };
@@ -152,6 +155,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B2509DB720F0E5D5009B5F5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		B2BF657A20D75B08003059AE /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +177,7 @@
 				B2BF658120D75B76003059AE /* HotPot */,
 				B2BF658220D75DCF003059AE /* Books */,
 				B2BF658320D75DDF003059AE /* Library */,
-				B2BF658020D75B6C003059AE /* Login */,
+				B2BF658020D75B6C003059AE /* User */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -205,11 +215,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B2BF658020D75B6C003059AE /* Login */ = {
+		B2BF658020D75B6C003059AE /* User */ = {
 			isa = PBXGroup;
 			children = (
+				B2F14D4920C44BCE005DF168 /* RZLoginViewController.h */,
+				B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */,
+				B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */,
+				B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */,
 			);
-			path = Login;
+			path = User;
 			sourceTree = "<group>";
 		};
 		B2BF658120D75B76003059AE /* HotPot */ = {
@@ -333,8 +347,6 @@
 				B2F14D4220C3F297005DF168 /* Resources */,
 				B2F14D1020C3EE7F005DF168 /* AppDelegate.h */,
 				B2F14D1120C3EE7F005DF168 /* AppDelegate.m */,
-				B2F14D4920C44BCE005DF168 /* RZRootViewController.h */,
-				B2F14D4A20C44BCE005DF168 /* RZRootViewController.m */,
 				B2FFF03520E47AE8008CD245 /* YMLocationModel.h */,
 				B2FFF03620E47AE8008CD245 /* YMLocationModel.m */,
 				B2FFF03320E4798C008CD245 /* YMFoundationLog.m */,
@@ -367,6 +379,7 @@
 		B2F14D4220C3F297005DF168 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B2509DB720F0E5D5009B5F5F /* Frameworks */,
 				B2F14D4320C3F29F005DF168 /* Font */,
 			);
 			path = Resources;
@@ -538,6 +551,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
@@ -545,6 +559,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
@@ -617,7 +632,8 @@
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
 				B2FFF03420E4798C008CD245 /* YMFoundationLog.m in Sources */,
-				B2F14D4B20C44BCE005DF168 /* RZRootViewController.m in Sources */,
+				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
+				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				B2FFF03720E47AE8008CD245 /* YMLocationModel.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
@@ -791,7 +807,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				INFOPLIST_FILE = ReadZone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -815,7 +831,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				INFOPLIST_FILE = ReadZone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

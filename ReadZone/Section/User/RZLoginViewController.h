@@ -8,6 +8,6 @@
 
 #import "RZBaseViewController.h"
 
-@interface RZRootViewController : RZBaseViewController
+@interface RZLoginViewController : RZBaseViewController
 
 @end

@@ -9,6 +9,7 @@ target 'ReadZone' do
   pod 'Masonry', '~> 1.1.0'
   pod 'AFNetworking', '~> 3.2.1'
   pod 'YYModel', '~> 1.0.4'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
   target 'ReadZoneTests' do
     inherit! :search_paths
