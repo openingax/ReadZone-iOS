@@ -1,0 +1,34 @@
+//
+//  RZPrefixHeader.pch
+//  ReadZone
+//
+//  Created by 谢立颖 on 2018/7/8.
+//  Copyright © 2018年 谢立颖. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef RZPrefixHeader_pch
+#define RZPrefixHeader_pch
+
+#define kScreenWidth ([[UIScreen mainScreen] bounds].size.width)
+#define kScreenHeight ([[UIScreen mainScreen] bounds].size.height)
+#define kScreenBounds [UIScreen mainScreen].bounds
+
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavBarHeight 44.0
+#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+#define kNavTotalHeight (kStatusBarHeight + kNavBarHeight)
+
+#import <Masonry/Masonry.h>
+
+#import "RZUtils.h"
+#import "RZDefine.h"
+
+// Category
+#import "NSString+RZ.h"
+
+#import "UIImage+RZ.h"
+#import "UIColor+RZ.h"
+
+#endif /* RZPrefixHeader_pch */

@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RZNavBar.h"
 
 @interface RZBaseViewController : UIViewController
+
+@property(nonatomic, strong) RZNavBar *navBar;
+
+#pragma mark - navBar
+- (void)drawNavBar;
+- (void)drawNavBarItems;
 
 - (void)popSelfWithSomeActions;
 

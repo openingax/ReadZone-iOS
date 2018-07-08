@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "RZBaseNavigationController.h"
 #import "RZLoginViewController.h"
+#import <Bugly/Bugly.h>
+//#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -18,12 +20,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // Bug 统计
+    [Bugly startWithAppId:@"c80362e8b9"];
+    
+    // 初始化视图控制器
     RZLoginViewController *rootVC = [[RZLoginViewController alloc] init];
+    
     RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
+    
     self.window.rootViewController = rootNav;
+    
     [self.window makeKeyAndVisible];
+    
+    
+    
     
     return YES;
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RZBaseViewController.h"
 
-@interface RZRegisterViewController : UIViewController
+@interface RZRegisterViewController : RZBaseViewController
 
 @end

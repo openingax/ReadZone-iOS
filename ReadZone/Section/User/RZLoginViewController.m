@@ -11,11 +11,16 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
-@interface RZLoginViewController ()
+static CGFloat marginHorizon = 24;
+
+@interface RZLoginViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *accountTF;
+@property (nonatomic, strong) UIView *accountLine;
 @property (nonatomic, strong) UITextField *passwordTF;
+@property (nonatomic, strong) UIView *passwordLine;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UITextView *logTextView;
 @property (nonatomic, strong) AFHTTPSessionManager *httpManager;
@@ -26,53 +31,86 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:248/255.f green:248/255.f blue:248/255.f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
     
     self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.0.100:8000/"]];
     self.httpManager.requestSerializer = [AFJSONRequestSerializer serializer];
     self.httpManager.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.navigationController.navigationBarHidden = YES;
     
     [self drawView];
+    
+    // 注册键盘收起的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWillHide:(NSNotification *)noti {
+    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
 }
 
 - (void)drawView {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.view addGestureRecognizer:tap];
     
-    UIView *placeholderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 1)];
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"登录";
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.font = [UIFont systemFontOfSize:32 weight:UIFontWeightLight];
+    [self.view addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.top.equalTo(self.view).with.offset(40+kNavTotalHeight);
+    }];
     
     self.accountTF = [[UITextField alloc] init];
-    self.accountTF.placeholder = @"手机/邮箱/用户名";
+    self.accountTF.delegate = self;
+    self.accountTF.tag = 111;
+    self.accountTF.placeholder = @"手机 / 邮箱 / 用户名";
     self.accountTF.backgroundColor = [UIColor whiteColor];
-    self.accountTF.layer.borderWidth = 0.5;
-    self.accountTF.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
-    self.accountTF.layer.cornerRadius = 3;
-    self.accountTF.leftView = placeholderView;
-    self.accountTF.rightView = placeholderView;
     [self.view addSubview:self.accountTF];
     [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
-        make.top.equalTo(self.view).with.offset(80);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.top.equalTo(titleLabel.mas_bottom).with.offset(30);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
     
+    self.accountLine = [[UIView alloc] init];
+    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    [self.view addSubview:self.accountLine];
+    [self.accountLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.accountTF.mas_bottom);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
+        make.height.mas_equalTo(0.5);
+    }];
+    
     self.passwordTF = [[UITextField alloc] init];
+    self.passwordTF.delegate = self;
+    self.passwordTF.tag = 222;
     self.passwordTF.placeholder = @"密码";
     self.passwordTF.secureTextEntry = YES;
     self.passwordTF.backgroundColor = [UIColor whiteColor];
-    self.passwordTF.layer.borderWidth = 0.5;
-    self.passwordTF.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
-    self.passwordTF.layer.cornerRadius = 3;
-    self.passwordTF.leftView = placeholderView;
-    self.passwordTF.rightView = placeholderView;
     [self.view addSubview:self.passwordTF];
     [self.passwordTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
         make.top.equalTo(self.accountTF.mas_bottom).with.offset(30);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
+    }];
+    
+    self.passwordLine = [[UIView alloc] init];
+    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    [self.view addSubview:self.passwordLine];
+    [self.passwordLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.passwordTF.mas_bottom);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
+        make.height.mas_equalTo(0.5);
     }];
     
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -84,37 +122,48 @@
     [self.view addSubview:self.loginBtn];
     [self.loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(46);
     }];
     
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [registerBtn setTitle:@"还未注册？" forState:UIControlStateNormal];
+    NSString *registerStr = @"还未注册？";
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:registerStr];
+    [attributedString addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,[UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.8], NSForegroundColorAttributeName, nil] range:NSMakeRange(0, registerStr.length)];
+    [registerBtn setAttributedTitle:attributedString forState:UIControlStateNormal];
     [registerBtn setTitleColor:[UIColor colorWithRed:220/255.f green:220/255.f blue:220/255.f alpha:1] forState:UIControlStateNormal];
     [registerBtn addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:registerBtn];
     [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.loginBtn.mas_bottom).with.offset(30);
+        make.bottom.equalTo(self.view).with.offset(-30);
         make.centerX.equalTo(self.view);
     }];
-    
-    self.logTextView = [[UITextView alloc] init];
-    [self.view addSubview:self.logTextView];
-    [self.logTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(30);
-        make.right.equalTo(self.view).with.offset(-30);
-        make.top.equalTo(registerBtn.mas_bottom).with.offset(40);
-        make.bottom.equalTo(self.view).with.offset(-30);
-    }];
+}
+
+- (void)drawNavBar {
+    [super drawNavBar];
+    self.navBar.hidenBackItem = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField.tag == 111) {
+        self.accountLine.backgroundColor = [UIColor blackColor];
+        self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    }
+    if (textField.tag == 222) {
+        self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+        self.passwordLine.backgroundColor = [UIColor blackColor];
+    }
+}
+
+#pragma mark - Action
 - (void)loginAction {
 //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *account = self.accountTF.text;
@@ -125,7 +174,7 @@
                              };
     [self.httpManager POST:@"users/login" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.logTextView.text = [NSString stringWithFormat:@"获取成功\n\n%@", responseObject];
+//        self.logTextView.text = [NSString stringWithFormat:@"获取成功\n\n%@", responseObject];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.logTextView.text = [NSString stringWithFormat:@"获取失败\n\n%@", error];

@@ -10,4 +10,7 @@
 
 @interface NSString (RZ)
 
+// 检查字符串是否为空
++ (BOOL)checkIsEmptyOrNull:(NSString *) string;
+
 @end

@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 @interface RZRegisterViewController ()
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
+    
+    self.title = @"注册";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +54,7 @@
     [self.view addSubview:self.accountTF];
     [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(45);
-        make.top.equalTo(self.view).with.offset(80);
+        make.top.equalTo(self.view).with.offset(30+kNavTotalHeight);
         make.right.equalTo(self.view).with.offset(-45);
         make.height.mas_equalTo(40);
     }];

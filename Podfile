@@ -5,11 +5,15 @@ target 'ReadZone' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
   
-  pod 'CocoaAsyncSocket', '~> 7.6.3'
+  pod 'Toast', '~> 4.0.0'
+  pod 'Bugly', '~> 2.5.0'
   pod 'Masonry', '~> 1.1.0'
-  pod 'AFNetworking', '~> 3.2.1'
   pod 'YYModel', '~> 1.0.4'
+  pod 'SDWebImage', '~> 4.4.1'
+  pod 'AFNetworking', '~> 3.2.1'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'IQKeyboardManager', '~> 6.0.4'
+  pod 'FDFullscreenPopGesture', '~> 1.1'
 
   target 'ReadZoneTests' do
     inherit! :search_paths

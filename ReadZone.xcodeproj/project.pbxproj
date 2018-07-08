@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60B42CF87C9894CC0ABBF5B9 /* Pods_ReadZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5ED64B58ED871F542C485D /* Pods_ReadZoneUITests.framework */; };
+		412A12502DF6A5E44E6C265E /* Pods_ReadZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
+		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
+		B2D2185220F2061800331F4C /* RZNavBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2185120F2061800331F4C /* RZNavBarItem.m */; };
+		B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2185420F207DA00331F4C /* UIImage+RZ.m */; };
+		B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2185920F2108E00331F4C /* RZNavBar.m */; };
 		B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1120C3EE7F005DF168 /* AppDelegate.m */; };
 		B2F14D1A20C3EE81005DF168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1920C3EE81005DF168 /* Assets.xcassets */; };
 		B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */; };
@@ -20,12 +24,11 @@
 		B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D4520C3F936005DF168 /* AdobeSongStd-Light.otf */; };
 		B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */; };
 		B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
-		B2FFF03420E4798C008CD245 /* YMFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* YMFoundationLog.m */; };
-		B2FFF03720E47AE8008CD245 /* YMLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03620E47AE8008CD245 /* YMLocationModel.m */; };
+		B2FFF03420E4798C008CD245 /* RZFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* RZFoundationLog.m */; };
 		B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
 		B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */; };
+		DA05DFE705EDC3A8D8BBA25D /* Pods_ReadZoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */; };
 		DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */; };
-		EE4694E63ACE94A7B57D8A52 /* Pods_ReadZoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4C33E6F91E3ED3163687A0 /* Pods_ReadZoneTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,28 +49,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D4C33E6F91E3ED3163687A0 /* Pods_ReadZoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
+		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		688FD0ECB44DD1FB03BA8D43 /* Pods-ReadZoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneUITests/Pods-ReadZoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6D5ED64B58ED871F542C485D /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		735849671247ADE995C0839E /* Pods-ReadZoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneTests/Pods-ReadZoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		76E97EFE5F20D308D89F47E7 /* Pods-ReadZoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneUITests/Pods-ReadZoneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD80E158E9A284A8422F3768 /* Pods-ReadZoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneTests/Pods-ReadZoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
-		B2003A8D20D41A1900AEA413 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ReadZone/Resources/Frameworks/IOKit.framework; sourceTree = "<group>"; };
 		B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libTelephonyIOKitDynamic.tbd; path = usr/lib/libTelephonyIOKitDynamic.tbd; sourceTree = SDKROOT; };
 		B2003AA020D4890F00AEA413 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2003AA220D4891800AEA413 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B2003AA620D4893D00AEA413 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B2003AAA20D489E900AEA413 /* libswiftIOKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftIOKit.tbd; path = ReadZone/Resources/Frameworks/libswiftIOKit.tbd; sourceTree = "<group>"; };
 		B2003AAE20D4B6A600AEA413 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadZone.entitlements; sourceTree = "<group>"; };
 		B20AC21420EBC9DB008043C7 /* NSString+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+RZ.h"; sourceTree = "<group>"; };
 		B20AC21520EBC9DB008043C7 /* NSString+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+RZ.m"; sourceTree = "<group>"; };
 		B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRegisterViewController.h; sourceTree = "<group>"; };
 		B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRegisterViewController.m; sourceTree = "<group>"; };
+		B2D2184520F1F64300331F4C /* RZPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZPrefixHeader.pch; sourceTree = "<group>"; };
+		B2D2184920F1FD1100331F4C /* UIColor+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RZ.h"; sourceTree = "<group>"; };
+		B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RZ.m"; sourceTree = "<group>"; };
+		B2D2185020F2061800331F4C /* RZNavBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZNavBarItem.h; sourceTree = "<group>"; };
+		B2D2185120F2061800331F4C /* RZNavBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZNavBarItem.m; sourceTree = "<group>"; };
+		B2D2185320F207DA00331F4C /* UIImage+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+RZ.h"; sourceTree = "<group>"; };
+		B2D2185420F207DA00331F4C /* UIImage+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RZ.m"; sourceTree = "<group>"; };
+		B2D2185720F20CFA00331F4C /* RZUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUtils.h; sourceTree = "<group>"; };
+		B2D2185820F2108E00331F4C /* RZNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZNavBar.h; sourceTree = "<group>"; };
+		B2D2185920F2108E00331F4C /* RZNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZNavBar.m; sourceTree = "<group>"; };
+		B2D2185B20F2132500331F4C /* RZDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDefine.h; sourceTree = "<group>"; };
 		B2F14D0D20C3EE7F005DF168 /* ReadZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D1020C3EE7F005DF168 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2F14D1120C3EE7F005DF168 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,13 +98,12 @@
 		B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZLoginViewController.m; sourceTree = "<group>"; };
 		B2F14D4C20C44BEB005DF168 /* RZBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseNavigationController.h; sourceTree = "<group>"; };
 		B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseNavigationController.m; sourceTree = "<group>"; };
-		B2FFF03320E4798C008CD245 /* YMFoundationLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMFoundationLog.m; sourceTree = "<group>"; };
-		B2FFF03520E47AE8008CD245 /* YMLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMLocationModel.h; sourceTree = "<group>"; };
-		B2FFF03620E47AE8008CD245 /* YMLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMLocationModel.m; sourceTree = "<group>"; };
+		B2FFF03320E4798C008CD245 /* RZFoundationLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZFoundationLog.m; sourceTree = "<group>"; };
 		B2FFF04420E5446D008CD245 /* RZBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseViewController.h; sourceTree = "<group>"; };
 		B2FFF04520E5446D008CD245 /* RZBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseViewController.m; sourceTree = "<group>"; };
 		B2FFF04720E545EF008CD245 /* RZHotPotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotViewController.h; sourceTree = "<group>"; };
 		B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotViewController.m; sourceTree = "<group>"; };
+		EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE4694E63ACE94A7B57D8A52 /* Pods_ReadZoneTests.framework in Frameworks */,
+				DA05DFE705EDC3A8D8BBA25D /* Pods_ReadZoneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B42CF87C9894CC0ABBF5B9 /* Pods_ReadZoneUITests.framework in Frameworks */,
+				412A12502DF6A5E44E6C265E /* Pods_ReadZoneUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,16 +151,14 @@
 			isa = PBXGroup;
 			children = (
 				B2003AAE20D4B6A600AEA413 /* CoreNFC.framework */,
-				B2003AAA20D489E900AEA413 /* libswiftIOKit.tbd */,
 				B2003AA620D4893D00AEA413 /* CoreGraphics.framework */,
 				B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */,
 				B2003AA220D4891800AEA413 /* UIKit.framework */,
 				B2003AA020D4890F00AEA413 /* Foundation.framework */,
 				B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */,
-				B2003A8D20D41A1900AEA413 /* IOKit.framework */,
 				9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */,
-				2D4C33E6F91E3ED3163687A0 /* Pods_ReadZoneTests.framework */,
-				6D5ED64B58ED871F542C485D /* Pods_ReadZoneUITests.framework */,
+				EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */,
+				6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,8 +173,10 @@
 		B2BF657A20D75B08003059AE /* General */ = {
 			isa = PBXGroup;
 			children = (
-				B20AC21420EBC9DB008043C7 /* NSString+RZ.h */,
-				B20AC21520EBC9DB008043C7 /* NSString+RZ.m */,
+				B2D2185620F20CE200331F4C /* Marco */,
+				B2D2184E20F2058200331F4C /* Component */,
+				B2D2184D20F2057200331F4C /* Base */,
+				B2D2184C20F2056500331F4C /* Category */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -313,6 +323,54 @@
 			path = Manage;
 			sourceTree = "<group>";
 		};
+		B2D2184C20F2056500331F4C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B20AC21420EBC9DB008043C7 /* NSString+RZ.h */,
+				B20AC21520EBC9DB008043C7 /* NSString+RZ.m */,
+				B2D2185320F207DA00331F4C /* UIImage+RZ.h */,
+				B2D2185420F207DA00331F4C /* UIImage+RZ.m */,
+				B2D2184920F1FD1100331F4C /* UIColor+RZ.h */,
+				B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B2D2184D20F2057200331F4C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B2D2184E20F2058200331F4C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2184F20F205FD00331F4C /* NavBar */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		B2D2184F20F205FD00331F4C /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2185820F2108E00331F4C /* RZNavBar.h */,
+				B2D2185920F2108E00331F4C /* RZNavBar.m */,
+				B2D2185020F2061800331F4C /* RZNavBarItem.h */,
+				B2D2185120F2061800331F4C /* RZNavBarItem.m */,
+			);
+			path = NavBar;
+			sourceTree = "<group>";
+		};
+		B2D2185620F20CE200331F4C /* Marco */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2185720F20CFA00331F4C /* RZUtils.h */,
+				B2D2185B20F2132500331F4C /* RZDefine.h */,
+			);
+			path = Marco;
+			sourceTree = "<group>";
+		};
 		B2F14D0420C3EE7F005DF168 = {
 			isa = PBXGroup;
 			children = (
@@ -347,9 +405,8 @@
 				B2F14D4220C3F297005DF168 /* Resources */,
 				B2F14D1020C3EE7F005DF168 /* AppDelegate.h */,
 				B2F14D1120C3EE7F005DF168 /* AppDelegate.m */,
-				B2FFF03520E47AE8008CD245 /* YMLocationModel.h */,
-				B2FFF03620E47AE8008CD245 /* YMLocationModel.m */,
-				B2FFF03320E4798C008CD245 /* YMFoundationLog.m */,
+				B2D2184520F1F64300331F4C /* RZPrefixHeader.pch */,
+				B2FFF03320E4798C008CD245 /* RZFoundationLog.m */,
 				B2F14D1920C3EE81005DF168 /* Assets.xcassets */,
 				B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */,
 				B2F14D1E20C3EE81005DF168 /* Info.plist */,
@@ -550,17 +607,23 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,10 +694,13 @@
 			files = (
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
-				B2FFF03420E4798C008CD245 /* YMFoundationLog.m in Sources */,
+				B2D2185220F2061800331F4C /* RZNavBarItem.m in Sources */,
+				B2FFF03420E4798C008CD245 /* RZFoundationLog.m in Sources */,
+				B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */,
+				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
-				B2FFF03720E47AE8008CD245 /* YMLocationModel.m in Sources */,
+				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
 				B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */,
@@ -806,6 +872,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
+				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -830,6 +897,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
+				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
