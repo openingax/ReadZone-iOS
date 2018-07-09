@@ -10,8 +10,8 @@
 
 @implementation UIImage (RZ)
 
-+ (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur {
-    
++ (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur
+{
     CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"
                                   keysAndValues:kCIInputImageKey, inputImage,

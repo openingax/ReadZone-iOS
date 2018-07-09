@@ -115,7 +115,7 @@ static CGFloat marginHorizon = 24;
     
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.loginBtn.layer.backgroundColor = [UIColor colorWithRed:110/255.f green:174/255.f blue:222/255.f alpha:1].CGColor;
-    [self.loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
+    [self.loginBtn setTitle:RZLocalizedString(@"LOGIN_LABEL_LOGIN", @"Login VC title") forState:UIControlStateNormal];
     [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.loginBtn.layer.cornerRadius = 3;
     self.loginBtn.layer.masksToBounds = YES;
@@ -125,7 +125,7 @@ static CGFloat marginHorizon = 24;
         make.left.equalTo(self.view).with.offset(marginHorizon);
         make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
-        make.height.mas_equalTo(46);
+        make.height.mas_equalTo(50);
     }];
     
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
