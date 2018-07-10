@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		412A12502DF6A5E44E6C265E /* Pods_ReadZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */; };
+		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
+		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -53,6 +55,11 @@
 
 /* Begin PBXFileReference section */
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
+		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
+		5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserTextField.m; sourceTree = "<group>"; };
+		5FB6B93420F4B0B000AEBCF0 /* RZUserButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserButton.h; sourceTree = "<group>"; };
+		5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserButton.m; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		688FD0ECB44DD1FB03BA8D43 /* Pods-ReadZoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneUITests/Pods-ReadZoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		735849671247ADE995C0839E /* Pods-ReadZoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneTests/Pods-ReadZoneTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +164,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5FB6B92D20F4AA5900AEBCF0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5FB6B92E20F4AA6100AEBCF0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B2F14D4920C44BCE005DF168 /* RZLoginViewController.h */,
+				B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */,
+				B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */,
+				B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FB6B92F20F4AA6500AEBCF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */,
+				5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */,
+				5FB6B93420F4B0B000AEBCF0 /* RZUserButton.h */,
+				5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FB6B93020F4AA6B00AEBCF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,13 +214,6 @@
 				6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B2509DB720F0E5D5009B5F5F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		B2BF657A20D75B08003059AE /* General */ = {
@@ -239,10 +275,10 @@
 		B2BF658020D75B6C003059AE /* User */ = {
 			isa = PBXGroup;
 			children = (
-				B2F14D4920C44BCE005DF168 /* RZLoginViewController.h */,
-				B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */,
-				B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */,
-				B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */,
+				5FB6B92D20F4AA5900AEBCF0 /* Manager */,
+				5FB6B93020F4AA6B00AEBCF0 /* Model */,
+				5FB6B92F20F4AA6500AEBCF0 /* View */,
+				5FB6B92E20F4AA6100AEBCF0 /* Controller */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -484,7 +520,6 @@
 			isa = PBXGroup;
 			children = (
 				B2D2186420F3B4F600331F4C /* Bundle */,
-				B2509DB720F0E5D5009B5F5F /* Frameworks */,
 				B2F14D4320C3F29F005DF168 /* Font */,
 			);
 			path = Resources;
@@ -741,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
 				B2D2186320F3B18A00331F4C /* RZInternalUtility.m in Sources */,
@@ -752,6 +788,7 @@
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
+				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
 				B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */,
 				B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */,
@@ -796,6 +833,7 @@
 			children = (
 				B2F14D1C20C3EE81005DF168 /* Base */,
 				B2D2187320F3CA9900331F4C /* zh-Hans */,
+				5FB6B92C20F4A91D00AEBCF0 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

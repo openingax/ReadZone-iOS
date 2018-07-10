@@ -22,5 +22,18 @@
 // THE SOFTWARE.
 //
 
-/* Login VC title */
-"LOGIN_LABEL_LOGIN" = "登录";
+/* Login VC */
+"LOGIN_LABEL_TITLE" = "登录";
+"LOGIN_PLACEHOLDER_ACCOUNT" = "手机 / 邮箱 / 用户名";
+"LOGIN_PLACEHOLDER_PWD" = "密码";
+"LOGIN_BTN_LOGIN" = "登录";
+"LOGIN_BTN_REGISTER" = "还未注册？";
+"LOGIN_BTN_FORGOT_PWD" = "忘记密码？";
+
+/* Register VC */
+"REGISTER_NAV_TITLE" = "注册";
+"REGISTER_PLACEHOLDER_ACCOUNT" = "手机 / 邮箱";
+"REGISTER_PLACEHOLDER_PWD" = "密码";
+"REGISTER_BTN_REGISTER" = "注册";
+
+

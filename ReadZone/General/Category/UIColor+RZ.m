@@ -62,4 +62,18 @@
     return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alpha];
 }
 
++ (UIColor *)colorWithColor:(UIColor *)color alpha:(CGFloat)alpha {
+    CGFloat R, G, B;
+    
+    CGColorRef cgColor = [color CGColor];
+//    unsigned long numComponents = CGColorGetNumberOfComponents(cgColor);
+    
+    const CGFloat *components = CGColorGetComponents(cgColor);
+    R = components[0];
+    G = components[1];
+    B = components[2];
+    
+    return [UIColor colorWithRed:R green:G blue:B alpha:alpha];
+}
+
 @end

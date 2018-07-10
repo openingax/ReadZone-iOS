@@ -22,5 +22,16 @@
 // THE SOFTWARE.
 //
 
-/* Login VC title */
-"LOGIN_LABEL_LOGIN" = "1233";
+/* Login VC */
+"LOGIN_LABEL_TITLE" = "ログイン";
+"LOGIN_PLACEHOLDER_ACCOUNT" = "電話 / メール / ユーザー名";
+"LOGIN_PLACEHOLDER_PWD" = "パスワード";
+"LOGIN_BTN_LOGIN" = "ログイン";
+"LOGIN_BTN_REGISTER" = "まだ登録されていません？";
+"LOGIN_BTN_FORGOT_PWD" = "パスワードを忘れましたか？";
+
+/* Register VC */
+"REGISTER_NAV_TITLE" = "登録";
+"REGISTER_PLACEHOLDER_ACCOUNT" = "電話 / メール";
+"REGISTER_PLACEHOLDER_PWD" = "パスワード";
+"REGISTER_BTN_REGISTER" = "登録";

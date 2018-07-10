@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AdobeSongStd-Light.otf">
-            <string>AdobeSongStd-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -23,21 +18,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="阅读空间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-Y0-ZEK">
-                                <rect key="frame" x="87" y="304" width="200" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AdobeSongStd-Light" family="Adobe Song Std" pointSize="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mw8-WJ-zeD">
+                                <rect key="frame" x="104" y="237" width="167" height="23"/>
+                                <color key="backgroundColor" red="0.7452566964285714" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="EDI-rU-2OK"/>
+                                    <constraint firstAttribute="width" constant="167" id="uTV-re-Ncq"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读空间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-Y0-ZEK">
+                                <rect key="frame" x="16" y="200" width="343" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="CDt-uc-aPv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="让理想生活的样子清晰可见" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfn-YO-4hh">
+                                <rect key="frame" x="16" y="280" width="343" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bcY-Y0-ZEK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8JJ-jp-aDB"/>
+                            <constraint firstItem="mw8-WJ-zeD" firstAttribute="bottom" secondItem="bcY-Y0-ZEK" secondAttribute="bottom" id="94V-gY-Vca"/>
+                            <constraint firstItem="mw8-WJ-zeD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IGM-9j-x19"/>
+                            <constraint firstItem="hfn-YO-4hh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Orn-bl-CUl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hfn-YO-4hh" secondAttribute="trailing" constant="16" id="i4Z-UR-stk"/>
+                            <constraint firstItem="hfn-YO-4hh" firstAttribute="top" secondItem="bcY-Y0-ZEK" secondAttribute="bottom" constant="20" id="qFH-sq-GDL"/>
+                            <constraint firstItem="bcY-Y0-ZEK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="sz4-kb-k6m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bcY-Y0-ZEK" secondAttribute="trailing" constant="16" id="vSV-wW-48f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
 </document>

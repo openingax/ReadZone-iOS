@@ -14,5 +14,6 @@
 + (UIColor *)colorWithHex:(NSString *)hexColor alpha:(CGFloat)alpha;
 + (UIColor *)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 + (UIColor *)rz_colorwithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (UIColor *)colorWithColor:(UIColor *)color alpha:(CGFloat)alpha;
 
 @end

@@ -6,23 +6,29 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
-#import "RZLoginViewController.h"
-#import "RZRegisterViewController.h"
+// Vendor
 #import <AFNetworking/AFNetworking.h>
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
+// View
+#import "RZUserTextField.h"
+#import "RZUserButton.h"
+
+// Controller
+#import "RZLoginViewController.h"
+#import "RZRegisterViewController.h"
+
+
 static CGFloat marginHorizon = 24;
 
 @interface RZLoginViewController () <UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField *accountTF;
-@property (nonatomic, strong) UIView *accountLine;
-@property (nonatomic, strong) UITextField *passwordTF;
-@property (nonatomic, strong) UIView *passwordLine;
-@property (nonatomic, strong) UIButton *loginBtn;
-@property (nonatomic, strong) UITextView *logTextView;
+@property (nonatomic, strong) RZUserTextField *accountTF;
+@property (nonatomic, strong) RZUserTextField *passwordTF;
+@property (nonatomic, strong) RZUserButton *loginBtn;
+
 @property (nonatomic, strong) AFHTTPSessionManager *httpManager;
 
 @end
@@ -48,8 +54,8 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
-    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+//    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+//    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
 }
 
 - (void)drawView {
@@ -57,7 +63,7 @@ static CGFloat marginHorizon = 24;
     [self.view addGestureRecognizer:tap];
     
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"登录";
+    titleLabel.text = RZLocalizedString(@"LOGIN_LABEL_TITLE", @"登录页的大标题【登录】");
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont systemFontOfSize:32 weight:UIFontWeightLight];
     [self.view addSubview:titleLabel];
@@ -66,11 +72,8 @@ static CGFloat marginHorizon = 24;
         make.top.equalTo(self.view).with.offset(40+kNavTotalHeight);
     }];
     
-    self.accountTF = [[UITextField alloc] init];
-    self.accountTF.delegate = self;
-    self.accountTF.tag = 111;
-    self.accountTF.placeholder = @"手机 / 邮箱 / 用户名";
-    self.accountTF.backgroundColor = [UIColor whiteColor];
+    self.accountTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypeAccount];
+    [self.accountTF addTarget:self action:@selector(accountValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.accountTF];
     [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(marginHorizon);
@@ -79,22 +82,8 @@ static CGFloat marginHorizon = 24;
         make.height.mas_equalTo(40);
     }];
     
-    self.accountLine = [[UIView alloc] init];
-    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-    [self.view addSubview:self.accountLine];
-    [self.accountLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.accountTF.mas_bottom);
-        make.left.equalTo(self.view).with.offset(marginHorizon);
-        make.right.equalTo(self.view).with.offset(-marginHorizon);
-        make.height.mas_equalTo(0.5);
-    }];
-    
-    self.passwordTF = [[UITextField alloc] init];
-    self.passwordTF.delegate = self;
-    self.passwordTF.tag = 222;
-    self.passwordTF.placeholder = @"密码";
-    self.passwordTF.secureTextEntry = YES;
-    self.passwordTF.backgroundColor = [UIColor whiteColor];
+    self.passwordTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypePassword];
+    [self.passwordTF addTarget:self action:@selector(passwordValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.passwordTF];
     [self.passwordTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(marginHorizon);
@@ -103,33 +92,19 @@ static CGFloat marginHorizon = 24;
         make.height.mas_equalTo(40);
     }];
     
-    self.passwordLine = [[UIView alloc] init];
-    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-    [self.view addSubview:self.passwordLine];
-    [self.passwordLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passwordTF.mas_bottom);
-        make.left.equalTo(self.view).with.offset(marginHorizon);
-        make.right.equalTo(self.view).with.offset(-marginHorizon);
-        make.height.mas_equalTo(0.5);
+    self.loginBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"LOGIN_BTN_LOGIN", @"登录页登录按钮的标题【登录】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:@"#007AFF"] onPressBlock:^{
+        [self loginAction];
     }];
-    
-    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginBtn.layer.backgroundColor = [UIColor colorWithRed:110/255.f green:174/255.f blue:222/255.f alpha:1].CGColor;
-    [self.loginBtn setTitle:RZLocalizedString(@"LOGIN_LABEL_LOGIN", @"Login VC title") forState:UIControlStateNormal];
-    [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.loginBtn.layer.cornerRadius = 3;
-    self.loginBtn.layer.masksToBounds = YES;
     [self.view addSubview:self.loginBtn];
-    [self.loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(marginHorizon);
         make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(45);
     }];
     
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    NSString *registerStr = @"还未注册？";
+    NSString *registerStr = RZLocalizedString(@"LOGIN_BTN_REGISTER", @"登录页未注册按钮的标题【还未注册？】");
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:registerStr];
     [attributedString addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,[UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.8], NSForegroundColorAttributeName, nil] range:NSMakeRange(0, registerStr.length)];
     [registerBtn setAttributedTitle:attributedString forState:UIControlStateNormal];
@@ -151,19 +126,23 @@ static CGFloat marginHorizon = 24;
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - UITextFieldDelegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.tag == 111) {
-        self.accountLine.backgroundColor = [UIColor blackColor];
-        self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-    }
-    if (textField.tag == 222) {
-        self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-        self.passwordLine.backgroundColor = [UIColor blackColor];
+#pragma mark - Action
+- (void)accountValueChange:(RZUserTextField *)textField {
+    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.passwordTF.text]) {
+        self.loginBtn.enable = YES;
+    } else {
+        self.loginBtn.enable = NO;
     }
 }
 
-#pragma mark - Action
+- (void)passwordValueChange:(RZUserTextField *)textField {
+    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.accountTF.text]) {
+        self.loginBtn.enable = YES;
+    } else {
+        self.loginBtn.enable = NO;
+    }
+}
+
 - (void)loginAction {
 //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *account = self.accountTF.text;
@@ -177,7 +156,6 @@ static CGFloat marginHorizon = 24;
 //        self.logTextView.text = [NSString stringWithFormat:@"获取成功\n\n%@", responseObject];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.logTextView.text = [NSString stringWithFormat:@"获取失败\n\n%@", error];
     }];
 }
 
