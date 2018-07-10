@@ -92,7 +92,7 @@ static CGFloat marginHorizon = 24;
         make.height.mas_equalTo(40);
     }];
     
-    self.loginBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"LOGIN_BTN_LOGIN", @"登录页登录按钮的标题【登录】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:@"#007AFF"] onPressBlock:^{
+    self.loginBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"LOGIN_BTN_LOGIN", @"登录页登录按钮的标题【登录】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
         [self loginAction];
     }];
     [self.view addSubview:self.loginBtn];
@@ -144,7 +144,7 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)loginAction {
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.view endEditing:YES];
     NSString *account = self.accountTF.text;
     NSString *password = self.passwordTF.text;
     NSDictionary *params = @{
@@ -152,10 +152,9 @@ static CGFloat marginHorizon = 24;
                              @"password": password
                              };
     [self.httpManager POST:@"users/login" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
-//        self.logTextView.text = [NSString stringWithFormat:@"获取成功\n\n%@", responseObject];
+        [self.view makeToast:@"登录成功" duration:1.5 position:CSToastPositionBottom];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.view makeToast:@"登录失败，请重试" duration:1.5 position:CSToastPositionBottom];
     }];
 }
 

@@ -9,6 +9,9 @@
 #ifndef RZDefine_h
 #define RZDefine_h
 
+/* 自定义导航栏标题的颜色 */
 #define kColorNavTitle @"#000000"
+/* 用户注册登陆页面的按钮背景颜色 */
+#define kColorUserBtnBg @"007AFF"
 
 #endif /* RZDefine_h */

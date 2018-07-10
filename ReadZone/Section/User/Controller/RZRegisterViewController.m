@@ -6,18 +6,28 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
-#import "RZRegisterViewController.h"
+
+// Vendor
 #import <AFNetworking/AFNetworking.h>
-#import <Masonry/Masonry.h>
-#import <MBProgressHUD/MBProgressHUD.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
+
+// View
+#import "RZUserTextField.h"
+#import "RZUserButton.h"
+
+// Controller
+#import "RZRegisterViewController.h"
+
+// 按钮、输入框等组件与屏幕左右边距
+static CGFloat marginHorizon = 24;
 
 @interface RZRegisterViewController ()
 
-@property (nonatomic, strong) UITextField *accountTF;
-@property (nonatomic, strong) UITextField *passwordTF;
-@property (nonatomic, strong) UIButton *registerBtn;
-@property (nonatomic, strong) AFHTTPSessionManager *httpManager;
+@property(nonatomic,strong) RZUserTextField *accountTF;
+@property(nonatomic,strong) RZUserTextField *passwordTF;
+@property(nonatomic,strong) RZUserButton *registerBtn;
+
+@property(nonatomic,strong) AFHTTPSessionManager *httpManager;
 
 @end
 
@@ -27,7 +37,7 @@
     [super viewDidLoad];
     [self drawView];
     
-    self.title = @"注册";
+    self.title = RZLocalizedString(@"REGISTER_NAV_TITLE", @"导航栏标题【注册】");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,60 +51,58 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.view addGestureRecognizer:tap];
     
-    UIView *placeholderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 1)];
-    
-    self.accountTF = [[UITextField alloc] init];
-    self.accountTF.placeholder = @"手机/邮箱";
-    self.accountTF.backgroundColor = [UIColor whiteColor];
-    self.accountTF.layer.borderWidth = 0.5;
-    self.accountTF.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
-    self.accountTF.layer.cornerRadius = 3;
-    self.accountTF.leftView = placeholderView;
-    self.accountTF.rightView = placeholderView;
+    self.accountTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypeAccount];
+    [self.accountTF addTarget:self action:@selector(accountValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.accountTF];
     [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
-        make.top.equalTo(self.view).with.offset(30+kNavTotalHeight);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.top.equalTo(self.view).with.offset(40+kNavTotalHeight);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
     
-    self.passwordTF = [[UITextField alloc] init];
-    self.passwordTF.placeholder = @"密码";
-    self.passwordTF.secureTextEntry = YES;
-    self.passwordTF.backgroundColor = [UIColor whiteColor];
-    self.passwordTF.layer.borderWidth = 0.5;
-    self.passwordTF.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
-    self.passwordTF.layer.cornerRadius = 3;
-    self.passwordTF.leftView = placeholderView;
-    self.passwordTF.rightView = placeholderView;
+    self.passwordTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypePassword];
+    [self.passwordTF addTarget:self action:@selector(passwordValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.passwordTF];
     [self.passwordTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
         make.top.equalTo(self.accountTF.mas_bottom).with.offset(30);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
     
-    self.registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.registerBtn.layer.backgroundColor = [UIColor colorWithRed:110/255.f green:174/255.f blue:222/255.f alpha:1].CGColor;
-    [self.registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [self.registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.registerBtn.layer.cornerRadius = 3;
-    self.registerBtn.layer.masksToBounds = YES;
+    self.registerBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"REGISTER_BTN_REGISTER", @"注册按钮的标题【注册】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
+        [self registerAction];
+    }];
     [self.view addSubview:self.registerBtn];
     [self.registerBtn addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
     [self.registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(45);
-        make.right.equalTo(self.view).with.offset(-45);
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.right.equalTo(self.view).with.offset(-marginHorizon);
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(45);
     }];
 }
 
 #pragma mark - tapAction
+- (void)accountValueChange:(RZUserTextField *)textField {
+    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.passwordTF.text]) {
+        self.registerBtn.enable = YES;
+    } else {
+        self.registerBtn.enable = NO;
+    }
+}
+
+- (void)passwordValueChange:(RZUserTextField *)textField {
+    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.accountTF.text]) {
+        self.registerBtn.enable = YES;
+    } else {
+        self.registerBtn.enable = NO;
+    }
+}
+
 - (void)registerAction {
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.view endEditing:YES];
     NSString *account = self.accountTF.text;
     NSString *password = self.passwordTF.text;
     NSDictionary *params = @{
@@ -102,9 +110,14 @@
                              @"password": password
                              };
     [self.httpManager POST:@"users/register" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.view makeToast:@"注册成功" duration:1.5 position:CSToastPositionBottom];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.view makeToast:@"注册失败，请重试" duration:1.5 position:CSToastPositionBottom];
     }];
 }
 
