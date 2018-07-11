@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		412A12502DF6A5E44E6C265E /* Pods_ReadZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */; };
+		5F7012B220F58B1E00088216 /* RZAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B120F58B1E00088216 /* RZAPI.m */; };
+		5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B420F58DF300088216 /* RZAPIResponse.m */; };
+		5F7012B820F58E0400088216 /* RZAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B720F58E0400088216 /* RZAPIError.m */; };
+		5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012BA20F5D5D400088216 /* RZGlobal.m */; };
+		5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012BD20F5DC7C00088216 /* RZAPILogin.m */; };
+		5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012C120F5DE5400088216 /* RZDTOLogin.m */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
@@ -33,7 +38,6 @@
 		B2FFF03420E4798C008CD245 /* RZFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* RZFoundationLog.m */; };
 		B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
 		B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */; };
-		DA05DFE705EDC3A8D8BBA25D /* Pods_ReadZoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */; };
 		DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,17 +60,25 @@
 
 /* Begin PBXFileReference section */
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
+		5F7012B020F58B1E00088216 /* RZAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPI.h; sourceTree = "<group>"; };
+		5F7012B120F58B1E00088216 /* RZAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPI.m; sourceTree = "<group>"; };
+		5F7012B320F58DF300088216 /* RZAPIResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIResponse.h; sourceTree = "<group>"; };
+		5F7012B420F58DF300088216 /* RZAPIResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPIResponse.m; sourceTree = "<group>"; };
+		5F7012B620F58E0400088216 /* RZAPIError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIError.h; sourceTree = "<group>"; };
+		5F7012B720F58E0400088216 /* RZAPIError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPIError.m; sourceTree = "<group>"; };
+		5F7012B920F5D5D400088216 /* RZGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZGlobal.h; sourceTree = "<group>"; };
+		5F7012BA20F5D5D400088216 /* RZGlobal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZGlobal.m; sourceTree = "<group>"; };
+		5F7012BC20F5DC7C00088216 /* RZAPILogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPILogin.h; sourceTree = "<group>"; };
+		5F7012BD20F5DC7C00088216 /* RZAPILogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPILogin.m; sourceTree = "<group>"; };
+		5F7012C020F5DE5400088216 /* RZDTOLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDTOLogin.h; sourceTree = "<group>"; };
+		5F7012C120F5DE5400088216 /* RZDTOLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDTOLogin.m; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
 		5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserTextField.m; sourceTree = "<group>"; };
 		5FB6B93420F4B0B000AEBCF0 /* RZUserButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserButton.h; sourceTree = "<group>"; };
 		5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserButton.m; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		688FD0ECB44DD1FB03BA8D43 /* Pods-ReadZoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneUITests/Pods-ReadZoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		735849671247ADE995C0839E /* Pods-ReadZoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneTests/Pods-ReadZoneTests.debug.xcconfig"; sourceTree = "<group>"; };
-		76E97EFE5F20D308D89F47E7 /* Pods-ReadZoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneUITests/Pods-ReadZoneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD80E158E9A284A8422F3768 /* Pods-ReadZoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZoneTests/Pods-ReadZoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
 		B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libTelephonyIOKitDynamic.tbd; path = usr/lib/libTelephonyIOKitDynamic.tbd; sourceTree = SDKROOT; };
 		B2003AA020D4890F00AEA413 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,7 +150,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA05DFE705EDC3A8D8BBA25D /* Pods_ReadZoneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412A12502DF6A5E44E6C265E /* Pods_ReadZoneUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,12 +168,28 @@
 			children = (
 				B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */,
 				4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */,
-				735849671247ADE995C0839E /* Pods-ReadZoneTests.debug.xcconfig */,
-				AD80E158E9A284A8422F3768 /* Pods-ReadZoneTests.release.xcconfig */,
-				688FD0ECB44DD1FB03BA8D43 /* Pods-ReadZoneUITests.debug.xcconfig */,
-				76E97EFE5F20D308D89F47E7 /* Pods-ReadZoneUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5F7012AE20F58AD300088216 /* BaseData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BaseData;
+			sourceTree = "<group>";
+		};
+		5F7012AF20F58AFE00088216 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5F7012B020F58B1E00088216 /* RZAPI.h */,
+				5F7012B120F58B1E00088216 /* RZAPI.m */,
+				5F7012B320F58DF300088216 /* RZAPIResponse.h */,
+				5F7012B420F58DF300088216 /* RZAPIResponse.m */,
+				5F7012B620F58E0400088216 /* RZAPIError.h */,
+				5F7012B720F58E0400088216 /* RZAPIError.m */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		5FB6B92D20F4AA5900AEBCF0 /* Manager */ = {
@@ -198,6 +224,10 @@
 		5FB6B93020F4AA6B00AEBCF0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F7012BC20F5DC7C00088216 /* RZAPILogin.h */,
+				5F7012BD20F5DC7C00088216 /* RZAPILogin.m */,
+				5F7012C020F5DE5400088216 /* RZDTOLogin.h */,
+				5F7012C120F5DE5400088216 /* RZDTOLogin.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				B2BF657F20D75B57003059AE /* Controller */,
+				5F7012B920F5D5D400088216 /* RZGlobal.h */,
+				5F7012BA20F5D5D400088216 /* RZGlobal.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -259,6 +291,8 @@
 		B2BF657E20D75B42003059AE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5F7012AF20F58AFE00088216 /* Core */,
+				5F7012AE20F58AD300088216 /* BaseData */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -555,7 +589,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2F14D3C20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneTests" */;
 			buildPhases = (
-				27FD8EF48CD71B8077B45D7C /* [CP] Check Pods Manifest.lock */,
 				B2F14D2120C3EE81005DF168 /* Sources */,
 				B2F14D2220C3EE81005DF168 /* Frameworks */,
 				B2F14D2320C3EE81005DF168 /* Resources */,
@@ -574,7 +607,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2F14D3F20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneUITests" */;
 			buildPhases = (
-				64160D3A2783B6AA9D833970 /* [CP] Check Pods Manifest.lock */,
 				B2F14D2C20C3EE81005DF168 /* Sources */,
 				B2F14D2D20C3EE81005DF168 /* Frameworks */,
 				B2F14D2E20C3EE81005DF168 /* Resources */,
@@ -689,10 +721,12 @@
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
+				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -700,50 +734,16 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		27FD8EF48CD71B8077B45D7C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReadZoneTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		64160D3A2783B6AA9D833970 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReadZoneUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D3B2ED02A65B7385CAAD61 /* [CP] Check Pods Manifest.lock */ = {
@@ -771,7 +771,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */,
 				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
+				5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */,
+				5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */,
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
 				B2D2186320F3B18A00331F4C /* RZInternalUtility.m in Sources */,
@@ -781,7 +784,10 @@
 				B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */,
 				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
+				5F7012B220F58B1E00088216 /* RZAPI.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
+				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
+				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
@@ -961,6 +967,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -986,6 +993,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1001,7 +1009,6 @@
 		};
 		B2F14D3D20C3EE81005DF168 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 735849671247ADE995C0839E /* Pods-ReadZoneTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1017,7 +1024,6 @@
 		};
 		B2F14D3E20C3EE81005DF168 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD80E158E9A284A8422F3768 /* Pods-ReadZoneTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1033,7 +1039,6 @@
 		};
 		B2F14D4020C3EE81005DF168 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 688FD0ECB44DD1FB03BA8D43 /* Pods-ReadZoneUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7GAPLUUTP;
@@ -1049,7 +1054,6 @@
 		};
 		B2F14D4120C3EE81005DF168 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76E97EFE5F20D308D89F47E7 /* Pods-ReadZoneUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7GAPLUUTP;

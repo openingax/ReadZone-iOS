@@ -29,6 +29,7 @@
 
 #import <Masonry/Masonry.h>
 #import <Toast/Toast.h>
+#import <libextobjc/EXTScope.h>
 
 #import "RZUtils.h"
 #import "RZDefine.h"

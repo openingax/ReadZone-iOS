@@ -7,10 +7,13 @@
 //
 
 // Vendor
-#import <AFNetworking/AFNetworking.h>
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
+
+// Manager
+#import "RZAPILogin.h"
+#import "RZDTOLogin.h"
 
 // View
 #import "RZUserTextField.h"
@@ -29,20 +32,13 @@ static CGFloat marginHorizon = 24;
 @property (nonatomic, strong) RZUserTextField *passwordTF;
 @property (nonatomic, strong) RZUserButton *loginBtn;
 
-@property (nonatomic, strong) AFHTTPSessionManager *httpManager;
+@property (nonatomic, strong) RZAPILogin *apiManager;
 
 @end
 
 @implementation RZLoginViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
-    
-    self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.0.100:8000/"]];
-    self.httpManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    self.httpManager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     [self drawView];
     
     // 注册键盘收起的通知
@@ -59,6 +55,7 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)drawView {
+    self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.view addGestureRecognizer:tap];
     
@@ -115,6 +112,10 @@ static CGFloat marginHorizon = 24;
         make.bottom.equalTo(self.view).with.offset(-30);
         make.centerX.equalTo(self.view);
     }];
+    
+    
+    self.accountTF.text = @"18814098638";
+    self.passwordTF.text = @"AZaz1108";
 }
 
 - (void)drawNavBar {
@@ -145,16 +146,15 @@ static CGFloat marginHorizon = 24;
 
 - (void)loginAction {
     [self.view endEditing:YES];
-    NSString *account = self.accountTF.text;
-    NSString *password = self.passwordTF.text;
-    NSDictionary *params = @{
-                             @"account": account,
-                             @"password": password
-                             };
-    [self.httpManager POST:@"users/login" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self.view makeToast:@"登录成功" duration:1.5 position:CSToastPositionBottom];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self.view makeToast:@"登录失败，请重试" duration:1.5 position:CSToastPositionBottom];
+
+    self.apiManager.account = self.accountTF.text;
+    self.apiManager.password = self.passwordTF.text;
+    [self.apiManager startWithCompletion:^(RZAPI *api) {
+        RZDTOLogin *loginModel = api.response.fetchData;
+        [self.view makeToast:loginModel.desc duration:1.5 position:CSToastPositionBottom];
+        if (loginModel.status == 0) {
+            
+        }
     }];
 }
 
@@ -168,11 +168,11 @@ static CGFloat marginHorizon = 24;
 }
 
 #pragma mark - Setter & Getter
-- (AFHTTPSessionManager *)httpManager {
-    if (!_httpManager) {
-        _httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.0.100:8000/"]];
+- (RZAPILogin *)apiManager {
+    if (!_apiManager) {
+        _apiManager = [[RZAPILogin alloc] init];
     }
-    return _httpManager;
+    return _apiManager;
 }
 
 @end
