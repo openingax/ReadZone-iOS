@@ -52,8 +52,8 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
-//    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-//    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    //    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    //    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
 }
 
 - (void)drawView {
@@ -144,19 +144,35 @@ static CGFloat marginHorizon = 24;
 
 - (void)loginAction {
     [self.view endEditing:YES];
-
-    self.apiManager.account = self.accountTF.text;
-    self.apiManager.password = self.passwordTF.text;
-    [self.apiManager startWithCompletion:^(RZAPI *api) {
-        RZDTOLogin *loginModel = api.response.fetchData;
-        [self.view makeToast:loginModel.desc duration:1.5 position:CSToastPositionBottom];
-        if (loginModel.status == 0) {
-            // 弹出根视图时，把登陆视图缩小往下收（仿轻芒、腾讯新闻）
+    
+    //    self.apiManager.account = self.accountTF.text;
+    //    self.apiManager.password = self.passwordTF.text;
+    //    [self.apiManager startWithCompletion:^(RZAPI *api) {
+    //        RZDTOLogin *loginModel = api.response.fetchData;
+    //        [self.view makeToast:loginModel.desc duration:1.5 position:CSToastPositionBottom];
+    //        if (loginModel.status == 0) {
+    //            // 弹出根视图时，把登陆视图缩小往下收（仿轻芒、腾讯新闻）
+    //            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
+    //            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
+    //            [self presentViewController:navVC animated:YES completion:^{
+    //
+    //            }];
+    //        }
+    //    }];
+    
+    
+    
+    [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
+        if (user && !error) {
+            [self.view makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
+            
             RZRootViewController *rootVC = [[RZRootViewController alloc] init];
             RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
-            [self presentViewController:navVC animated:YES completion:^{
-                
-            }];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self presentViewController:navVC animated:YES completion:nil];
+            });
+        } else {
+            [self.view makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
         }
     }];
 }

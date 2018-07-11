@@ -6,11 +6,13 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
+#import <Bugly/Bugly.h>
+
 #import "AppDelegate.h"
+#import "RZAPI.h"
+
 #import "RZBaseNavigationController.h"
 #import "RZLoginViewController.h"
-#import <Bugly/Bugly.h>
-#import "RZAPI.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +22,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // Bug 统计
     [Bugly startWithAppId:@"c80362e8b9"];
+    
+    // leanCloud 云服务
+    [AVOSCloud setApplicationId:@"2qF4yFo6bwYFQzwB3ox2mhNP-gzGzoHsz" clientKey:@"QYnp3ODfDQ0RSta9tWJd7ugi"];
+    [AVOSCloud setAllLogsEnabled:YES];
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];        // 跟踪统计应用的打开情况
+    
     
     [RZAPI setFetchTokenAction:^NSString *{
         return @"12345";
@@ -33,9 +42,6 @@
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
-    
-    
-    
     
     return YES;
 }

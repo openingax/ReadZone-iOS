@@ -7,6 +7,7 @@
 //
 
 #import "RZBaseViewController.h"
+#import "RZRootViewController.h"
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 @interface RZBaseViewController ()
@@ -60,9 +61,18 @@
 - (void)touchNavBarBackItem:(RZNavBarItem *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-    if (!self.navigationController || self.navigationController.viewControllers.count == 1)
-    {
+    if (!self.navigationController) {
         [self dismissViewControllerAnimated:YES completion:nil];
+    } else if (self.navigationController.viewControllers.count == 1) {
+        if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[RZRootViewController class]]) {
+            AVUser *user = [AVUser currentUser];
+            if (user) {
+                NSLog(@"注销了当前用户：%@", user.username);
+                [AVUser logOut];
+            }
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 

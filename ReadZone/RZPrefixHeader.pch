@@ -35,6 +35,7 @@
 #import <Masonry/Masonry.h>
 #import <Toast/Toast.h>
 #import <libextobjc/EXTScope.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 #import "RZUtils.h"
 #import "RZDefine.h"

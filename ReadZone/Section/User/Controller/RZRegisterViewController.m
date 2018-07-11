@@ -105,19 +105,19 @@ static CGFloat marginHorizon = 24;
     [self.view endEditing:YES];
     NSString *account = self.accountTF.text;
     NSString *password = self.passwordTF.text;
-    NSDictionary *params = @{
-                             @"account": account,
-                             @"password": password
-                             };
-    [self.httpManager POST:@"users/register" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self.view makeToast:@"注册成功" duration:1.5 position:CSToastPositionBottom];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self.view makeToast:@"注册失败，请重试" duration:1.5 position:CSToastPositionBottom];
+    
+    AVUser *newUser = [AVUser user];
+    newUser.username = account;
+    newUser.password = password;
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self.view makeToast:@"注册成功" duration:1.5 position:CSToastPositionBottom];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        } else {
+            [self.view makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
+        }
     }];
 }
 
