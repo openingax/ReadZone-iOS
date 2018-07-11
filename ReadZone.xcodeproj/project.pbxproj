@@ -13,6 +13,7 @@
 		5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012BA20F5D5D400088216 /* RZGlobal.m */; };
 		5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012BD20F5DC7C00088216 /* RZAPILogin.m */; };
 		5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012C120F5DE5400088216 /* RZDTOLogin.m */; };
+		5F7012D020F6160100088216 /* RZRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012CF20F6160100088216 /* RZRootViewController.m */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
@@ -72,6 +73,8 @@
 		5F7012BD20F5DC7C00088216 /* RZAPILogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPILogin.m; sourceTree = "<group>"; };
 		5F7012C020F5DE5400088216 /* RZDTOLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDTOLogin.h; sourceTree = "<group>"; };
 		5F7012C120F5DE5400088216 /* RZDTOLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDTOLogin.m; sourceTree = "<group>"; };
+		5F7012CE20F6160100088216 /* RZRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRootViewController.h; sourceTree = "<group>"; };
+		5F7012CF20F6160100088216 /* RZRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRootViewController.m; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
 		5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserTextField.m; sourceTree = "<group>"; };
@@ -192,6 +195,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		5F7012CC20F6159100088216 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				5F7012CE20F6160100088216 /* RZRootViewController.h */,
+				5F7012CF20F6160100088216 /* RZRootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		5FB6B92D20F4AA5900AEBCF0 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +275,7 @@
 		B2BF657B20D75B11003059AE /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				5F7012CC20F6159100088216 /* Root */,
 				B2BF658120D75B76003059AE /* HotPot */,
 				B2BF658220D75DCF003059AE /* Books */,
 				B2BF658320D75DDF003059AE /* Library */,
@@ -788,6 +801,7 @@
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
+				5F7012D020F6160100088216 /* RZRootViewController.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,

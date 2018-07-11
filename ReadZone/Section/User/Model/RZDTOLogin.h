@@ -10,7 +10,7 @@
 
 @interface RZDTOLogin : NSObject
 
-@property(nonatomic,copy) NSString *status;
+@property(nonatomic,assign) NSInteger status;
 @property(nonatomic,copy) NSString *desc;
 @property(nonatomic,copy) NSString *token;
 

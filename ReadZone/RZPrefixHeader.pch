@@ -11,6 +11,11 @@
 #ifndef RZPrefixHeader_pch
 #define RZPrefixHeader_pch
 
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...);
+#endif
 
 // UI 相关
 #define kScreenWidth ([[UIScreen mainScreen] bounds].size.width)

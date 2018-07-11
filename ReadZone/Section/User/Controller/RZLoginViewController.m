@@ -22,6 +22,8 @@
 // Controller
 #import "RZLoginViewController.h"
 #import "RZRegisterViewController.h"
+#import "RZBaseNavigationController.h"
+#import "RZRootViewController.h"
 
 
 static CGFloat marginHorizon = 24;
@@ -112,10 +114,6 @@ static CGFloat marginHorizon = 24;
         make.bottom.equalTo(self.view).with.offset(-30);
         make.centerX.equalTo(self.view);
     }];
-    
-    
-    self.accountTF.text = @"18814098638";
-    self.passwordTF.text = @"AZaz1108";
 }
 
 - (void)drawNavBar {
@@ -153,7 +151,12 @@ static CGFloat marginHorizon = 24;
         RZDTOLogin *loginModel = api.response.fetchData;
         [self.view makeToast:loginModel.desc duration:1.5 position:CSToastPositionBottom];
         if (loginModel.status == 0) {
-            
+            // 弹出根视图时，把登陆视图缩小往下收（仿轻芒、腾讯新闻）
+            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
+            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
+            [self presentViewController:navVC animated:YES completion:^{
+                
+            }];
         }
     }];
 }

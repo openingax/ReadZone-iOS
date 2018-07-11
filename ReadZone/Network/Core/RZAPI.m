@@ -52,6 +52,9 @@ static FetchTokenAction fetchTokenAction;
     @weakify(self);
     void(^successBlock)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject) {
         @strongify(self);
+        
+        NSLog(@"responseObject: %@", responseObject);
+        
         RZAPIResponse *resp = [[RZAPIResponse alloc] init];
         NSError *parseError = [resp parseFromJSONDic:responseObject clsOfData:configuration.clsOfResData dataIsArray:configuration.resDataIsArray];
         
@@ -65,6 +68,9 @@ static FetchTokenAction fetchTokenAction;
     
     void (^failureBlock)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask *task, NSError *error) {
         @strongify(self);
+        
+        NSLog(@"responseObject: %@", error);
+        
         if (completion) { completion(self); }
     };
     
