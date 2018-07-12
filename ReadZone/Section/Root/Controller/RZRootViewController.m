@@ -9,6 +9,9 @@
 // Manager
 #import "RZMenuManager.h"
 
+// Model
+#import "RZHotPotModel.h"
+
 // View
 #import "RZNavBarItem.h"
 
@@ -18,6 +21,7 @@
 @interface RZRootViewController ()
 
 @property(nonatomic,strong) RZMenuManager *menuManager;
+@property(nonatomic,strong) UIScrollView *scrollView;
 
 @end
 
@@ -47,15 +51,37 @@
 
 - (void)drawView {
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kNavTotalHeight, kScreenWidth, kScreenHeight)];
+    [self.view addSubview:self.scrollView];
 }
 
 #pragma mark - Action
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
+    
+    RZHotPotModel *hotPot = [[RZHotPotModel alloc] init];
+    hotPot.headlineStr = @"你就别担心那么多事情了，总之到哪都会牵着你。";
+    hotPot.sourceStr = @"哈哈哈哈";
+    
+    [hotPot save];
+//    [hotPot saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded && !error) {
+//            NSLog(@"创建成功！");
+//        } else {
+//            NSLog(@"创建失败！");
+//        }
+//    }];
 }
 
 - (void)moreAction {
-    [self.menuManager showMenuVCWithController:self];
+//    [self.menuManager showMenuVCWithController:self];
+    AVObject *hotPot = [AVObject objectWithClassName:@"hotPotModel" objectId:@"5b477e8c128fe1005b08efbf"];
+    [hotPot fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (!error) {
+            
+        }
+    }];
 }
 
 #pragma mark - Setter & Getter

@@ -29,6 +29,8 @@
 		B2D2186320F3B18A00331F4C /* RZInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2186220F3B18A00331F4C /* RZInternalUtility.m */; };
 		B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2D2187120F3B97600331F4C /* RZInternalStrings.bundle */; };
 		B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187520F510C900331F4C /* NSAttributedString+RZ.m */; };
+		B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187A20F7A05E00331F4C /* RZHotPotView.m */; };
+		B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */; };
 		B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1120C3EE7F005DF168 /* AppDelegate.m */; };
 		B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */; };
 		B2F14D2020C3EE81005DF168 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1F20C3EE81005DF168 /* main.m */; };
@@ -120,6 +122,10 @@
 		B2D2187320F3CA9900331F4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B2D2187420F510C900331F4C /* NSAttributedString+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZ.h"; sourceTree = "<group>"; };
 		B2D2187520F510C900331F4C /* NSAttributedString+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RZ.m"; sourceTree = "<group>"; };
+		B2D2187920F7A05E00331F4C /* RZHotPotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotView.h; sourceTree = "<group>"; };
+		B2D2187A20F7A05E00331F4C /* RZHotPotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotView.m; sourceTree = "<group>"; };
+		B2D2187E20F7A0A900331F4C /* RZHotPotModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotModel.h; sourceTree = "<group>"; };
+		B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotModel.m; sourceTree = "<group>"; };
 		B2F14D0D20C3EE7F005DF168 /* ReadZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D1020C3EE7F005DF168 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2F14D1120C3EE7F005DF168 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -204,42 +210,12 @@
 		5F7012CC20F6159100088216 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				5FA3BD0320F7065B00A1958A /* Manager */,
-				5FA3BD0220F7065600A1958A /* Model */,
-				5FA3BD0120F7065300A1958A /* View */,
-				5FA3BD0020F7064C00A1958A /* Controller */,
-				5F7012CE20F6160100088216 /* RZRootViewController.h */,
-				5F7012CF20F6160100088216 /* RZRootViewController.m */,
+				B2D2187D20F7A09200331F4C /* Manager */,
+				B2D2187C20F7A06B00331F4C /* Model */,
+				B2D2187820F7A03700331F4C /* View */,
+				B2D2187720F7A02E00331F4C /* Controller */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		5FA3BD0020F7064C00A1958A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5FA3BD0120F7065300A1958A /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5FA3BD0220F7065600A1958A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5FA3BD0320F7065B00A1958A /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		5FB6B92D20F4AA5900AEBCF0 /* Manager */ = {
@@ -570,6 +546,40 @@
 			path = Bundle;
 			sourceTree = "<group>";
 		};
+		B2D2187720F7A02E00331F4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5F7012CE20F6160100088216 /* RZRootViewController.h */,
+				5F7012CF20F6160100088216 /* RZRootViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B2D2187820F7A03700331F4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2187920F7A05E00331F4C /* RZHotPotView.h */,
+				B2D2187A20F7A05E00331F4C /* RZHotPotView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2D2187C20F7A06B00331F4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2187E20F7A0A900331F4C /* RZHotPotModel.h */,
+				B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2D2187D20F7A09200331F4C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		B2F14D0420C3EE7F005DF168 = {
 			isa = PBXGroup;
 			children = (
@@ -879,7 +889,9 @@
 				B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */,
 				B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */,
 				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
+				B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
+				B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */,
 				5F7012B220F58B1E00088216 /* RZAPI.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
