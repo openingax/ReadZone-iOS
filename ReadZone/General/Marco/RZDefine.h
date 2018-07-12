@@ -6,6 +6,8 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef RZDefine_h
 #define RZDefine_h
 

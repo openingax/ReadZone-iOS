@@ -36,3 +36,6 @@
 "REGISTER_PLACEHOLDER_ACCOUNT" = "Phone / E-mail";
 "REGISTER_PLACEHOLDER_PWD" = "Password";
 "REGISTER_BTN_REGISTER" = "Register";
+
+/* Root VC */
+"ROOT_NAV_TITLE" = "Library";

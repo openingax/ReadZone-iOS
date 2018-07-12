@@ -21,5 +21,9 @@ static inline BOOL IsEmpty(id thing) {
         && [(NSArray *)thing count] == 0);
 }
 
+static inline CGFloat kScreenRatio() {
+    return [UIScreen mainScreen].bounds.size.width/375;
+}
+
 
 #endif /* RZUtils_h */

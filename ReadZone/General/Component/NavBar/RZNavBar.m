@@ -78,7 +78,7 @@
             
             if (index == 0 && self.hidenBackItem)
             {
-                make.left.equalTo(self);
+                make.left.equalTo(self).with.offset(8);
             }
             else
             {
@@ -102,7 +102,7 @@
             }
             else
             {
-                make.right.equalTo(self);
+                make.right.equalTo(self).with.offset(-8);
             }
         }];
         [item updateConstraints];

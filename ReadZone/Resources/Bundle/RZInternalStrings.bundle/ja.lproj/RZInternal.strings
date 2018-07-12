@@ -35,3 +35,6 @@
 "REGISTER_PLACEHOLDER_ACCOUNT" = "電話 / メール";
 "REGISTER_PLACEHOLDER_PWD" = "パスワード";
 "REGISTER_BTN_REGISTER" = "登録";
+
+/* Root VC */
+"ROOT_NAV_TITLE" = "図書館";

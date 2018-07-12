@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RZBaseNavigationController.h"
+#import "RZLoginViewController.h"
+#import "RZRootViewController.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(nonatomic,strong) UIWindow *window;
+@property(nonatomic,strong) RZBaseNavigationController *navigationController;
+@property(nonatomic,strong) RZLoginViewController *loginViewController;
+@property(nonatomic,strong) RZRootViewController *rootViewController;
 
++ (instancetype)shared;
 
 @end
 

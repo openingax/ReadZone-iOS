@@ -11,15 +11,15 @@
 #import "AppDelegate.h"
 #import "RZAPI.h"
 
-#import "RZBaseNavigationController.h"
-#import "RZLoginViewController.h"
-
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
++ (instancetype)shared {
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -31,14 +31,19 @@
     [AVOSCloud setAllLogsEnabled:YES];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];        // 跟踪统计应用的打开情况
     
-    
     [RZAPI setFetchTokenAction:^NSString *{
         return @"12345";
     }];
     
     // 初始化视图控制器
-    RZLoginViewController *rootVC = [[RZLoginViewController alloc] init];
-    RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
+    UIViewController *ctrlVC;
+    if ([AVUser currentUser]) {
+        ctrlVC = [[RZRootViewController alloc] init];
+    } else {
+        ctrlVC = [[RZLoginViewController alloc] init];
+    }
+    
+    RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:ctrlVC];
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
@@ -73,5 +78,26 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Getter
+- (RZBaseNavigationController *)navigationController {
+    if (!_navigationController) {
+        _navigationController = [[RZBaseNavigationController alloc] init];
+    }
+    return _navigationController;
+}
+
+- (RZRootViewController *)rootViewController {
+    if (!_rootViewController) {
+        _rootViewController = [[RZRootViewController alloc] init];
+    }
+    return _rootViewController;
+}
+
+- (RZLoginViewController *)loginViewController {
+    if (!_loginViewController) {
+        _loginViewController = [[RZLoginViewController alloc] init];
+    }
+    return _loginViewController;
+}
 
 @end

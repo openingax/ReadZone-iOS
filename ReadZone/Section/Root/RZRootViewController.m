@@ -6,9 +6,18 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
+// Manager
+#import "RZMenuManager.h"
+
+// View
+#import "RZNavBarItem.h"
+
+// Controller
 #import "RZRootViewController.h"
 
 @interface RZRootViewController ()
+
+@property(nonatomic,strong) RZMenuManager *menuManager;
 
 @end
 
@@ -16,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self drawView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,10 +35,35 @@
 #pragma mark - Draw
 - (void)drawNavBar {
     [super drawNavBar];
+    self.navBar.hidenBackItem = YES;
+    self.title = RZLocalizedString(@"ROOT_NAV_TITLE", @"首页导航栏的标题");
+    RZNavBarItem *leftItem = [RZNavBarItem navBarItemTitle:nil normalImg:[UIImage imageNamed:@"NavSearchBtn"] selectedImg:[UIImage imageNamed:@"NavSearchBtnSelected"]];
+    [leftItem addTarget:self action:@selector(searchAction) forControlEvents:UIControlEventTouchUpInside];
+    RZNavBarItem *rightItem = [RZNavBarItem navBarItemTitle:nil normalImg:[UIImage imageNamed:@"NavMoreBtn"] selectedImg:[UIImage imageNamed:@"NavMoreBtnSelected"]];
+    [rightItem addTarget:self action:@selector(moreAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navBar.leftBarItems = @[leftItem];
+    self.navBar.rightBarItems = @[rightItem];
 }
 
 - (void)drawView {
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+#pragma mark - Action
+- (void)searchAction {
+    NSLog(@"ratio: %f", kScreenRatio());
+}
+
+- (void)moreAction {
+    [self.menuManager showMenuVCWithController:self];
+}
+
+#pragma mark - Setter & Getter
+- (RZMenuManager *)menuManager {
+    if (!_menuManager) {
+        _menuManager = [[RZMenuManager alloc] init];
+    }
+    return _menuManager;
 }
 
 @end

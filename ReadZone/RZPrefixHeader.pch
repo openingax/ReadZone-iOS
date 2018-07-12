@@ -18,8 +18,8 @@
 #endif
 
 // UI 相关
-#define kScreenWidth ([[UIScreen mainScreen] bounds].size.width)
-#define kScreenHeight ([[UIScreen mainScreen] bounds].size.height)
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define kScreenBounds [UIScreen mainScreen].bounds
 
 #define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
