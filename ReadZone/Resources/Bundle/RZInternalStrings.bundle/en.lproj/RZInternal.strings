@@ -39,3 +39,26 @@
 
 /* Root VC */
 "ROOT_NAV_TITLE" = "Library";
+
+/* Menu VC */
+"MENU_BUTTON_MESSAGE" = "Message";
+"MENU_BUTTON_NOTE" = "Record";
+"MENU_BUTTON_OFFLINE" = "Off-line";
+"MENU_BUTTON_SETTING" = "Setting";
+"MENU_APP_NAME" = "Read Zone";
+
+/* Setting */
+"SETTING_NAV_SETTING" = "Setting";
+"SETTING_CELL_LOGOUT" = "Logout";
+"SETTING_CELL_USERNAME" = "Name";
+"SETTING_CELL_ACCOUNT" = "Account";
+"SETTING_CELL_ABOUT" = "About";
+"SETTING_CELL_HELP" = "Help";
+"SETTING_CELL_FEEDBACK" = "Feedback";
+"SETTING_CELL_PROTOCOL" = "User agreement";
+"SETTING_CELL_PRIVACY" = "Privacy policy";
+"SETTING_CELL_CLEARTEMP" = "Clear temp";
+"SETTING_CANCEL" = "Cancel";
+
+"ABOUT_NAV_TITLE" = "About";
+

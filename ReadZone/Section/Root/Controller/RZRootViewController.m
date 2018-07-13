@@ -75,13 +75,13 @@
 }
 
 - (void)moreAction {
-//    [self.menuManager showMenuVCWithController:self];
-    AVObject *hotPot = [AVObject objectWithClassName:@"hotPotModel" objectId:@"5b477e8c128fe1005b08efbf"];
-    [hotPot fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
-        if (!error) {
-            
-        }
-    }];
+    [self.menuManager showMenuVCWithController:self];
+//    AVObject *hotPot = [AVObject objectWithClassName:@"hotPotModel" objectId:@"5b477e8c128fe1005b08efbf"];
+//    [hotPot fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+//        if (!error) {
+//
+//        }
+//    }];
 }
 
 #pragma mark - Setter & Getter

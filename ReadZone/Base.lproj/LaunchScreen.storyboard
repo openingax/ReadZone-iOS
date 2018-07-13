@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mw8-WJ-zeD">
                                 <rect key="frame" x="104" y="237" width="167" height="23"/>
-                                <color key="backgroundColor" red="0.7452566964285714" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.46551339285714288" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="EDI-rU-2OK"/>
                                     <constraint firstAttribute="width" constant="167" id="uTV-re-Ncq"/>
@@ -36,8 +36,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="让理想生活的样子清晰可见" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfn-YO-4hh">
-                                <rect key="frame" x="16" y="280" width="343" height="15"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <rect key="frame" x="16" y="289" width="343" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -49,7 +49,7 @@
                             <constraint firstItem="mw8-WJ-zeD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IGM-9j-x19"/>
                             <constraint firstItem="hfn-YO-4hh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Orn-bl-CUl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hfn-YO-4hh" secondAttribute="trailing" constant="16" id="i4Z-UR-stk"/>
-                            <constraint firstItem="hfn-YO-4hh" firstAttribute="top" secondItem="bcY-Y0-ZEK" secondAttribute="bottom" constant="20" id="qFH-sq-GDL"/>
+                            <constraint firstItem="hfn-YO-4hh" firstAttribute="top" secondItem="bcY-Y0-ZEK" secondAttribute="bottom" constant="29" id="qFH-sq-GDL"/>
                             <constraint firstItem="bcY-Y0-ZEK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="sz4-kb-k6m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bcY-Y0-ZEK" secondAttribute="trailing" constant="16" id="vSV-wW-48f"/>
                         </constraints>

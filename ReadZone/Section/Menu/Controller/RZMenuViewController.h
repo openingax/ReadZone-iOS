@@ -10,4 +10,8 @@
 
 @interface RZMenuViewController : RZBaseViewController
 
+@property(nonatomic,strong) UIImageView *avatarImgView;
+@property(nonatomic,strong) NSString *userName;
+@property(nonatomic,strong) NSString *versionStr;
+
 @end

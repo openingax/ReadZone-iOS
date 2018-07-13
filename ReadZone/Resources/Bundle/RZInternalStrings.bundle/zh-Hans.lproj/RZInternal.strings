@@ -39,3 +39,24 @@
 /* Root VC */
 "ROOT_NAV_TITLE" = "书仓";
 
+/* Menu VC */
+"MENU_BUTTON_MESSAGE" = "消息";
+"MENU_BUTTON_NOTE" = "记录";
+"MENU_BUTTON_OFFLINE" = "离线";
+"MENU_BUTTON_SETTING" = "设置";
+"MENU_APP_NAME" = "阅读空间";
+
+/* Setting */
+"SETTING_NAV_SETTING" = "设置";
+"SETTING_CELL_USERNAME" = "用户名";
+"SETTING_CELL_ACCOUNT" = "帐户";
+"SETTING_CELL_ABOUT" = "关于";
+"SETTING_CELL_HELP" = "帮助";
+"SETTING_CELL_FEEDBACK" = "反馈";
+"SETTING_CELL_CLEARTEMP" = "清除缓存";
+"SETTING_CELL_PROTOCOL" = "用户协议";
+"SETTING_CELL_PRIVACY" = "隐私政策";
+"SETTING_CELL_LOGOUT" = "登出";
+"SETTING_CANCEL" = "取消";
+
+"ABOUT_NAV_TITLE" = "关于";

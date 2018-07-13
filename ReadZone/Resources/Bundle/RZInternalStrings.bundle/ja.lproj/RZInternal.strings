@@ -24,7 +24,7 @@
 
 /* Login VC */
 "LOGIN_LABEL_TITLE" = "ログイン";
-"LOGIN_PLACEHOLDER_ACCOUNT" = "電話 / メール / ユーザー名";
+"LOGIN_PLACEHOLDER_ACCOUNT" = "電話 / Eメール / ユーザー名";
 "LOGIN_PLACEHOLDER_PWD" = "パスワード";
 "LOGIN_BTN_LOGIN" = "ログイン";
 "LOGIN_BTN_REGISTER" = "まだ登録されていません？";
@@ -32,9 +32,32 @@
 
 /* Register VC */
 "REGISTER_NAV_TITLE" = "登録";
-"REGISTER_PLACEHOLDER_ACCOUNT" = "電話 / メール";
+"REGISTER_PLACEHOLDER_ACCOUNT" = "電話 / Eメール";
 "REGISTER_PLACEHOLDER_PWD" = "パスワード";
 "REGISTER_BTN_REGISTER" = "登録";
 
 /* Root VC */
 "ROOT_NAV_TITLE" = "図書館";
+
+/* Menu VC */
+"MENU_BUTTON_MESSAGE" = "メッセージ";
+"MENU_BUTTON_NOTE" = "レコード";
+"MENU_BUTTON_OFFLINE" = "オフライン";
+"MENU_BUTTON_SETTING" = "設定";
+"MENU_APP_NAME" = "読書スペース";
+
+/* Setting */
+"SETTING_NAV_SETTING" = "設定";
+"SETTING_CELL_LOGOUT" = "ログアウト";
+"SETTING_CELL_USERNAME" = "ユーザー名";
+"SETTING_CELL_ACCOUNT" = "アカウント";
+"SETTING_CELL_ABOUT" = "申込について";
+"SETTING_CELL_HELP" = "助けて";
+"SETTING_CELL_FEEDBACK" = "フィードバック";
+"SETTING_CELL_PROTOCOL" = "利用規約";
+"SETTING_CELL_PRIVACY" = "プライバシーポリシー";
+"SETTING_CELL_CLEARTEMP" = "キャッシュをクリアする";
+"SETTING_CANCEL" = "キャンセル";
+
+"ABOUT_NAV_TITLE" = "申込について";
+

@@ -19,6 +19,11 @@
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		5FBF57FF20F72D7300CC15A2 /* RZMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF57FE20F72D7300CC15A2 /* RZMenuViewController.m */; };
 		5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF580A20F72E0000CC15A2 /* RZMenuManager.m */; };
+		5FBF587220F84A4D00CC15A2 /* RZMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587120F84A4D00CC15A2 /* RZMenuButton.m */; };
+		5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587820F87C3A00CC15A2 /* RZUserViewController.m */; };
+		5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */; };
+		5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588220F8892900CC15A2 /* RZSettingCell.m */; };
+		5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -89,6 +94,16 @@
 		5FBF57FE20F72D7300CC15A2 /* RZMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMenuViewController.m; sourceTree = "<group>"; };
 		5FBF580920F72E0000CC15A2 /* RZMenuManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMenuManager.h; sourceTree = "<group>"; };
 		5FBF580A20F72E0000CC15A2 /* RZMenuManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMenuManager.m; sourceTree = "<group>"; };
+		5FBF587020F84A4D00CC15A2 /* RZMenuButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMenuButton.h; sourceTree = "<group>"; };
+		5FBF587120F84A4D00CC15A2 /* RZMenuButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMenuButton.m; sourceTree = "<group>"; };
+		5FBF587720F87C3A00CC15A2 /* RZUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserViewController.h; sourceTree = "<group>"; };
+		5FBF587820F87C3A00CC15A2 /* RZUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserViewController.m; sourceTree = "<group>"; };
+		5FBF587E20F8842700CC15A2 /* RZSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZSettingViewController.h; sourceTree = "<group>"; };
+		5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingViewController.m; sourceTree = "<group>"; };
+		5FBF588120F8892900CC15A2 /* RZSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZSettingCell.h; sourceTree = "<group>"; };
+		5FBF588220F8892900CC15A2 /* RZSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingCell.m; sourceTree = "<group>"; };
+		5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAboutViewController.h; sourceTree = "<group>"; };
+		5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAboutViewController.m; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +295,8 @@
 		5FBF57FB20F72CCD00CC15A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5FBF587020F84A4D00CC15A2 /* RZMenuButton.h */,
+				5FBF587120F84A4D00CC15A2 /* RZMenuButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +306,76 @@
 			children = (
 				5FBF580920F72E0000CC15A2 /* RZMenuManager.h */,
 				5FBF580A20F72E0000CC15A2 /* RZMenuManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5FBF587320F87BEB00CC15A2 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5FBF587620F87BF900CC15A2 /* Manage */,
+				5FBF587520F87BF500CC15A2 /* View */,
+				5FBF587420F87BF000CC15A2 /* Controller */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		5FBF587420F87BF000CC15A2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FBF587720F87C3A00CC15A2 /* RZUserViewController.h */,
+				5FBF587820F87C3A00CC15A2 /* RZUserViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FBF587520F87BF500CC15A2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FBF587620F87BF900CC15A2 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
+		5FBF587A20F8840C00CC15A2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5FBF587D20F8841A00CC15A2 /* Manager */,
+				5FBF587C20F8841700CC15A2 /* View */,
+				5FBF587B20F8841200CC15A2 /* Controller */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5FBF587B20F8841200CC15A2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FBF587E20F8842700CC15A2 /* RZSettingViewController.h */,
+				5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */,
+				5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */,
+				5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FBF587C20F8841700CC15A2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FBF588120F8892900CC15A2 /* RZSettingCell.h */,
+				5FBF588220F8892900CC15A2 /* RZSettingCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FBF587D20F8841A00CC15A2 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -324,12 +411,14 @@
 		B2BF657B20D75B11003059AE /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				5FBF587A20F8840C00CC15A2 /* Setting */,
+				5FBF587320F87BEB00CC15A2 /* User */,
 				5FBF57F920F72CC000CC15A2 /* Menu */,
 				5F7012CC20F6159100088216 /* Root */,
 				B2BF658120D75B76003059AE /* HotPot */,
 				B2BF658220D75DCF003059AE /* Books */,
 				B2BF658320D75DDF003059AE /* Library */,
-				B2BF658020D75B6C003059AE /* User */,
+				B2BF658020D75B6C003059AE /* Login */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -371,7 +460,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		B2BF658020D75B6C003059AE /* User */ = {
+		B2BF658020D75B6C003059AE /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				5FB6B92D20F4AA5900AEBCF0 /* Manager */,
@@ -379,7 +468,7 @@
 				5FB6B92F20F4AA6500AEBCF0 /* View */,
 				5FB6B92E20F4AA6100AEBCF0 /* Controller */,
 			);
-			path = User;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B2BF658120D75B76003059AE /* HotPot */ = {
@@ -892,19 +981,24 @@
 				B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
 				B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */,
+				5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */,
 				5F7012B220F58B1E00088216 /* RZAPI.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
+				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
 				5F7012D020F6160100088216 /* RZRootViewController.m in Sources */,
+				5FBF587220F84A4D00CC15A2 /* RZMenuButton.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
 				B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */,
 				B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */,
+				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
+				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
