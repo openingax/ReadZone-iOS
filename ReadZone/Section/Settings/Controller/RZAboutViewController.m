@@ -22,6 +22,7 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - DrawView
 - (void)drawNavBar {
     [super drawNavBar];
     self.title = RZLocalizedString(@"ABOUT_NAV_TITLE", @"关于页面导航栏标题【关于】");

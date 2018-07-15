@@ -105,7 +105,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                 case 4: cell.title = RZLocalizedString(@"SETTING_CELL_HELP", @"设置页_帮助【帮助】");
                     break;
                 case 5: cell.title = RZLocalizedString(@"SETTING_CELL_FEEDBACK", @"设置页_反馈【反馈】"); break;
-                case 6: cell.title = RZLocalizedString(@"SETTING_CELL_CLEARTEMP", @"设置页_清除缓存【清除缓存】"); break;
+                case 6: cell.title = RZLocalizedString(@"SETTING_CELL_CLEARCACHE", @"设置页_清除缓存【清除缓存】"); break;
             }
         }
     } else if (indexPath.section == 1) {
@@ -121,9 +121,9 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     if (indexPath.section == 0 && indexPath.row == 3) {
         self.selectedIndexPath = indexPath;
     } else {
-        self.selectedIndexPath = nil;
-        [tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0: break;

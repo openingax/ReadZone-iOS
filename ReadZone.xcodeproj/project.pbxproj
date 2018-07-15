@@ -36,6 +36,8 @@
 		B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187520F510C900331F4C /* NSAttributedString+RZ.m */; };
 		B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187A20F7A05E00331F4C /* RZHotPotView.m */; };
 		B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */; };
+		B2D2188320FAEF4C00331F4C /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2188120FAEF4B00331F4C /* Student.m */; };
+		B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2188C20FB1F5A00331F4C /* RZLoginManager.m */; };
 		B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1120C3EE7F005DF168 /* AppDelegate.m */; };
 		B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */; };
 		B2F14D2020C3EE81005DF168 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1F20C3EE81005DF168 /* main.m */; };
@@ -141,6 +143,10 @@
 		B2D2187A20F7A05E00331F4C /* RZHotPotView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotView.m; sourceTree = "<group>"; };
 		B2D2187E20F7A0A900331F4C /* RZHotPotModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotModel.h; sourceTree = "<group>"; };
 		B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotModel.m; sourceTree = "<group>"; };
+		B2D2188120FAEF4B00331F4C /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		B2D2188220FAEF4B00331F4C /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		B2D2188B20FB1F5A00331F4C /* RZLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZLoginManager.h; sourceTree = "<group>"; };
+		B2D2188C20FB1F5A00331F4C /* RZLoginManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZLoginManager.m; sourceTree = "<group>"; };
 		B2F14D0D20C3EE7F005DF168 /* ReadZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D1020C3EE7F005DF168 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2F14D1120C3EE7F005DF168 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -231,13 +237,6 @@
 				B2D2187720F7A02E00331F4C /* Controller */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		5FB6B92D20F4AA5900AEBCF0 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		5FB6B92E20F4AA6100AEBCF0 /* Controller */ = {
@@ -343,14 +342,14 @@
 			path = Manage;
 			sourceTree = "<group>";
 		};
-		5FBF587A20F8840C00CC15A2 /* Setting */ = {
+		5FBF587A20F8840C00CC15A2 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				5FBF587D20F8841A00CC15A2 /* Manager */,
 				5FBF587C20F8841700CC15A2 /* View */,
 				5FBF587B20F8841200CC15A2 /* Controller */,
 			);
-			path = Setting;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		5FBF587B20F8841200CC15A2 /* Controller */ = {
@@ -411,7 +410,7 @@
 		B2BF657B20D75B11003059AE /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				5FBF587A20F8840C00CC15A2 /* Setting */,
+				5FBF587A20F8840C00CC15A2 /* Settings */,
 				5FBF587320F87BEB00CC15A2 /* User */,
 				5FBF57F920F72CC000CC15A2 /* Menu */,
 				5F7012CC20F6159100088216 /* Root */,
@@ -463,7 +462,7 @@
 		B2BF658020D75B6C003059AE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				5FB6B92D20F4AA5900AEBCF0 /* Manager */,
+				B2D2188A20FB1F3700331F4C /* Manager */,
 				5FB6B93020F4AA6B00AEBCF0 /* Model */,
 				5FB6B92F20F4AA6500AEBCF0 /* View */,
 				5FB6B92E20F4AA6100AEBCF0 /* Controller */,
@@ -656,6 +655,8 @@
 		B2D2187C20F7A06B00331F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B2D2188220FAEF4B00331F4C /* Student.h */,
+				B2D2188120FAEF4B00331F4C /* Student.m */,
 				B2D2187E20F7A0A900331F4C /* RZHotPotModel.h */,
 				B2D2187F20F7A0A900331F4C /* RZHotPotModel.m */,
 			);
@@ -665,6 +666,15 @@
 		B2D2187D20F7A09200331F4C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B2D2188A20FB1F3700331F4C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B2D2188B20FB1F5A00331F4C /* RZLoginManager.h */,
+				B2D2188C20FB1F5A00331F4C /* RZLoginManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -997,8 +1007,10 @@
 				B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */,
 				B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */,
 				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
+				B2D2188320FAEF4C00331F4C /* Student.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
 				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
+				B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,7 +1185,7 @@
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = ReadZone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1199,7 +1211,7 @@
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = ReadZone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

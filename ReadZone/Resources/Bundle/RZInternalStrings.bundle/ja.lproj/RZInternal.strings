@@ -56,7 +56,7 @@
 "SETTING_CELL_FEEDBACK" = "フィードバック";
 "SETTING_CELL_PROTOCOL" = "利用規約";
 "SETTING_CELL_PRIVACY" = "プライバシーポリシー";
-"SETTING_CELL_CLEARTEMP" = "キャッシュをクリアする";
+"SETTING_CELL_CLEARTCACHE" = "キャッシュをクリアする";
 "SETTING_CANCEL" = "キャンセル";
 
 "ABOUT_NAV_TITLE" = "申込について";

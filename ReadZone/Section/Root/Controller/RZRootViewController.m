@@ -6,11 +6,15 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
+// Vendor
+#import <AVOSCloud/AVOSCloud.h>
+
 // Manager
 #import "RZMenuManager.h"
 
 // Model
 #import "RZHotPotModel.h"
+#import "Student.h"
 
 // View
 #import "RZNavBarItem.h"
@@ -60,28 +64,39 @@
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
     
+    [RZHotPotModel registerSubclass];
     RZHotPotModel *hotPot = [[RZHotPotModel alloc] init];
+    hotPot.user = [AVUser currentUser];
     hotPot.headlineStr = @"你就别担心那么多事情了，总之到哪都会牵着你。";
     hotPot.sourceStr = @"哈哈哈哈";
     
-    [hotPot save];
-//    [hotPot saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    //    AVObject *hotPot = [AVObject objectWithClassName:@"Product"];
+    //    [hotPot setObject:[AVUser currentUser] forKey:@"user"];
+    //    [hotPot setObject:@"你好" forKey:@"title"];
+//    [Student registerSubclass];
+//    Student *student = [[Student alloc] init];
+//    student.name = @"谢立颖";
+//    student.age = 23;
+//    student.gender = GenderMale;
+//    [student saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 //        if (succeeded && !error) {
 //            NSLog(@"创建成功！");
 //        } else {
 //            NSLog(@"创建失败！");
 //        }
 //    }];
+    
+    [hotPot saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded && !error) {
+            NSLog(@"创建成功！");
+        } else {
+            NSLog(@"创建失败！");
+        }
+    }];
 }
 
 - (void)moreAction {
     [self.menuManager showMenuVCWithController:self];
-//    AVObject *hotPot = [AVObject objectWithClassName:@"hotPotModel" objectId:@"5b477e8c128fe1005b08efbf"];
-//    [hotPot fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
-//        if (!error) {
-//
-//        }
-//    }];
 }
 
 #pragma mark - Setter & Getter

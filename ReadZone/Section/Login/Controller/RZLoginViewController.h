@@ -10,4 +10,6 @@
 
 @interface RZLoginViewController : RZBaseViewController
 
+@property(nonatomic,assign) BOOL isAnimatedShow;
+
 @end

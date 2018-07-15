@@ -14,16 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AVOSCloud (11.2.2)
-  - AVOSCloudIM (11.2.2):
-    - AVOSCloud (= 11.2.2)
-    - AVOSCloudIM/_ARC (= 11.2.2)
-    - AVOSCloudIM/_NOARC (= 11.2.2)
-  - AVOSCloudIM/_ARC (11.2.2):
-    - AVOSCloud (= 11.2.2)
-    - AVOSCloudIM/_NOARC (= 11.2.2)
-  - AVOSCloudIM/_NOARC (11.2.2):
-    - AVOSCloud (= 11.2.2)
+  - AVOSCloud (10.0.2)
+  - AVOSCloudIM (10.0.2):
+    - AVOSCloud (= 10.0.2)
+    - AVOSCloudIM/_ARC (= 10.0.2)
+    - AVOSCloudIM/_NOARC (= 10.0.2)
+  - AVOSCloudIM/_ARC (10.0.2):
+    - AVOSCloud (= 10.0.2)
+    - AVOSCloudIM/_NOARC (= 10.0.2)
+  - AVOSCloudIM/_NOARC (10.0.2):
+    - AVOSCloud (= 10.0.2)
   - Bugly (2.5.0)
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.0.4)
@@ -76,8 +76,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
-  - AVOSCloud (~> 11.2.2)
-  - AVOSCloudIM (~> 11.2.2)
+  - AVOSCloud (~> 10.0.2)
+  - AVOSCloudIM (~> 10.0.2)
   - Bugly (~> 2.5.0)
   - FDFullscreenPopGesture (~> 1.1)
   - IQKeyboardManager (~> 6.0.4)
@@ -111,8 +111,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AVOSCloud: 5dac17ca0e33dad232372564f3d3d175443c943f
-  AVOSCloudIM: f0a8918c87b368a710c1db01ff4546c31940d993
+  AVOSCloud: bfd439e58b0306e40fbcf8791d28ae906a51a73d
+  AVOSCloudIM: 1c4b09e32f17a58ccd1b7602c48ccae3baeaa8ed
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ffcf511cf2ae2ec5c96236b08ed71770c27f79f2
+PODFILE CHECKSUM: 8649524b9f3dd142e76d4de06f21259e90b0a0ef
 
 COCOAPODS: 1.5.3

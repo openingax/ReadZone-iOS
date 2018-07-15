@@ -10,6 +10,7 @@
 
 @interface RZHotPotModel : AVObject<AVSubclassing>
 
+@property(nonatomic,strong) AVUser *user;
 @property(nonatomic,strong) UIImage *hotPotImg;
 @property(nonatomic,copy) NSString *headlineStr;
 @property(nonatomic,copy) NSString *sourceStr;

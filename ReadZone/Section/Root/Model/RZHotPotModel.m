@@ -10,7 +10,8 @@
 
 @implementation RZHotPotModel
 
-//@dynamic hotPotImg, headlineStr, sourceStr;
+// 必须加上这条 @dynamic 动态生成 setter、getter 方法的语句，且在初始化对象时，要先注册对象（registerSubclass）
+@dynamic user, hotPotImg, headlineStr, sourceStr;
 
 + (NSString *)parseClassName {
     return @"hotPotModel";

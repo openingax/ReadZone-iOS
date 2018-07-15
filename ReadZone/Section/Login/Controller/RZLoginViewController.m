@@ -30,11 +30,12 @@ static CGFloat marginHorizon = 24;
 
 @interface RZLoginViewController () <UITextFieldDelegate>
 
-@property (nonatomic, strong) RZUserTextField *accountTF;
-@property (nonatomic, strong) RZUserTextField *passwordTF;
-@property (nonatomic, strong) RZUserButton *loginBtn;
+@property(nonatomic,strong) UIView *animatedView;               // 做动画的容器视图
+@property(nonatomic,strong) RZUserTextField *accountTF;
+@property(nonatomic,strong) RZUserTextField *passwordTF;
+@property(nonatomic,strong) RZUserButton *loginBtn;
 
-@property (nonatomic, strong) RZAPILogin *apiManager;
+@property(nonatomic,strong) RZAPILogin *apiManager;
 
 @end
 
@@ -42,62 +43,69 @@ static CGFloat marginHorizon = 24;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    // 注册键盘收起的通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    // 这里处理页面的弹出动画
+    if (self.isAnimatedShow) {
+        
+    } else {
+        
+    }
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)keyboardWillHide:(NSNotification *)noti {
-    //    self.accountLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-    //    self.passwordLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-}
-
+#pragma mark - DrawView
 - (void)drawView {
     self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
+    
+    self.animatedView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight)];
+    [self.view addSubview:self.animatedView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-    [self.view addGestureRecognizer:tap];
+    [self.animatedView addGestureRecognizer:tap];
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = RZLocalizedString(@"LOGIN_LABEL_TITLE", @"登录页的大标题【登录】");
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont systemFontOfSize:32 weight:UIFontWeightLight];
-    [self.view addSubview:titleLabel];
+    [self.animatedView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(marginHorizon);
-        make.top.equalTo(self.view).with.offset(40+kNavTotalHeight);
+        make.left.equalTo(self.animatedView).with.offset(marginHorizon);
+        make.top.equalTo(self.animatedView).with.offset(40+kNavTotalHeight);
     }];
     
     self.accountTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypeAccount];
     [self.accountTF addTarget:self action:@selector(accountValueChange:) forControlEvents:UIControlEventEditingChanged];
-    [self.view addSubview:self.accountTF];
+    [self.animatedView addSubview:self.accountTF];
     [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.left.equalTo(self.animatedView).with.offset(marginHorizon);
         make.top.equalTo(titleLabel.mas_bottom).with.offset(30);
-        make.right.equalTo(self.view).with.offset(-marginHorizon);
+        make.right.equalTo(self.animatedView).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
     
     self.passwordTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypePassword];
     [self.passwordTF addTarget:self action:@selector(passwordValueChange:) forControlEvents:UIControlEventEditingChanged];
-    [self.view addSubview:self.passwordTF];
+    [self.animatedView addSubview:self.passwordTF];
     [self.passwordTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.left.equalTo(self.animatedView).with.offset(marginHorizon);
         make.top.equalTo(self.accountTF.mas_bottom).with.offset(30);
-        make.right.equalTo(self.view).with.offset(-marginHorizon);
+        make.right.equalTo(self.animatedView).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
     
     self.loginBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"LOGIN_BTN_LOGIN", @"登录页登录按钮的标题【登录】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
         [self loginAction];
     }];
-    [self.view addSubview:self.loginBtn];
+    [self.animatedView addSubview:self.loginBtn];
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).with.offset(marginHorizon);
-        make.right.equalTo(self.view).with.offset(-marginHorizon);
+        make.left.equalTo(self.animatedView).with.offset(marginHorizon);
+        make.right.equalTo(self.animatedView).with.offset(-marginHorizon);
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
         make.height.mas_equalTo(45);
     }];
@@ -109,10 +117,10 @@ static CGFloat marginHorizon = 24;
     [registerBtn setAttributedTitle:attributedString forState:UIControlStateNormal];
     [registerBtn setTitleColor:[UIColor colorWithRed:220/255.f green:220/255.f blue:220/255.f alpha:1] forState:UIControlStateNormal];
     [registerBtn addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:registerBtn];
+    [self.animatedView addSubview:registerBtn];
     [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).with.offset(-30);
-        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.animatedView).with.offset(-30);
+        make.centerX.equalTo(self.animatedView);
     }];
 }
 
@@ -164,7 +172,7 @@ static CGFloat marginHorizon = 24;
     
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
-            [self.view makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
+            [self.animatedView makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
             
             RZRootViewController *rootVC = [[RZRootViewController alloc] init];
             RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
@@ -172,7 +180,7 @@ static CGFloat marginHorizon = 24;
                 [self presentViewController:navVC animated:YES completion:nil];
             });
         } else {
-            [self.view makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
+            [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
         }
     }];
 }

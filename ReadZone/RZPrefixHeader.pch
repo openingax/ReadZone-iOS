@@ -30,7 +30,8 @@
 #define kIsiPhoneX [UIScreen mainScreen].bounds.size.width == 375 && [UIScreen mainScreen].bounds.size.height == 812
 #define kIsiPhone5 [UIScreen mainScreen].bounds.size.width == 320 && [UIScreen mainScreen].bounds.size.height == 568
 
-
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #import <Masonry/Masonry.h>
 #import <Toast/Toast.h>
