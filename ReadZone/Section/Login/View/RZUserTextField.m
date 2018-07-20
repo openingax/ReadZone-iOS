@@ -17,7 +17,8 @@
 @implementation RZUserTextField
 
 - (instancetype)initWithType:(RZUserTextFieldType)type {
-    if (self == [super init]) {
+    self == [super init];
+    if (self) {
         self.delegate = self;
         self.backgroundColor = [UIColor clearColor];
         self.placeholder = RZLocalizedString(type == RZUserTextFieldTypeAccount ? @"LOGIN_PLACEHOLDER_ACCOUNT" : @"LOGIN_PLACEHOLDER_PWD", @"输入框的占位符");

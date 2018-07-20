@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
 		5F7012B220F58B1E00088216 /* RZAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B120F58B1E00088216 /* RZAPI.m */; };
 		5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B420F58DF300088216 /* RZAPIResponse.m */; };
 		5F7012B820F58E0400088216 /* RZAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B720F58E0400088216 /* RZAPIError.m */; };
@@ -72,6 +73,11 @@
 
 /* Begin PBXFileReference section */
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
+		5F403D4B2101EFDA00050FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5F403D4D2101EFE500050FEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5F403D4F2101F0A300050FEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5F403D502101F0A400050FEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5F7012B020F58B1E00088216 /* RZAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPI.h; sourceTree = "<group>"; };
 		5F7012B120F58B1E00088216 /* RZAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPI.m; sourceTree = "<group>"; };
 		5F7012B320F58DF300088216 /* RZAPIResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIResponse.h; sourceTree = "<group>"; };
@@ -746,6 +752,7 @@
 			children = (
 				B2D2186420F3B4F600331F4C /* Bundle */,
 				B2F14D4320C3F29F005DF168 /* Font */,
+				5F403D4C2101EFDA00050FEB /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -863,6 +870,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				"zh-Hant",
 			);
 			mainGroup = B2F14D0420C3EE7F005DF168;
 			productRefGroup = B2F14D0E20C3EE7F005DF168 /* Products */;
@@ -882,6 +891,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F14D4620C3FA98005DF168 /* Apple Chancery.ttf in Resources */,
+				5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */,
 				B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */,
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
@@ -1046,12 +1056,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5F403D4C2101EFDA00050FEB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F403D4B2101EFDA00050FEB /* zh-Hans */,
+				5F403D4D2101EFE500050FEB /* en */,
+				5F403D4E2101EFE700050FEB /* ja */,
+				5F403D502101F0A400050FEB /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B2F14D1C20C3EE81005DF168 /* Base */,
 				B2D2187320F3CA9900331F4C /* zh-Hans */,
 				5FB6B92C20F4A91D00AEBCF0 /* ja */,
+				5F403D4F2101F0A300050FEB /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1176,6 +1198,7 @@
 			baseConfigurationReference = B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1193,6 +1216,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1202,6 +1226,7 @@
 			baseConfigurationReference = 4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1219,6 +1244,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
