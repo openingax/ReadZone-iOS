@@ -14,6 +14,7 @@
 // Manager
 #import "RZAPILogin.h"
 #import "RZDTOLogin.h"
+#import "AppDelegate.h"
 
 // View
 #import "RZUserTextField.h"
@@ -61,10 +62,14 @@ static CGFloat marginHorizon = 24;
 }
 
 #pragma mark - DrawView
+- (void)drawNavBar {
+    [super drawNavBar];
+    self.navBar.hidenBackItem = YES;
+}
 - (void)drawView {
     self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
     
-    self.animatedView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight)];
+    self.animatedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     [self.view addSubview:self.animatedView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.animatedView addGestureRecognizer:tap];
@@ -124,11 +129,6 @@ static CGFloat marginHorizon = 24;
     }];
 }
 
-- (void)drawNavBar {
-    [super drawNavBar];
-    self.navBar.hidenBackItem = YES;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -174,10 +174,10 @@ static CGFloat marginHorizon = 24;
         if (user && !error) {
             [self.animatedView makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
             
-            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
-            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
+//            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
+//            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self presentViewController:navVC animated:YES completion:nil];
+                [self dismissViewControllerAnimated:YES completion:nil];
             });
         } else {
             [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];

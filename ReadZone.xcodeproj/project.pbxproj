@@ -835,7 +835,7 @@
 				TargetAttributes = {
 					B2F14D0C20C3EE7F005DF168 = {
 						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.NearFieldCommunicationTagReading = {
 								enabled = 0;
@@ -853,12 +853,12 @@
 					};
 					B2F14D2420C3EE81005DF168 = {
 						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = B2F14D0C20C3EE7F005DF168;
 					};
 					B2F14D2F20C3EE81005DF168 = {
 						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = B2F14D0C20C3EE7F005DF168;
 					};
 				};
@@ -1198,15 +1198,16 @@
 			baseConfigurationReference = B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1216,7 +1217,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
+				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1226,15 +1229,16 @@
 			baseConfigurationReference = 4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1244,7 +1248,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
+				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
+				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1253,12 +1259,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7GAPLUUTP;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
 				INFOPLIST_FILE = ReadZoneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadZone.app/ReadZone";
 			};
@@ -1268,12 +1276,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7GAPLUUTP;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
 				INFOPLIST_FILE = ReadZoneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadZone.app/ReadZone";
 			};
@@ -1282,12 +1291,14 @@
 		B2F14D4020C3EE81005DF168 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7GAPLUUTP;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
 				INFOPLIST_FILE = ReadZoneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "011a3853-286e-4d67-a98c-1d855cb6bacc";
+				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ReadZone;
@@ -1297,12 +1308,14 @@
 		B2F14D4120C3EE81005DF168 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7GAPLUUTP;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
 				INFOPLIST_FILE = ReadZoneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "011a3853-286e-4d67-a98c-1d855cb6bacc";
+				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ReadZone;

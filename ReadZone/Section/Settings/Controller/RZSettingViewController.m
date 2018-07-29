@@ -6,9 +6,16 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
-#import "RZSettingViewController.h"
+// Manager
+#import "AppDelegate.h"
+
+// View
 #import "RZSettingCell.h"
+
+// Controller
+#import "RZSettingViewController.h"
 #import "RZAboutViewController.h"
+#import "RZLoginViewController.h"
 
 static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
@@ -99,7 +106,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                     break;
                 case 2:
                     cell.title = RZLocalizedString(@"SETTING_CELL_ACCOUNT", @"设置页_帐户【帐户】");
-                    cell.detail = @"18814098638";
+                    cell.detail = [AVUser currentUser].username;
                     break;
                 case 3: cell.title = RZLocalizedString(@"SETTING_CELL_ABOUT", @"设置页_关于【关于】"); break;
                 case 4: cell.title = RZLocalizedString(@"SETTING_CELL_HELP", @"设置页_帮助【帮助】");
@@ -148,7 +155,9 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CANCEL", @"设置页【取消】") style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CELL_LOGOUT", @"设置页【登出】") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            
+            [AVUser logOut];
+            RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
+            [self presentViewController:loginVC animated:YES completion:nil];
         }];
         [alert addAction:logoutAction];
         [alert addAction:cancelAction];

@@ -15,6 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property(nonatomic,strong) UIWindow *window;
+@property(nonatomic,strong) UIViewController *keyVC;
 @property(nonatomic,strong) RZBaseNavigationController *navigationController;
 @property(nonatomic,strong) RZLoginViewController *loginViewController;
 @property(nonatomic,strong) RZRootViewController *rootViewController;

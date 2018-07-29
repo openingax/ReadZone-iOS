@@ -36,17 +36,17 @@
     }];
     
     // 初始化视图控制器
-    UIViewController *ctrlVC;
-    if ([AVUser currentUser]) {
-        ctrlVC = [[RZRootViewController alloc] init];
-    } else {
-        ctrlVC = [[RZLoginViewController alloc] init];
-    }
-    
-    RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:ctrlVC];
+    RZRootViewController *rootVC = [[RZRootViewController alloc] init];
+    RZBaseNavigationController *rootNav = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
+    
+    if (![AVUser currentUser]) {
+        RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
+        RZBaseNavigationController *loginNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self.window.rootViewController presentViewController:loginNav animated:NO completion:nil];
+    }
     
     return YES;
 }
