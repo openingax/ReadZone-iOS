@@ -15,7 +15,7 @@
 @implementation RZLoginTextField
 
 - (instancetype)initWithType:(RZLoginTextFieldType)type {
-    self == [super init];
+    self = [super init];
     if (self) {
         self.delegate = self;
         if (type == RZLoginTextFieldTypeAccount) {

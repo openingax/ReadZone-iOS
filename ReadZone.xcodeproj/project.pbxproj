@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
+		5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE67211036C500499F1E /* RZUserInfoModel.m */; };
+		5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */; };
+		5F50FE6E21104FC600499F1E /* RZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6D21104FC600499F1E /* RZUser.m */; };
+		5F50FE732110698800499F1E /* RZUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE722110698800499F1E /* RZUserAPI.m */; };
 		5F7012B220F58B1E00088216 /* RZAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B120F58B1E00088216 /* RZAPI.m */; };
 		5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B420F58DF300088216 /* RZAPIResponse.m */; };
 		5F7012B820F58E0400088216 /* RZAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B720F58E0400088216 /* RZAPIError.m */; };
@@ -78,6 +82,14 @@
 		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F403D4F2101F0A300050FEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5F403D502101F0A400050FEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5F50FE66211036C500499F1E /* RZUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserInfoModel.h; sourceTree = "<group>"; };
+		5F50FE67211036C500499F1E /* RZUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserInfoModel.m; sourceTree = "<group>"; };
+		5F50FE6921104A0E00499F1E /* RZBaseUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseUtils.h; sourceTree = "<group>"; };
+		5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseUtils.m; sourceTree = "<group>"; };
+		5F50FE6C21104FC600499F1E /* RZUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUser.h; sourceTree = "<group>"; };
+		5F50FE6D21104FC600499F1E /* RZUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUser.m; sourceTree = "<group>"; };
+		5F50FE712110698800499F1E /* RZUserAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserAPI.h; sourceTree = "<group>"; };
+		5F50FE722110698800499F1E /* RZUserAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserAPI.m; sourceTree = "<group>"; };
 		5F7012B020F58B1E00088216 /* RZAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPI.h; sourceTree = "<group>"; };
 		5F7012B120F58B1E00088216 /* RZAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPI.m; sourceTree = "<group>"; };
 		5F7012B320F58DF300088216 /* RZAPIResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIResponse.h; sourceTree = "<group>"; };
@@ -212,6 +224,15 @@
 				4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5F50FE652110369100499F1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F50FE66211036C500499F1E /* RZUserInfoModel.h */,
+				5F50FE67211036C500499F1E /* RZUserInfoModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5F7012AE20F58AD300088216 /* BaseData */ = {
@@ -438,9 +459,12 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5F50FE652110369100499F1E /* Model */,
 				B2BF657F20D75B57003059AE /* Controller */,
 				5F7012B920F5D5D400088216 /* RZGlobal.h */,
 				5F7012BA20F5D5D400088216 /* RZGlobal.m */,
+				5F50FE6C21104FC600499F1E /* RZUser.h */,
+				5F50FE6D21104FC600499F1E /* RZUser.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -450,6 +474,8 @@
 			children = (
 				5F7012AF20F58AFE00088216 /* Core */,
 				5F7012AE20F58AD300088216 /* BaseData */,
+				5F50FE712110698800499F1E /* RZUserAPI.h */,
+				5F50FE722110698800499F1E /* RZUserAPI.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -628,6 +654,8 @@
 			children = (
 				B2D2186120F3B18A00331F4C /* RZInternalUtility.h */,
 				B2D2186220F3B18A00331F4C /* RZInternalUtility.m */,
+				5F50FE6921104A0E00499F1E /* RZBaseUtils.h */,
+				5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -988,6 +1016,7 @@
 				5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */,
 				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
 				5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */,
+				5F50FE732110698800499F1E /* RZUserAPI.m in Sources */,
 				5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */,
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
@@ -1007,6 +1036,7 @@
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
+				5F50FE6E21104FC600499F1E /* RZUser.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
 				5F7012D020F6160100088216 /* RZRootViewController.m in Sources */,
 				5FBF587220F84A4D00CC15A2 /* RZMenuButton.m in Sources */,
@@ -1015,10 +1045,12 @@
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
 				B2F14D4E20C44BEB005DF168 /* RZBaseNavigationController.m in Sources */,
+				5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */,
 				B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */,
 				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
 				B2D2188320FAEF4C00331F4C /* Student.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
+				5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */,
 				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
 				B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */,
 			);

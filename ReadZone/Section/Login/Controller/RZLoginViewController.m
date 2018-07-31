@@ -127,6 +127,9 @@ static CGFloat marginHorizon = 24;
         make.bottom.equalTo(self.animatedView).with.offset(-30);
         make.centerX.equalTo(self.animatedView);
     }];
+    
+    self.accountTF.text = @"18814098638";
+    self.passwordTF.text = @"AZaz110";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,32 +156,47 @@ static CGFloat marginHorizon = 24;
 - (void)loginAction {
     [self.view endEditing:YES];
     
-    //    self.apiManager.account = self.accountTF.text;
-    //    self.apiManager.password = self.passwordTF.text;
-    //    [self.apiManager startWithCompletion:^(RZAPI *api) {
-    //        RZDTOLogin *loginModel = api.response.fetchData;
-    //        [self.view makeToast:loginModel.desc duration:1.5 position:CSToastPositionBottom];
-    //        if (loginModel.status == 0) {
-    //            // 弹出根视图时，把登陆视图缩小往下收（仿轻芒、腾讯新闻）
-    //            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
-    //            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
-    //            [self presentViewController:navVC animated:YES completion:^{
-    //
-    //            }];
-    //        }
-    //    }];
-    
-    
-    
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
-            [self.animatedView makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
+            // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
+            AVQuery *query = [AVQuery queryWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]];
+            [query whereKey:@"user" equalTo:[AVUser currentUser]];
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                if (!error) {
+                    if (objects.count == 0) {
+                        [AVUser logOut];
+                        [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
+                        return;
+                    }
+                    
+                    for (int i=0; i < objects.count; ++i) {
+                        id object = [objects objectAtIndex:i];
+                        if ([object[@"className"] isEqualToString:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]]) {
+                            [RZUser shared].userInfo = object;
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:[RZUser shared].userInfo];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                            break;
+                        } else if (i == objects.count-1) {
+                            [AVUser logOut];
+                            [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
+                        }
+                    }
+                } else {
+                    [AVUser logOut];
+                    [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
+                }
+            }];
             
-//            RZRootViewController *rootVC = [[RZRootViewController alloc] init];
-//            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:rootVC];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated:YES completion:nil];
-            });
+            
+            //            AVObject *userInfo = [AVObject objectWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])] objectId:@"5b601fc5808ca40070ecb412"];
+            //            [userInfo fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+            ////                [RZUser shared].userInfo = object;
+            //
+            //                [self.animatedView makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
+            //                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //                    [self dismissViewControllerAnimated:YES completion:nil];
+            //                });
+            //            }];
         } else {
             [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
         }

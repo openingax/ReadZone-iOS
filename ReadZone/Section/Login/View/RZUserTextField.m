@@ -17,7 +17,7 @@
 @implementation RZUserTextField
 
 - (instancetype)initWithType:(RZUserTextFieldType)type {
-    self == [super init];
+    self = [super init];
     if (self) {
         self.delegate = self;
         self.backgroundColor = [UIColor clearColor];

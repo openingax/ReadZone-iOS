@@ -29,18 +29,22 @@
 
 #define kIsiPhoneX [UIScreen mainScreen].bounds.size.width == 375 && [UIScreen mainScreen].bounds.size.height == 812
 #define kIsiPhone5 [UIScreen mainScreen].bounds.size.width == 320 && [UIScreen mainScreen].bounds.size.height == 568
+#define kScreenScale [UIScreen mainScreen].scale
 
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
+#import <YYModel/YYModel.h>
 #import <Masonry/Masonry.h>
 #import <Toast/Toast.h>
 #import <libextobjc/EXTScope.h>
 #import <AVOSCloud/AVOSCloud.h>
 
+#import "RZUser.h"
 #import "RZUtils.h"
 #import "RZDefine.h"
 #import "RZInternalUtility.h"
+#import "RZBaseUtils.h"
 
 // Category
 #import "NSString+RZ.h"
