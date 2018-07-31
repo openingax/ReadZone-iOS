@@ -49,7 +49,7 @@ static CGFloat containerWidth;
     if (!self.isEnterNextVC) {
         // 如果没进入下一级页面
         [self showAnimation];
-        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/057b75f6dac78e0f6d54.JPG"] placeholderImage:nil];
+        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo[@"userAvatar"]] placeholderImage:nil];
     } else {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
@@ -106,7 +106,7 @@ static CGFloat containerWidth;
     
     // 用户名
     UILabel *userNameLabel = [[UILabel alloc] init];
-    userNameLabel.text = @"浅川青木";
+    userNameLabel.text = [RZUser shared].userInfo[@"userName"];
     userNameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
     userNameLabel.textColor = [UIColor blackColor];
     userNameLabel.textAlignment = NSTextAlignmentCenter;

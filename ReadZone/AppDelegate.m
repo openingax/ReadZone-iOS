@@ -42,10 +42,13 @@
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
     
+//     当 AVUser 查询不到当前用户
     if (![AVUser currentUser]) {
         RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
         RZBaseNavigationController *loginNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
         [self.window.rootViewController presentViewController:loginNav animated:NO completion:nil];
+    } else {
+        [self fetchUserInfo];
     }
     
     return YES;
@@ -98,6 +101,32 @@
         _loginViewController = [[RZLoginViewController alloc] init];
     }
     return _loginViewController;
+}
+
+- (void)fetchUserInfo {
+    AVQuery *query = [AVQuery queryWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]];
+    [query whereKey:@"user" equalTo:[AVUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            if (objects.count == 0) {
+                [AVUser logOut];
+                return;
+            }
+            
+            for (int i=0; i < objects.count; ++i) {
+                AVObject *object = [objects objectAtIndex:i];
+                if ([object[@"className"] isEqualToString:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]]) {
+                    [RZUser shared].userInfo = object;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:[RZUser shared].userInfo];
+                    break;
+                } else if (i == objects.count-1) {
+                    [AVUser logOut];
+                }
+            }
+        } else {
+            [AVUser logOut];
+        }
+    }];
 }
 
 @end

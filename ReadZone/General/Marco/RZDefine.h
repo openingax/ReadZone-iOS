@@ -16,4 +16,7 @@
 /* 用户注册登陆页面的按钮背景颜色 */
 #define kColorUserBtnBg @"007AFF"
 
+/* 通知 */
+#define kLoginSuccessNotification @"kLoginSuccessNotification"
+
 #endif /* RZDefine_h */

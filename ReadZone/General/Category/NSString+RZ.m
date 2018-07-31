@@ -17,4 +17,11 @@
     return YES;
 }
 
++ (NSString *)parsePreClassName:(NSString *)string {
+    if ([string hasPrefix:@"RZ"]) {
+        return [string substringWithRange:NSMakeRange(2, string.length-2)];
+    }
+    return string;
+}
+
 @end

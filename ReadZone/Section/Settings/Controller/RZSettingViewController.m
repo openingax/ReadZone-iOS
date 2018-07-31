@@ -16,6 +16,7 @@
 #import "RZSettingViewController.h"
 #import "RZAboutViewController.h"
 #import "RZLoginViewController.h"
+#import "RZBaseNavigationController.h"
 
 static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
@@ -100,17 +101,17 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             // 头像
-            cell.avatarImgUrl = @"http://lc-2qF4yFo6.cn-n1.lcfile.com/057b75f6dac78e0f6d54.JPG";
+            cell.avatarImgUrl = [RZUser shared].userInfo[@"userAvatar"];
         } else {
             // 常规设置
             switch (indexPath.row) {
                 case 1:
                     cell.title = RZLocalizedString(@"SETTING_CELL_USERNAME", @"设置页的用户名【用户名】");
-                    cell.detail = @"X-LYing";
+                    cell.detail = [RZUser shared].userInfo[@"userName"];
                     break;
                 case 2:
                     cell.title = RZLocalizedString(@"SETTING_CELL_ACCOUNT", @"设置页_帐户【帐户】");
-                    cell.detail = [AVUser currentUser].username;
+                    cell.detail = [RZUser shared].userInfo[@"account"];
                     break;
                 case 3: cell.title = RZLocalizedString(@"SETTING_CELL_ABOUT", @"设置页_关于【关于】"); break;
                 case 4: cell.title = RZLocalizedString(@"SETTING_CELL_HELP", @"设置页_帮助【帮助】");
@@ -147,7 +148,9 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                 break;
             case 4: break;
             case 5: break;
-            case 6: break;
+            case 6: {
+                [AVFile clearAllPersistentCache];
+            } break;
                 
             default:
                 break;
@@ -160,10 +163,11 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CANCEL", @"设置页【取消】") style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CELL_LOGOUT", @"设置页【登出】") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [AVUser logOut];
+            [AVUser logOut];                        // 登出
+            [RZUser shared].userInfo = nil;         // 清空用户数据
             RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
-            RZBaseNavigationController *baseNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
-            [self presentViewController:baseNav animated:YES completion:nil];
+            RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
+            [self presentViewController:navVC animated:YES completion:nil];
         }];
         
         [alert addAction:logoutAction];
