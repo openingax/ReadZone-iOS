@@ -6,6 +6,11 @@
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
+// Vendor
+#import <TZImagePickerController/TZImagePickerController.h>
+#import <TZImagePickerController/TZImageManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
 // Manager
 #import "AppDelegate.h"
 
@@ -20,10 +25,11 @@
 
 static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
-@interface RZSettingViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RZSettingViewController () <UITableViewDelegate, UITableViewDataSource, TZImagePickerControllerDelegate>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSIndexPath *selectedIndexPath;
+@property(nonatomic,strong) UIImage *avatarImg;
 
 @end
 
@@ -33,10 +39,9 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     [super viewDidLoad];
     [self drawView];
     self.selectedIndexPath = nil;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    self.avatarImg = nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginEvent:) name:kLoginSuccessNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +53,15 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Event
+- (void)loginEvent:(NSNotification *)noti {
+    [self.tableView reloadData];
 }
 
 #pragma mark - DrawView
@@ -101,17 +115,21 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             // 头像
-            cell.avatarImgUrl = [RZUser shared].userInfo[@"userAvatar"];
+            if (!self.avatarImg) {
+                [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo.userAvatar]];
+            } else {
+                cell.avatarImgView.image = self.avatarImg;
+            }
         } else {
             // 常规设置
             switch (indexPath.row) {
                 case 1:
                     cell.title = RZLocalizedString(@"SETTING_CELL_USERNAME", @"设置页的用户名【用户名】");
-                    cell.detail = [RZUser shared].userInfo[@"userName"];
+                    cell.detail = [RZUser shared].userInfo.userName;
                     break;
                 case 2:
                     cell.title = RZLocalizedString(@"SETTING_CELL_ACCOUNT", @"设置页_帐户【帐户】");
-                    cell.detail = [RZUser shared].userInfo[@"account"];
+                    cell.detail = [RZUser shared].userInfo.account;
                     break;
                 case 3: cell.title = RZLocalizedString(@"SETTING_CELL_ABOUT", @"设置页_关于【关于】"); break;
                 case 4: cell.title = RZLocalizedString(@"SETTING_CELL_HELP", @"设置页_帮助【帮助】");
@@ -138,7 +156,10 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     
     if (indexPath.section == 0) {
         switch (indexPath.row) {
-            case 0: break;
+            case 0: {
+                // 进入相册选择页面
+                [self takePhoto];
+            } break;
             case 1: break;
             case 2: break;
             case 3:{
@@ -173,6 +194,64 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         [alert addAction:logoutAction];
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+#pragma mark - TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    self.avatarImg = [photos objectAtIndex:0];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Private
+- (void)takePhoto {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) && iOS7Later) {
+        // 无相机权限 做一个友好的提示
+//        if (iOS8Later) {
+//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+//            [alert show];
+//        } else {
+//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alert show];
+//        }
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
+        if (iOS7Later) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self takePhoto];
+                    });
+                }
+            }];
+        } else {
+            [self takePhoto];
+        }
+        // 拍照之前还需要检查相册权限
+    } else if ([TZImageManager authorizationStatus] == 2) { // 已被拒绝，没有相册权限，将无法保存拍的照片
+//        if (iOS8Later) {
+//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+//            [alert show];
+//        } else {
+//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alert show];
+//        }
+    } else if ([TZImageManager authorizationStatus] == 0) { // 未请求过相册权限
+        [[TZImageManager manager] requestAuthorizationWithCompletion:^{
+            [self takePhoto];
+        }];
+    } else {
+        TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+        imagePicker.isSelectOriginalPhoto = YES;
+        imagePicker.allowTakePicture = YES;
+        imagePicker.allowTakeVideo = NO;
+        imagePicker.iconThemeColor = [UIColor colorWithHex:kColorNavTitle];
+        imagePicker.allowCrop = YES;
+        [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            
+        }];
+        [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }
 

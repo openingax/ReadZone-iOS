@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, RZSettingCellType) {
 
 @interface RZSettingCell : UITableViewCell
 
+@property(nonatomic,strong) UIImageView *avatarImgView;
 @property(nonatomic,copy) NSString *avatarImgUrl;
 @property(nonatomic,copy) NSString *title;
 @property(nonatomic,copy) NSString *detail;

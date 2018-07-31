@@ -20,5 +20,6 @@ target 'ReadZone' do
   pod 'MJExtension', '~> 3.0.15.1'
   pod 'IQKeyboardManager', '~> 6.0.4'
   pod 'FDFullscreenPopGesture', '~> 1.1'
+  pod 'TZImagePickerController', '~> 2.2.2'
 
 end

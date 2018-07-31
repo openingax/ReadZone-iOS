@@ -10,6 +10,10 @@
 
 #import "AppDelegate.h"
 #import "RZAPI.h"
+#import "RZUserAPI.h"
+
+#import "RZUserInfoModel.h"
+#import "RZUserModel.h"
 
 @interface AppDelegate ()
 
@@ -42,11 +46,9 @@
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
     
-//     当 AVUser 查询不到当前用户
+    
     if (![AVUser currentUser]) {
-        RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
-        RZBaseNavigationController *loginNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
-        [self.window.rootViewController presentViewController:loginNav animated:NO completion:nil];
+        [self showLoginVC];
     } else {
         [self fetchUserInfo];
     }
@@ -103,28 +105,20 @@
     return _loginViewController;
 }
 
+- (void)showLoginVC {
+    RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
+    RZBaseNavigationController *loginNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
+    [self.window.rootViewController presentViewController:loginNav animated:NO completion:nil];
+}
+
 - (void)fetchUserInfo {
-    AVQuery *query = [AVQuery queryWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]];
-    [query whereKey:@"user" equalTo:[AVUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    RZUserAPI *userAPI = [[RZUserAPI alloc] init];
+    [userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
         if (!error) {
-            if (objects.count == 0) {
-                [AVUser logOut];
-                return;
-            }
-            
-            for (int i=0; i < objects.count; ++i) {
-                AVObject *object = [objects objectAtIndex:i];
-                if ([object[@"className"] isEqualToString:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]]) {
-                    [RZUser shared].userInfo = object;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:[RZUser shared].userInfo];
-                    break;
-                } else if (i == objects.count-1) {
-                    [AVUser logOut];
-                }
-            }
+            [RZUser shared].userInfo = userInfo;
         } else {
             [AVUser logOut];
+            [self showLoginVC];
         }
     }];
 }

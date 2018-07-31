@@ -37,6 +37,7 @@ static CGFloat containerWidth;
     containerWidth = kScreenWidth*0.62;
     [self drawView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginEvent:) name:kLoginSuccessNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +50,7 @@ static CGFloat containerWidth;
     if (!self.isEnterNextVC) {
         // 如果没进入下一级页面
         [self showAnimation];
-        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo[@"userAvatar"]] placeholderImage:nil];
+        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo.userAvatar] placeholderImage:nil];
     } else {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
@@ -64,6 +65,15 @@ static CGFloat containerWidth;
     }
 }
 
+#pragma mark - Event
+- (void)loginEvent:(NSNotification *)noti {
+    RZUserModel *userModel = noti.object;
+    self.userName = userModel.userName;
+    [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:userModel.userAvatar]];
+}
+
+
+#pragma mark - DrawView
 - (void)drawNavBar {
     [super drawNavBar];
     self.navBar.hidden = YES;
@@ -106,7 +116,7 @@ static CGFloat containerWidth;
     
     // 用户名
     UILabel *userNameLabel = [[UILabel alloc] init];
-    userNameLabel.text = [RZUser shared].userInfo[@"userName"];
+    userNameLabel.text = [RZUser shared].userInfo.userName;
     userNameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
     userNameLabel.textColor = [UIColor blackColor];
     userNameLabel.textAlignment = NSTextAlignmentCenter;

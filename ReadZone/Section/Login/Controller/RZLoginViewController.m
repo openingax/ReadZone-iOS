@@ -11,9 +11,11 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
+// Model
+#import "RZUserInfoModel.h"
+
 // Manager
-#import "RZAPILogin.h"
-#import "RZDTOLogin.h"
+#import "RZUserAPI.h"
 #import "AppDelegate.h"
 
 // View
@@ -36,7 +38,7 @@ static CGFloat marginHorizon = 24;
 @property(nonatomic,strong) RZUserTextField *passwordTF;
 @property(nonatomic,strong) RZUserButton *loginBtn;
 
-@property(nonatomic,strong) RZAPILogin *apiManager;
+@property(nonatomic,strong) RZUserAPI *userAPI;
 
 @end
 
@@ -127,9 +129,6 @@ static CGFloat marginHorizon = 24;
         make.bottom.equalTo(self.animatedView).with.offset(-30);
         make.centerX.equalTo(self.animatedView);
     }];
-    
-    self.accountTF.text = @"18814098638";
-    self.passwordTF.text = @"AZaz110";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,46 +158,18 @@ static CGFloat marginHorizon = 24;
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
             // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
-            AVQuery *query = [AVQuery queryWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]];
-            [query whereKey:@"user" equalTo:[AVUser currentUser]];
-            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
                 if (!error) {
-                    if (objects.count == 0) {
-                        [AVUser logOut];
-                        [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
-                        return;
-                    }
-                    
-                    for (int i=0; i < objects.count; ++i) {
-                        id object = [objects objectAtIndex:i];
-                        if ([object[@"className"] isEqualToString:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])]]) {
-                            [RZUser shared].userInfo = object;
-                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:[RZUser shared].userInfo];
-                            [self dismissViewControllerAnimated:YES completion:nil];
-                            break;
-                        } else if (i == objects.count-1) {
-                            [AVUser logOut];
-                            [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
-                        }
-                    }
+                    [RZUser shared].userInfo = userInfo;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
+                    [self dismissViewControllerAnimated:YES completion:nil];
                 } else {
-                    [AVUser logOut];
-                    [self.view makeToast:@"查询不到用户信息" duration:1 position:CSToastPositionBottom];
+                    [self.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
                 }
             }];
-            
-            
-            //            AVObject *userInfo = [AVObject objectWithClassName:[NSString parsePreClassName:NSStringFromClass([RZUserInfoModel class])] objectId:@"5b601fc5808ca40070ecb412"];
-            //            [userInfo fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
-            ////                [RZUser shared].userInfo = object;
-            //
-            //                [self.animatedView makeToast:@"登录成功" duration:1 position:CSToastPositionBottom];
-            //                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //                    [self dismissViewControllerAnimated:YES completion:nil];
-            //                });
-            //            }];
         } else {
-            [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:3.5 position:CSToastPositionBottom];
+            // 登录失败
+            [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:2.5 position:CSToastPositionBottom];
         }
     }];
 }
@@ -213,11 +184,12 @@ static CGFloat marginHorizon = 24;
 }
 
 #pragma mark - Setter & Getter
-- (RZAPILogin *)apiManager {
-    if (!_apiManager) {
-        _apiManager = [[RZAPILogin alloc] init];
+- (RZUserAPI *)userAPI {
+    if (!_userAPI) {
+        _userAPI = [[RZUserAPI alloc] init];
     }
-    return _apiManager;
+    return _userAPI;
 }
+
 
 @end

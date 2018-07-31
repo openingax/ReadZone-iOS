@@ -11,7 +11,7 @@
 
 @interface RZSettingCell ()
 
-@property(nonatomic,strong) UIImageView *avatarImgView;
+//@property(nonatomic,strong) UIImageView *avatarImgView;
 @property(nonatomic,strong) UILabel *titleLabel;
 @property(nonatomic,strong) UILabel *detailLabel;
 

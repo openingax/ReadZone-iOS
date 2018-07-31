@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RZUserModel.h"
 
 @interface RZUserAPI : NSObject
+
+- (void)fetchUserInfoWithBlock:(void(^)(RZUserModel *userInfo, NSError *error))block;
 
 @end

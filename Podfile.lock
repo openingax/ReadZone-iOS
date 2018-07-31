@@ -72,6 +72,7 @@ PODS:
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
   - Toast (4.0.0)
+  - TZImagePickerController (2.2.2)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.75)
   - SDWebImage (~> 4.4.1)
   - Toast (~> 4.0.0)
+  - TZImagePickerController (~> 2.2.2)
   - YYModel (~> 1.0.4)
 
 SPEC REPOS:
@@ -107,6 +109,7 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - Toast
+    - TZImagePickerController
     - YYModel
 
 SPEC CHECKSUMS:
@@ -124,8 +127,9 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  TZImagePickerController: 233a868727a813b4ca810a15035320b3bcb94ead
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 8649524b9f3dd142e76d4de06f21259e90b0a0ef
+PODFILE CHECKSUM: 67d744a641f94ca3d640b429d5bdb09e1b6126c8
 
 COCOAPODS: 1.5.3

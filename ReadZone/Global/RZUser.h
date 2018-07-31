@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RZUserInfoModel.h"
+#import "RZUserModel.h"
 
 @interface RZUser : NSObject
 
-@property(nonatomic,strong) AVObject *userInfo;
+@property(nonatomic,strong) RZUserModel *userInfo;
 
 + (instancetype)shared;
 
