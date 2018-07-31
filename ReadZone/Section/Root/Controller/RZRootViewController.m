@@ -8,6 +8,7 @@
 
 // Vendor
 #import <AVOSCloud/AVOSCloud.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 // Manager
 #import "RZMenuManager.h"
@@ -34,6 +35,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UIImageView *topImgView;
+    for (int i = 1; i < 100; i++) {
+        UIImageView *imgView = [[UIImageView alloc] init];
+        [imgView setContentMode:UIViewContentModeScaleAspectFill];
+        [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://s.stbzd.cn/xiezhen/20170626yuss%d.jpg", i]]];
+//        [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://nwzimg.wezhan.cn/contents/sitefiles2019/10097233/images/24137%d.jpg", i]]];
+        [self.scrollView addSubview:imgView];
+        if (i == 1) {
+            [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.scrollView);
+                make.centerX.equalTo(self.scrollView);
+                make.size.mas_equalTo(CGSizeMake(375, 562));
+            }];
+        } else if (i == 99) {
+            [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(topImgView.mas_bottom).with.offset(20);
+                make.centerX.equalTo(self.scrollView);
+                make.size.mas_equalTo(CGSizeMake(375, 562));
+                make.bottom.equalTo(self.scrollView).with.offset(10);
+            }];
+        } else {
+            [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(topImgView.mas_bottom).with.offset(10);
+                make.centerX.equalTo(self.scrollView);
+                make.size.mas_equalTo(CGSizeMake(375, 562));
+            }];
+        }
+        UILabel *indexLabel = [[UILabel alloc] init];
+        indexLabel.text = [NSString stringWithFormat:@"No: %d", i];
+        indexLabel.textColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.6];
+        indexLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
+        [imgView addSubview:indexLabel];
+        [indexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.equalTo(imgView).with.offset(8);
+        }];
+        
+        topImgView = imgView;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

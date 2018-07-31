@@ -45,6 +45,10 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - DrawView
 - (void)drawNavBar {
     [super drawNavBar];
@@ -153,12 +157,15 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     } else {
         // 退出登录
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CANCEL", @"设置页【取消】") style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CELL_LOGOUT", @"设置页【登出】") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [AVUser logOut];
             RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
-            [self presentViewController:loginVC animated:YES completion:nil];
+            RZBaseNavigationController *baseNav = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
+            [self presentViewController:baseNav animated:YES completion:nil];
         }];
+        
         [alert addAction:logoutAction];
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
