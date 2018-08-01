@@ -29,6 +29,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSIndexPath *selectedIndexPath;
+@property(nonatomic,assign) BOOL isUpdateAvatarImg;
 @property(nonatomic,strong) UIImage *avatarImg;
 
 @end
@@ -40,6 +41,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     [self drawView];
     self.selectedIndexPath = nil;
     self.avatarImg = nil;
+    self.isUpdateAvatarImg = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginEvent:) name:kLoginSuccessNotification object:nil];
 }
@@ -115,8 +117,8 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             // 头像
-            if (!self.avatarImg) {
-                [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo.userAvatar]];
+            if (self.isUpdateAvatarImg) {
+                [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo.userAvatar] placeholderImage:self.avatarImg];
             } else {
                 cell.avatarImgView.image = self.avatarImg;
             }
@@ -199,8 +201,31 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
 #pragma mark - TZImagePickerControllerDelegate
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    self.isUpdateAvatarImg = NO;
     self.avatarImg = [photos objectAtIndex:0];
     [self.tableView reloadData];
+    
+    @weakify(self);
+    NSData *imgData = UIImagePNGRepresentation(self.avatarImg);
+    AVFile *imgFile = [AVFile fileWithData:imgData name:[NSString stringWithFormat:@"%@_avatar", [AVUser currentUser].objectId]];
+    [imgFile uploadWithProgress:^(NSInteger number) {
+        NSLog(@"用户头像上传进度：%lu\n", (long)number);
+    } completionHandler:^(BOOL succeeded, NSError * _Nullable error) {
+        @strongify(self);
+        
+        /* 不管上传成功或失败，都发通知去刷新头像的数据
+         * 如果上传成功，则头像的 imgView 会用新的 url 加载新头像
+         * 如果上传失败，则头像的 imgView 用回旧的 url 加载旧头像
+         */
+        self.isUpdateAvatarImg = YES;
+        if (succeeded) {
+            NSLog(@"用户头像上传成功\n");
+            [RZUser shared].userInfo.userAvatar = imgFile.url;
+            // 头像上传成功后，更新服务端当前用户下的 UserInfo 对应的 userAvatar 数据
+            
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:[RZUser shared].userInfo];
+    }];
 }
 
 #pragma mark - Private
@@ -243,14 +268,17 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         }];
     } else {
         TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-        imagePicker.isSelectOriginalPhoto = YES;
+        imagePicker.isSelectOriginalPhoto = NO;
         imagePicker.allowTakePicture = YES;
         imagePicker.allowTakeVideo = NO;
+        imagePicker.needCircleCrop = NO;
+        imagePicker.circleCropRadius = kScreenWidth/2;
+//        imagePicker.cropRect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
         imagePicker.iconThemeColor = [UIColor colorWithHex:kColorNavTitle];
         imagePicker.allowCrop = YES;
-        [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-            
-        }];
+//        [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+//
+//        }];
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }
