@@ -34,10 +34,7 @@
     [AVOSCloud setApplicationId:@"2qF4yFo6bwYFQzwB3ox2mhNP-gzGzoHsz" clientKey:@"QYnp3ODfDQ0RSta9tWJd7ugi"];
     [AVOSCloud setAllLogsEnabled:YES];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];        // 跟踪统计应用的打开情况
-    
-    [RZAPI setFetchTokenAction:^NSString *{
-        return @"12345";
-    }];
+    [AVAnalytics setChannel:kAppDevelopMode ? @"开发环境" : @"蒲公英分发平台"];
     
     // 初始化视图控制器
     RZRootViewController *rootVC = [[RZRootViewController alloc] init];
@@ -46,12 +43,7 @@
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
     
-    
-    if (![AVUser currentUser]) {
-        [self showLoginVC];
-    } else {
-        [self fetchUserInfo];
-    }
+    [AVUser currentUser] ? [self showLoginVC] : [self fetchUserInfo];
     
     return YES;
 }
