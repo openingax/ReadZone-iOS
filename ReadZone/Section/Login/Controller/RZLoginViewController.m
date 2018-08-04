@@ -15,7 +15,7 @@
 #import "RZUserInfoModel.h"
 
 // Manager
-#import "RZUserAPI.h"
+#import "RZAPIUser.h"
 #import "AppDelegate.h"
 
 // View
@@ -38,7 +38,7 @@ static CGFloat marginHorizon = 24;
 @property(nonatomic,strong) RZUserTextField *passwordTF;
 @property(nonatomic,strong) RZUserButton *loginBtn;
 
-@property(nonatomic,strong) RZUserAPI *userAPI;
+@property(nonatomic,strong) RZAPIUser *userAPI;
 
 @end
 
@@ -184,9 +184,9 @@ static CGFloat marginHorizon = 24;
 }
 
 #pragma mark - Setter & Getter
-- (RZUserAPI *)userAPI {
+- (RZAPIUser *)userAPI {
     if (!_userAPI) {
-        _userAPI = [[RZUserAPI alloc] init];
+        _userAPI = [[RZAPIUser alloc] init];
     }
     return _userAPI;
 }

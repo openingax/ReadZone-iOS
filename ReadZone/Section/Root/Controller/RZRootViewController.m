@@ -16,6 +16,7 @@
 // Model
 #import "RZHotPotModel.h"
 #import "Student.h"
+#import "RZAPIHomePage.h"
 
 // View
 #import "RZNavBarItem.h"
@@ -27,6 +28,8 @@
 
 @property(nonatomic,strong) RZMenuManager *menuManager;
 @property(nonatomic,strong) UIScrollView *scrollView;
+
+@property(nonatomic,strong) RZAPIHomePage *homePageAPI;
 
 @end
 
@@ -64,6 +67,9 @@
 #pragma mark - Action
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
+    [self.homePageAPI fetchHomePageData:^(RZHomePageModel *data, NSError *error) {
+        
+    }];
 }
 
 - (void)moreAction {
@@ -76,6 +82,13 @@
         _menuManager = [[RZMenuManager alloc] init];
     }
     return _menuManager;
+}
+
+- (RZAPIHomePage *)homePageAPI {
+    if (!_homePageAPI) {
+        _homePageAPI = [[RZAPIHomePage alloc] init];
+    }
+    return _homePageAPI;
 }
 
 @end

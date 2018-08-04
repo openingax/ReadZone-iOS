@@ -34,7 +34,6 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-#import <YYModel/YYModel.h>
 #import <Masonry/Masonry.h>
 #import <Toast/Toast.h>
 #import <libextobjc/EXTScope.h>

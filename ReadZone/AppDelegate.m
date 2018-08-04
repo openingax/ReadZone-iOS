@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "RZAPI.h"
-#import "RZUserAPI.h"
+#import "RZAPIUser.h"
 
 #import "RZUserInfoModel.h"
 #import "RZUserModel.h"
@@ -112,7 +112,7 @@
 }
 
 - (void)fetchUserInfo {
-    RZUserAPI *userAPI = [[RZUserAPI alloc] init];
+    RZAPIUser *userAPI = [[RZAPIUser alloc] init];
     [userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
         if (!error) {
             [RZUser shared].userInfo = userInfo;

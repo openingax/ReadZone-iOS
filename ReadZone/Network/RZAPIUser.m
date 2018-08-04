@@ -1,15 +1,16 @@
 //
-//  RZUserAPI.m
+//  RZAPIUser.m
 //  ReadZone
 //
 //  Created by 谢立颖 on 2018/7/31.
 //  Copyright © 2018年 谢立颖. All rights reserved.
 //
 
-#import "RZUserAPI.h"
+#import "RZAPIUser.h"
 #import "RZUserInfoModel.h"
+#import <YYModel/YYModel.h>
 
-@implementation RZUserAPI
+@implementation RZAPIUser
 
 - (void)fetchUserInfoWithBlock:(void(^)(RZUserModel *userInfo, NSError *error))block {
 
@@ -42,6 +43,14 @@
         } else {
             block(nil, error);
         }
+    }];
+}
+
+- (void)fetchDailyWithBlock:(void (^)(id data, NSError *error))block {
+    AVQuery *query = [AVQuery queryWithClassName:@"DailyRecommend"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        NSLog(@"data: %@\n", objects);
+        block([objects objectAtIndex:0], error);
     }];
 }
 

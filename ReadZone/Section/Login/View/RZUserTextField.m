@@ -7,20 +7,26 @@
 //
 
 #import "RZUserTextField.h"
+#import "QCMethod.h"
 
-@interface RZUserTextField () <UITextFieldDelegate>
+@interface RZUserTextField () <UITextFieldDelegate, CAAnimationDelegate>
 
 @property(nonatomic,assign) RZUserTextFieldType type;
-
 @property(nonatomic,strong) UILabel *placeholderLabel;
-
 @property(nonatomic,strong) UIView *bottomLine;
+
+@property(nonatomic,strong) NSMutableDictionary *layers;
+@property(nonatomic,strong) NSMapTable *completionBlocks;
+@property(nonatomic,assign) BOOL updateLayerValueForCompletedAnimation;
 
 @end
 
 @implementation RZUserTextField
 
-- (instancetype)initWithType:(RZUserTextFieldType)type {
+#pragma mark - Life Cycle
+
+- (instancetype)initWithType:(RZUserTextFieldType)type
+{
     self = [super init];
     if (self) {
         
@@ -46,12 +52,16 @@
             make.left.bottom.right.equalTo(self);
             make.height.mas_equalTo(0.5);
         }];
+        
+        [self setupProperties];
+        [self setupLayers];
     }
     return self;
 }
 
 #pragma mark - Event
-- (void)textFieldDidChange:(UITextField *)textField {
+- (void)textFieldDidChange:(UITextField *)textField
+{
     if ([NSString checkIsEmptyOrNull:textField.text]) {
         [UIView animateWithDuration:0.6 animations:^{
             [self.placeholderLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -72,46 +82,52 @@
 }
 
 #pragma mark - UITextFieldDelegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.6 animations:^{
-        [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(1.5);
-        }];
-        self.bottomLine.backgroundColor = [UIColor blackColor];
-    }];
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self addUntitled1AnimationWithShow:YES];
+    //    [UIView animateWithDuration:0.6 animations:^{
+    //        [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+    //            make.height.mas_equalTo(1.5);
+    //        }];
+    //        self.bottomLine.backgroundColor = [UIColor blackColor];
+    //    }];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if ([NSString checkIsEmptyOrNull:textField.text]) {
-        [UIView animateWithDuration:0.8 animations:^{
-            [self.placeholderLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self);
-                make.centerY.equalTo(self);
-            }];
-            self.placeholderLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
-            
-            [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(0.5);
-            }];
-            self.bottomLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-        }];
-    } else {
-        [UIView animateWithDuration:0.8 animations:^{
-            [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(0.5);
-            }];
-            self.bottomLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
-        }];
-    }
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    //    if ([NSString checkIsEmptyOrNull:textField.text]) {
+    //        [UIView animateWithDuration:0.8 animations:^{
+    //            [self.placeholderLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    //                make.left.equalTo(self);
+    //                make.centerY.equalTo(self);
+    //            }];
+    //            self.placeholderLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
+    //
+    //            [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+    //                make.height.mas_equalTo(0.5);
+    //            }];
+    //            self.bottomLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    //        }];
+    //    } else {
+    //        [UIView animateWithDuration:0.8 animations:^{
+    //            [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+    //                make.height.mas_equalTo(0.5);
+    //            }];
+    //            self.bottomLine.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.15];
+    //        }];
+    //    }
+    [self addUntitled1AnimationWithShow:NO];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [self resignFirstResponder];
     return YES;
 }
 
 #pragma mark - Setter & Getter
-- (void)setPlaceholder:(NSString *)placeholder {
+- (void)setPlaceholder:(NSString *)placeholder
+{
     if ([NSString checkIsEmptyOrNull:placeholder]) {
         self.placeholderLabel.text = RZLocalizedString(self.type == RZUserTextFieldTypeAccount ? @"LOGIN_PLACEHOLDER_ACCOUNT" : @"LOGIN_PLACEHOLDER_PWD", @"输入框的占位符");
     } else {
@@ -119,13 +135,124 @@
     }
 }
 
-- (UILabel *)placeholderLabel {
+- (UILabel *)placeholderLabel
+{
     if (!_placeholderLabel) {
         _placeholderLabel = [[UILabel alloc] init];
         _placeholderLabel.textColor = [UIColor rz_colorwithRed:153 green:150 blue:153 alpha:1];
         _placeholderLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
     }
     return _placeholderLabel;
+}
+
+#pragma mark -
+- (void)setupProperties
+{
+    self.completionBlocks = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaqueMemory valueOptions:NSPointerFunctionsStrongMemory];
+    self.layers = [NSMutableDictionary dictionary];
+}
+
+- (void)setupLayers{
+    self.backgroundColor = [UIColor colorWithRed:1 green: 1 blue:1 alpha:1];
+    
+    CATextLayer * text = [CATextLayer layer];
+    text.frame = CGRectMake(0.5, 38.82, 97, 20.05);
+    [self.layer addSublayer:text];
+    self.layers[@"text"] = text;
+    
+    [self resetLayerPropertiesForLayerIdentifiers:nil];
+}
+
+- (void)resetLayerPropertiesForLayerIdentifiers:(NSArray *)layerIds{
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    
+    if(!layerIds || [layerIds containsObject:@"text"]){
+        CATextLayer * text = self.layers[@"text"];
+        text.contentsScale   = [[UIScreen mainScreen] scale];
+        text.string          = @"Hello World!";
+        text.font            = (__bridge CFTypeRef)@"Helvetica";
+        text.fontSize        = 16;
+        text.alignmentMode   = kCAAlignmentCenter;
+        text.foregroundColor = [UIColor blackColor].CGColor;
+    }
+    
+    [CATransaction commit];
+}
+
+#pragma mark - Animation Setup
+- (void)addUntitled1AnimationWithShow:(BOOL)isShow {
+    [self addUntitled1AnimationCompletionBlock:nil isShow:isShow];
+}
+
+- (void)addUntitled1AnimationCompletionBlock:(void (^)(BOOL finished))completionBlock isShow:(BOOL)isShow {
+    if (completionBlock){
+        CABasicAnimation * completionAnim = [CABasicAnimation animationWithKeyPath:@"completionAnim"];;
+        completionAnim.duration = 0.304;
+        completionAnim.delegate = self;
+        [completionAnim setValue:@"Untitled1" forKey:@"animId"];
+        [completionAnim setValue:@(NO) forKey:@"needEndAnim"];
+        [self.layer addAnimation:completionAnim forKey:@"Untitled1"];
+        [self.completionBlocks setObject:completionBlock forKey:[self.layer animationForKey:@"Untitled1"]];
+    }
+    
+    NSString * fillMode = kCAFillModeForwards;
+    
+    ////Text animation
+    CAKeyframeAnimation * textFontSizeAnim = [CAKeyframeAnimation animationWithKeyPath:@"fontSize"];
+    if (isShow) {
+        textFontSizeAnim.values            = @[@16, @12];
+    } else {
+        textFontSizeAnim.values            = @[@12, @16];
+    }
+    textFontSizeAnim.keyTimes              = @[@0, @1];
+    textFontSizeAnim.duration              = 0.3;
+    
+    CAKeyframeAnimation * textForegroundColorAnim = [CAKeyframeAnimation animationWithKeyPath:@"foregroundColor"];
+    if (isShow) {
+        textForegroundColorAnim.values         = @[(id)[UIColor colorWithRed:0 green: 0 blue:0 alpha:0.5].CGColor,
+                                                   (id)[UIColor colorWithRed:0 green: 0.316 blue:1 alpha:1].CGColor];
+    } else {
+        textForegroundColorAnim.values = @[(id)[UIColor colorWithRed:0 green: 0.316 blue:1 alpha:1].CGColor,
+        (id)[UIColor colorWithRed:0 green: 0 blue:0 alpha:0.5].CGColor];
+    }
+    textForegroundColorAnim.keyTimes       = @[@0, @1];
+    textForegroundColorAnim.duration       = 0.3;
+    
+    CAAnimationGroup * textUntitled1Anim = [QCMethod groupAnimations:@[textFontSizeAnim, textForegroundColorAnim] fillMode:fillMode];
+    [self.layers[@"text"] addAnimation:textUntitled1Anim forKey:@"textUntitled1Anim"];
+}
+
+#pragma mark - Animation Cleanup
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    void (^completionBlock)(BOOL) = [self.completionBlocks objectForKey:anim];;
+    if (completionBlock){
+        [self.completionBlocks removeObjectForKey:anim];
+        if ((flag && self.updateLayerValueForCompletedAnimation) || [[anim valueForKey:@"needEndAnim"] boolValue]){
+            [self updateLayerValuesForAnimationId:[anim valueForKey:@"animId"]];
+            [self removeAnimationsForAnimationId:[anim valueForKey:@"animId"]];
+        }
+        completionBlock(flag);
+    }
+}
+
+- (void)updateLayerValuesForAnimationId:(NSString *)identifier{
+    if([identifier isEqualToString:@"Untitled1"]){
+        [QCMethod updateValueFromPresentationLayerForAnimation:[self.layers[@"text"] animationForKey:@"textUntitled1Anim"] theLayer:self.layers[@"text"]];
+    }
+}
+
+- (void)removeAnimationsForAnimationId:(NSString *)identifier{
+    if([identifier isEqualToString:@"Untitled1"]){
+        [self.layers[@"text"] removeAnimationForKey:@"textUntitled1Anim"];
+    }
+}
+
+- (void)removeAllAnimations{
+    [self.layers enumerateKeysAndObjectsUsingBlock:^(id key, CALayer *layer, BOOL *stop) {
+        [layer removeAllAnimations];
+    }];
 }
 
 @end
