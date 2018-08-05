@@ -11,7 +11,7 @@
 @implementation RZAPIHomePage
 
 - (void)fetchHomePageData:(void (^)(RZHomePageModel *data, NSError *error))complete {
-    [RZAPIBase fetchDataWithClass:[RZHomePageModel class] isCurrentUser:YES complete:^(NSArray <RZHomePageModel *>*datas, NSError *error) {
+    [RZAPIBase fetchDataWithClass:[RZHomePageModel class] isCurrentUser:NO complete:^(NSArray <RZHomePageModel *>*datas, NSError *error) {
         if (!error && datas.count > 0) {
             RZHomePageModel *item = [datas objectAtIndex:0];
             complete(item, nil);

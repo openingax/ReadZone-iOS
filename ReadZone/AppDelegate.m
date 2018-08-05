@@ -43,7 +43,7 @@
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
     
-    [AVUser currentUser] ? [self showLoginVC] : [self fetchUserInfo];
+    [AVUser currentUser] ? [self fetchUserInfo] : [self showLoginVC];
     
     return YES;
 }

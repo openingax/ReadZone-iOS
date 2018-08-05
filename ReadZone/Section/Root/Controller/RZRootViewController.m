@@ -20,6 +20,7 @@
 
 // View
 #import "RZNavBarItem.h"
+#import "RZHotPotView.h"
 
 // Controller
 #import "RZRootViewController.h"
@@ -28,6 +29,7 @@
 
 @property(nonatomic,strong) RZMenuManager *menuManager;
 @property(nonatomic,strong) UIScrollView *scrollView;
+@property(nonatomic,strong) RZHotPotView *hotPotView;
 
 @property(nonatomic,strong) RZAPIHomePage *homePageAPI;
 
@@ -38,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
+    if ([AVUser currentUser])
+        [self fetchData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,16 +64,38 @@
 - (void)drawView {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kNavTotalHeight, kScreenWidth, kScreenHeight)];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kNavTotalHeight, kScreenWidth, kScreenHeight-kNavTotalHeight)];
     [self.view addSubview:self.scrollView];
+    
+    self.hotPotView = [[RZHotPotView alloc] init];
+    [self.scrollView addSubview:self.hotPotView];
+    [self.hotPotView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.scrollView);
+        make.width.mas_equalTo(kScreenWidth);
+        make.centerX.equalTo(self.scrollView);
+        make.height.mas_equalTo(9*kScreenWidth/16);
+    }];
+    
+}
+
+#pragma mark - Fetch
+- (void)fetchData {
+    @weakify(self);
+    [self.homePageAPI fetchHomePageData:^(RZHomePageModel *data, NSError *error) {
+        @strongify(self);
+        self.hotPotView.essay = data.essay;
+        self.hotPotView.author = data.author;
+        self.hotPotView.essayImage = data.essayImage;
+    }];
 }
 
 #pragma mark - Action
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
-    [self.homePageAPI fetchHomePageData:^(RZHomePageModel *data, NSError *error) {
-        
-    }];
+    [self fetchData];
+//    [self.homePageAPI fetchHomePageData:^(RZHomePageModel *data, NSError *error) {
+//
+//    }];
 }
 
 - (void)moreAction {

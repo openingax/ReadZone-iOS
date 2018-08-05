@@ -7,15 +7,76 @@
 //
 
 #import "RZHotPotView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+@interface RZHotPotView ()
+
+@property(nonatomic,strong) UIImageView *imgView;
+@property(nonatomic,strong) UILabel *essayLabel;
+@property(nonatomic,strong) UILabel *authorLabel;
+
+@end
 
 @implementation RZHotPotView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+        self.imgView = [[UIImageView alloc] init];
+        self.imgView.backgroundColor = [UIColor rz_colorwithRed:247 green:247 blue:247 alpha:1];
+        [self addSubview:self.imgView];
+        [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+        
+        UIView *blurView = [[UIView alloc] init];
+        blurView.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.4];
+        [self addSubview:blurView];
+        [blurView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(0.6*kScreenWidth, 0.5625*0.6*kScreenWidth));
+            make.center.equalTo(self);
+        }];
+        
+        self.essayLabel = [[UILabel alloc] init];
+        self.essayLabel.font = [UIFont fontWithName:kFontAdobeSong size:16];
+        self.essayLabel.textColor = [UIColor whiteColor];
+        self.essayLabel.numberOfLines = 0;
+        [blurView addSubview:self.essayLabel];
+        [self.essayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.equalTo(blurView).with.offset(12);
+            make.right.equalTo(blurView).with.offset(-12);
+        }];
+        
+        self.authorLabel = [[UILabel alloc] init];
+        self.authorLabel.font = [UIFont fontWithName:kFontAdobeSong size:14];
+        self.authorLabel.textColor = [UIColor whiteColor];
+        [blurView addSubview:self.authorLabel];
+        [self.authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.bottom.equalTo(blurView).with.offset(-14);
+        }];
+    }
+    
+    return self;
 }
-*/
+
+#pragma mark - Setter
+- (void)setEssay:(NSString *)essay {
+    if (![NSString checkIsEmptyOrNull:essay]) {
+        self.essayLabel.text = essay;
+    }
+}
+
+- (void)setAuthor:(NSString *)author {
+    if (![NSString checkIsEmptyOrNull:author]) {
+        self.authorLabel.text = [NSString stringWithFormat:@"—— 《%@》", author];
+    }
+}
+
+- (void)setEssayImage:(NSString *)essayImage {
+    if (![NSString checkIsEmptyOrNull:essayImage]) {
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:essayImage]];
+    }
+}
 
 @end
