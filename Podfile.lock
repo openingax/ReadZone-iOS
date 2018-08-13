@@ -25,6 +25,7 @@ PODS:
   - AVOSCloudIM/_NOARC (10.0.2):
     - AVOSCloud (= 10.0.2)
   - Bugly (2.5.0)
+  - FBRetainCycleDetector (0.1.4)
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (6.0.4)
   - libextobjc (0.4.1):
@@ -63,8 +64,17 @@ PODS:
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
   - Masonry (1.1.0)
+  - Material (2.16.4):
+    - Material/Core (= 2.16.4)
+  - Material/Core (2.16.4):
+    - Motion (~> 1.4.3)
   - MBProgressHUD (1.1.0)
   - MJExtension (3.0.15.1)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
+  - Motion (1.4.3):
+    - Motion/Core (= 1.4.3)
+  - Motion/Core (1.4.3)
   - pop (1.0.10)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
@@ -84,8 +94,10 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 6.0.4)
   - libextobjc (~> 0.4.1)
   - Masonry (~> 1.1.0)
+  - Material (~> 2.16.4)
   - MBProgressHUD (~> 1.1.0)
   - MJExtension (~> 3.0.15.1)
+  - MLeaksFinder (~> 1.0.0)
   - pop (~> 1.0.10)
   - SDCycleScrollView (~> 1.75)
   - SDWebImage (~> 4.4.1)
@@ -99,12 +111,16 @@ SPEC REPOS:
     - AVOSCloud
     - AVOSCloudIM
     - Bugly
+    - FBRetainCycleDetector
     - FDFullscreenPopGesture
     - IQKeyboardManager
     - libextobjc
     - Masonry
+    - Material
     - MBProgressHUD
     - MJExtension
+    - MLeaksFinder
+    - Motion
     - pop
     - SDCycleScrollView
     - SDWebImage
@@ -117,12 +133,16 @@ SPEC CHECKSUMS:
   AVOSCloud: bfd439e58b0306e40fbcf8791d28ae906a51a73d
   AVOSCloudIM: 1c4b09e32f17a58ccd1b7602c48ccae3baeaa8ed
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
+  Motion: 153ba49692997888556c7a95207278a8b1f8be95
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
@@ -130,6 +150,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 233a868727a813b4ca810a15035320b3bcb94ead
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 67d744a641f94ca3d640b429d5bdb09e1b6126c8
+PODFILE CHECKSUM: 524d3ebf0e93586a17717ff8f4d58e9b8e8d4901
 
 COCOAPODS: 1.5.3
