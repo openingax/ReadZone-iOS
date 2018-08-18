@@ -21,6 +21,8 @@
 		5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012BD20F5DC7C00088216 /* RZAPILogin.m */; };
 		5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012C120F5DE5400088216 /* RZDTOLogin.m */; };
 		5F7012D020F6160100088216 /* RZRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012CF20F6160100088216 /* RZRootViewController.m */; };
+		5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */; };
+		5F83FBC22122F50100FF9AD4 /* RZRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
@@ -115,6 +117,9 @@
 		5F7012C120F5DE5400088216 /* RZDTOLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDTOLogin.m; sourceTree = "<group>"; };
 		5F7012CE20F6160100088216 /* RZRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRootViewController.h; sourceTree = "<group>"; };
 		5F7012CF20F6160100088216 /* RZRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRootViewController.m; sourceTree = "<group>"; };
+		5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginViewController.swift; sourceTree = "<group>"; };
+		5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZRegisterViewController.swift; sourceTree = "<group>"; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
@@ -289,6 +294,14 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		5FB130ED2122E1AE00A9288F /* SwiftModule */ = {
+			isa = PBXGroup;
+			children = (
+				5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */,
+			);
+			path = SwiftModule;
+			sourceTree = "<group>";
+		};
 		5FB6B92E20F4AA6100AEBCF0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +309,8 @@
 				B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */,
 				B2509DB820F0ED10009B5F5F /* RZRegisterViewController.h */,
 				B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */,
+				5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */,
+				5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -494,6 +509,7 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5FB130ED2122E1AE00A9288F /* SwiftModule */,
 				5FBAEA1F211333880002C2B5 /* Animation */,
 				5F50FE652110369100499F1E /* Model */,
 				B2BF657F20D75B57003059AE /* Controller */,
@@ -998,10 +1014,15 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
@@ -1016,10 +1037,15 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
@@ -1082,6 +1108,7 @@
 				5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */,
 				5F7012B220F58B1E00088216 /* RZAPI.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
+				5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBAEA30211556E30002C2B5 /* RZHomePageModel.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
@@ -1100,6 +1127,7 @@
 				5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */,
 				B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */,
 				5FBAEA2D211556730002C2B5 /* RZAPIHomePage.m in Sources */,
+				5F83FBC22122F50100FF9AD4 /* RZRegisterViewController.swift in Sources */,
 				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
 				B2D2188320FAEF4C00331F4C /* Student.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
@@ -1288,6 +1316,7 @@
 				CLANG_STATIC_ANALYZER_MODE = shallow;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1307,9 +1336,9 @@
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
 				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "ReadZone/Section/Login/View/ReadZone-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/ReadZone/Global/SwiftModule/ReadZone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1324,6 +1353,7 @@
 				CLANG_STATIC_ANALYZER_MODE = shallow;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1343,8 +1373,8 @@
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
 				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "ReadZone/Section/Login/View/ReadZone-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/ReadZone/Global/SwiftModule/ReadZone-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -5,9 +5,12 @@ target 'ReadZone' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
   
+  # develop tools
+  pod 'MLeaksFinder', '~> 1.0.0'
+  pod 'Bugly', '~> 2.5.0'
+  
   pod 'pop', '~> 1.0.10'
   pod 'Toast', '~> 4.0.0'
-  pod 'Bugly', '~> 2.5.0'
   pod 'Masonry', '~> 1.1.0'
   pod 'YYModel', '~> 1.0.4'
   pod 'AVOSCloud', '~> 10.0.2'
@@ -21,5 +24,7 @@ target 'ReadZone' do
   pod 'IQKeyboardManager', '~> 6.0.4'
   pod 'FDFullscreenPopGesture', '~> 1.1'
   pod 'TZImagePickerController', '~> 2.2.2'
+  
+  pod 'Material', '~> 2.16.4'
 
 end

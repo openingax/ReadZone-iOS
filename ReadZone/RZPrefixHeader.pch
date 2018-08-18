@@ -50,4 +50,7 @@
 #import "UIImage+RZ.h"
 #import "UIColor+RZ.h"
 
+// Swift
+#import "ReadZone-Swift.h"
+
 #endif /* RZPrefixHeader_pch */
