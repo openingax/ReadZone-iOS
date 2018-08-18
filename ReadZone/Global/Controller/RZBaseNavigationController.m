@@ -19,6 +19,9 @@
     self = [super init];
     if (self) {
         self.navigationBarHidden = YES;
+        if (@available(iOS 11.0, *)) {
+            self.navigationBar.prefersLargeTitles = YES;
+        }
     }
     return self;
 }
