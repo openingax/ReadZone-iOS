@@ -108,4 +108,4 @@
 //- (RZAPIConfiguration *)apiConfiguration { return nil; }
 //- (Class)clsOfRespData { return nil; }
 
-@end
+//@end

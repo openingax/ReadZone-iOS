@@ -53,8 +53,8 @@
             make.height.mas_equalTo(0.5);
         }];
         
-        [self setupProperties];
-        [self setupLayers];
+//        [self setupProperties];
+//        [self setupLayers];
     }
     return self;
 }

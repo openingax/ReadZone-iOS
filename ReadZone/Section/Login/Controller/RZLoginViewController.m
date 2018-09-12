@@ -176,10 +176,10 @@ static CGFloat marginHorizon = 24;
 
 - (void)registerAction {
 //    RZLoginViewController_Swift *loginVC_Swift = [[RZLoginViewController_Swift alloc] init];
-    RZRegisterViewController_Swift *registerVC = [[RZRegisterViewController_Swift alloc] init];
-    [self.navigationController pushViewController:registerVC animated:YES];
-//    RZRegisterViewController *registerVC = [[RZRegisterViewController alloc] init];
+//    RZRegisterViewController_Swift *registerVC = [[RZRegisterViewController_Swift alloc] init];
 //    [self.navigationController pushViewController:registerVC animated:YES];
+    RZRegisterViewController *registerVC = [[RZRegisterViewController alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
 //    [loginVC_Swift swiftMethodTest];
 }
 
