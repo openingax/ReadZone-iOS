@@ -40,8 +40,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
-    if ([AVUser currentUser])
-        [self fetchData];
+    if ([AVUser currentUser]) [self fetchData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    UIScreenEdgePanGestureRecognizer *edgeGes = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgeGesture:)];
+    edgeGes.edges = UIRectEdgeRight;
+    [self.view addGestureRecognizer:edgeGes];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    NSArray *gestures = self.view.gestureRecognizers;
+//    for (UIGestureRecognizer *gesture in gestures) {
+//        if ([gesture isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+//            UIScreenEdgePanGestureRecognizer *edgeGes = gesture;
+//            edgeGes.edges = UIRectEdgeRight;
+//            [gesture addTarget:self action:@selector(edgeGesture:)];
+//        }
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +93,6 @@
         make.centerX.equalTo(self.scrollView);
         make.height.mas_equalTo(9*kScreenWidth/16);
     }];
-    
 }
 
 #pragma mark - Fetch
@@ -90,6 +107,10 @@
 }
 
 #pragma mark - Action
+- (void)edgeGesture:(UIGestureRecognizer *)gesture {
+    [self moreAction];
+}
+
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
     [self fetchData];
