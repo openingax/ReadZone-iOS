@@ -40,11 +40,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
-    if ([AVUser currentUser]) {
-        [self fetchData];
-    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLoginNoti) name:kLoginSuccessNotification object:nil];
+    if ([AVUser currentUser]) [self fetchData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    UIScreenEdgePanGestureRecognizer *edgeGes = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgeGesture:)];
+    edgeGes.edges = UIRectEdgeRight;
+    [self.view addGestureRecognizer:edgeGes];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +109,10 @@
 }
 
 #pragma mark - Action
+- (void)edgeGesture:(UIGestureRecognizer *)gesture {
+    [self moreAction];
+}
+
 - (void)searchAction {
     NSLog(@"ratio: %f", kScreenRatio());
     [self fetchData];
