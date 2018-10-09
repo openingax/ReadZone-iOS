@@ -40,12 +40,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
-    if ([AVUser currentUser])
+    if ([AVUser currentUser]) {
         [self fetchData];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLoginNoti) name:kLoginSuccessNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Draw
@@ -75,7 +82,11 @@
         make.centerX.equalTo(self.scrollView);
         make.height.mas_equalTo(9*kScreenWidth/16);
     }];
-    
+}
+
+#pragma mark - Notification
+- (void)appLoginNoti {
+    [self fetchData];
 }
 
 #pragma mark - Fetch
