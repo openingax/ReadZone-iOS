@@ -19,9 +19,11 @@
 
 // Controller
 #import "RZSettingViewController.h"
-#import "RZAboutViewController.h"
 #import "RZLoginViewController.h"
 #import "RZBaseNavigationController.h"
+
+#import "RZDevelopViewController.h"
+#import "RZAboutViewController.h"
 
 static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
@@ -92,7 +94,11 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 7 : section == 1 ? 2 : 1;
+    if (section == 0) {
+        return Develop ? 8 : 7;
+    } else {
+        return section == 1 ? 2 : 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -138,6 +144,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                     break;
                 case 5: cell.title = RZLocalizedString(@"SETTING_CELL_FEEDBACK", @"设置页_反馈【反馈】"); break;
                 case 6: cell.title = RZLocalizedString(@"SETTING_CELL_CLEARCACHE", @"设置页_清除缓存【清除缓存】"); break;
+                case 7: cell.title = RZLocalizedString(@"SETTING_CELL_DEVELOP", @"设置页_开发入口【开发】"); break;
             }
         }
     } else if (indexPath.section == 1) {
@@ -171,8 +178,10 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                 break;
             case 4: break;
             case 5: break;
-            case 6: {
-                [AVFile clearAllPersistentCache];
+            case 6: [AVFile clearAllPersistentCache]; break;
+            case 7: {
+                RZDevelopViewController *developVC = [[RZDevelopViewController alloc] init];
+                [self.navigationController pushViewController:developVC animated:YES];
             } break;
                 
             default:

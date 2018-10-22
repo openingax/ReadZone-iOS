@@ -17,7 +17,10 @@
 @implementation RZBaseViewController
 - (void)loadView {
     [super loadView];
+    
     self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
+    self.navigationController.navigationBar.hidden = YES;
+    
     [self drawNavBar];
     [self drawNavBarItems];
     self.fd_prefersNavigationBarHidden = YES;

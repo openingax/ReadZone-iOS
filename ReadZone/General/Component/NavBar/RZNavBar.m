@@ -21,7 +21,7 @@
         [_backItem addTarget:self action:@selector(toucheBackItem:) forControlEvents:UIControlEventTouchUpInside];
         
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:20];
+        _titleLabel.font = [UIFont systemFontOfSize:18];
         _titleLabel.textColor = [UIColor colorWithHex:kColorNavTitle];
         
         _backgroundImgView = [[UIImageView alloc] init];

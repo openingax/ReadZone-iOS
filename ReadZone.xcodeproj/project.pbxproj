@@ -38,6 +38,16 @@
 		5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */; };
 		5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588220F8892900CC15A2 /* RZSettingCell.m */; };
 		5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */; };
+		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
+		5FD82CC5217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
+		5FD82CC6217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
+		5FD82CC7217E26D000D1779A /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
+		5FD82CC8217E26D100D1779A /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
+		5FD82CC9217E26D400D1779A /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
+		5FD82CCA217E26D500D1779A /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
+		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
+		5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
+		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -150,6 +160,13 @@
 		5FBF588220F8892900CC15A2 /* RZSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingCell.m; sourceTree = "<group>"; };
 		5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAboutViewController.h; sourceTree = "<group>"; };
 		5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAboutViewController.m; sourceTree = "<group>"; };
+		5FD82CC2217E26BE00D1779A /* RZBaseWebKitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseWebKitController.h; sourceTree = "<group>"; };
+		5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseWebKitController.m; sourceTree = "<group>"; };
+		5FD82CCB217E27A200D1779A /* RZWebServerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZWebServerManager.h; sourceTree = "<group>"; };
+		5FD82CCC217E27A200D1779A /* RZWebServerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZWebServerManager.m; sourceTree = "<group>"; };
+		5FD82CCF217E2CD900D1779A /* RZConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConfig.h; sourceTree = "<group>"; };
+		5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDevelopViewController.h; sourceTree = "<group>"; };
+		5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDevelopViewController.m; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,6 +451,8 @@
 			children = (
 				5FBF587E20F8842700CC15A2 /* RZSettingViewController.h */,
 				5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */,
+				5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */,
+				5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */,
 				5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */,
 				5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */,
 			);
@@ -454,6 +473,33 @@
 			children = (
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		5FD82CBF217E267F00D1779A /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				5FD82CC0217E269100D1779A /* Manager */,
+				5FD82CC1217E269900D1779A /* Controller */,
+			);
+			path = WebKit;
+			sourceTree = "<group>";
+		};
+		5FD82CC0217E269100D1779A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5FD82CCB217E27A200D1779A /* RZWebServerManager.h */,
+				5FD82CCC217E27A200D1779A /* RZWebServerManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5FD82CC1217E269900D1779A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FD82CC2217E26BE00D1779A /* RZBaseWebKitController.h */,
+				5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
@@ -509,6 +555,7 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5FD82CBF217E267F00D1779A /* WebKit */,
 				5FB130ED2122E1AE00A9288F /* SwiftModule */,
 				5FBAEA1F211333880002C2B5 /* Animation */,
 				5F50FE652110369100499F1E /* Model */,
@@ -806,6 +853,7 @@
 				B2F14D4220C3F297005DF168 /* Resources */,
 				B2F14D1020C3EE7F005DF168 /* AppDelegate.h */,
 				B2F14D1120C3EE7F005DF168 /* AppDelegate.m */,
+				5FD82CCF217E2CD900D1779A /* RZConfig.h */,
 				B2D2184520F1F64300331F4C /* RZPrefixHeader.pch */,
 				B2FFF03320E4798C008CD245 /* RZFoundationLog.m */,
 				5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */,
@@ -917,7 +965,8 @@
 		B2F14D0520C3EE7F005DF168 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				CLASSPREFIX = RZ;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "谢立颖";
 				TargetAttributes = {
 					B2F14D0C20C3EE7F005DF168 = {
@@ -1013,18 +1062,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
-				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
-				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
+				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
@@ -1033,18 +1081,17 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
@@ -1109,10 +1156,12 @@
 				5FBAEA2721154C000002C2B5 /* RZAPIBase.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
 				5F50FE6E21104FC600499F1E /* RZUser.m in Sources */,
+				5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
 				5FBAEA22211333AD0002C2B5 /* QCMethod.m in Sources */,
 				5F7012D020F6160100088216 /* RZRootViewController.m in Sources */,
 				5FBF587220F84A4D00CC15A2 /* RZMenuButton.m in Sources */,
+				5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
@@ -1127,6 +1176,7 @@
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
 				5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */,
 				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
+				5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
 				B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1135,7 +1185,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */,
+				5FD82CC7217E26D000D1779A /* RZBaseNavigationController.m in Sources */,
+				5FD82CC5217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
 				B2F14D2A20C3EE81005DF168 /* ReadZoneTests.m in Sources */,
+				5FD82CC9217E26D400D1779A /* RZBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,7 +1197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD82CC8217E26D100D1779A /* RZBaseNavigationController.m in Sources */,
+				5FD82CC6217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
 				B2F14D3520C3EE81005DF168 /* ReadZoneUITests.m in Sources */,
+				5FD82CCA217E26D500D1779A /* RZBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1296,6 +1353,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

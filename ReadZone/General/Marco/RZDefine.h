@@ -11,9 +11,6 @@
 #ifndef RZDefine_h
 #define RZDefine_h
 
-/* App 运行环境，0 为正式环境，2 为开发环境 */
-#define kAppDevelopMode 1
-
 /* 字体名称 */
 #define kFontAdobeSong @"Adobe Song Std"
 
@@ -24,5 +21,9 @@
 
 /* 通知 */
 #define kLoginSuccessNotification @"kLoginSuccessNotification"
+
+/* NSUserDefaults */
+#define kWebDevelopKey @"kWebDevelopKey"
+#define kWebIPAddrKey @"kWebIPAddrKey"
 
 #endif /* RZDefine_h */

@@ -42,6 +42,7 @@
 #import "RZUser.h"
 #import "RZUtils.h"
 #import "RZDefine.h"
+#import "RZConfig.h"
 #import "RZInternalUtility.h"
 #import "RZBaseUtils.h"
 

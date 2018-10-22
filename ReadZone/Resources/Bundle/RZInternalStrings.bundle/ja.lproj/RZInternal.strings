@@ -54,9 +54,10 @@
 "SETTING_CELL_ABOUT" = "申込について";
 "SETTING_CELL_HELP" = "助けて";
 "SETTING_CELL_FEEDBACK" = "フィードバック";
+"SETTING_CELL_CLEARTCACHE" = "キャッシュをクリアする";
+"SETTING_CELL_DEVELOP" = "開発";
 "SETTING_CELL_PROTOCOL" = "利用規約";
 "SETTING_CELL_PRIVACY" = "プライバシーポリシー";
-"SETTING_CELL_CLEARTCACHE" = "キャッシュをクリアする";
 "SETTING_CANCEL" = "キャンセル";
 
 "ABOUT_NAV_TITLE" = "申込について";

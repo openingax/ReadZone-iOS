@@ -55,9 +55,10 @@
 "SETTING_CELL_ABOUT" = "About";
 "SETTING_CELL_HELP" = "Help";
 "SETTING_CELL_FEEDBACK" = "Feedback";
+"SETTING_CELL_CLEARCACHE" = "Clear cache";
+"SETTING_CELL_DEVELOP" = "Develop";
 "SETTING_CELL_PROTOCOL" = "User agreement";
 "SETTING_CELL_PRIVACY" = "Privacy policy";
-"SETTING_CELL_CLEARCACHE" = "Clear cache";
 "SETTING_CANCEL" = "Cancel";
 
 "ABOUT_NAV_TITLE" = "About";
