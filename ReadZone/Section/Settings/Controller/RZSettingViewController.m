@@ -196,7 +196,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
             webVC.title = RZLocalizedString(@"SETTING_CELL_PROTOCOL", @"用户协议页面的导航栏标题【用户协议】");
             webVC.URL = @"userprotocol";
         } else {
-            webVC.title = RZLocalizedString(@"SETTING_CELL_PROTOCOL", @"用户协议页面的导航栏标题【用户协议】");
+            webVC.title = RZLocalizedString(@"SETTING_CELL_PRIVACY", @"隐私政策页面的导航栏标题【隐私政策】");
             webVC.URL = @"privacy";
         }
         [self.navigationController pushViewController:webVC animated:YES];

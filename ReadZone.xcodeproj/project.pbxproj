@@ -48,6 +48,9 @@
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
+		5FD82CD9217F714100D1779A /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5FD82CD8217F714100D1779A /* asset */; };
+		5FD82CDA217F714100D1779A /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5FD82CD8217F714100D1779A /* asset */; };
+		5FD82CDB217F714100D1779A /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5FD82CD8217F714100D1779A /* asset */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -167,6 +170,7 @@
 		5FD82CCF217E2CD900D1779A /* RZConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConfig.h; sourceTree = "<group>"; };
 		5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDevelopViewController.h; sourceTree = "<group>"; };
 		5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDevelopViewController.m; sourceTree = "<group>"; };
+		5FD82CD8217F714100D1779A /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 		5FD82CBF217E267F00D1779A /* WebKit */ = {
 			isa = PBXGroup;
 			children = (
+				5FD82CD8217F714100D1779A /* asset */,
 				5FD82CC0217E269100D1779A /* Manager */,
 				5FD82CC1217E269900D1779A /* Controller */,
 			);
@@ -500,6 +505,13 @@
 				5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FD82CD3217F6F3400D1779A /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
@@ -555,6 +567,7 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5FD82CD3217F6F3400D1779A /* Alert */,
 				5FD82CBF217E267F00D1779A /* WebKit */,
 				5FB130ED2122E1AE00A9288F /* SwiftModule */,
 				5FBAEA1F211333880002C2B5 /* Animation */,
@@ -1033,6 +1046,7 @@
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
 				5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */,
+				5FD82CD9217F714100D1779A /* asset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,6 +1054,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD82CDA217F714100D1779A /* asset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1062,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD82CDB217F714100D1779A /* asset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
