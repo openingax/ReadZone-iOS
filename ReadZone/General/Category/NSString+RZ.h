@@ -11,8 +11,13 @@
 @interface NSString (RZ)
 
 // 检查字符串是否为空
-+ (BOOL)checkIsEmptyOrNull:(NSString *)string;
++ (BOOL)isEmptyString:(NSString *)string;
 
 + (NSString *)parsePreClassName:(NSString *)string;
+
+// 去掉字符串两边的空格
++ (NSString *)stringByCuttingEdgeWhitespace:(NSString *)string;
+// 去掉字符串两边的空格与换行符
++ (NSString *)stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:(NSString *)string;
 
 @end

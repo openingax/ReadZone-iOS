@@ -10,7 +10,7 @@
 
 @implementation NSString (RZ)
 
-+ (BOOL)checkIsEmptyOrNull:(NSString *)string {
++ (BOOL)isEmptyString:(NSString *)string {
     if (string && ![string isEqual:[NSNull null]] && ![string isEqual:@"(null)"] && ![string isEqualToString:@"<null>"] && [string length] > 0) {
         return NO;
     }
@@ -22,6 +22,14 @@
         return [string substringWithRange:NSMakeRange(2, string.length-2)];
     }
     return string;
+}
+
++ (NSString *)stringByCuttingEdgeWhitespace:(NSString *)string {
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
++ (NSString *)stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:(NSString *)string {
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 @end

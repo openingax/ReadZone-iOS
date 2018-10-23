@@ -26,7 +26,22 @@ UINavigationControllerDelegate
 
 @implementation RZBaseWebKitController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self drawView];
+    [self loadWebView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 #pragma mark - DrawView
+- (void)drawNavBar {
+    [super drawNavBar];
+}
+
 - (void)drawView {
     self.navigationItem.title = self.navTitle;
     
@@ -42,7 +57,8 @@ UINavigationControllerDelegate
     
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(kNavTotalHeight);
     }];
 }
 

@@ -62,7 +62,7 @@
 #pragma mark - Event
 - (void)textFieldDidChange:(UITextField *)textField
 {
-    if ([NSString checkIsEmptyOrNull:textField.text]) {
+    if ([NSString isEmptyString:textField.text]) {
         [UIView animateWithDuration:0.6 animations:^{
             [self.placeholderLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self);
@@ -128,7 +128,7 @@
 #pragma mark - Setter & Getter
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    if ([NSString checkIsEmptyOrNull:placeholder]) {
+    if ([NSString isEmptyString:placeholder]) {
         self.placeholderLabel.text = RZLocalizedString(self.type == RZUserTextFieldTypeAccount ? @"LOGIN_PLACEHOLDER_ACCOUNT" : @"LOGIN_PLACEHOLDER_PWD", @"输入框的占位符");
     } else {
         self.placeholderLabel.text = placeholder;

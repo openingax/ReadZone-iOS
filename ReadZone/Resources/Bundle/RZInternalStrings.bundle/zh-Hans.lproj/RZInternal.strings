@@ -61,6 +61,8 @@
 "SETTING_CANCEL" = "取消";
 
 "DEVELOP_NAV_TITLE" = "开发者中心";
+"DEVELOP_H5_DEVELOP_MODE" = "当前处于 H5 开发模式";
+"DEVELOP_H5_RELEASE_MODE" = "当前处于 H5 正式环境";
 "DEVELOP_IP_LABEL" = "H5 本地调试 IP";
 "DEVELOP_IPTF_PLACEHOLDER" = "请输入本地主机 IP";
 "ABOUT_NAV_TITLE" = "关于";

@@ -137,7 +137,7 @@ static CGFloat marginHorizon = 24;
 
 #pragma mark - Action
 - (void)accountValueChange:(RZUserTextField *)textField {
-    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.passwordTF.text]) {
+    if (![NSString isEmptyString:textField.text] && ![NSString isEmptyString:self.passwordTF.text]) {
         self.loginBtn.enable = YES;
     } else {
         self.loginBtn.enable = NO;
@@ -145,7 +145,7 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)passwordValueChange:(RZUserTextField *)textField {
-    if (![NSString checkIsEmptyOrNull:textField.text] && ![NSString checkIsEmptyOrNull:self.accountTF.text]) {
+    if (![NSString isEmptyString:textField.text] && ![NSString isEmptyString:self.accountTF.text]) {
         self.loginBtn.enable = YES;
     } else {
         self.loginBtn.enable = NO;

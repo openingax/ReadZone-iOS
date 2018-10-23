@@ -21,7 +21,7 @@
 #import "RZSettingViewController.h"
 #import "RZLoginViewController.h"
 #import "RZBaseNavigationController.h"
-
+#import "RZBaseWebKitController.h"
 #import "RZDevelopViewController.h"
 #import "RZAboutViewController.h"
 
@@ -189,6 +189,17 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         }
     } else if (indexPath.section == 1) {
         // 用户协议类
+        
+        RZBaseWebKitController *webVC = [[RZBaseWebKitController alloc] init];
+        
+        if (indexPath.row == 0) {
+            webVC.title = RZLocalizedString(@"SETTING_CELL_PROTOCOL", @"用户协议页面的导航栏标题【用户协议】");
+            webVC.URL = @"userprotocol";
+        } else {
+            webVC.title = RZLocalizedString(@"SETTING_CELL_PROTOCOL", @"用户协议页面的导航栏标题【用户协议】");
+            webVC.URL = @"privacy";
+        }
+        [self.navigationController pushViewController:webVC animated:YES];
     } else {
         // 退出登录
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];

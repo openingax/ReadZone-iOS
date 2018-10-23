@@ -62,19 +62,19 @@
 
 #pragma mark - Setter
 - (void)setEssay:(NSString *)essay {
-    if (![NSString checkIsEmptyOrNull:essay]) {
+    if (![NSString isEmptyString:essay]) {
         self.essayLabel.text = essay;
     }
 }
 
 - (void)setAuthor:(NSString *)author {
-    if (![NSString checkIsEmptyOrNull:author]) {
+    if (![NSString isEmptyString:author]) {
         self.authorLabel.text = [NSString stringWithFormat:@"—— 《%@》", author];
     }
 }
 
 - (void)setEssayImage:(NSString *)essayImage {
-    if (![NSString checkIsEmptyOrNull:essayImage]) {
+    if (![NSString isEmptyString:essayImage]) {
         [self.imgView sd_setImageWithURL:[NSURL URLWithString:essayImage]];
     }
 }
