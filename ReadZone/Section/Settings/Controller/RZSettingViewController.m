@@ -136,7 +136,7 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                     cell.detail = [RZUser shared].userInfo.userName;
                     break;
                 case 2:
-                    cell.title = RZLocalizedString(@"SETTING_CELL_ACCOUNT", @"设置页_帐户【帐户】");
+                    cell.title = RZLocalizedString(@"SETTING_CELL_ACCOUNT", @"设置页_账户【账户】");
                     cell.detail = [RZUser shared].userInfo.account;
                     break;
                 case 3: cell.title = RZLocalizedString(@"SETTING_CELL_ABOUT", @"设置页_关于【关于】"); break;

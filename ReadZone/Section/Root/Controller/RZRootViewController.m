@@ -104,7 +104,7 @@
         @strongify(self);
         self.hotPotView.essay = data.essay;
         self.hotPotView.author = data.author;
-        self.hotPotView.essayImage = data.essayImage;
+//        self.hotPotView.essayImage = data.essayImage;
     }];
 }
 

@@ -50,6 +50,7 @@
 #import "NSString+RZ.h"
 #import "UIImage+RZ.h"
 #import "UIColor+RZ.h"
+#import "NSDictionary+RZ.h"
 
 // Swift
 #import "ReadZone-Swift.h"

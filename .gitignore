@@ -21,6 +21,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+IMFrameworks/
 
 # cocoapods: 必须加入版本控制：Podfile、Podfile.lock   xcworkspace和pods可选，加入的话每次更新都需要更新很多文件，不加入的话可以让用户根据Podfile来更新
 *.xcworkspace

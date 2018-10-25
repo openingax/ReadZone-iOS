@@ -49,7 +49,7 @@
 /* Setting */
 "SETTING_NAV_SETTING" = "设置";
 "SETTING_CELL_USERNAME" = "用户名";
-"SETTING_CELL_ACCOUNT" = "帐户";
+"SETTING_CELL_ACCOUNT" = "账户";
 "SETTING_CELL_ABOUT" = "关于";
 "SETTING_CELL_HELP" = "帮助";
 "SETTING_CELL_FEEDBACK" = "反馈";
@@ -66,3 +66,5 @@
 "DEVELOP_IP_LABEL" = "H5 本地调试 IP";
 "DEVELOP_IPTF_PLACEHOLDER" = "请输入本地主机 IP";
 "ABOUT_NAV_TITLE" = "关于";
+
+"MESSAGE_NAV_TITLE" = "消息";

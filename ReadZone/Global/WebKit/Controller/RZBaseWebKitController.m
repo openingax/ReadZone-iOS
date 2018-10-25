@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import <WebViewJavascriptBridge/WKWebViewJavascriptBridge.h>
 #import "RZWebServerManager.h"
+#import "RZWebKitManager.h"
 
 @interface RZBaseWebKitController ()
 <
@@ -99,7 +100,7 @@ UINavigationControllerDelegate
         NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentPath = [documentPaths objectAtIndex:0];
         
-        NSString *docPackagePath = [documentPath stringByAppendingString:@"asset/package.json"];
+        NSString *docPackagePath = [documentPath stringByAppendingString:@"/asset/package.json"];
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"asset" ofType:@""];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -108,11 +109,15 @@ UINavigationControllerDelegate
         
         if ([fileManager fileExistsAtPath:docPackagePath]) {
             
-            // 清缓存
-            NSArray *types = @[WKWebsiteDataTypeMemoryCache, WKWebsiteDataTypeDiskCache];
-            NSSet *websiteDataTypes = [NSSet setWithArray:types];
-            NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:nil];
+            NSDictionary *packageJSONContent = [RZWebKitManager dictionaryWithJSONFile:docPackagePath];
+            NSString *docVersion = [packageJSONContent notNullObjectForKey:@"version"];
+            
+            NSString *bundlePackagePath = [bundlePath stringByAppendingPathComponent:@"package.json"];
+            NSDictionary *bundlePackageContent = [RZWebKitManager dictionaryWithJSONFile:bundlePackagePath];
+            NSString *bundleVersion = [bundlePackageContent notNullObjectForKey:@"version"];
+            
+            needCopy = bundleVersion.doubleValue > docVersion.doubleValue ? YES : NO;
+            
         } else {
             needCopy = YES;
         }
@@ -125,15 +130,25 @@ UINavigationControllerDelegate
             NSError *error = nil;
             [[NSFileManager defaultManager] copyItemAtPath:bundlePath toPath:topath error:&error];
             NSLog(@"复制到documentPath:%@",error);
-        } else {
             
+            NSArray *types = @[WKWebsiteDataTypeMemoryCache, WKWebsiteDataTypeDiskCache];
+            NSSet *websiteDataTypes = [NSSet setWithArray:types];
+            NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+                NSUInteger port = [[RZWebServerManager shareInstance] port];
+                NSString *path = [NSString stringWithFormat:@"http://localhost:%lu/Documents/asset/%@.html", (unsigned long)port, self.URL];
+                NSURL *url = [NSURL URLWithString:path];
+                NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+                [self.webView loadRequest:request];
+            }];
+            
+        } else {
+            NSUInteger port = [[RZWebServerManager shareInstance] port];
+            NSString *path = [NSString stringWithFormat:@"http://localhost:%lu/Documents/asset/%@.html", (unsigned long)port, self.URL];
+            NSURL *url = [NSURL URLWithString:path];
+            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+            [self.webView loadRequest:request];
         }
-        
-        NSUInteger port = [[RZWebServerManager shareInstance] port];
-        NSString *path = [NSString stringWithFormat:@"http://localhost:%lu/Documents/asset/%@", (unsigned long)port, self.URL];
-        NSURL *url = [NSURL URLWithString:path];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-        [self.webView loadRequest:request];
     }
     
     // 后续如果做在线更新，那要加入第三方库 GCDWebServer（参照云米商城的做法）
