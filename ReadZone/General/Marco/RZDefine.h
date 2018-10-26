@@ -27,11 +27,15 @@
 #define kWebIPAddrKey @"kWebIPAddrKey"
 
 /* TIM IM 服务 */
-#define kTimIMTLSAppId @"1400001533"
-#define kTimIMSdkAppId @"1400001533"
-#define kTimIMSdkAccountType @"792"
-#define kTimIMQQAccountType 1
-#define kTimIMWXAccountType 2
+//#define kTimIMTLSAppId @"1400001533"
+//#define kTimIMSdkAppId @"1400001533"
+//#define kTimIMSdkAccountType @"792"
+
+#define kTimIMTLSAppId          @"1400153322"
+#define kTimIMSdkAppId          @"1400153322"
+#define kTimIMSdkAccountType    @"36862"
+#define kTimIMQQAccountType     1
+#define kTimIMWXAccountType     2
 
 
 #endif /* RZDefine_h */

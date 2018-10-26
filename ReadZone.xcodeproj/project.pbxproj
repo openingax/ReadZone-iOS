@@ -27,6 +27,10 @@
 		5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D6218022CB00389CD7 /* libc++.tbd */; };
 		5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D8218022D600389CD7 /* libz.tbd */; };
 		5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244DA218022E200389CD7 /* libsqlite3.tbd */; };
+		5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F52452A2182ECFC00389CD7 /* RZUserManager.m */; };
+		5F524531218309BA00389CD7 /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F524530218309BA00389CD7 /* IMFriendshipExt.framework */; };
+		5F52453421830C0000389CD7 /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F52453221830BFF00389CD7 /* IMGroupExt.framework */; };
+		5F52453521830C0000389CD7 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F52453321830BFF00389CD7 /* IMMessageExt.framework */; };
 		5F7012B220F58B1E00088216 /* RZAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B120F58B1E00088216 /* RZAPI.m */; };
 		5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B420F58DF300088216 /* RZAPIResponse.m */; };
 		5F7012B820F58E0400088216 /* RZAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B720F58E0400088216 /* RZAPIError.m */; };
@@ -142,6 +146,11 @@
 		5F5244D6218022CB00389CD7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5F5244D8218022D600389CD7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5F5244DA218022E200389CD7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5F5245292182ECFC00389CD7 /* RZUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserManager.h; sourceTree = "<group>"; };
+		5F52452A2182ECFC00389CD7 /* RZUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserManager.m; sourceTree = "<group>"; };
+		5F524530218309BA00389CD7 /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
+		5F52453221830BFF00389CD7 /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
+		5F52453321830BFF00389CD7 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		5F7012B020F58B1E00088216 /* RZAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPI.h; sourceTree = "<group>"; };
 		5F7012B120F58B1E00088216 /* RZAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPI.m; sourceTree = "<group>"; };
 		5F7012B320F58DF300088216 /* RZAPIResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIResponse.h; sourceTree = "<group>"; };
@@ -270,8 +279,11 @@
 			files = (
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
+				5F524531218309BA00389CD7 /* IMFriendshipExt.framework in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
+				5F52453421830C0000389CD7 /* IMGroupExt.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
+				5F52453521830C0000389CD7 /* IMMessageExt.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
 				5F5244D021801EEE00389CD7 /* QALSDK.framework in Frameworks */,
 				5F5244CF21801EEE00389CD7 /* TLSSDK.framework in Frameworks */,
@@ -361,12 +373,24 @@
 		5F5244CA21801E8B00389CD7 /* IMFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F52453221830BFF00389CD7 /* IMGroupExt.framework */,
+				5F52453321830BFF00389CD7 /* IMMessageExt.framework */,
+				5F524530218309BA00389CD7 /* IMFriendshipExt.framework */,
 				5F5244D12180227100389CD7 /* IMSDKBugly.framework */,
 				5F5244CE21801EEE00389CD7 /* QALSDK.framework */,
 				5F5244CD21801EEC00389CD7 /* TLSSDK.framework */,
 				5F5244CB21801EC100389CD7 /* ImSDK.framework */,
 			);
 			path = IMFrameworks;
+			sourceTree = "<group>";
+		};
+		5F5245272182ECBF00389CD7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5F5245292182ECFC00389CD7 /* RZUserManager.h */,
+				5F52452A2182ECFC00389CD7 /* RZUserManager.m */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		5F7012AF20F58AFE00088216 /* Core */ = {
@@ -653,6 +677,7 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5F5245272182ECBF00389CD7 /* User */,
 				5FD82CD3217F6F3400D1779A /* Alert */,
 				5FD82CBF217E267F00D1779A /* WebKit */,
 				5FB130ED2122E1AE00A9288F /* SwiftModule */,
@@ -1269,6 +1294,7 @@
 				5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
+				5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
 				B2F14D2020C3EE81005DF168 /* main.m in Sources */,
 				5F5244B2217FFDCC00389CD7 /* RZWebKitManager.m in Sources */,

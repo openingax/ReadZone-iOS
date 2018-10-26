@@ -17,6 +17,7 @@
 // Manager
 #import "RZAPIUser.h"
 #import "AppDelegate.h"
+#import "RZUserManager.h"
 
 // View
 #import "RZUserTextField.h"
@@ -161,6 +162,9 @@ static CGFloat marginHorizon = 24;
             [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
                 if (!error) {
                     [RZUser shared].userInfo = userInfo;
+                    
+                    [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text];
+                    
                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
                     [self dismissViewControllerAnimated:YES completion:nil];
                 } else {

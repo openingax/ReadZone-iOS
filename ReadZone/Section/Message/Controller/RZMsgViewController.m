@@ -8,6 +8,8 @@
 
 #import "RZMsgViewController.h"
 #import <ImSDK/ImSDK.h>
+#import <IMFriendshipExt/IMFriendshipExt.h>
+#import "RZUserManager.h"
 
 @interface RZMsgViewController ()
 <
@@ -15,11 +17,14 @@ TIMConnListener,
 TIMUserStatusListener,
 TIMRefreshListener,
 TIMFriendshipListener,
-TIMGroupListener
+TIMGroupListener,
+TIMMessageListener
 >
 
-@property(nonatomic,strong) UILabel *msgLabel;
+@property(nonatomic,strong) UITextView *msgTV;
 @property(nonatomic,strong) UITextField *inputTF;
+
+@property(nonatomic,strong) TIMConversation *conversation;
 
 @end
 
@@ -30,6 +35,7 @@ TIMGroupListener
     
     [self drawView];
     
+    [[TIMManager sharedInstance] addMessageListener:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,8 +91,16 @@ TIMGroupListener
     [super viewDidAppear:animated];
     
     TIMLoginParam *param = [[TIMLoginParam alloc] init];
-    param.identifier = @"86-18814098638";
-    param.userSig = @"eJx1kEFPgzAYhu-8CtKzyqCllN0M22CbshHMzLwQtnZro3a17YJs8b9L0EQuftfnyfsk39VxXRc8PZR39X5-Oktb2VYx4I5dEMUBuPnDSgla1baCmvbYR6Pu-BDCgcU*ldCsqg*W6d4KwjjotIEiKJNWHMSvQPCtT0g3FhMMycAz9LXqo--XjDj28HG6TeZFclx7XjnD3mLN0x3PsnwSmUtWkMaqdNY8T9o37iflh8ZtMef3C7iSy5iRC5uitFmuAiRVnntnXCIdm5OJKLdyp-OX7WaQtOL95zt*iEYQowhB4Hw53yODV78_";
+    param.identifier = [NSString stringWithFormat:@"86-%@", [RZUserManager shareInstance].account];
+    
+    // 用 tls-sig-api 生成
+    
+    if ([[RZUserManager shareInstance].account isEqualToString:@"18814098638"]) {
+        param.userSig = @"eJxNjUFPg0AQRv8LZzUz7C4BEw*1JUFqq1Vp9URWGMqGwuJ2qUXjf5eQNnp9b943387L-fOVzDLdNTa1fUvOtQPOxYhVTo1VhSIzQN*7RN9HDoHvMf90IdtW5am0KTP5v3CfV*moBjYUgIIx1z1JOrbKUCoLO*6iEMIFOKcHMnulm0G4gB4CIvxJq2oaEw6CI8fg-E9tB7wIk*ldZOj4FvEH9rr60LB8jJe0CqIsAOyoq5K4yNiT*Fy54TqeqHCy1WjL*e52xlmvzaHispzXUuUbZftZMqXduy4X669NzZIb5*cXW2JZKg__";
+    } else {
+        param.userSig = @"eJxNjNtOg0AURf*F13o5c0Ni0oeKJNVSCtE29omQMpQzWhhnRiwa-11C2ujrWnvtb*85froqdrv2o3G567X0bj3wLkaMpWwcVijNAAP-kjDqC6CBz4LTotAay7xwOTPlv9CWr-moBkY4ABGMUXqS8qjRyLyo3PhLhBAU4Jx20lhsm0FQID4BQuBPOjzIMeEgOOP8fGlxP*BllIUPM1vFk22gbhaLtP5avZPeRu3h*uVN87o8ztOV2vK1mnRrs5zhXZag3RQ4z8w*U6Z-TF1tokz3LlR*BPeVkkkYq6jbJJ-TqffzC43xWdY_";
+    }
+    
     param.appidAt3rd = kTimIMSdkAppId;
     
     @weakify(self);
@@ -113,21 +127,165 @@ TIMGroupListener
 
 - (void)drawView {
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *currentUserLabel = [[UILabel alloc] init];
+    currentUserLabel.text = [NSString stringWithFormat:@"当前用户：%@", [RZUserManager shareInstance].account];
+    [self.view addSubview:currentUserLabel];
+    [currentUserLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).with.offset(kNavTotalHeight + 14);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"添加好友", @"注册", @"发送", @"同意好友"]];
+    [segmentControl addTarget:self action:@selector(segmentControlAction:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentControl];
+    [segmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(32);
+        make.top.equalTo(currentUserLabel.mas_bottom).with.offset(28);
+        make.left.equalTo(self.view).with.offset(50);
+        make.right.equalTo(self.view).with.offset(-50);
+    }];
+    
+    self.msgTV = [[UITextView alloc] init];
+    self.msgTV.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.1];
+    [self.view addSubview:self.msgTV];
+    [self.msgTV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(segmentControl.mas_bottom).with.offset(28);
+        make.left.equalTo(self.view).with.offset(50);
+        make.right.equalTo(self.view).with.offset(-50);
+        make.height.mas_equalTo(400);
+    }];
+    
+    self.inputTF = [[UITextField alloc] init];
+    self.inputTF.layer.cornerRadius = 5;
+    self.inputTF.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.08];
+    [self.view addSubview:self.inputTF];
+    [self.inputTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.msgTV.mas_bottom).with.offset(28);
+        make.left.equalTo(self.view).with.offset(50);
+        make.right.equalTo(self.view).with.offset(-50);
+        make.height.mas_equalTo(32);
+    }];
+    
+    UIButton *sendBtn = [[UIButton alloc] init];
+    [sendBtn addTarget:self action:@selector(sendAction) forControlEvents:UIControlEventTouchUpInside];
+    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
+    [sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.view addSubview:sendBtn];
+    [sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.inputTF.mas_bottom).with.offset(18);
+        make.centerX.equalTo(self.view);
+    }];
 }
 
 #pragma mark - Notification
 
 - (void)registNotification
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
+    if (@available(iOS 8, *)) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
+    } else {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
+}
+
+#pragma mark - TIMMessageListener
+- (void)onNewMessage:(NSArray *)msgs {
+    NSLog(@"收到了新消息：%@", msgs);
+    NSString *msg = @"";
+    for (int i = 0; i < msgs.count; i ++) {
+        TIMMessage *message = [msgs objectAtIndex:i];
+        
+        for (int j = 0; j < message.elemCount; j++) {
+            TIMElem *elem = [message getElem:j];
+            if ([elem isKindOfClass:[TIMTextElem class]]) {
+                TIMTextElem *textElem = (TIMTextElem *)elem;
+                msg = [msg stringByAppendingString:textElem.text];
+                
+            } else if ([elem isKindOfClass:[TIMImageElem class]]) {
+                
+            } else if ([elem isKindOfClass:[TIMFileElem class]]) {
+                
+            } else if ([elem isKindOfClass:[TIMSoundElem class]]) {
+                
+            } else if ([elem isKindOfClass:[TIMLocationElem class]]) {
+                
+            } else if ([elem isKindOfClass:[TIMCustomElem class]]) {
+                
+            } else if ([elem isKindOfClass:[TIMFaceElem class]]) {
+                
+            }
+        }
+    }
+    
+    self.msgTV.text = [NSString stringWithFormat:@"%@\n%@", self.msgTV.text, msg];
+}
+
+#pragma mark - Action
+
+- (void)segmentControlAction:(UISegmentedControl *)segmentControl {
+    NSInteger selectedIndex = segmentControl.selectedSegmentIndex;
+    
+    if (selectedIndex == 0) {
+        
+        // 添加朋友
+        TIMAddFriendRequest *request = [[TIMAddFriendRequest alloc] init];
+        request.identifier = self.inputTF.text;
+        request.remark = @"无";
+        request.addWording = @"请求说明";
+        request.friendGroup = @"";
+        
+        [[TIMFriendshipManager sharedInstance] addFriend:@[request] succ:^(NSArray *friends) {
+            NSLog(@"friends: %@", friends);
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"add friend failed code: %d, msg: %@", code, msg);
+        }];
+        
+    } else if (selectedIndex == 1) {
+        
+        // 注册
+        
+    } else if (selectedIndex == 2) {
+        
+        
+        
+    } else {
+        TIMFriendResponse *response = [[TIMFriendResponse alloc] init];
+        response.identifier = [[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"86-13265028638" : @"86-18814098638";
+        response.remark = @"谢立颖的大号";
+        response.responseType = TIM_FRIEND_RESPONSE_AGREE_AND_ADD;
+        
+        [[TIMFriendshipManager sharedInstance] doResponse:@[response] succ:^(NSArray *friends) {
+            
+        } fail:^(int code, NSString *msg) {
+            
+        }];
+    }
+}
+
+- (void)sendAction {
+    
+    if (!self.conversation) {
+        self.conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"86-13265028638" : @"86-18814098638"];
+    }
+    
+    // 发送文本消息
+    TIMTextElem *textElem = [[TIMTextElem alloc] init];
+    textElem.text = self.inputTF.text;
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:textElem];
+    
+    @weakify(self);
+    [self.conversation sendMessage:msg succ:^{
+        @strongify(self);
+        NSLog(@"消息【%@】发送成功", self.inputTF.text);
+        self.inputTF.text = @"";
+    } fail:^(int code, NSString *msg) {
+        @strongify(self);
+        NSLog(@"消息【%@】发送失败", self.inputTF.text);
+    }];
+    
 }
 
 @end
