@@ -16,4 +16,6 @@
 #define Develop 0
 #endif
 
+#define kBaseURL @"http://192.168.0.100:3000"
+
 #endif /* RZConfig_h */

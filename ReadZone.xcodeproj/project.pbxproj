@@ -40,6 +40,8 @@
 		5F7012D020F6160100088216 /* RZRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012CF20F6160100088216 /* RZRootViewController.m */; };
 		5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */; };
 		5F83FBC22122F50100FF9AD4 /* RZRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */; };
+		5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387421848D2500205C9E /* RZAPITencent.m */; };
+		5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
@@ -168,6 +170,10 @@
 		5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginViewController.swift; sourceTree = "<group>"; };
 		5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZRegisterViewController.swift; sourceTree = "<group>"; };
+		5F8E387321848D2500205C9E /* RZAPITencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPITencent.h; sourceTree = "<group>"; };
+		5F8E387421848D2500205C9E /* RZAPITencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPITencent.m; sourceTree = "<group>"; };
+		5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgFriendListViewController.h; sourceTree = "<group>"; };
+		5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgFriendListViewController.m; sourceTree = "<group>"; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
@@ -352,6 +358,8 @@
 			children = (
 				5F5244C4218010F100389CD7 /* RZMsgViewController.h */,
 				5F5244C5218010F100389CD7 /* RZMsgViewController.m */,
+				5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */,
+				5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -415,6 +423,15 @@
 				B2D2187720F7A02E00331F4C /* Controller */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		5F8E387221848D0400205C9E /* TencentIM */ = {
+			isa = PBXGroup;
+			children = (
+				5F8E387321848D2500205C9E /* RZAPITencent.h */,
+				5F8E387421848D2500205C9E /* RZAPITencent.m */,
+			);
+			path = TencentIM;
 			sourceTree = "<group>";
 		};
 		5FB130ED2122E1AE00A9288F /* SwiftModule */ = {
@@ -695,6 +712,7 @@
 		B2BF657E20D75B42003059AE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5F8E387221848D0400205C9E /* TencentIM */,
 				5F7012AF20F58AFE00088216 /* Core */,
 				5FBAEA2521154C000002C2B5 /* RZAPIBase.h */,
 				5FBAEA2621154C000002C2B5 /* RZAPIBase.m */,
@@ -1292,7 +1310,9 @@
 				5F7012D020F6160100088216 /* RZRootViewController.m in Sources */,
 				5FBF587220F84A4D00CC15A2 /* RZMenuButton.m in Sources */,
 				5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */,
+				5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
+				5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,

@@ -18,6 +18,7 @@
 #import "RZAPIUser.h"
 #import "AppDelegate.h"
 #import "RZUserManager.h"
+#import "RZAPITencent.h"
 
 // View
 #import "RZUserTextField.h"
@@ -40,6 +41,7 @@ static CGFloat marginHorizon = 24;
 @property(nonatomic,strong) RZUserButton *loginBtn;
 
 @property(nonatomic,strong) RZAPIUser *userAPI;
+@property(nonatomic,strong) RZAPITencent *timAPI;
 
 @end
 
@@ -158,33 +160,45 @@ static CGFloat marginHorizon = 24;
     
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
-            // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
-            [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
-                if (!error) {
-                    [RZUser shared].userInfo = userInfo;
-                    
-                    [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text];
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
-                    [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [self.timAPI fetchSigWithAccount:[NSString stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:self.accountTF.text] complete:^(BOOL isSuccess, NSString *sig) {
+                if (isSuccess) {
+                    // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
+                    [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
+                        if (!error) {
+                            [RZUser shared].userInfo = userInfo;
+                            
+                            [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text sig:sig];
+                            
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        } else {
+                            [[RZUserManager shareInstance] logout];
+                            [self.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
+                        }
+                    }];
                 } else {
-                    [self.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
+                    // 获取 sig 失败
+                    [[RZUserManager shareInstance] logout];
+                    [self.animatedView makeToast:[NSString stringWithFormat:@"获取 sig 失败：%@", error] duration:2.5 position:CSToastPositionBottom];
                 }
             }];
+            
+            
         } else {
             // 登录失败
-            [self.animatedView makeToast:[NSString stringWithFormat:@"%@", error] duration:2.5 position:CSToastPositionBottom];
+            [self.animatedView makeToast:[NSString stringWithFormat:@"AVUser 登录失败：%@", error] duration:2.5 position:CSToastPositionBottom];
         }
     }];
 }
 
 - (void)registerAction {
-//    RZLoginViewController_Swift *loginVC_Swift = [[RZLoginViewController_Swift alloc] init];
-//    RZRegisterViewController_Swift *registerVC = [[RZRegisterViewController_Swift alloc] init];
-//    [self.navigationController pushViewController:registerVC animated:YES];
+    //    RZLoginViewController_Swift *loginVC_Swift = [[RZLoginViewController_Swift alloc] init];
+    //    RZRegisterViewController_Swift *registerVC = [[RZRegisterViewController_Swift alloc] init];
+    //    [self.navigationController pushViewController:registerVC animated:YES];
     RZRegisterViewController *registerVC = [[RZRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVC animated:YES];
-//    [loginVC_Swift swiftMethodTest];
+    //    [loginVC_Swift swiftMethodTest];
 }
 
 - (void)tapAction {
@@ -197,6 +211,13 @@ static CGFloat marginHorizon = 24;
         _userAPI = [[RZAPIUser alloc] init];
     }
     return _userAPI;
+}
+
+- (RZAPITencent *)timAPI {
+    if (!_timAPI) {
+        _timAPI = [[RZAPITencent alloc] init];
+    }
+    return _timAPI;
 }
 
 

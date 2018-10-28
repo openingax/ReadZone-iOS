@@ -13,6 +13,7 @@
 
 // Manager
 #import "AppDelegate.h"
+#import "RZUserManager.h"
 
 // View
 #import "RZSettingCell.h"
@@ -206,8 +207,8 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CANCEL", @"设置页【取消】") style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CELL_LOGOUT", @"设置页【登出】") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [AVUser logOut];                        // 登出
             [RZUser shared].userInfo = nil;         // 清空用户数据
+            [[RZUserManager shareInstance] logout]; // 清空用户数据
             RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
             RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
             [self presentViewController:navVC animated:YES completion:nil];

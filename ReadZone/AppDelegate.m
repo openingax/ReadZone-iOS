@@ -15,6 +15,8 @@
 #import "RZUserInfoModel.h"
 #import "RZUserModel.h"
 
+#import "RZUserManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -43,7 +45,7 @@
     self.window.rootViewController = rootNav;
     [self.window makeKeyAndVisible];
     
-    [AVUser currentUser] ? [self fetchUserInfo] : [self showLoginVC];
+    [[RZUserManager shareInstance] isLogin] ? [self fetchUserInfo] : [self showLoginVC];
     
     return YES;
 }
@@ -109,7 +111,7 @@
         if (!error) {
             [RZUser shared].userInfo = userInfo;
         } else {
-            [AVUser logOut];
+            [[RZUserManager shareInstance] logout];
             [self showLoginVC];
         }
     }];

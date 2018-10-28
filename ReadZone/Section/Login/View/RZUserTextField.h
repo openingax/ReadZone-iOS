@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, RZUserTextFieldType) {
     RZUserTextFieldTypeAccount = 0,         // 帐户输入
-    RZUserTextFieldTypePassword             // 密码输入
+    RZUserTextFieldTypePassword,            // 密码输入
+    RZUserTextFieldTypeAuthCode             // 验证码输入
 };
 
 @interface RZUserTextField : UITextField

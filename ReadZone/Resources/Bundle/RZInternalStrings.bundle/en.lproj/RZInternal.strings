@@ -27,6 +27,7 @@
 "LOGIN_LABEL_TITLE" = "Login";
 "LOGIN_PLACEHOLDER_ACCOUNT" = "Phone / E-mail / User name";
 "LOGIN_PLACEHOLDER_PWD" = "Password";
+"LOGIN_PLACEHOLDER_AUTH_CODE" = "Verification code";
 "LOGIN_BTN_LOGIN" = "Login";
 "LOGIN_BTN_REGISTER" = "New user？";
 "LOGIN_BTN_FORGOT_PWD" = "Forgot password？";
@@ -34,6 +35,7 @@
 /* Register VC */
 "REGISTER_NAV_TITLE" = "Register";
 "REGISTER_PLACEHOLDER_ACCOUNT" = "Phone / E-mail";
+"REGISTER_BTN_AUTH_CODE" = "Send code";
 "REGISTER_PLACEHOLDER_PWD" = "Password";
 "REGISTER_BTN_REGISTER" = "Register";
 

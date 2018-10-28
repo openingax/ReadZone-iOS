@@ -21,6 +21,7 @@
 
 /* 通知 */
 #define kLoginSuccessNotification @"kLoginSuccessNotification"
+#define kLogoutNotification @"kLogoutNotification"
 
 /* NSUserDefaults */
 #define kWebDevelopKey @"kWebDevelopKey"

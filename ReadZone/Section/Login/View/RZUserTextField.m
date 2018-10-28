@@ -34,12 +34,18 @@
         self.type = type;
         self.backgroundColor = [UIColor clearColor];
         self.keyboardType = UIKeyboardTypeASCIICapable;
-        self.secureTextEntry = type ==RZUserTextFieldTypePassword ? YES : NO;
+        self.secureTextEntry = type == RZUserTextFieldTypePassword ? YES : NO;
         [self addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         
         // 处理占位符
         [self addSubview:self.placeholderLabel];
-        self.placeholderLabel.text = RZLocalizedString(self.type == RZUserTextFieldTypeAccount ? @"LOGIN_PLACEHOLDER_ACCOUNT" : @"LOGIN_PLACEHOLDER_PWD", @"输入框的占位符");
+        if (type == RZUserTextFieldTypeAccount) {
+            self.placeholderLabel.text = RZLocalizedString(@"LOGIN_PLACEHOLDER_ACCOUNT", @"账号输入框的占位符");
+        } else if (type == RZUserTextFieldTypePassword) {
+            self.placeholderLabel.text = RZLocalizedString(@"LOGIN_PLACEHOLDER_PWD", @"密码输入框的占位符");
+        } else if (type == RZUserTextFieldTypeAuthCode) {
+            self.placeholderLabel.text = RZLocalizedString(@"LOGIN_PLACEHOLDER_AUTH_CODE", @"验证码输入框的占位符");
+        }
         [self.placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self);
             make.centerY.equalTo(self);

@@ -10,6 +10,7 @@
 #import <ImSDK/ImSDK.h>
 #import <IMFriendshipExt/IMFriendshipExt.h>
 #import "RZUserManager.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface RZMsgViewController ()
 <
@@ -34,88 +35,19 @@ TIMMessageListener
     [super viewDidLoad];
     
     [self drawView];
-    
+    [self configTIMAccount];
     [[TIMManager sharedInstance] addMessageListener:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    TIMManager *manager = [TIMManager sharedInstance];
-    
-    TIMSdkConfig *config = [[TIMSdkConfig alloc] init];
-    config.sdkAppId = [kTimIMSdkAppId intValue];
-    config.accountType = kTimIMSdkAccountType;
-    config.disableCrashReport = NO;
-    config.disableLogPrint = NO;
-    config.connListener = self;
-    
-    [manager initSdk:config];
-    
-    TIMUserConfig *userConfig = [[TIMUserConfig alloc] init];
-    //    userConfig.disableStorage = YES;//禁用本地存储（加载消息扩展包有效）
-    //    userConfig.disableAutoReport = YES;//禁止自动上报（加载消息扩展包有效）
-    //    userConfig.enableReadReceipt = YES;//开启C2C已读回执（加载消息扩展包有效）
-    userConfig.disableRecnetContact = NO;//不开启最近联系人（加载消息扩展包有效）
-    userConfig.disableRecentContactNotify = YES;//不通过onNewMessage:抛出最新联系人的最后一条消息（加载消息扩展包有效）
-    userConfig.enableFriendshipProxy = YES;//开启关系链数据本地缓存功能（加载好友扩展包有效）
-    userConfig.enableGroupAssistant = YES;//开启群组数据本地缓存功能（加载群组扩展包有效）
-    TIMGroupInfoOption *giOption = [[TIMGroupInfoOption alloc] init];
-    giOption.groupFlags = 0xffffff;//需要获取的群组信息标志（TIMGetGroupBaseInfoFlag）,默认为0xffffff
-    giOption.groupCustom = nil;//需要获取群组资料的自定义信息（NSString*）列表
-    userConfig.groupInfoOpt = giOption;//设置默认拉取的群组资料
-    TIMGroupMemberInfoOption *gmiOption = [[TIMGroupMemberInfoOption alloc] init];
-    gmiOption.memberFlags = 0xffffff;//需要获取的群成员标志（TIMGetGroupMemInfoFlag）,默认为0xffffff
-    gmiOption.memberCustom = nil;//需要获取群成员资料的自定义信息（NSString*）列表
-    userConfig.groupMemberInfoOpt = gmiOption;//设置默认拉取的群成员资料
-    TIMFriendProfileOption *fpOption = [[TIMFriendProfileOption alloc] init];
-    fpOption.friendFlags = 0xffffff;//需要获取的好友信息标志（TIMProfileFlag）,默认为0xffffff
-    fpOption.friendCustom = nil;//需要获取的好友自定义信息（NSString*）列表
-    fpOption.userCustom = nil;//需要获取的用户自定义信息（NSString*）列表
-    userConfig.friendProfileOpt = fpOption;//设置默认拉取的好友资料
-    userConfig.userStatusListener = self;//用户登录状态监听器
-    userConfig.refreshListener = self;//会话刷新监听器（未读计数、已读同步）（加载消息扩展包有效）
-    //    userConfig.receiptListener = self;//消息已读回执监听器（加载消息扩展包有效）
-    //    userConfig.messageUpdateListener = self;//消息svr重写监听器（加载消息扩展包有效）
-    //    userConfig.uploadProgressListener = self;//文件上传进度监听器
-    //    userConfig.groupEventListener todo
-//    userConfig.messgeRevokeListener = self.conversationMgr;
-    userConfig.friendshipListener = self;//关系链数据本地缓存监听器（加载好友扩展包、enableFriendshipProxy有效）
-    userConfig.groupListener = self;//群组据本地缓存监听器（加载群组扩展包、enableGroupAssistant有效）
-    
-    int setConfigStatus = [manager setUserConfig:userConfig];
-    NSLog(@"setConfigStatus: %d", setConfigStatus);
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    TIMLoginParam *param = [[TIMLoginParam alloc] init];
-    param.identifier = [NSString stringWithFormat:@"86-%@", [RZUserManager shareInstance].account];
-    
-    // 用 tls-sig-api 生成
-    
-    if ([[RZUserManager shareInstance].account isEqualToString:@"18814098638"]) {
-        param.userSig = @"eJxNjUFPg0AQRv8LZzUz7C4BEw*1JUFqq1Vp9URWGMqGwuJ2qUXjf5eQNnp9b943387L-fOVzDLdNTa1fUvOtQPOxYhVTo1VhSIzQN*7RN9HDoHvMf90IdtW5am0KTP5v3CfV*moBjYUgIIx1z1JOrbKUCoLO*6iEMIFOKcHMnulm0G4gB4CIvxJq2oaEw6CI8fg-E9tB7wIk*ldZOj4FvEH9rr60LB8jJe0CqIsAOyoq5K4yNiT*Fy54TqeqHCy1WjL*e52xlmvzaHispzXUuUbZftZMqXduy4X669NzZIb5*cXW2JZKg__";
-    } else {
-        param.userSig = @"eJxNjNtOg0AURf*F13o5c0Ni0oeKJNVSCtE29omQMpQzWhhnRiwa-11C2ujrWnvtb*85froqdrv2o3G567X0bj3wLkaMpWwcVijNAAP-kjDqC6CBz4LTotAay7xwOTPlv9CWr-moBkY4ABGMUXqS8qjRyLyo3PhLhBAU4Jx20lhsm0FQID4BQuBPOjzIMeEgOOP8fGlxP*BllIUPM1vFk22gbhaLtP5avZPeRu3h*uVN87o8ztOV2vK1mnRrs5zhXZag3RQ4z8w*U6Z-TF1tokz3LlR*BPeVkkkYq6jbJJ-TqffzC43xWdY_";
-    }
-    
-    param.appidAt3rd = kTimIMSdkAppId;
-    
-    @weakify(self);
-    [[TIMManager sharedInstance] login:param succ:^{
-        @strongify(self);
-        
-        [self registNotification];
-        [self.view makeToast:@"登录成功"];
-    } fail:^(int code, NSString *msg) {
-        @strongify(self);
-        [self.view makeToast:msg];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-    }];
+    [self loginTIM];
 }
 
 #pragma mark - DrawView
@@ -175,6 +107,82 @@ TIMMessageListener
     [sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.inputTF.mas_bottom).with.offset(18);
         make.centerX.equalTo(self.view);
+    }];
+}
+
+#pragma mark - Fetch & Config
+- (void)configTIMAccount {
+    TIMManager *manager = [TIMManager sharedInstance];
+    
+    TIMSdkConfig *config = [[TIMSdkConfig alloc] init];
+    config.sdkAppId = [kTimIMSdkAppId intValue];
+    config.accountType = kTimIMSdkAccountType;
+    config.disableCrashReport = NO;
+    config.disableLogPrint = NO;
+    config.connListener = self;
+    
+    [manager initSdk:config];
+    
+    TIMUserConfig *userConfig = [[TIMUserConfig alloc] init];
+    //    userConfig.disableStorage = YES;//禁用本地存储（加载消息扩展包有效）
+    //    userConfig.disableAutoReport = YES;//禁止自动上报（加载消息扩展包有效）
+    //    userConfig.enableReadReceipt = YES;//开启C2C已读回执（加载消息扩展包有效）
+    userConfig.disableRecnetContact = NO;//不开启最近联系人（加载消息扩展包有效）
+    userConfig.disableRecentContactNotify = YES;//不通过onNewMessage:抛出最新联系人的最后一条消息（加载消息扩展包有效）
+    userConfig.enableFriendshipProxy = YES;//开启关系链数据本地缓存功能（加载好友扩展包有效）
+    userConfig.enableGroupAssistant = YES;//开启群组数据本地缓存功能（加载群组扩展包有效）
+    TIMGroupInfoOption *giOption = [[TIMGroupInfoOption alloc] init];
+    giOption.groupFlags = 0xffffff;//需要获取的群组信息标志（TIMGetGroupBaseInfoFlag）,默认为0xffffff
+    giOption.groupCustom = nil;//需要获取群组资料的自定义信息（NSString*）列表
+    userConfig.groupInfoOpt = giOption;//设置默认拉取的群组资料
+    TIMGroupMemberInfoOption *gmiOption = [[TIMGroupMemberInfoOption alloc] init];
+    gmiOption.memberFlags = 0xffffff;//需要获取的群成员标志（TIMGetGroupMemInfoFlag）,默认为0xffffff
+    gmiOption.memberCustom = nil;//需要获取群成员资料的自定义信息（NSString*）列表
+    userConfig.groupMemberInfoOpt = gmiOption;//设置默认拉取的群成员资料
+    TIMFriendProfileOption *fpOption = [[TIMFriendProfileOption alloc] init];
+    fpOption.friendFlags = 0xffffff;//需要获取的好友信息标志（TIMProfileFlag）,默认为0xffffff
+    fpOption.friendCustom = nil;//需要获取的好友自定义信息（NSString*）列表
+    fpOption.userCustom = nil;//需要获取的用户自定义信息（NSString*）列表
+    userConfig.friendProfileOpt = fpOption;//设置默认拉取的好友资料
+    userConfig.userStatusListener = self;//用户登录状态监听器
+    userConfig.refreshListener = self;//会话刷新监听器（未读计数、已读同步）（加载消息扩展包有效）
+    //    userConfig.receiptListener = self;//消息已读回执监听器（加载消息扩展包有效）
+    //    userConfig.messageUpdateListener = self;//消息svr重写监听器（加载消息扩展包有效）
+    //    userConfig.uploadProgressListener = self;//文件上传进度监听器
+    //    userConfig.groupEventListener todo
+    //    userConfig.messgeRevokeListener = self.conversationMgr;
+    userConfig.friendshipListener = self;//关系链数据本地缓存监听器（加载好友扩展包、enableFriendshipProxy有效）
+    userConfig.groupListener = self;//群组据本地缓存监听器（加载群组扩展包、enableGroupAssistant有效）
+    
+    int setConfigStatus = [manager setUserConfig:userConfig];
+    NSLog(@"setConfigStatus: %d", setConfigStatus);
+}
+
+- (void)loginTIM {
+    TIMLoginParam *param = [[TIMLoginParam alloc] init];
+    param.identifier = [NSString stringWithFormat:@"%@", [RZUserManager shareInstance].account];
+    
+    param.userSig = [RZUserManager shareInstance].sig;
+    
+    param.appidAt3rd = kTimIMSdkAppId;
+    
+    @weakify(self);
+    [[TIMManager sharedInstance] login:param succ:^{
+        @strongify(self);
+        [self registNotification];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.view makeToast:@"登录成功"];
+        
+    } fail:^(int code, NSString *msg) {
+        @strongify(self);
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.view makeToast:[@"登录失败\n" stringByAppendingString:msg]];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     }];
 }
 
@@ -249,10 +257,9 @@ TIMMessageListener
     } else if (selectedIndex == 2) {
         
         
-        
     } else {
         TIMFriendResponse *response = [[TIMFriendResponse alloc] init];
-        response.identifier = [[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"86-13265028638" : @"86-18814098638";
+        response.identifier = [[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"13265028638" : @"18814098638";
         response.remark = @"谢立颖的大号";
         response.responseType = TIM_FRIEND_RESPONSE_AGREE_AND_ADD;
         
@@ -267,7 +274,7 @@ TIMMessageListener
 - (void)sendAction {
     
     if (!self.conversation) {
-        self.conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"86-13265028638" : @"86-18814098638"];
+        self.conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"13265028638" : @"18814098638"];
     }
     
     // 发送文本消息

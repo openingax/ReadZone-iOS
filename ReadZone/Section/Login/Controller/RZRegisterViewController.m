@@ -27,9 +27,9 @@ static CGFloat marginHorizon = 24;
 
 @property(nonatomic,strong) RZUserTextField *accountTF;
 @property(nonatomic,strong) RZUserTextField *passwordTF;
+@property(nonatomic,strong) RZUserTextField *authCodeTF;
+@property(nonatomic,strong) RZUserButton *authCodeBtn;
 @property(nonatomic,strong) RZUserButton *registerBtn;
-
-@property(nonatomic,strong) AFHTTPSessionManager *httpManager;
 
 @end
 
@@ -73,6 +73,27 @@ static CGFloat marginHorizon = 24;
         make.height.mas_equalTo(40);
     }];
     
+    self.authCodeBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"REGISTER_BTN_AUTH_CODE", @"注册页面【获取验证码】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
+        [self sendAuthCode];
+    }];
+    [self.view addSubview:self.authCodeBtn];
+    [self.authCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
+        make.right.mas_equalTo(self.view).with.offset(-marginHorizon);
+        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(100);
+    }];
+    
+    self.authCodeTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypeAuthCode];
+    [self.authCodeTF addTarget:self action:@selector(authCodeValueChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:self.authCodeTF];
+    [self.authCodeTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).with.offset(marginHorizon);
+        make.centerY.equalTo(self.authCodeBtn.mas_centerY);
+        make.right.equalTo(self.authCodeBtn.mas_left).with.offset(-28);
+        make.height.mas_equalTo(40);
+    }];
+    
     self.registerBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"REGISTER_BTN_REGISTER", @"注册按钮的标题【注册】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
         [self registerAction];
     }];
@@ -81,7 +102,7 @@ static CGFloat marginHorizon = 24;
     [self.registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).with.offset(marginHorizon);
         make.right.equalTo(self.view).with.offset(-marginHorizon);
-        make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
+        make.top.equalTo(self.authCodeBtn.mas_bottom).with.offset(30);
         make.height.mas_equalTo(45);
     }];
 }
@@ -103,10 +124,24 @@ static CGFloat marginHorizon = 24;
     }
 }
 
+- (void)authCodeValueChange:(RZUserTextField *)textField {
+    
+}
+
+- (void)sendAuthCode {
+    [self.view endEditing:YES];
+    
+    NSString *authCode = self.authCodeTF.text;
+    
+}
+
 - (void)registerAction {
     [self.view endEditing:YES];
     NSString *account = self.accountTF.text;
     NSString *password = self.passwordTF.text;
+    NSString *authCode = self.authCodeTF.text;
+    
+    if ([NSString isEmptyString:account] || [NSString isEmptyString:password] || [NSString isEmptyString:authCode]) return;
     
     AVUser *newUser = [AVUser user];
     newUser.username = account;
@@ -141,16 +176,8 @@ static CGFloat marginHorizon = 24;
     [self.view endEditing:YES];
 }
 
-#pragma mark - Setter & Getter
-- (AFHTTPSessionManager *)httpManager {
-    if (!_httpManager) {
-        _httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.0.100:8000/"]];
-    }
-    return _httpManager;
-}
-
 #pragma mark - Private
--(NSString *)randomUserName{
+-(NSString *)randomUserName {
     NSArray *name_array = @[@"沈",@"秦",@"云",@"唐",@"高",@"裴",@"萧",@"上官",@"慕容",@"司徒",@"南宫",@"百里",@"北宫",@"月",@"楚",@"言",@"琴",@"古",@"镜",@"龙",@"冷",@"叶",@"北冥",@"公孙",@"独孤",@"皇甫",@"尚",@"闻人",@"苍羽",@"轩辕",@"南风",@"即墨"];
     NSArray *secondname_array = @[@"浩",@"凌风",@"绝尘",@"文昭",@"阳城",@"文",@"奇",@"华晨",@"鹤城",@"袁也",@"成飞",@"哲七",@"鸿远",@"正",@"心池",@"池",@"心",@"阅",@"光",@"水",@"翰",@"和",@"清",@"易",@"宣",@"德",@"茂",@"明",@"纬",@"寺",@"明",@"晖",@"飞语",@"文哲",@"真",@"嘉",@"一",@"",@"寒",@"亦凌",@"宇",@"莫离",@"陵",@"宇轩",@"晨浩",@"痕",@"渊",@"尚城",@"离",@"陌",@"渡",@"陌然"];
     int name_value = arc4random()%name_array.count;
