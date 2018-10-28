@@ -174,6 +174,8 @@ TIMMessageListener
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.view makeToast:@"登录成功"];
         
+        [self fetchFriendList];
+        
     } fail:^(int code, NSString *msg) {
         @strongify(self);
         
@@ -184,6 +186,14 @@ TIMMessageListener
             [self.navigationController popViewControllerAnimated:YES];
         });
     }];
+}
+
+- (void)fetchFriendList {
+    [[TIMFriendshipManager sharedInstance] getFriendList:^(NSArray *friends) {
+        
+    } fail:^(int code, NSString *msg) {
+        
+    }] ;
 }
 
 #pragma mark - Notification
