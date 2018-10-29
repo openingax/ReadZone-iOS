@@ -7,10 +7,20 @@
 //
 
 #import "RZMsgViewController.h"
-#import <ImSDK/ImSDK.h>
+#import "RZAddFriendViewController.h"
+#import "RZMsgChatViewController.h"
+
+#import <IMMessageExt/IMMessageExt.h>
 #import <IMFriendshipExt/IMFriendshipExt.h>
-#import "RZUserManager.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+
+#import "RZUserManager.h"
+#import "RZMsgUserCell.h"
+
+#import "TIMUserProfile+RZ.h"
+#import "TIMConversation+RZ.h"
+
+static NSString *kMsgUserCellIdentifier = @"kMsgUserCellIdentifier";
 
 @interface RZMsgViewController ()
 <
@@ -19,13 +29,20 @@ TIMUserStatusListener,
 TIMRefreshListener,
 TIMFriendshipListener,
 TIMGroupListener,
-TIMMessageListener
+TIMMessageListener,
+UITableViewDelegate,
+UITableViewDataSource
 >
+
+@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSArray <TIMConversation*>*conversations;
 
 @property(nonatomic,strong) UITextView *msgTV;
 @property(nonatomic,strong) UITextField *inputTF;
 
 @property(nonatomic,strong) TIMConversation *conversation;
+
+@property(nonatomic,assign) BOOL hasLoginTIM;
 
 @end
 
@@ -34,6 +51,8 @@ TIMMessageListener
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.conversations = @[];
+    
     [self drawView];
     [self configTIMAccount];
     [[TIMManager sharedInstance] addMessageListener:self];
@@ -41,13 +60,11 @@ TIMMessageListener
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self loginTIM];
+    if (!_hasLoginTIM) [self loginTIM];
 }
 
 #pragma mark - DrawView
@@ -55,59 +72,54 @@ TIMMessageListener
 - (void)drawNavBar {
     [super drawNavBar];
     self.title = RZLocalizedString(@"MESSAGE_NAV_TITLE", @"消息根页面导航栏标题【消息】");
+    
+    RZNavBarItem *addBtn = [RZNavBarItem navBarItemTitle:@"" normalImg:[UIImage imageNamed:@"nav_bar_add_friend"] selectedImg:[UIImage imageNamed:@"nav_bar_add_friend"]];
+    [addBtn addTarget:self action:@selector(addFriendAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navBar.rightBarItems = @[addBtn];
 }
 
 - (void)drawView {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UILabel *currentUserLabel = [[UILabel alloc] init];
-    currentUserLabel.text = [NSString stringWithFormat:@"当前用户：%@", [RZUserManager shareInstance].account];
-    [self.view addSubview:currentUserLabel];
-    [currentUserLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).with.offset(kNavTotalHeight + 14);
-        make.centerX.equalTo(self.view);
-    }];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavTotalHeight, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[RZMsgUserCell class] forCellReuseIdentifier:kMsgUserCellIdentifier];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+}
+
+#pragma mark - UITableViewDelegate & UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.conversations.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RZMsgUserCell *cell = [tableView dequeueReusableCellWithIdentifier:kMsgUserCellIdentifier];
+    if (!cell) {
+        cell = [[RZMsgUserCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMsgUserCellIdentifier];
+    }
     
-    UISegmentedControl *segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"添加好友", @"注册", @"发送", @"同意好友"]];
-    [segmentControl addTarget:self action:@selector(segmentControlAction:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segmentControl];
-    [segmentControl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(32);
-        make.top.equalTo(currentUserLabel.mas_bottom).with.offset(28);
-        make.left.equalTo(self.view).with.offset(50);
-        make.right.equalTo(self.view).with.offset(-50);
-    }];
+    TIMConversation *converation = [self.conversations objectAtIndex:indexPath.row];
     
-    self.msgTV = [[UITextView alloc] init];
-    self.msgTV.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.1];
-    [self.view addSubview:self.msgTV];
-    [self.msgTV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(segmentControl.mas_bottom).with.offset(28);
-        make.left.equalTo(self.view).with.offset(50);
-        make.right.equalTo(self.view).with.offset(-50);
-        make.height.mas_equalTo(400);
-    }];
+    cell.iconUrl = converation.faceURL;
+    cell.name = [converation getReceiver];
     
-    self.inputTF = [[UITextField alloc] init];
-    self.inputTF.layer.cornerRadius = 5;
-    self.inputTF.backgroundColor = [UIColor rz_colorwithRed:0 green:0 blue:0 alpha:0.08];
-    [self.view addSubview:self.inputTF];
-    [self.inputTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.msgTV.mas_bottom).with.offset(28);
-        make.left.equalTo(self.view).with.offset(50);
-        make.right.equalTo(self.view).with.offset(-50);
-        make.height.mas_equalTo(32);
-    }];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIButton *sendBtn = [[UIButton alloc] init];
-    [sendBtn addTarget:self action:@selector(sendAction) forControlEvents:UIControlEventTouchUpInside];
-    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-    [sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [self.view addSubview:sendBtn];
-    [sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.inputTF.mas_bottom).with.offset(18);
-        make.centerX.equalTo(self.view);
-    }];
+    RZMsgChatViewController *chatVC = [[RZMsgChatViewController alloc] init];
+    TIMConversation *conversation = [self.conversations objectAtIndex:indexPath.row];
+    chatVC.conversaion = conversation;
+    [self.navigationController pushViewController:chatVC animated:YES];
 }
 
 #pragma mark - Fetch & Config
@@ -169,17 +181,15 @@ TIMMessageListener
     @weakify(self);
     [[TIMManager sharedInstance] login:param succ:^{
         @strongify(self);
-        [self registNotification];
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.hasLoginTIM = YES;
+        [self registNotification];
         [self.view makeToast:@"登录成功"];
         
-        [self fetchFriendList];
+        [self fetchConversations];
         
     } fail:^(int code, NSString *msg) {
         @strongify(self);
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.view makeToast:[@"登录失败\n" stringByAppendingString:msg]];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -188,24 +198,28 @@ TIMMessageListener
     }];
 }
 
-- (void)fetchFriendList {
-    [[TIMFriendshipManager sharedInstance] getFriendList:^(NSArray *friends) {
-        
-    } fail:^(int code, NSString *msg) {
-        
-    }] ;
+- (void)fetchConversations {
+//    [[TIMFriendshipManager sharedInstance] getFriendList:^(NSArray *friends) {
+//
+//        for (TIMUserProfile *profile in friends) {
+//            profile.conversation =  [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:profile.identifier];
+//        }
+//        self.friendList = [NSArray arrayWithArray:friends];
+//        [self.tableView reloadData];
+//    } fail:^(int code, NSString *msg) {
+//        [self.view makeToast:[NSString stringWithFormat:@"获取好友列表失败\n%d %@", code, msg]];
+//    }];
+    
+    self.conversations = [NSArray arrayWithArray:[[TIMManager sharedInstance] getConversationList]];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Notification
 
 - (void)registNotification
 {
-    if (@available(iOS 8, *)) {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
-    }
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 #pragma mark - TIMMessageListener
@@ -281,6 +295,11 @@ TIMMessageListener
     }
 }
 
+- (void)addFriendAction {
+    RZAddFriendViewController *addFriendVC = [[RZAddFriendViewController alloc] init];
+    [self.navigationController pushViewController:addFriendVC animated:YES];
+}
+
 - (void)sendAction {
     
     if (!self.conversation) {
@@ -302,7 +321,6 @@ TIMMessageListener
         @strongify(self);
         NSLog(@"消息【%@】发送失败", self.inputTF.text);
     }];
-    
 }
 
 @end

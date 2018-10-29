@@ -67,6 +67,11 @@
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
+		5FEDA4A02186EE2600667A8A /* RZMsgUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */; };
+		5FEDA4A32186F8E200667A8A /* RZAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */; };
+		5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */; };
+		5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */; };
+		5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -211,6 +216,16 @@
 		5FD82CCF217E2CD900D1779A /* RZConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConfig.h; sourceTree = "<group>"; };
 		5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDevelopViewController.h; sourceTree = "<group>"; };
 		5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDevelopViewController.m; sourceTree = "<group>"; };
+		5FEDA49E2186EE2600667A8A /* RZMsgUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgUserCell.h; sourceTree = "<group>"; };
+		5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgUserCell.m; sourceTree = "<group>"; };
+		5FEDA4A12186F8E200667A8A /* RZAddFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAddFriendViewController.h; sourceTree = "<group>"; };
+		5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAddFriendViewController.m; sourceTree = "<group>"; };
+		5FEDA4A42187091200667A8A /* RZMsgChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgChatViewController.h; sourceTree = "<group>"; };
+		5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgChatViewController.m; sourceTree = "<group>"; };
+		5FEDA4A721870A4200667A8A /* TIMUserProfile+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMUserProfile+RZ.h"; sourceTree = "<group>"; };
+		5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMUserProfile+RZ.m"; sourceTree = "<group>"; };
+		5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMConversation+RZ.h"; sourceTree = "<group>"; };
+		5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMConversation+RZ.m"; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -358,8 +373,12 @@
 			children = (
 				5F5244C4218010F100389CD7 /* RZMsgViewController.h */,
 				5F5244C5218010F100389CD7 /* RZMsgViewController.m */,
+				5FEDA4A42187091200667A8A /* RZMsgChatViewController.h */,
+				5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */,
 				5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */,
 				5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */,
+				5FEDA4A12186F8E200667A8A /* RZAddFriendViewController.h */,
+				5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,6 +386,8 @@
 		5F5244C221800F7600389CD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5FEDA49E2186EE2600667A8A /* RZMsgUserCell.h */,
+				5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +395,10 @@
 		5F5244C321800F7F00389CD7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				5FEDA4A721870A4200667A8A /* TIMUserProfile+RZ.h */,
+				5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */,
+				5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */,
+				5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1289,6 +1314,7 @@
 				B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */,
 				5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */,
 				B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */,
+				5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */,
 				5F5244C6218010F100389CD7 /* RZMsgViewController.m in Sources */,
 				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
 				B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */,
@@ -1301,6 +1327,7 @@
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBAEA30211556E30002C2B5 /* RZHomePageModel.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
+				5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */,
 				5FBAEA2721154C000002C2B5 /* RZAPIBase.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
 				5F50FE6E21104FC600499F1E /* RZUser.m in Sources */,
@@ -1313,6 +1340,7 @@
 				5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
 				5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */,
+				5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
@@ -1326,9 +1354,11 @@
 				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
 				B2D2188320FAEF4C00331F4C /* Student.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
+				5FEDA4A02186EE2600667A8A /* RZMsgUserCell.m in Sources */,
 				5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */,
 				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
 				5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
+				5FEDA4A32186F8E200667A8A /* RZAddFriendViewController.m in Sources */,
 				B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,8 +32,8 @@
 //#define kTimIMSdkAppId @"1400001533"
 //#define kTimIMSdkAccountType @"792"
 
-#define kTimIMTLSAppId          @"1400153322"
-#define kTimIMSdkAppId          @"1400153322"
+#define kTimIMTLSAppId          @"1400149977"
+#define kTimIMSdkAppId          @"1400149977"
 #define kTimIMSdkAccountType    @"36862"
 #define kTimIMQQAccountType     1
 #define kTimIMWXAccountType     2

@@ -66,4 +66,7 @@
 "ABOUT_NAV_TITLE" = "About";
 
 "MESSAGE_NAV_TITLE" = "Message";
+"MESSAGE_NAV_ADD_FRIEND" = "Add friend";
+"MESSAGE_ADD_FRIEND_PLACEHOLDER" = "Name / User identifier";
+"MESSAGE_BUTTON_ADD_FRIEND" = "Add";
 
