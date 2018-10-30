@@ -39,20 +39,20 @@
     
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.textColor = [UIColor blackColor];
-    _nameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+    _nameLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
     [self.contentView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconImgView.mas_right).with.offset(6);
-        make.top.equalTo(self.iconImgView.mas_top).with.offset(2);
+        make.left.equalTo(self.iconImgView.mas_right).with.offset(8);
+        make.top.equalTo(self.iconImgView.mas_top).with.offset(4);
     }];
     
     _msgLabel = [[UILabel alloc] init];
     _msgLabel.textColor = [UIColor grayColor];
-    _msgLabel.font = [UIFont systemFontOfSize:13 weight:UIFontWeightLight];
+    _msgLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightLight];
     [self.contentView addSubview:_msgLabel];
     [_msgLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nameLabel.mas_left);
-        make.bottom.equalTo(self.iconImgView.mas_bottom).with.offset(-2);
+        make.bottom.equalTo(self.iconImgView.mas_bottom).with.offset(-4);
     }];
 }
 

@@ -18,19 +18,12 @@
 		5F5244B2217FFDCC00389CD7 /* RZWebKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244B1217FFDCC00389CD7 /* RZWebKitManager.m */; };
 		5F5244B5218007AD00389CD7 /* NSDictionary+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244B4218007AD00389CD7 /* NSDictionary+RZ.m */; };
 		5F5244C6218010F100389CD7 /* RZMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244C5218010F100389CD7 /* RZMsgViewController.m */; };
-		5F5244CC21801EC100389CD7 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244CB21801EC100389CD7 /* ImSDK.framework */; };
-		5F5244CF21801EEE00389CD7 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244CD21801EEC00389CD7 /* TLSSDK.framework */; };
-		5F5244D021801EEE00389CD7 /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244CE21801EEE00389CD7 /* QALSDK.framework */; };
-		5F5244D22180227100389CD7 /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D12180227100389CD7 /* IMSDKBugly.framework */; };
 		5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */; };
 		5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D4218022BC00389CD7 /* CoreTelephony.framework */; };
 		5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D6218022CB00389CD7 /* libc++.tbd */; };
 		5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D8218022D600389CD7 /* libz.tbd */; };
 		5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244DA218022E200389CD7 /* libsqlite3.tbd */; };
 		5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F52452A2182ECFC00389CD7 /* RZUserManager.m */; };
-		5F524531218309BA00389CD7 /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F524530218309BA00389CD7 /* IMFriendshipExt.framework */; };
-		5F52453421830C0000389CD7 /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F52453221830BFF00389CD7 /* IMGroupExt.framework */; };
-		5F52453521830C0000389CD7 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F52453321830BFF00389CD7 /* IMMessageExt.framework */; };
 		5F7012B220F58B1E00088216 /* RZAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B120F58B1E00088216 /* RZAPI.m */; };
 		5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B420F58DF300088216 /* RZAPIResponse.m */; };
 		5F7012B820F58E0400088216 /* RZAPIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7012B720F58E0400088216 /* RZAPIError.m */; };
@@ -58,20 +51,22 @@
 		5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588220F8892900CC15A2 /* RZSettingCell.m */; };
 		5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */; };
 		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
-		5FD82CC5217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
-		5FD82CC6217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
-		5FD82CC7217E26D000D1779A /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
-		5FD82CC8217E26D100D1779A /* RZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4D20C44BEB005DF168 /* RZBaseNavigationController.m */; };
-		5FD82CC9217E26D400D1779A /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
-		5FD82CCA217E26D500D1779A /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
-		5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
 		5FEDA4A02186EE2600667A8A /* RZMsgUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */; };
 		5FEDA4A32186F8E200667A8A /* RZAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */; };
 		5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */; };
 		5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */; };
 		5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */; };
+		5FEDA51D21882EF600667A8A /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA51C21882EF600667A8A /* TIMServer.framework */; };
+		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
+		5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52A2188406200667A8A /* ImSDK.framework */; };
+		5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52B2188406200667A8A /* TLSSDK.framework */; };
+		5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52C2188406200667A8A /* QALSDK.framework */; };
+		5FEDA5342188406200667A8A /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */; };
+		5FEDA5352188406200667A8A /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52E2188406200667A8A /* IMGroupExt.framework */; };
+		5FEDA5362188406200667A8A /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52F2188406200667A8A /* IMSDKBugly.framework */; };
+		5FEDA5372188406200667A8A /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5302188406200667A8A /* IMMessageExt.framework */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -89,8 +84,6 @@
 		B2F14D1220C3EE7F005DF168 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1120C3EE7F005DF168 /* AppDelegate.m */; };
 		B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D1B20C3EE81005DF168 /* LaunchScreen.storyboard */; };
 		B2F14D2020C3EE81005DF168 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D1F20C3EE81005DF168 /* main.m */; };
-		B2F14D2A20C3EE81005DF168 /* ReadZoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D2920C3EE81005DF168 /* ReadZoneTests.m */; };
-		B2F14D3520C3EE81005DF168 /* ReadZoneUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D3420C3EE81005DF168 /* ReadZoneUITests.m */; };
 		B2F14D4620C3FA98005DF168 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D4420C3F2B2005DF168 /* Apple Chancery.ttf */; };
 		B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2F14D4520C3F936005DF168 /* AdobeSongStd-Light.otf */; };
 		B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F14D4A20C44BCE005DF168 /* RZLoginViewController.m */; };
@@ -100,23 +93,6 @@
 		B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */; };
 		DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B2F14D2620C3EE81005DF168 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2F14D0520C3EE7F005DF168 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2F14D0C20C3EE7F005DF168;
-			remoteInfo = ReadZone;
-		};
-		B2F14D3120C3EE81005DF168 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2F14D0520C3EE7F005DF168 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2F14D0C20C3EE7F005DF168;
-			remoteInfo = ReadZone;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,19 +121,12 @@
 		5F5244C4218010F100389CD7 /* RZMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgViewController.h; sourceTree = "<group>"; };
 		5F5244C5218010F100389CD7 /* RZMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgViewController.m; sourceTree = "<group>"; };
 		5F5244C721801E5700389CD7 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = ../Tencent_IM_Framework/ImSDK.framework; sourceTree = "<group>"; };
-		5F5244CB21801EC100389CD7 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		5F5244CD21801EEC00389CD7 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
-		5F5244CE21801EEE00389CD7 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
-		5F5244D12180227100389CD7 /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
 		5F5244D4218022BC00389CD7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5F5244D6218022CB00389CD7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5F5244D8218022D600389CD7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5F5244DA218022E200389CD7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5F5245292182ECFC00389CD7 /* RZUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserManager.h; sourceTree = "<group>"; };
 		5F52452A2182ECFC00389CD7 /* RZUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserManager.m; sourceTree = "<group>"; };
-		5F524530218309BA00389CD7 /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
-		5F52453221830BFF00389CD7 /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
-		5F52453321830BFF00389CD7 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		5F7012B020F58B1E00088216 /* RZAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPI.h; sourceTree = "<group>"; };
 		5F7012B120F58B1E00088216 /* RZAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPI.m; sourceTree = "<group>"; };
 		5F7012B320F58DF300088216 /* RZAPIResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPIResponse.h; sourceTree = "<group>"; };
@@ -226,6 +195,15 @@
 		5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMUserProfile+RZ.m"; sourceTree = "<group>"; };
 		5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMConversation+RZ.h"; sourceTree = "<group>"; };
 		5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMConversation+RZ.m"; sourceTree = "<group>"; };
+		5FEDA51C21882EF600667A8A /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "TIMServer/Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
+		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
+		5FEDA52A2188406200667A8A /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		5FEDA52B2188406200667A8A /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
+		5FEDA52C2188406200667A8A /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
+		5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
+		5FEDA52E2188406200667A8A /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
+		5FEDA52F2188406200667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
+		5FEDA5302188406200667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -273,10 +251,8 @@
 		B2F14D1C20C3EE81005DF168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2F14D1E20C3EE81005DF168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2F14D1F20C3EE81005DF168 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2F14D2520C3EE81005DF168 /* ReadZoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadZoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D2920C3EE81005DF168 /* ReadZoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadZoneTests.m; sourceTree = "<group>"; };
 		B2F14D2B20C3EE81005DF168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2F14D3020C3EE81005DF168 /* ReadZoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadZoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F14D3420C3EE81005DF168 /* ReadZoneUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadZoneUITests.m; sourceTree = "<group>"; };
 		B2F14D3620C3EE81005DF168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2F14D4420C3F2B2005DF168 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
@@ -300,31 +276,18 @@
 			files = (
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
-				5F524531218309BA00389CD7 /* IMFriendshipExt.framework in Frameworks */,
+				5FEDA5342188406200667A8A /* IMFriendshipExt.framework in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
-				5F52453421830C0000389CD7 /* IMGroupExt.framework in Frameworks */,
+				5FEDA5372188406200667A8A /* IMMessageExt.framework in Frameworks */,
+				5FEDA5352188406200667A8A /* IMGroupExt.framework in Frameworks */,
+				5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */,
+				5FEDA5362188406200667A8A /* IMSDKBugly.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
-				5F52453521830C0000389CD7 /* IMMessageExt.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
-				5F5244D021801EEE00389CD7 /* QALSDK.framework in Frameworks */,
-				5F5244CF21801EEE00389CD7 /* TLSSDK.framework in Frameworks */,
-				5F5244D22180227100389CD7 /* IMSDKBugly.framework in Frameworks */,
+				5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */,
 				DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */,
-				5F5244CC21801EC100389CD7 /* ImSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2F14D2220C3EE81005DF168 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2F14D2D20C3EE81005DF168 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */,
+				5FEDA51D21882EF600667A8A /* TIMServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,20 +364,6 @@
 				5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		5F5244CA21801E8B00389CD7 /* IMFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5F52453221830BFF00389CD7 /* IMGroupExt.framework */,
-				5F52453321830BFF00389CD7 /* IMMessageExt.framework */,
-				5F524530218309BA00389CD7 /* IMFriendshipExt.framework */,
-				5F5244D12180227100389CD7 /* IMSDKBugly.framework */,
-				5F5244CE21801EEE00389CD7 /* QALSDK.framework */,
-				5F5244CD21801EEC00389CD7 /* TLSSDK.framework */,
-				5F5244CB21801EC100389CD7 /* ImSDK.framework */,
-			);
-			path = IMFrameworks;
 			sourceTree = "<group>";
 		};
 		5F5245272182ECBF00389CD7 /* User */ = {
@@ -660,12 +609,36 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		5FEDA51B21882E2A00667A8A /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
+				5FEDA51C21882EF600667A8A /* TIMServer.framework */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		5FEDA5292188406200667A8A /* IMFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA52A2188406200667A8A /* ImSDK.framework */,
+				5FEDA52B2188406200667A8A /* TLSSDK.framework */,
+				5FEDA52C2188406200667A8A /* QALSDK.framework */,
+				5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */,
+				5FEDA52E2188406200667A8A /* IMGroupExt.framework */,
+				5FEDA52F2188406200667A8A /* IMSDKBugly.framework */,
+				5FEDA5302188406200667A8A /* IMMessageExt.framework */,
+			);
+			path = IMFrameworks;
+			sourceTree = "<group>";
+		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				5F5244DA218022E200389CD7 /* libsqlite3.tbd */,
 				5F5244D8218022D600389CD7 /* libz.tbd */,
 				5F5244D6218022CB00389CD7 /* libc++.tbd */,
+				B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */,
 				5F5244D4218022BC00389CD7 /* CoreTelephony.framework */,
 				5F5244C721801E5700389CD7 /* ImSDK.framework */,
 				B2003AAE20D4B6A600AEA413 /* CoreNFC.framework */,
@@ -673,7 +646,6 @@
 				B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */,
 				B2003AA220D4891800AEA413 /* UIKit.framework */,
 				B2003AA020D4890F00AEA413 /* Foundation.framework */,
-				B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */,
 				9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */,
 				EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */,
 				6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */,
@@ -996,7 +968,7 @@
 				B2F14D3320C3EE81005DF168 /* ReadZoneUITests */,
 				B2F14D0E20C3EE7F005DF168 /* Products */,
 				B2003A8C20D41A1900AEA413 /* Frameworks */,
-				5F5244CA21801E8B00389CD7 /* IMFrameworks */,
+				5FEDA5292188406200667A8A /* IMFrameworks */,
 				36D10E96F56458F6D20FF76F /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -1005,8 +977,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F14D0D20C3EE7F005DF168 /* ReadZone.app */,
-				B2F14D2520C3EE81005DF168 /* ReadZoneTests.xctest */,
-				B2F14D3020C3EE81005DF168 /* ReadZoneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1014,6 +984,7 @@
 		B2F14D0F20C3EE7F005DF168 /* ReadZone */ = {
 			isa = PBXGroup;
 			children = (
+				5FEDA51B21882E2A00667A8A /* Vendor */,
 				B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */,
 				B2BF657E20D75B42003059AE /* Network */,
 				B2BF657D20D75B37003059AE /* Global */,
@@ -1093,42 +1064,6 @@
 			productReference = B2F14D0D20C3EE7F005DF168 /* ReadZone.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B2F14D2420C3EE81005DF168 /* ReadZoneTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2F14D3C20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneTests" */;
-			buildPhases = (
-				B2F14D2120C3EE81005DF168 /* Sources */,
-				B2F14D2220C3EE81005DF168 /* Frameworks */,
-				B2F14D2320C3EE81005DF168 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2F14D2720C3EE81005DF168 /* PBXTargetDependency */,
-			);
-			name = ReadZoneTests;
-			productName = ReadZoneTests;
-			productReference = B2F14D2520C3EE81005DF168 /* ReadZoneTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B2F14D2F20C3EE81005DF168 /* ReadZoneUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2F14D3F20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneUITests" */;
-			buildPhases = (
-				B2F14D2C20C3EE81005DF168 /* Sources */,
-				B2F14D2D20C3EE81005DF168 /* Frameworks */,
-				B2F14D2E20C3EE81005DF168 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2F14D3220C3EE81005DF168 /* PBXTargetDependency */,
-			);
-			name = ReadZoneUITests;
-			productName = ReadZoneUITests;
-			productReference = B2F14D3020C3EE81005DF168 /* ReadZoneUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1158,16 +1093,6 @@
 							};
 						};
 					};
-					B2F14D2420C3EE81005DF168 = {
-						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Manual;
-						TestTargetID = B2F14D0C20C3EE7F005DF168;
-					};
-					B2F14D2F20C3EE81005DF168 = {
-						CreatedOnToolsVersion = 9.4;
-						ProvisioningStyle = Manual;
-						TestTargetID = B2F14D0C20C3EE7F005DF168;
-					};
 				};
 			};
 			buildConfigurationList = B2F14D0820C3EE7F005DF168 /* Build configuration list for PBXProject "ReadZone" */;
@@ -1186,8 +1111,6 @@
 			projectRoot = "";
 			targets = (
 				B2F14D0C20C3EE7F005DF168 /* ReadZone */,
-				B2F14D2420C3EE81005DF168 /* ReadZoneTests */,
-				B2F14D2F20C3EE81005DF168 /* ReadZoneUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1198,26 +1121,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F14D4620C3FA98005DF168 /* Apple Chancery.ttf in Resources */,
+				5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */,
 				5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */,
 				B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */,
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
 				5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */,
 				5F2D8F74217FFA460045D8B6 /* asset in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2F14D2320C3EE81005DF168 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2F14D2E20C3EE81005DF168 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,6 +1146,7 @@
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -1255,6 +1166,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
@@ -1363,43 +1275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2F14D2120C3EE81005DF168 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FD82CCE217E27A200D1779A /* RZWebServerManager.m in Sources */,
-				5FD82CC7217E26D000D1779A /* RZBaseNavigationController.m in Sources */,
-				5FD82CC5217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
-				B2F14D2A20C3EE81005DF168 /* ReadZoneTests.m in Sources */,
-				5FD82CC9217E26D400D1779A /* RZBaseViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2F14D2C20C3EE81005DF168 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FD82CC8217E26D100D1779A /* RZBaseNavigationController.m in Sources */,
-				5FD82CC6217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
-				B2F14D3520C3EE81005DF168 /* ReadZoneUITests.m in Sources */,
-				5FD82CCA217E26D500D1779A /* RZBaseViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B2F14D2720C3EE81005DF168 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2F14D0C20C3EE7F005DF168 /* ReadZone */;
-			targetProxy = B2F14D2620C3EE81005DF168 /* PBXContainerItemProxy */;
-		};
-		B2F14D3220C3EE81005DF168 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2F14D0C20C3EE7F005DF168 /* ReadZone */;
-			targetProxy = B2F14D3120C3EE81005DF168 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5F403D4C2101EFDA00050FEB /* InfoPlist.strings */ = {
@@ -1556,6 +1432,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1594,6 +1471,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1615,77 +1493,6 @@
 			};
 			name = Release;
 		};
-		B2F14D3D20C3EE81005DF168 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 76ABAVPT36;
-				INFOPLIST_FILE = ReadZoneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadZone.app/ReadZone";
-			};
-			name = Debug;
-		};
-		B2F14D3E20C3EE81005DF168 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 76ABAVPT36;
-				INFOPLIST_FILE = ReadZoneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReadZone.app/ReadZone";
-			};
-			name = Release;
-		};
-		B2F14D4020C3EE81005DF168 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 76ABAVPT36;
-				INFOPLIST_FILE = ReadZoneUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "011a3853-286e-4d67-a98c-1d855cb6bacc";
-				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ReadZone;
-			};
-			name = Debug;
-		};
-		B2F14D4120C3EE81005DF168 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 76ABAVPT36;
-				INFOPLIST_FILE = ReadZoneUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZoneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "011a3853-286e-4d67-a98c-1d855cb6bacc";
-				PROVISIONING_PROFILE_SPECIFIER = xielyDevelopmentTest;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ReadZone;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1703,24 +1510,6 @@
 			buildConfigurations = (
 				B2F14D3A20C3EE81005DF168 /* Debug */,
 				B2F14D3B20C3EE81005DF168 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2F14D3C20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2F14D3D20C3EE81005DF168 /* Debug */,
-				B2F14D3E20C3EE81005DF168 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2F14D3F20C3EE81005DF168 /* Build configuration list for PBXNativeTarget "ReadZoneUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2F14D4020C3EE81005DF168 /* Debug */,
-				B2F14D4120C3EE81005DF168 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

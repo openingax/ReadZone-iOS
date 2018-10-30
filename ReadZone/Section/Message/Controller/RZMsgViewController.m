@@ -108,7 +108,8 @@ UITableViewDataSource
     TIMConversation *converation = [self.conversations objectAtIndex:indexPath.row];
     
     cell.iconUrl = converation.faceURL;
-    cell.name = [converation getReceiver];
+    TIMConversationType type = [converation getType];
+    cell.name = type == TIM_SYSTEM ? RZLocalizedString(@"MESSAGE_SYSTEM_MSG", @"【系统消息】") : [converation getReceiver];
     
     return cell;
 }
@@ -250,8 +251,6 @@ UITableViewDataSource
             }
         }
     }
-    
-    self.msgTV.text = [NSString stringWithFormat:@"%@\n%@", self.msgTV.text, msg];
 }
 
 #pragma mark - Action

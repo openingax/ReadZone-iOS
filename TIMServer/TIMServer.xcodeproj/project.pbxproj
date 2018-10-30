@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FEDA500218827AC00667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4F9218827AB00667A8A /* ImSDK.framework */; };
+		5FEDA501218827AC00667A8A /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */; };
+		5FEDA502218827AC00667A8A /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */; };
+		5FEDA503218827AC00667A8A /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FC218827AB00667A8A /* QALSDK.framework */; };
+		5FEDA504218827AC00667A8A /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */; };
+		5FEDA505218827AC00667A8A /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */; };
+		5FEDA506218827AC00667A8A /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FF218827AC00667A8A /* TLSSDK.framework */; };
+		5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50D2188280500667A8A /* CoreTelephony.framework */; };
+		5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50F2188280D00667A8A /* CoreNFC.framework */; };
+		5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5112188281400667A8A /* CoreGraphics.framework */; };
+		5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5132188281D00667A8A /* SystemConfiguration.framework */; };
+		5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5152188282500667A8A /* UIKit.framework */; };
+		5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5172188282D00667A8A /* Foundation.framework */; };
+		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
+		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
+		5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */; };
+		ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5FEDA4DC2188076200667A8A /* TIMServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TIMServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FEDA4DF2188076200667A8A /* TIMServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServer.h; sourceTree = "<group>"; };
+		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEDA4EA2188076200667A8A /* TIMServerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerTests.m; sourceTree = "<group>"; };
+		5FEDA4EC2188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEDA4F9218827AB00667A8A /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
+		5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
+		5FEDA4FC218827AB00667A8A /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
+		5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
+		5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
+		5FEDA4FF218827AC00667A8A /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
+		5FEDA50D2188280500667A8A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5FEDA50F2188280D00667A8A /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		5FEDA5112188281400667A8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5FEDA5132188281D00667A8A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5FEDA5152188282500667A8A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5FEDA5172188282D00667A8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5FEDA54121887A5D00667A8A /* TSInputToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSInputToolBar.h; sourceTree = "<group>"; };
+		5FEDA54221887A5D00667A8A /* TSInputToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSInputToolBar.m; sourceTree = "<group>"; };
+		5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TS-PrefixHeader.pch"; sourceTree = "<group>"; };
+		94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TIMServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.debug.xcconfig"; sourceTree = "<group>"; };
+		FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FEDA4D92188076200667A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
+				5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */,
+				5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */,
+				5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */,
+				5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */,
+				5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */,
+				5FEDA502218827AC00667A8A /* IMFriendshipExt.framework in Frameworks */,
+				5FEDA506218827AC00667A8A /* TLSSDK.framework in Frameworks */,
+				5FEDA501218827AC00667A8A /* IMMessageExt.framework in Frameworks */,
+				5FEDA503218827AC00667A8A /* QALSDK.framework in Frameworks */,
+				5FEDA504218827AC00667A8A /* IMGroupExt.framework in Frameworks */,
+				5FEDA505218827AC00667A8A /* IMSDKBugly.framework in Frameworks */,
+				5FEDA500218827AC00667A8A /* ImSDK.framework in Frameworks */,
+				ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FEDA4D22188076200667A8A = {
+			isa = PBXGroup;
+			children = (
+				5FEDA4DE2188076200667A8A /* TIMServer */,
+				5FEDA4E92188076200667A8A /* TIMServerTests */,
+				5FEDA4DD2188076200667A8A /* Products */,
+				DE3A9A7C8C3544D05A6BC8B1 /* Pods */,
+				B6446FCC6A07244B3AA0D9BC /* Frameworks */,
+				5FEDA4F82188278900667A8A /* IMFrameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5FEDA4DD2188076200667A8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA4DC2188076200667A8A /* TIMServer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FEDA4DE2188076200667A8A /* TIMServer */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA54021887A2500667A8A /* View */,
+				5FEDA52321882F8A00667A8A /* General */,
+				5FEDA52221882F7E00667A8A /* Section */,
+				5FEDA4DF2188076200667A8A /* TIMServer.h */,
+				5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */,
+				5FEDA4E02188076200667A8A /* Info.plist */,
+			);
+			path = TIMServer;
+			sourceTree = "<group>";
+		};
+		5FEDA4E92188076200667A8A /* TIMServerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA4EA2188076200667A8A /* TIMServerTests.m */,
+				5FEDA4EC2188076200667A8A /* Info.plist */,
+			);
+			path = TIMServerTests;
+			sourceTree = "<group>";
+		};
+		5FEDA4F82188278900667A8A /* IMFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */,
+				5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */,
+				5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */,
+				5FEDA4F9218827AB00667A8A /* ImSDK.framework */,
+				5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */,
+				5FEDA4FC218827AB00667A8A /* QALSDK.framework */,
+				5FEDA4FF218827AC00667A8A /* TLSSDK.framework */,
+			);
+			path = IMFrameworks;
+			sourceTree = "<group>";
+		};
+		5FEDA52221882F7E00667A8A /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA52421882F9300667A8A /* Conversation */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		5FEDA52321882F8A00667A8A /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		5FEDA52421882F9300667A8A /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA5272188306800667A8A /* Manager */,
+				5FEDA5262188306000667A8A /* View */,
+				5FEDA52521882FA200667A8A /* Controller */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		5FEDA52521882FA200667A8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FEDA5262188306000667A8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FEDA5272188306800667A8A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5FEDA54021887A2500667A8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA54121887A5D00667A8A /* TSInputToolBar.h */,
+				5FEDA54221887A5D00667A8A /* TSInputToolBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FEDA5172188282D00667A8A /* Foundation.framework */,
+				5FEDA5152188282500667A8A /* UIKit.framework */,
+				5FEDA5132188281D00667A8A /* SystemConfiguration.framework */,
+				5FEDA5112188281400667A8A /* CoreGraphics.framework */,
+				5FEDA50F2188280D00667A8A /* CoreNFC.framework */,
+				5FEDA50D2188280500667A8A /* CoreTelephony.framework */,
+				94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE3A9A7C8C3544D05A6BC8B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */,
+				FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5FEDA4D72188076200667A8A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
+				5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */,
+				5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5FEDA4DB2188076200667A8A /* TIMServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FEDA4F02188076200667A8A /* Build configuration list for PBXNativeTarget "TIMServer" */;
+			buildPhases = (
+				39B59CAF444E1A245E91C640 /* [CP] Check Pods Manifest.lock */,
+				5FEDA4D72188076200667A8A /* Headers */,
+				5FEDA4D82188076200667A8A /* Sources */,
+				5FEDA4D92188076200667A8A /* Frameworks */,
+				5FEDA4DA2188076200667A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TIMServer;
+			productName = TIMServer;
+			productReference = 5FEDA4DC2188076200667A8A /* TIMServer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FEDA4D32188076200667A8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Viomi;
+				TargetAttributes = {
+					5FEDA4DB2188076200667A8A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 5FEDA4D62188076200667A8A /* Build configuration list for PBXProject "TIMServer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5FEDA4D22188076200667A8A;
+			productRefGroup = 5FEDA4DD2188076200667A8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FEDA4DB2188076200667A8A /* TIMServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FEDA4DA2188076200667A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		39B59CAF444E1A245E91C640 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TIMServer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FEDA4D82188076200667A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5FEDA4EE2188076200667A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5FEDA4EF2188076200667A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5FEDA4F12188076200667A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IMFrameworks",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
+				INFOPLIST_FILE = TIMServer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5FEDA4F22188076200667A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 76ABAVPT36;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IMFrameworks",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
+				INFOPLIST_FILE = TIMServer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FEDA4D62188076200667A8A /* Build configuration list for PBXProject "TIMServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FEDA4EE2188076200667A8A /* Debug */,
+				5FEDA4EF2188076200667A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FEDA4F02188076200667A8A /* Build configuration list for PBXNativeTarget "TIMServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FEDA4F12188076200667A8A /* Debug */,
+				5FEDA4F22188076200667A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FEDA4D32188076200667A8A /* Project object */;
+}

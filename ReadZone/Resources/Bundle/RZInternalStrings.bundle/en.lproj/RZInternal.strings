@@ -69,4 +69,5 @@
 "MESSAGE_NAV_ADD_FRIEND" = "Add friend";
 "MESSAGE_ADD_FRIEND_PLACEHOLDER" = "Name / User identifier";
 "MESSAGE_BUTTON_ADD_FRIEND" = "Add";
+"MESSAGE_SYSTEM_MSG" = "System infomation";
 
