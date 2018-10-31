@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1200DDD22C302B5D946BFF /* libPods-ReadZone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */; };
 		5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0657302110A32E0081D6A9 /* RZUserModel.m */; };
+		5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0B2460218987AB00F9AC0B /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
@@ -50,6 +52,7 @@
 		5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */; };
 		5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588220F8892900CC15A2 /* RZSettingCell.m */; };
 		5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */; };
+		5FC4EA2021899DDE007A487E /* TIMServerLocalizable.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */; };
 		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
@@ -58,7 +61,6 @@
 		5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */; };
 		5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */; };
 		5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */; };
-		5FEDA51D21882EF600667A8A /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA51C21882EF600667A8A /* TIMServer.framework */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
 		5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52A2188406200667A8A /* ImSDK.framework */; };
 		5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52B2188406200667A8A /* TLSSDK.framework */; };
@@ -91,13 +93,13 @@
 		B2FFF03420E4798C008CD245 /* RZFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* RZFoundationLog.m */; };
 		B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
 		B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */; };
-		DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
 		5F06572F2110A32E0081D6A9 /* RZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserModel.h; sourceTree = "<group>"; };
 		5F0657302110A32E0081D6A9 /* RZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserModel.m; sourceTree = "<group>"; };
+		5F0B2460218987AB00F9AC0B /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = ReadZone/Vendor/TIMServer/TIMServer.framework; sourceTree = SOURCE_ROOT; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		5FBF588220F8892900CC15A2 /* RZSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingCell.m; sourceTree = "<group>"; };
 		5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAboutViewController.h; sourceTree = "<group>"; };
 		5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAboutViewController.m; sourceTree = "<group>"; };
+		5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServerLocalizable.bundle; sourceTree = "<group>"; };
 		5FD82CC2217E26BE00D1779A /* RZBaseWebKitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseWebKitController.h; sourceTree = "<group>"; };
 		5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseWebKitController.m; sourceTree = "<group>"; };
 		5FD82CCB217E27A200D1779A /* RZWebServerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZWebServerManager.h; sourceTree = "<group>"; };
@@ -195,7 +198,6 @@
 		5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMUserProfile+RZ.m"; sourceTree = "<group>"; };
 		5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMConversation+RZ.h"; sourceTree = "<group>"; };
 		5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMConversation+RZ.m"; sourceTree = "<group>"; };
-		5FEDA51C21882EF600667A8A /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "TIMServer/Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
 		5FEDA52A2188406200667A8A /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		5FEDA52B2188406200667A8A /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
@@ -205,7 +207,6 @@
 		5FEDA52F2188406200667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
 		5FEDA5302188406200667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
 		B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libTelephonyIOKitDynamic.tbd; path = usr/lib/libTelephonyIOKitDynamic.tbd; sourceTree = SDKROOT; };
 		B2003AA020D4890F00AEA413 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -266,6 +267,7 @@
 		B2FFF04520E5446D008CD245 /* RZBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseViewController.m; sourceTree = "<group>"; };
 		B2FFF04720E545EF008CD245 /* RZHotPotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotViewController.h; sourceTree = "<group>"; };
 		B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotViewController.m; sourceTree = "<group>"; };
+		D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadZone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -280,14 +282,14 @@
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
 				5FEDA5372188406200667A8A /* IMMessageExt.framework in Frameworks */,
 				5FEDA5352188406200667A8A /* IMGroupExt.framework in Frameworks */,
+				5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */,
 				5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */,
 				5FEDA5362188406200667A8A /* IMSDKBugly.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
 				5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */,
-				DF177B7A5D0A08C56A7AAEE9 /* Pods_ReadZone.framework in Frameworks */,
 				5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */,
-				5FEDA51D21882EF600667A8A /* TIMServer.framework in Frameworks */,
+				3F1200DDD22C302B5D946BFF /* libPods-ReadZone.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +574,16 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		5FC4EA2121899E28007A487E /* TIMServer */ = {
+			isa = PBXGroup;
+			children = (
+				5F0B2460218987AB00F9AC0B /* TIMServer.framework */,
+				5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */,
+				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
+			);
+			path = TIMServer;
+			sourceTree = "<group>";
+		};
 		5FD82CBF217E267F00D1779A /* WebKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,8 +624,7 @@
 		5FEDA51B21882E2A00667A8A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
-				5FEDA51C21882EF600667A8A /* TIMServer.framework */,
+				5FC4EA2121899E28007A487E /* TIMServer */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -646,9 +657,9 @@
 				B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */,
 				B2003AA220D4891800AEA413 /* UIKit.framework */,
 				B2003AA020D4890F00AEA413 /* Foundation.framework */,
-				9A6B278C4899A0B2109039E1 /* Pods_ReadZone.framework */,
 				EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */,
 				6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */,
+				D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1054,6 +1065,7 @@
 				B2F14D0A20C3EE7F005DF168 /* Frameworks */,
 				B2F14D0B20C3EE7F005DF168 /* Resources */,
 				137E1D589CF4CA8FEF2C7FF0 /* [CP] Embed Pods Frameworks */,
+				4BB64C95E67C0571F538E602 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1124,6 +1136,7 @@
 				5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */,
 				5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */,
 				B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */,
+				5FC4EA2021899DDE007A487E /* TIMServerLocalizable.bundle in Resources */,
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
 				5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */,
@@ -1141,47 +1154,37 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
-				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
-				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
-				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
-				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BB64C95E67C0571F538E602 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D3B2ED02A65B7385CAAD61 /* [CP] Check Pods Manifest.lock */ = {
@@ -1355,7 +1358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1408,7 +1411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1433,6 +1436,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1472,6 +1476,7 @@
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;

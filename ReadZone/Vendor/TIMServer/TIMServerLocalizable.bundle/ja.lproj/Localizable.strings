@@ -1,0 +1,64 @@
+//
+// RSKImageCropper.strings
+//
+// Copyright (c) 2014-present Ruslan Skorb, http://ruslanskorb.com/
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
+/* Login VC */
+"LOGIN_LABEL_TITLE" = "ログイン";
+"LOGIN_PLACEHOLDER_ACCOUNT" = "電話 / Eメール / ユーザー名";
+"LOGIN_PLACEHOLDER_PWD" = "パスワード";
+"LOGIN_BTN_LOGIN" = "ログイン";
+"LOGIN_BTN_REGISTER" = "まだ登録されていません？";
+"LOGIN_BTN_FORGOT_PWD" = "パスワードを忘れましたか？";
+
+/* Register VC */
+"REGISTER_NAV_TITLE" = "登録";
+"REGISTER_PLACEHOLDER_ACCOUNT" = "電話 / Eメール";
+"REGISTER_PLACEHOLDER_PWD" = "パスワード";
+"REGISTER_BTN_REGISTER" = "登録";
+
+/* Root VC */
+"ROOT_NAV_TITLE" = "図書館";
+
+/* Menu VC */
+"MENU_BUTTON_MESSAGE" = "メッセージ";
+"MENU_BUTTON_NOTE" = "レコード";
+"MENU_BUTTON_OFFLINE" = "オフライン";
+"MENU_BUTTON_SETTING" = "設定";
+"MENU_APP_NAME" = "読書スペース";
+
+/* Setting */
+"SETTING_NAV_SETTING" = "設定";
+"SETTING_CELL_LOGOUT" = "ログアウト";
+"SETTING_CELL_USERNAME" = "ユーザー名";
+"SETTING_CELL_ACCOUNT" = "アカウント";
+"SETTING_CELL_ABOUT" = "申込について";
+"SETTING_CELL_HELP" = "助けて";
+"SETTING_CELL_FEEDBACK" = "フィードバック";
+"SETTING_CELL_CLEARTCACHE" = "キャッシュをクリアする";
+"SETTING_CELL_DEVELOP" = "開発";
+"SETTING_CELL_PROTOCOL" = "利用規約";
+"SETTING_CELL_PRIVACY" = "プライバシーポリシー";
+"SETTING_CANCEL" = "キャンセル";
+
+"ABOUT_NAV_TITLE" = "申込について";
+

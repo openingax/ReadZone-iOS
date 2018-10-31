@@ -3,10 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1BB7992189373900340520 /* UIView+TS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7972189373900340520 /* UIView+TS.h */; };
+		5F1BB79A2189373900340520 /* UIView+TS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7982189373900340520 /* UIView+TS.m */; };
+		5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB79D2189383B00340520 /* TSBaseViewController.h */; };
+		5F1BB7A02189383B00340520 /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB79E2189383B00340520 /* TSBaseViewController.m */; };
+		5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A12189398500340520 /* UIViewController+Layout.h */; };
+		5F1BB7A42189398500340520 /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7A22189398500340520 /* UIViewController+Layout.m */; };
+		5F1BB7A721893DA300340520 /* UIView+CustomAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */; };
+		5F1BB7A821893DA300340520 /* UIView+CustomAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */; };
+		5F1BB7AB21893EB900340520 /* TSDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7AA21893EB900340520 /* TSDevice.h */; };
+		5F1BB7AC21893EBD00340520 /* TSDebugMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A921893E4300340520 /* TSDebugMarco.h */; };
+		5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7AD2189405400340520 /* TSColorMarco.h */; };
+		5F1BB7B2218940BD00340520 /* UIColor+MLPFlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */; };
+		5F1BB7B3218940BD00340520 /* UIColor+MLPFlatColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */; };
+		5F1BB7B52189415300340520 /* CommonLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B42189415300340520 /* CommonLibrary.h */; };
+		5F1BB7BA21894BC900340520 /* UIView+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B821894BC900340520 /* UIView+Layout.h */; };
+		5F1BB7BB21894BC900340520 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7B921894BC900340520 /* UIView+Layout.m */; };
+		5F1BB7BD218956EE00340520 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1BB7BC218956EE00340520 /* Media.xcassets */; };
+		5F1BB7C021895ADE00340520 /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7BE21895ADE00340520 /* UIImage+Common.h */; };
+		5F1BB7C121895ADE00340520 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7BF21895ADE00340520 /* UIImage+Common.m */; };
+		5F1BB7C421895B0E00340520 /* UIImage+Alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */; };
+		5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */; };
+		5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7C621895B6500340520 /* NSString+Common.h */; };
+		5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7C721895B6500340520 /* NSString+Common.m */; };
+		5F1BB7CC21895BFB00340520 /* NSData+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7CA21895BFB00340520 /* NSData+Common.h */; };
+		5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7CB21895BFB00340520 /* NSData+Common.m */; };
+		5F1BB7D221895CA900340520 /* PathUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7CF21895CA800340520 /* PathUtility.h */; };
+		5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D021895CA800340520 /* PathHeaders.h */; };
+		5F1BB7D421895CA900340520 /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7D121895CA800340520 /* PathUtility.m */; };
+		5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D621895CF700340520 /* ARCCompile.h */; };
+		5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */; };
+		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
+		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
+		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
 		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FEDA500218827AC00667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4F9218827AB00667A8A /* ImSDK.framework */; };
 		5FEDA501218827AC00667A8A /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */; };
@@ -21,13 +54,46 @@
 		5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5132188281D00667A8A /* SystemConfiguration.framework */; };
 		5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5152188282500667A8A /* UIKit.framework */; };
 		5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5172188282D00667A8A /* Foundation.framework */; };
-		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
+		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
 		5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */; };
 		ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F1BB7972189373900340520 /* UIView+TS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+TS.h"; sourceTree = "<group>"; };
+		5F1BB7982189373900340520 /* UIView+TS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+TS.m"; sourceTree = "<group>"; };
+		5F1BB79D2189383B00340520 /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
+		5F1BB79E2189383B00340520 /* TSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
+		5F1BB7A12189398500340520 /* UIViewController+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Layout.h"; sourceTree = "<group>"; };
+		5F1BB7A22189398500340520 /* UIViewController+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
+		5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAutoLayout.h"; sourceTree = "<group>"; };
+		5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAutoLayout.m"; sourceTree = "<group>"; };
+		5F1BB7A921893E4300340520 /* TSDebugMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDebugMarco.h; sourceTree = "<group>"; };
+		5F1BB7AA21893EB900340520 /* TSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDevice.h; sourceTree = "<group>"; };
+		5F1BB7AD2189405400340520 /* TSColorMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSColorMarco.h; sourceTree = "<group>"; };
+		5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MLPFlatColors.m"; sourceTree = "<group>"; };
+		5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MLPFlatColors.h"; sourceTree = "<group>"; };
+		5F1BB7B42189415300340520 /* CommonLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibrary.h; sourceTree = "<group>"; };
+		5F1BB7B821894BC900340520 /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		5F1BB7B921894BC900340520 /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		5F1BB7BC218956EE00340520 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		5F1BB7BE21895ADE00340520 /* UIImage+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
+		5F1BB7BF21895ADE00340520 /* UIImage+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
+		5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		5F1BB7C621895B6500340520 /* NSString+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		5F1BB7C721895B6500340520 /* NSString+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		5F1BB7CA21895BFB00340520 /* NSData+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Common.h"; sourceTree = "<group>"; };
+		5F1BB7CB21895BFB00340520 /* NSData+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Common.m"; sourceTree = "<group>"; };
+		5F1BB7CF21895CA800340520 /* PathUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtility.h; sourceTree = "<group>"; };
+		5F1BB7D021895CA800340520 /* PathHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHeaders.h; sourceTree = "<group>"; };
+		5F1BB7D121895CA800340520 /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
+		5F1BB7D621895CF700340520 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
+		5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
+		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
+		5FC4EA0E218994E1007A487E /* TIMServerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerHelper.m; sourceTree = "<group>"; };
+		5FC4EA222189A691007A487E /* TSConstMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConstMarco.h; sourceTree = "<group>"; };
 		5FEDA4DC2188076200667A8A /* TIMServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TIMServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEDA4DF2188076200667A8A /* TIMServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServer.h; sourceTree = "<group>"; };
 		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +145,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F1BB792218936E900340520 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB7972189373900340520 /* UIView+TS.h */,
+				5F1BB7982189373900340520 /* UIView+TS.m */,
+				5F1BB7BE21895ADE00340520 /* UIImage+Common.h */,
+				5F1BB7BF21895ADE00340520 /* UIImage+Common.m */,
+				5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */,
+				5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */,
+				5F1BB7C621895B6500340520 /* NSString+Common.h */,
+				5F1BB7C721895B6500340520 /* NSString+Common.m */,
+				5F1BB7CA21895BFB00340520 /* NSData+Common.h */,
+				5F1BB7CB21895BFB00340520 /* NSData+Common.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		5F1BB79B2189380F00340520 /* CommonLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB7B42189415300340520 /* CommonLibrary.h */,
+				5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */,
+				5F1BB7AA21893EB900340520 /* TSDevice.h */,
+				5F1BB7D521895CE900340520 /* DebugMacro */,
+				5F1BB7CE21895C8E00340520 /* Path */,
+				5F1BB7AF218940A400340520 /* Color */,
+				5F1BB79C2189381600340520 /* UIFramework */,
+				5F1BB792218936E900340520 /* Category */,
+			);
+			path = CommonLibrary;
+			sourceTree = "<group>";
+		};
+		5F1BB79C2189381600340520 /* UIFramework */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB79D2189383B00340520 /* TSBaseViewController.h */,
+				5F1BB79E2189383B00340520 /* TSBaseViewController.m */,
+				5F1BB7A12189398500340520 /* UIViewController+Layout.h */,
+				5F1BB7A22189398500340520 /* UIViewController+Layout.m */,
+				5F1BB7B821894BC900340520 /* UIView+Layout.h */,
+				5F1BB7B921894BC900340520 /* UIView+Layout.m */,
+				5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */,
+				5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */,
+			);
+			path = UIFramework;
+			sourceTree = "<group>";
+		};
+		5F1BB7AF218940A400340520 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB7AD2189405400340520 /* TSColorMarco.h */,
+				5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */,
+				5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		5F1BB7CE21895C8E00340520 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB7D021895CA800340520 /* PathHeaders.h */,
+				5F1BB7CF21895CA800340520 /* PathUtility.h */,
+				5F1BB7D121895CA800340520 /* PathUtility.m */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		5F1BB7D521895CE900340520 /* DebugMacro */ = {
+			isa = PBXGroup;
+			children = (
+				5F1BB7D621895CF700340520 /* ARCCompile.h */,
+				5F1BB7A921893E4300340520 /* TSDebugMarco.h */,
+			);
+			path = DebugMacro;
+			sourceTree = "<group>";
+		};
 		5FEDA4D22188076200667A8A = {
 			isa = PBXGroup;
 			children = (
@@ -102,10 +244,12 @@
 		5FEDA4DE2188076200667A8A /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
+				5F1BB79B2189380F00340520 /* CommonLibrary */,
 				5FEDA54021887A2500667A8A /* View */,
 				5FEDA52321882F8A00667A8A /* General */,
 				5FEDA52221882F7E00667A8A /* Section */,
 				5FEDA4DF2188076200667A8A /* TIMServer.h */,
+				5FC4EA222189A691007A487E /* TSConstMarco.h */,
 				5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */,
 				5FEDA4E02188076200667A8A /* Info.plist */,
 			);
@@ -146,6 +290,8 @@
 		5FEDA52321882F8A00667A8A /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5FC4EA0D218994E1007A487E /* TIMServerHelper.h */,
+				5FC4EA0E218994E1007A487E /* TIMServerHelper.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -186,6 +332,7 @@
 			children = (
 				5FEDA54121887A5D00667A8A /* TSInputToolBar.h */,
 				5FEDA54221887A5D00667A8A /* TSInputToolBar.m */,
+				5F1BB7BC218956EE00340520 /* Media.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,9 +367,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
+				5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */,
+				5F1BB7992189373900340520 /* UIView+TS.h in Headers */,
+				5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */,
+				5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */,
+				5F1BB7C021895ADE00340520 /* UIImage+Common.h in Headers */,
+				5F1BB7B52189415300340520 /* CommonLibrary.h in Headers */,
+				5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */,
+				5F1BB7B3218940BD00340520 /* UIColor+MLPFlatColors.h in Headers */,
+				5F1BB7D221895CA900340520 /* PathUtility.h in Headers */,
+				5F1BB7CC21895BFB00340520 /* NSData+Common.h in Headers */,
+				5F1BB7C421895B0E00340520 /* UIImage+Alpha.h in Headers */,
+				5F1BB7A721893DA300340520 /* UIView+CustomAutoLayout.h in Headers */,
+				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
 				5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */,
 				5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */,
+				5F1BB7AC21893EBD00340520 /* TSDebugMarco.h in Headers */,
+				5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */,
+				5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */,
+				5F1BB7AB21893EB900340520 /* TSDevice.h in Headers */,
+				5F1BB7BA21894BC900340520 /* UIView+Layout.h in Headers */,
+				5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +421,7 @@
 		5FEDA4D32188076200667A8A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TS;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Viomi;
 				TargetAttributes = {
@@ -263,11 +431,12 @@
 				};
 			};
 			buildConfigurationList = 5FEDA4D62188076200667A8A /* Build configuration list for PBXProject "TIMServer" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 5FEDA4D22188076200667A8A;
 			productRefGroup = 5FEDA4DD2188076200667A8A /* Products */;
@@ -284,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1BB7BD218956EE00340520 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +485,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1BB7C121895ADE00340520 /* UIImage+Common.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
+				5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */,
+				5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */,
+				5F1BB79A2189373900340520 /* UIView+TS.m in Sources */,
+				5F1BB7D421895CA900340520 /* PathUtility.m in Sources */,
+				5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */,
+				5F1BB7B2218940BD00340520 /* UIColor+MLPFlatColors.m in Sources */,
+				5F1BB7A42189398500340520 /* UIViewController+Layout.m in Sources */,
+				5F1BB7BB21894BC900340520 /* UIView+Layout.m in Sources */,
+				5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */,
+				5F1BB7A821893DA300340520 /* UIView+CustomAutoLayout.m in Sources */,
+				5F1BB7A02189383B00340520 /* TSBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -388,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -454,6 +638,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(BUILT_PRODUCTS_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
 				INFOPLIST_FILE = TIMServer/Info.plist;
@@ -465,6 +650,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -486,6 +672,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(BUILT_PRODUCTS_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
 				INFOPLIST_FILE = TIMServer/Info.plist;

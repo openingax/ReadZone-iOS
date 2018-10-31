@@ -8,8 +8,11 @@
 
 #import "RZMsgChatViewController.h"
 #import "TIMUserProfile+RZ.h"
+#import <TIMServer/TIMServer.h>
 
 @interface RZMsgChatViewController ()
+
+@property(nonatomic,strong) TSInputToolBar *toolBar;
 
 @end
 
@@ -27,7 +30,12 @@
 }
 
 - (void)drawView {
-    
+    _toolBar = [[TSInputToolBar alloc] init];
+    [self.view addSubview:_toolBar];
+    [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.height.mas_equalTo(self.toolBar.contentHeight);
+    }];
 }
 
 @end

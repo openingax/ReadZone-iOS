@@ -1,13 +1,13 @@
 # Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
 
 workspace 'ReadZone'
 
 project 'TIMServer/TIMServer.project'
+
 project 'ReadZone.project'
 
 target 'TIMServer' do
-    
-    platform :ios, '9.0'
     
     project 'TIMServer/TIMServer.project'
 end
@@ -15,8 +15,6 @@ end
 target 'ReadZone' do
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
-    
-    platform :ios, '9.0'
     
     # develop tools
     #  pod 'MLeaksFinder', '~> 1.0.0'
@@ -34,7 +32,7 @@ target 'ReadZone' do
     #  pod 'SDCycleScrollView', '~> 1.75'
     pod 'MBProgressHUD', '~> 1.1.0'
     pod 'MJExtension', '~> 3.0.15.1'
-    pod 'IQKeyboardManager', '~> 6.0.4'
+#    pod 'IQKeyboardManager', '~> 6.0.4'
     pod 'FDFullscreenPopGesture', '~> 1.1'
     pod 'TZImagePickerController', '~> 2.2.2'
     pod 'KVOController', '~> 1.2.0'
