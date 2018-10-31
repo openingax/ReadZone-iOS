@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1200DDD22C302B5D946BFF /* libPods-ReadZone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */; };
 		5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0657302110A32E0081D6A9 /* RZUserModel.m */; };
 		5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0B2460218987AB00F9AC0B /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
@@ -93,6 +92,7 @@
 		B2FFF03420E4798C008CD245 /* RZFoundationLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF03320E4798C008CD245 /* RZFoundationLog.m */; };
 		B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04520E5446D008CD245 /* RZBaseViewController.m */; };
 		B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */; };
+		CF014582AE033216B9C2CB69 /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +207,7 @@
 		5FEDA52F2188406200667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
 		5FEDA5302188406200667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
 		B2003A9B20D41D9000AEA413 /* libTelephonyIOKitDynamic.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libTelephonyIOKitDynamic.tbd; path = usr/lib/libTelephonyIOKitDynamic.tbd; sourceTree = SDKROOT; };
 		B2003AA020D4890F00AEA413 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -267,7 +268,6 @@
 		B2FFF04520E5446D008CD245 /* RZBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseViewController.m; sourceTree = "<group>"; };
 		B2FFF04720E545EF008CD245 /* RZHotPotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZHotPotViewController.h; sourceTree = "<group>"; };
 		B2FFF04820E545EF008CD245 /* RZHotPotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZHotPotViewController.m; sourceTree = "<group>"; };
-		D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadZone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -289,7 +289,7 @@
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
 				5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */,
 				5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */,
-				3F1200DDD22C302B5D946BFF /* libPods-ReadZone.a in Frameworks */,
+				CF014582AE033216B9C2CB69 /* Pods_ReadZone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +659,7 @@
 				B2003AA020D4890F00AEA413 /* Foundation.framework */,
 				EF0CF6F149EFC287D7D5CACD /* Pods_ReadZoneTests.framework */,
 				6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */,
-				D3D23546EA36FBA6542A5A91 /* libPods-ReadZone.a */,
+				6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1065,7 +1065,6 @@
 				B2F14D0A20C3EE7F005DF168 /* Frameworks */,
 				B2F14D0B20C3EE7F005DF168 /* Resources */,
 				137E1D589CF4CA8FEF2C7FF0 /* [CP] Embed Pods Frameworks */,
-				4BB64C95E67C0571F538E602 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1154,37 +1153,45 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
+				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
+				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
+				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4BB64C95E67C0571F538E602 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-resources.sh",
-				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D3B2ED02A65B7385CAAD61 /* [CP] Check Pods Manifest.lock */ = {

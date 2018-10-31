@@ -13,5 +13,8 @@
 #define kTimMiddleTextFont      [UIFont systemFontOfSize:14]
 #define kTimSmallTextFont       [UIFont systemFontOfSize:12]
 
+#define kScreenWidth            [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight           [[UIScreen mainScreen] bounds].size.height
+
 
 #endif /* TSConstMarco_h */

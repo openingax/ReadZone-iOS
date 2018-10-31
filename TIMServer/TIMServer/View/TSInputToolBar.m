@@ -30,6 +30,11 @@
         // iPX 84，其余 50
         _contentHeight = kIsiPhoneX ? 84 : 50;
         self.backgroundColor = RGBOF(0xEEEEEE);
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     }
     return self;
 }
@@ -129,12 +134,72 @@
 }
 
 
+#pragma mark - Notification
+- (void)onKeyboardDidShow:(NSNotification *)noti {
+    if ([self isEditing]) {
+        NSDictionary *userInfo = noti.userInfo;
+        CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        
+        CGFloat contentHeight = 50;
+//        if (contentHeight != _contentHeight) {
+            CGRect rect = self.frame;
+            rect.origin.y = endFrame.origin.y - contentHeight;
+            rect.size.height = contentHeight;
+            
+            [UIView animateWithDuration:duration animations:^{
+                self.frame = rect;
+                self.contentHeight = contentHeight;
+            }];
+//        }
+    }
+}
+
+- (void)onKeyboardDidChangeFrame:(NSNotification *)noti {
+    NSDictionary *userInfo = noti.userInfo;
+    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    CGFloat contentHeight = 50;
+    CGRect rect = self.frame;
+    rect.origin.y = endFrame.origin.y - contentHeight;
+    rect.size.height = contentHeight;
+    
+    self.frame = rect;
+    self.contentHeight = contentHeight;
+}
+
+- (void)onKeyboardWillHide:(NSNotification *)noti {
+    NSDictionary* userInfo = noti.userInfo;
+    
+    CGPoint kbBeginOrigin = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].origin;
+    CGPoint kbEndOrigin = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].origin;
+    if (kbEndOrigin.x > 0) return;
+    
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    NSInteger contentHeight = kIsiPhoneX ? 84 : 50;
+    
+//    if (_contentHeight != contentHeight) {
+        CGRect rect = self.frame;
+        rect.origin.y = kScreenHeight - contentHeight;
+        rect.size.height = contentHeight;
+        
+        [UIView animateWithDuration:duration animations:^{
+            self.frame = rect;
+            self.contentHeight = contentHeight;
+        }];
+        
+//    }
+}
+
 
 - (BOOL)isEditing {
     return [_textView isFirstResponder];
 }
 
 #pragma mark - Action
+
 - (void)onAudioBtnClick:(UIButton *)button {
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressed.hidden = !_audioBtn.selected;

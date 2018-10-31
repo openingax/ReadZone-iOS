@@ -72,11 +72,34 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)addFriendAction {
+    [self.view endEditing:YES];
+    
     TIMAddFriendRequest *request = [[TIMAddFriendRequest alloc] init];
     request.identifier = [NSString stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:_userTF.text];
     
     [[TIMFriendshipManager sharedInstance] addFriend:@[request] succ:^(NSArray *friends) {
         [self.view makeToast:[NSString stringWithFormat:@"添加 %@ 成功", self.userTF.text]];
+        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            TIMConversation *conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:self.userTF.text];
+//            
+//            // 发送文本消息
+//            TIMTextElem *textElem = [[TIMTextElem alloc] init];
+//            textElem.text = @"测试文本";
+//            TIMMessage *msg = [[TIMMessage alloc] init];
+//            [msg addElem:textElem];
+//            
+//            @weakify(self);
+//            [conversation sendMessage:msg succ:^{
+//                @strongify(self);
+//                NSLog(@"消息【%@】发送成功", self.userTF.text);
+//                self.userTF.text = @"";
+//            } fail:^(int code, NSString *msg) {
+//                @strongify(self);
+//                NSLog(@"消息【%@】发送失败", self.userTF.text);
+//            }];
+//        });
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });

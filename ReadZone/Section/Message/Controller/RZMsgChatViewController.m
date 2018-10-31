@@ -24,18 +24,32 @@
     [self drawView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 - (void)drawNavBar {
     [super drawNavBar];
     self.title = [self.conversaion getReceiver];
 }
 
 - (void)drawView {
+    
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [self.view addGestureRecognizer:tapGes];
+    
     _toolBar = [[TSInputToolBar alloc] init];
     [self.view addSubview:_toolBar];
     [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
         make.height.mas_equalTo(self.toolBar.contentHeight);
     }];
+}
+
+#pragma mark - Action
+
+- (void)tapAction {
+    [_toolBar endEditing:YES];
 }
 
 @end

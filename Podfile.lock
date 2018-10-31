@@ -20,7 +20,6 @@ PODS:
   - GCDWebServer (3.4.2):
     - GCDWebServer/Core (= 3.4.2)
   - GCDWebServer/Core (3.4.2)
-  - IQKeyboardManager (6.0.6)
   - KVOController (1.2.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -76,7 +75,6 @@ DEPENDENCIES:
   - Bugly (~> 2.5.0)
   - FDFullscreenPopGesture (~> 1.1)
   - GCDWebServer (~> 3.4.2)
-  - IQKeyboardManager (~> 6.0.4)
   - KVOController (~> 1.2.0)
   - libextobjc (~> 0.4.1)
   - Masonry (~> 1.1.0)
@@ -97,7 +95,6 @@ SPEC REPOS:
     - Bugly
     - FDFullscreenPopGesture
     - GCDWebServer
-    - IQKeyboardManager
     - KVOController
     - libextobjc
     - Masonry
@@ -117,7 +114,6 @@ SPEC CHECKSUMS:
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
-  IQKeyboardManager: 6b4ecd3e59cf55a26133d802d4678721d7f88499
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -131,6 +127,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 239ec559efd14fbc45f4d33b746adaf3117b2c47
+PODFILE CHECKSUM: 760fabb091be82862250ed55759b38018c3c7f5f
 
 COCOAPODS: 1.5.3
