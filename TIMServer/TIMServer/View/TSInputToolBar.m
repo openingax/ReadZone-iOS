@@ -32,8 +32,8 @@
         self.backgroundColor = RGBOF(0xEEEEEE);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
+        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     }
     return self;
@@ -60,7 +60,8 @@
     _audioPressed.layer.borderWidth = 0.5;
     _audioPressed.layer.masksToBounds = YES;
     [_audioPressed setBackgroundImage:[UIImage imageWithColor:RGBOF(0xEEEEEE)] forState:UIControlStateNormal];
-    [_audioPressed setBackgroundImage:[UIImage imageWithColor:kLightGrayColor] forState:UIControlStateSelected];
+    [_audioPressed setBackgroundImage:[UIImage imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateSelected];
+    [_audioPressed setTitleColor:kGrayColor forState:UIControlStateNormal];
     
     [_audioPressed setTitle:TIMLocalizedString(@"CHAT_WINDOW_PRESS_SAY", @"按住 说话") forState:UIControlStateNormal];
     [_audioPressed setTitle:TIMLocalizedString(@"CHAT_WINDOW_LOOSE_END", @"松开 结束") forState:UIControlStateSelected];
@@ -141,56 +142,36 @@
         CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         
-        CGFloat contentHeight = 50;
-//        if (contentHeight != _contentHeight) {
+        CGFloat contentHeight = kIsiPhoneX ? (endFrame.size.height + _contentHeight - 34) : (endFrame.size.height + _contentHeight);
+        if (contentHeight != _contentHeight) {
             CGRect rect = self.frame;
-            rect.origin.y = endFrame.origin.y - contentHeight;
+            rect.origin.y = kIsiPhoneX ? (endFrame.origin.y - _contentHeight + 34) : (endFrame.origin.y - _contentHeight);
             rect.size.height = contentHeight;
             
             [UIView animateWithDuration:duration animations:^{
                 self.frame = rect;
-                self.contentHeight = contentHeight;
+                //                self.contentHeight = contentHeight;
             }];
-//        }
+        }
     }
 }
 
-- (void)onKeyboardDidChangeFrame:(NSNotification *)noti {
-    NSDictionary *userInfo = noti.userInfo;
-    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    CGFloat contentHeight = 50;
-    CGRect rect = self.frame;
-    rect.origin.y = endFrame.origin.y - contentHeight;
-    rect.size.height = contentHeight;
-    
-    self.frame = rect;
-    self.contentHeight = contentHeight;
-}
-
 - (void)onKeyboardWillHide:(NSNotification *)noti {
+    if (_isPoping) return;
     NSDictionary* userInfo = noti.userInfo;
-    
-    CGPoint kbBeginOrigin = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].origin;
-    CGPoint kbEndOrigin = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].origin;
-    if (kbEndOrigin.x > 0) return;
     
     CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     NSInteger contentHeight = kIsiPhoneX ? 84 : 50;
     
-//    if (_contentHeight != contentHeight) {
-        CGRect rect = self.frame;
-        rect.origin.y = kScreenHeight - contentHeight;
-        rect.size.height = contentHeight;
-        
-        [UIView animateWithDuration:duration animations:^{
-            self.frame = rect;
-            self.contentHeight = contentHeight;
-        }];
-        
-//    }
+    CGRect rect = self.frame;
+    rect.origin.y = kScreenHeight - contentHeight;
+    rect.size.height = contentHeight;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.frame = rect;
+        self.contentHeight = contentHeight;
+    }];
 }
 
 
@@ -198,12 +179,34 @@
     return [_textView isFirstResponder];
 }
 
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        // 截取【发送】按钮事件
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(toolBar:didClickSendButton:)]) {
+            [_delegate toolBar:self didClickSendButton:textView.text];
+        }
+        
+        return NO;
+    }
+    return YES;
+}
+
+
 #pragma mark - Action
 
 - (void)onAudioBtnClick:(UIButton *)button {
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressed.hidden = !_audioBtn.selected;
-    _textView.hidden = !_audioBtn.selected;
+    _textView.hidden = _audioBtn.selected;
+    if (_audioBtn.selected) {
+        [_textView resignFirstResponder];
+        [_textView endEditing:YES];
+    } else {
+        [_textView becomeFirstResponder];
+    }
     
     _audioPressed.selected = NO;
     [_audioPressed setTitle:TIMLocalizedString(@"CHAT_WINDOW_PRESS_SAY", @"按住 说话") forState:UIControlStateNormal];

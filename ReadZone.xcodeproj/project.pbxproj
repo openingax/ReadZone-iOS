@@ -11,6 +11,11 @@
 		5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0B2460218987AB00F9AC0B /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
+		5F3B300E218B1DFB005B7408 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B300D218B1DFB005B7408 /* ImSDK.framework */; };
+		5F3B3010218B1E18005B7408 /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B300F218B1E18005B7408 /* QALSDK.framework */; };
+		5F3B3012218B1E3E005B7408 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3011218B1E3E005B7408 /* TLSSDK.framework */; };
+		5F3B3014218B1EFB005B7408 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */; };
+		5F3B3016218B1FA4005B7408 /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
 		5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE67211036C500499F1E /* RZUserInfoModel.m */; };
 		5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */; };
@@ -37,6 +42,12 @@
 		5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387421848D2500205C9E /* RZAPITencent.m */; };
 		5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
+		5FB40C08218AA43E00E464DE /* RZConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C07218AA43E00E464DE /* RZConversationManager.m */; };
+		5FB40C0B218AA60700E464DE /* RZConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C0A218AA60700E464DE /* RZConversation.m */; };
+		5FB40C0E218AA8E700E464DE /* RZSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */; };
+		5FB40C11218AAECF00E464DE /* RZIMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C10218AAECF00E464DE /* RZIMUser.m */; };
+		5FB40C28218AD8B900E464DE /* RZIMMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C27218AD8B900E464DE /* RZIMMsg.m */; };
+		5FB40C37218AFF1700E464DE /* NSDate+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C36218AFF1700E464DE /* NSDate+Common.m */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		5FBAEA22211333AD0002C2B5 /* QCMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAEA21211333AD0002C2B5 /* QCMethod.m */; };
@@ -61,13 +72,6 @@
 		5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */; };
 		5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
-		5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52A2188406200667A8A /* ImSDK.framework */; };
-		5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52B2188406200667A8A /* TLSSDK.framework */; };
-		5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52C2188406200667A8A /* QALSDK.framework */; };
-		5FEDA5342188406200667A8A /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */; };
-		5FEDA5352188406200667A8A /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52E2188406200667A8A /* IMGroupExt.framework */; };
-		5FEDA5362188406200667A8A /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA52F2188406200667A8A /* IMSDKBugly.framework */; };
-		5FEDA5372188406200667A8A /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5302188406200667A8A /* IMMessageExt.framework */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -103,6 +107,11 @@
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
+		5F3B300D218B1DFB005B7408 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		5F3B300F218B1E18005B7408 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
+		5F3B3011218B1E3E005B7408 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
+		5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
+		5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
 		5F403D4B2101EFDA00050FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5F403D4D2101EFE500050FEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -151,6 +160,19 @@
 		5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgFriendListViewController.h; sourceTree = "<group>"; };
 		5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgFriendListViewController.m; sourceTree = "<group>"; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FB40C06218AA43E00E464DE /* RZConversationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConversationManager.h; sourceTree = "<group>"; };
+		5FB40C07218AA43E00E464DE /* RZConversationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZConversationManager.m; sourceTree = "<group>"; };
+		5FB40C09218AA60700E464DE /* RZConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConversation.h; sourceTree = "<group>"; };
+		5FB40C0A218AA60700E464DE /* RZConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZConversation.m; sourceTree = "<group>"; };
+		5FB40C0C218AA8E700E464DE /* RZSafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZSafeMutableArray.h; sourceTree = "<group>"; };
+		5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSafeMutableArray.m; sourceTree = "<group>"; };
+		5FB40C0F218AAECF00E464DE /* RZIMUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZIMUser.h; sourceTree = "<group>"; };
+		5FB40C10218AAECF00E464DE /* RZIMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZIMUser.m; sourceTree = "<group>"; };
+		5FB40C26218AD8B900E464DE /* RZIMMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZIMMsg.h; sourceTree = "<group>"; };
+		5FB40C27218AD8B900E464DE /* RZIMMsg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZIMMsg.m; sourceTree = "<group>"; };
+		5FB40C35218AFF1700E464DE /* NSDate+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
+		5FB40C36218AFF1700E464DE /* NSDate+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Common.m"; sourceTree = "<group>"; };
+		5FB40C38218B005700E464DE /* CategoryMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryMarco.h; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
 		5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserTextField.m; sourceTree = "<group>"; };
@@ -199,13 +221,6 @@
 		5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMConversation+RZ.h"; sourceTree = "<group>"; };
 		5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMConversation+RZ.m"; sourceTree = "<group>"; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
-		5FEDA52A2188406200667A8A /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		5FEDA52B2188406200667A8A /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
-		5FEDA52C2188406200667A8A /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
-		5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
-		5FEDA52E2188406200667A8A /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
-		5FEDA52F2188406200667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
-		5FEDA5302188406200667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -276,19 +291,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F3B3010218B1E18005B7408 /* QALSDK.framework in Frameworks */,
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
-				5FEDA5342188406200667A8A /* IMFriendshipExt.framework in Frameworks */,
+				5F3B3012218B1E3E005B7408 /* TLSSDK.framework in Frameworks */,
+				5F3B3016218B1FA4005B7408 /* IMFriendshipExt.framework in Frameworks */,
+				5F3B3014218B1EFB005B7408 /* IMMessageExt.framework in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
-				5FEDA5372188406200667A8A /* IMMessageExt.framework in Frameworks */,
-				5FEDA5352188406200667A8A /* IMGroupExt.framework in Frameworks */,
+				5F3B300E218B1DFB005B7408 /* ImSDK.framework in Frameworks */,
 				5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */,
-				5FEDA5312188406200667A8A /* ImSDK.framework in Frameworks */,
-				5FEDA5362188406200667A8A /* IMSDKBugly.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
-				5FEDA5322188406200667A8A /* TLSSDK.framework in Frameworks */,
-				5FEDA5332188406200667A8A /* QALSDK.framework in Frameworks */,
 				CF014582AE033216B9C2CB69 /* Pods_ReadZone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +325,18 @@
 				5F0657302110A32E0081D6A9 /* RZUserModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5F3B3002218B1CD4005B7408 /* IMFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */,
+				5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */,
+				5F3B3011218B1E3E005B7408 /* TLSSDK.framework */,
+				5F3B300F218B1E18005B7408 /* QALSDK.framework */,
+				5F3B300D218B1DFB005B7408 /* ImSDK.framework */,
+			);
+			path = IMFrameworks;
 			sourceTree = "<group>";
 		};
 		5F50FE652110369100499F1E /* Model */ = {
@@ -416,6 +441,23 @@
 				5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */,
 			);
 			path = SwiftModule;
+			sourceTree = "<group>";
+		};
+		5FB40C05218AA3FC00E464DE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5FB40C06218AA43E00E464DE /* RZConversationManager.h */,
+				5FB40C07218AA43E00E464DE /* RZConversationManager.m */,
+				5FB40C09218AA60700E464DE /* RZConversation.h */,
+				5FB40C0A218AA60700E464DE /* RZConversation.m */,
+				5FB40C0C218AA8E700E464DE /* RZSafeMutableArray.h */,
+				5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */,
+				5FB40C0F218AAECF00E464DE /* RZIMUser.h */,
+				5FB40C10218AAECF00E464DE /* RZIMUser.m */,
+				5FB40C26218AD8B900E464DE /* RZIMMsg.h */,
+				5FB40C27218AD8B900E464DE /* RZIMMsg.m */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		5FB6B92E20F4AA6100AEBCF0 /* Controller */ = {
@@ -629,20 +671,6 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		5FEDA5292188406200667A8A /* IMFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5FEDA52A2188406200667A8A /* ImSDK.framework */,
-				5FEDA52B2188406200667A8A /* TLSSDK.framework */,
-				5FEDA52C2188406200667A8A /* QALSDK.framework */,
-				5FEDA52D2188406200667A8A /* IMFriendshipExt.framework */,
-				5FEDA52E2188406200667A8A /* IMGroupExt.framework */,
-				5FEDA52F2188406200667A8A /* IMSDKBugly.framework */,
-				5FEDA5302188406200667A8A /* IMMessageExt.framework */,
-			);
-			path = IMFrameworks;
-			sourceTree = "<group>";
-		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,13 +718,6 @@
 				B2BF658020D75B6C003059AE /* Login */,
 			);
 			path = Section;
-			sourceTree = "<group>";
-		};
-		B2BF657C20D75B26003059AE /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		B2BF657D20D75B37003059AE /* Global */ = {
@@ -846,6 +867,7 @@
 		B2D2184C20F2056500331F4C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5FB40C38218B005700E464DE /* CategoryMarco.h */,
 				B20AC21420EBC9DB008043C7 /* NSString+RZ.h */,
 				B20AC21520EBC9DB008043C7 /* NSString+RZ.m */,
 				B2D2185320F207DA00331F4C /* UIImage+RZ.h */,
@@ -856,6 +878,8 @@
 				B2D2187520F510C900331F4C /* NSAttributedString+RZ.m */,
 				5F5244B3218007AD00389CD7 /* NSDictionary+RZ.h */,
 				5F5244B4218007AD00389CD7 /* NSDictionary+RZ.m */,
+				5FB40C35218AFF1700E464DE /* NSDate+Common.h */,
+				5FB40C36218AFF1700E464DE /* NSDate+Common.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -979,7 +1003,7 @@
 				B2F14D3320C3EE81005DF168 /* ReadZoneUITests */,
 				B2F14D0E20C3EE7F005DF168 /* Products */,
 				B2003A8C20D41A1900AEA413 /* Frameworks */,
-				5FEDA5292188406200667A8A /* IMFrameworks */,
+				5F3B3002218B1CD4005B7408 /* IMFrameworks */,
 				36D10E96F56458F6D20FF76F /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -999,7 +1023,7 @@
 				B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */,
 				B2BF657E20D75B42003059AE /* Network */,
 				B2BF657D20D75B37003059AE /* Global */,
-				B2BF657C20D75B26003059AE /* Service */,
+				5FB40C05218AA3FC00E464DE /* Service */,
 				B2BF657B20D75B11003059AE /* Section */,
 				B2BF657A20D75B08003059AE /* General */,
 				B2F14D4220C3F297005DF168 /* Resources */,
@@ -1222,10 +1246,12 @@
 				5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */,
 				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
 				5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */,
+				5FB40C0E218AA8E700E464DE /* RZSafeMutableArray.m in Sources */,
 				5F50FE732110698800499F1E /* RZAPIUser.m in Sources */,
 				5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */,
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
 				B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */,
+				5FB40C37218AFF1700E464DE /* NSDate+Common.m in Sources */,
 				5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */,
 				B2D2186320F3B18A00331F4C /* RZInternalUtility.m in Sources */,
 				5FBAEA2A21154CD70002C2B5 /* RZAPIDefine.m in Sources */,
@@ -1239,6 +1265,8 @@
 				5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */,
 				5F5244C6218010F100389CD7 /* RZMsgViewController.m in Sources */,
 				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
+				5FB40C08218AA43E00E464DE /* RZConversationManager.m in Sources */,
+				5FB40C11218AAECF00E464DE /* RZIMUser.m in Sources */,
 				B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
 				B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */,
@@ -1248,10 +1276,12 @@
 				5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBAEA30211556E30002C2B5 /* RZHomePageModel.m in Sources */,
+				5FB40C0B218AA60700E464DE /* RZConversation.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
 				5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */,
 				5FBAEA2721154C000002C2B5 /* RZAPIBase.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
+				5FB40C28218AD8B900E464DE /* RZIMMsg.m in Sources */,
 				5F50FE6E21104FC600499F1E /* RZUser.m in Sources */,
 				5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
@@ -1444,6 +1474,7 @@
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1484,6 +1515,7 @@
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;

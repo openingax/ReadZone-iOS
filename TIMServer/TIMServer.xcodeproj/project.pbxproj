@@ -36,17 +36,12 @@
 		5F1BB7D421895CA900340520 /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7D121895CA800340520 /* PathUtility.m */; };
 		5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D621895CF700340520 /* ARCCompile.h */; };
 		5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */; };
+		5FB40C2F218AFA9800E464DE /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB40C2D218AFA9800E464DE /* UIImage+Common.h */; };
+		5FB40C30218AFA9800E464DE /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C2E218AFA9800E464DE /* UIImage+Common.m */; };
 		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
 		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FEDA500218827AC00667A8A /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4F9218827AB00667A8A /* ImSDK.framework */; };
-		5FEDA501218827AC00667A8A /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */; };
-		5FEDA502218827AC00667A8A /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */; };
-		5FEDA503218827AC00667A8A /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FC218827AB00667A8A /* QALSDK.framework */; };
-		5FEDA504218827AC00667A8A /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */; };
-		5FEDA505218827AC00667A8A /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */; };
-		5FEDA506218827AC00667A8A /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA4FF218827AC00667A8A /* TLSSDK.framework */; };
 		5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50D2188280500667A8A /* CoreTelephony.framework */; };
 		5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50F2188280D00667A8A /* CoreNFC.framework */; };
 		5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5112188281400667A8A /* CoreGraphics.framework */; };
@@ -89,6 +84,8 @@
 		5F1BB7D121895CA800340520 /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
 		5F1BB7D621895CF700340520 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
 		5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
+		5FB40C2D218AFA9800E464DE /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Common.h"; path = "../../../../../TencentIMDemo/TIMChat/CommonLibrary/Category/UIImage+Common.h"; sourceTree = "<group>"; };
+		5FB40C2E218AFA9800E464DE /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Common.m"; path = "../../../../../TencentIMDemo/TIMChat/CommonLibrary/Category/UIImage+Common.m"; sourceTree = "<group>"; };
 		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
 		5FC4EA0E218994E1007A487E /* TIMServerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerHelper.m; sourceTree = "<group>"; };
 		5FC4EA222189A691007A487E /* TSConstMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConstMarco.h; sourceTree = "<group>"; };
@@ -97,13 +94,6 @@
 		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FEDA4EA2188076200667A8A /* TIMServerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerTests.m; sourceTree = "<group>"; };
 		5FEDA4EC2188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FEDA4F9218827AB00667A8A /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
-		5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
-		5FEDA4FC218827AB00667A8A /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
-		5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMGroupExt.framework; sourceTree = "<group>"; };
-		5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMSDKBugly.framework; sourceTree = "<group>"; };
-		5FEDA4FF218827AC00667A8A /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
 		5FEDA50D2188280500667A8A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5FEDA50F2188280D00667A8A /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		5FEDA5112188281400667A8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,13 +119,6 @@
 				5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */,
 				5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */,
 				5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */,
-				5FEDA502218827AC00667A8A /* IMFriendshipExt.framework in Frameworks */,
-				5FEDA506218827AC00667A8A /* TLSSDK.framework in Frameworks */,
-				5FEDA501218827AC00667A8A /* IMMessageExt.framework in Frameworks */,
-				5FEDA503218827AC00667A8A /* QALSDK.framework in Frameworks */,
-				5FEDA504218827AC00667A8A /* IMGroupExt.framework in Frameworks */,
-				5FEDA505218827AC00667A8A /* IMSDKBugly.framework in Frameworks */,
-				5FEDA500218827AC00667A8A /* ImSDK.framework in Frameworks */,
 				ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +135,8 @@
 				5F1BB7BF21895ADE00340520 /* UIImage+Common.m */,
 				5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */,
 				5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */,
+				5FB40C2D218AFA9800E464DE /* UIImage+Common.h */,
+				5FB40C2E218AFA9800E464DE /* UIImage+Common.m */,
 				5F1BB7C621895B6500340520 /* NSString+Common.h */,
 				5F1BB7C721895B6500340520 /* NSString+Common.m */,
 				5F1BB7CA21895BFB00340520 /* NSData+Common.h */,
@@ -227,7 +212,6 @@
 				5FEDA4DD2188076200667A8A /* Products */,
 				DE3A9A7C8C3544D05A6BC8B1 /* Pods */,
 				B6446FCC6A07244B3AA0D9BC /* Frameworks */,
-				5FEDA4F82188278900667A8A /* IMFrameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,20 +245,6 @@
 				5FEDA4EC2188076200667A8A /* Info.plist */,
 			);
 			path = TIMServerTests;
-			sourceTree = "<group>";
-		};
-		5FEDA4F82188278900667A8A /* IMFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5FEDA4FB218827AB00667A8A /* IMFriendshipExt.framework */,
-				5FEDA4FD218827AB00667A8A /* IMGroupExt.framework */,
-				5FEDA4FA218827AB00667A8A /* IMMessageExt.framework */,
-				5FEDA4F9218827AB00667A8A /* ImSDK.framework */,
-				5FEDA4FE218827AC00667A8A /* IMSDKBugly.framework */,
-				5FEDA4FC218827AB00667A8A /* QALSDK.framework */,
-				5FEDA4FF218827AC00667A8A /* TLSSDK.framework */,
-			);
-			path = IMFrameworks;
 			sourceTree = "<group>";
 		};
 		5FEDA52221882F7E00667A8A /* Section */ = {
@@ -367,6 +337,7 @@
 				5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
 				5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */,
+				5FB40C2F218AFA9800E464DE /* UIImage+Common.h in Headers */,
 				5F1BB7992189373900340520 /* UIView+TS.h in Headers */,
 				5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */,
 				5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */,
@@ -485,6 +456,7 @@
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
 				5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */,
 				5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */,
+				5FB40C30218AFA9800E464DE /* UIImage+Common.m in Sources */,
 				5F1BB79A2189373900340520 /* UIView+TS.m in Sources */,
 				5F1BB7D421895CA900340520 /* PathUtility.m in Sources */,
 				5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */,

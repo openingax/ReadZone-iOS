@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class TSInputToolBar;
+
+@protocol TSInputToolBarDelegate <NSObject>
+
+- (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content;
+
+@end
+
 @interface TSInputToolBar : UIView <UITextViewDelegate>
 {
 @protected
@@ -24,7 +32,9 @@
     BOOL            isInLoop;
 }
 
+@property(nonatomic,weak) id <TSInputToolBarDelegate>delegate;
 @property(nonatomic,assign) NSInteger contentHeight;
+@property(nonatomic,assign) BOOL isPoping;
 
 - (BOOL)isEditing;
 - (void)setInputText:(NSString *)text;

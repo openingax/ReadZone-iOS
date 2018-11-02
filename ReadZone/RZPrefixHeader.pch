@@ -46,11 +46,9 @@
 #import "RZInternalUtility.h"
 #import "RZBaseUtils.h"
 
-// Category
-#import "NSString+RZ.h"
-#import "UIImage+RZ.h"
-#import "UIColor+RZ.h"
-#import "NSDictionary+RZ.h"
+#import "RZUserManager.h"
+
+#import "CategoryMarco.h"
 
 // Swift
 #import "ReadZone-Swift.h"

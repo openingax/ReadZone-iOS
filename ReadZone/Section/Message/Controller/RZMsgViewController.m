@@ -11,14 +11,13 @@
 #import "RZMsgChatViewController.h"
 
 #import <IMMessageExt/IMMessageExt.h>
-#import <IMFriendshipExt/IMFriendshipExt.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-#import "RZUserManager.h"
 #import "RZMsgUserCell.h"
 
 #import "TIMUserProfile+RZ.h"
 #import "TIMConversation+RZ.h"
+#import "RZIMUser.h"
 
 static NSString *kMsgUserCellIdentifier = @"kMsgUserCellIdentifier";
 
@@ -64,7 +63,11 @@ UITableViewDataSource
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!_hasLoginTIM) [self loginTIM];
+    if (!_hasLoginTIM) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loginTIM];
+        });
+    }
 }
 
 #pragma mark - DrawView
@@ -117,9 +120,10 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    RZMsgChatViewController *chatVC = [[RZMsgChatViewController alloc] init];
     TIMConversation *conversation = [self.conversations objectAtIndex:indexPath.row];
-    chatVC.conversaion = conversation;
+    RZIMUser *user = [[RZIMUser alloc] initWithUserId:[conversation getReceiver]];
+    
+    RZMsgChatViewController *chatVC = [[RZMsgChatViewController alloc] initWithUser:user];
     [self.navigationController pushViewController:chatVC animated:YES];
 }
 
@@ -254,72 +258,5 @@ UITableViewDataSource
 }
 
 #pragma mark - Action
-
-- (void)segmentControlAction:(UISegmentedControl *)segmentControl {
-    NSInteger selectedIndex = segmentControl.selectedSegmentIndex;
-    
-    if (selectedIndex == 0) {
-        
-        // 添加朋友
-        TIMAddFriendRequest *request = [[TIMAddFriendRequest alloc] init];
-        request.identifier = self.inputTF.text;
-        request.remark = @"无";
-        request.addWording = @"请求说明";
-        request.friendGroup = @"";
-        
-        [[TIMFriendshipManager sharedInstance] addFriend:@[request] succ:^(NSArray *friends) {
-            NSLog(@"friends: %@", friends);
-        } fail:^(int code, NSString *msg) {
-            NSLog(@"add friend failed code: %d, msg: %@", code, msg);
-        }];
-        
-    } else if (selectedIndex == 1) {
-        
-        // 注册
-        
-    } else if (selectedIndex == 2) {
-        
-        
-    } else {
-        TIMFriendResponse *response = [[TIMFriendResponse alloc] init];
-        response.identifier = [[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"13265028638" : @"18814098638";
-        response.remark = @"谢立颖的大号";
-        response.responseType = TIM_FRIEND_RESPONSE_AGREE_AND_ADD;
-        
-        [[TIMFriendshipManager sharedInstance] doResponse:@[response] succ:^(NSArray *friends) {
-            
-        } fail:^(int code, NSString *msg) {
-            
-        }];
-    }
-}
-
-- (void)addFriendAction {
-    RZAddFriendViewController *addFriendVC = [[RZAddFriendViewController alloc] init];
-    [self.navigationController pushViewController:addFriendVC animated:YES];
-}
-
-- (void)sendAction {
-    
-    if (!self.conversation) {
-        self.conversation = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[[RZUserManager shareInstance].account isEqualToString:@"18814098638"] ? @"13265028638" : @"18814098638"];
-    }
-    
-    // 发送文本消息
-    TIMTextElem *textElem = [[TIMTextElem alloc] init];
-    textElem.text = self.inputTF.text;
-    TIMMessage *msg = [[TIMMessage alloc] init];
-    [msg addElem:textElem];
-    
-    @weakify(self);
-    [self.conversation sendMessage:msg succ:^{
-        @strongify(self);
-        NSLog(@"消息【%@】发送成功", self.inputTF.text);
-        self.inputTF.text = @"";
-    } fail:^(int code, NSString *msg) {
-        @strongify(self);
-        NSLog(@"消息【%@】发送失败", self.inputTF.text);
-    }];
-}
 
 @end

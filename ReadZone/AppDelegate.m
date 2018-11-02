@@ -15,8 +15,6 @@
 #import "RZUserInfoModel.h"
 #import "RZUserModel.h"
 
-#import "RZUserManager.h"
-
 @interface AppDelegate ()
 
 @end

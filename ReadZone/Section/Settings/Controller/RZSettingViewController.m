@@ -13,7 +13,6 @@
 
 // Manager
 #import "AppDelegate.h"
-#import "RZUserManager.h"
 
 // View
 #import "RZSettingCell.h"

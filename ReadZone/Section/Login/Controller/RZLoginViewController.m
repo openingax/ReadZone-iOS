@@ -17,7 +17,6 @@
 // Manager
 #import "RZAPIUser.h"
 #import "AppDelegate.h"
-#import "RZUserManager.h"
 #import "RZAPITencent.h"
 
 // View
