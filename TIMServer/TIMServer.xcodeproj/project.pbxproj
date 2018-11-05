@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F027CEC218BEACB00174278 /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F027CEA218BEACB00174278 /* UIImage+Common.h */; };
+		5F027CED218BEACB00174278 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F027CEB218BEACB00174278 /* UIImage+Common.m */; };
 		5F1BB7992189373900340520 /* UIView+TS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7972189373900340520 /* UIView+TS.h */; };
 		5F1BB79A2189373900340520 /* UIView+TS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7982189373900340520 /* UIView+TS.m */; };
 		5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB79D2189383B00340520 /* TSBaseViewController.h */; };
@@ -36,8 +38,6 @@
 		5F1BB7D421895CA900340520 /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7D121895CA800340520 /* PathUtility.m */; };
 		5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D621895CF700340520 /* ARCCompile.h */; };
 		5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */; };
-		5FB40C2F218AFA9800E464DE /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB40C2D218AFA9800E464DE /* UIImage+Common.h */; };
-		5FB40C30218AFA9800E464DE /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C2E218AFA9800E464DE /* UIImage+Common.m */; };
 		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
@@ -55,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F027CEA218BEACB00174278 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
+		5F027CEB218BEACB00174278 /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
 		5F1BB7972189373900340520 /* UIView+TS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+TS.h"; sourceTree = "<group>"; };
 		5F1BB7982189373900340520 /* UIView+TS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+TS.m"; sourceTree = "<group>"; };
 		5F1BB79D2189383B00340520 /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
@@ -84,8 +86,6 @@
 		5F1BB7D121895CA800340520 /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
 		5F1BB7D621895CF700340520 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
 		5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
-		5FB40C2D218AFA9800E464DE /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Common.h"; path = "../../../../../TencentIMDemo/TIMChat/CommonLibrary/Category/UIImage+Common.h"; sourceTree = "<group>"; };
-		5FB40C2E218AFA9800E464DE /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Common.m"; path = "../../../../../TencentIMDemo/TIMChat/CommonLibrary/Category/UIImage+Common.m"; sourceTree = "<group>"; };
 		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
 		5FC4EA0E218994E1007A487E /* TIMServerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerHelper.m; sourceTree = "<group>"; };
 		5FC4EA222189A691007A487E /* TSConstMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConstMarco.h; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 				5F1BB7BF21895ADE00340520 /* UIImage+Common.m */,
 				5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */,
 				5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */,
-				5FB40C2D218AFA9800E464DE /* UIImage+Common.h */,
-				5FB40C2E218AFA9800E464DE /* UIImage+Common.m */,
+				5F027CEA218BEACB00174278 /* UIImage+Common.h */,
+				5F027CEB218BEACB00174278 /* UIImage+Common.m */,
 				5F1BB7C621895B6500340520 /* NSString+Common.h */,
 				5F1BB7C721895B6500340520 /* NSString+Common.m */,
 				5F1BB7CA21895BFB00340520 /* NSData+Common.h */,
@@ -337,7 +337,7 @@
 				5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
 				5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */,
-				5FB40C2F218AFA9800E464DE /* UIImage+Common.h in Headers */,
+				5F027CEC218BEACB00174278 /* UIImage+Common.h in Headers */,
 				5F1BB7992189373900340520 /* UIView+TS.h in Headers */,
 				5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */,
 				5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */,
@@ -456,7 +456,7 @@
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
 				5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */,
 				5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */,
-				5FB40C30218AFA9800E464DE /* UIImage+Common.m in Sources */,
+				5F027CED218BEACB00174278 /* UIImage+Common.m in Sources */,
 				5F1BB79A2189373900340520 /* UIView+TS.m in Sources */,
 				5F1BB7D421895CA900340520 /* PathUtility.m in Sources */,
 				5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */,
