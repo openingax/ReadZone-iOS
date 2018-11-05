@@ -11,11 +11,6 @@
 		5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0B2460218987AB00F9AC0B /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
-		5F3B300E218B1DFB005B7408 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B300D218B1DFB005B7408 /* ImSDK.framework */; };
-		5F3B3010218B1E18005B7408 /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B300F218B1E18005B7408 /* QALSDK.framework */; };
-		5F3B3012218B1E3E005B7408 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3011218B1E3E005B7408 /* TLSSDK.framework */; };
-		5F3B3014218B1EFB005B7408 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */; };
-		5F3B3016218B1FA4005B7408 /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
 		5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE67211036C500499F1E /* RZUserInfoModel.m */; };
 		5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */; };
@@ -23,7 +18,6 @@
 		5F50FE732110698800499F1E /* RZAPIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE722110698800499F1E /* RZAPIUser.m */; };
 		5F5244B2217FFDCC00389CD7 /* RZWebKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244B1217FFDCC00389CD7 /* RZWebKitManager.m */; };
 		5F5244B5218007AD00389CD7 /* NSDictionary+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244B4218007AD00389CD7 /* NSDictionary+RZ.m */; };
-		5F5244C6218010F100389CD7 /* RZMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5244C5218010F100389CD7 /* RZMsgViewController.m */; };
 		5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2003AA420D4892C00AEA413 /* SystemConfiguration.framework */; };
 		5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D4218022BC00389CD7 /* CoreTelephony.framework */; };
 		5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5244D6218022CB00389CD7 /* libc++.tbd */; };
@@ -40,13 +34,7 @@
 		5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */; };
 		5F83FBC22122F50100FF9AD4 /* RZRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */; };
 		5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387421848D2500205C9E /* RZAPITencent.m */; };
-		5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
-		5FB40C08218AA43E00E464DE /* RZConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C07218AA43E00E464DE /* RZConversationManager.m */; };
-		5FB40C0B218AA60700E464DE /* RZConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C0A218AA60700E464DE /* RZConversation.m */; };
-		5FB40C0E218AA8E700E464DE /* RZSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */; };
-		5FB40C11218AAECF00E464DE /* RZIMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C10218AAECF00E464DE /* RZIMUser.m */; };
-		5FB40C28218AD8B900E464DE /* RZIMMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C27218AD8B900E464DE /* RZIMMsg.m */; };
 		5FB40C37218AFF1700E464DE /* NSDate+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB40C36218AFF1700E464DE /* NSDate+Common.m */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
@@ -66,11 +54,6 @@
 		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
-		5FEDA4A02186EE2600667A8A /* RZMsgUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */; };
-		5FEDA4A32186F8E200667A8A /* RZAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */; };
-		5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */; };
-		5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */; };
-		5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
@@ -107,11 +90,6 @@
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
-		5F3B300D218B1DFB005B7408 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		5F3B300F218B1E18005B7408 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
-		5F3B3011218B1E3E005B7408 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
-		5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
-		5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
 		5F403D4B2101EFDA00050FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5F403D4D2101EFE500050FEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -129,8 +107,6 @@
 		5F5244B1217FFDCC00389CD7 /* RZWebKitManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZWebKitManager.m; sourceTree = "<group>"; };
 		5F5244B3218007AD00389CD7 /* NSDictionary+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RZ.h"; sourceTree = "<group>"; };
 		5F5244B4218007AD00389CD7 /* NSDictionary+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RZ.m"; sourceTree = "<group>"; };
-		5F5244C4218010F100389CD7 /* RZMsgViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgViewController.h; sourceTree = "<group>"; };
-		5F5244C5218010F100389CD7 /* RZMsgViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgViewController.m; sourceTree = "<group>"; };
 		5F5244C721801E5700389CD7 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = ../Tencent_IM_Framework/ImSDK.framework; sourceTree = "<group>"; };
 		5F5244D4218022BC00389CD7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		5F5244D6218022CB00389CD7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -157,19 +133,7 @@
 		5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZRegisterViewController.swift; sourceTree = "<group>"; };
 		5F8E387321848D2500205C9E /* RZAPITencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPITencent.h; sourceTree = "<group>"; };
 		5F8E387421848D2500205C9E /* RZAPITencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPITencent.m; sourceTree = "<group>"; };
-		5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgFriendListViewController.h; sourceTree = "<group>"; };
-		5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgFriendListViewController.m; sourceTree = "<group>"; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5FB40C06218AA43E00E464DE /* RZConversationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConversationManager.h; sourceTree = "<group>"; };
-		5FB40C07218AA43E00E464DE /* RZConversationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZConversationManager.m; sourceTree = "<group>"; };
-		5FB40C09218AA60700E464DE /* RZConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConversation.h; sourceTree = "<group>"; };
-		5FB40C0A218AA60700E464DE /* RZConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZConversation.m; sourceTree = "<group>"; };
-		5FB40C0C218AA8E700E464DE /* RZSafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZSafeMutableArray.h; sourceTree = "<group>"; };
-		5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSafeMutableArray.m; sourceTree = "<group>"; };
-		5FB40C0F218AAECF00E464DE /* RZIMUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZIMUser.h; sourceTree = "<group>"; };
-		5FB40C10218AAECF00E464DE /* RZIMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZIMUser.m; sourceTree = "<group>"; };
-		5FB40C26218AD8B900E464DE /* RZIMMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZIMMsg.h; sourceTree = "<group>"; };
-		5FB40C27218AD8B900E464DE /* RZIMMsg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZIMMsg.m; sourceTree = "<group>"; };
 		5FB40C35218AFF1700E464DE /* NSDate+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
 		5FB40C36218AFF1700E464DE /* NSDate+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Common.m"; sourceTree = "<group>"; };
 		5FB40C38218B005700E464DE /* CategoryMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryMarco.h; sourceTree = "<group>"; };
@@ -210,16 +174,6 @@
 		5FD82CCF217E2CD900D1779A /* RZConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConfig.h; sourceTree = "<group>"; };
 		5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDevelopViewController.h; sourceTree = "<group>"; };
 		5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDevelopViewController.m; sourceTree = "<group>"; };
-		5FEDA49E2186EE2600667A8A /* RZMsgUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgUserCell.h; sourceTree = "<group>"; };
-		5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgUserCell.m; sourceTree = "<group>"; };
-		5FEDA4A12186F8E200667A8A /* RZAddFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAddFriendViewController.h; sourceTree = "<group>"; };
-		5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAddFriendViewController.m; sourceTree = "<group>"; };
-		5FEDA4A42187091200667A8A /* RZMsgChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZMsgChatViewController.h; sourceTree = "<group>"; };
-		5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZMsgChatViewController.m; sourceTree = "<group>"; };
-		5FEDA4A721870A4200667A8A /* TIMUserProfile+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMUserProfile+RZ.h"; sourceTree = "<group>"; };
-		5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMUserProfile+RZ.m"; sourceTree = "<group>"; };
-		5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMConversation+RZ.h"; sourceTree = "<group>"; };
-		5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMConversation+RZ.m"; sourceTree = "<group>"; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,14 +245,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3B3010218B1E18005B7408 /* QALSDK.framework in Frameworks */,
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
-				5F3B3012218B1E3E005B7408 /* TLSSDK.framework in Frameworks */,
-				5F3B3016218B1FA4005B7408 /* IMFriendshipExt.framework in Frameworks */,
-				5F3B3014218B1EFB005B7408 /* IMMessageExt.framework in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
-				5F3B300E218B1DFB005B7408 /* ImSDK.framework in Frameworks */,
 				5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
@@ -327,18 +276,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5F3B3002218B1CD4005B7408 /* IMFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5F3B3015218B1FA4005B7408 /* IMFriendshipExt.framework */,
-				5F3B3013218B1EFB005B7408 /* IMMessageExt.framework */,
-				5F3B3011218B1E3E005B7408 /* TLSSDK.framework */,
-				5F3B300F218B1E18005B7408 /* QALSDK.framework */,
-				5F3B300D218B1DFB005B7408 /* ImSDK.framework */,
-			);
-			path = IMFrameworks;
-			sourceTree = "<group>";
-		};
 		5F50FE652110369100499F1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,51 +283,6 @@
 				5F50FE67211036C500499F1E /* RZUserInfoModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5F5244C021800F6700389CD7 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				5F5244C321800F7F00389CD7 /* Manager */,
-				5F5244C221800F7600389CD7 /* View */,
-				5F5244C121800F7100389CD7 /* Controller */,
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
-		5F5244C121800F7100389CD7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5F5244C4218010F100389CD7 /* RZMsgViewController.h */,
-				5F5244C5218010F100389CD7 /* RZMsgViewController.m */,
-				5FEDA4A42187091200667A8A /* RZMsgChatViewController.h */,
-				5FEDA4A52187091200667A8A /* RZMsgChatViewController.m */,
-				5F8E387721854D8B00205C9E /* RZMsgFriendListViewController.h */,
-				5F8E387821854D8B00205C9E /* RZMsgFriendListViewController.m */,
-				5FEDA4A12186F8E200667A8A /* RZAddFriendViewController.h */,
-				5FEDA4A22186F8E200667A8A /* RZAddFriendViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		5F5244C221800F7600389CD7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5FEDA49E2186EE2600667A8A /* RZMsgUserCell.h */,
-				5FEDA49F2186EE2600667A8A /* RZMsgUserCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5F5244C321800F7F00389CD7 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				5FEDA4A721870A4200667A8A /* TIMUserProfile+RZ.h */,
-				5FEDA4A821870A4200667A8A /* TIMUserProfile+RZ.m */,
-				5FEDA4AA218726AC00667A8A /* TIMConversation+RZ.h */,
-				5FEDA4AB218726AC00667A8A /* TIMConversation+RZ.m */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		5F5245272182ECBF00389CD7 /* User */ = {
@@ -441,23 +333,6 @@
 				5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */,
 			);
 			path = SwiftModule;
-			sourceTree = "<group>";
-		};
-		5FB40C05218AA3FC00E464DE /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				5FB40C06218AA43E00E464DE /* RZConversationManager.h */,
-				5FB40C07218AA43E00E464DE /* RZConversationManager.m */,
-				5FB40C09218AA60700E464DE /* RZConversation.h */,
-				5FB40C0A218AA60700E464DE /* RZConversation.m */,
-				5FB40C0C218AA8E700E464DE /* RZSafeMutableArray.h */,
-				5FB40C0D218AA8E700E464DE /* RZSafeMutableArray.m */,
-				5FB40C0F218AAECF00E464DE /* RZIMUser.h */,
-				5FB40C10218AAECF00E464DE /* RZIMUser.m */,
-				5FB40C26218AD8B900E464DE /* RZIMMsg.h */,
-				5FB40C27218AD8B900E464DE /* RZIMMsg.m */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		5FB6B92E20F4AA6100AEBCF0 /* Controller */ = {
@@ -707,7 +582,6 @@
 		B2BF657B20D75B11003059AE /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				5F5244C021800F6700389CD7 /* Message */,
 				5FBF587A20F8840C00CC15A2 /* Settings */,
 				5FBF587320F87BEB00CC15A2 /* User */,
 				5FBF57F920F72CC000CC15A2 /* Menu */,
@@ -1003,7 +877,6 @@
 				B2F14D3320C3EE81005DF168 /* ReadZoneUITests */,
 				B2F14D0E20C3EE7F005DF168 /* Products */,
 				B2003A8C20D41A1900AEA413 /* Frameworks */,
-				5F3B3002218B1CD4005B7408 /* IMFrameworks */,
 				36D10E96F56458F6D20FF76F /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -1023,7 +896,6 @@
 				B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */,
 				B2BF657E20D75B42003059AE /* Network */,
 				B2BF657D20D75B37003059AE /* Global */,
-				5FB40C05218AA3FC00E464DE /* Service */,
 				B2BF657B20D75B11003059AE /* Section */,
 				B2BF657A20D75B08003059AE /* General */,
 				B2F14D4220C3F297005DF168 /* Resources */,
@@ -1246,7 +1118,6 @@
 				5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */,
 				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
 				5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */,
-				5FB40C0E218AA8E700E464DE /* RZSafeMutableArray.m in Sources */,
 				5F50FE732110698800499F1E /* RZAPIUser.m in Sources */,
 				5F7012C220F5DE5400088216 /* RZDTOLogin.m in Sources */,
 				B2FFF04620E5446D008CD245 /* RZBaseViewController.m in Sources */,
@@ -1262,11 +1133,7 @@
 				B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */,
 				5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */,
 				B2D2187620F510C900331F4C /* NSAttributedString+RZ.m in Sources */,
-				5FEDA4A921870A4200667A8A /* TIMUserProfile+RZ.m in Sources */,
-				5F5244C6218010F100389CD7 /* RZMsgViewController.m in Sources */,
 				B2D2185520F207DA00331F4C /* UIImage+RZ.m in Sources */,
-				5FB40C08218AA43E00E464DE /* RZConversationManager.m in Sources */,
-				5FB40C11218AAECF00E464DE /* RZIMUser.m in Sources */,
 				B2D2188020F7A0A900331F4C /* RZHotPotModel.m in Sources */,
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
 				B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */,
@@ -1276,12 +1143,9 @@
 				5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBAEA30211556E30002C2B5 /* RZHomePageModel.m in Sources */,
-				5FB40C0B218AA60700E464DE /* RZConversation.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
-				5FEDA4A62187091200667A8A /* RZMsgChatViewController.m in Sources */,
 				5FBAEA2721154C000002C2B5 /* RZAPIBase.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,
-				5FB40C28218AD8B900E464DE /* RZIMMsg.m in Sources */,
 				5F50FE6E21104FC600499F1E /* RZUser.m in Sources */,
 				5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */,
 				5F7012BB20F5D5D400088216 /* RZGlobal.m in Sources */,
@@ -1291,8 +1155,6 @@
 				5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */,
 				5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */,
 				B2D2185A20F2108E00331F4C /* RZNavBar.m in Sources */,
-				5F8E387921854D8B00205C9E /* RZMsgFriendListViewController.m in Sources */,
-				5FEDA4AC218726AC00667A8A /* TIMConversation+RZ.m in Sources */,
 				B2FFF04920E545EF008CD245 /* RZHotPotViewController.m in Sources */,
 				5F52452B2182ECFC00389CD7 /* RZUserManager.m in Sources */,
 				5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */,
@@ -1306,11 +1168,9 @@
 				5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */,
 				B2D2188320FAEF4C00331F4C /* Student.m in Sources */,
 				B2D2185F20F3A6CB00331F4C /* RZLoginTextField.m in Sources */,
-				5FEDA4A02186EE2600667A8A /* RZMsgUserCell.m in Sources */,
 				5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */,
 				5FBF587920F87C3A00CC15A2 /* RZUserViewController.m in Sources */,
 				5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */,
-				5FEDA4A32186F8E200667A8A /* RZAddFriendViewController.m in Sources */,
 				B2D2188D20FB1F5A00331F4C /* RZLoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

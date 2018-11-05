@@ -16,7 +16,7 @@
 // Controller
 #import "RZMenuViewController.h"
 #import "RZSettingViewController.h"
-#import "RZMsgViewController.h"
+//#import "RZMsgViewController.h"
 
 static CGFloat containerWidth;
 
@@ -248,8 +248,8 @@ static CGFloat containerWidth;
 
 - (void)msgBtnAction {
     self.isEnterNextVC = YES;
-    RZMsgViewController *msgVC = [[RZMsgViewController alloc] init];
-    [self.navigationController pushViewController:msgVC animated:YES];
+//    RZMsgViewController *msgVC = [[RZMsgViewController alloc] init];
+//    [self.navigationController pushViewController:msgVC animated:YES];
 }
 
 - (void)noteBtnAction {
