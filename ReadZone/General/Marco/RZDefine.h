@@ -38,5 +38,4 @@
 #define kTimIMQQAccountType     1
 #define kTimIMWXAccountType     2
 
-
 #endif /* RZDefine_h */

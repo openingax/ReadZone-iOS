@@ -85,6 +85,15 @@
     return nil;
 }
 
++ (instancetype)msgWithDate:(NSDate *)date {
+    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+    
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    RZIMMsg *imMsg = [[RZIMMsg alloc] initWithMsg:msg type:RZIMMsgTypeTimTip];
+    return imMsg;
+}
+
 + (instancetype)msgWithMsg:(TIMMessage *)msg {
     if (msg.elemCount == 0) {
         return nil;
