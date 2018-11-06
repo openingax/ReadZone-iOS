@@ -7,6 +7,9 @@
 //
 
 #import "TSInputToolBar.h"
+#import "CommonLibrary.h"
+#import "TIMServerHelper.h"
+#import "TSConstMarco.h"
 
 @implementation TSInputToolBar
 

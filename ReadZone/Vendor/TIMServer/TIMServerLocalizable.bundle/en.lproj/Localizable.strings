@@ -26,3 +26,5 @@
 "CHAT_WINDOW_PRESS_SAY" = "Hold to Talk";
 "CHAT_WINDOW_LOOSE_END" = "Release to Send";
 
+"MSG_NAV_TITLE" = "Message";
+

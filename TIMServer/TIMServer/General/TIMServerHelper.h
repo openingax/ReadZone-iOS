@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  Returns a localized version of the string designated by the specified key and residing in the RZInternal.

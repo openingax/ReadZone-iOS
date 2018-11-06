@@ -25,3 +25,5 @@
 /* 聊天窗口 */
 "CHAT_WINDOW_PRESS_SAY" = "按住 说话";
 "CHAT_WINDOW_LOOSE_END" = "松开 结束";
+
+"MSG_NAV_TITLE" = "留言板";

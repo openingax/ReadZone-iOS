@@ -1,6 +1,0 @@
-framework module TIMServer {
-  umbrella header "TIMServer.h"
-
-  export *
-  module * { export * }
-}

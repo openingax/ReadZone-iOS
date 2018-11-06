@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0657302110A32E0081D6A9 /* RZUserModel.m */; };
-		5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0B2460218987AB00F9AC0B /* TIMServer.framework */; };
+		5F24824E2191311100AC07FD /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F24824D2191311100AC07FD /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
@@ -86,7 +86,7 @@
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
 		5F06572F2110A32E0081D6A9 /* RZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserModel.h; sourceTree = "<group>"; };
 		5F0657302110A32E0081D6A9 /* RZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserModel.m; sourceTree = "<group>"; };
-		5F0B2460218987AB00F9AC0B /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = ReadZone/Vendor/TIMServer/TIMServer.framework; sourceTree = SOURCE_ROOT; };
+		5F24824D2191311100AC07FD /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
@@ -133,6 +133,8 @@
 		5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZRegisterViewController.swift; sourceTree = "<group>"; };
 		5F8E387321848D2500205C9E /* RZAPITencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAPITencent.h; sourceTree = "<group>"; };
 		5F8E387421848D2500205C9E /* RZAPITencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAPITencent.m; sourceTree = "<group>"; };
+		5F9147D42191872A00148AAA /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		5F9147D62191873200148AAA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FB40C35218AFF1700E464DE /* NSDate+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
 		5FB40C36218AFF1700E464DE /* NSDate+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Common.m"; sourceTree = "<group>"; };
@@ -248,10 +250,10 @@
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
-				5F0B2461218987AB00F9AC0B /* TIMServer.framework in Frameworks */,
 				5F5244D5218022BC00389CD7 /* CoreTelephony.framework in Frameworks */,
 				5F5244D3218022A600389CD7 /* SystemConfiguration.framework in Frameworks */,
 				CF014582AE033216B9C2CB69 /* Pods_ReadZone.framework in Frameworks */,
+				5F24824E2191311100AC07FD /* TIMServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +496,7 @@
 		5FC4EA2121899E28007A487E /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
-				5F0B2460218987AB00F9AC0B /* TIMServer.framework */,
+				5F24824D2191311100AC07FD /* TIMServer.framework */,
 				5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */,
 				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
 			);
@@ -549,6 +551,8 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F9147D62191873200148AAA /* libiconv.tbd */,
+				5F9147D42191872A00148AAA /* libresolv.tbd */,
 				5F5244DA218022E200389CD7 /* libsqlite3.tbd */,
 				5F5244D8218022D600389CD7 /* libz.tbd */,
 				5F5244D6218022CB00389CD7 /* libc++.tbd */,
@@ -1328,10 +1332,9 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
-					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)",
@@ -1341,10 +1344,7 @@
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
@@ -1369,6 +1369,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 76ABAVPT36;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
@@ -1376,16 +1377,15 @@
 					"$(PROJECT_DIR)/TIMServer/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/TIMServer/YMFrameworks",
+					"$(PROJECT_DIR)/YMFraneworks",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ReadZone/Resources/Frameworks",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.ReadZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";

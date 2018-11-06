@@ -14,6 +14,8 @@
 
 #import "NSString+Common.h"
 
+#import "TSColorMarco.h"
+
 
 @implementation UIImage (Common)
 
@@ -211,7 +213,7 @@
     if (color == nil) {
         return nil;
     }
-    
+
     CGRect rect=CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

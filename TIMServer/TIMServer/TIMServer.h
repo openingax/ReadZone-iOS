@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TSInputToolBar.h"
+#import "TSManager.h"
 
 //! Project version number for TIMServer.
 FOUNDATION_EXPORT double TIMServerVersionNumber;

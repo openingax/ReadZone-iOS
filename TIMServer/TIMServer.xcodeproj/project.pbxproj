@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,10 +38,23 @@
 		5F1BB7D421895CA900340520 /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7D121895CA800340520 /* PathUtility.m */; };
 		5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D621895CF700340520 /* ARCCompile.h */; };
 		5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */; };
+		5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */; };
+		5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */; };
+		5F24824821912C1400AC07FD /* TSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24824621912C1400AC07FD /* TSManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F24824921912C1400AC07FD /* TSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24824721912C1400AC07FD /* TSManager.m */; };
+		5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F24825C219132F900AC07FD /* YMCommon.bundle */; };
+		5F24825F219132F900AC07FD /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F24825D219132F900AC07FD /* YMCommon.framework */; };
 		5F70A77B21903B56001FA8FF /* API_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77921903B56001FA8FF /* API_README.md */; };
 		5F70A77C21903B56001FA8FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77A21903B56001FA8FF /* README.md */; };
-		5F70A78F21904116001FA8FF /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A78D21904116001FA8FF /* YMCommon.bundle */; };
-		5F70A79021904116001FA8FF /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F70A78E21904116001FA8FF /* YMCommon.framework */; };
+		5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147AC2191713000148AAA /* TSBaseNavigationController.h */; };
+		5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147AD2191713000148AAA /* TSBaseNavigationController.m */; };
+		5F9147B62191777300148AAA /* TSAPITencent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147B42191777300148AAA /* TSAPITencent.h */; };
+		5F9147B72191777300148AAA /* TSAPITencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147B52191777300148AAA /* TSAPITencent.m */; };
+		5F9147B9219178AE00148AAA /* TSConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147B8219178AE00148AAA /* TSConfig.h */; };
+		5F9147BE21917CF400148AAA /* TSChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147BA21917CF300148AAA /* TSChatViewController.h */; };
+		5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147BB21917CF400148AAA /* TSChatViewController.m */; };
+		5F9147C421917F9F00148AAA /* TSIMServerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147C221917F9F00148AAA /* TSIMServerViewController.h */; };
+		5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147C321917F9F00148AAA /* TSIMServerViewController.m */; };
 		5FB30A5A219066500026A955 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A55219066500026A955 /* ImSDK.framework */; };
 		5FB30A5B219066500026A955 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A56219066500026A955 /* TLSSDK.framework */; };
 		5FB30A5C219066500026A955 /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A57219066500026A955 /* QALSDK.framework */; };
@@ -49,8 +62,6 @@
 		5FB30A5E219066500026A955 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A59219066500026A955 /* IMMessageExt.framework */; };
 		5FB30A622190676B0026A955 /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB30A602190676B0026A955 /* TSBaseViewController.h */; };
 		5FB30A632190676B0026A955 /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30A612190676B0026A955 /* TSBaseViewController.m */; };
-		5FB30A70219080450026A955 /* TSMsgViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB30A6E219080440026A955 /* TSMsgViewController.h */; };
-		5FB30A71219080450026A955 /* TSMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30A6F219080440026A955 /* TSMsgViewController.m */; };
 		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
@@ -61,7 +72,7 @@
 		5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5132188281D00667A8A /* SystemConfiguration.framework */; };
 		5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5152188282500667A8A /* UIKit.framework */; };
 		5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5172188282D00667A8A /* Foundation.framework */; };
-		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
 		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
 		5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */; };
 		ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */; };
@@ -99,10 +110,29 @@
 		5F1BB7D121895CA800340520 /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
 		5F1BB7D621895CF700340520 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
 		5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
+		5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSFriendListViewController.h; sourceTree = "<group>"; };
+		5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFriendListViewController.m; sourceTree = "<group>"; };
+		5F24824621912C1400AC07FD /* TSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSManager.h; sourceTree = "<group>"; };
+		5F24824721912C1400AC07FD /* TSManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSManager.m; sourceTree = "<group>"; };
+		5F24825C219132F900AC07FD /* YMCommon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YMCommon.bundle; path = YMFrameworks/YMCommon.bundle; sourceTree = "<group>"; };
+		5F24825D219132F900AC07FD /* YMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YMCommon.framework; path = YMFrameworks/YMCommon.framework; sourceTree = "<group>"; };
 		5F70A77921903B56001FA8FF /* API_README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = API_README.md; sourceTree = "<group>"; };
 		5F70A77A21903B56001FA8FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5F70A78D21904116001FA8FF /* YMCommon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YMCommon.bundle; sourceTree = "<group>"; };
-		5F70A78E21904116001FA8FF /* YMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YMCommon.framework; sourceTree = "<group>"; };
+		5F9147A121916D0300148AAA /* SOLUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SOLUTION.md; sourceTree = "<group>"; };
+		5F9147AC2191713000148AAA /* TSBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseNavigationController.h; sourceTree = "<group>"; };
+		5F9147AD2191713000148AAA /* TSBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseNavigationController.m; sourceTree = "<group>"; };
+		5F9147B42191777300148AAA /* TSAPITencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAPITencent.h; sourceTree = "<group>"; };
+		5F9147B52191777300148AAA /* TSAPITencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAPITencent.m; sourceTree = "<group>"; };
+		5F9147B8219178AE00148AAA /* TSConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConfig.h; sourceTree = "<group>"; };
+		5F9147BA21917CF300148AAA /* TSChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSChatViewController.h; sourceTree = "<group>"; };
+		5F9147BB21917CF400148AAA /* TSChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSChatViewController.m; sourceTree = "<group>"; };
+		5F9147C221917F9F00148AAA /* TSIMServerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMServerViewController.h; sourceTree = "<group>"; };
+		5F9147C321917F9F00148AAA /* TSIMServerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMServerViewController.m; sourceTree = "<group>"; };
+		5F9147C62191832200148AAA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5F9147C82191832C00148AAA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5F9147CA2191833500148AAA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5F9147CC2191847600148AAA /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		5F9147CE219184A700148AAA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5FB30A55219066500026A955 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		5FB30A56219066500026A955 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
 		5FB30A57219066500026A955 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
@@ -110,8 +140,6 @@
 		5FB30A59219066500026A955 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
 		5FB30A602190676B0026A955 /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
 		5FB30A612190676B0026A955 /* TSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
-		5FB30A6E219080440026A955 /* TSMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMsgViewController.h; sourceTree = "<group>"; };
-		5FB30A6F219080440026A955 /* TSMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMsgViewController.m; sourceTree = "<group>"; };
 		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
 		5FC4EA0E218994E1007A487E /* TIMServerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerHelper.m; sourceTree = "<group>"; };
 		5FC4EA222189A691007A487E /* TSConstMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConstMarco.h; sourceTree = "<group>"; };
@@ -140,11 +168,11 @@
 				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
 				5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */,
 				5FB30A5A219066500026A955 /* ImSDK.framework in Frameworks */,
+				5F24825F219132F900AC07FD /* YMCommon.framework in Frameworks */,
 				5FB30A5B219066500026A955 /* TLSSDK.framework in Frameworks */,
 				5FB30A5D219066500026A955 /* IMFriendshipExt.framework in Frameworks */,
 				5FB30A5C219066500026A955 /* QALSDK.framework in Frameworks */,
 				5FB30A5E219066500026A955 /* IMMessageExt.framework in Frameworks */,
-				5F70A79021904116001FA8FF /* YMCommon.framework in Frameworks */,
 				5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */,
 				5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */,
 				5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */,
@@ -239,18 +267,10 @@
 			children = (
 				5F70A77921903B56001FA8FF /* API_README.md */,
 				5F70A77A21903B56001FA8FF /* README.md */,
+				5F9147A121916D0300148AAA /* SOLUTION.md */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
-		};
-		5F70A78C21904055001FA8FF /* YMFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5F70A78D21904116001FA8FF /* YMCommon.bundle */,
-				5F70A78E21904116001FA8FF /* YMCommon.framework */,
-			);
-			path = YMFrameworks;
-			sourceTree = SOURCE_ROOT;
 		};
 		5FB30A54219066500026A955 /* IMFrameworks */ = {
 			isa = PBXGroup;
@@ -269,6 +289,8 @@
 			children = (
 				5FB30A602190676B0026A955 /* TSBaseViewController.h */,
 				5FB30A612190676B0026A955 /* TSBaseViewController.m */,
+				5F9147AC2191713000148AAA /* TSBaseNavigationController.h */,
+				5F9147AD2191713000148AAA /* TSBaseNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,8 +306,12 @@
 		5FB30A692190801C0026A955 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5FB30A6E219080440026A955 /* TSMsgViewController.h */,
-				5FB30A6F219080440026A955 /* TSMsgViewController.m */,
+				5F9147C221917F9F00148AAA /* TSIMServerViewController.h */,
+				5F9147C321917F9F00148AAA /* TSIMServerViewController.m */,
+				5F9147BA21917CF300148AAA /* TSChatViewController.h */,
+				5F9147BB21917CF400148AAA /* TSChatViewController.m */,
+				5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */,
+				5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,7 +324,6 @@
 				5FEDA4DD2188076200667A8A /* Products */,
 				DE3A9A7C8C3544D05A6BC8B1 /* Pods */,
 				B6446FCC6A07244B3AA0D9BC /* Frameworks */,
-				5F70A78C21904055001FA8FF /* YMFrameworks */,
 				5FB30A54219066500026A955 /* IMFrameworks */,
 			);
 			sourceTree = "<group>";
@@ -314,12 +339,13 @@
 		5FEDA4DE2188076200667A8A /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
-				5FB30A68219080180026A955 /* Section */,
 				5F1BB79B2189380F00340520 /* CommonLibrary */,
 				5FEDA54021887A2500667A8A /* View */,
 				5FEDA52321882F8A00667A8A /* General */,
+				5FB30A68219080180026A955 /* Section */,
 				5FEDA4DF2188076200667A8A /* TIMServer.h */,
 				5FC4EA222189A691007A487E /* TSConstMarco.h */,
+				5F9147B8219178AE00148AAA /* TSConfig.h */,
 				5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */,
 				5FEDA4E02188076200667A8A /* Info.plist */,
 			);
@@ -332,6 +358,10 @@
 				5FB30A5F219067520026A955 /* Controller */,
 				5FC4EA0D218994E1007A487E /* TIMServerHelper.h */,
 				5FC4EA0E218994E1007A487E /* TIMServerHelper.m */,
+				5F24824621912C1400AC07FD /* TSManager.h */,
+				5F24824721912C1400AC07FD /* TSManager.m */,
+				5F9147B42191777300148AAA /* TSAPITencent.h */,
+				5F9147B52191777300148AAA /* TSAPITencent.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -348,6 +378,13 @@
 		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F9147CE219184A700148AAA /* libiconv.tbd */,
+				5F9147CC2191847600148AAA /* libresolv.tbd */,
+				5F9147CA2191833500148AAA /* libc++.tbd */,
+				5F9147C82191832C00148AAA /* libsqlite3.tbd */,
+				5F9147C62191832200148AAA /* libz.tbd */,
+				5F24825C219132F900AC07FD /* YMCommon.bundle */,
+				5F24825D219132F900AC07FD /* YMCommon.framework */,
 				5FEDA5172188282D00667A8A /* Foundation.framework */,
 				5FEDA5152188282500667A8A /* UIKit.framework */,
 				5FEDA5132188281D00667A8A /* SystemConfiguration.framework */,
@@ -376,7 +413,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */,
+				5F24824821912C1400AC07FD /* TSManager.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
+				5F9147C421917F9F00148AAA /* TSIMServerViewController.h in Headers */,
 				5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */,
 				5F027CEC218BEACB00174278 /* UIImage+Common.h in Headers */,
 				5F1BB7992189373900340520 /* UIView+TS.h in Headers */,
@@ -387,19 +426,23 @@
 				5F1BB7B52189415300340520 /* CommonLibrary.h in Headers */,
 				5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */,
 				5F1BB7B3218940BD00340520 /* UIColor+MLPFlatColors.h in Headers */,
+				5F9147B62191777300148AAA /* TSAPITencent.h in Headers */,
 				5F1BB7D221895CA900340520 /* PathUtility.h in Headers */,
+				5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */,
 				5F1BB7CC21895BFB00340520 /* NSData+Common.h in Headers */,
 				5F1BB7C421895B0E00340520 /* UIImage+Alpha.h in Headers */,
 				5F1BB7A721893DA300340520 /* UIView+CustomAutoLayout.h in Headers */,
 				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
 				5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */,
-				5FB30A70219080450026A955 /* TSMsgViewController.h in Headers */,
 				5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */,
+				5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */,
 				5F1BB7AC21893EBD00340520 /* TSDebugMarco.h in Headers */,
 				5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */,
 				5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */,
+				5F9147BE21917CF400148AAA /* TSChatViewController.h in Headers */,
 				5F1BB7AB21893EB900340520 /* TSDevice.h in Headers */,
 				5F1BB7BA21894BC900340520 /* UIView+Layout.h in Headers */,
+				5F9147B9219178AE00148AAA /* TSConfig.h in Headers */,
 				5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,11 +481,12 @@
 				TargetAttributes = {
 					5FEDA4DB2188076200667A8A = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 5FEDA4D62188076200667A8A /* Build configuration list for PBXProject "TIMServer" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -466,7 +510,7 @@
 			files = (
 				5F70A77C21903B56001FA8FF /* README.md in Resources */,
 				5F70A77B21903B56001FA8FF /* API_README.md in Resources */,
-				5F70A78F21904116001FA8FF /* YMCommon.bundle in Resources */,
+				5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,20 +544,25 @@
 			files = (
 				5F1BB7C121895ADE00340520 /* UIImage+Common.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
+				5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */,
 				5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */,
+				5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */,
 				5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */,
+				5F9147B72191777300148AAA /* TSAPITencent.m in Sources */,
 				5F027CED218BEACB00174278 /* UIImage+Common.m in Sources */,
 				5F1BB79A2189373900340520 /* UIView+TS.m in Sources */,
 				5F1BB7D421895CA900340520 /* PathUtility.m in Sources */,
 				5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */,
 				5F1BB7B2218940BD00340520 /* UIColor+MLPFlatColors.m in Sources */,
+				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
 				5F1BB7A42189398500340520 /* UIViewController+Layout.m in Sources */,
 				5F1BB7BB21894BC900340520 /* UIView+Layout.m in Sources */,
 				5FB30A632190676B0026A955 /* TSBaseViewController.m in Sources */,
 				5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */,
-				5FB30A71219080450026A955 /* TSMsgViewController.m in Sources */,
 				5F1BB7A821893DA300340520 /* UIView+CustomAutoLayout.m in Sources */,
+				5F24824921912C1400AC07FD /* TSManager.m in Sources */,
 				5F1BB7A02189383B00340520 /* TSBaseViewController.m in Sources */,
+				5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,23 +700,25 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/YMFrameworks",
 				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TIMServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"$(PROJECT_DIR)/IMFrameworks",
 				);
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -686,22 +737,24 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/YMFrameworks",
 				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/TIMServer/TS-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = TIMServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"$(PROJECT_DIR)/IMFrameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

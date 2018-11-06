@@ -10,6 +10,8 @@
 
 #import "NSString+Common.h"
 
+#import "TSDebugMarco.h"
+
 @implementation PathUtility
 
 + (NSString *)getFileDocumentPath:(NSString *)fileName

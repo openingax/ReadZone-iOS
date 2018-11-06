@@ -16,7 +16,7 @@
 // Controller
 #import "RZMenuViewController.h"
 #import "RZSettingViewController.h"
-//#import "RZMsgViewController.h"
+#import <TIMServer/TSManager.h>
 
 static CGFloat containerWidth;
 
@@ -27,6 +27,8 @@ static CGFloat containerWidth;
 @property(nonatomic,assign) BOOL isShow;                // 菜单是否已显示
 @property(nonatomic,assign) BOOL isAnimating;           // 动画是否进行中
 @property(nonatomic,assign) BOOL isEnterNextVC;         // 是否进入了下一级页面
+
+@property(nonatomic,strong) TSManager *tsManager;
 
 @end
 
@@ -248,8 +250,10 @@ static CGFloat containerWidth;
 
 - (void)msgBtnAction {
     self.isEnterNextVC = YES;
-//    RZMsgViewController *msgVC = [[RZMsgViewController alloc] init];
-//    [self.navigationController pushViewController:msgVC animated:YES];
+    if (!_tsManager) {
+        _tsManager = [[TSManager alloc] init];
+    }
+    [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account} controller:self];
 }
 
 - (void)noteBtnAction {
