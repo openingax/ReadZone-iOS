@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseNavigationController.h"
-#import "TSColorMarco.h"
+#import "CommonLibrary.h"
+#import "TIMServerHelper.h"
 
 @interface TSBaseNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 

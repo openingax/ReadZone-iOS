@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSAPITencent : NSObject
 
+- (void)fetchSigWith:(NSString *)account complete:(void(^)(BOOL isSuccess, NSString *sig))block;
+
 @end
 
 NS_ASSUME_NONNULL_END

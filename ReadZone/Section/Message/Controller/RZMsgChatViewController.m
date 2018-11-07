@@ -22,8 +22,8 @@
 
 - (instancetype)initWithUser:(RZIMUser *)user {
     if (self = [super init]) {
-        _receiver = user;
     }
+        _receiver = user;
     return self;
 }
 

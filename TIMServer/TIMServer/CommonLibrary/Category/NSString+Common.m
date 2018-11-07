@@ -11,6 +11,7 @@
 //#import "pinyin.h"
 
 #import "NSData+Common.h"
+#import "TSConstMarco.h"
 
 //#import "GTMBase64.h"
 
@@ -319,13 +320,6 @@ char pinyinFirstLetter(unsigned short hanzi)
 - (NSString *)removeNewLine
 {
     return [[self componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
-}
-
-- (NSString *)stringByUrlEncoding
-{
-    NSString *url = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,  (CFStringRef)self,  NULL,  (CFStringRef)@"!*'();:@&=+$,/?%#[]",  kCFStringEncodingUTF8));
-    
-    return CommonReturnAutoReleased(url);
 }
 
 - (NSString *)capitalize
@@ -688,7 +682,7 @@ char pinyinFirstLetter(unsigned short hanzi)
 - (CGSize)textSizeIn:(CGSize)size font:(UIFont *)afont breakMode:(NSLineBreakMode)abreakMode align:(NSTextAlignment)alignment
 {
     NSLineBreakMode breakMode = abreakMode;
-    UIFont *font = afont ? afont : kCommonMiddleTextFont;
+    UIFont *font = afont ? afont : kTimMiddleTextFont;
     
     CGSize contentSize = CGSizeZero;
     

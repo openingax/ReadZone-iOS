@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,9 +42,6 @@ char pinyinFirstLetter(unsigned short hanzi);
 //去除字符串中所有空白
 - (NSString *)removeWhiteSpace;
 - (NSString *)removeNewLine;
-
-//将字符串以URL格式编码
-- (NSString *)stringByUrlEncoding;
 
 /*!
  @brief     大写第一个字符

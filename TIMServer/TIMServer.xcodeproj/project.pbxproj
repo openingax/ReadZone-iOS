@@ -7,43 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F027CEC218BEACB00174278 /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F027CEA218BEACB00174278 /* UIImage+Common.h */; };
-		5F027CED218BEACB00174278 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F027CEB218BEACB00174278 /* UIImage+Common.m */; };
-		5F1BB7992189373900340520 /* UIView+TS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7972189373900340520 /* UIView+TS.h */; };
-		5F1BB79A2189373900340520 /* UIView+TS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7982189373900340520 /* UIView+TS.m */; };
-		5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB79D2189383B00340520 /* TSBaseViewController.h */; };
-		5F1BB7A02189383B00340520 /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB79E2189383B00340520 /* TSBaseViewController.m */; };
-		5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A12189398500340520 /* UIViewController+Layout.h */; };
-		5F1BB7A42189398500340520 /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7A22189398500340520 /* UIViewController+Layout.m */; };
-		5F1BB7A721893DA300340520 /* UIView+CustomAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */; };
-		5F1BB7A821893DA300340520 /* UIView+CustomAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */; };
-		5F1BB7AB21893EB900340520 /* TSDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7AA21893EB900340520 /* TSDevice.h */; };
-		5F1BB7AC21893EBD00340520 /* TSDebugMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7A921893E4300340520 /* TSDebugMarco.h */; };
-		5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7AD2189405400340520 /* TSColorMarco.h */; };
-		5F1BB7B2218940BD00340520 /* UIColor+MLPFlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */; };
-		5F1BB7B3218940BD00340520 /* UIColor+MLPFlatColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */; };
-		5F1BB7B52189415300340520 /* CommonLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B42189415300340520 /* CommonLibrary.h */; };
-		5F1BB7BA21894BC900340520 /* UIView+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7B821894BC900340520 /* UIView+Layout.h */; };
-		5F1BB7BB21894BC900340520 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7B921894BC900340520 /* UIView+Layout.m */; };
-		5F1BB7C021895ADE00340520 /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7BE21895ADE00340520 /* UIImage+Common.h */; };
-		5F1BB7C121895ADE00340520 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7BF21895ADE00340520 /* UIImage+Common.m */; };
-		5F1BB7C421895B0E00340520 /* UIImage+Alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */; };
-		5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */; };
-		5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7C621895B6500340520 /* NSString+Common.h */; };
-		5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7C721895B6500340520 /* NSString+Common.m */; };
-		5F1BB7CC21895BFB00340520 /* NSData+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7CA21895BFB00340520 /* NSData+Common.h */; };
-		5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7CB21895BFB00340520 /* NSData+Common.m */; };
-		5F1BB7D221895CA900340520 /* PathUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7CF21895CA800340520 /* PathUtility.h */; };
-		5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D021895CA800340520 /* PathHeaders.h */; };
-		5F1BB7D421895CA900340520 /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1BB7D121895CA800340520 /* PathUtility.m */; };
-		5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D621895CF700340520 /* ARCCompile.h */; };
-		5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */; };
 		5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */; };
 		5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */; };
 		5F24824821912C1400AC07FD /* TSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24824621912C1400AC07FD /* TSManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F24824921912C1400AC07FD /* TSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24824721912C1400AC07FD /* TSManager.m */; };
 		5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F24825C219132F900AC07FD /* YMCommon.bundle */; };
-		5F24825F219132F900AC07FD /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F24825D219132F900AC07FD /* YMCommon.framework */; };
 		5F70A77B21903B56001FA8FF /* API_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77921903B56001FA8FF /* API_README.md */; };
 		5F70A77C21903B56001FA8FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77A21903B56001FA8FF /* README.md */; };
 		5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147AC2191713000148AAA /* TSBaseNavigationController.h */; };
@@ -55,11 +23,57 @@
 		5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147BB21917CF400148AAA /* TSChatViewController.m */; };
 		5F9147C421917F9F00148AAA /* TSIMServerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147C221917F9F00148AAA /* TSIMServerViewController.h */; };
 		5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147C321917F9F00148AAA /* TSIMServerViewController.m */; };
-		5FB30A5A219066500026A955 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A55219066500026A955 /* ImSDK.framework */; };
-		5FB30A5B219066500026A955 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A56219066500026A955 /* TLSSDK.framework */; };
-		5FB30A5C219066500026A955 /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A57219066500026A955 /* QALSDK.framework */; };
-		5FB30A5D219066500026A955 /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A58219066500026A955 /* IMFriendshipExt.framework */; };
-		5FB30A5E219066500026A955 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB30A59219066500026A955 /* IMMessageExt.framework */; };
+		5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148C9219283C400148AAA /* CommonLibrary.h */; };
+		5F9148EC219283C500148AAA /* ARCCompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148CB219283C400148AAA /* ARCCompile.h */; };
+		5F9148ED219283C500148AAA /* TSDebugMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148CC219283C400148AAA /* TSDebugMarco.h */; };
+		5F9148EE219283C500148AAA /* NSString+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148CE219283C400148AAA /* NSString+Common.h */; };
+		5F9148EF219283C500148AAA /* UIView+TS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148CF219283C400148AAA /* UIView+TS.m */; };
+		5F9148F0219283C500148AAA /* NSData+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148D0219283C400148AAA /* NSData+Common.m */; };
+		5F9148F1219283C500148AAA /* UIImage+Alpha.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148D1219283C400148AAA /* UIImage+Alpha.h */; };
+		5F9148F2219283C500148AAA /* UIImage+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148D2219283C400148AAA /* UIImage+Common.h */; };
+		5F9148F3219283C500148AAA /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148D3219283C400148AAA /* NSString+Common.m */; };
+		5F9148F4219283C500148AAA /* NSData+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148D4219283C400148AAA /* NSData+Common.h */; };
+		5F9148F5219283C500148AAA /* UIView+TS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148D5219283C400148AAA /* UIView+TS.h */; };
+		5F9148F6219283C500148AAA /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148D6219283C400148AAA /* UIImage+Common.m */; };
+		5F9148F7219283C500148AAA /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148D7219283C400148AAA /* UIImage+Alpha.m */; };
+		5F9148F8219283C500148AAA /* UIColor+MLPFlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148D9219283C400148AAA /* UIColor+MLPFlatColors.m */; };
+		5F9148F9219283C500148AAA /* TSColorMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148DA219283C400148AAA /* TSColorMarco.h */; };
+		5F9148FA219283C500148AAA /* UIColor+MLPFlatColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148DB219283C400148AAA /* UIColor+MLPFlatColors.h */; };
+		5F9148FB219283C500148AAA /* PathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148DD219283C400148AAA /* PathUtility.m */; };
+		5F9148FC219283C500148AAA /* PathHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148DE219283C400148AAA /* PathHeaders.h */; };
+		5F9148FD219283C500148AAA /* PathUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148DF219283C400148AAA /* PathUtility.h */; };
+		5F9148FE219283C500148AAA /* UIView+CustomAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148E1219283C400148AAA /* UIView+CustomAutoLayout.h */; };
+		5F9148FF219283C500148AAA /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148E2219283C400148AAA /* UIView+Layout.m */; };
+		5F914900219283C500148AAA /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148E3219283C400148AAA /* UIViewController+Layout.m */; };
+		5F914901219283C500148AAA /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148E4219283C400148AAA /* TSBaseViewController.h */; };
+		5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148E5219283C400148AAA /* UIView+CustomAutoLayout.m */; };
+		5F914903219283C500148AAA /* UIView+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148E6219283C400148AAA /* UIView+Layout.h */; };
+		5F914904219283C500148AAA /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9148E7219283C400148AAA /* TSBaseViewController.m */; };
+		5F914905219283C500148AAA /* UIViewController+Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148E8219283C400148AAA /* UIViewController+Layout.h */; };
+		5F914906219283C500148AAA /* CommonLibraryConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148E9219283C400148AAA /* CommonLibraryConfig.h */; };
+		5F914907219283C500148AAA /* TSDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9148EA219283C400148AAA /* TSDevice.h */; };
+		5F91493221928F9300148AAA /* TSUserManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F91493021928F9300148AAA /* TSUserManager.h */; };
+		5F91493321928F9300148AAA /* TSUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91493121928F9300148AAA /* TSUserManager.m */; };
+		5F91493A2192B38E00148AAA /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149382192B38D00148AAA /* UIView+Toast.m */; };
+		5F91493B2192B38E00148AAA /* UIView+Toast.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149392192B38E00148AAA /* UIView+Toast.h */; };
+		5F91493F2192B5C500148AAA /* TSIMMsg.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F91493D2192B5C500148AAA /* TSIMMsg.h */; };
+		5F9149402192B5C500148AAA /* TSIMMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91493E2192B5C500148AAA /* TSIMMsg.m */; };
+		5F9149432192B6DA00148AAA /* NSDate+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149412192B6DA00148AAA /* NSDate+Common.m */; };
+		5F9149442192B6DA00148AAA /* NSDate+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149422192B6DA00148AAA /* NSDate+Common.h */; };
+		5F9149472192BEE300148AAA /* TSConversation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149452192BEE300148AAA /* TSConversation.h */; };
+		5F9149482192BEE300148AAA /* TSConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149462192BEE300148AAA /* TSConversation.m */; };
+		5F91494B2192BF5500148AAA /* TSSafeMutableArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149492192BF5500148AAA /* TSSafeMutableArray.h */; };
+		5F91494C2192BF5500148AAA /* TSSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91494A2192BF5500148AAA /* TSSafeMutableArray.m */; };
+		5F9149532192C19B00148AAA /* TIMElem+ShowDescription.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149512192C19B00148AAA /* TIMElem+ShowDescription.h */; };
+		5F9149542192C19B00148AAA /* TIMElem+ShowDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149522192C19B00148AAA /* TIMElem+ShowDescription.m */; };
+		5F9149572192C76400148AAA /* TSConversation+ShowAPIs.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149552192C76400148AAA /* TSConversation+ShowAPIs.h */; };
+		5F9149582192C76400148AAA /* TSConversation+ShowAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149562192C76400148AAA /* TSConversation+ShowAPIs.m */; };
+		5F91495B2192CE3700148AAA /* TSIMUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149592192CE3700148AAA /* TSIMUser.h */; };
+		5F91495C2192CE3700148AAA /* TSIMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91495A2192CE3700148AAA /* TSIMUser.m */; };
+		5F91495F2192D0D900148AAA /* TSConversationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F91495D2192D0D900148AAA /* TSConversationManager.h */; };
+		5F9149602192D0D900148AAA /* TSConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91495E2192D0D900148AAA /* TSConversationManager.m */; };
+		5F9149642192D87000148AAA /* TSIMMsgCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9149622192D87000148AAA /* TSIMMsgCell.h */; };
+		5F9149652192D87000148AAA /* TSIMMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9149632192D87000148AAA /* TSIMMsgCell.m */; };
 		5FB30A622190676B0026A955 /* TSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB30A602190676B0026A955 /* TSBaseViewController.h */; };
 		5FB30A632190676B0026A955 /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB30A612190676B0026A955 /* TSBaseViewController.m */; };
 		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
@@ -74,42 +88,10 @@
 		5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5172188282D00667A8A /* Foundation.framework */; };
 		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
 		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
-		5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */; };
 		ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F027CEA218BEACB00174278 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
-		5F027CEB218BEACB00174278 /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
-		5F1BB7972189373900340520 /* UIView+TS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+TS.h"; sourceTree = "<group>"; };
-		5F1BB7982189373900340520 /* UIView+TS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+TS.m"; sourceTree = "<group>"; };
-		5F1BB79D2189383B00340520 /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
-		5F1BB79E2189383B00340520 /* TSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
-		5F1BB7A12189398500340520 /* UIViewController+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Layout.h"; sourceTree = "<group>"; };
-		5F1BB7A22189398500340520 /* UIViewController+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
-		5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAutoLayout.h"; sourceTree = "<group>"; };
-		5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAutoLayout.m"; sourceTree = "<group>"; };
-		5F1BB7A921893E4300340520 /* TSDebugMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDebugMarco.h; sourceTree = "<group>"; };
-		5F1BB7AA21893EB900340520 /* TSDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDevice.h; sourceTree = "<group>"; };
-		5F1BB7AD2189405400340520 /* TSColorMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSColorMarco.h; sourceTree = "<group>"; };
-		5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MLPFlatColors.m"; sourceTree = "<group>"; };
-		5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MLPFlatColors.h"; sourceTree = "<group>"; };
-		5F1BB7B42189415300340520 /* CommonLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibrary.h; sourceTree = "<group>"; };
-		5F1BB7B821894BC900340520 /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
-		5F1BB7B921894BC900340520 /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
-		5F1BB7BE21895ADE00340520 /* UIImage+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
-		5F1BB7BF21895ADE00340520 /* UIImage+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
-		5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
-		5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
-		5F1BB7C621895B6500340520 /* NSString+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
-		5F1BB7C721895B6500340520 /* NSString+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
-		5F1BB7CA21895BFB00340520 /* NSData+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Common.h"; sourceTree = "<group>"; };
-		5F1BB7CB21895BFB00340520 /* NSData+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Common.m"; sourceTree = "<group>"; };
-		5F1BB7CF21895CA800340520 /* PathUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtility.h; sourceTree = "<group>"; };
-		5F1BB7D021895CA800340520 /* PathHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHeaders.h; sourceTree = "<group>"; };
-		5F1BB7D121895CA800340520 /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
-		5F1BB7D621895CF700340520 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
-		5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
 		5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSFriendListViewController.h; sourceTree = "<group>"; };
 		5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFriendListViewController.m; sourceTree = "<group>"; };
 		5F24824621912C1400AC07FD /* TSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSManager.h; sourceTree = "<group>"; };
@@ -133,11 +115,57 @@
 		5F9147CA2191833500148AAA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5F9147CC2191847600148AAA /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		5F9147CE219184A700148AAA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		5FB30A55219066500026A955 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		5FB30A56219066500026A955 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
-		5FB30A57219066500026A955 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QALSDK.framework; sourceTree = "<group>"; };
-		5FB30A58219066500026A955 /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMFriendshipExt.framework; sourceTree = "<group>"; };
-		5FB30A59219066500026A955 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IMMessageExt.framework; sourceTree = "<group>"; };
+		5F9148C9219283C400148AAA /* CommonLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLibrary.h; sourceTree = "<group>"; };
+		5F9148CB219283C400148AAA /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
+		5F9148CC219283C400148AAA /* TSDebugMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDebugMarco.h; sourceTree = "<group>"; };
+		5F9148CE219283C400148AAA /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		5F9148CF219283C400148AAA /* UIView+TS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TS.m"; sourceTree = "<group>"; };
+		5F9148D0219283C400148AAA /* NSData+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Common.m"; sourceTree = "<group>"; };
+		5F9148D1219283C400148AAA /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		5F9148D2219283C400148AAA /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
+		5F9148D3219283C400148AAA /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		5F9148D4219283C400148AAA /* NSData+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Common.h"; sourceTree = "<group>"; };
+		5F9148D5219283C400148AAA /* UIView+TS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TS.h"; sourceTree = "<group>"; };
+		5F9148D6219283C400148AAA /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
+		5F9148D7219283C400148AAA /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		5F9148D9219283C400148AAA /* UIColor+MLPFlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MLPFlatColors.m"; sourceTree = "<group>"; };
+		5F9148DA219283C400148AAA /* TSColorMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSColorMarco.h; sourceTree = "<group>"; };
+		5F9148DB219283C400148AAA /* UIColor+MLPFlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MLPFlatColors.h"; sourceTree = "<group>"; };
+		5F9148DD219283C400148AAA /* PathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathUtility.m; sourceTree = "<group>"; };
+		5F9148DE219283C400148AAA /* PathHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHeaders.h; sourceTree = "<group>"; };
+		5F9148DF219283C400148AAA /* PathUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathUtility.h; sourceTree = "<group>"; };
+		5F9148E1219283C400148AAA /* UIView+CustomAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomAutoLayout.h"; sourceTree = "<group>"; };
+		5F9148E2219283C400148AAA /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		5F9148E3219283C400148AAA /* UIViewController+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
+		5F9148E4219283C400148AAA /* TSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
+		5F9148E5219283C400148AAA /* UIView+CustomAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomAutoLayout.m"; sourceTree = "<group>"; };
+		5F9148E6219283C400148AAA /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		5F9148E7219283C400148AAA /* TSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
+		5F9148E8219283C400148AAA /* UIViewController+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Layout.h"; sourceTree = "<group>"; };
+		5F9148E9219283C400148AAA /* CommonLibraryConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLibraryConfig.h; sourceTree = "<group>"; };
+		5F9148EA219283C400148AAA /* TSDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDevice.h; sourceTree = "<group>"; };
+		5F91493021928F9300148AAA /* TSUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSUserManager.h; sourceTree = "<group>"; };
+		5F91493121928F9300148AAA /* TSUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSUserManager.m; sourceTree = "<group>"; };
+		5F9149382192B38D00148AAA /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		5F9149392192B38E00148AAA /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		5F91493D2192B5C500148AAA /* TSIMMsg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMMsg.h; sourceTree = "<group>"; };
+		5F91493E2192B5C500148AAA /* TSIMMsg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMMsg.m; sourceTree = "<group>"; };
+		5F9149412192B6DA00148AAA /* NSDate+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Common.m"; sourceTree = "<group>"; };
+		5F9149422192B6DA00148AAA /* NSDate+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
+		5F9149452192BEE300148AAA /* TSConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversation.h; sourceTree = "<group>"; };
+		5F9149462192BEE300148AAA /* TSConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSConversation.m; sourceTree = "<group>"; };
+		5F9149492192BF5500148AAA /* TSSafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSafeMutableArray.h; sourceTree = "<group>"; };
+		5F91494A2192BF5500148AAA /* TSSafeMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSafeMutableArray.m; sourceTree = "<group>"; };
+		5F9149512192C19B00148AAA /* TIMElem+ShowDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMElem+ShowDescription.h"; sourceTree = "<group>"; };
+		5F9149522192C19B00148AAA /* TIMElem+ShowDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMElem+ShowDescription.m"; sourceTree = "<group>"; };
+		5F9149552192C76400148AAA /* TSConversation+ShowAPIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSConversation+ShowAPIs.h"; sourceTree = "<group>"; };
+		5F9149562192C76400148AAA /* TSConversation+ShowAPIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TSConversation+ShowAPIs.m"; sourceTree = "<group>"; };
+		5F9149592192CE3700148AAA /* TSIMUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMUser.h; sourceTree = "<group>"; };
+		5F91495A2192CE3700148AAA /* TSIMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMUser.m; sourceTree = "<group>"; };
+		5F91495D2192D0D900148AAA /* TSConversationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversationManager.h; sourceTree = "<group>"; };
+		5F91495E2192D0D900148AAA /* TSConversationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSConversationManager.m; sourceTree = "<group>"; };
+		5F9149622192D87000148AAA /* TSIMMsgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMMsgCell.h; sourceTree = "<group>"; };
+		5F9149632192D87000148AAA /* TSIMMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMMsgCell.m; sourceTree = "<group>"; };
 		5FB30A602190676B0026A955 /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
 		5FB30A612190676B0026A955 /* TSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
 		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
@@ -154,7 +182,6 @@
 		5FEDA5172188282D00667A8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5FEDA54121887A5D00667A8A /* TSInputToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSInputToolBar.h; sourceTree = "<group>"; };
 		5FEDA54221887A5D00667A8A /* TSInputToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSInputToolBar.m; sourceTree = "<group>"; };
-		5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TS-PrefixHeader.pch"; sourceTree = "<group>"; };
 		94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TIMServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,12 +194,6 @@
 			files = (
 				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
 				5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */,
-				5FB30A5A219066500026A955 /* ImSDK.framework in Frameworks */,
-				5F24825F219132F900AC07FD /* YMCommon.framework in Frameworks */,
-				5FB30A5B219066500026A955 /* TLSSDK.framework in Frameworks */,
-				5FB30A5D219066500026A955 /* IMFriendshipExt.framework in Frameworks */,
-				5FB30A5C219066500026A955 /* QALSDK.framework in Frameworks */,
-				5FB30A5E219066500026A955 /* IMMessageExt.framework in Frameworks */,
 				5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */,
 				5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */,
 				5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */,
@@ -184,84 +205,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F1BB792218936E900340520 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB7972189373900340520 /* UIView+TS.h */,
-				5F1BB7982189373900340520 /* UIView+TS.m */,
-				5F1BB7BE21895ADE00340520 /* UIImage+Common.h */,
-				5F1BB7BF21895ADE00340520 /* UIImage+Common.m */,
-				5F1BB7C221895B0E00340520 /* UIImage+Alpha.h */,
-				5F1BB7C321895B0E00340520 /* UIImage+Alpha.m */,
-				5F027CEA218BEACB00174278 /* UIImage+Common.h */,
-				5F027CEB218BEACB00174278 /* UIImage+Common.m */,
-				5F1BB7C621895B6500340520 /* NSString+Common.h */,
-				5F1BB7C721895B6500340520 /* NSString+Common.m */,
-				5F1BB7CA21895BFB00340520 /* NSData+Common.h */,
-				5F1BB7CB21895BFB00340520 /* NSData+Common.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		5F1BB79B2189380F00340520 /* CommonLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB7B42189415300340520 /* CommonLibrary.h */,
-				5F1BB7D821895D7600340520 /* CommonLibraryConfig.h */,
-				5F1BB7AA21893EB900340520 /* TSDevice.h */,
-				5F1BB7D521895CE900340520 /* DebugMacro */,
-				5F1BB7CE21895C8E00340520 /* Path */,
-				5F1BB7AF218940A400340520 /* Color */,
-				5F1BB79C2189381600340520 /* UIFramework */,
-				5F1BB792218936E900340520 /* Category */,
-			);
-			path = CommonLibrary;
-			sourceTree = "<group>";
-		};
-		5F1BB79C2189381600340520 /* UIFramework */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB79D2189383B00340520 /* TSBaseViewController.h */,
-				5F1BB79E2189383B00340520 /* TSBaseViewController.m */,
-				5F1BB7A12189398500340520 /* UIViewController+Layout.h */,
-				5F1BB7A22189398500340520 /* UIViewController+Layout.m */,
-				5F1BB7B821894BC900340520 /* UIView+Layout.h */,
-				5F1BB7B921894BC900340520 /* UIView+Layout.m */,
-				5F1BB7A521893DA300340520 /* UIView+CustomAutoLayout.h */,
-				5F1BB7A621893DA300340520 /* UIView+CustomAutoLayout.m */,
-			);
-			path = UIFramework;
-			sourceTree = "<group>";
-		};
-		5F1BB7AF218940A400340520 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB7AD2189405400340520 /* TSColorMarco.h */,
-				5F1BB7B1218940BD00340520 /* UIColor+MLPFlatColors.h */,
-				5F1BB7B0218940BD00340520 /* UIColor+MLPFlatColors.m */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
-		5F1BB7CE21895C8E00340520 /* Path */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB7D021895CA800340520 /* PathHeaders.h */,
-				5F1BB7CF21895CA800340520 /* PathUtility.h */,
-				5F1BB7D121895CA800340520 /* PathUtility.m */,
-			);
-			path = Path;
-			sourceTree = "<group>";
-		};
-		5F1BB7D521895CE900340520 /* DebugMacro */ = {
-			isa = PBXGroup;
-			children = (
-				5F1BB7D621895CF700340520 /* ARCCompile.h */,
-				5F1BB7A921893E4300340520 /* TSDebugMarco.h */,
-			);
-			path = DebugMacro;
-			sourceTree = "<group>";
-		};
 		5F70A77621903AAE001FA8FF /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,16 +215,114 @@
 			path = Documents;
 			sourceTree = "<group>";
 		};
-		5FB30A54219066500026A955 /* IMFrameworks */ = {
+		5F9148C8219283C400148AAA /* CommonLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				5FB30A55219066500026A955 /* ImSDK.framework */,
-				5FB30A56219066500026A955 /* TLSSDK.framework */,
-				5FB30A57219066500026A955 /* QALSDK.framework */,
-				5FB30A58219066500026A955 /* IMFriendshipExt.framework */,
-				5FB30A59219066500026A955 /* IMMessageExt.framework */,
+				5F9148C9219283C400148AAA /* CommonLibrary.h */,
+				5F9148CA219283C400148AAA /* DebugMacro */,
+				5F9148CD219283C400148AAA /* Category */,
+				5F9148D8219283C400148AAA /* Color */,
+				5F9148DC219283C400148AAA /* Path */,
+				5F9148E0219283C400148AAA /* UIFramework */,
+				5F9148E9219283C400148AAA /* CommonLibraryConfig.h */,
+				5F9148EA219283C400148AAA /* TSDevice.h */,
 			);
-			path = IMFrameworks;
+			path = CommonLibrary;
+			sourceTree = "<group>";
+		};
+		5F9148CA219283C400148AAA /* DebugMacro */ = {
+			isa = PBXGroup;
+			children = (
+				5F9148CB219283C400148AAA /* ARCCompile.h */,
+				5F9148CC219283C400148AAA /* TSDebugMarco.h */,
+			);
+			path = DebugMacro;
+			sourceTree = "<group>";
+		};
+		5F9148CD219283C400148AAA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5F9149422192B6DA00148AAA /* NSDate+Common.h */,
+				5F9149412192B6DA00148AAA /* NSDate+Common.m */,
+				5F9149392192B38E00148AAA /* UIView+Toast.h */,
+				5F9149382192B38D00148AAA /* UIView+Toast.m */,
+				5F9148CE219283C400148AAA /* NSString+Common.h */,
+				5F9148D5219283C400148AAA /* UIView+TS.h */,
+				5F9148CF219283C400148AAA /* UIView+TS.m */,
+				5F9148D4219283C400148AAA /* NSData+Common.h */,
+				5F9148D0219283C400148AAA /* NSData+Common.m */,
+				5F9148D1219283C400148AAA /* UIImage+Alpha.h */,
+				5F9148D2219283C400148AAA /* UIImage+Common.h */,
+				5F9148D3219283C400148AAA /* NSString+Common.m */,
+				5F9148D6219283C400148AAA /* UIImage+Common.m */,
+				5F9148D7219283C400148AAA /* UIImage+Alpha.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		5F9148D8219283C400148AAA /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				5F9148D9219283C400148AAA /* UIColor+MLPFlatColors.m */,
+				5F9148DA219283C400148AAA /* TSColorMarco.h */,
+				5F9148DB219283C400148AAA /* UIColor+MLPFlatColors.h */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		5F9148DC219283C400148AAA /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				5F9148DD219283C400148AAA /* PathUtility.m */,
+				5F9148DE219283C400148AAA /* PathHeaders.h */,
+				5F9148DF219283C400148AAA /* PathUtility.h */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		5F9148E0219283C400148AAA /* UIFramework */ = {
+			isa = PBXGroup;
+			children = (
+				5F9148E1219283C400148AAA /* UIView+CustomAutoLayout.h */,
+				5F9148E5219283C400148AAA /* UIView+CustomAutoLayout.m */,
+				5F9148E2219283C400148AAA /* UIView+Layout.m */,
+				5F9148E6219283C400148AAA /* UIView+Layout.h */,
+				5F9148E4219283C400148AAA /* TSBaseViewController.h */,
+				5F9148E7219283C400148AAA /* TSBaseViewController.m */,
+				5F9148E8219283C400148AAA /* UIViewController+Layout.h */,
+				5F9148E3219283C400148AAA /* UIViewController+Layout.m */,
+			);
+			path = UIFramework;
+			sourceTree = "<group>";
+		};
+		5F91493C2192B5AC00148AAA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5F9149512192C19B00148AAA /* TIMElem+ShowDescription.h */,
+				5F9149522192C19B00148AAA /* TIMElem+ShowDescription.m */,
+				5F9149452192BEE300148AAA /* TSConversation.h */,
+				5F9149462192BEE300148AAA /* TSConversation.m */,
+				5F9149552192C76400148AAA /* TSConversation+ShowAPIs.h */,
+				5F9149562192C76400148AAA /* TSConversation+ShowAPIs.m */,
+				5F91493D2192B5C500148AAA /* TSIMMsg.h */,
+				5F91493E2192B5C500148AAA /* TSIMMsg.m */,
+				5F9149592192CE3700148AAA /* TSIMUser.h */,
+				5F91495A2192CE3700148AAA /* TSIMUser.m */,
+				5F9149492192BF5500148AAA /* TSSafeMutableArray.h */,
+				5F91494A2192BF5500148AAA /* TSSafeMutableArray.m */,
+				5F91495D2192D0D900148AAA /* TSConversationManager.h */,
+				5F91495E2192D0D900148AAA /* TSConversationManager.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5F9149612192D84400148AAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F9149622192D87000148AAA /* TSIMMsgCell.h */,
+				5F9149632192D87000148AAA /* TSIMMsgCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5FB30A5F219067520026A955 /* Controller */ = {
@@ -298,6 +339,7 @@
 		5FB30A68219080180026A955 /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				5F9149612192D84400148AAA /* View */,
 				5FB30A692190801C0026A955 /* Controller */,
 			);
 			path = Section;
@@ -324,7 +366,6 @@
 				5FEDA4DD2188076200667A8A /* Products */,
 				DE3A9A7C8C3544D05A6BC8B1 /* Pods */,
 				B6446FCC6A07244B3AA0D9BC /* Frameworks */,
-				5FB30A54219066500026A955 /* IMFrameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -339,14 +380,14 @@
 		5FEDA4DE2188076200667A8A /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
-				5F1BB79B2189380F00340520 /* CommonLibrary */,
+				5F9148C8219283C400148AAA /* CommonLibrary */,
 				5FEDA54021887A2500667A8A /* View */,
 				5FEDA52321882F8A00667A8A /* General */,
+				5F91493C2192B5AC00148AAA /* Service */,
 				5FB30A68219080180026A955 /* Section */,
 				5FEDA4DF2188076200667A8A /* TIMServer.h */,
 				5FC4EA222189A691007A487E /* TSConstMarco.h */,
 				5F9147B8219178AE00148AAA /* TSConfig.h */,
-				5FEDA54521887B2D00667A8A /* TS-PrefixHeader.pch */,
 				5FEDA4E02188076200667A8A /* Info.plist */,
 			);
 			path = TIMServer;
@@ -362,6 +403,8 @@
 				5F24824721912C1400AC07FD /* TSManager.m */,
 				5F9147B42191777300148AAA /* TSAPITencent.h */,
 				5F9147B52191777300148AAA /* TSAPITencent.m */,
+				5F91493021928F9300148AAA /* TSUserManager.h */,
+				5F91493121928F9300148AAA /* TSUserManager.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -412,38 +455,47 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F1BB7D321895CA900340520 /* PathHeaders.h in Headers */,
+				5F91493221928F9300148AAA /* TSUserManager.h in Headers */,
 				5F24824821912C1400AC07FD /* TSManager.h in Headers */,
+				5F9148FE219283C500148AAA /* UIView+CustomAutoLayout.h in Headers */,
+				5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
+				5F9148FA219283C500148AAA /* UIColor+MLPFlatColors.h in Headers */,
+				5F9149642192D87000148AAA /* TSIMMsgCell.h in Headers */,
+				5F9149472192BEE300148AAA /* TSConversation.h in Headers */,
 				5F9147C421917F9F00148AAA /* TSIMServerViewController.h in Headers */,
-				5F1BB7AE2189405400340520 /* TSColorMarco.h in Headers */,
-				5F027CEC218BEACB00174278 /* UIImage+Common.h in Headers */,
-				5F1BB7992189373900340520 /* UIView+TS.h in Headers */,
-				5F1BB7A32189398500340520 /* UIViewController+Layout.h in Headers */,
+				5F9148F9219283C500148AAA /* TSColorMarco.h in Headers */,
+				5F91495B2192CE3700148AAA /* TSIMUser.h in Headers */,
+				5F91495F2192D0D900148AAA /* TSConversationManager.h in Headers */,
+				5F9148ED219283C500148AAA /* TSDebugMarco.h in Headers */,
+				5F9149572192C76400148AAA /* TSConversation+ShowAPIs.h in Headers */,
+				5F9148FD219283C500148AAA /* PathUtility.h in Headers */,
 				5FB30A622190676B0026A955 /* TSBaseViewController.h in Headers */,
-				5F1BB7C821895B6500340520 /* NSString+Common.h in Headers */,
-				5F1BB7C021895ADE00340520 /* UIImage+Common.h in Headers */,
-				5F1BB7B52189415300340520 /* CommonLibrary.h in Headers */,
-				5F1BB79F2189383B00340520 /* TSBaseViewController.h in Headers */,
-				5F1BB7B3218940BD00340520 /* UIColor+MLPFlatColors.h in Headers */,
 				5F9147B62191777300148AAA /* TSAPITencent.h in Headers */,
-				5F1BB7D221895CA900340520 /* PathUtility.h in Headers */,
 				5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */,
-				5F1BB7CC21895BFB00340520 /* NSData+Common.h in Headers */,
-				5F1BB7C421895B0E00340520 /* UIImage+Alpha.h in Headers */,
-				5F1BB7A721893DA300340520 /* UIView+CustomAutoLayout.h in Headers */,
+				5F9148F4219283C500148AAA /* NSData+Common.h in Headers */,
 				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
+				5F9148FC219283C500148AAA /* PathHeaders.h in Headers */,
+				5F914905219283C500148AAA /* UIViewController+Layout.h in Headers */,
+				5F914903219283C500148AAA /* UIView+Layout.h in Headers */,
 				5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */,
-				5FEDA54621887B2D00667A8A /* TS-PrefixHeader.pch in Headers */,
+				5F91493F2192B5C500148AAA /* TSIMMsg.h in Headers */,
+				5F91493B2192B38E00148AAA /* UIView+Toast.h in Headers */,
+				5F9148EE219283C500148AAA /* NSString+Common.h in Headers */,
+				5F9148F1219283C500148AAA /* UIImage+Alpha.h in Headers */,
 				5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */,
-				5F1BB7AC21893EBD00340520 /* TSDebugMarco.h in Headers */,
-				5F1BB7D721895CF700340520 /* ARCCompile.h in Headers */,
 				5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */,
+				5F9148F2219283C500148AAA /* UIImage+Common.h in Headers */,
+				5F9148EC219283C500148AAA /* ARCCompile.h in Headers */,
 				5F9147BE21917CF400148AAA /* TSChatViewController.h in Headers */,
-				5F1BB7AB21893EB900340520 /* TSDevice.h in Headers */,
-				5F1BB7BA21894BC900340520 /* UIView+Layout.h in Headers */,
+				5F9149442192B6DA00148AAA /* NSDate+Common.h in Headers */,
+				5F9148F5219283C500148AAA /* UIView+TS.h in Headers */,
+				5F914907219283C500148AAA /* TSDevice.h in Headers */,
+				5F914901219283C500148AAA /* TSBaseViewController.h in Headers */,
+				5F91494B2192BF5500148AAA /* TSSafeMutableArray.h in Headers */,
+				5F9149532192C19B00148AAA /* TIMElem+ShowDescription.h in Headers */,
 				5F9147B9219178AE00148AAA /* TSConfig.h in Headers */,
-				5F1BB7D921895D7600340520 /* CommonLibraryConfig.h in Headers */,
+				5F914906219283C500148AAA /* CommonLibraryConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,27 +594,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F1BB7C121895ADE00340520 /* UIImage+Common.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
+				5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */,
+				5F9149542192C19B00148AAA /* TIMElem+ShowDescription.m in Sources */,
+				5F91494C2192BF5500148AAA /* TSSafeMutableArray.m in Sources */,
 				5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */,
-				5F1BB7CD21895BFB00340520 /* NSData+Common.m in Sources */,
+				5F9148F0219283C500148AAA /* NSData+Common.m in Sources */,
 				5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */,
-				5F1BB7C521895B0E00340520 /* UIImage+Alpha.m in Sources */,
+				5F9149582192C76400148AAA /* TSConversation+ShowAPIs.m in Sources */,
+				5F9149432192B6DA00148AAA /* NSDate+Common.m in Sources */,
+				5F9148F7219283C500148AAA /* UIImage+Alpha.m in Sources */,
+				5F914904219283C500148AAA /* TSBaseViewController.m in Sources */,
+				5F9148F8219283C500148AAA /* UIColor+MLPFlatColors.m in Sources */,
+				5F9148F3219283C500148AAA /* NSString+Common.m in Sources */,
+				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
+				5F9148FF219283C500148AAA /* UIView+Layout.m in Sources */,
 				5F9147B72191777300148AAA /* TSAPITencent.m in Sources */,
-				5F027CED218BEACB00174278 /* UIImage+Common.m in Sources */,
-				5F1BB79A2189373900340520 /* UIView+TS.m in Sources */,
-				5F1BB7D421895CA900340520 /* PathUtility.m in Sources */,
-				5F1BB7C921895B6500340520 /* NSString+Common.m in Sources */,
-				5F1BB7B2218940BD00340520 /* UIColor+MLPFlatColors.m in Sources */,
+				5F9148FB219283C500148AAA /* PathUtility.m in Sources */,
 				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
-				5F1BB7A42189398500340520 /* UIViewController+Layout.m in Sources */,
-				5F1BB7BB21894BC900340520 /* UIView+Layout.m in Sources */,
+				5F9149402192B5C500148AAA /* TSIMMsg.m in Sources */,
+				5F9149482192BEE300148AAA /* TSConversation.m in Sources */,
 				5FB30A632190676B0026A955 /* TSBaseViewController.m in Sources */,
+				5F9149652192D87000148AAA /* TSIMMsgCell.m in Sources */,
+				5F9148F6219283C500148AAA /* UIImage+Common.m in Sources */,
+				5F91493A2192B38E00148AAA /* UIView+Toast.m in Sources */,
 				5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */,
-				5F1BB7A821893DA300340520 /* UIView+CustomAutoLayout.m in Sources */,
+				5F91495C2192CE3700148AAA /* TSIMUser.m in Sources */,
+				5F9149602192D0D900148AAA /* TSConversationManager.m in Sources */,
 				5F24824921912C1400AC07FD /* TSManager.m in Sources */,
-				5F1BB7A02189383B00340520 /* TSBaseViewController.m in Sources */,
+				5F914900219283C500148AAA /* UIViewController+Layout.m in Sources */,
 				5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */,
+				5F91493321928F9300148AAA /* TSUserManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

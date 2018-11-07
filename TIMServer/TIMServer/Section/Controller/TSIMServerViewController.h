@@ -11,6 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TSIMServerViewController : TSBaseViewController
+{
+@protected
+    NSMutableArray *_currentMsgs;
+}
+
+@property(nonatomic,strong) NSMutableArray *currentMsgs;
+
+- (void)didReceiveNewMsg;
 
 @end
 

@@ -10,6 +10,8 @@
 #import "CommonLibrary.h"
 #import "TIMServerHelper.h"
 #import "TSConstMarco.h"
+#import "UIView+Layout.h"
+#import "TSConstMarco.h"
 
 @implementation TSInputToolBar
 
@@ -148,7 +150,7 @@
         CGFloat contentHeight = kIsiPhoneX ? (endFrame.size.height + _contentHeight - 34) : (endFrame.size.height + _contentHeight);
         if (contentHeight != _contentHeight) {
             CGRect rect = self.frame;
-            rect.origin.y = kIsiPhoneX ? (endFrame.origin.y - _contentHeight + 34) : (endFrame.origin.y - _contentHeight);
+            rect.origin.y = kIsiPhoneX ? (endFrame.origin.y - _contentHeight + 34 - kNavTotalHeight) : (endFrame.origin.y - _contentHeight - kNavTotalHeight);
             rect.size.height = contentHeight;
             
             [UIView animateWithDuration:duration animations:^{
@@ -168,7 +170,7 @@
     NSInteger contentHeight = kIsiPhoneX ? 84 : 50;
     
     CGRect rect = self.frame;
-    rect.origin.y = kScreenHeight - contentHeight;
+    rect.origin.y = kScreenHeight - contentHeight - kNavTotalHeight;
     rect.size.height = contentHeight;
     
     [UIView animateWithDuration:duration animations:^{

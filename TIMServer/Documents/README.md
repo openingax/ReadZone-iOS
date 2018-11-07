@@ -31,18 +31,6 @@ Password: test
 * libsqlite3.tbd
 * libz.tbd
 * libc++.tbd
-* libTelephonyIOKitDynamic.tbd
-
-
-### 跑主工程时报错的解决方法
-
-* 错误提示
-1、尝试把 TIMServer 工程的 bitcode 设为 NO
-2、尝试把 TIMServer 工程的 Build Active Architecture Only 都设为 NO
-
-* 错误2
-`build input file cannot be found TIMServer.a`
-
-解决方法：
-1、把 `Enable Bitcode` 设为 NO；
-2、把 Debug 下的 Build Active Architecture Only 的设为 NO  
+<!--* libTelephonyIOKitDynamic.tbd-->
+* CoreTelephony.framework
+* SystemConfiguration.framework

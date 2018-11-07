@@ -7,7 +7,27 @@
 //
 
 #import "TSIMServerViewController.h"
+#import "TSSafeMutableArray.h"
+#import "TSIMMsg.h"
+#import "TSIMUser.h"
+
+@class TSConversation;
 
 @interface TSChatViewController : TSIMServerViewController
+{
+@protected
+    TSConversation                  *_conversation;
+    TSIMUser                        *_receiver;
+    __weak TSSafeMutableArray       *_messageList;
+}
+
+@property(nonatomic,strong) TSConversation *conversation;
+@property(nonatomic,strong) TSIMUser *receiver;
+@property(nonatomic,readonly) TSSafeMutableArray *messageList;
+
+- (instancetype)initWithUser:(TSIMUser *)user;
+
+- (void)configWithUser:(TSIMUser *)user;
+- (void)appendReceiveMessage;
 
 @end

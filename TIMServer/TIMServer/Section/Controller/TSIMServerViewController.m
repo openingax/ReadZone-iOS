@@ -7,8 +7,13 @@
 //
 
 #import "TSIMServerViewController.h"
-#import <ImSDK/ImSDK.h>
 #import "TSConfig.h"
+#import <ImSDK/ImSDK.h>
+#import "TSAPITencent.h"
+#import "TSUserManager.h"
+#import "UIView+Toast.h"
+#import "TSConversationManager.h"
+#import "TSIMMsg.h"
 
 @interface TSIMServerViewController ()
 <
@@ -20,7 +25,8 @@ TIMGroupListener,
 TIMMessageListener
 >
 
-@property(nonatomic,assign) BOOL hasLiginTIM;
+@property(nonatomic,assign) BOOL hasLogin;
+@property(nonatomic,strong) TSConversationManager *convManager;
 
 @end
 
@@ -29,15 +35,21 @@ TIMMessageListener
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.currentMsgs = [NSMutableArray array];
+    
     [self configTIMAccount];
+    
+//    self.convManager = [[TSConversationManager alloc] init];
     [[TIMManager sharedInstance] addMessageListener:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!_hasLiginTIM) {
-
+    if (!_hasLogin) {
+        [self loginTIM];
     }
+    
+    
 }
 
 - (void)configTIMAccount {
@@ -85,6 +97,66 @@ TIMMessageListener
 
     int setConfigStatus = [manager setUserConfig:userConfig];
     NSLog(@"setConfigStatus: %d", setConfigStatus);
+}
+
+- (void)loginTIM {
+    
+//    TSAPITencent *apiManager = [[TSAPITencent alloc] init];
+//    [apiManager fetchSigWith:[TSUserManager shareInstance].account complete:^(BOOL isSuccess, NSString * _Nonnull sig) {
+//
+//    }];
+    
+    TIMLoginParam *param = [[TIMLoginParam alloc] init];
+    param.identifier = [NSString stringWithFormat:@"%@", [TSUserManager shareInstance].account];
+    
+    param.userSig = [TSUserManager shareInstance].userSig;
+    
+    param.appidAt3rd = kTimIMSdkAppId;
+    
+    [[TIMManager sharedInstance] login:param succ:^{
+        
+        self.hasLogin = YES;
+        [self registNotification];
+        [self.view makeToast:@"登录成功"];
+        if ([self respondsToSelector:@selector(didLogin)]) {
+            [self didLogin];
+        }
+        
+    } fail:^(int code, NSString *msg) {
+        
+        [self.view makeToast:[@"登录失败\n" stringByAppendingString:msg]];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }];
+}
+
+// 子类继承这个方法，以接收 IM 服务登录成功的通知
+- (void)didLogin {
+    
+}
+
+- (void)registNotification {
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
+- (void)onNewMessage:(NSArray *)msgs {
+    for (TIMMessage *msg in msgs) {
+        TSIMMsg *imMsg = [TSIMMsg msgWithMsg:msg];
+        if ([imMsg isSystemMsg] || [imMsg type] == TSIMMsgTypeUnknow) {
+            return;
+        }
+        NSString *tip = [imMsg msgTip];
+        [self.currentMsgs addObject:tip];
+    }
+    
+    [self didReceiveNewMsg];
+}
+
+- (void)didReceiveNewMsg {
+    
 }
 
 @end

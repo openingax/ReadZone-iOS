@@ -10,6 +10,8 @@ project 'ReadZone.project'
 target 'TIMServer' do
     
     project 'TIMServer/TIMServer.project'
+    pod 'Masonry', '~> 1.1.0'
+    
 end
 
 target 'ReadZone' do
