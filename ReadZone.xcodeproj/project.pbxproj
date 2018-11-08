@@ -183,6 +183,7 @@
 		5FD82CCF217E2CD900D1779A /* RZConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZConfig.h; sourceTree = "<group>"; };
 		5FD82CD0217E2EFB00D1779A /* RZDevelopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDevelopViewController.h; sourceTree = "<group>"; };
 		5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDevelopViewController.m; sourceTree = "<group>"; };
+		5FE080672194264500AA3CED /* RZFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZFont.h; sourceTree = "<group>"; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
 		6072E7B21A7AF8BDE17F5D2F /* Pods_ReadZoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6EF69A853611B57CE6B977 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,6 +810,7 @@
 			children = (
 				B2D2185720F20CFA00331F4C /* RZUtils.h */,
 				B2D2185B20F2132500331F4C /* RZDefine.h */,
+				5FE080672194264500AA3CED /* RZFont.h */,
 			);
 			path = Marco;
 			sourceTree = "<group>";

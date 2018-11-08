@@ -39,7 +39,7 @@
         }];
         
         self.essayLabel = [[UILabel alloc] init];
-        self.essayLabel.font = [UIFont fontWithName:kFontAdobeSong size:16];
+        self.essayLabel.font = kFontAdobeSongStd(16);
         self.essayLabel.textColor = [UIColor whiteColor];
         self.essayLabel.numberOfLines = 0;
         [blurView addSubview:self.essayLabel];
@@ -49,7 +49,7 @@
         }];
         
         self.authorLabel = [[UILabel alloc] init];
-        self.authorLabel.font = [UIFont fontWithName:kFontAdobeSong size:14];
+        self.authorLabel.font = kFontAdobeSongStd(14);
         self.authorLabel.textColor = [UIColor whiteColor];
         [blurView addSubview:self.authorLabel];
         [self.authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -54,6 +54,11 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = TIMLocalizedString(@"MSG_NAV_TITLE", @"留言板导航栏标题");
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
+    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
     [self drawView];
 }
 
@@ -80,6 +85,11 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     
     _toolBar = [[TSInputToolBar alloc] init];
     _toolBar.delegate = self;
+    [self.view addSubview:_toolBar];
+    [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_equalTo(self.toolBar.contentHeight);
+    }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -88,17 +98,41 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     [self.tableView registerClass:[TSIMMsgCell class] forCellReuseIdentifier:kMsgChatCellIdentifier];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
+    [self.view insertSubview:_tableView belowSubview:_toolBar];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-self.toolBar.contentHeight);
-    }];
-    
-    [self.view addSubview:_toolBar];
-    [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(self.toolBar.contentHeight);
+        make.bottom.equalTo(self.toolBar.mas_top);
     }];
 }
+
+#pragma mark - Notification
+- (void)onKeyboardDidShow:(NSNotification *)noti {
+    if ([_toolBar isEditing]) {
+        NSDictionary *userInfo = noti.userInfo;
+        CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        
+        CGRect rect = self.tableView.frame;
+        rect.size.height = rect.size.height - endFrame.size.height;
+        [UIView animateWithDuration:duration animations:^{
+            [self.tableView setFrame:rect];
+        }];
+    }
+}
+
+- (void)onKeyboardWillHide:(NSNotification *)noti {
+    NSDictionary *userInfo = noti.userInfo;
+//    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect rect = self.tableView.frame;
+    rect.size.height = kScreenHeight - kNavTotalHeight;
+    [UIView animateWithDuration:duration animations:^{
+        [self.tableView setFrame:rect];
+    }];
+}
+
+
+#pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _currentMsgs.count;

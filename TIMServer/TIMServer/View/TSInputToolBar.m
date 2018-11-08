@@ -6,6 +6,7 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
+#import <Masonry/Masonry.h>
 #import "TSInputToolBar.h"
 #import "CommonLibrary.h"
 #import "TIMServerHelper.h"
@@ -37,8 +38,8 @@
         self.backgroundColor = RGBOF(0xEEEEEE);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
-        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
-        //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     }
     return self;
@@ -111,28 +112,60 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
-    [_audioBtn alignParentTopWithMargin:kVerMargin];
-    [_audioBtn alignParentLeftWithMargin:kDefaultMargin];
+    [_audioBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
+        make.top.equalTo(self).with.offset(kVerMargin);
+        make.left.equalTo(self).with.offset(kDefaultMargin);
+    }];
     
-    [_moreBtn sameWith:_audioBtn];
-    [_moreBtn alignParentRightWithMargin:kDefaultMargin];
+    [_moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
+        make.top.equalTo(self).with.offset(kVerMargin);
+        make.right.equalTo(self).with.offset(-kDefaultMargin);
+    }];
     
-    [_emojBtn sameWith:_moreBtn];
-    [_emojBtn layoutToLeftOf:_moreBtn margin:kDefaultMargin/2];
+    [_emojBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
+        make.top.equalTo(self).with.offset(kVerMargin);
+        make.right.equalTo(self->_moreBtn.mas_left).with.offset(-kDefaultMargin/2);
+    }];
     
-    [_audioPressed sameWith:_audioBtn];
-    [_audioPressed layoutToRightOf:_audioBtn margin:kDefaultMargin/2];
-    [_audioPressed scaleToLeftOf:_emojBtn margin:kDefaultMargin/2];
+    [_audioPressed mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(kButtonSize);
+        make.top.equalTo(self->_audioBtn.mas_top);
+        make.left.equalTo(self->_audioBtn.mas_right).with.offset(kDefaultMargin/2);
+        make.right.equalTo(self->_emojBtn.mas_left).with.offset(-kDefaultMargin/2);
+    }];
     
-    CGRect rect = self.bounds;
-    CGRect apFrame = _audioPressed.frame;
+    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(kButtonSize);
+        make.top.equalTo(self->_audioBtn.mas_top);
+        make.left.equalTo(self->_audioBtn.mas_right).with.offset(kDefaultMargin/2);
+        make.right.equalTo(self->_emojBtn.mas_left).with.offset(-kDefaultMargin/2);
+    }];
     
-    rect.origin.x = apFrame.origin.x;
-    rect.origin.y = kVerMargin;
-    rect.size.height = rect.size.height - 2 * kVerMargin - kIsiPhoneX ? 34 : 0;
-    rect.size.width = apFrame.size.width;
-    _textView.frame = rect;
+    //    [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
+    //    [_audioBtn alignParentTopWithMargin:kVerMargin];
+    //    [_audioBtn alignParentLeftWithMargin:kDefaultMargin];
+    //
+    //    [_moreBtn sameWith:_audioBtn];
+    //    [_moreBtn alignParentRightWithMargin:kDefaultMargin];
+    //
+    //    [_emojBtn sameWith:_moreBtn];
+    //    [_emojBtn layoutToLeftOf:_moreBtn margin:kDefaultMargin/2];
+    //
+    //    [_audioPressed sameWith:_audioBtn];
+    //    [_audioPressed layoutToRightOf:_audioBtn margin:kDefaultMargin/2];
+    //    [_audioPressed scaleToLeftOf:_emojBtn margin:kDefaultMargin/2];
+    //
+    //    CGRect rect = self.bounds;
+    //    CGRect apFrame = _audioPressed.frame;
+    //
+    //    rect.origin.x = apFrame.origin.x;
+    //    rect.origin.y = kVerMargin;
+    //    rect.size.height = rect.size.height - 2 * kVerMargin - kIsiPhoneX ? 34 : 0;
+    //    rect.size.width = apFrame.size.width;
+    //    _textView.frame = rect;
 }
 
 - (void)configOwnViews {
