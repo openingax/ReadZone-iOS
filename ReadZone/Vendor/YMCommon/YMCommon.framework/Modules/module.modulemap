@@ -1,0 +1,6 @@
+framework module YMCommon {
+  umbrella header "YMCommon.h"
+
+  export *
+  module * { export * }
+}

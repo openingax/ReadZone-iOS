@@ -24,8 +24,8 @@
     UIButton        *_audioBtn;
     UIButton        *_audioPressed;
     UITextView      *_textView;
-    UIButton        *_emojBtn;
-    UIButton        *_moreBtn;
+    UIButton        *_imgBtn;
+    UIButton        *_movieBtn;
 
 @protected
     NSTimer         *_inputStatusTime;

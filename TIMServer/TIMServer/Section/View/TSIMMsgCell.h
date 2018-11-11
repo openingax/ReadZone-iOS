@@ -10,6 +10,7 @@
 
 @interface TSIMMsgCell : UITableViewCell
 
+@property(nonatomic,copy) NSString *icon;
 @property(nonatomic,copy) NSString *msg;
 
 @end

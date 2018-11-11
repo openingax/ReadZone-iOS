@@ -1,0 +1,15 @@
+"device-name" = "设备名称";
+"I-know" = "确定";
+"no-Internet-connection" = "没有网络连接，请检查网络！";
+"network-connection-timeout" = "网络连接超时，请重试";
+"URL-error" = "URL地址异常，请重试";
+"new-version-found" = "发现新版本";
+"version-release-please-download" = "版本发布啦,马上下载体验吧!";//%@V%@版本发布啦,马上下载体验吧!
+"standing-off" = "暂时不用";
+"update-immediately" = "马上更新";
+"load-failed-please-try-again" = "加载数据失败，请重试！";
+"failed-to-get-the-app-version" = "获取app版本失败";
+"load-again" = "重新加载";
+"check-again" = "重新查询";
+"fail" = "失败";
+"Refresh" = "刷新";

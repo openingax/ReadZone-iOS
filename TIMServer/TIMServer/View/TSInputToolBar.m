@@ -13,13 +13,14 @@
 #import "TSConstMarco.h"
 #import "UIView+Layout.h"
 #import "TSConstMarco.h"
+#import <YMCommon/YMCFont.h>
 
 @implementation TSInputToolBar
 
-#define kButtonSize 36
+#define kButtonSize 32
 #define kTextViewMaxHeight 72
-#define kVerMargin 7
-#define kDefaultMargin  8
+#define kVerMargin 12
+#define kDefaultMargin  10
 
 //chat toolbar
 #define kChatToolBarMinHeight 36
@@ -33,9 +34,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        // iPX 84，其余 50
-        _contentHeight = kIsiPhoneX ? 84 : 50;
-        self.backgroundColor = RGBOF(0xEEEEEE);
+        // iPX 89，其余 55
+        _contentHeight = kIsiPhoneX ? 89 : 55;
+        self.backgroundColor = RGB(230, 234, 235);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
@@ -49,10 +50,18 @@
 
 - (void)addOwnViews {
     
+    UIView *topLine = [[UIView alloc] init];
+    topLine.backgroundColor = RGBOF(0xE3E2EE);
+    [self addSubview:topLine];
+    [topLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self);
+        make.height.mas_equalTo(0.4);
+    }];
+    
     _audioBtn = [[UIButton alloc] init];
     [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_press"] forState:UIControlStateHighlighted];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
+//    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_press"] forState:UIControlStateHighlighted];
+//    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
     [_audioBtn addTarget:self action:@selector(onAudioBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_audioBtn];
     
@@ -87,26 +96,26 @@
     _textView.returnKeyType = UIReturnKeySend;
     _textView.enablesReturnKeyAutomatically = YES;
     _textView.delegate = self;
-    _textView.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.f].CGColor;
+    _textView.layer.borderColor = RGBOF(0x00A3B4).CGColor;
     _textView.layer.borderWidth = 0.6;
-    _textView.layer.cornerRadius = 6;
-    _textView.font = kTimLargeTextFont;
-    _textView.textContainerInset = UIEdgeInsetsMake(6, 6, 6, 6);
+    _textView.layer.cornerRadius = 3;
+    _textView.font = [YMCFont fontOfType:YMCFontTypeGBKBold size:14];
+    _textView.textContainerInset = UIEdgeInsetsMake(12, 12, 12, 12);
     [self addSubview:_textView];
     
-    // emoj 按钮
-    _emojBtn = [[UIButton alloc] init];
-    [_emojBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_nor"] forState:UIControlStateNormal];
-    [_emojBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
-    [_emojBtn addTarget:self action:@selector(onEmojClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_emojBtn];
+    // photo 按钮
+    _imgBtn = [[UIButton alloc] init];
+    [_imgBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
+//    [_imgBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
+    [_imgBtn addTarget:self action:@selector(onEmojClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_imgBtn];
     
-    // more 按钮
-    _moreBtn = [[UIButton alloc] init];
-    [_moreBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_more_nor"] forState:UIControlStateNormal];
-    [_moreBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_more_press"] forState:UIControlStateHighlighted];
-    [_moreBtn addTarget:self action:@selector(onMoreClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_moreBtn];
+    // movie 按钮
+    _movieBtn = [[UIButton alloc] init];
+    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
+//    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_more_press"] forState:UIControlStateHighlighted];
+    [_movieBtn addTarget:self action:@selector(onMoreClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_movieBtn];
 }
 
 - (void)layoutSubviews {
@@ -115,33 +124,33 @@
     [_audioBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
         make.top.equalTo(self).with.offset(kVerMargin);
-        make.left.equalTo(self).with.offset(kDefaultMargin);
+        make.left.equalTo(self).with.offset(6);
     }];
     
-    [_moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_movieBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
         make.top.equalTo(self).with.offset(kVerMargin);
-        make.right.equalTo(self).with.offset(-kDefaultMargin);
+        make.right.equalTo(self).with.offset(-6);
     }];
     
-    [_emojBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_imgBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
         make.top.equalTo(self).with.offset(kVerMargin);
-        make.right.equalTo(self->_moreBtn.mas_left).with.offset(-kDefaultMargin/2);
+        make.right.equalTo(self->_movieBtn.mas_left).with.offset(-10);
     }];
     
     [_audioPressed mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(kButtonSize);
-        make.top.equalTo(self->_audioBtn.mas_top);
-        make.left.equalTo(self->_audioBtn.mas_right).with.offset(kDefaultMargin/2);
-        make.right.equalTo(self->_emojBtn.mas_left).with.offset(-kDefaultMargin/2);
+        make.height.mas_equalTo(42);
+        make.centerY.equalTo(self->_audioBtn.mas_centerY);
+        make.left.equalTo(self->_audioBtn.mas_right).with.offset(10);
+        make.right.equalTo(self->_imgBtn.mas_left).with.offset(-10);
     }];
     
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(kButtonSize);
-        make.top.equalTo(self->_audioBtn.mas_top);
-        make.left.equalTo(self->_audioBtn.mas_right).with.offset(kDefaultMargin/2);
-        make.right.equalTo(self->_emojBtn.mas_left).with.offset(-kDefaultMargin/2);
+        make.height.mas_equalTo(42);
+        make.centerY.equalTo(self->_audioBtn.mas_centerY);
+        make.left.equalTo(self->_audioBtn.mas_right).with.offset(10);
+        make.right.equalTo(self->_imgBtn.mas_left).with.offset(-10);
     }];
     
     //    [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
@@ -256,7 +265,7 @@
         [_textView resignFirstResponder];
     }
     
-    _moreBtn.selected = NO;
+    _movieBtn.selected = NO;
     button.selected = !button.selected;
 }
 
@@ -265,7 +274,7 @@
         [_textView resignFirstResponder];
     }
     
-    _emojBtn.selected = NO;
+    _imgBtn.selected = NO;
     button.selected = !button.selected;
 }
 

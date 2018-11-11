@@ -11,6 +11,8 @@
 		5F24824E2191311100AC07FD /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F24824D2191311100AC07FD /* TIMServer.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
+		5F372622219871F600A1078D /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F372621219871F600A1078D /* YMCommon.bundle */; };
+		5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3726232198720400A1078D /* YMCommon.framework */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
 		5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE67211036C500499F1E /* RZUserInfoModel.m */; };
 		5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */; };
@@ -94,6 +96,8 @@
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
+		5F372621219871F600A1078D /* YMCommon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YMCommon.bundle; sourceTree = "<group>"; };
+		5F3726232198720400A1078D /* YMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YMCommon.framework; sourceTree = "<group>"; };
 		5F403D4B2101EFDA00050FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5F403D4D2101EFE500050FEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 				5F91492F2192885D00148AAA /* SystemConfiguration.framework in Frameworks */,
 				5F91492E2192885700148AAA /* CoreTelephony.framework in Frameworks */,
 				5F9149292192867500148AAA /* ImSDK.framework in Frameworks */,
+				5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */,
 				5F91492A2192867500148AAA /* IMFriendshipExt.framework in Frameworks */,
 				5F91492B2192867500148AAA /* TLSSDK.framework in Frameworks */,
 				5F91492C2192867500148AAA /* IMMessageExt.framework in Frameworks */,
@@ -289,6 +294,15 @@
 				5F0657302110A32E0081D6A9 /* RZUserModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5F372620219871B700A1078D /* YMCommon */ = {
+			isa = PBXGroup;
+			children = (
+				5F3726232198720400A1078D /* YMCommon.framework */,
+				5F372621219871F600A1078D /* YMCommon.bundle */,
+			);
+			path = YMCommon;
 			sourceTree = "<group>";
 		};
 		5F50FE652110369100499F1E /* Model */ = {
@@ -556,6 +570,7 @@
 		5FEDA51B21882E2A00667A8A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				5F372620219871B700A1078D /* YMCommon */,
 				5FC4EA2121899E28007A487E /* TIMServer */,
 			);
 			path = Vendor;
@@ -1052,6 +1067,7 @@
 				5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */,
 				5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */,
 				B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */,
+				5F372622219871F600A1078D /* YMCommon.bundle in Resources */,
 				5FC4EA2021899DDE007A487E /* TIMServerLocalizable.bundle in Resources */,
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
@@ -1356,6 +1372,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/IMFrameworks",
+					"$(PROJECT_DIR)/ReadZone/Vendor/YMCommon",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1398,6 +1415,7 @@
 					"$(PROJECT_DIR)/TIMServer/YMFrameworks",
 					"$(PROJECT_DIR)/YMFraneworks",
 					"$(PROJECT_DIR)/TIMServer/IMFrameworks",
+					"$(PROJECT_DIR)/ReadZone/Vendor/YMCommon",
 				);
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;

@@ -139,7 +139,7 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+    return 68;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -148,6 +148,7 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
         cell = [[TSIMMsgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMsgChatCellIdentifier];
     }
     
+    cell.icon = _receiver.icon;
     cell.msg = [_currentMsgs objectAtIndex:indexPath.row];
     
     return cell;
