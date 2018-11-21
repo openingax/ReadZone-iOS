@@ -10,10 +10,9 @@
 #import <ImSDK/ImSDK.h>
 #import "TSIMMsg.h"
 #import "TSSafeMutableArray.h"
+#import "CommonLibrary.h"
 
 @class TSIMUser;
-
-typedef void (^CommonVoidBlock)(NSArray *lastMsgs);
 
 typedef void(^HandleMsgBlock)(NSArray *imMsgList, BOOL succ);
 typedef void (^HandleMsgCodeBlock)(NSArray *imamsgList, BOOL succ, int code);

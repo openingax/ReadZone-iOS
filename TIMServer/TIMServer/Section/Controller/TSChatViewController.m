@@ -114,9 +114,10 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
         
         CGRect rect = self.tableView.frame;
         rect.size.height = rect.size.height - endFrame.size.height;
-        [UIView animateWithDuration:duration animations:^{
-            [self.tableView setFrame:rect];
-        }];
+//        [UIView animateWithDuration:duration animations:^{
+//
+//        }];
+        [self.tableView setContentOffset:CGPointMake(0, rect.size.height - endFrame.size.height) animated:YES];
     }
 }
 
@@ -154,6 +155,7 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     return cell;
 }
 
+#pragma mark - TSInputToolBarDelegate
 - (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content {
     
     [self.currentMsgs addObject:content];
@@ -176,8 +178,38 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     }];
 }
 
+- (void)toolBarDidClickPhotoButton {
+    [self callImagePickerActionSheet];
+}
+
+- (void)toolBarDidClickMovieButton {
+    [self callImagePickerActionSheet];
+}
+
 - (void)tapAction {
     [_toolBar endEditing:YES];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        
+    } else if([mediaType isEqualToString:(NSString*)kUTTypeMovie]) {
+        
+    }
+}
+
+//当消息量过大时，需要清理部分消息，避免内存持续增长
+- (void)updateMessageList {
+    
+    if (_messageList.count > 1000) {
+        DebugLog(@"_messageList.count > 1000");
+        int rangLength = 100;
+        NSRange range = NSMakeRange(_messageList.count-rangLength, rangLength);
+        [_messageList subArrayWithRange:range];
+        [_tableView reloadData];
+    }
 }
 
 @end

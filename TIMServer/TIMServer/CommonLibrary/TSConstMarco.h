@@ -9,6 +9,8 @@
 #ifndef TSConstMarco_h
 #define TSConstMarco_h
 
+#define kDefaultMargin  8
+
 #define kTimLargeTextFont       [UIFont systemFontOfSize:16]
 #define kTimMiddleTextFont      [UIFont systemFontOfSize:14]
 #define kTimSmallTextFont       [UIFont systemFontOfSize:12]
@@ -21,5 +23,7 @@
 #define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
 #define kNavTotalHeight (kStatusBarHeight + kNavBarHeight)
 
+// 默认TableViewCell高度
+#define kDefaultCellHeight 50
 
 #endif /* TSConstMarco_h */

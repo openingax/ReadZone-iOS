@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)layoutSubviewsFrame;
 
+- (void)layoutOnIPhone;
+
 - (void)addOwnViews;
 
 - (void)configOwnViews;

@@ -16,6 +16,8 @@ char pinyinFirstLetter(unsigned short hanzi);
 
 @interface NSString (Common)
 
++ (NSString *)uuid;
+
 // 将str加密成本地保存的文件名
 + (NSString *)md5String:(NSString *)str;
 - (NSString *)md5;

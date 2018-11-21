@@ -6,17 +6,19 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TSBaseView.h"
 
 @class TSInputToolBar;
 
 @protocol TSInputToolBarDelegate <NSObject>
 
 - (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content;
+- (void)toolBarDidClickPhotoButton;
+- (void)toolBarDidClickMovieButton;
 
 @end
 
-@interface TSInputToolBar : UIView <UITextViewDelegate>
+@interface TSInputToolBar : TSBaseView <UITextViewDelegate>
 {
 @protected
     NSInteger       _contentHeight;
@@ -24,7 +26,7 @@
     UIButton        *_audioBtn;
     UIButton        *_audioPressed;
     UITextView      *_textView;
-    UIButton        *_imgBtn;
+    UIButton        *_photoBtn;
     UIButton        *_movieBtn;
 
 @protected

@@ -9,6 +9,7 @@
 // Vendor
 #import <AVOSCloud/AVOSCloud.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <TIMServer/TSManager.h>
 
 // Manager
 #import "RZMenuManager.h"
@@ -17,6 +18,7 @@
 #import "RZHotPotModel.h"
 #import "Student.h"
 #import "RZAPIHomePage.h"
+
 
 // View
 #import "RZNavBarItem.h"
@@ -32,6 +34,7 @@
 @property(nonatomic,strong) RZHotPotView *hotPotView;
 
 @property(nonatomic,strong) RZAPIHomePage *homePageAPI;
+@property(nonatomic,strong) TSManager *tsManager;
 
 @end
 
@@ -46,6 +49,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     UIScreenEdgePanGestureRecognizer *edgeGes = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgeGesture:)];
     edgeGes.edges = UIRectEdgeRight;
     [self.view addGestureRecognizer:edgeGes];
@@ -53,6 +58,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    if (!_tsManager) {
+        [self searchAction];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,11 +122,12 @@
 }
 
 - (void)searchAction {
-    NSLog(@"ratio: %f", kScreenRatio());
-    [self fetchData];
-//    [self.homePageAPI fetchHomePageData:^(RZHomePageModel *data, NSError *error) {
-//
-//    }];
+    if (!_tsManager) {
+        _tsManager = [[TSManager alloc] init];
+    }
+    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
+        [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
+    }
 }
 
 - (void)moreAction {

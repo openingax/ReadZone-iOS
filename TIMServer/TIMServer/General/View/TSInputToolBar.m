@@ -35,7 +35,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         // iPX 89，其余 55
-        _contentHeight = kIsiPhoneX ? 89 : 55;
+        _contentHeight = kIsiPhoneX ? 90 : 56;
         self.backgroundColor = RGB(230, 234, 235);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -104,17 +104,17 @@
     [self addSubview:_textView];
     
     // photo 按钮
-    _imgBtn = [[UIButton alloc] init];
-    [_imgBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
-//    [_imgBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
-    [_imgBtn addTarget:self action:@selector(onEmojClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_imgBtn];
+    _photoBtn = [[UIButton alloc] init];
+    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
+//    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
+    [_photoBtn addTarget:self action:@selector(onPhotoBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_photoBtn];
     
     // movie 按钮
     _movieBtn = [[UIButton alloc] init];
     [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
 //    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_more_press"] forState:UIControlStateHighlighted];
-    [_movieBtn addTarget:self action:@selector(onMoreClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_movieBtn addTarget:self action:@selector(onMovieBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
 }
 
@@ -133,7 +133,7 @@
         make.right.equalTo(self).with.offset(-6);
     }];
     
-    [_imgBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(kButtonSize, kButtonSize));
         make.top.equalTo(self).with.offset(kVerMargin);
         make.right.equalTo(self->_movieBtn.mas_left).with.offset(-10);
@@ -143,14 +143,14 @@
         make.height.mas_equalTo(42);
         make.centerY.equalTo(self->_audioBtn.mas_centerY);
         make.left.equalTo(self->_audioBtn.mas_right).with.offset(10);
-        make.right.equalTo(self->_imgBtn.mas_left).with.offset(-10);
+        make.right.equalTo(self->_photoBtn.mas_left).with.offset(-10);
     }];
     
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(42);
         make.centerY.equalTo(self->_audioBtn.mas_centerY);
         make.left.equalTo(self->_audioBtn.mas_right).with.offset(10);
-        make.right.equalTo(self->_imgBtn.mas_left).with.offset(-10);
+        make.right.equalTo(self->_photoBtn.mas_left).with.offset(-10);
     }];
     
     //    [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
@@ -260,22 +260,30 @@
     [_audioPressed setTitle:TIMLocalizedString(@"CHAT_WINDOW_LOOSE_END", @"松开 结束") forState:UIControlStateSelected];
 }
 
-- (void)onEmojClick:(UIButton *)button {
+- (void)onPhotoBtnClick:(UIButton *)button {
     if ([_textView isFirstResponder]) {
         [_textView resignFirstResponder];
     }
     
     _movieBtn.selected = NO;
     button.selected = !button.selected;
+    
+    if ([_delegate respondsToSelector:@selector(toolBarDidClickPhotoButton)]) {
+        [_delegate toolBarDidClickPhotoButton];
+    }
 }
 
-- (void)onMoreClick:(UIButton *)button {
+- (void)onMovieBtnClick:(UIButton *)button {
     if ([_textView isFirstResponder]) {
         [_textView resignFirstResponder];
     }
     
-    _imgBtn.selected = NO;
+    _photoBtn.selected = NO;
     button.selected = !button.selected;
+    
+    if ([_delegate respondsToSelector:@selector(toolBarDidClickMovieButton)]) {
+        [_delegate toolBarDidClickMovieButton];
+    }
 }
 
 // 默认高度

@@ -8,29 +8,6 @@
 
 #import <Availability.h>
 
-#ifndef RZPrefixHeader_pch
-#define RZPrefixHeader_pch
-
-#ifdef DEBUG
-#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#define NSLog(...);
-#endif
-
-// UI 相关
-#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
-#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
-#define kScreenBounds [UIScreen mainScreen].bounds
-
-#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
-#define kNavBarHeight 44.0
-#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
-#define kNavTotalHeight (kStatusBarHeight + kNavBarHeight)
-
-#define kIsiPhoneX ([UIScreen mainScreen].bounds.size.width == 375 && [UIScreen mainScreen].bounds.size.height == 812) || ([UIScreen mainScreen].bounds.size.width == 414 && [UIScreen mainScreen].bounds.size.height == 896)
-#define kIsiPhone5 [UIScreen mainScreen].bounds.size.width == 320 && [UIScreen mainScreen].bounds.size.height == 568
-#define kScreenScale [UIScreen mainScreen].scale
-
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
@@ -53,5 +30,32 @@
 
 // Swift
 #import "ReadZone-Swift.h"
+
+#ifndef RZPrefixHeader_pch
+#define RZPrefixHeader_pch
+
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define NSLog(...);
+#endif
+
+#define DebugLog(fmt, ...) [[NSNotificationCenter defaultCenter] postNotificationName:kDebugLogNotification object:fmt];
+
+// UI 相关
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define kScreenBounds [UIScreen mainScreen].bounds
+
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavBarHeight 44.0
+#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+#define kNavTotalHeight (kStatusBarHeight + kNavBarHeight)
+
+#define kIsiPhoneX ([UIScreen mainScreen].bounds.size.width == 375 && [UIScreen mainScreen].bounds.size.height == 812) || ([UIScreen mainScreen].bounds.size.width == 414 && [UIScreen mainScreen].bounds.size.height == 896)
+#define kIsiPhone5 [UIScreen mainScreen].bounds.size.width == 320 && [UIScreen mainScreen].bounds.size.height == 568
+#define kScreenScale [UIScreen mainScreen].scale
+
+
 
 #endif /* RZPrefixHeader_pch */

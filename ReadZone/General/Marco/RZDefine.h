@@ -20,6 +20,8 @@
 #define kColorUserBtnBg @"007AFF"
 
 /* 通知 */
+#define kDebugLogNotification @"kDebugLogNotification"
+
 #define kLoginSuccessNotification @"kLoginSuccessNotification"
 #define kLogoutNotification @"kLogoutNotification"
 

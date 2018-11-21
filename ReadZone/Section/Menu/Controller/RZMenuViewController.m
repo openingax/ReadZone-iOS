@@ -253,7 +253,9 @@ static CGFloat containerWidth;
     if (!_tsManager) {
         _tsManager = [[TSManager alloc] init];
     }
-    [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
+    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
+        [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
+    }
 }
 
 - (void)noteBtnAction {

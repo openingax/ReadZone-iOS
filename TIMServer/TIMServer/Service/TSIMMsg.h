@@ -69,6 +69,7 @@ typedef NS_ENUM(NSInteger, TSIMMsgStatus) {
 
 + (instancetype)msgWithFilePath:(NSURL *)filePath;
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration;
++ (instancetype)msgWithEmptySound;
 + (instancetype)msgWithVideoPath:(NSString *)videoPath;
 
 + (instancetype)msgWithMsg:(TIMMessage *)msg;

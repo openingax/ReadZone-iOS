@@ -112,6 +112,16 @@
     return imMsg;
 }
 
++ (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration {
+#warning 要完善
+    return nil;
+}
+
++ (instancetype)msgWithEmptySound {
+#warning 要完善
+    return nil;
+}
+
 - (void)statusChangeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need {
     
 }

@@ -8,13 +8,20 @@
 
 #import "RZBaseViewController.h"
 #import "RZRootViewController.h"
+#import "RZDebugView.h"
 #import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 @interface RZBaseViewController ()
 
+@property(nonatomic,assign) BOOL showDebugWindow;
+@property(nonatomic,strong) RZDebugView *debugView;
+
 @end
 
 @implementation RZBaseViewController
+{
+    CGPoint panBeginPoint;
+}
 - (void)loadView {
     [super loadView];
     
@@ -28,11 +35,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#ifdef Develop
+    self.showDebugWindow = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveDebugLog:) name:kDebugLogNotification object:nil];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [AVAnalytics beginLogPageView:NSStringFromClass([self class])];
+    
+#ifdef Develop
+    if (self.showDebugWindow) {
+        UIView *lastView = [self.view.subviews lastObject];
+        
+        if (!_debugView) {
+            _debugView = [[RZDebugView alloc] init];
+        }
+        [self.view insertSubview:_debugView aboveSubview:lastView];
+        [_debugView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view).with.offset(kNavTotalHeight);
+            make.right.equalTo(self.view);
+            make.size.mas_equalTo(CGSizeMake(kScreenWidth/3, 180));
+        }];
+        
+        UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
+        [_debugView addGestureRecognizer:panGes];
+    }
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -42,6 +73,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Notification
+- (void)didReceiveDebugLog:(NSNotification *)noti {
+    [_debugView debugLog:noti.object];
 }
 
 #pragma mark - draw
@@ -86,6 +122,22 @@
 
 - (void)popSelfWithSomeActions {
     // 子类重写该方法
+}
+
+#pragma mark - Action
+- (void)panGestureAction:(UIPanGestureRecognizer *)panGes {
+    if (panGes.state == UIGestureRecognizerStateBegan) {
+        panBeginPoint = [panGes locationInView:_debugView];
+    } else if (panGes.state == UIGestureRecognizerStateChanged) {
+        CGPoint current = [panGes locationInView:self.view];
+        CGRect rect = _debugView.frame;
+        rect.origin.x = current.x - panBeginPoint.x;
+        rect.origin.y = current.y - panBeginPoint.y;
+        _debugView.frame = rect;
+        
+    } else if (panGes.state == UIGestureRecognizerStateEnded) {
+        
+    }
 }
 
 @end

@@ -13,6 +13,7 @@
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
 		5F372622219871F600A1078D /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F372621219871F600A1078D /* YMCommon.bundle */; };
 		5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3726232198720400A1078D /* YMCommon.framework */; };
+		5F3E03DA21A4FD1A00E3EAB8 /* RZDebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E03D921A4FD1A00E3EAB8 /* RZDebugView.m */; };
 		5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F403D4C2101EFDA00050FEB /* InfoPlist.strings */; };
 		5F50FE68211036C500499F1E /* RZUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE67211036C500499F1E /* RZUserInfoModel.m */; };
 		5F50FE6B21104A0E00499F1E /* RZBaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50FE6A21104A0E00499F1E /* RZBaseUtils.m */; };
@@ -98,6 +99,8 @@
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
 		5F372621219871F600A1078D /* YMCommon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YMCommon.bundle; sourceTree = "<group>"; };
 		5F3726232198720400A1078D /* YMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YMCommon.framework; sourceTree = "<group>"; };
+		5F3E03D821A4FD1A00E3EAB8 /* RZDebugView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZDebugView.h; sourceTree = "<group>"; };
+		5F3E03D921A4FD1A00E3EAB8 /* RZDebugView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDebugView.m; sourceTree = "<group>"; };
 		5F403D4B2101EFDA00050FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5F403D4D2101EFE500050FEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F403D4E2101EFE700050FEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -303,6 +306,15 @@
 				5F372621219871F600A1078D /* YMCommon.bundle */,
 			);
 			path = YMCommon;
+			sourceTree = "<group>";
+		};
+		5F3E03C921A4F2CD00E3EAB8 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				5F3E03D821A4FD1A00E3EAB8 /* RZDebugView.h */,
+				5F3E03D921A4FD1A00E3EAB8 /* RZDebugView.m */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		5F50FE652110369100499F1E /* Model */ = {
@@ -634,6 +646,7 @@
 		B2BF657D20D75B37003059AE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5F3E03C921A4F2CD00E3EAB8 /* Debug */,
 				5F5245272182ECBF00389CD7 /* User */,
 				5FD82CD3217F6F3400D1779A /* Alert */,
 				5FD82CBF217E267F00D1779A /* WebKit */,
@@ -1174,6 +1187,7 @@
 				B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */,
 				B2D2187B20F7A05E00331F4C /* RZHotPotView.m in Sources */,
 				5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */,
+				5F3E03DA21A4FD1A00E3EAB8 /* RZDebugView.m in Sources */,
 				5F7012B220F58B1E00088216 /* RZAPI.m in Sources */,
 				B2F14D4B20C44BCE005DF168 /* RZLoginViewController.m in Sources */,
 				5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */,

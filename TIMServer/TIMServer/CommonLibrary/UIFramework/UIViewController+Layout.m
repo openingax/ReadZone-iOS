@@ -18,6 +18,10 @@
     
 }
 
+- (void)layoutOnIPhone {
+    
+}
+
 - (void)addOwnViews {
     
 }

@@ -249,6 +249,15 @@ char pinyinFirstLetter(unsigned short hanzi)
 
 @implementation NSString (Common)
 
++ (NSString *)uuid {
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef strUuid = CFUUIDCreateString(kCFAllocatorDefault,uuid);
+    NSString * str = [NSString stringWithString:(__bridge NSString *)strUuid];
+    CFRelease(strUuid);
+    CFRelease(uuid);
+    return  str;
+}
+
 + (NSString *)md5String:(NSString *)str;
 {
     const char *cStr = [str UTF8String];

@@ -11,7 +11,7 @@
 @implementation RZMenuButton
 
 + (RZMenuButton *)buttonWithTitle:(NSString *)title {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    RZMenuButton *button = [[self alloc] init];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];

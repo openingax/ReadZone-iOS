@@ -34,3 +34,4 @@ Password: test
 <!--* libTelephonyIOKitDynamic.tbd-->
 * CoreTelephony.framework
 * SystemConfiguration.framework
+* AVFoundation.framework
