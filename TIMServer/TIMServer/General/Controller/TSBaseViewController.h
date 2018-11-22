@@ -13,6 +13,7 @@
 #import "UIView+Layout.h"
 #import "UIViewController+Layout.h"
 #import <CoreServices/CoreServices.h>
+#import <Masonry.h>
 
 @interface TSBaseViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

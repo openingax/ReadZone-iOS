@@ -32,7 +32,7 @@
 #define CHAT_RECORD_VIEW_H    216
 #define CHAT_EMOJ_VIEW_PAGE_CNTL_H   18
 
-@interface TSChatInputBaseView : UIView
+@interface TSChatInputBaseView : UIView <TSChatInputAbleView>
 {
 @protected
     __weak id<TSChatInputAbleViewDelegate> _chatDelegate;

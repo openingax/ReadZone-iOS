@@ -16,10 +16,20 @@
 
 - (void)layoutSubviewsFrame {
     
+    if (CGRectIsEmpty(self.view.bounds)) {
+        return;
+    }
+    
+    [self layoutOnIPhone];
 }
 
 - (void)layoutOnIPhone {
     
+}
+
+- (void)layoutOnViewWillAppear
+{
+    [self layoutSubviewsFrame];
 }
 
 - (void)addOwnViews {

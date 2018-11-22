@@ -6,20 +6,12 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
+/* 服务层，只用于初始化 SDK 与登录相关的事务 */
+
 #import "TSTableRefreshViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface TSIMServerViewController : TSTableRefreshViewController
-{
-@protected
-    NSMutableArray *_currentMsgs;
-}
 
-@property(nonatomic,strong) NSMutableArray *currentMsgs;
-
-- (void)didReceiveNewMsg;
+- (void)didLogin;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -23,6 +23,8 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [TSChatSoundPlayer destory];
+    [TSChatSoundRecorder destory];
 }
 
 - (void)setInputText:(NSString *)text {
@@ -154,6 +156,38 @@
     [[TSChatSoundRecorder sharedInstance] stopRecord];
 }
 
+- (void)relayoutFrameOfSubViews
+{
+    [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
+    [_audioBtn alignParentBottomWithMargin:kVerMargin];
+    [_audioBtn alignParentLeftWithMargin:kDefaultMargin];
+    
+    
+    [_movieBtn sameWith:_audioBtn];
+    [_movieBtn alignParentRightWithMargin:kDefaultMargin];
+    
+    [_photoBtn sameWith:_movieBtn];
+    [_photoBtn layoutToLeftOf:_movieBtn margin:kDefaultMargin/2];
+    
+    [_audioPressedBtn sameWith:_audioBtn];
+    [_audioPressedBtn layoutToRightOf:_audioBtn margin:kDefaultMargin/2];
+    [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kDefaultMargin/2];
+    
+    CGRect rect = self.bounds;
+    CGRect apframe = _audioPressedBtn.frame;
+    
+    rect.origin.x = apframe.origin.x;
+    rect.origin.y = kVerMargin;
+    rect.size.height -= 2 * kVerMargin;
+    rect.size.width = apframe.size.width;
+    _textView.frame = rect;
+}
+
+- (BOOL)isEditing
+{
+    return [_textView isFirstResponder];
+}
+
 - (void)onClikPhoto:(UIButton *)button {
     if ([_textView isFirstResponder]) {
         [_textView resignFirstResponder];
@@ -184,15 +218,6 @@
     }
 }
 
-- (NSInteger)getTextViewContentH:(UITextView *)textView
-{
-    if (textView.text.length == 0)
-    {
-        return kButtonSize;
-    }
-    return (NSInteger)(textView.contentSize.height + 1);
-}
-
 - (void)willShowInputTextViewToHeight:(CGFloat)toHeight
 {
     CGFloat textViewToHeight = toHeight;
@@ -219,9 +244,83 @@
     }
 }
 
+- (BOOL)resignFirstResponder {
+    _photoBtn.selected = NO;
+    _movieBtn.selected = NO;
+    [_textView resignFirstResponder];
+    return [super resignFirstResponder];
+}
+
+#pragma mark- UITextViewDelegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    _audioPressedBtn.hidden = YES;
+    _photoBtn.selected = NO;
+    _movieBtn.selected = NO;
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    DebugLog(@"textViewDidEndEditing");
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"])
+    {
+        if ([_chatDelegate respondsToSelector:@selector(onChatInput:sendMsg:)])
+        {
+            if (textView.text.length > 0)
+            {
+                TSIMMsg *msg = [TSIMMsg msgWithText:textView.text];
+                [_chatDelegate onChatInput:self sendMsg:msg];
+            }
+            _textView.text = @"";
+            [self willShowInputTextViewToHeight:[self getTextViewContentH:textView]];
+        }
+        
+        return NO;
+    }
+    return YES;
+}
+
+- (NSInteger)getTextViewContentH:(UITextView *)textView
+{
+    if (textView.text.length == 0)
+    {
+        return kButtonSize;
+    }
+    return (NSInteger)(textView.contentSize.height + 1);
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self willShowInputTextViewToHeight:[self getTextViewContentH:textView]];
+}
+
+- (void)onModifyLoopFlag:(NSTimer *)timer
+{
+    _isInLoop = NO;
+}
+
 @end
 
 @implementation TSRichChatInputToolBar
 
+- (UITextView *)inputTextView {
+    return [[TSChatInputTextView alloc] init];
+}
+
+- (TSIMMsg *)getMsgDraft
+{
+    return [(TSChatInputTextView *)_textView getDraftMsg];
+}
+
+- (void)setMsgDraft:(TSIMMsg *)draft
+{
+    [(TSChatInputTextView *)_textView setDraftMsg:draft];
+}
 
 @end

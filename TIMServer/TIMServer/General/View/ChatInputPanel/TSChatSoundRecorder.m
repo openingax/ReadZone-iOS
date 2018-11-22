@@ -341,6 +341,8 @@ static TSChatSoundRecorder *_sharedInstance = nil;
     }
     
     [self.recorder stop];
+    
+#warning ERROR!!! 报错（2018.11.22 19:05）
     if (![self initRecord])
     {
 #warning add hud tips 加 HUD 提示

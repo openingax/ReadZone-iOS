@@ -19,41 +19,40 @@
 #import "TIMServerHelper.h"
 
 @interface TSIMServerViewController ()
-<
-TIMConnListener,
+<TIMConnListener,
 TIMUserStatusListener,
 TIMRefreshListener,
+TIMUploadProgressListener,
 TIMFriendshipListener,
-TIMGroupListener,
-TIMMessageListener,
-TIMUploadProgressListener
+TIMGroupListener
 >
 
 @property(nonatomic,assign) BOOL hasInitSDK;
 @property(nonatomic,assign) BOOL hasLogin;
-@property(nonatomic,strong) TSConversationManager *convManager;
 
 @end
 
 @implementation TSIMServerViewController
 
+- (instancetype)init {
+    if (self = [super init]) {
+        dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        dispatch_async(globalQueue, ^{
+            [self configTIMAccount];
+        });
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.currentMsgs = [NSMutableArray array];
-    
-    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_async(globalQueue, ^{
-        [self configTIMAccount];
-    });
-    
-    [[TIMManager sharedInstance] addMessageListener:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!_hasLogin && _hasInitSDK) {
-        // 延时 0.5 秒登录，否则失败率很高
+        // 延时 1 秒登录，否则失败率很高
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self loginTIM];
         });
@@ -111,11 +110,6 @@ TIMUploadProgressListener
 
 - (void)loginTIM {
     
-    //    TSAPITencent *apiManager = [[TSAPITencent alloc] init];
-    //    [apiManager fetchSigWith:[TSUserManager shareInstance].account complete:^(BOOL isSuccess, NSString * _Nonnull sig) {
-    //
-    //    }];
-    
     TIMLoginParam *param = [[TIMLoginParam alloc] init];
     param.identifier = [NSString stringWithFormat:@"%@", [TSUserManager shareInstance].account];
     
@@ -126,7 +120,6 @@ TIMUploadProgressListener
     [[TIMManager sharedInstance] login:param succ:^{
         
         self.hasLogin = YES;
-        [self registNotification];
         [self.view makeToast:@"登录成功"];
         if ([self respondsToSelector:@selector(didLogin)]) {
             [self didLogin];
@@ -144,7 +137,6 @@ TIMUploadProgressListener
                 [self loginTIM];
             });
         } else {
-//            [self.view makeToast:[NSString stringWithFormat:@"code: %d\n登录失败\n%@", code, msg]];
             [TSAlertManager showMessage:[NSString stringWithFormat:@"code: %d\n登录失败\n%@", code, msg]];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -155,29 +147,6 @@ TIMUploadProgressListener
 
 // 子类继承这个方法，以接收 IM 服务登录成功的通知
 - (void)didLogin {
-    
-}
-
-- (void)registNotification {
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-}
-
-- (void)onNewMessage:(NSArray *)msgs {
-    for (TIMMessage *msg in msgs) {
-        TSIMMsg *imMsg = [TSIMMsg msgWithMsg:msg];
-        if ([imMsg isSystemMsg] || [imMsg type] == TSIMMsgTypeUnknow) {
-            return;
-        }
-        NSString *tip = [imMsg msgTip];
-        [self.currentMsgs addObject:tip];
-    }
-    
-    [self didReceiveNewMsg];
-}
-
-// 子类继承
-- (void)didReceiveNewMsg {
     
 }
 

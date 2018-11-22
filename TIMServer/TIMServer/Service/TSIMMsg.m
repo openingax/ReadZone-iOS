@@ -112,6 +112,11 @@
     return imMsg;
 }
 
++ (instancetype)msgWithCustom:(NSInteger)command {
+    TIMMessage *elem = [[TIMCustomElem alloc] init];
+    return [[TSIMMsg alloc] initWithMsg:elem type:TSIMMsgTypeCustom];
+}
+
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration {
 #warning 要完善
     return nil;

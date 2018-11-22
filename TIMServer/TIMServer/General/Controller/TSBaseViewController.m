@@ -26,7 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
     
+    [self addOwnViews];
+    [self configOwnViews];
+    [self layoutSubviewsFrame];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -38,7 +42,6 @@
 - (void)configParams {
     
 }
-
 
 #pragma mark -
 - (BOOL)hasBackgroundView {

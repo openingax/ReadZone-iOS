@@ -10,14 +10,20 @@
 #import "TSSafeMutableArray.h"
 #import "TSIMMsg.h"
 #import "TSIMUser.h"
+#import "TSChatInputPanel.h"
+#import "TSIMMsg+Draft.h"
 
 @class TSConversation;
 
 @interface TSChatViewController : TSIMServerViewController
 {
+    
 @protected
     TSConversation                  *_conversation;
     TSIMUser                        *_receiver;
+    
+    FBKVOController                 *_receiverKVO;
+    
     __weak TSSafeMutableArray       *_messageList;
 }
 
@@ -28,6 +34,16 @@
 - (instancetype)initWithUser:(TSIMUser *)user;
 
 - (void)configWithUser:(TSIMUser *)user;
+
+
+// 加载历史信息
+- (void)loadHistotyMessages;
+
+// 添加收到的信息
 - (void)appendReceiveMessage;
+
+- (void)sendMsg:(TSIMMsg *)msg;
+
+- (void)updateOnSendMessage:(NSArray *)msglist succ:(BOOL)succ;
 
 @end

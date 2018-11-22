@@ -10,7 +10,7 @@
 #import "TSFriendListViewController.h"
 #import "TSBaseNavigationController.h"
 #import "TSUserManager.h"
-#import "TSChatViewController.h"
+#import "TSIMChatViewController.h"
 #import "TSIMUser.h"
 
 #import "TSIMManager.h"
@@ -29,7 +29,7 @@
         receiver = [[TSIMUser alloc] initWithUserId:@"18814098638"];
     };
     
-    TSChatViewController *listVC = [[TSChatViewController alloc] initWithUser:receiver];
+    TSIMChatViewController *listVC = [[TSIMChatViewController alloc] initWithUser:receiver];
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:listVC];
     navVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [controller presentViewController:navVC animated:YES completion:^{

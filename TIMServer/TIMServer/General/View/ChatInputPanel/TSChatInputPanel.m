@@ -77,9 +77,7 @@
             self.frame = rect;
             self.contentHeight = contentHeight;
         }];
-        
     }
-    
 }
 
 
@@ -174,6 +172,8 @@
     _panel = nil;
 }
 
+#pragma mark -
+
 - (void)onToolBarClickPhoto:(TSChatInputToolBar *)bar show:(BOOL)isShow
 {
     if (isShow)
@@ -209,7 +209,7 @@
     [self onShowAddtionalPanel:panel withOff:contentHeight - oldPanelContentHeight];
 }
 
-- (void)onToolBarClickMore:(TSChatInputToolBar *)bar show:(BOOL)isShow
+- (void)onToolBarClickMovie:(TSChatInputToolBar *)bar show:(BOOL)isShow
 {
     if (isShow)
     {

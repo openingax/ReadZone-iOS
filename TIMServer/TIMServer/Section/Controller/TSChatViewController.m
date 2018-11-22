@@ -18,12 +18,7 @@
 #import "TSColorMarco.h"
 #import <Masonry/Masonry.h>
 
-static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
-
-@interface TSChatViewController () <UITableViewDelegate, UITableViewDataSource, TSInputToolBarDelegate>
-
-@property(nonatomic,strong) UITableView *tableView;
-@property(nonatomic,strong) TSInputToolBar *toolBar;
+@interface TSChatViewController ()
 
 @end
 
@@ -44,171 +39,150 @@ static NSString *kMsgChatCellIdentifier = @"kMsgChatCellIdentifier";
     _messageList = _conversation.msgList;
 }
 
-- (void)appendReceiveMessage {
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = TIMLocalizedString(@"MSG_NAV_TITLE", @"留言板导航栏标题");
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
-    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidChangeFrameNotification object:nil];
-    //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    [self drawView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-- (void)didLogin {
     [self configWithUser:_receiver];
     
-    [_conversation asyncLoadLocalLastMsg:^(NSArray *lastMsgs) {
-        [self.currentMsgs addObjectsFromArray:lastMsgs];
-        [self.tableView reloadData];
-    }];
+    self.view.backgroundColor = kWhiteColor;
+    UITapGestureRecognizer* tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
+    [self.tableView addGestureRecognizer:tapAction];
 }
 
-- (void)didReceiveNewMsg {
-    [_tableView reloadData];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
-- (void)drawView {
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-    [self.view addGestureRecognizer:tapGes];
+- (void)dealloc {
+    _tableView.delegate = nil;
+    _tableView.dataSource = nil;
+    [_receiverKVO unobserveAll];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)hiddenKeyBoard {
     
-    _toolBar = [[TSInputToolBar alloc] init];
-    _toolBar.delegate = self;
-    [self.view addSubview:_toolBar];
-    [_toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(self.toolBar.contentHeight);
-    }];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.backgroundColor = RGB(247,247,247);
-    [self.tableView registerClass:[TSIMMsgCell class] forCellReuseIdentifier:kMsgChatCellIdentifier];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:self.tableView];
-    [self.view insertSubview:_tableView belowSubview:_toolBar];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
-        make.bottom.equalTo(self.toolBar.mas_top);
-    }];
 }
 
-#pragma mark - Notification
-- (void)onKeyboardDidShow:(NSNotification *)noti {
-    if ([_toolBar isEditing]) {
-        NSDictionary *userInfo = noti.userInfo;
-        CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        
-        CGRect rect = self.tableView.frame;
-        rect.size.height = rect.size.height - endFrame.size.height;
-//        [UIView animateWithDuration:duration animations:^{
+
+#pragma mark - Add View
+- (void)addHeaderView {
+    // 添加头部视图
+    
+}
+
+- (void)addOwnViews {
+    [super addOwnViews];
+    
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.sectionFooterHeight = 0.f;
+    
+    [self addChatToolBar];
+    
+    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
+    longPressGr.minimumPressDuration = 1.0;
+    [_tableView addGestureRecognizer:longPressGr];
+}
+
+- (void)addChatToolBar {
+    
+}
+
+-(void)onLongPress:(UILongPressGestureRecognizer *)gesture
+{
+    
+//    if(gesture.state == UIGestureRecognizerStateBegan)
+//    {
+//        CGPoint point = [gesture locationInView:self.tableView];
 //
-//        }];
-        [self.tableView setContentOffset:CGPointMake(0, rect.size.height - endFrame.size.height) animated:YES];
-    }
+//        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
+//        UITableViewCell<TIMElemAbleCell> *cell = [_tableView cellForRowAtIndexPath:indexPath];
+//        BOOL showMenu = [cell canShowMenu];
+//
+//        if (showMenu)
+//        {
+//            if ([cell canShowMenuOnTouchOf:gesture])
+//            {
+//                [cell showMenu];
+//            }
+//        }
+//    }
 }
 
-- (void)onKeyboardWillHide:(NSNotification *)noti {
-    NSDictionary *userInfo = noti.userInfo;
-//    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect rect = self.tableView.frame;
-    rect.size.height = kScreenHeight - kNavTotalHeight;
-    [UIView animateWithDuration:duration animations:^{
-        [self.tableView setFrame:rect];
-    }];
-}
-
-
-#pragma mark - UITableViewDelegate & UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _currentMsgs.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 68;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TSIMMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:kMsgChatCellIdentifier];
-    if (!cell) {
-        cell = [[TSIMMsgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMsgChatCellIdentifier];
-    }
-    
-    cell.icon = _receiver.icon;
-    cell.msg = [_currentMsgs objectAtIndex:indexPath.row];
-    
-    return cell;
-}
-
-#pragma mark - TSInputToolBarDelegate
-- (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content {
-    
-    [self.currentMsgs addObject:content];
-    [self didReceiveNewMsg];
-    
-    TIMTextElem *textElem = [[TIMTextElem alloc] init];
-    textElem.text = content;
-    TIMMessage *msg = [[TIMMessage alloc] init];
-    [msg addElem:textElem];
-    
-    TSIMMsg *imMsg = [TSIMMsg msgWithMsg:msg];
-    
-    [self.conversation sendMessage:imMsg completion:^(NSArray *imamsgList, BOOL succ, int code) {
-        if (succ) {
-            NSLog(@"消息发送成功");
-            [self.toolBar setInputText:@""];
-        } else {
-            [self.view makeToast:[NSString stringWithFormat:@"消息发送失败\ncode: %d", code]];
-        }
-    }];
-}
-
-- (void)toolBarDidClickPhotoButton {
-    [self callImagePickerActionSheet];
-}
-
-- (void)toolBarDidClickMovieButton {
-    [self callImagePickerActionSheet];
-}
-
-- (void)tapAction {
-    [_toolBar endEditing:YES];
-}
-
-#pragma mark - UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+- (void)sendMsg:(TSIMMsg *)msg
+{
+    if (msg)
+    {
+        //        _isSendMsg = YES;
+        [_tableView beginUpdates];
         
-    } else if([mediaType isEqualToString:(NSString*)kUTTypeMovie]) {
+        __weak TSChatViewController *ws = self;
+        DebugLog(@"will sendmessage");
         
+        NSArray *newaddMsgs = [_conversation sendMessage:msg completion:^(NSArray *imamsglist, BOOL succ, int code) {
+            
+            DebugLog(@"sendmessage end");
+            [ws updateOnSendMessage:imamsglist succ:succ];
+            
+            if (!succ)
+            {
+                if (code == 80001)
+                {
+                    TSIMMsg *msg = [TSIMMsg msgWithCustom:TSIMMsgTypeSaftyTip];
+                    [self->_messageList addObject:msg];
+                    
+                    [self showMsgs:@[msg]];
+                }
+            }
+        }];
+        
+        [self showMsgs:newaddMsgs];
     }
 }
 
-//当消息量过大时，需要清理部分消息，避免内存持续增长
-- (void)updateMessageList {
+- (void)showMsgs:(NSArray *)msgs
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (TSIMMsg *msg in msgs)
+    {
+        NSInteger idx = [_messageList indexOfObject:msg];
+        NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+        [array addObject:index];
+    }
     
-    if (_messageList.count > 1000) {
-        DebugLog(@"_messageList.count > 1000");
-        int rangLength = 100;
-        NSRange range = NSMakeRange(_messageList.count-rangLength, rangLength);
-        [_messageList subArrayWithRange:range];
-        [_tableView reloadData];
+    [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
+    [_tableView endUpdates];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
+        [self->_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    });
+}
+
+- (void)sendText:(NSString *)text
+{
+    if (text && text.length > 0)
+    {
+        TSIMMsg *msg = [TSIMMsg msgWithText:text];
+        [self sendMsg:msg];
+    }
+}
+
+- (void)didChangeToolBarHight:(CGFloat)toHeight
+{
+    __weak TSChatViewController* weakself = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = weakself.tableView.frame;
+        rect.origin.y = 0;
+        rect.size.height = weakself.view.frame.size.height - toHeight;
+        weakself.tableView.frame = rect;
+    }];
+    
+    if (_tableView.contentSize.height > _tableView.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, _tableView.contentSize.height - _tableView.frame.size.height);
+        [_tableView setContentOffset:offset animated:YES];
     }
 }
 

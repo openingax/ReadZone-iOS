@@ -7,6 +7,7 @@
 //
 
 #import "TSChatInputBaseView.h"
+#import "TSChatInputTextView.h"
 
 @class TSChatInputToolBar;
 @protocol TSChatInputToolBarDelegate <NSObject>
@@ -46,6 +47,9 @@
 
 @end
 
+// 因表情在各端不统一
+// TSChatInputToolBar 中的表情是unicode编码，但在各平台台不能解析
+// 为统一表情，各端统一使用表情图片代替原unicode字符串
 @interface TSRichChatInputToolBar : TSChatInputToolBar
 
 - (TSIMMsg *)getMsgDraft;
