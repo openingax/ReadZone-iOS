@@ -264,11 +264,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F91492A2192867500148AAA /* IMFriendshipExt.framework in Frameworks */,
 				5F91492F2192885D00148AAA /* SystemConfiguration.framework in Frameworks */,
 				5F91492E2192885700148AAA /* CoreTelephony.framework in Frameworks */,
 				5F9149292192867500148AAA /* ImSDK.framework in Frameworks */,
 				5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */,
-				5F91492A2192867500148AAA /* IMFriendshipExt.framework in Frameworks */,
 				5F91492B2192867500148AAA /* TLSSDK.framework in Frameworks */,
 				5F91492C2192867500148AAA /* IMMessageExt.framework in Frameworks */,
 				5F91492D2192867500148AAA /* QALSDK.framework in Frameworks */,

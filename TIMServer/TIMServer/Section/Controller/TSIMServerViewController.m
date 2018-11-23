@@ -41,7 +41,6 @@ TIMGroupListener
             [self configTIMAccount];
         });
     }
-    
     return self;
 }
 
@@ -49,10 +48,15 @@ TIMGroupListener
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!_hasLogin && _hasInitSDK) {
         // 延时 1 秒登录，否则失败率很高
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self loginTIM];
         });
@@ -119,13 +123,17 @@ TIMGroupListener
     
     [[TIMManager sharedInstance] login:param succ:^{
         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         self.hasLogin = YES;
-        [self.view makeToast:@"登录成功"];
+//        [self.view makeToast:@"登录成功"];
         if ([self respondsToSelector:@selector(didLogin)]) {
             [self didLogin];
         }
         
     } fail:^(int code, NSString *msg) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if (code == 6023) {
             // 被踢下线

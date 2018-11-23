@@ -32,7 +32,27 @@
 }
 
 - (void)configWithUser:(TSIMUser *)user {
+    
+    [_receiverKVO unobserveAll];
+    
     _receiver = user;
+    
+    [self setChatTitle];
+//    __weak TSChatViewController *ws = self;
+//
+//    _receiverKVO = [FBKVOController controllerWithObserver:self];
+//
+//    [_receiverKVO observe:_receiver keyPaths:@[@"remark", @"nickName"] options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
+//        [ws setChatTitle];
+//    }];
+    
+    if (_conversation) {
+        [_conversation releaseConversation];
+        _messageList = nil;
+        [self reloadData];
+    }
+    
+    _conversation = []
     
     TSConversationManager *manager = [[TSConversationManager alloc] init];
     _conversation = [manager chatWith:_receiver];
@@ -45,7 +65,7 @@
     [self configWithUser:_receiver];
     
     self.view.backgroundColor = kWhiteColor;
-    UITapGestureRecognizer* tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
+    UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
     [self.tableView addGestureRecognizer:tapAction];
 }
 
@@ -62,6 +82,10 @@
 
 - (void)hiddenKeyBoard {
     
+}
+
+- (void)setChatTitle {
+    self.title = TIMLocalizedString(@"MSG_NAV_TITLE", @"留言板");
 }
 
 
@@ -184,6 +208,27 @@
         CGPoint offset = CGPointMake(0, _tableView.contentSize.height - _tableView.frame.size.height);
         [_tableView setContentOffset:offset animated:YES];
     }
+}
+
+#pragma mark - UITableViewDelegate & UITableViewDataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TSIMMsg *msg = [_messageList objectAtIndex:indexPath.row];
+    return [msg heightInWidth:tableView.bounds.size.width inStyle:_conversation.type == TIM_GROUP];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_messageList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TSIMMsg *msg = [_messageList objectAtIndex:indexPath.row];
+    
+    UITableViewCell<TSElemAbleCell> *cell = [msg tableView:tableView style:[_receiver isC2CType] ? TSElemCellStyleC2C : TSElemCellStyleGroup];
+    [cell configWith:msg];
+    return cell;
 }
 
 @end

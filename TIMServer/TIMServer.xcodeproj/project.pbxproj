@@ -17,14 +17,11 @@
 		5F15192221A6902400E83785 /* TSIMMsg+UITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192021A6902400E83785 /* TSIMMsg+UITableViewCell.m */; };
 		5F15192521A6914300E83785 /* TIMElem+ChatAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15192321A6914300E83785 /* TIMElem+ChatAttachment.h */; };
 		5F15192621A6914300E83785 /* TIMElem+ChatAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192421A6914300E83785 /* TIMElem+ChatAttachment.m */; };
-		5F15192821A6939900E83785 /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F15192721A6939900E83785 /* IMMessageExt.framework */; };
 		5F15192B21A693FB00E83785 /* TSIMMsg+Draft.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15192921A693FB00E83785 /* TSIMMsg+Draft.h */; };
 		5F15192C21A693FB00E83785 /* TSIMMsg+Draft.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192A21A693FB00E83785 /* TSIMMsg+Draft.m */; };
 		5F15192F21A69BC300E83785 /* TSIMChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15192D21A69BC300E83785 /* TSIMChatViewController.h */; };
 		5F15193021A69BC300E83785 /* TSIMChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192E21A69BC300E83785 /* TSIMChatViewController.m */; };
 		5F15193421A69DB600E83785 /* TSIMAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15193321A69DB600E83785 /* TSIMAdapter.h */; };
-		5F1C1BC721A6B44A00040B07 /* chat_toolbar_more_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C1BC621A6B44A00040B07 /* chat_toolbar_more_nor@2x.png */; };
-		5F1C1BC921A6B45F00040B07 /* chat_toolbar_keyboard_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C1BC821A6B45E00040B07 /* chat_toolbar_keyboard_press@2x.png */; };
 		5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */; };
 		5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */; };
 		5F24824821912C1400AC07FD /* TSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24824621912C1400AC07FD /* TSManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,6 +92,25 @@
 		5F3E048621A5949900E3EAB8 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E048421A5949900E3EAB8 /* UILabel+Common.m */; };
 		5F70A77B21903B56001FA8FF /* API_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77921903B56001FA8FF /* API_README.md */; };
 		5F70A77C21903B56001FA8FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77A21903B56001FA8FF /* README.md */; };
+		5F7C968421A7DFB30017928F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C968021A7DFB30017928F /* MBProgressHUD.m */; };
+		5F7C968521A7DFB30017928F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C968121A7DFB30017928F /* LICENSE */; };
+		5F7C968621A7DFB30017928F /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C968221A7DFB30017928F /* MBProgressHUD.h */; };
+		5F7C968721A7DFB30017928F /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 5F7C968321A7DFB30017928F /* README.mdown */; };
+		5F7C968B21A7EEE30017928F /* TSElemBaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C968921A7EEE30017928F /* TSElemBaseTableViewCell.h */; };
+		5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C968A21A7EEE30017928F /* TSElemBaseTableViewCell.m */; };
+		5F7C968E21A7EF170017928F /* TSElemAbleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C968D21A7EF170017928F /* TSElemAbleCell.h */; };
+		5F7C969D21A7F7480017928F /* TSChatBaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C969B21A7F7470017928F /* TSChatBaseTableViewCell.h */; };
+		5F7C969E21A7F7480017928F /* TSChatBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C969C21A7F7470017928F /* TSChatBaseTableViewCell.m */; };
+		5F7C96A121A7F7670017928F /* TSRichChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C969F21A7F7670017928F /* TSRichChatTableViewCell.m */; };
+		5F7C96A221A7F7670017928F /* TSRichChatTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C96A021A7F7670017928F /* TSRichChatTableViewCell.h */; };
+		5F7C96A521A7F77B0017928F /* TSChatTimeTipTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C96A321A7F77A0017928F /* TSChatTimeTipTableViewCell.h */; };
+		5F7C96A621A7F77B0017928F /* TSChatTimeTipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C96A421A7F77A0017928F /* TSChatTimeTipTableViewCell.m */; };
+		5F7C96A921A7F8860017928F /* TIMElem+ShowAPIs.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C96A721A7F8860017928F /* TIMElem+ShowAPIs.h */; };
+		5F7C96AA21A7F8860017928F /* TIMElem+ShowAPIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C96A821A7F8860017928F /* TIMElem+ShowAPIs.m */; };
+		5F7C96AD21A7FE160017928F /* TSChatTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C96AB21A7FE160017928F /* TSChatTableViewCell.h */; };
+		5F7C96AE21A7FE160017928F /* TSChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C96AC21A7FE160017928F /* TSChatTableViewCell.m */; };
+		5F7C96B221A805E20017928F /* TSIMAPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C96B021A805E20017928F /* TSIMAPlatform.h */; };
+		5F7C96B321A805E20017928F /* TSIMAPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C96B121A805E20017928F /* TSIMAPlatform.m */; };
 		5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147AC2191713000148AAA /* TSBaseNavigationController.h */; };
 		5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9147AD2191713000148AAA /* TSBaseNavigationController.m */; };
 		5F9147B62191777300148AAA /* TSAPITencent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9147B42191777300148AAA /* TSAPITencent.h */; };
@@ -186,8 +202,6 @@
 		5F15192D21A69BC300E83785 /* TSIMChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMChatViewController.h; sourceTree = "<group>"; };
 		5F15192E21A69BC300E83785 /* TSIMChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMChatViewController.m; sourceTree = "<group>"; };
 		5F15193321A69DB600E83785 /* TSIMAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAdapter.h; sourceTree = "<group>"; };
-		5F1C1BC621A6B44A00040B07 /* chat_toolbar_more_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_toolbar_more_nor@2x.png"; sourceTree = "<group>"; };
-		5F1C1BC821A6B45E00040B07 /* chat_toolbar_keyboard_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_toolbar_keyboard_press@2x.png"; sourceTree = "<group>"; };
 		5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSFriendListViewController.h; sourceTree = "<group>"; };
 		5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFriendListViewController.m; sourceTree = "<group>"; };
 		5F24824621912C1400AC07FD /* TSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSManager.h; sourceTree = "<group>"; };
@@ -259,6 +273,25 @@
 		5F3E048421A5949900E3EAB8 /* UILabel+Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
 		5F70A77921903B56001FA8FF /* API_README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = API_README.md; sourceTree = "<group>"; };
 		5F70A77A21903B56001FA8FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5F7C968021A7DFB30017928F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../Pods/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		5F7C968121A7DFB30017928F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../../../Pods/MBProgressHUD/LICENSE; sourceTree = "<group>"; };
+		5F7C968221A7DFB30017928F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../../../Pods/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		5F7C968321A7DFB30017928F /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.mdown; path = ../../../../Pods/MBProgressHUD/README.mdown; sourceTree = "<group>"; };
+		5F7C968921A7EEE30017928F /* TSElemBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSElemBaseTableViewCell.h; sourceTree = "<group>"; };
+		5F7C968A21A7EEE30017928F /* TSElemBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSElemBaseTableViewCell.m; sourceTree = "<group>"; };
+		5F7C968D21A7EF170017928F /* TSElemAbleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSElemAbleCell.h; sourceTree = "<group>"; };
+		5F7C969B21A7F7470017928F /* TSChatBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSChatBaseTableViewCell.h; sourceTree = "<group>"; };
+		5F7C969C21A7F7470017928F /* TSChatBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSChatBaseTableViewCell.m; sourceTree = "<group>"; };
+		5F7C969F21A7F7670017928F /* TSRichChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRichChatTableViewCell.m; sourceTree = "<group>"; };
+		5F7C96A021A7F7670017928F /* TSRichChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRichChatTableViewCell.h; sourceTree = "<group>"; };
+		5F7C96A321A7F77A0017928F /* TSChatTimeTipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSChatTimeTipTableViewCell.h; sourceTree = "<group>"; };
+		5F7C96A421A7F77A0017928F /* TSChatTimeTipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSChatTimeTipTableViewCell.m; sourceTree = "<group>"; };
+		5F7C96A721A7F8860017928F /* TIMElem+ShowAPIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMElem+ShowAPIs.h"; sourceTree = "<group>"; };
+		5F7C96A821A7F8860017928F /* TIMElem+ShowAPIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMElem+ShowAPIs.m"; sourceTree = "<group>"; };
+		5F7C96AB21A7FE160017928F /* TSChatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatTableViewCell.h; sourceTree = "<group>"; };
+		5F7C96AC21A7FE160017928F /* TSChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatTableViewCell.m; sourceTree = "<group>"; };
+		5F7C96B021A805E20017928F /* TSIMAPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAPlatform.h; sourceTree = "<group>"; };
+		5F7C96B121A805E20017928F /* TSIMAPlatform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMAPlatform.m; sourceTree = "<group>"; };
 		5F9147A121916D0300148AAA /* SOLUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SOLUTION.md; sourceTree = "<group>"; };
 		5F9147AC2191713000148AAA /* TSBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseNavigationController.h; sourceTree = "<group>"; };
 		5F9147AD2191713000148AAA /* TSBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseNavigationController.m; sourceTree = "<group>"; };
@@ -348,7 +381,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F15192821A6939900E83785 /* IMMessageExt.framework in Frameworks */,
 				5F3E042E21A58B5C00E3EAB8 /* AVFoundation.framework in Frameworks */,
 				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
 				5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */,
@@ -370,15 +402,6 @@
 				5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		5F1C1BC521A6B44000040B07 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				5F1C1BC621A6B44A00040B07 /* chat_toolbar_more_nor@2x.png */,
-				5F1C1BC821A6B45E00040B07 /* chat_toolbar_keyboard_press@2x.png */,
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 		5F3E03E721A542C100E3EAB8 /* Alert */ = {
@@ -502,10 +525,73 @@
 			path = Documents;
 			sourceTree = "<group>";
 		};
+		5F7C967F21A7DF850017928F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5F7C968121A7DFB30017928F /* LICENSE */,
+				5F7C968221A7DFB30017928F /* MBProgressHUD.h */,
+				5F7C968021A7DFB30017928F /* MBProgressHUD.m */,
+				5F7C968321A7DFB30017928F /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		5F7C968821A7EEAD0017928F /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F7C968D21A7EF170017928F /* TSElemAbleCell.h */,
+				5F7C968921A7EEE30017928F /* TSElemBaseTableViewCell.h */,
+				5F7C968A21A7EEE30017928F /* TSElemBaseTableViewCell.m */,
+				5F7C969B21A7F7470017928F /* TSChatBaseTableViewCell.h */,
+				5F7C969C21A7F7470017928F /* TSChatBaseTableViewCell.m */,
+				5F7C96AB21A7FE160017928F /* TSChatTableViewCell.h */,
+				5F7C96AC21A7FE160017928F /* TSChatTableViewCell.m */,
+				5F7C96A021A7F7670017928F /* TSRichChatTableViewCell.h */,
+				5F7C969F21A7F7670017928F /* TSRichChatTableViewCell.m */,
+				5F7C96A321A7F77A0017928F /* TSChatTimeTipTableViewCell.h */,
+				5F7C96A421A7F77A0017928F /* TSChatTimeTipTableViewCell.m */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		5F7C96AF21A805C60017928F /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				5F7C96B021A805E20017928F /* TSIMAPlatform.h */,
+				5F7C96B121A805E20017928F /* TSIMAPlatform.m */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		5F7C96B421A806E30017928F /* TIMModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TIMModel;
+			sourceTree = "<group>";
+		};
+		5F7C96B521A807030017928F /* TIMAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				5F7C96B621A8070A0017928F /* TIMShow */,
+				5F7C96B421A806E30017928F /* TIMModel */,
+				5F7C96AF21A805C60017928F /* Platform */,
+			);
+			path = TIMAdapter;
+			sourceTree = "<group>";
+		};
+		5F7C96B621A8070A0017928F /* TIMShow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TIMShow;
+			sourceTree = "<group>";
+		};
 		5F9148C8219283C400148AAA /* CommonLibrary */ = {
 			isa = PBXGroup;
 			children = (
 				5F9148C9219283C400148AAA /* CommonLibrary.h */,
+				5F7C967F21A7DF850017928F /* MBProgressHUD */,
 				5F3E041C21A5815900E3EAB8 /* FBKVOController */,
 				5F9148CA219283C400148AAA /* DebugMacro */,
 				5F9148CD219283C400148AAA /* Category */,
@@ -594,6 +680,8 @@
 				5F9149522192C19B00148AAA /* TIMElem+ShowDescription.m */,
 				5F15192321A6914300E83785 /* TIMElem+ChatAttachment.h */,
 				5F15192421A6914300E83785 /* TIMElem+ChatAttachment.m */,
+				5F7C96A721A7F8860017928F /* TIMElem+ShowAPIs.h */,
+				5F7C96A821A7F8860017928F /* TIMElem+ShowAPIs.m */,
 				5F9149452192BEE300148AAA /* TSConversation.h */,
 				5F9149462192BEE300148AAA /* TSConversation.m */,
 				5F9149552192C76400148AAA /* TSConversation+ShowAPIs.h */,
@@ -666,7 +754,6 @@
 		5FEDA4D22188076200667A8A = {
 			isa = PBXGroup;
 			children = (
-				5F1C1BC521A6B44000040B07 /* Image */,
 				5F70A77621903AAE001FA8FF /* Documents */,
 				5FEDA4DE2188076200667A8A /* TIMServer */,
 				5FEDA4DD2188076200667A8A /* Products */,
@@ -700,6 +787,7 @@
 		5FEDA52321882F8A00667A8A /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5F7C96B521A807030017928F /* TIMAdapter */,
 				5F3E03E721A542C100E3EAB8 /* Alert */,
 				5FEDA54021887A2500667A8A /* View */,
 				5FB30A5F219067520026A955 /* Controller */,
@@ -720,6 +808,7 @@
 		5FEDA54021887A2500667A8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5F7C968821A7EEAD0017928F /* TableViewCell */,
 				5F3E040321A57C8B00E3EAB8 /* ChatInputPanel */,
 				5FEDA54121887A5D00667A8A /* TSInputToolBar.h */,
 				5FEDA54221887A5D00667A8A /* TSInputToolBar.m */,
@@ -779,10 +868,13 @@
 				5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */,
 				5F3E046F21A58F0A00E3EAB8 /* UIViewController+ADTransition.h in Headers */,
 				5F9148FE219283C500148AAA /* UIView+CustomAutoLayout.h in Headers */,
+				5F7C96B221A805E20017928F /* TSIMAPlatform.h in Headers */,
+				5F7C969D21A7F7480017928F /* TSChatBaseTableViewCell.h in Headers */,
 				5F15192B21A693FB00E83785 /* TSIMMsg+Draft.h in Headers */,
 				5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */,
 				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
 				5F9148FA219283C500148AAA /* UIColor+MLPFlatColors.h in Headers */,
+				5F7C96AD21A7FE160017928F /* TSChatTableViewCell.h in Headers */,
 				5F9149642192D87000148AAA /* TSIMMsgCell.h in Headers */,
 				5F3E040621A57CB400E3EAB8 /* TSChatInputBaseView.h in Headers */,
 				5F3E042421A5815900E3EAB8 /* NSObject+FBKVOController.h in Headers */,
@@ -809,12 +901,14 @@
 				5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */,
 				5F9148F4219283C500148AAA /* NSData+Common.h in Headers */,
 				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
+				5F7C96A521A7F77B0017928F /* TSChatTimeTipTableViewCell.h in Headers */,
 				5F3E045521A58F0A00E3EAB8 /* FTAnimation.h in Headers */,
 				5F3E045721A58F0A00E3EAB8 /* FTUtils.h in Headers */,
 				5F0E84E421A24829004DBF08 /* TSIMErrorManager.h in Headers */,
 				5F3E041A21A57FFD00E3EAB8 /* TSChatInputToolBar.h in Headers */,
 				5F3E03F621A5540600E3EAB8 /* TSScrollRefreshViewController.h in Headers */,
 				5F9148FC219283C500148AAA /* PathHeaders.h in Headers */,
+				5F7C968E21A7EF170017928F /* TSElemAbleCell.h in Headers */,
 				5F914905219283C500148AAA /* UIViewController+Layout.h in Headers */,
 				5F914903219283C500148AAA /* UIView+Layout.h in Headers */,
 				5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */,
@@ -828,9 +922,12 @@
 				5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */,
 				5F9148F2219283C500148AAA /* UIImage+Common.h in Headers */,
 				5F3E047021A58F0A00E3EAB8 /* ADHeaders.h in Headers */,
+				5F7C968B21A7EEE30017928F /* TSElemBaseTableViewCell.h in Headers */,
 				5F3E046B21A58F0A00E3EAB8 /* ADFlipTransition.h in Headers */,
+				5F7C96A921A7F8860017928F /* TIMElem+ShowAPIs.h in Headers */,
 				5F15192F21A69BC300E83785 /* TSIMChatViewController.h in Headers */,
 				5F9148EC219283C500148AAA /* ARCCompile.h in Headers */,
+				5F7C96A221A7F7670017928F /* TSRichChatTableViewCell.h in Headers */,
 				5F9147BE21917CF400148AAA /* TSChatViewController.h in Headers */,
 				5F9149442192B6DA00148AAA /* NSDate+Common.h in Headers */,
 				5F3E046821A58F0A00E3EAB8 /* UITableViewController+ADFlipTransition.h in Headers */,
@@ -839,6 +936,7 @@
 				5F914907219283C500148AAA /* TSDevice.h in Headers */,
 				5F3E040021A55D9800E3EAB8 /* TSRefreshView.h in Headers */,
 				5F914901219283C500148AAA /* TSBaseViewController.h in Headers */,
+				5F7C968621A7DFB30017928F /* MBProgressHUD.h in Headers */,
 				5F91494B2192BF5500148AAA /* TSSafeMutableArray.h in Headers */,
 				5F3E048521A5949900E3EAB8 /* UILabel+Common.h in Headers */,
 				5F9149532192C19B00148AAA /* TIMElem+ShowDescription.h in Headers */,
@@ -917,10 +1015,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F70A77C21903B56001FA8FF /* README.md in Resources */,
-				5F1C1BC921A6B45F00040B07 /* chat_toolbar_keyboard_press@2x.png in Resources */,
 				5F70A77B21903B56001FA8FF /* API_README.md in Resources */,
+				5F7C968521A7DFB30017928F /* LICENSE in Resources */,
 				5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */,
-				5F1C1BC721A6B44A00040B07 /* chat_toolbar_more_nor@2x.png in Resources */,
+				5F7C968721A7DFB30017928F /* README.mdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,13 +1067,16 @@
 				5F9149432192B6DA00148AAA /* NSDate+Common.m in Sources */,
 				5F3E03F721A5540600E3EAB8 /* TSScrollRefreshViewController.m in Sources */,
 				5F3E046521A58F0A00E3EAB8 /* ADScaleTransition.m in Sources */,
+				5F7C96A621A7F77B0017928F /* TSChatTimeTipTableViewCell.m in Sources */,
 				5F3E040121A55D9800E3EAB8 /* TSRefreshView.m in Sources */,
 				5F3E047721A5923400E3EAB8 /* TSIMManager.m in Sources */,
+				5F7C96AA21A7F8860017928F /* TIMElem+ShowAPIs.m in Sources */,
 				5F3E045E21A58F0A00E3EAB8 /* UIViewController+ADScaleTransition.m in Sources */,
 				5F3E046D21A58F0A00E3EAB8 /* UITableViewController+ADFlipTransition.m in Sources */,
 				5F9148F7219283C500148AAA /* UIImage+Alpha.m in Sources */,
 				5F3E045D21A58F0A00E3EAB8 /* FTUtils+NSObject.m in Sources */,
 				5F914904219283C500148AAA /* TSBaseViewController.m in Sources */,
+				5F7C96B321A805E20017928F /* TSIMAPlatform.m in Sources */,
 				5F9148F8219283C500148AAA /* UIColor+MLPFlatColors.m in Sources */,
 				5F9148F3219283C500148AAA /* NSString+Common.m in Sources */,
 				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
@@ -984,11 +1085,14 @@
 				5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */,
 				5F9147B72191777300148AAA /* TSAPITencent.m in Sources */,
 				5F9148FB219283C500148AAA /* PathUtility.m in Sources */,
+				5F7C96AE21A7FE160017928F /* TSChatTableViewCell.m in Sources */,
 				5F15190C21A6592F00E83785 /* TSChatTextView.m in Sources */,
 				5F3E045A21A58F0A00E3EAB8 /* FTAnimationManager.m in Sources */,
 				5F3E046621A58F0A00E3EAB8 /* ADTransition.m in Sources */,
 				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
 				5F9149402192B5C500148AAA /* TSIMMsg.m in Sources */,
+				5F7C968421A7DFB30017928F /* MBProgressHUD.m in Sources */,
+				5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */,
 				5F3E048621A5949900E3EAB8 /* UILabel+Common.m in Sources */,
 				5F9149482192BEE300148AAA /* TSConversation.m in Sources */,
 				5F3E046321A58F0A00E3EAB8 /* UITableViewController+ADScaleTransititon.m in Sources */,
@@ -1007,8 +1111,10 @@
 				5F9149602192D0D900148AAA /* TSConversationManager.m in Sources */,
 				5F15192621A6914300E83785 /* TIMElem+ChatAttachment.m in Sources */,
 				5F3E041B21A57FFD00E3EAB8 /* TSChatInputToolBar.m in Sources */,
+				5F7C969E21A7F7480017928F /* TSChatBaseTableViewCell.m in Sources */,
 				5F24824921912C1400AC07FD /* TSManager.m in Sources */,
 				5F3E046921A58F0A00E3EAB8 /* UIViewController+ADFlipTransition.m in Sources */,
+				5F7C96A121A7F7670017928F /* TSRichChatTableViewCell.m in Sources */,
 				5F3E041721A57F9D00E3EAB8 /* TSChatInputPanel.m in Sources */,
 				5F914900219283C500148AAA /* UIViewController+Layout.m in Sources */,
 				5F3E046721A58F0A00E3EAB8 /* ADFlipTransition.m in Sources */,

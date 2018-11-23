@@ -9,7 +9,7 @@
 #ifndef TSConstMarco_h
 #define TSConstMarco_h
 
-#define kDefaultMargin  8
+#define kDefaultMargin  10
 
 #define kTimLargeTextFont       [UIFont systemFontOfSize:16]
 #define kTimMiddleTextFont      [UIFont systemFontOfSize:14]

@@ -13,7 +13,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _contentHeight = kIsiPhoneX ? 84 : 50;
+        _contentHeight = kIsiPhoneX ? 90 : 56;
     }
     return self;
 }

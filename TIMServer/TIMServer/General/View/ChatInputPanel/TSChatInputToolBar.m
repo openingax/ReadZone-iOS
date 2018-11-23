@@ -8,8 +8,10 @@
 
 #import "TSChatInputToolBar.h"
 
-#define kButtonSize 36
+#define kButtonSize 32
+#define kTextViewHeight 40
 #define kTextViewMaxHeight 72
+#define kHorMargin 8
 #define kVerMargin 7
 
 @implementation TSChatInputToolBar
@@ -39,9 +41,9 @@
 - (void)addOwnViews
 {
     _audioBtn = [[UIButton alloc] init];
-    [_audioBtn setImage:[UIImage imageNamed:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
-    [_audioBtn setImage:[UIImage imageNamed:@"chat_toolbar_voice_nor"] forState:UIControlStateHighlighted];
-    [_audioBtn setImage:[UIImage imageNamed:@"chat_toolbar_voice_nor"] forState:UIControlStateSelected];
+    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
+    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateHighlighted];
+    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
     [_audioBtn addTarget:self action:@selector(onClickAudio:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_audioBtn];
     
@@ -74,35 +76,35 @@
     _textView.frame = CGRectMake(0, 0, self.frame.size.width, CHAT_BAR_MIN_H);
     _textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     _textView.scrollEnabled = YES;
-    //        _textInputView.backgroundColor = [UIColor redColor];
     _textView.returnKeyType = UIReturnKeySend;
     _textView.enablesReturnKeyAutomatically = YES; // UITextView内部判断send按钮是否可以用
     _textView.delegate = self;
-    _textView.layer.borderColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
+    _textView.layer.borderColor = RGBOF(0x00A3B4).CGColor;
     _textView.layer.borderWidth = 0.6;
     _textView.layer.cornerRadius = 6;
     _textView.font = kTimLargeTextFont;
-    
     _textView.textContainerInset = UIEdgeInsetsMake(6, 6, 6, 6);
+    
     [self addSubview:_textView];
     
-    
     _photoBtn = [[UIButton alloc] init];
-    [_photoBtn setImage:[UIImage imageNamed:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
-    [_photoBtn setImage:[UIImage imageNamed:@"chat_toolbar_photo_nor"] forState:UIControlStateHighlighted];
+    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
+    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateHighlighted];
     [_photoBtn addTarget:self action:@selector(onClikPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_photoBtn];
     
-    
     _movieBtn = [[UIButton alloc] init];
-    [_movieBtn setImage:[UIImage imageNamed:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
-    [_movieBtn setImage:[UIImage imageNamed:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
+    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
+    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
     [_movieBtn addTarget:self action:@selector(onClickMovie:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
 }
 
 #pragma mark - Action
 - (void)onClickAudio:(UIButton *)button {
+    
+#warning 点击录音会报错，先屏蔽语音功能
+    return;
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressedBtn.hidden = !_audioBtn.selected;
     _textView.hidden = _audioBtn.selected;
@@ -118,7 +120,10 @@
             [_textView resignFirstResponder];
         }
         // 语音模式
-        NSInteger toh = kButtonSize + 2 * kVerMargin;
+        NSInteger toh = kButtonSize + 3 * kVerMargin;
+        if (kIsiPhoneX) {
+            toh = kButtonSize + 3 * kVerMargin + 34;
+        }
         if (toh != _contentHeight)
         {
             self.contentHeight = toh;
@@ -159,26 +164,31 @@
 - (void)relayoutFrameOfSubViews
 {
     [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
-    [_audioBtn alignParentBottomWithMargin:kVerMargin];
-    [_audioBtn alignParentLeftWithMargin:kDefaultMargin];
-    
+    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
+    [_audioBtn alignParentLeftWithMargin:kDefaultMargin/2];
     
     [_movieBtn sameWith:_audioBtn];
-    [_movieBtn alignParentRightWithMargin:kDefaultMargin];
+    [_movieBtn alignParentRightWithMargin:kDefaultMargin/2];
     
     [_photoBtn sameWith:_movieBtn];
-    [_photoBtn layoutToLeftOf:_movieBtn margin:kDefaultMargin/2];
+    [_photoBtn layoutToLeftOf:_movieBtn margin:kDefaultMargin];
     
     [_audioPressedBtn sameWith:_audioBtn];
-    [_audioPressedBtn layoutToRightOf:_audioBtn margin:kDefaultMargin/2];
-    [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kDefaultMargin/2];
+    [_audioPressedBtn marginParentTop:kVerMargin];
+    [_audioPressedBtn setHeight:kButtonSize + kVerMargin];
+    [_audioPressedBtn layoutToRightOf:_audioBtn margin:kDefaultMargin];
+    [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kDefaultMargin];
     
     CGRect rect = self.bounds;
     CGRect apframe = _audioPressedBtn.frame;
     
     rect.origin.x = apframe.origin.x;
     rect.origin.y = kVerMargin;
-    rect.size.height -= 2 * kVerMargin;
+    if (kIsiPhoneX) {
+        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
+    } else {
+        rect.size.height -= 2 * kVerMargin;
+    }
     rect.size.width = apframe.size.width;
     _textView.frame = rect;
 }
@@ -232,7 +242,11 @@
         textViewToHeight = kTextViewMaxHeight;
     }
     
-    NSInteger conHeight = textViewToHeight + 2 * kVerMargin;
+    // 如果是 iPX，要在 conHeight 里多加 34 的高度
+    NSInteger conHeight = textViewToHeight + 3 * kVerMargin;
+    if (kIsiPhoneX) {
+        conHeight = textViewToHeight + 3 * kVerMargin + 34;
+    }
     if (_contentHeight != conHeight)
     {
         self.contentHeight = conHeight;
@@ -286,6 +300,13 @@
     return YES;
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self willShowInputTextViewToHeight:[self getTextViewContentH:textView]];
+}
+
+#pragma mark -
+
 - (NSInteger)getTextViewContentH:(UITextView *)textView
 {
     if (textView.text.length == 0)
@@ -295,10 +316,6 @@
     return (NSInteger)(textView.contentSize.height + 1);
 }
 
-- (void)textViewDidChange:(UITextView *)textView
-{
-    [self willShowInputTextViewToHeight:[self getTextViewContentH:textView]];
-}
 
 - (void)onModifyLoopFlag:(NSTimer *)timer
 {

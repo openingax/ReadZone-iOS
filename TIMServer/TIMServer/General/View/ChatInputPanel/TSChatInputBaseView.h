@@ -6,12 +6,9 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "TSChatInputAbleView.h"
-#import "CommonLibrary.h"
-#import "TSConstMarco.h"
-#import "TSConstMarco.h"
 #import "TSChatSoundRecorder.h"
+#import "TSBaseView.h"
 
 //chat toolbar
 #define CHAT_BAR_MIN_H 36
@@ -32,7 +29,7 @@
 #define CHAT_RECORD_VIEW_H    216
 #define CHAT_EMOJ_VIEW_PAGE_CNTL_H   18
 
-@interface TSChatInputBaseView : UIView <TSChatInputAbleView>
+@interface TSChatInputBaseView : TSBaseView <TSChatInputAbleView>
 {
 @protected
     __weak id<TSChatInputAbleViewDelegate> _chatDelegate;

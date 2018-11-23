@@ -12,6 +12,7 @@
 #import "TSIMUser.h"
 #import "TSChatInputPanel.h"
 #import "TSIMMsg+Draft.h"
+#import "TSIMMsg+UITableViewCell.h"
 
 @class TSConversation;
 

@@ -13,6 +13,9 @@
 #import "TSColorMarco.h"
 #import <Masonry.h>
 
+#import "CommonLibrary.h"
+#import "TIMServerHelper.h"
+
 @interface TSBaseView : UIView
 
 @end

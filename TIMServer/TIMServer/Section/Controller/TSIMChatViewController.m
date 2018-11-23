@@ -55,7 +55,16 @@
 }
 
 - (void)onChangedMsg:(NSNotification *)noti {
+    TSIMMsg *msg = (TSIMMsg *)noti.object;
     
+    NSInteger idx = [_conversation.msgList indexOfObject:msg];
+    if (idx >= 0 && idx < _conversation.msgList.count)
+    {
+        [_tableView beginUpdates];
+        NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+        [_tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView endUpdates];
+    }
 }
 
 #pragma mark - View
@@ -66,10 +75,6 @@
     [self.view addSubview:_inputView];
     
     self.view.backgroundColor = [UIColor redColor];
-//    [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.bottom.right.equalTo(self.view);
-//        make.height.mas_equalTo(self->_inputView.contentHeight);
-//    }];
 }
 
 - (void)addChatToolBar {

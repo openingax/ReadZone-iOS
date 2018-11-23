@@ -39,6 +39,8 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 // 主要用于启动的时候加载本地数据
 - (void)asyncLoadLocalLastMsg:(CommonVoidBlock)block;
 
+- (void)releaseConversation;
+
 - (void)onReceiveNewMessage:(TSIMMsg *)msg;
 
 - (NSArray *)sendMessage:(TSIMMsg *)msg completion:(HandleMsgCodeBlock)block;

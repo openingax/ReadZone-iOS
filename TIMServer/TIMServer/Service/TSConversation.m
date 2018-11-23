@@ -29,6 +29,12 @@
     return [_conversation getType];
 }
 
+- (void)releaseConversation
+{
+    [_msgList removeAllObjects];
+    _receiveMsg = nil;
+}
+
 // 主要用于启动的时候加载本地数据
 - (void)asyncLoadLocalLastMsg:(CommonVoidBlock)block {
     NSArray *msgs = [_conversation getLastMsgs:20];

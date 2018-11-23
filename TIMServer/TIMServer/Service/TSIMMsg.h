@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, TSIMMsgType) {
     TSIMMsgTypeProfileSystem,       // 资料变更消息
     TSIMMsgTypeInputStatus,         // 对方输入状态
     TSIMMsgTypeSaftyTip,            // 敏感词消息提醒标签
+    TSIMMsgTypeRevokedTip           // 消息撤回
 };
 
 /**

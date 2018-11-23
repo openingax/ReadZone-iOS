@@ -76,6 +76,9 @@
         [UIView animateWithDuration:duration animations:^{
             self.frame = rect;
             self.contentHeight = contentHeight;
+        } completion:^(BOOL finished) {
+            self.frame = rect;
+            self.contentHeight = contentHeight;
         }];
     }
 }
@@ -90,15 +93,20 @@
         CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         
         NSInteger contentHeight = endFrame.size.height + [_toolBar contentHeight];
-        
         if (contentHeight != _contentHeight)
         {
             CGRect rect = self.frame;
             CGFloat navHeight = kIsiPhoneX ? 88 : 64;
             rect.origin.y = endFrame.origin.y - [_toolBar contentHeight] - navHeight;
+            if (kIsiPhoneX) {
+                rect.origin.y = endFrame.origin.y - [_toolBar contentHeight] - navHeight + 34;
+            }
             rect.size.height = contentHeight;
             
             [UIView animateWithDuration:duration animations:^{
+                self.frame = rect;
+                self.contentHeight = contentHeight;
+            } completion:^(BOOL finished) {
                 self.frame = rect;
                 self.contentHeight = contentHeight;
             }];
