@@ -13,6 +13,6 @@
 - (BOOL)isToday;
 - (BOOL)isYesterday;
 
-- (NSString *)shortTimeTextOfDate;
+- (NSString *)timeTextOfDate;
 
 @end

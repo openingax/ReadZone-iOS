@@ -17,6 +17,7 @@
 #import "TIMServerHelper.h"
 #import "TSColorMarco.h"
 #import <Masonry/Masonry.h>
+#import "TSIMAPlatform.h"
 
 @interface TSChatViewController ()
 
@@ -51,12 +52,26 @@
         _messageList = nil;
         [self reloadData];
     }
+}
+
+- (void)didLogin {
     
-    _conversation = []
-    
-    TSConversationManager *manager = [[TSConversationManager alloc] init];
-    _conversation = [manager chatWith:_receiver];
-    _messageList = _conversation.msgList;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self->_conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:self->_receiver];
+        self->_messageList = self->_conversation.msgList;
+        
+        __weak TSChatViewController *ws = self;
+//        [self->_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+//            [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+//        }];
+        
+        self->_conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
+            [ws onReceiveNewMsg:imMsgList succ:succ];
+            [ws updateMessageList];
+        };
+        
+        [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
+    });
 }
 
 - (void)viewDidLoad {
@@ -112,6 +127,13 @@
     
 }
 
+- (void)layoutRefreshScrollView {
+  
+    CGFloat kToolbarY = CGRectGetMaxY(self.view.bounds) - CHAT_BAR_MIN_H - 2*CHAT_BAR_VECTICAL_PADDING;
+    // do nothing
+    _tableView.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMinY(self.view.bounds), CGRectGetWidth(self.view.bounds), kToolbarY);
+}
+
 -(void)onLongPress:(UILongPressGestureRecognizer *)gesture
 {
     
@@ -161,6 +183,41 @@
         }];
         
         [self showMsgs:newaddMsgs];
+    }
+}
+
+- (void)onReceiveNewMsg:(NSArray *)imamsgList succ:(BOOL)succ
+{
+    [_tableView beginUpdates];
+    
+    NSInteger count = [imamsgList count];
+    NSMutableArray *indexArray = [NSMutableArray array];
+    for (NSInteger i = 0; i < count; i++)
+    {
+        NSInteger idx = _messageList.count + i - count;
+        NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+        [indexArray addObject:index];
+    }
+    
+    [_tableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationBottom];
+    [_tableView endUpdates];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateOnSendMessage:imamsgList succ:YES];
+    });
+}
+
+//当消息量过大时，需要清理部分消息，避免内存持续增长
+- (void)updateMessageList
+{
+    if (_messageList.count > 1000)
+    {
+        DebugLog(@"_messageList.count > 1000");
+        int rangLength = 100;
+        NSRange range = NSMakeRange(_messageList.count-rangLength, rangLength);
+        [_messageList subArrayWithRange:range];
+        [_tableView reloadData];
     }
 }
 
@@ -229,6 +286,47 @@
     UITableViewCell<TSElemAbleCell> *cell = [msg tableView:tableView style:[_receiver isC2CType] ? TSElemCellStyleC2C : TSElemCellStyleGroup];
     [cell configWith:msg];
     return cell;
+}
+
+#pragma mark - Load Message
+- (void)onLoadRecentMessage:(NSArray *)imamsgList complete:(BOOL)succ scrollToBottom:(BOOL)scroll
+{
+    if (succ)
+    {
+        if (imamsgList.count > 0)
+        {
+            [_tableView beginUpdates];
+            
+            NSMutableArray *ar = [NSMutableArray array];
+            for (NSInteger i = 0; i < imamsgList.count; i++)
+            {
+                [ar addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+            }
+            
+            [_tableView insertRowsAtIndexPaths:ar withRowAnimation:UITableViewRowAnimationTop];
+            
+            [_tableView endUpdates];
+            
+            if (scroll)
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
+                    [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                });
+            }
+        }
+    }
+}
+
+- (void)updateOnSendMessage:(NSArray *)msglist succ:(BOOL)succ
+{
+    if (msglist.count)
+    {
+        
+        NSInteger index = [_messageList indexOfObject:msglist.lastObject];
+        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 @end

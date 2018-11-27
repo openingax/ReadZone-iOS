@@ -35,6 +35,12 @@
     _receiveMsg = nil;
 }
 
+- (void)copyConversationInfo:(TSConversation *)conv {
+    _msgList = conv.msgList;
+    _lastMessage = [conv lastMessage];
+    _receiveMsg = conv.receiveMsg;
+}
+
 // 主要用于启动的时候加载本地数据
 - (void)asyncLoadLocalLastMsg:(CommonVoidBlock)block {
     NSArray *msgs = [_conversation getLastMsgs:20];
@@ -54,10 +60,37 @@
     }
 }
 
+// 切换到本会话前，先加载本地的最后10条聊天的的数据
+- (void)asyncLoadRecentMessage:(NSInteger)count completion:(HandleMsgBlock)block;
+{
+    TSIMMsg *top = [self vailedTopMsg];
+    [self asyncLoadRecentMessage:count from:top completion:block];
+}
+
+// 用于顶部下拉加载更多历史消息
+- (void)asyncLoadRecentMessage:(NSInteger)count from:(TSIMMsg *)msg completion:(HandleMsgBlock)block
+{
+    __weak TSConversation *ws = self;
+    [_conversation getMessage:(int)count last:msg.msg succ:^(NSArray *array) {
+        
+        NSArray *recentIMAMsg = [ws onLoadRecentMessageSucc:array];
+        if (block)
+        {
+            block(recentIMAMsg, recentIMAMsg.count != 0);
+        }
+    } fail:^(int code, NSString *err) {
+        DebugLog(@"未取到最后一条消息");
+        if (block)
+        {
+            block(nil, NO);
+        }
+    }];
+}
+
 - (void)onReceiveNewMessage:(TSIMMsg *)msg {
     NSMutableArray *array = [NSMutableArray array];
     TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
-    
+    // 时间提示
     if (timeTip) {
         [array addObject:timeTip];
     }
@@ -76,11 +109,74 @@
         NSDate *followDate = [msg.msg timestamp];
         
         NSTimeInterval timeInterval = [followDate timeIntervalSinceDate:lastDate];
-#warning 先设为30秒提醒一次
-        if (timeInterval > 1 * 30) {
+#warning 设置时间提醒时间间隔
+        if (timeInterval > 3 * 60) {
             TSIMMsg *newMsg = [TSIMMsg msgWithDate:followDate];
             return newMsg;
         }
+    }
+    
+    return nil;
+}
+
+- (NSArray *)onLoadRecentMessageSucc:(NSArray *)timmsgList
+{
+    if (timmsgList.count > 0)
+    {
+        NSMutableArray *array = [NSMutableArray array];
+        
+        NSInteger idx = timmsgList.count - 1;
+        TIMMessage *temp = nil;
+        do
+        {
+            TIMMessage *msg = timmsgList[idx];
+            //            if (msg.status == TIM_MSG_STATUS_HAS_DELETED)
+            //            {
+            //                idx--;
+            //                continue;
+            //            }
+            
+            NSDate *date = [msg timestamp];
+            if (idx == timmsgList.count - 1)
+            {
+                // 插入标签
+                TSIMMsg *timeTip = [TSIMMsg msgWithDate:date];
+                [array addObject:timeTip];
+            }
+            
+            if (temp)
+            {
+                NSDate *lastDate = [temp timestamp];
+                
+                NSTimeInterval timeinterval = [date timeIntervalSinceDate:lastDate];
+                if (timeinterval > 5 * 60)
+                {
+                    // 大于五分钟
+                    TSIMMsg *msg = [TSIMMsg msgWithDate:date];
+                    [array addObject:msg];
+                }
+            }
+            temp = msg;
+            if (msg.status == TIM_MSG_STATUS_LOCAL_REVOKED) {//撤销
+//                TSIMMsg *imamsg = [TSIMMsg msgWithRevoked:msg.sender];
+//                if (imamsg)
+//                {
+//                    [array addObject:imamsg];
+//                }
+            }
+            else {
+//                TSIMMsg *imamsg = [TSIMMsg msgWith:msg];
+//                if (imamsg)
+//                {
+//                    [array addObject:imamsg];
+//                }
+            }
+            idx--;
+        }
+        while (idx >= 0);
+        
+        [_msgList insertObjectsFromArray:array atIndex:0];
+        return array;
     }
     
     return nil;
@@ -91,17 +187,17 @@
         
         NSMutableArray *array = [self addMsgToList:msg];
         
-        [msg statusChangeTo:TSIMMsgStatusSending needRefresh:NO];
+        [msg changeTo:TSIMMsgStatusSending needRefresh:NO];
         
         [_conversation sendMessage:msg.msg succ:^{
-            [msg statusChangeTo:TSIMMsgStatusSendSucc needRefresh:YES];
+            [msg changeTo:TSIMMsgStatusSendSucc needRefresh:YES];
             
             if (block) {
                 block(array, YES, 0);
             }
             
         } fail:^(int code, NSString *error) {
-            [msg statusChangeTo:TSIMMsgStatusSendFail needRefresh:YES];
+            [msg changeTo:TSIMMsgStatusSendFail needRefresh:YES];
             NSLog(@"信息发送失败");
             
             if (code != kSaftyWordsCode) {
@@ -115,6 +211,27 @@
         
         return array;
     }
+    return nil;
+}
+
+- (TSIMMsg *)vailedTopMsg
+{
+    NSInteger count = [_msgList count];
+    if (count > 0)
+    {
+        NSInteger index = 0;
+        do
+        {
+            TSIMMsg *msg = [_msgList objectAtIndex:index];
+            if ([msg isValiedType])
+            {
+                return msg;
+            }
+            index++;
+        }
+        while (index < count);
+    }
+    
     return nil;
 }
 

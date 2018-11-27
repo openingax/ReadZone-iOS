@@ -30,7 +30,6 @@
     
     TIMTextElem *elem = (TIMTextElem *)[_msg.msg getElem:0];
     _chatText.text = [elem text];
-    
 }
 
 @end
@@ -49,7 +48,6 @@
     tap.numberOfTouchesRequired = 1;
     [_chatImage addGestureRecognizer:tap];
     
-    
     return _chatImage;
 }
 
@@ -61,15 +59,6 @@
 - (void)configContent
 {
     [super configContent];
-
-#warning 待完善
-//    TIMImageElem *elem = (TIMImageElem *)[_msg.msg getElem:0];
-//
-//    __weak UIImageView *wci = _chatImage;
-//    [elem asyncThumbImage:^(NSString *path, UIImage *image, BOOL succ, BOOL isAsync) {
-//        wci.image = image ? image : [UIImage imageNamed:@"default_image"];
-//    } inMsg:_msg];
-    
 }
 
 @end

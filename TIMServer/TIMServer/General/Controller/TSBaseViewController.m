@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = RGB(247, 247, 247);
     
     [self addOwnViews];
     [self configOwnViews];
@@ -36,7 +36,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self layoutOnViewDidAppear];
+    [self layoutOnViewWillAppear];
 }
 
 - (void)configParams {
@@ -59,6 +59,24 @@
 - (void)layoutBackground {
     
 }
+
+- (void)viewWillLayoutSubviews {
+    if (![self asChild]) {
+        [super viewWillLayoutSubviews];
+    } else {
+        if (CGSizeEqualToSize(self.childSize, CGSizeZero)) {
+            [super viewWillLayoutSubviews];
+        } else {
+            CGSize size = [self childSize];
+            self.view.bounds = CGRectMake(0, 0, size.width, size.height);
+        }
+    }
+}
+
+- (void)layoutSubviewsFrame {
+    [super layoutSubviewsFrame];
+}
+
 
 #pragma makr -
 - (void)callImagePickerActionSheet {
@@ -122,5 +140,12 @@
 //    }
 //    [self presentViewController:imagePicker animated:YES completion:nil];
 //}
+
+
+// 添加自动布局相关的constraints
+- (void)autoLayoutOwnViews
+{
+    // 添加自动布局相关的内容
+}
 
 @end

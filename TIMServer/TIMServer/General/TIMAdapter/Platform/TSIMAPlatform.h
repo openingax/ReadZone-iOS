@@ -10,17 +10,29 @@
 #import <QALSDK/QalSDKProxy.h>
 #import <ImSDK/ImSDK.h>
 #import <TLSSDK/TLSHelper.h>
+#import "TSIMHost.h"
+#import "TSConversationManager.h"
+#import "IMAPlatformConfig.h"
+#import "TSConfig.h"
 
 // TIMServer IM 服务的业务逻辑入口，
 typedef EQALNetworkType TCQALNetwork;
 
 @interface TSIMAPlatform : NSObject
-
+{
 @protected
-IMAHost                     *_host;             // 当前用户
-IMAContactManager           *_contactMgr;       // 联系人
-IMAConversationManager      *_conversationMgr;  // 会话列表
-
+    TSIMHost                     *_host;             // 当前用户
+//    IMAContactManager           *_contactMgr;       // 联系人
+    TSConversationManager        *_conversationMgr;  // 会话列表
 }
+
+@property(nonatomic,readonly) TSIMHost *host;
+@property(nonatomic,readonly) TSConversationManager *conversationMgr;
+//@property(nonatomic,assign) BOOL isConnected;
+//
+
++ (instancetype)config;
+
++ (instancetype)sharedInstance;
 
 @end

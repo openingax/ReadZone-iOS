@@ -19,6 +19,7 @@
 
 @property(nonatomic,strong) UIImageView *backgroundView;
 @property(nonatomic,assign) BOOL asChild;
+@property(nonatomic,assign) CGSize childSize;
 
 - (BOOL)hasBackgroundView;
 - (void)configParams;

@@ -283,29 +283,12 @@
 - (CGFloat)footerLoadMoreHeight
 {
     return [_footerView refreshHeight];
-    //    if (_footerView)
-    //    {
-    //        return _footerView.frame.size.height;
-    //    }
-    //    else
-    //    {
-    //        return kDefaultRefreshHeightOffset;
-    //    }
 }
 
 
 - (void)setFooterViewVisibility:(BOOL)visible
 {
     _footerView.hidden = !visible;
-    
-    //    if (visible && _refreshScrollView.tableFooterView != _footerView)
-    //    {
-    //        _refreshScrollView.tableFooterView = _footerView;
-    //    }
-    //    else if (!visible)
-    //    {
-    //        _refreshScrollView.tableFooterView = nil;
-    //    }
 }
 
 

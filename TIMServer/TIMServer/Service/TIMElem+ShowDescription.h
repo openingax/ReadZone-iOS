@@ -9,8 +9,6 @@
 #import <ImSDK/ImSDK.h>
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class TSIMMsg;
 
 @interface TIMElem (ShowDescription)
@@ -53,4 +51,41 @@ typedef void (^AsyncGetThumbImageBlock)(NSString *path, UIImage *image, BOOL suc
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface TIMLocationElem (ShowDescription)
+
+@end
+
+@interface TIMGroupTipsElem (ShowDescription)
+
+@property (nonatomic, strong) NSString *groupType;
+// 群提醒消息
+@property (nonatomic, strong) NSString *groupTip;
+
+// 提示的文本
+- (NSString *)tipText;
+
+@end
+
+@interface TIMUGCElem (ShowDescription)
+
+@end
+
+@interface TIMCustomElem (ShowDescription)
+
+// 目前聊天界面用的时间戮是用TIMCustomElem
+// 将要显示的时间转成Data
+- (void)setFollowTime:(NSDate *)date;
+
+// 显示的时间戮
+- (NSString *)timeTip;
+
+- (NSString *)revokedTip;
+
+@end
+
+
+@interface TIMGroupSystemElem (ShowDescription)
+
+
+
+@end

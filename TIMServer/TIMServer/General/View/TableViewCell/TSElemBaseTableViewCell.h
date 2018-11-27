@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TSElemAbleCell.h"
 #import "TSIMMsg.h"
+#import "TSIMUser.h"
 #import "CommonLibrary.h"
 #import "TSIMMsg+UITableViewCell.h"
+#import "SDWebImageHeaders.h"
+#import "TIMServerHelper.h"
+#import "TSChatMsgShowHeader.h"
+#import "TSIMAPlatform.h"
 
 @interface TSElemBaseTableViewCell : UITableViewCell <TSElemAbleCell>
 {

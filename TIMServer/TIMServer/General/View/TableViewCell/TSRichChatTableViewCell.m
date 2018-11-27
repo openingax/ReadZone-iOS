@@ -10,15 +10,27 @@
 
 @implementation TSRichChatTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [_msg prepareChatForReuse];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+// 只创建，外部统一添加
+//- (UIView *)addElemContent
+//{
+//    _textView = [[ChatTextView alloc] init];
+//    _textView.backgroundColor = kClearColor;
+//    return _textView;
+//}
 
-    // Configure the view for the selected state
+- (void)configContent
+{
+    [super configContent];
+    
+//    CGSize showSize = [_msg showContentSizeInChat];
+//    _textView.bounds = CGRectMake(0, 0, showSize.width, showSize.height);
+//    [_textView showMessage:_msg];
 }
 
 @end

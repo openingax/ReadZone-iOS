@@ -9,5 +9,9 @@
 #import "TSChatBaseTableViewCell.h"
 
 @interface TSRichChatTableViewCell : TSChatBaseTableViewCell
+{
+@protected
+//    ChatTextView        *_textView;
+}
 
 @end

@@ -17,6 +17,13 @@
 // 聊天图片缩约图最大宽度
 #define kChatPicThumbMaxWidth 66.f
 
+@interface TSIMMsg ()
+
+@property(nonatomic,strong) NSMutableDictionary *affixParams;
+@property(nonatomic,assign) NSInteger status;
+
+@end
+
 @implementation TSIMMsg
 
 - (instancetype)initWithMsg:(TIMMessage *)msg type:(TSIMMsgType)type {
@@ -87,7 +94,7 @@
     
     TIMMessage *msg = [[TIMMessage alloc] init];
     [msg addElem:elem];
-    TSIMMsg *imMsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeTimTip];
+    TSIMMsg *imMsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeTimeTip];
     return imMsg;
 }
 
@@ -108,13 +115,26 @@
     }
     
     TSIMMsg *imMsg = [[TSIMMsg alloc] initWithMsg:msg type:type];
-    [imMsg statusChangeTo:(NSInteger)msg.status needRefresh:NO];
+    [imMsg changeTo:(NSInteger)msg.status needRefresh:NO];
     return imMsg;
 }
 
 + (instancetype)msgWithCustom:(NSInteger)command {
-    TIMMessage *elem = [[TIMCustomElem alloc] init];
-    return [[TSIMMsg alloc] initWithMsg:elem type:TSIMMsgTypeCustom];
+    return [TSIMMsg msgWithCustom:command param:nil];
+}
+
++ (instancetype)msgWithCustom:(NSInteger)command param:(NSString *)param
+{
+//    CustomElemCmd *cmd = [[CustomElemCmd alloc] initWith:command param:param];
+//
+//    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+//    elem.data = [cmd packToSendData];
+//
+//    TIMMessage *customMsg = [[TIMMessage alloc] init];
+//    [customMsg addElem:elem];
+//
+//    return [[IMAMsg alloc] initWith:customMsg type:command];
+    return nil;
 }
 
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration {
@@ -127,13 +147,19 @@
     return nil;
 }
 
-- (void)statusChangeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need {
-    
+- (void)changeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need {
+    if (_status != status) {
+        if (need) {
+            self.status = status;
+        } else {
+            _status = status;
+        }
+    }
 }
 
 - (NSString *)msgTime {
     NSDate *date = [_msg timestamp];
-    NSString *time = [date shortTimeTextOfDate];
+    NSString *time = [date timeTextOfDate];
     return time;
 }
 
@@ -156,6 +182,10 @@
     } else {
         return @"";
     }
+}
+
+- (TSIMUser *)getSender {
+    return [[TSIMUser alloc] initWithUserId:[_msg sender]];
 }
 
 - (NSInteger)status {
@@ -188,5 +218,16 @@
     }
     return _affixParams;
 }
+
+
+- (BOOL)isValiedType {
+    return self.type != TSIMMsgTypeTimeTip && self.type != TSIMMsgTypeSaftyTip;
+}
+
+- (BOOL)isMultiMsg
+{
+    return _type == TSIMMsgTypeFace || _msg.elemCount > 1;
+}
+
 
 @end

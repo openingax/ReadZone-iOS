@@ -38,7 +38,7 @@ TIMGroupListener
     if (self = [super init]) {
         dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_async(globalQueue, ^{
-            [self configTIMAccount];
+//            [self configTIMAccount];
         });
     }
     return self;
@@ -54,13 +54,13 @@ TIMGroupListener
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!_hasLogin && _hasInitSDK) {
+//    if (!_hasLogin && _hasInitSDK) {
         // 延时 1 秒登录，否则失败率很高
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self loginTIM];
         });
-    }
+//    }
 }
 
 - (void)configTIMAccount {
@@ -102,7 +102,7 @@ TIMGroupListener
     //    userConfig.messageUpdateListener = self;//消息svr重写监听器（加载消息扩展包有效）
     userConfig.uploadProgressListener = self;//文件上传进度监听器
     //        userConfig.groupEventListener todo
-    //    userConfig.messgeRevokeListener = self.conversationMgr;
+//    userConfig.messgeRevokeListener = self.conversationMgr;
     userConfig.friendshipListener = self;//关系链数据本地缓存监听器（加载好友扩展包、enableFriendshipProxy有效）
     userConfig.groupListener = self;//群组据本地缓存监听器（加载群组扩展包、enableGroupAssistant有效）
     

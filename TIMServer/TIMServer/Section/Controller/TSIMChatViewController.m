@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 处理草稿
     
     // 注册消息相关的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRevokeMsg:) name:kIMAMSG_RevokeNotification object:nil];
@@ -25,17 +24,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChangedMsg:) name:kIMAMSG_ChangedNotification object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
 - (void)dealloc {
-    
-    // 处理草稿
-    TSIMMsg *draft = [_inputView getMsgDraft];
-    if (draft) {
-        
-    }
     
     [self.KVOController unobserveAll];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -70,11 +59,9 @@
 #pragma mark - View
 
 - (void)addInputPanel {
-    _inputView = [[TSRichChatInputPanel alloc] initRichChatInputPanel];
+    _inputView = [[TSChatInputPanel alloc] init];
     _inputView.chatDelegate = self;
     [self.view addSubview:_inputView];
-    
-    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)addChatToolBar {
@@ -141,10 +128,10 @@
     _tableView.frame = CGRectMake(0, 0, size.width, size.height - _inputView.contentHeight);
     
     [_inputView setFrameAndLayout:CGRectMake(0, size.height - _inputView.contentHeight, size.width, _inputView.contentHeight)];
-    [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self.view);
-        make.height.mas_equalTo(self->_inputView.contentHeight);
-    }];
+//    [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.left.right.equalTo(self.view);
+//        make.height.mas_equalTo(self->_inputView.contentHeight);
+//    }];
 }
 
 - (void)hiddenKeyBoard {
@@ -152,7 +139,13 @@
 }
 
 - (void)onChatInput:(UIView<TSChatInputAbleView> *)chatInput sendMsg:(TSIMMsg *)msg {
+    [self sendMsg:msg];
+    NSMutableArray *elems = [NSMutableArray array];
+    for (int index = 0; index < msg.msg.elemCount; index ++) {
+        [elems addObject:[msg.msg getElem:index]];
+    }
     
+    NSLog(@"%d", msg.msg.elemCount);
 }
 
 @end

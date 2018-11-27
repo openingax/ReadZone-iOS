@@ -13,6 +13,7 @@
 #import "TSChatInputPanel.h"
 #import "TSIMMsg+Draft.h"
 #import "TSIMMsg+UITableViewCell.h"
+#import "TSIMAPlatform.h"
 
 @class TSConversation;
 
@@ -26,6 +27,8 @@
     FBKVOController                 *_receiverKVO;
     
     __weak TSSafeMutableArray       *_messageList;
+    
+@protected
 }
 
 @property(nonatomic,strong) TSConversation *conversation;

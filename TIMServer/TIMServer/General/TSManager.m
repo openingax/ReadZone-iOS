@@ -10,10 +10,11 @@
 #import "TSFriendListViewController.h"
 #import "TSBaseNavigationController.h"
 #import "TSUserManager.h"
-#import "TSIMChatViewController.h"
+#import "TSRichChatViewController.h"
 #import "TSIMUser.h"
-
+#import "TSIMAPlatform.h"
 #import "TSIMManager.h"
+#import "IMAPlatformConfig.h"
 
 @implementation TSManager
 
@@ -23,14 +24,17 @@
     
     TSIMUser *receiver = nil;
     if ([params[@"account"] isEqualToString:@"18814098638"]) {
-        receiver = [[TSIMUser alloc] initWithUserId:@"13265028638"];
+        receiver = [[TSIMUser alloc] initWithUserId:@"86-13265028638"];
     };
     if ([params[@"account"] isEqualToString:@"13265028638"]) {
         receiver = [[TSIMUser alloc] initWithUserId:@"18814098638"];
     };
     
-    TSIMChatViewController *listVC = [[TSIMChatViewController alloc] initWithUser:receiver];
+    TSRichChatViewController *listVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:listVC];
+    
+    [TSIMAPlatform config];
+    
     navVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [controller presentViewController:navVC animated:YES completion:^{
         

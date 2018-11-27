@@ -51,7 +51,7 @@
     
 }
 
-- (NSString *)shortTimeTextOfDate {
+- (NSString *)timeTextOfDate {
     
     NSDate *date = self;
     

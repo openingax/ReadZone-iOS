@@ -47,7 +47,7 @@
 
 - (void)addFooterView
 {
-    self.footerView = [[TSFootRefreshView alloc] init];
+//    self.footerView = [[TSFootRefreshView alloc] init];
 }
 
 - (void)addRefreshScrollView

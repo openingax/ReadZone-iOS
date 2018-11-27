@@ -43,5 +43,6 @@
 #import "TSConstMarco.h"
 
 #import "NSString+Common.h"
+#import "NSObject+Json.h"
 
 #endif /* CommonLibrary_h */

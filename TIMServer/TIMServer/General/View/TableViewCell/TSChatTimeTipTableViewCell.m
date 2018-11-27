@@ -7,18 +7,117 @@
 //
 
 #import "TSChatTimeTipTableViewCell.h"
+#import "TIMElem+ShowDescription.h"
 
 @implementation TSChatTimeTipTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (BOOL)canShowMenu {
+    return NO;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (instancetype)initWithC2CReuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
+        
+        self.contentView.backgroundColor = kClearColor;
+        self.backgroundColor = kClearColor;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.textLabel.numberOfLines = 0;
+    }
+    
+    return self;
+}
 
-    // Configure the view for the selected state
+- (instancetype)initWithGroupReuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super init])
+    {
+        self.contentView.backgroundColor = kClearColor;
+        self.backgroundColor = kClearColor;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.textLabel.numberOfLines = 0;
+    }
+    return self;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    // do nothing
+}
+
+- (void)relayoutFrameOfSubViews
+{
+    // do nothing
+}
+
+
+- (void)addC2CCellViews
+{
+    // do nothing
+    
+}
+
+- (void)addGroupCellViews
+{
+    // do nothing
+}
+
+- (void)relayoutC2CCellViews
+{
+    // do nothing
+}
+- (void)relayoutGroupCellViews
+{
+    // do nothing
+}
+
+- (void)configKVO
+{
+    // do nothing
+}
+
+- (void)configWith:(TSIMMsg *)msg
+{
+    _msg = msg;
+    TIMCustomElem *elem = (TIMCustomElem *)[msg.msg getElem:0];
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.textLabel.font = [_msg tipFont];
+    self.textLabel.textColor = kLightGrayColor;
+    self.textLabel.text = [elem timeTip];
+}
+
+- (void)configContent
+{
+    
+}
+
+- (void)configElemContent
+{
+    
+}
+- (void)configSendingTips
+{
+    // do nothing
+}
+
+
+
+- (void)showMenu
+{
+    // do nothing
+}
+
+- (NSArray *)showMenuItems
+{
+    // do nothing
+    return nil;
+    
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    return NO;
 }
 
 @end

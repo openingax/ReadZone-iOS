@@ -198,14 +198,14 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 }
 - (UIColor *)textColor
 {
-    if ([self isMineMsg])
-    {
-        return kWhiteColor;
-    }
-    else
-    {
+//    if ([self isMineMsg])
+//    {
+//        return kWhiteColor;
+//    }
+//    else
+//    {
         return kBlackColor;
-    }
+//    }
 }
 
 - (UIFont *)tipFont
@@ -234,7 +234,7 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         return self.showHeightInChat;
     }
     
-    if (self.type == TSIMMsgTypeTimTip || self.type == TSIMMsgTypeSaftyTip)
+    if (self.type == TSIMMsgTypeTimeTip || self.type == TSIMMsgTypeSaftyTip)
     {
         // 时间标签显示20
         self.showHeightInChat = 20;
@@ -249,7 +249,6 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         return size.height;
     }
     
-    
     if (isGroup && ![self isMineMsg])
     {
         size.height += [self groupMsgTipHeight];
@@ -261,31 +260,37 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     {
         size.height = iconSize.height + kDefaultMargin;
     }
+    
+    size.height -= 8;
+    if (size.height < 64) {
+        size.height = 64;
+    }
+    
     self.showHeightInChat = size.height;
     return size.height;
-    
 }
 
 - (UIEdgeInsets)contentBackInset
 {
     
-    if (self.isMineMsg)
-    {
-        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
-    }
-    else
-    {
-        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
-    }
+//    if (self.isMineMsg)
+//    {
+//        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
+//    }
+//    else
+//    {
+//        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
+    return UIEdgeInsetsMake(28, 20, 8, 20);
+//    }
 }
 
 - (NSInteger)pickedViewWidth
 {
-    return 32;
+    return 44;
 }
 - (CGSize)userIconSize
 {
-    return CGSizeMake(32, 32);
+    return CGSizeMake(44, 44);
 }
 - (NSInteger)sendingTipWidth
 {

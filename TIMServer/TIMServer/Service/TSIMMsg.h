@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <ImSDK/ImSDK.h>
+#import "TSIMUser.h"
 
 /**
  * 消息类型
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSInteger, TSIMMsgType) {
     TSIMMsgTypeLocation,            // 定位
     TSIMMsgTypeVideo,               // 视频消息
     TSIMMsgTypeCustom,              // 自定义
-    TSIMMsgTypeTimTip,              // 时间提醒标签
+    TSIMMsgTypeTimeTip,             // 时间提醒标签
     TSIMMsgTypeGroupTips,           // 群提醒
     TSIMMsgTypeGroupSystem,         // 群系统消息
     TSIMMsgTypeSNSSystem,           // 关系链消息
@@ -79,11 +80,11 @@ typedef NS_ENUM(NSInteger, TSIMMsgStatus) {
 
 - (NSString *)msgTime;
 - (NSString *)msgTip;
-- (void)statusChangeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need;
+- (void)changeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need;
 - (void)remove;
 
 // 获取发件人
-- (TSIMMsg *)getSender;
+- (TSIMUser *)getSender;
 
 // 是否为我发的消息
 - (BOOL)isMineMsg;

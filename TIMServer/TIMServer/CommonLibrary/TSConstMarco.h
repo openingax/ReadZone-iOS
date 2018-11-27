@@ -10,6 +10,7 @@
 #define TSConstMarco_h
 
 #define kDefaultMargin  10
+#define kTableViewCellBubbleMarginTop 20
 
 #define kTimLargeTextFont       [UIFont systemFontOfSize:16]
 #define kTimMiddleTextFont      [UIFont systemFontOfSize:14]

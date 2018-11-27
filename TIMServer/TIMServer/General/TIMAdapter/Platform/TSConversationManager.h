@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, TSConversationChangedNotifyType) {
 
 typedef void(^TSConversationChangedCompletion)(TSConversationChangedNotifyItem *item);
 
-@interface TSConversationManager : NSObject <TIMMessageListener>
+@interface TSConversationManager : NSObject <TIMMessageListener, TIMMessageRevokeListener>
 {
 @protected
     TSSafeMutableArray      *_conversationList;
@@ -53,6 +53,7 @@ typedef void(^TSConversationChangedCompletion)(TSConversationChangedNotifyItem *
 
 - (void)releaseChattingConversation;
 - (void)deleteConversation:(TSConversation *)conv needUIRefresh:(BOOL)need;
+- (void)asyncConversationList;
 - (void)asyncRefreshConversationList;
 
 - (TSConversation *)chatWith:(TSIMUser *)user;

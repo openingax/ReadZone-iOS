@@ -25,14 +25,14 @@
 
 - (void)configContent {
     UIEdgeInsets inset = [_msg contentBackInset];
-    if ([_msg isMineMsg])
-    {
-        _contentBack.image = [[UIImage imageNamed:@"bubble_blue"] resizableImageWithCapInsets:inset];
-    }
-    else
-    {
-        _contentBack.image = [[UIImage imageNamed:@"bubble_gray"] resizableImageWithCapInsets:inset];
-    }
+//    if ([_msg isMineMsg])
+//    {
+//        _contentBack.image = [[UIImage imageWithBundleAsset:@"bubble_blue"] resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+//    }
+//    else
+//    {
+        _contentBack.image = [[UIImage imageWithBundleAsset:@"bubble_gray"] resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+//    }
 }
 
 - (void)configSendingTips

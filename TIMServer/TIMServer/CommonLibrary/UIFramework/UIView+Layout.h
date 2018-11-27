@@ -40,7 +40,6 @@
 
 @end
 
-
 @interface UIView (ShakeAnimation)
 
 // 左右shake

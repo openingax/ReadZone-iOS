@@ -33,6 +33,8 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 
 - (instancetype)initWithConversation:(TIMConversation *)conv;
 
+- (void)copyConversationInfo:(TSConversation *)conv;
+
 - (NSString *)receiver;
 - (TIMConversationType)type;
 
@@ -40,6 +42,12 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 - (void)asyncLoadLocalLastMsg:(CommonVoidBlock)block;
 
 - (void)releaseConversation;
+
+// 切换到本会话前，先加载本地的最后count条聊天的的数据
+- (void)asyncLoadRecentMessage:(NSInteger)count completion:(HandleMsgBlock)block;
+
+// 用于顶部下拉加载更多历史消息
+- (void)asyncLoadRecentMessage:(NSInteger)count from:(TSIMMsg *)msg completion:(HandleMsgBlock)block;
 
 - (void)onReceiveNewMessage:(TSIMMsg *)msg;
 
