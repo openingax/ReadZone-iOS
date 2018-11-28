@@ -89,11 +89,13 @@
 
 - (void)onReceiveNewMessage:(TSIMMsg *)msg {
     NSMutableArray *array = [NSMutableArray array];
-    TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
-    // 时间提示
-    if (timeTip) {
-        [array addObject:timeTip];
-    }
+    
+#warning 暂时屏蔽时间提示
+//    TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
+//    // 时间提示
+//    if (timeTip) {
+//        [array addObject:timeTip];
+//    }
     
     [array addObject:msg];
     

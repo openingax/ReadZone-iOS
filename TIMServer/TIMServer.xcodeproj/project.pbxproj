@@ -224,6 +224,8 @@
 		5FBE467F21ABECB9009186F5 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBE465D21ABECB8009186F5 /* UIImage+MultiFormat.h */; };
 		5FBE468021ABECB9009186F5 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE465E21ABECB8009186F5 /* UIButton+WebCache.m */; };
 		5FBE468121ABECB9009186F5 /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBE465F21ABECB8009186F5 /* UIImage+GIF.h */; };
+		5FC0A60921AE6BC300603B93 /* TSImageThumbPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC0A60721AE6BC300603B93 /* TSImageThumbPickerViewController.h */; };
+		5FC0A60A21AE6BC300603B93 /* TSImageThumbPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC0A60821AE6BC300603B93 /* TSImageThumbPickerViewController.m */; };
 		5FC4EA0F218994E1007A487E /* TIMServerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA0D218994E1007A487E /* TIMServerHelper.h */; };
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
@@ -465,6 +467,8 @@
 		5FBE465D21ABECB8009186F5 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
 		5FBE465E21ABECB8009186F5 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		5FBE465F21ABECB8009186F5 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		5FC0A60721AE6BC300603B93 /* TSImageThumbPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSImageThumbPickerViewController.h; sourceTree = "<group>"; };
+		5FC0A60821AE6BC300603B93 /* TSImageThumbPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSImageThumbPickerViewController.m; sourceTree = "<group>"; };
 		5FC4EA0D218994E1007A487E /* TIMServerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServerHelper.h; sourceTree = "<group>"; };
 		5FC4EA0E218994E1007A487E /* TIMServerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMServerHelper.m; sourceTree = "<group>"; };
 		5FC4EA222189A691007A487E /* TSConstMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConstMarco.h; sourceTree = "<group>"; };
@@ -889,6 +893,8 @@
 				5F5D074221AD20D6009B4A33 /* TSRichChatViewController.m */,
 				5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */,
 				5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */,
+				5FC0A60721AE6BC300603B93 /* TSImageThumbPickerViewController.h */,
+				5FC0A60821AE6BC300603B93 /* TSImageThumbPickerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1113,6 +1119,7 @@
 				5F3E045721A58F0A00E3EAB8 /* FTUtils.h in Headers */,
 				5F0E84E421A24829004DBF08 /* TSIMErrorManager.h in Headers */,
 				5FBE466621ABECB9009186F5 /* SDWebImageDownloaderOperation.h in Headers */,
+				5FC0A60921AE6BC300603B93 /* TSImageThumbPickerViewController.h in Headers */,
 				5F3E041A21A57FFD00E3EAB8 /* TSChatInputToolBar.h in Headers */,
 				5F3E03F621A5540600E3EAB8 /* TSScrollRefreshViewController.h in Headers */,
 				5FBE467421ABECB9009186F5 /* UIImageView+HighlightedWebCache.h in Headers */,
@@ -1273,6 +1280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC0A60A21AE6BC300603B93 /* TSImageThumbPickerViewController.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
 				5FBE467321ABECB9009186F5 /* SDImageCache.m in Sources */,
 				5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */,
@@ -1514,6 +1522,8 @@
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/YMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework/YoutuBeauty",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "";
@@ -1524,6 +1534,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework",
 				);
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1552,6 +1563,8 @@
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/YMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework/YoutuBeauty",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "";
@@ -1562,6 +1575,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
+					"$(PROJECT_DIR)/TIMServer/Section/MicroVideo/PituMotionLibrary/Framework",
 				);
 				MACH_O_TYPE = staticlib;
 				ONLY_ACTIVE_ARCH = NO;

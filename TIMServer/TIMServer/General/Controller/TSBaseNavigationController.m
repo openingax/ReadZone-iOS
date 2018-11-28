@@ -61,6 +61,7 @@
     }
     
     UIViewController *root = navigationController.viewControllers[0];
+    
     if (root != viewController) {
         if (!viewController.navigationItem.leftBarButtonItem) {
             UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];

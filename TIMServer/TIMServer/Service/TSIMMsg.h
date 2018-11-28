@@ -95,4 +95,17 @@ typedef NS_ENUM(NSInteger, TSIMMsgStatus) {
 
 - (BOOL)isMultiMsg;
 
+// 外部不调用，只限于TIMAdapter文件目录下代码调用
+// affix param method
+
+- (void)addString:(NSString *)aValue forKey:(id<NSCopying>)aKey;
+- (void)addInteger:(NSInteger)aValue forKey:(id<NSCopying>)aKey;
+- (void)addCGFloat:(CGFloat)aValue forKey:(id<NSCopying>)aKey;
+- (void)addBOOL:(BOOL)aValue forKey:(id<NSCopying>)aKey;
+
+- (NSString *)stringForKey:(id<NSCopying>)key;
+- (NSInteger)integerForKey:(id<NSCopying>)key;
+- (BOOL)boolForKey:(id<NSCopying>)key;
+- (CGFloat)floatForKey:(id<NSCopying>)key;
+
 @end

@@ -16,6 +16,7 @@
 #import "TIMServerHelper.h"
 #import "TSChatMsgShowHeader.h"
 #import "TSIMAPlatform.h"
+#import "TIMElem+ShowDescription.h"
 
 @interface TSElemBaseTableViewCell : UITableViewCell <TSElemAbleCell>
 {

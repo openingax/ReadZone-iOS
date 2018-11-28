@@ -102,8 +102,7 @@
 
 #pragma mark - Action
 - (void)onClickAudio:(UIButton *)button {
-    
-#warning 点击录音会报错，先屏蔽语音功能
+#warning 录音有问题，会报错，先屏蔽
     return;
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressedBtn.hidden = !_audioBtn.selected;

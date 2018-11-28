@@ -148,4 +148,12 @@
     NSLog(@"%d", msg.msg.elemCount);
 }
 
+- (void)onChatInputSendImage:(UIView<TSChatInputAbleView> *)chatInput {
+    [self moreViewPhotoAction];
+}
+
+- (void)onChatInputRecordVideo:(UIView<TSChatInputAbleView> *)chatInput {
+    [self moreVideVideoAction];
+}
+
 @end

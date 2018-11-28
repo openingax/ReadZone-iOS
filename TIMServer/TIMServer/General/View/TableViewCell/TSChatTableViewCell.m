@@ -59,6 +59,13 @@
 - (void)configContent
 {
     [super configContent];
+    
+    TIMImageElem *elem = (TIMImageElem *)[_msg.msg getElem:0];
+    
+    __weak UIImageView *wci = _chatImage;
+    [elem asyncThumbImage:^(NSString *path, UIImage *image, BOOL succ, BOOL isAsync) {
+        wci.image = image ? image : [UIImage imageWithBundleAsset:@"default_image"];
+    } inMsg:_msg];
 }
 
 @end

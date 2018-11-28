@@ -15,9 +15,15 @@
 #import "TSIMMsg+UITableViewCell.h"
 #import "TSIMAPlatform.h"
 
+// Video
+//#import "TCVideoRecordViewController.h"
+//#import "TCNavigationController.h"
+//#import "MicroVideoView.h"
+
 @class TSConversation;
 
 @interface TSChatViewController : TSIMServerViewController
+//<MicroVideoRecordDelegate, MicroVideoDelegate>
 {
     
 @protected
@@ -49,5 +55,8 @@
 - (void)sendMsg:(TSIMMsg *)msg;
 
 - (void)updateOnSendMessage:(NSArray *)msglist succ:(BOOL)succ;
+
+- (void)moreViewPhotoAction;
+- (void)moreVideVideoAction;
 
 @end

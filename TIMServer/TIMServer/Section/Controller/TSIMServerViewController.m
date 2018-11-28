@@ -36,10 +36,7 @@ TIMGroupListener
 
 - (instancetype)init {
     if (self = [super init]) {
-        dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-        dispatch_async(globalQueue, ^{
-//            [self configTIMAccount];
-        });
+        
     }
     return self;
 }
@@ -54,13 +51,13 @@ TIMGroupListener
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    if (!_hasLogin && _hasInitSDK) {
+    if (!_hasLogin) {
         // 延时 1 秒登录，否则失败率很高
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self loginTIM];
         });
-//    }
+    }
 }
 
 - (void)configTIMAccount {

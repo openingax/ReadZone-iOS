@@ -11,6 +11,8 @@
 #import "TSConversation.h"
 #import "TIMElem+ShowDescription.h"
 #import "TIMServerHelper.h"
+#import "NSMutableDictionary+Json.h"
+#import "TSIMAdapter.h"
 
 // 聊天图片缩约图最大高度
 #define kChatPicThumbMaxHeight 190.f
@@ -45,48 +47,65 @@
 }
 
 + (instancetype)msgWithImage:(UIImage *)img isOriginal:(BOOL)original {
-    //    CGFloat scale = 1;
-    //    scale = MIN(kChatPicThumbMaxHeight/img.size.height, kChatPicThumbMaxWidth/img.size.width);
-    //
-    //    CGFloat picHeight = img.size.height;
-    //    CGFloat picWidth = img.size.width;
-    //    NSInteger picThumbHeight = (NSInteger)(picHeight * scale + 1);
-    //    NSInteger picThumbWidth = (NSInteger)(picWidth * scale + 1);
-    //
-    //    NSFileManager *fileManager = [NSFileManager defaultManager];
-    //    NSString *nsTmpDIr = NSTemporaryDirectory();
-    //    NSString *filePath = [NSString stringWithFormat:@"%@uploadFile%3.f", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
-    //    BOOL isDirectory = NO;
-    //    NSError *err = nil;
-    //
-    //    // 当前sdk仅支持文件路径上传图片，将图片存在本地
-    //    if ([fileManager fileExistsAtPath:filePath isDirectory:&isDirectory])
-    //    {
-    //        if (![fileManager removeItemAtPath:nsTmpDIr error:&err])
-    //        {
-    //            NSLog(@"Upload Image Failed: same upload filename: %@", err);
-    //            return nil;
-    //        }
-    //    }
-    //    if (![fileManager createFileAtPath:filePath contents:UIImageJPEGRepresentation(img, 1) attributes:nil])
-    //    {
-    //        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
-    //        return nil;
-    //    }
-    //
-    //    NSString *thumbPath = [NSString stringWithFormat:@"%@uploadFile%3.f_ThumbImage", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
-    //    UIImage *thumbImage = [img thumbnailWithSize:CGSizeMake(picThumbWidth, picThumbHeight)];
-    //    if (![fileManager createFileAtPath:thumbPath contents:UIImageJPEGRepresentation(thumbImage, 1) attributes:nil])
-    //    {
-    //        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
-    //        return nil;
-    //    }
-    //
-    //    TIMImageElem *elem = [[TIMImageElem alloc] init];
-    //    elem.path = filePath;
-    //
-    //    return self;
-    return nil;
+    CGFloat scale = 1;
+    scale = MIN(kChatPicThumbMaxHeight/img.size.height, kChatPicThumbMaxWidth/img.size.width);
+    
+    CGFloat picHeight = img.size.height;
+    CGFloat picWidth = img.size.width;
+    NSInteger picThumbHeight = (NSInteger)(picHeight * scale + 1);
+    NSInteger picThumbWidth = (NSInteger)(picWidth * scale + 1);
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *nsTmpDIr = NSTemporaryDirectory();
+    NSString *filePath = [NSString stringWithFormat:@"%@uploadFile%3.f", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
+    BOOL isDirectory = NO;
+    NSError *err = nil;
+    
+    // 当前sdk仅支持文件路径上传图片，将图片存在本地
+    if ([fileManager fileExistsAtPath:filePath isDirectory:&isDirectory])
+    {
+        if (![fileManager removeItemAtPath:nsTmpDIr error:&err])
+        {
+            NSLog(@"Upload Image Failed: same upload filename: %@", err);
+            return nil;
+        }
+    }
+    if (![fileManager createFileAtPath:filePath contents:UIImageJPEGRepresentation(img, 1) attributes:nil])
+    {
+        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
+        return nil;
+    }
+    
+    NSString *thumbPath = [NSString stringWithFormat:@"%@uploadFile%3.f_ThumbImage", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
+    UIImage *thumbImage = [img thumbnailWithSize:CGSizeMake(picThumbWidth, picThumbHeight)];
+    if (![fileManager createFileAtPath:thumbPath contents:UIImageJPEGRepresentation(thumbImage, 1) attributes:nil])
+    {
+        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
+        return nil;
+    }
+    
+    TIMImageElem *elem = [[TIMImageElem alloc] init];
+    elem.path = filePath;
+    
+    if (original)
+    {
+        elem.level = TIM_IMAGE_COMPRESS_ORIGIN;
+    }
+    else
+    {
+        elem.level = TIM_IMAGE_COMPRESS_HIGH;
+    }
+    
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    TSIMMsg *imamsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeImage];
+    
+    [imamsg addInteger:picThumbHeight forKey:kIMAMSG_Image_ThumbHeight];
+    [imamsg addInteger:picThumbWidth forKey:kIMAMSG_Image_ThumbWidth];
+    [imamsg addString:filePath forKey:kIMAMSG_Image_OrignalPath];
+    [imamsg addString:thumbPath forKey:kIMAMSG_Image_ThumbPath];
+    
+    return imamsg;
 }
 
 + (instancetype)msgWithDate:(NSDate *)date {
@@ -125,15 +144,15 @@
 
 + (instancetype)msgWithCustom:(NSInteger)command param:(NSString *)param
 {
-//    CustomElemCmd *cmd = [[CustomElemCmd alloc] initWith:command param:param];
-//
-//    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
-//    elem.data = [cmd packToSendData];
-//
-//    TIMMessage *customMsg = [[TIMMessage alloc] init];
-//    [customMsg addElem:elem];
-//
-//    return [[IMAMsg alloc] initWith:customMsg type:command];
+    //    CustomElemCmd *cmd = [[CustomElemCmd alloc] initWith:command param:param];
+    //
+    //    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+    //    elem.data = [cmd packToSendData];
+    //
+    //    TIMMessage *customMsg = [[TIMMessage alloc] init];
+    //    [customMsg addElem:elem];
+    //
+    //    return [[IMAMsg alloc] initWith:customMsg type:command];
     return nil;
 }
 
@@ -229,5 +248,40 @@
     return _type == TSIMMsgTypeFace || _msg.elemCount > 1;
 }
 
+// 外部不调用，只限于TIMAdapter文件目录下代码调用
+// affix param method
+
+- (void)addString:(NSString *)aValue forKey:(id<NSCopying>)aKey {
+    [self.affixParams addString:aValue forKey:aKey];
+}
+
+- (void)addInteger:(NSInteger)aValue forKey:(id<NSCopying>)aKey {
+    [self.affixParams addInteger:aValue forKey:aKey];
+}
+
+- (void)addCGFloat:(CGFloat)aValue forKey:(id<NSCopying>)aKey {
+    [self.affixParams addCGFloat:aValue forKey:aKey];
+}
+
+- (void)addBOOL:(BOOL)aValue forKey:(id<NSCopying>)aKey {
+    [self.affixParams addBOOL:aValue forKey:aKey];
+}
+
+- (NSString *)stringForKey:(id<NSCopying>)key
+{
+    return [self.affixParams stringForKey:key];
+}
+- (NSInteger)integerForKey:(id<NSCopying>)key
+{
+    return [self.affixParams integerForKey:key];
+}
+- (BOOL)boolForKey:(id<NSCopying>)key
+{
+    return [self.affixParams boolForKey:key];
+}
+- (CGFloat)floatForKey:(id<NSCopying>)key
+{
+    return [self.affixParams floatForKey:key];
+}
 
 @end

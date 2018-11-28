@@ -12,6 +12,7 @@
 
 @protocol TSInputToolBarDelegate <NSObject>
 
+@required
 - (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content;
 - (void)toolBarDidClickPhotoButton;
 - (void)toolBarDidClickMovieButton;

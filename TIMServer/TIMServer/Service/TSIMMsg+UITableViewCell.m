@@ -280,7 +280,14 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 //    else
 //    {
 //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
-    return UIEdgeInsetsMake(28, 20, 8, 20);
+    if (self.type == TSIMMsgTypeText) {
+        return UIEdgeInsetsMake(28, 20, 8, 20);
+    } else if (self.type == TSIMMsgTypeImage) {
+        return UIEdgeInsetsMake(28, kDefaultMargin + 4, 8, kDefaultMargin/2 + 3);
+    } else {
+         return UIEdgeInsetsMake(28, kDefaultMargin + 2, 6, kDefaultMargin/2 + 1);
+    }
+    
 //    }
 }
 

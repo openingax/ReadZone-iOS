@@ -22,13 +22,7 @@
     
     [[TSUserManager shareInstance] saveUserAccount:params[@"account"] userSig:params[@"sig"]];
     
-    TSIMUser *receiver = nil;
-    if ([params[@"account"] isEqualToString:@"18814098638"]) {
-        receiver = [[TSIMUser alloc] initWithUserId:@"86-13265028638"];
-    };
-    if ([params[@"account"] isEqualToString:@"13265028638"]) {
-        receiver = [[TSIMUser alloc] initWithUserId:@"18814098638"];
-    };
+    TSIMUser *receiver = [[TSIMUser alloc] initWithUserId:@"86-18814098638"];
     
     TSRichChatViewController *listVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:listVC];

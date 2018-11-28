@@ -182,25 +182,15 @@
 
 #pragma mark -
 
-- (void)onToolBarClickPhoto:(TSChatInputToolBar *)bar show:(BOOL)isShow
-{
-    if (isShow)
-    {
-        if (!_emojPanel)
-        {
-//            ChatEmojView *emojPanel = [[ChatEmojView alloc] init];
-//            emojPanel.chatDelegate = self.chatDelegate;
-//            emojPanel.delegate = _toolBar;
-//            _emojPanel = emojPanel;
-        }
-        
-        [self onShowPanel:_emojPanel];
+- (void)onToolBarClickPhoto:(TSChatInputToolBar *)bar show:(BOOL)isShow {
+    if ([_chatDelegate respondsToSelector:@selector(onChatInputSendImage:)]) {
+        [_chatDelegate onChatInputSendImage:_panel];
     }
-    else
-    {
-        [self onHideAddtionalPanel:_panel completion:^{
-            [self onSwitchPanel];
-        }];
+}
+
+- (void)onToolBarClickMovie:(TSChatInputToolBar *)bar show:(BOOL)isShow {
+    if ([_chatDelegate respondsToSelector:@selector(onChatInputRecordVideo:)]) {
+        [_chatDelegate onChatInputRecordVideo:_panel];
     }
 }
 
@@ -215,27 +205,6 @@
     _panel = panel;
     
     [self onShowAddtionalPanel:panel withOff:contentHeight - oldPanelContentHeight];
-}
-
-- (void)onToolBarClickMovie:(TSChatInputToolBar *)bar show:(BOOL)isShow
-{
-    if (isShow)
-    {
-        if (!_funcPanel)
-        {
-//            _funcPanel = [[TSChatFunctionPanel alloc] init];
-//            _funcPanel.chatDelegate = self.chatDelegate;
-        }
-        
-//        [self onShowPanel:_funcPanel];
-    }
-    else
-    {
-        [self onHideAddtionalPanel:_panel completion:^{
-            [self onSwitchPanel];
-        }];
-    }
-    
 }
 
 - (void)onShowAddtionalPanel:(UIView<TSChatInputAbleView> *)panel withOff:(NSInteger)offer
@@ -290,26 +259,5 @@
 
 @implementation TSRichChatInputPanel
 
-- (void)onToolBarClickPhoto:(TSChatInputToolBar *)bar show:(BOOL)isShow
-{
-//    if (isShow)
-//    {
-//        if (!_emojPanel)
-//        {
-//            ChatSystemFaceView *emojPanel = [[ChatSystemFaceView alloc] init];
-//            emojPanel.chatDelegate = self.chatDelegate;
-//            emojPanel.inputDelegate = _toolBar;
-//            _emojPanel = emojPanel;
-//        }
-//
-//        [self onShowPanel:_emojPanel];
-//    }
-//    else
-//    {
-//        [self onHideAddtionalPanel:_panel completion:^{
-//            [self onSwitchPanel];
-//        }];
-//    }
-}
 
 @end

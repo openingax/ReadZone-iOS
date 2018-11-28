@@ -184,6 +184,7 @@
 		5FBF588220F8892900CC15A2 /* RZSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingCell.m; sourceTree = "<group>"; };
 		5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAboutViewController.h; sourceTree = "<group>"; };
 		5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAboutViewController.m; sourceTree = "<group>"; };
+		5FC0A7F621AE9CFB00603B93 /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = TIMServer/IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
 		5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServerLocalizable.bundle; sourceTree = "<group>"; };
 		5FD82CC2217E26BE00D1779A /* RZBaseWebKitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseWebKitController.h; sourceTree = "<group>"; };
 		5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseWebKitController.m; sourceTree = "<group>"; };
@@ -601,6 +602,7 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FC0A7F621AE9CFB00603B93 /* TXRTMPSDK.framework */,
 				5F9149252192867400148AAA /* IMFriendshipExt.framework */,
 				5F9149272192867400148AAA /* IMMessageExt.framework */,
 				5F9149242192867400148AAA /* ImSDK.framework */,
