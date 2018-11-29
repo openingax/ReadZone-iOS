@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F06F5AE21B04EE8004419DC /* IMUGCExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F59121B046DF004419DC /* IMUGCExt.framework */; };
 		5F0E84E421A24829004DBF08 /* TSIMErrorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */; };
 		5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */; };
 		5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15190921A6592F00E83785 /* TSChatTextView.h */; };
@@ -61,8 +62,6 @@
 		5F299F4621AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F2A21AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m */; };
 		5F299F4721AFBFB600A0F1A0 /* TZProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299F2B21AFBFB600A0F1A0 /* TZProgressView.h */; };
 		5F299F4B21AFDE4600A0F1A0 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F299F4A21AFDE4600A0F1A0 /* Photos.framework */; };
-		5F299F5021B0100800A0F1A0 /* IMUGCExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F299F4F21B0100800A0F1A0 /* IMUGCExt.framework */; };
-		5F299F5221B0108B00A0F1A0 /* TXRTMPSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F299F5121B0108B00A0F1A0 /* TXRTMPSDK.framework */; };
 		5F299F5B21B017DD00A0F1A0 /* MicroVideoPlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */; };
 		5F299F5D21B017E400A0F1A0 /* MicroVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */; };
 		5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E03EC21A5445200E3EAB8 /* TSAlertManager.h */; };
@@ -277,6 +276,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F06F59121B046DF004419DC /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
+		5F06F59921B04A66004419DC /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMFriendshipExt.framework; path = IMFrameworks/IMFriendshipExt.framework; sourceTree = "<group>"; };
 		5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMErrorManager.h; sourceTree = "<group>"; };
 		5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMErrorManager.m; sourceTree = "<group>"; };
 		5F15190921A6592F00E83785 /* TSChatTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatTextView.h; sourceTree = "<group>"; };
@@ -333,8 +334,6 @@
 		5F299F2A21AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
 		5F299F2B21AFBFB600A0F1A0 /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
 		5F299F4A21AFDE4600A0F1A0 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		5F299F4F21B0100800A0F1A0 /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
-		5F299F5121B0108B00A0F1A0 /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
 		5F299F5321B011FB00A0F1A0 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
 		5F299F5621B0120000A0F1A0 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TLSSDK.framework; path = IMFrameworks/TLSSDK.framework; sourceTree = "<group>"; };
 		5F299F5821B0120200A0F1A0 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QALSDK.framework; path = IMFrameworks/QALSDK.framework; sourceTree = "<group>"; };
@@ -566,8 +565,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F299F5221B0108B00A0F1A0 /* TXRTMPSDK.framework in Frameworks */,
-				5F299F5021B0100800A0F1A0 /* IMUGCExt.framework in Frameworks */,
+				5F06F5AE21B04EE8004419DC /* IMUGCExt.framework in Frameworks */,
 				5F299F4B21AFDE4600A0F1A0 /* Photos.framework in Frameworks */,
 				5F3E042E21A58B5C00E3EAB8 /* AVFoundation.framework in Frameworks */,
 				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
@@ -1140,11 +1138,11 @@
 		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F06F59921B04A66004419DC /* IMFriendshipExt.framework */,
+				5F06F59121B046DF004419DC /* IMUGCExt.framework */,
 				5F299F5821B0120200A0F1A0 /* QALSDK.framework */,
 				5F299F5621B0120000A0F1A0 /* TLSSDK.framework */,
 				5F299F5321B011FB00A0F1A0 /* ImSDK.framework */,
-				5F299F5121B0108B00A0F1A0 /* TXRTMPSDK.framework */,
-				5F299F4F21B0100800A0F1A0 /* IMUGCExt.framework */,
 				5F299F4A21AFDE4600A0F1A0 /* Photos.framework */,
 				5F15192721A6939900E83785 /* IMMessageExt.framework */,
 				5F3E042D21A58B5C00E3EAB8 /* AVFoundation.framework */,

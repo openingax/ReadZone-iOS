@@ -8,6 +8,7 @@
 
 #import <ImSDK/ImSDK.h>
 #import "TSIMMsg.h"
+#import <IMUGCExt/IMUGCExt.h>
 
 @class TSIMMsg;
 

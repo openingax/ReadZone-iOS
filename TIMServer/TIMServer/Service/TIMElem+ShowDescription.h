@@ -8,6 +8,7 @@
 
 #import <ImSDK/ImSDK.h>
 #import <UIKit/UIKit.h>
+#import <IMUGCExt/IMUGCExt.h>
 
 @class TSIMMsg;
 

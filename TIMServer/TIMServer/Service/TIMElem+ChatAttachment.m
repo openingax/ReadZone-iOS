@@ -24,3 +24,12 @@
 }
 
 @end
+
+@implementation TIMUGCElem (ChatAttachment)
+
+- (NSArray *)singleAttachmentOf:(TSIMMsg *)msg
+{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"[视频]" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+    return @[str];
+}
+@end

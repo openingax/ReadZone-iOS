@@ -228,6 +228,13 @@
 
 @implementation TIMUGCElem (ShowDescription)
 
+// 显示描述
+- (NSString *)showDescriptionOf:(TSIMMsg *)msg
+{
+    // 后面转成对应的描述信息
+    return @"[视频]";
+}
+
 @end
 
 

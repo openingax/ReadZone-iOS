@@ -8,6 +8,7 @@
 
 #import <ImSDK/ImSDK.h>
 #import "TSIMMsg.h"
+#import <IMUGCExt/IMUGCExt.h>
 
 @interface TIMElem (ChatAttachment)
 
@@ -19,5 +20,9 @@
 
 // 对应聊天界面的聊天内容
 - (NSArray *)chatAttachmentOf:(TSIMMsg *)msg;
+
+@end
+
+@interface TIMUGCElem (ChatAttachment)
 
 @end

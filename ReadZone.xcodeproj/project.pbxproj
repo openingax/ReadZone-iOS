@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0657302110A32E0081D6A9 /* RZUserModel.m */; };
+		5F06F59B21B04ADE004419DC /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149242192867400148AAA /* ImSDK.framework */; };
+		5F06F59F21B04C88004419DC /* IMSDKBugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F59E21B04C88004419DC /* IMSDKBugly.framework */; };
+		5F06F5A321B04D69004419DC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5A221B04D69004419DC /* AssetsLibrary.framework */; };
+		5F06F5A521B04D83004419DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5A421B04D83004419DC /* AVFoundation.framework */; };
+		5F06F5A721B04DB2004419DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5A621B04DB2004419DC /* AudioToolbox.framework */; };
+		5F06F5A921B04DC1004419DC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5A821B04DC1004419DC /* CoreMedia.framework */; };
+		5F06F5AB21B04DDF004419DC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5AA21B04DDF004419DC /* ImageIO.framework */; };
+		5F06F5AD21B04DFE004419DC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5AC21B04DFE004419DC /* Security.framework */; };
 		5F24824E2191311100AC07FD /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F24824D2191311100AC07FD /* TIMServer.framework */; };
 		5F299F4921AFCD0200A0F1A0 /* TSImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
@@ -37,8 +45,6 @@
 		5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */; };
 		5F83FBC22122F50100FF9AD4 /* RZRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */; };
 		5F8E387521848D2500205C9E /* RZAPITencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E387421848D2500205C9E /* RZAPITencent.m */; };
-		5F9149292192867500148AAA /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149242192867400148AAA /* ImSDK.framework */; };
-		5F91492A2192867500148AAA /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149252192867400148AAA /* IMFriendshipExt.framework */; };
 		5F91492B2192867500148AAA /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149262192867400148AAA /* TLSSDK.framework */; };
 		5F91492C2192867500148AAA /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149272192867400148AAA /* IMMessageExt.framework */; };
 		5F91492D2192867500148AAA /* QALSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9149282192867400148AAA /* QALSDK.framework */; };
@@ -95,6 +101,15 @@
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
 		5F06572F2110A32E0081D6A9 /* RZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserModel.h; sourceTree = "<group>"; };
 		5F0657302110A32E0081D6A9 /* RZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserModel.m; sourceTree = "<group>"; };
+		5F06F59421B049B5004419DC /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = TIMServer/IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
+		5F06F59C21B04ADE004419DC /* IMCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMCore.framework; path = TIMServer/IMFrameworks/IMCore.framework; sourceTree = "<group>"; };
+		5F06F59E21B04C88004419DC /* IMSDKBugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMSDKBugly.framework; path = TIMServer/IMFrameworks/IMSDKBugly.framework; sourceTree = "<group>"; };
+		5F06F5A221B04D69004419DC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5F06F5A421B04D83004419DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5F06F5A621B04DB2004419DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5F06F5A821B04DC1004419DC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5F06F5AA21B04DDF004419DC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		5F06F5AC21B04DFE004419DC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5F24824D2191311100AC07FD /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
 		5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TSImagePickerController.bundle; sourceTree = "<group>"; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -266,14 +281,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F91492A2192867500148AAA /* IMFriendshipExt.framework in Frameworks */,
-				5F91492F2192885D00148AAA /* SystemConfiguration.framework in Frameworks */,
-				5F91492E2192885700148AAA /* CoreTelephony.framework in Frameworks */,
-				5F9149292192867500148AAA /* ImSDK.framework in Frameworks */,
-				5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */,
+				5F06F5AD21B04DFE004419DC /* Security.framework in Frameworks */,
+				5F06F5AB21B04DDF004419DC /* ImageIO.framework in Frameworks */,
+				5F06F5A921B04DC1004419DC /* CoreMedia.framework in Frameworks */,
+				5F06F5A721B04DB2004419DC /* AudioToolbox.framework in Frameworks */,
+				5F06F59B21B04ADE004419DC /* ImSDK.framework in Frameworks */,
+				5F91492D2192867500148AAA /* QALSDK.framework in Frameworks */,
 				5F91492B2192867500148AAA /* TLSSDK.framework in Frameworks */,
 				5F91492C2192867500148AAA /* IMMessageExt.framework in Frameworks */,
-				5F91492D2192867500148AAA /* QALSDK.framework in Frameworks */,
+				5F06F59F21B04C88004419DC /* IMSDKBugly.framework in Frameworks */,
+				5F06F5A321B04D69004419DC /* AssetsLibrary.framework in Frameworks */,
+				5F06F5A521B04D83004419DC /* AVFoundation.framework in Frameworks */,
+				5F91492F2192885D00148AAA /* SystemConfiguration.framework in Frameworks */,
+				5F91492E2192885700148AAA /* CoreTelephony.framework in Frameworks */,
+				5F3726242198728F00A1078D /* YMCommon.framework in Frameworks */,
 				5F5244DB218022E200389CD7 /* libsqlite3.tbd in Frameworks */,
 				5F5244D9218022D600389CD7 /* libz.tbd in Frameworks */,
 				5F5244D7218022CB00389CD7 /* libc++.tbd in Frameworks */,
@@ -604,6 +625,15 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F06F5AC21B04DFE004419DC /* Security.framework */,
+				5F06F5AA21B04DDF004419DC /* ImageIO.framework */,
+				5F06F5A821B04DC1004419DC /* CoreMedia.framework */,
+				5F06F5A621B04DB2004419DC /* AudioToolbox.framework */,
+				5F06F5A421B04D83004419DC /* AVFoundation.framework */,
+				5F06F5A221B04D69004419DC /* AssetsLibrary.framework */,
+				5F06F59E21B04C88004419DC /* IMSDKBugly.framework */,
+				5F06F59C21B04ADE004419DC /* IMCore.framework */,
+				5F06F59421B049B5004419DC /* IMUGCExt.framework */,
 				5F9149252192867400148AAA /* IMFriendshipExt.framework */,
 				5F9149272192867400148AAA /* IMMessageExt.framework */,
 				5F9149242192867400148AAA /* ImSDK.framework */,
