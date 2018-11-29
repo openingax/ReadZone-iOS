@@ -12,6 +12,8 @@
 #import "TSIMUser.h"
 #import <ImSDK/ImSDK.h>
 
+#define kAsyncUpdateConversationListNoti @"kAsyncUpdateConversationListNoti"
+
 typedef NS_ENUM(NSUInteger, TSConversationChangedNotifyType) {
     TSConversationChangedNotifyTypeSyncLocalConversation    = 0x01,         // 同步本地会话结束
     TSConversationChangedNotifyTypeBecomeActiveTop          = 0x01 << 1,    // 当前会话放在会话列表顶部
@@ -60,5 +62,35 @@ typedef void(^TSConversationChangedCompletion)(TSConversationChangedNotifyItem *
 - (TSConversation *)queryConversationWithUser:(TSIMUser *)user;
 - (void)removeConversationWithUser:(TSIMUser *)user;
 - (void)updateConversationWithUser:(TSIMUser *)user;
+
+@end
+
+
+@interface TSConversationManager (Protected)
+
+// TIMAdapter内部调用，外部不要调用
+// 当连接上
+- (void)onConnect;
+// 网络断开
+- (void)onDisConnect;
+
+// 同步完列表数据后，更新会话列表里面的显示
+- (void)updateOnAsyncLoadContactComplete;
+
+// 加载本地会话消息完成，通知外部更新
+- (void)updateOnLocalMsgComplete;
+
+// 会话，如果发消息，才更新其在列表中的位置
+- (void)updateOnLastMessageChanged:(TSConversation *)conv;
+
+// conv并非新建，而是已在列表中，有收到新消息 或 chatwith后，将conv移到从列表index处移到0;
+// 外部先删除index，然后再插入0
+- (void)updateOnChat:(TSConversation *)conv moveFromIndex:(NSUInteger)index;
+
+- (void)updateOnDelete:(TSConversation *)conv atIndex:(NSUInteger)index;
+
+- (void)updateOnNewConversation:(TSConversation *)conv;
+
+- (void)updateOnConversationChanged:(TSConversation *)conv;
 
 @end

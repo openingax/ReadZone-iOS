@@ -23,7 +23,6 @@
 @class TSConversation;
 
 @interface TSChatViewController : TSIMServerViewController
-//<MicroVideoRecordDelegate, MicroVideoDelegate>
 {
     
 @protected

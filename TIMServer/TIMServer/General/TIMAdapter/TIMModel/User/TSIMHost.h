@@ -9,7 +9,7 @@
 #import "TSIMUser.h"
 #import "TSDebugMarco.h"
 #import "NSString+Common.h"
-#import "TSIMLoginParam.h"
+#import "IMALoginParam.h"
 
 @interface TSIMHost : TSIMUser
 

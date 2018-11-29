@@ -62,7 +62,8 @@
         BOOL succ = NO;
         for (TIMImage *timImage in self.imageList)
         {
-            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+//            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+            if (timImage.type == TIM_IMAGE_TYPE_LARGE)
             {
                 // 解析大小
                 CGFloat scale = 1;
@@ -91,7 +92,8 @@
         BOOL succ = NO;
         for (TIMImage *timImage in self.imageList)
         {
-            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+//            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+            if (timImage.type == TIM_IMAGE_TYPE_LARGE)
             {
                 // 解析大小
                 CGFloat scale = 1;
@@ -160,6 +162,17 @@
 
 @end
 
+@implementation TIMUGCElem (ShowAPIs)
+
+- (Class)showCellClassOf:(TSIMMsg *)msg {
+    return [TSChatVideoTableViewCell class];
+}
+
+- (CGSize)sizeInWidth:(CGFloat)width atMsg:(TSIMMsg *)packMsg {
+    return CGSizeMake(150, 100);
+}
+
+@end
 
 @implementation TIMCustomElem (ShowAPIs)
 
@@ -176,3 +189,4 @@
 }
 
 @end
+

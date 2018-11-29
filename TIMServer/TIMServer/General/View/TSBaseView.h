@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TSAlertManager.h"
-#import "UIView+Layout.h"
+#import "UIView+TSLayout.h"
 #import "TSConstMarco.h"
 #import "TSColorMarco.h"
 #import <Masonry.h>

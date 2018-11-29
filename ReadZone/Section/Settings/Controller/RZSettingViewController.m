@@ -250,57 +250,57 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
 
 #pragma mark - Private
 - (void)takePhoto {
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) && iOS7Later) {
-        // 无相机权限 做一个友好的提示
-//        if (iOS8Later) {
-//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
-//            [alert show];
+//    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+//    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) && iOS7Later) {
+//        // 无相机权限 做一个友好的提示
+////        if (iOS8Later) {
+////            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+////            [alert show];
+////        } else {
+////            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+////            [alert show];
+////        }
+//    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+//        // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
+//        if (iOS7Later) {
+//            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+//                if (granted) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [self takePhoto];
+//                    });
+//                }
+//            }];
 //        } else {
-//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//            [alert show];
+//            [self takePhoto];
 //        }
-    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
-        // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
-        if (iOS7Later) {
-            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-                if (granted) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self takePhoto];
-                    });
-                }
-            }];
-        } else {
-            [self takePhoto];
-        }
-        // 拍照之前还需要检查相册权限
-    } else if ([TZImageManager authorizationStatus] == 2) { // 已被拒绝，没有相册权限，将无法保存拍的照片
-//        if (iOS8Later) {
-//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
-//            [alert show];
-//        } else {
-//            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//            [alert show];
-//        }
-    } else if ([TZImageManager authorizationStatus] == 0) { // 未请求过相册权限
-        [[TZImageManager manager] requestAuthorizationWithCompletion:^{
-            [self takePhoto];
-        }];
-    } else {
-        TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-        imagePicker.isSelectOriginalPhoto = NO;
-        imagePicker.allowTakePicture = YES;
-        imagePicker.allowTakeVideo = NO;
-        imagePicker.needCircleCrop = NO;
-        imagePicker.circleCropRadius = kScreenWidth/2;
-//        imagePicker.cropRect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        imagePicker.iconThemeColor = [UIColor colorWithHex:kColorNavTitle];
-        imagePicker.allowCrop = YES;
-//        [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-//
+//        // 拍照之前还需要检查相册权限
+//    } else if ([TZImageManager authorizationStatus] == 2) { // 已被拒绝，没有相册权限，将无法保存拍的照片
+////        if (iOS8Later) {
+////            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+////            [alert show];
+////        } else {
+////            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+////            [alert show];
+////        }
+//    } else if ([TZImageManager authorizationStatus] == 0) { // 未请求过相册权限
+//        [[TZImageManager manager] requestAuthorizationWithCompletion:^{
+//            [self takePhoto];
 //        }];
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
+//    } else {
+//        TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+//        imagePicker.isSelectOriginalPhoto = NO;
+//        imagePicker.allowTakePicture = YES;
+//        imagePicker.allowTakeVideo = NO;
+//        imagePicker.needCircleCrop = NO;
+//        imagePicker.circleCropRadius = kScreenWidth/2;
+////        imagePicker.cropRect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+//        imagePicker.iconThemeColor = [UIColor colorWithHex:kColorNavTitle];
+//        imagePicker.allowCrop = YES;
+////        [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+////
+////        }];
+//        [self presentViewController:imagePicker animated:YES completion:nil];
+//    }
 }
 
 @end

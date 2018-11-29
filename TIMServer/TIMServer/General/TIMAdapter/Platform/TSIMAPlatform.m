@@ -82,4 +82,81 @@ static TSIMAPlatform *_sharedInstance = nil;
     [manager setUserConfig:userConfig];
 }
 
+#pragma mark - 登录
+
+#define kIMAPlatform_AutoLogin_Key @"kIMAPlatform_AutoLogin_Key"
+
+// 是否是自动登录
++ (BOOL)isAutoLogin {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:kIMAPlatform_AutoLogin_Key];
+    return [num boolValue];
+}
+
++ (void)setAutoLogin:(BOOL)autologin {
+    [[NSUserDefaults standardUserDefaults] setObject:@(autologin) forKey:kIMAPlatform_AutoLogin_Key];
+}
+
+- (IMAPlatformConfig *)localConfig {
+    return nil;
+}
+
+- (void)saveToLocal {
+    
+}
+
+- (void)offlineLogin
+{
+    // 被踢下线，则清空单例中的数据，再登录后再重新创建
+    [self saveToLocal];
+    
+//    _contactMgr = nil;
+    
+    [[TIMManager sharedInstance] removeMessageListener:_conversationMgr];
+    _conversationMgr = nil;
+}
+
+- (void)logout:(TIMLoginSucc)succ fail:(TIMFail)fail
+{
+    __weak TSIMAPlatform *ws = self;
+    
+    [[TIMManager sharedInstance] logout:^{
+        [ws onLogoutCompletion];
+        if (succ)
+        {
+            succ();
+        }
+    } fail:^(int code, NSString *err) {
+        [ws onLogoutCompletion];
+        if (fail)
+        {
+            fail(code, err);
+        }
+    }];
+}
+
+- (void)onLogoutCompletion
+{
+    [self offlineLogin];
+    
+    [TSIMAPlatform setAutoLogin:NO];
+    _host = nil;
+}
+
+- (void)changeToNetwork:(TCQALNetwork)work
+{
+//    if (work > EQALNetworkType_ReachableViaWWAN)
+//    {
+//        // 不处理这些
+//        work = EQALNetworkType_ReachableViaWWAN;
+//    }
+//    DebugLog(@"网络切换到(-1:未知 0:无网 1:wifi 2:移动网):%d", work);
+//    //    if (work != _networkType)
+//    //    {
+//    self.networkType = work;
+//    
+//    //    }
+}
+
+
+
 @end

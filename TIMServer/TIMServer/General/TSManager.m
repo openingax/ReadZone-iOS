@@ -24,8 +24,8 @@
     
     TSIMUser *receiver = [[TSIMUser alloc] initWithUserId:@"86-18814098638"];
     
-    TSRichChatViewController *listVC = [[TSRichChatViewController alloc] initWithUser:receiver];
-    TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:listVC];
+    TSRichChatViewController *chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+    TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:chatVC];
     
     [TSIMAPlatform config];
     
@@ -34,7 +34,8 @@
         
     }];
     
-    [TSIMManager shareInstance].topViewController = listVC;
+    [TSIMManager shareInstance].navigationController = navVC;
+    [TSIMManager shareInstance].topViewController = chatVC;
 }
 
 @end

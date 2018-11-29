@@ -13,11 +13,7 @@
 #import "TIMServerHelper.h"
 #import "NSMutableDictionary+Json.h"
 #import "TSIMAdapter.h"
-
-// 聊天图片缩约图最大高度
-#define kChatPicThumbMaxHeight 190.f
-// 聊天图片缩约图最大宽度
-#define kChatPicThumbMaxWidth 66.f
+#import <AVFoundation/AVFoundation.h>
 
 @interface TSIMMsg ()
 
@@ -44,6 +40,59 @@
     [msg addElem:elem];
     
     return [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeText];
+}
+
++ (TIMImageElem *)imageElemWithImage:(UIImage *)img isOriginal:(BOOL)original {
+    CGFloat scale = 1;
+    scale = MIN(kChatPicThumbMaxHeight/img.size.height, kChatPicThumbMaxWidth/img.size.width);
+    
+    CGFloat picHeight = img.size.height;
+    CGFloat picWidth = img.size.width;
+    NSInteger picThumbHeight = (NSInteger)(picHeight * scale + 1);
+    NSInteger picThumbWidth = (NSInteger)(picWidth * scale + 1);
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *nsTmpDIr = NSTemporaryDirectory();
+    NSString *filePath = [NSString stringWithFormat:@"%@uploadFile%3.f", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
+    BOOL isDirectory = NO;
+    NSError *err = nil;
+    
+    // 当前sdk仅支持文件路径上传图片，将图片存在本地
+    if ([fileManager fileExistsAtPath:filePath isDirectory:&isDirectory])
+    {
+        if (![fileManager removeItemAtPath:nsTmpDIr error:&err])
+        {
+            NSLog(@"Upload Image Failed: same upload filename: %@", err);
+            return nil;
+        }
+    }
+    if (![fileManager createFileAtPath:filePath contents:UIImageJPEGRepresentation(img, 1) attributes:nil])
+    {
+        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
+        return nil;
+    }
+    
+    NSString *thumbPath = [NSString stringWithFormat:@"%@uploadFile%3.f_ThumbImage", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate]];
+    UIImage *thumbImage = [img thumbnailWithSize:CGSizeMake(picThumbWidth, picThumbHeight)];
+    if (![fileManager createFileAtPath:thumbPath contents:UIImageJPEGRepresentation(thumbImage, 1) attributes:nil])
+    {
+        NSLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
+        return nil;
+    }
+    
+    TIMImageElem *elem = [[TIMImageElem alloc] init];
+    elem.path = filePath;
+    
+    if (original)
+    {
+        elem.level = TIM_IMAGE_COMPRESS_ORIGIN;
+    }
+    else
+    {
+        elem.level = TIM_IMAGE_COMPRESS_HIGH;
+    }
+    
+    return elem;
 }
 
 + (instancetype)msgWithImage:(UIImage *)img isOriginal:(BOOL)original {
@@ -108,6 +157,22 @@
     return imamsg;
 }
 
++ (instancetype)msgWithImages:(NSArray <UIImage*>*)images isOriginal:(BOOL)original {
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    for (UIImage *img in images) {
+        [msg addElem:[TSIMMsg imageElemWithImage:img isOriginal:original]];
+    }
+    
+    TSIMMsg *imamsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeImage];
+    
+//    [imamsg addInteger:picThumbHeight forKey:kIMAMSG_Image_ThumbHeight];
+//    [imamsg addInteger:picThumbWidth forKey:kIMAMSG_Image_ThumbWidth];
+//    [imamsg addString:filePath forKey:kIMAMSG_Image_OrignalPath];
+//    [imamsg addString:thumbPath forKey:kIMAMSG_Image_ThumbPath];
+    
+    return imamsg;
+}
+
 + (instancetype)msgWithDate:(NSDate *)date {
     TIMCustomElem *elem = [[TIMCustomElem alloc] init];
     
@@ -164,6 +229,59 @@
 + (instancetype)msgWithEmptySound {
 #warning 要完善
     return nil;
+}
+
++ (instancetype)msgWithVideoPath:(NSString *)videoPath coverImage:(UIImage *)image {
+    
+    if (!videoPath) {
+        return nil;
+    }
+    
+    AVURLAsset *urlAsset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:videoPath] options:nil];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(240, 320));
+    // 绘制改变大小的图片
+    [image drawInRect:CGRectMake(0,0, 240, 320)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage =UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    NSData *snapshotData = UIImageJPEGRepresentation(scaledImage, 0.75);
+    
+    //保存截图到临时目录
+    NSString *tempDir = NSTemporaryDirectory();
+    NSString *snapshotPath = [NSString stringWithFormat:@"%@%3.f", tempDir, [NSDate timeIntervalSinceReferenceDate]];
+    
+    NSError *err;
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    if (![fileMgr createFileAtPath:snapshotPath contents:snapshotData attributes:nil])
+    {
+        DebugLog(@"Upload Image Failed: fail to create uploadfile: %@", err);
+        return nil;
+    }
+    
+    //创建 TIMUGCElem
+    TIMUGCVideo* video = [[TIMUGCVideo alloc] init];
+    video.type = @"mp4";
+    video.duration = (int)urlAsset.duration.value/urlAsset.duration.timescale;
+    
+    TIMUGCCover *corver = [[TIMUGCCover alloc] init];
+    corver.type = @"jpg";
+    corver.width = scaledImage.size.width;
+    corver.height = scaledImage.size.height;
+    
+    TIMUGCElem* elem = [[TIMUGCElem alloc] init];
+    elem.video = video;
+    elem.videoPath = videoPath;
+    elem.coverPath = snapshotPath;
+    elem.cover = corver;
+    
+    TIMMessage* msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    TSIMMsg *videoMsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeVideo];
+    
+    return videoMsg;
 }
 
 - (void)changeTo:(TSIMMsgStatus)status needRefresh:(BOOL)need {

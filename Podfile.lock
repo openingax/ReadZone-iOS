@@ -65,7 +65,7 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - Toast (4.0.0)
-  - TZImagePickerController (2.2.6)
+  - TZImagePickerController (3.1.0)
   - WebViewJavascriptBridge (6.0.3)
   - YYModel (1.0.4)
 
@@ -84,7 +84,7 @@ DEPENDENCIES:
   - Reveal-SDK
   - SDWebImage (~> 4.4.1)
   - Toast (~> 4.0.0)
-  - TZImagePickerController (~> 2.2.2)
+  - TZImagePickerController (~> 3.1.0)
   - WebViewJavascriptBridge (~> 6.0.3)
   - YYModel (~> 1.0.4)
 
@@ -123,10 +123,10 @@ SPEC CHECKSUMS:
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TZImagePickerController: 3b25b39ba2e28984fb51bbf3ca5187ffccebb239
+  TZImagePickerController: c9584b67b97d5a20b4dbbb58505fa0b6be590255
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a4611b71ab35906d9aa01fcbef41238bf91765f4
+PODFILE CHECKSUM: 9c0a9bfdedca98be43390542f6ce894f84df06fe
 
 COCOAPODS: 1.5.3

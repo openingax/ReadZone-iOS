@@ -7,6 +7,7 @@
 //
 
 #import "TSChatBaseTableViewCell.h"
+#import "MicroVideoPlayView.h"
 
 @interface TSChatTextTableViewCell : TSChatBaseTableViewCell
 {
@@ -34,5 +35,8 @@
 @end
 
 @interface TSChatVideoTableViewCell : TSChatBaseTableViewCell
+{
+    MicroVideoPlayView *_videoPanel;
+}
 
 @end

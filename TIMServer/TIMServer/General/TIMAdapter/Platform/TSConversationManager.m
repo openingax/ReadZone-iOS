@@ -11,6 +11,7 @@
 #import <IMMessageExt/IMMessageExt.h>
 #import "CustomElemCmd.h"
 #import "TSChatHeaders.h"
+#import "TSIMAConnectConversation.h"
 
 @interface TSConversationManager () <TIMMessageListener>
 
@@ -81,6 +82,7 @@
     }
     
     [self asyncUpdateConversationListComplete];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAsyncUpdateConversationListNoti object:nil];
 }
 
 - (void)asyncRefreshConversationList {
@@ -122,12 +124,21 @@
     
     if (conv) {
         TSConversation *temp = [[TSConversation alloc] initWithConversation:conv];
-        NSInteger index = [_conversationList indexOfObject:temp];
-        if (index >= 0 && index < _conversationList.count) {
-            TSConversation *ret = [_conversationList objectAtIndex:index];
-            _chattingConversation = ret;
-            _chattingConversation.lastMessage = _chattingConversation.lastMessage;
-            return ret;
+//        NSInteger index = [_conversationList indexOfObject:temp];
+//        if (index >= 0 && index < _conversationList.count) {
+//            TSConversation *ret = [_conversationList objectAtIndex:index];
+//            _chattingConversation = ret;
+//            _chattingConversation.lastMessage = _chattingConversation.lastMessage;
+//            return ret;
+//        }
+        
+        for (int i=0; i<_conversationList.count; i++) {
+            TSConversation *ret = [_conversationList objectAtIndex:i];
+            if ([[ret.conversation getReceiver] isEqualToString:[temp.conversation getReceiver]]) {
+                _chattingConversation = ret;
+                _chattingConversation.lastMessage = _chattingConversation.lastMessage;
+                return ret;
+            }
         }
         
         _chattingConversation = temp;
@@ -137,6 +148,7 @@
 }
 
 - (void)onNewMessage:(NSArray *)msgs {
+    
     for (TIMMessage *msg in msgs) {
         TSIMMsg *imMsg = [TSIMMsg msgWithMsg:msg];
         TIMConversation *conv = [msg getConversation];
@@ -154,7 +166,7 @@
                 
                 NSLog(@"SA;DFJSADKADKAS;DFKA;DFJKA;DFKSA;D\n%ld", (long)imaconv.type);
                 
-                if ([imaconv.receiver isEqualToString:_chattingConversation.receiver]) {
+                if (imaconv == _chattingConversation) {
                 
                     //如果是c2c会话，则更新“对方正在输入...”状态
                     BOOL isInputStatus = NO;
@@ -198,6 +210,23 @@
         }
     }
     return nil;
+}
+
+@end
+
+
+@implementation TSConversationManager (Protected)
+
+- (void)onConnect
+{
+    // 删除
+    TSIMAConnectConversation *conv = [[TSIMAConnectConversation alloc] init];
+    NSInteger index = [_conversationList indexOfObject:conv];
+    if (index >= 0 && index < [_conversationList count])
+    {
+        [_conversationList removeObject:conv];
+        [self updateOnDelete:conv atIndex:index];
+    }
 }
 
 @end

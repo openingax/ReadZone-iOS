@@ -1,5 +1,5 @@
 //
-//  UIView+Layout.h
+//  UIView+TSLayout.h
 //  TIMServer
 //
 //  Created by 谢立颖 on 2018/10/31.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Layout)
+@interface UIView (TSLayout)
 
 // 添加子控件
 - (void)addOwnViews;

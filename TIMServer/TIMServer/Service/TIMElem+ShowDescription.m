@@ -59,7 +59,8 @@
     {
         for (TIMImage *timImage in self.imageList)
         {
-            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+//            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+            if (timImage.type == TIM_IMAGE_TYPE_LARGE)
             {
                 // 解析大小
                 NSInteger width = timImage.width;
@@ -155,7 +156,8 @@
     {
         for (TIMImage *timImage in self.imageList)
         {
-            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+//            if (timImage.type == TIM_IMAGE_TYPE_THUMB)
+            if (timImage.type == TIM_IMAGE_TYPE_LARGE)
             {
                 // 解析大小
                 NSInteger width = timImage.width;

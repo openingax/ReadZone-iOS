@@ -7,8 +7,98 @@
 //
 
 #import "TSIMAPlatform+IMSDKCallBack.h"
+#import "TSConversationManager.h"
 
 @implementation TSIMAPlatform (IMSDKCallBack)
+
+
+#pragma mark - TIMConnListener
+
+///**
+// *  网络连接成功
+// */
+//- (void)onConnSucc
+//{
+//    self.isConnected = YES;
+//
+//    TCQALNetwork net = [[QalSDKProxy sharedInstance] getNetType];
+//    [self changeToNetwork:net];
+//    NSString *qalVersion = [[QalSDKProxy sharedInstance] getSDKVer];
+//    [self.conversationMgr onConnect];
+//}
+//
+///**
+// *  网络连接失败
+// *
+// *  @param code 错误码
+// *  @param err  错误描述
+// */
+//- (void)onConnFailed:(int)code err:(NSString*)err
+//{
+//
+//    self.isConnected = NO;
+//    [self.conversationMgr onDisConnect];
+//
+//    DebugLog(@"网络连接失败");
+//}
+//
+///**
+// *  网络连接断开
+// *
+// *  @param code 错误码
+// *  @param err  错误描述
+// */
+//- (void)onDisconnect:(int)code err:(NSString*)err
+//{
+//
+//    self.isConnected = NO;
+//    [self.conversationMgr onDisConnect];
+//
+//    DebugLog(@"网络连接断开 code = %d, err = %@", code, err);
+//}
+
+
+/**
+ *  连接中
+ */
+- (void)onConnecting
+{
+    DebugLog(@"连接中");
+}
+
+- (void)registNotification
+{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+}
+
+
+#pragma mark - TIMUserStatusListener
+
+static BOOL kIsAlertingForceOffline = NO;
+
+// 被踢下线了
+- (void)onForceOffline {
+    
+    if (!kIsAlertingForceOffline) {
+        kIsAlertingForceOffline = YES;
+        
+        DebugLog(@"踢下线通知");
+        
+        [self logout:^{
+            [[TSIMManager shareInstance].topViewController dismissViewControllerAnimated:YES completion:nil];
+        } fail:^(int code, NSString *msg) {
+            [[TSIMManager shareInstance].topViewController dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+}
 
 - (void)onRefresh {
     dispatch_async(dispatch_get_main_queue(), ^{

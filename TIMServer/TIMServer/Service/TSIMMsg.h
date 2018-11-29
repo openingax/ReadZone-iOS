@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <ImSDK/ImSDK.h>
+#import <IMUGCExt/IMUGCExt.h>
 #import "TSIMUser.h"
 
 /**
@@ -67,12 +68,13 @@ typedef NS_ENUM(NSInteger, TSIMMsgStatus) {
 
 + (instancetype)msgWithText:(NSString *)text;
 + (instancetype)msgWithImage:(UIImage *)img isOriginal:(BOOL)original;
++ (instancetype)msgWithImages:(NSArray <UIImage*>*)images isOriginal:(BOOL)original;
 + (instancetype)msgWithDate:(NSDate *)date;
 
 + (instancetype)msgWithFilePath:(NSURL *)filePath;
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration;
 + (instancetype)msgWithEmptySound;
-+ (instancetype)msgWithVideoPath:(NSString *)videoPath;
++ (instancetype)msgWithVideoPath:(NSString *)videoPath coverImage:(UIImage *)image;
 
 + (instancetype)msgWithCustom:(NSInteger)command;
 

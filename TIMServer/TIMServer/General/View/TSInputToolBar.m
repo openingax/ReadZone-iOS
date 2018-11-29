@@ -11,7 +11,7 @@
 #import "CommonLibrary.h"
 #import "TIMServerHelper.h"
 #import "TSConstMarco.h"
-#import "UIView+Layout.h"
+#import "UIView+TSLayout.h"
 #import "TSConstMarco.h"
 #import <YMCommon/YMCFont.h>
 

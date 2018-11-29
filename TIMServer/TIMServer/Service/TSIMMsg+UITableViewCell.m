@@ -81,17 +81,17 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 {
     NSMutableAttributedString *ats = [[NSMutableAttributedString alloc] init];
     NSInteger loc = 0;
-//    for (int i = 0; i < self.msgDraft.elemCount; i++)
-//    {
-//        TIMElem *e = [self.msgDraft getElem:i];
-//        NSArray *array = [e singleAttachmentOf:self];
-//        for (NSAttributedString *ca in array)
-//        {
-//            [ats appendAttributedString:ca];
-//            // 移动光标
-//            loc += ca.length;
-//        }
-//    }
+    //    for (int i = 0; i < self.msgDraft.elemCount; i++)
+    //    {
+    //        TIMElem *e = [self.msgDraft getElem:i];
+    //        NSArray *array = [e singleAttachmentOf:self];
+    //        for (NSAttributedString *ca in array)
+    //        {
+    //            [ats appendAttributedString:ca];
+    //            // 移动光标
+    //            loc += ca.length;
+    //        }
+    //    }
     return ats;
 }
 
@@ -143,9 +143,9 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 
 - (Class)showCellClass
 {
-        // 目前TIMMessage里面只有一个element，可以这样写
-        TIMElem *elem = [_msg getElem:0];
-        return [elem showCellClassOf:self];
+    // 目前TIMMessage里面只有一个element，可以这样写
+    TIMElem *elem = [_msg getElem:0];
+    return [elem showCellClassOf:self];
 }
 
 - (UITableViewCell<TSElemAbleCell> *)tableView:(UITableView *)tableView style:(TSElemCellStyle)style
@@ -198,14 +198,14 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 }
 - (UIColor *)textColor
 {
-//    if ([self isMineMsg])
-//    {
-//        return kWhiteColor;
-//    }
-//    else
-//    {
-        return kBlackColor;
-//    }
+    //    if ([self isMineMsg])
+    //    {
+    //        return kWhiteColor;
+    //    }
+    //    else
+    //    {
+    return kBlackColor;
+    //    }
 }
 
 - (UIFont *)tipFont
@@ -214,11 +214,11 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 }
 - (UIColor *)tipTextColor
 {
-//    if ([self isMsgDraft])
-//    {
-//        return kLightGrayColor;
-//    }
-//    return [self isMineMsg] ? self.status == EIMAMsg_SendSucc ? kLightGrayColor : kRedColor : kLightGrayColor;
+    //    if ([self isMsgDraft])
+    //    {
+    //        return kLightGrayColor;
+    //    }
+    //    return [self isMineMsg] ? self.status == EIMAMsg_SendSucc ? kLightGrayColor : kRedColor : kLightGrayColor;
     return kLightGrayColor;
 }
 
@@ -273,22 +273,22 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 - (UIEdgeInsets)contentBackInset
 {
     
-//    if (self.isMineMsg)
-//    {
-//        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
-//    }
-//    else
-//    {
-//        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
+    //    if (self.isMineMsg)
+    //    {
+    //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
+    //    }
+    //    else
+    //    {
+    //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
     if (self.type == TSIMMsgTypeText) {
         return UIEdgeInsetsMake(28, 20, 8, 20);
     } else if (self.type == TSIMMsgTypeImage) {
         return UIEdgeInsetsMake(28, kDefaultMargin + 4, 8, kDefaultMargin/2 + 3);
     } else {
-         return UIEdgeInsetsMake(28, kDefaultMargin + 2, 6, kDefaultMargin/2 + 1);
+        return UIEdgeInsetsMake(28, kDefaultMargin + 2, 6, kDefaultMargin/2 + 1);
     }
     
-//    }
+    //    }
 }
 
 - (NSInteger)pickedViewWidth

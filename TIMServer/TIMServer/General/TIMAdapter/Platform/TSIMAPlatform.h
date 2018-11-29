@@ -14,6 +14,7 @@
 #import "TSConversationManager.h"
 #import "IMAPlatformConfig.h"
 #import "TSConfig.h"
+#import "TSIMManager.h"
 
 // TIMServer IM 服务的业务逻辑入口，
 typedef EQALNetworkType TCQALNetwork;
@@ -28,11 +29,27 @@ typedef EQALNetworkType TCQALNetwork;
 
 @property(nonatomic,readonly) TSIMHost *host;
 @property(nonatomic,readonly) TSConversationManager *conversationMgr;
-//@property(nonatomic,assign) BOOL isConnected;
+@property(nonatomic,assign) BOOL isConnected;
 //
 
 + (instancetype)config;
 
 + (instancetype)sharedInstance;
+
+
+// 是否是自动登录
++ (BOOL)isAutoLogin;
+
++ (void)setAutoLogin:(BOOL)autologin;
+
+- (IMAPlatformConfig *)localConfig;
+
+- (void)saveToLocal;
+
+// 被踢下线后，再重新登录
+- (void)offlineLogin;
+- (void)logout:(TIMLoginSucc)succ fail:(TIMFail)fail;
+
+- (void)changeToNetwork:(TCQALNetwork)work;
 
 @end

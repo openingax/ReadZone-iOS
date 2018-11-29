@@ -9,7 +9,6 @@
 #import "TSChatViewController.h"
 #import "TSInputToolBar.h"
 #import "TSConstMarco.h"
-#import "TSIMMsgCell.h"
 #import "UIView+CustomAutoLayout.h"
 #import "UIView+Toast.h"
 #import "TSConversation.h"
@@ -20,10 +19,19 @@
 #import "TSIMAPlatform.h"
 #import "TSImageThumbPickerViewController.h"
 
+// 照片选择器
+#import "TZImagePickerController.h"
+#import "TZPhotoPreviewController.h"
+#import "TZVideoPlayerController.h"
+#import "TZImageManager.h"
 
-@interface TSChatViewController () <TSInputToolBarDelegate>
+@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate>
+{
+    NSMutableArray *_selectedPhotos;
+    BOOL isSelectedOriginalPhoto;
+}
 
-@property (nonatomic, strong) UIImagePickerController *imagePicker;
+//@property (nonatomic, strong) UIImagePickerController *imagePicker;
 
 @end
 
@@ -43,13 +51,13 @@
     _receiver = user;
     
     [self setChatTitle];
-//    __weak TSChatViewController *ws = self;
-//
-//    _receiverKVO = [FBKVOController controllerWithObserver:self];
-//
-//    [_receiverKVO observe:_receiver keyPaths:@[@"remark", @"nickName"] options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
-//        [ws setChatTitle];
-//    }];
+    //    __weak TSChatViewController *ws = self;
+    //
+    //    _receiverKVO = [FBKVOController controllerWithObserver:self];
+    //
+    //    [_receiverKVO observe:_receiver keyPaths:@[@"remark", @"nickName"] options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
+    //        [ws setChatTitle];
+    //    }];
     
     if (_conversation) {
         [_conversation releaseConversation];
@@ -60,22 +68,30 @@
 
 - (void)didLogin {
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
-        _messageList = _conversation.msgList;
-        
-        __weak TSChatViewController *ws = self;
-        [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-            [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-        }];
-        
-        _conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
-            [ws onReceiveNewMsg:imMsgList succ:succ];
-            [ws updateMessageList];
-        };
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    __weak TSChatViewController *ws = self;
+    [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
+    _conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
+        [ws onReceiveNewMsg:imMsgList succ:succ];
+        [ws updateMessageList];
+    };
     
-        [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
-//    });
+    
+    //    });
+}
+
+- (void)conversationListUpdateComplete {
+    _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
+    _messageList = _conversation.msgList;
+    
+    __weak TSChatViewController *ws = self;
+    [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+        [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+    }];
+}
+
+- (void)didTIMServerExit {
+    //    [self.inputView endEditing:YES];
 }
 
 - (void)viewDidLoad {
@@ -86,6 +102,9 @@
     self.view.backgroundColor = kWhiteColor;
     UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
     [self.tableView addGestureRecognizer:tapAction];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationListUpdateComplete) name:kAsyncUpdateConversationListNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -133,7 +152,7 @@
 }
 
 - (void)layoutRefreshScrollView {
-  
+    
     CGFloat kToolbarY = CGRectGetMaxY(self.view.bounds) - CHAT_BAR_MIN_H - 2*CHAT_BAR_VECTICAL_PADDING;
     // do nothing
     _tableView.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMinY(self.view.bounds), CGRectGetWidth(self.view.bounds), kToolbarY);
@@ -142,22 +161,22 @@
 -(void)onLongPress:(UILongPressGestureRecognizer *)gesture
 {
     
-//    if(gesture.state == UIGestureRecognizerStateBegan)
-//    {
-//        CGPoint point = [gesture locationInView:self.tableView];
-//
-//        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
-//        UITableViewCell<TIMElemAbleCell> *cell = [_tableView cellForRowAtIndexPath:indexPath];
-//        BOOL showMenu = [cell canShowMenu];
-//
-//        if (showMenu)
-//        {
-//            if ([cell canShowMenuOnTouchOf:gesture])
-//            {
-//                [cell showMenu];
-//            }
-//        }
-//    }
+    //    if(gesture.state == UIGestureRecognizerStateBegan)
+    //    {
+    //        CGPoint point = [gesture locationInView:self.tableView];
+    //
+    //        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
+    //        UITableViewCell<TIMElemAbleCell> *cell = [_tableView cellForRowAtIndexPath:indexPath];
+    //        BOOL showMenu = [cell canShowMenu];
+    //
+    //        if (showMenu)
+    //        {
+    //            if ([cell canShowMenuOnTouchOf:gesture])
+    //            {
+    //                [cell showMenu];
+    //            }
+    //        }
+    //    }
 }
 
 - (void)sendMsg:(TSIMMsg *)msg
@@ -196,6 +215,35 @@
         
         [self showMsgs:newaddMsgs];
     }
+}
+
+- (void)sendImage:(UIImage *)image orignal:(BOOL)orignal
+{
+    if (image)
+    {
+        TSIMMsg *msg = [TSIMMsg msgWithImage:image isOriginal:orignal];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self sendMsg:msg];
+        });
+    }
+}
+
+- (void)sendImages:(NSArray<UIImage*>*)images original:(BOOL)original {
+    if (images.count == 1) {
+        [self sendImage:[images firstObject] orignal:original];
+    } else {
+        TSIMMsg *msg = [TSIMMsg msgWithImages:images isOriginal:original];
+        [self sendMsg:msg];
+    }
+}
+
+- (void)sendVideoWithPath:(NSString *)path coverImage:(UIImage *)image {
+    if (!path || !image) {
+        NSLog(@"视频文件不合法");
+        return;
+    }
+    TSIMMsg *msg = [TSIMMsg msgWithVideoPath:path coverImage:image];
+    [self sendMsg:msg];
 }
 
 - (void)onReceiveNewMsg:(NSArray *)imamsgList succ:(BOOL)succ
@@ -343,7 +391,7 @@
     {
         
         NSInteger index = [_messageList indexOfObject:msglist.lastObject];
-        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
 }
 
@@ -352,140 +400,225 @@
 - (void)moreViewPhotoAction {
     [self hiddenKeyBoard];
     
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    //    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+    //    [self presentViewController:self.imagePicker animated:YES completion:nil];
+    
+    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
+    
+    imagePicker.isSelectOriginalPhoto = YES;
+    imagePicker.allowTakePicture = YES;
+    imagePicker.allowTakeVideo = YES;
+    imagePicker.videoMaximumDuration = 15;
+    [imagePicker setUiImagePickerControllerSettingBlock:^(UIImagePickerController *imagePickerController) {
+        imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
+    }];
+    
+    imagePicker.iconThemeColor = RGB(31, 185, 34);
+    imagePicker.showPhotoCannotSelectLayer = YES;
+    imagePicker.cannotSelectLayerColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+    [imagePicker setPhotoPickerPageUIConfigBlock:^(UICollectionView *collectionView, UIView *bottomToolBar, UIButton *previewButton, UIButton *originalPhotoButton, UILabel *originalPhotoLabel, UIButton *doneButton, UIImageView *numberImageView, UILabel *numberLabel, UIView *divideLine) {
+        [doneButton setTitleColor:RGBOF(0x00A3B4) forState:UIControlStateNormal];
+    }];
+    
+    imagePicker.allowPickingImage = YES;
+    imagePicker.allowPickingVideo = YES;
+    imagePicker.allowPickingOriginalPhoto = YES;
+    imagePicker.allowPickingMultipleVideo = NO;
+    imagePicker.sortAscendingByModificationDate = NO;
+    
+    imagePicker.showSelectBtn = YES;
+    imagePicker.allowCrop = NO;
+    imagePicker.needCircleCrop = NO;
+    // 设置竖屏下的裁剪尺寸
+    NSInteger left = 30;
+    NSInteger widthHeight = self.view.tz_width - 2 * left;
+    NSInteger top = (self.view.tz_height - widthHeight) / 2;
+    imagePicker.cropRect = CGRectMake(left, top, widthHeight, widthHeight);
+    
+    imagePicker.statusBarStyle = UIStatusBarStyleLightContent;
+    imagePicker.showSelectedIndex = YES;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-- (UIImagePickerController *)imagePicker
-{
-    if (_imagePicker == nil)
-    {
-        _imagePicker = [[UIImagePickerController alloc] init];
-        _imagePicker.delegate = self;
-    }
-    return _imagePicker;
-}
 
-- (void)sendImage:(UIImage *)image orignal:(BOOL)orignal
-{
-    if (image)
-    {
-        TSIMMsg *msg = [TSIMMsg msgWithImage:image isOriginal:orignal];
-        [self sendMsg:msg];
-    }
-}
+#pragma mark - TZImagePickerControllerDelegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info[UIImagePickerControllerOriginalImage] fixOrientation];
-        NSData *data = UIImagePNGRepresentation(image);
-        
-        if (data.length > 28 * 1024 * 1024) {
-            [self.view makeToast:@"发送的文件过大"];
-            return;
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
+    
+    //    for (NSDictionary *info in infos) {
+    //        NSString *mediaType = info[UIImagePickerControllerMediaType];
+    //        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+    //
+    //            UIImage *image = [info[UIImagePickerControllerOriginalImage] fixOrientation];
+    //            NSData *data = UIImagePNGRepresentation(image);
+    //
+    //            if (data.length > 28*1024*1024) {
+    //                [self.view makeToast:@"发送的文件过大"];
+    //                return;
+    //            }
+    //
+    //            [self sendImage:image orignal:isSelectOriginalPhoto];
+    //
+    //        }
+    //    }
+    
+    if (isSelectOriginalPhoto) {
+        // 发送原图
+        for (id item in assets) {
+            if ([item isKindOfClass:[PHAsset class]]) {
+                PHAsset *asset = (PHAsset *)item;
+                
+                __weak TSChatViewController *ws = self;
+                [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
+                    BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
+                    if (!isThumbImg) {
+//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [ws sendImage:photo orignal:YES];
+//                        });
+                    }
+                }];
+            }
         }
         
-        TSImageThumbPickerViewController *vc = [[TSImageThumbPickerViewController alloc] initWith:image];
-        __weak TSChatViewController *ws = self;
-        vc.sendImageBlock = ^(TSImageThumbPickerViewController *svc, BOOL isOriginal) {
-            [ws sendImage:svc.showImage orignal:isOriginal];
-            ws.imagePicker = nil;
-        };
-        
-        [picker pushViewController:vc animated:YES];
+    } else {
+        // 发送普通图片
+        for (UIImage *img in photos) {
+            NSData *data = UIImagePNGRepresentation(img);
+            
+            if (data.length > 28*1024*1024) {
+                [self.view makeToast:@"发送的图片过大"];
+                return;
+            }
+            
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self sendImage:img orignal:YES];
+//            });
+        }
     }
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-    _imagePicker = nil;
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingVideo:(UIImage *)coverImage sourceAssets:(PHAsset *)asset {
+    
+    __weak TSChatViewController *ws = self;
+    [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPresetHighestQuality success:^(NSString *outputPath) {
+        [ws sendVideoWithPath:outputPath coverImage:coverImage];
+    } failure:^(NSString *errorMessage, NSError *error) {
+        [self.view makeToast:@"视频导出失败"];
+    }];
 }
+
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+//    NSString *mediaType = info[UIImagePickerControllerMediaType];
+//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+//        UIImage *image = [info[UIImagePickerControllerOriginalImage] fixOrientation];
+//        NSData *data = UIImagePNGRepresentation(image);
+//
+//        if (data.length > 28 * 1024 * 1024) {
+//            [self.view makeToast:@"发送的文件过大"];
+//            return;
+//        }
+//
+//        TSImageThumbPickerViewController *vc = [[TSImageThumbPickerViewController alloc] initWith:image];
+//        __weak TSChatViewController *ws = self;
+//        vc.sendImageBlock = ^(TSImageThumbPickerViewController *svc, BOOL isOriginal) {
+//            [ws sendImage:svc.showImage orignal:isOriginal];
+//            ws.imagePicker = nil;
+//        };
+//
+//        [picker pushViewController:vc animated:YES];
+//    }
+//}
+//
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+//    _imagePicker = nil;
+//}
 
 #pragma mark - MovieAction
 - (void)moreVideVideoAction {
     [self hiddenKeyBoard];
     
-//    if ([[AVCaptureDevice class] respondsToSelector:@selector(authorizationStatusForMediaType:)])
-//    {
-//        AVAuthorizationStatus videoStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-//        if (videoStatus ==     AVAuthorizationStatusRestricted || videoStatus == AVAuthorizationStatusDenied)
-//        {
-//            // 没有权限
-////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" cancel:@"确定"];
-//            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" confirmBlock:^{
-//                
-//            }];
-//            
-//            return;
-//        }
-//        
-//        AVAuthorizationStatus audioStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-//        if (audioStatus ==     AVAuthorizationStatusRestricted || audioStatus == AVAuthorizationStatusDenied)
-//        {
-//            // 没有权限
-////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" cancel:@"确定"];
-//            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" confirmBlock:^{
-//                
-//            }];
-//            return;
-//        }
-//        __weak TSChatViewController *ws = self;
-//        if (videoStatus == AVAuthorizationStatusNotDetermined)
-//        {
-//            //请求相机权限
-//            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
-//                
-//                
-//                if(granted)
-//                {
-//                    AVAuthorizationStatus audio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-//                    if (audio == AVAuthorizationStatusNotDetermined)
-//                    {
-//                        //请求麦克风权限
-//                        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                if (granted)
-//                                {
-//                                    [ws addMicroVideoView];
-//                                }
-//                            });
-//                        }];
-//                    }
-//                    else//这里一定是有麦克风权限了
-//                    {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [ws addMicroVideoView];
-//                        });
-//                    }
-//                }
-//                
-//            }];
-//        }
-//        else//这里一定是有相机权限了
-//        {
-//            if (audioStatus == AVAuthorizationStatusNotDetermined)
-//            {
-//                //请求麦克风权限
-//                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        if (granted)
-//                        {
-//                            [ws addMicroVideoView];
-//                        }
-//                    });
-//                    
-//                }];
-//            }
-//            else//这里一定是有麦克风权限了
-//            {
-//                [ws addMicroVideoView];
-//            }
-//            
-//        }
-//    }
+    //    if ([[AVCaptureDevice class] respondsToSelector:@selector(authorizationStatusForMediaType:)])
+    //    {
+    //        AVAuthorizationStatus videoStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    //        if (videoStatus ==     AVAuthorizationStatusRestricted || videoStatus == AVAuthorizationStatusDenied)
+    //        {
+    //            // 没有权限
+    ////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" cancel:@"确定"];
+    //            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" confirmBlock:^{
+    //
+    //            }];
+    //
+    //            return;
+    //        }
+    //
+    //        AVAuthorizationStatus audioStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    //        if (audioStatus ==     AVAuthorizationStatusRestricted || audioStatus == AVAuthorizationStatusDenied)
+    //        {
+    //            // 没有权限
+    ////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" cancel:@"确定"];
+    //            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" confirmBlock:^{
+    //
+    //            }];
+    //            return;
+    //        }
+    //        __weak TSChatViewController *ws = self;
+    //        if (videoStatus == AVAuthorizationStatusNotDetermined)
+    //        {
+    //            //请求相机权限
+    //            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
+    //
+    //
+    //                if(granted)
+    //                {
+    //                    AVAuthorizationStatus audio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    //                    if (audio == AVAuthorizationStatusNotDetermined)
+    //                    {
+    //                        //请求麦克风权限
+    //                        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
+    //                            dispatch_async(dispatch_get_main_queue(), ^{
+    //                                if (granted)
+    //                                {
+    //                                    [ws addMicroVideoView];
+    //                                }
+    //                            });
+    //                        }];
+    //                    }
+    //                    else//这里一定是有麦克风权限了
+    //                    {
+    //                        dispatch_async(dispatch_get_main_queue(), ^{
+    //                            [ws addMicroVideoView];
+    //                        });
+    //                    }
+    //                }
+    //
+    //            }];
+    //        }
+    //        else//这里一定是有相机权限了
+    //        {
+    //            if (audioStatus == AVAuthorizationStatusNotDetermined)
+    //            {
+    //                //请求麦克风权限
+    //                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
+    //
+    //                    dispatch_async(dispatch_get_main_queue(), ^{
+    //                        if (granted)
+    //                        {
+    //                            [ws addMicroVideoView];
+    //                        }
+    //                    });
+    //
+    //                }];
+    //            }
+    //            else//这里一定是有麦克风权限了
+    //            {
+    //                [ws addMicroVideoView];
+    //            }
+    //
+    //        }
+    //    }
 }
 
 - (void)addMicroVideoView
@@ -496,10 +629,10 @@
     //    microVideoView.delegate = self;
     //    [self.view addSubview:microVideoView];
     
-//    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
-//    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
-//    videoRecordVC.delegate = self;
-//    [self presentViewController:nav animated:YES completion:nil];
+    //    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
+    //    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+    //    videoRecordVC.delegate = self;
+    //    [self presentViewController:nav animated:YES completion:nil];
 }
 
 

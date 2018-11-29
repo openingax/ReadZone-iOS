@@ -200,7 +200,7 @@
             
         } fail:^(int code, NSString *error) {
             [msg changeTo:TSIMMsgStatusSendFail needRefresh:YES];
-            NSLog(@"信息发送失败");
+            NSLog(@"信息发送失败\ncode:%d  %@", code, error);
             
             if (code != kSaftyWordsCode) {
                 

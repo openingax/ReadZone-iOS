@@ -9,6 +9,7 @@
 #import "TSBaseNavigationController.h"
 #import "CommonLibrary.h"
 #import "TIMServerHelper.h"
+#import "TSIMAPlatform.h"
 
 @interface TSBaseNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -95,7 +96,12 @@
 }
 
 - (void)dismissVCAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMServerExitNoti object:nil];
+    [[TSIMAPlatform sharedInstance] logout:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } fail:^(int code, NSString *msg) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 @end

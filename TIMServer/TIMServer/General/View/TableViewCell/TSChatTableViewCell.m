@@ -80,4 +80,15 @@
 
 @implementation TSChatVideoTableViewCell
 
+- (UIView *)addElemContent {
+    _videoPanel = [[MicroVideoPlayView alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
+    return _videoPanel;
+}
+
+- (void)configContent {
+    [super configContent];
+    
+    [_videoPanel setMessage:_msg];
+}
+
 @end
