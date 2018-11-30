@@ -15,19 +15,21 @@
 #import "TSIMAPlatform.h"
 #import "TSIMManager.h"
 #import "IMAPlatformConfig.h"
+#import <TXLiteAVSDK_Professional/TXUGCBase.h>
 
 @implementation TSManager
 
 - (void)showMsgVCWithParams:(NSDictionary *)params controller:(UIViewController *)controller {
     
-    [[TSUserManager shareInstance] saveUserAccount:params[@"account"] userSig:params[@"sig"]];
+    [[TSUserManager shareInstance] saveUserAccount:params[@"account"] userSig:params[@"sig"] receiver:params[@"receiver"]];
     
-    TSIMUser *receiver = [[TSIMUser alloc] initWithUserId:@"86-18814098638"];
+    TSIMUser *receiver = [[TSIMUser alloc] initWithUserId:params[@"receiver"]];
     
     TSRichChatViewController *chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:chatVC];
     
     [TSIMAPlatform config];
+    [TXUGCBase setLicenceURL:@"http://license.vod2.myqcloud.com/license/v1/2cbbd6c13014ceca75107573f7890ddd/TXUgcSDK.licence" key:@"409ec0b6be2c46d71900b5bdb9430d05"];
     
     navVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [controller presentViewController:navVC animated:YES completion:^{

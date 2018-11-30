@@ -126,4 +126,16 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 ******************************************
 
+### 如果工程切换了文件夹，而 Build Setting 里又开了【Precompile Prefix Header】此时再编译会报错
+
+解决方法：
+1、把 Prefix Header 设为相对路径，如：`${SRCROOT}/ReadZone/RZPrefixHeader.pch`；
+2、去工程文件夹里，把 Build、Index 和 DerivedData 三个文件夹都删了；
+3、回到 Xcode 工程，重新编译工程。
+
+
+******************************************
+
+### 在 TIMServer 工程里集成小视频发送功能，在会话里发送小视频时，报了 `code: 6224 msg: lack ugc ext lib` 的错误
+
 

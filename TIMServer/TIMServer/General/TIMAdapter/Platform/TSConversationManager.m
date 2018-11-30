@@ -12,6 +12,7 @@
 #import "CustomElemCmd.h"
 #import "TSChatHeaders.h"
 #import "TSIMAConnectConversation.h"
+#import "TSUserManager.h"
 
 @interface TSConversationManager () <TIMMessageListener>
 

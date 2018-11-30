@@ -126,7 +126,11 @@
         _tsManager = [[TSManager alloc] init];
     }
     if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
-        [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
+        [_tsManager showMsgVCWithParams:@{
+                                          @"account": [RZUserManager shareInstance].account,
+                                          @"sig": [RZUserManager shareInstance].sig,
+                                          @"receiver": @"86-18814098638"
+                                          } controller:self];
     }
 }
 

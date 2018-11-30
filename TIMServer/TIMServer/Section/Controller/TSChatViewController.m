@@ -18,6 +18,7 @@
 #import <Masonry/Masonry.h>
 #import "TSIMAPlatform.h"
 #import "TSImageThumbPickerViewController.h"
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 // 照片选择器
 #import "TZImagePickerController.h"
@@ -25,10 +26,12 @@
 #import "TZVideoPlayerController.h"
 #import "TZImageManager.h"
 
-@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate>
+@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate, TXUGCRecordListener>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
+    
+    UIView *_videoRecordView;
 }
 
 //@property (nonatomic, strong) UIImagePickerController *imagePicker;
@@ -242,7 +245,7 @@
         NSLog(@"视频文件不合法");
         return;
     }
-    TSIMMsg *msg = [TSIMMsg msgWithVideoPath:path coverImage:image];
+    TSIMMsg *msg = [TSIMMsg msgWithVideoPath:path];
     [self sendMsg:msg];
 }
 
@@ -538,7 +541,37 @@
 
 #pragma mark - MovieAction
 - (void)moreVideVideoAction {
+    
+    // 创建一个视图用于显示相机预览图片
+    _videoRecordView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_videoRecordView];
+    
+    // 1. 配置录制参数
+    TXUGCSimpleConfig * param = [[TXUGCSimpleConfig alloc] init];
+    param.videoQuality = VIDEO_QUALITY_MEDIUM;
+    
+    // 2. 启动预览, 设置参数与在哪个View上进行预览
+    [[TXUGCRecord shareInstance] startCameraSimple:param preview:_videoRecordView];
+    
+    // 3. 设置录制效果，这里以添加水印为例
+    UIImage *watermarke = [UIImage imageNamed:@"watermarke"];
+    [[TXUGCRecord shareInstance] setWaterMark:watermarke normalizationFrame:CGRectMake(0.01, 0.01, 0.1, 0)];
+    
     [self hiddenKeyBoard];
+    
+    [TXUGCRecord shareInstance].recordDelegate = self;
+    int result = [[TXUGCRecord shareInstance] startRecord];
+    if(0 != result) {
+        if(-3 == result) [self alert:@"启动录制失败" msg:@"请检查摄像头权限是否打开"];
+        else if(-4 == result) [self alert:@"启动录制失败" msg:@"请检查麦克风权限是否打开"];
+        else if(-5 == result) [self alert:@"启动录制失败" msg:@"licence 验证失败"];
+    } else {
+        // 启动成功
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[TXUGCRecord shareInstance] stopRecord];
+        });
+    }
     
     //    if ([[AVCaptureDevice class] respondsToSelector:@selector(authorizationStatusForMediaType:)])
     //    {
@@ -619,6 +652,20 @@
     //
     //        }
     //    }
+}
+
+- (void)onRecordComplete:(TXUGCRecordResult *)result {
+    if (result.retCode == UGC_RECORD_RESULT_OK) {
+        
+    } else {
+        
+    }
+}
+
+-(void)alert:(NSString *)title msg:(NSString *)msg
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)addMicroVideoView

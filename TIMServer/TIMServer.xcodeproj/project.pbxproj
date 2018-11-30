@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F06F5AE21B04EE8004419DC /* IMUGCExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F59121B046DF004419DC /* IMUGCExt.framework */; };
+		3AF65A1FE32D2434659EE283 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7CB8F3D8F7B5746048C63D /* libPods-TIMServer.a */; };
 		5F0E84E421A24829004DBF08 /* TSIMErrorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */; };
 		5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */; };
 		5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15190921A6592F00E83785 /* TSChatTextView.h */; };
@@ -26,7 +26,6 @@
 		5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */; };
 		5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */; };
 		5F24824821912C1400AC07FD /* TSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24824621912C1400AC07FD /* TSManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F24825C219132F900AC07FD /* YMCommon.bundle */; };
 		5F299EFD21AF6C9000A0F1A0 /* IMALoginParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299EFB21AF6C9000A0F1A0 /* IMALoginParam.h */; };
 		5F299EFE21AF6C9000A0F1A0 /* IMALoginParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299EFC21AF6C9000A0F1A0 /* IMALoginParam.m */; };
 		5F299F0121AF71CB00A0F1A0 /* TSIMAConnectConversation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299EFF21AF71CB00A0F1A0 /* TSIMAConnectConversation.h */; };
@@ -61,7 +60,6 @@
 		5F299F4521AFBFB600A0F1A0 /* TZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F2921AFBFB600A0F1A0 /* TZLocationManager.m */; };
 		5F299F4621AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F2A21AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m */; };
 		5F299F4721AFBFB600A0F1A0 /* TZProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299F2B21AFBFB600A0F1A0 /* TZProgressView.h */; };
-		5F299F4B21AFDE4600A0F1A0 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F299F4A21AFDE4600A0F1A0 /* Photos.framework */; };
 		5F299F5B21B017DD00A0F1A0 /* MicroVideoPlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */; };
 		5F299F5D21B017E400A0F1A0 /* MicroVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */; };
 		5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E03EC21A5445200E3EAB8 /* TSAlertManager.h */; };
@@ -90,7 +88,6 @@
 		5F3E042821A585E500E3EAB8 /* NSObject+CommonBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */; };
 		5F3E042B21A589C700E3EAB8 /* TSChatSoundRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042921A589C700E3EAB8 /* TSChatSoundRecorder.h */; };
 		5F3E042C21A589C700E3EAB8 /* TSChatSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E042A21A589C700E3EAB8 /* TSChatSoundRecorder.m */; };
-		5F3E042E21A58B5C00E3EAB8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3E042D21A58B5C00E3EAB8 /* AVFoundation.framework */; };
 		5F3E045421A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */; };
 		5F3E045521A58F0A00E3EAB8 /* FTAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E043221A58F0A00E3EAB8 /* FTAnimation.h */; };
 		5F3E045621A58F0A00E3EAB8 /* FTAnimationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E043321A58F0A00E3EAB8 /* FTAnimationManager.h */; };
@@ -264,20 +261,12 @@
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
 		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50D2188280500667A8A /* CoreTelephony.framework */; };
-		5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA50F2188280D00667A8A /* CoreNFC.framework */; };
-		5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5112188281400667A8A /* CoreGraphics.framework */; };
-		5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5132188281D00667A8A /* SystemConfiguration.framework */; };
-		5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5152188282500667A8A /* UIKit.framework */; };
-		5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEDA5172188282D00667A8A /* Foundation.framework */; };
 		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
 		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
-		ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F06F59121B046DF004419DC /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
-		5F06F59921B04A66004419DC /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMFriendshipExt.framework; path = IMFrameworks/IMFriendshipExt.framework; sourceTree = "<group>"; };
+		3D7CB8F3D8F7B5746048C63D /* libPods-TIMServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TIMServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMErrorManager.h; sourceTree = "<group>"; };
 		5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMErrorManager.m; sourceTree = "<group>"; };
 		5F15190921A6592F00E83785 /* TSChatTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatTextView.h; sourceTree = "<group>"; };
@@ -288,7 +277,6 @@
 		5F15192021A6902400E83785 /* TSIMMsg+UITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TSIMMsg+UITableViewCell.m"; sourceTree = "<group>"; };
 		5F15192321A6914300E83785 /* TIMElem+ChatAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TIMElem+ChatAttachment.h"; sourceTree = "<group>"; };
 		5F15192421A6914300E83785 /* TIMElem+ChatAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TIMElem+ChatAttachment.m"; sourceTree = "<group>"; };
-		5F15192721A6939900E83785 /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMMessageExt.framework; path = IMFrameworks/IMMessageExt.framework; sourceTree = "<group>"; };
 		5F15192921A693FB00E83785 /* TSIMMsg+Draft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TSIMMsg+Draft.h"; sourceTree = "<group>"; };
 		5F15192A21A693FB00E83785 /* TSIMMsg+Draft.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TSIMMsg+Draft.m"; sourceTree = "<group>"; };
 		5F15192D21A69BC300E83785 /* TSIMChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMChatViewController.h; sourceTree = "<group>"; };
@@ -297,8 +285,6 @@
 		5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSFriendListViewController.h; sourceTree = "<group>"; };
 		5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFriendListViewController.m; sourceTree = "<group>"; };
 		5F24824621912C1400AC07FD /* TSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSManager.h; sourceTree = "<group>"; };
-		5F24825C219132F900AC07FD /* YMCommon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YMCommon.bundle; path = YMFrameworks/YMCommon.bundle; sourceTree = "<group>"; };
-		5F24825D219132F900AC07FD /* YMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YMCommon.framework; path = YMFrameworks/YMCommon.framework; sourceTree = "<group>"; };
 		5F299EFB21AF6C9000A0F1A0 /* IMALoginParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMALoginParam.h; sourceTree = "<group>"; };
 		5F299EFC21AF6C9000A0F1A0 /* IMALoginParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMALoginParam.m; sourceTree = "<group>"; };
 		5F299EFF21AF71CB00A0F1A0 /* TSIMAConnectConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAConnectConversation.h; sourceTree = "<group>"; };
@@ -333,10 +319,6 @@
 		5F299F2921AFBFB600A0F1A0 /* TZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZLocationManager.m; sourceTree = "<group>"; };
 		5F299F2A21AFBFB600A0F1A0 /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
 		5F299F2B21AFBFB600A0F1A0 /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
-		5F299F4A21AFDE4600A0F1A0 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		5F299F5321B011FB00A0F1A0 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
-		5F299F5621B0120000A0F1A0 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TLSSDK.framework; path = IMFrameworks/TLSSDK.framework; sourceTree = "<group>"; };
-		5F299F5821B0120200A0F1A0 /* QALSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QALSDK.framework; path = IMFrameworks/QALSDK.framework; sourceTree = "<group>"; };
 		5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicroVideoPlayView.h; sourceTree = "<group>"; };
 		5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicroVideoPlayView.m; sourceTree = "<group>"; };
 		5F3E03EC21A5445200E3EAB8 /* TSAlertManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAlertManager.h; sourceTree = "<group>"; };
@@ -365,7 +347,6 @@
 		5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CommonBlock.m"; sourceTree = "<group>"; };
 		5F3E042921A589C700E3EAB8 /* TSChatSoundRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatSoundRecorder.h; sourceTree = "<group>"; };
 		5F3E042A21A589C700E3EAB8 /* TSChatSoundRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatSoundRecorder.m; sourceTree = "<group>"; };
-		5F3E042D21A58B5C00E3EAB8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
 		5F3E043221A58F0A00E3EAB8 /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
 		5F3E043321A58F0A00E3EAB8 /* FTAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimationManager.h; sourceTree = "<group>"; };
@@ -450,11 +431,6 @@
 		5F9147BB21917CF400148AAA /* TSChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSChatViewController.m; sourceTree = "<group>"; };
 		5F9147C221917F9F00148AAA /* TSIMServerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMServerViewController.h; sourceTree = "<group>"; };
 		5F9147C321917F9F00148AAA /* TSIMServerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMServerViewController.m; sourceTree = "<group>"; };
-		5F9147C62191832200148AAA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		5F9147C82191832C00148AAA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		5F9147CA2191833500148AAA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		5F9147CC2191847600148AAA /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		5F9147CE219184A700148AAA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5F9148C9219283C400148AAA /* CommonLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLibrary.h; sourceTree = "<group>"; };
 		5F9148CB219283C400148AAA /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
 		5F9148CC219283C400148AAA /* TSDebugMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDebugMarco.h; sourceTree = "<group>"; };
@@ -547,15 +523,8 @@
 		5FEDA4DC2188076200667A8A /* TIMServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TIMServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEDA4DF2188076200667A8A /* TIMServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServer.h; sourceTree = "<group>"; };
 		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FEDA50D2188280500667A8A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		5FEDA50F2188280D00667A8A /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
-		5FEDA5112188281400667A8A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5FEDA5132188281D00667A8A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5FEDA5152188282500667A8A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		5FEDA5172188282D00667A8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5FEDA54121887A5D00667A8A /* TSInputToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSInputToolBar.h; sourceTree = "<group>"; };
 		5FEDA54221887A5D00667A8A /* TSInputToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSInputToolBar.m; sourceTree = "<group>"; };
-		94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TIMServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -565,22 +534,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F06F5AE21B04EE8004419DC /* IMUGCExt.framework in Frameworks */,
-				5F299F4B21AFDE4600A0F1A0 /* Photos.framework in Frameworks */,
-				5F3E042E21A58B5C00E3EAB8 /* AVFoundation.framework in Frameworks */,
-				5FEDA5182188282D00667A8A /* Foundation.framework in Frameworks */,
-				5FEDA5162188282500667A8A /* UIKit.framework in Frameworks */,
-				5FEDA5142188281D00667A8A /* SystemConfiguration.framework in Frameworks */,
-				5FEDA5122188281500667A8A /* CoreGraphics.framework in Frameworks */,
-				5FEDA5102188280D00667A8A /* CoreNFC.framework in Frameworks */,
-				5FEDA50E2188280600667A8A /* CoreTelephony.framework in Frameworks */,
-				ADA1BD0A166D3B31DCC97200 /* libPods-TIMServer.a in Frameworks */,
+				3AF65A1FE32D2434659EE283 /* libPods-TIMServer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0317FA21B0D3010060B129 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
 		5F0E84E121A24807004DBF08 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +768,7 @@
 		5F7C96AF21A805C60017928F /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				5F0317FA21B0D3010060B129 /* Contact */,
 				5F91495D2192D0D900148AAA /* TSConversationManager.h */,
 				5F91495E2192D0D900148AAA /* TSConversationManager.m */,
 				5F7C96B021A805E20017928F /* TSIMAPlatform.h */,
@@ -963,8 +931,6 @@
 		5F9149612192D84400148AAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */,
-				5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -987,6 +953,7 @@
 		5FB30A68219080180026A955 /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				5FE12A7C21B0DEA300364130 /* Video */,
 				5F0E84E121A24807004DBF08 /* Manager */,
 				5F9149612192D84400148AAA /* View */,
 				5FB30A692190801C0026A955 /* Controller */,
@@ -1065,6 +1032,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		5FE12A7C21B0DEA300364130 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */,
+				5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		5FEDA4D22188076200667A8A = {
 			isa = PBXGroup;
 			children = (
@@ -1138,28 +1114,7 @@
 		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5F06F59921B04A66004419DC /* IMFriendshipExt.framework */,
-				5F06F59121B046DF004419DC /* IMUGCExt.framework */,
-				5F299F5821B0120200A0F1A0 /* QALSDK.framework */,
-				5F299F5621B0120000A0F1A0 /* TLSSDK.framework */,
-				5F299F5321B011FB00A0F1A0 /* ImSDK.framework */,
-				5F299F4A21AFDE4600A0F1A0 /* Photos.framework */,
-				5F15192721A6939900E83785 /* IMMessageExt.framework */,
-				5F3E042D21A58B5C00E3EAB8 /* AVFoundation.framework */,
-				5F9147CE219184A700148AAA /* libiconv.tbd */,
-				5F9147CC2191847600148AAA /* libresolv.tbd */,
-				5F9147CA2191833500148AAA /* libc++.tbd */,
-				5F9147C82191832C00148AAA /* libsqlite3.tbd */,
-				5F9147C62191832200148AAA /* libz.tbd */,
-				5F24825C219132F900AC07FD /* YMCommon.bundle */,
-				5F24825D219132F900AC07FD /* YMCommon.framework */,
-				5FEDA5172188282D00667A8A /* Foundation.framework */,
-				5FEDA5152188282500667A8A /* UIKit.framework */,
-				5FEDA5132188281D00667A8A /* SystemConfiguration.framework */,
-				5FEDA5112188281400667A8A /* CoreGraphics.framework */,
-				5FEDA50F2188280D00667A8A /* CoreNFC.framework */,
-				5FEDA50D2188280500667A8A /* CoreTelephony.framework */,
-				94C0D3BE87D6F17C9C2117BB /* libPods-TIMServer.a */,
+				3D7CB8F3D8F7B5746048C63D /* libPods-TIMServer.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1383,7 +1338,6 @@
 				5F70A77C21903B56001FA8FF /* README.md in Resources */,
 				5F70A77B21903B56001FA8FF /* API_README.md in Resources */,
 				5F7C968521A7DFB30017928F /* LICENSE in Resources */,
-				5F24825E219132F900AC07FD /* YMCommon.bundle in Resources */,
 				5F7C968721A7DFB30017928F /* README.mdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1661,6 +1615,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1702,6 +1657,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

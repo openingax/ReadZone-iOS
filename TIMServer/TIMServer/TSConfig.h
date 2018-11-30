@@ -9,8 +9,8 @@
 #ifndef TSConfig_h
 #define TSConfig_h
 
-#define kTimIMTLSAppId          @"1400149977"
-#define kTimIMSdkAppId          @"1400149977"
+#define kTimIMTLSAppId          @"1400157786"
+#define kTimIMSdkAppId          @"1400157786"
 #define kTimIMSdkAccountType    @"36862"
 #define kTimIMQQAccountType     1
 #define kTimIMWXAccountType     2

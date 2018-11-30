@@ -12,10 +12,11 @@
 
 @property(nonatomic,readonly,copy) NSString *account;
 @property(nonatomic,readonly,copy) NSString *userSig;
+@property(nonatomic,readonly,copy) NSString *receiver;
 
 + (instancetype)shareInstance;
 
-- (void)saveUserAccount:(NSString *)account userSig:(NSString *)sig;
+- (void)saveUserAccount:(NSString *)account userSig:(NSString *)sig receiver:(NSString *)receiver;
 - (BOOL)isLogin;
 
 @end

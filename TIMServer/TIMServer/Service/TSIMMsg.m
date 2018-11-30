@@ -231,13 +231,20 @@
     return nil;
 }
 
-+ (instancetype)msgWithVideoPath:(NSString *)videoPath coverImage:(UIImage *)image {
++ (instancetype)msgWithVideoPath:(NSString *)videoPath {
     
     if (!videoPath) {
         return nil;
     }
     
     AVURLAsset *urlAsset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:videoPath] options:nil];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:urlAsset];
+    imageGenerator.appliesPreferredTrackTransform = YES;    // 截图的时候调整到正确的方向
+    CMTime time = CMTimeMakeWithSeconds(1.0, 30);   // 1.0为截取视频1.0秒处的图片，30为每秒30帧
+    CGImageRef cgImage = [imageGenerator copyCGImageAtTime:time actualTime:nil error:nil];
+    UIImage *image = [UIImage imageWithCGImage:cgImage];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(240, 320));
     
     UIGraphicsBeginImageContext(CGSizeMake(240, 320));
     // 绘制改变大小的图片
