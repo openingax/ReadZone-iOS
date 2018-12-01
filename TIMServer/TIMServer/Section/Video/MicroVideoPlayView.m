@@ -11,6 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "TSDebugMarco.h"
 #import "TSIMAPlatform.h"
+#import "TIMServerHelper.h"
 
 @implementation MicroVideoPlayView
 
@@ -58,8 +59,8 @@
     _playerLayer.masksToBounds = YES;
     
     [_playerBtn setBackgroundColor:[UIColor clearColor]];
-    [_playerBtn setBackgroundImage:[UIImage imageNamed:@"record_playbutton"] forState:UIControlStateNormal];
-    [_playerBtn setBackgroundImage:[UIImage imageNamed:@"record_errorbutton"] forState:UIControlStateDisabled];
+    [_playerBtn setBackgroundImage:[UIImage imageWithBundleAsset:@"record_playbutton"] forState:UIControlStateNormal];
+    [_playerBtn setBackgroundImage:[UIImage imageWithBundleAsset:@"record_errorbutton"] forState:UIControlStateDisabled];
     [_playerBtn addTarget:self action:@selector(onPlay:) forControlEvents:UIControlEventTouchUpInside];
 }
 

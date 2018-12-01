@@ -102,6 +102,9 @@
     [_msgList addObjectsFromArray:array];
     if (_receiveMsg) {
         _receiveMsg(array, YES);
+    } else {
+        // 如果 _receiveMsg 不存在，检查用户登录状态
+        [[TIMManager sharedInstance] getLoginStatus];
     }
 }
 
@@ -184,6 +187,8 @@
     return nil;
 }
 
+
+#pragma mark - 发送消息
 - (NSArray *)sendMessage:(TSIMMsg *)msg completion:(HandleMsgCodeBlock)block {
     if (msg) {
         
@@ -215,6 +220,227 @@
     }
     return nil;
 }
+
+- (NSArray *)appendWillSendMsg:(TSIMMsg *)msg completion:(HandleMsgBlock)block {
+    if (msg)
+    {
+        NSArray *array = [self addMsgToList:msg];
+        
+        [msg changeTo:TSIMMsgStatusWillSending needRefresh:YES];
+        
+        if (block)
+        {
+            block(array, YES);
+        }
+        return array;
+        
+    }
+    return nil;
+}
+
+- (void)replaceWillSendMsg:(TSIMMsg *)msg with:(TSIMMsg *)newMsg completion:(HandleMsgBlock)block
+{
+    if (msg && newMsg)
+    {
+        // 还未真正地删除，先只是同步到列表中
+        NSInteger oldIdx = [_msgList indexOfObject:msg];
+        NSInteger count = [_msgList count];
+        if (oldIdx >= 0 && oldIdx < count)
+        {
+            [newMsg changeTo:TSIMMsgStatusSending needRefresh:YES];
+            [_msgList replaceObjectAtIndex:oldIdx withObject:newMsg];
+            if (self.lastMessage == msg)
+            {
+                self.lastMessage = newMsg;
+            }
+            NSArray *reapceArray = @[[_msgList objectAtIndex:oldIdx]];
+            if (block)
+            {
+                block(reapceArray, YES);
+            }
+            
+            [_conversation sendMessage:newMsg.msg succ:^{
+                [newMsg changeTo:TSIMMsgStatusSendSucc needRefresh:YES];
+            } fail:^(int code, NSString *err) {
+                [newMsg changeTo:TSIMMsgStatusSendFail needRefresh:YES];
+                DebugLog(@"发送消息失败");
+            }];
+        }
+    }
+}
+
+- (NSArray *)removeMsg:(TSIMMsg *)msg completion:(RemoveMsgBlock)block {
+    if (msg)
+    {
+        NSMutableArray *array = [NSMutableArray array];
+        
+        NSInteger idx = [_msgList indexOfObject:msg];
+        
+        if (idx >= 0 && idx < _msgList.count)
+        {
+            NSInteger preIdx = idx - 1;
+            TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+            if (preIdx >= 0 && preIdx < _msgList.count)
+            {
+                TSIMMsg *preMsg = [_msgList objectAtIndex:preIdx];
+                
+                if (preMsg.type == TSIMMsgTypeTimeTip)
+                {
+                    if (idx == _msgList.count - 1)
+                    {
+                        // 最后两条消息
+                        [array addObject:preMsg];
+                        [array addObject:msgReal];
+                    }
+                    else
+                    {
+                        NSInteger nextIdx = idx + 1;
+                        
+                        if (nextIdx >= 0 && nextIdx < _msgList.count)
+                        {
+                            TSIMMsg *nextMsg = [_msgList objectAtIndex:nextIdx];
+                            if (nextMsg.type == TSIMMsgTypeTimeTip)
+                            {
+                                [array addObject:nextMsg];
+                                [array addObject:msgReal];
+                            }
+                            else
+                            {
+                                [array addObject:msgReal];
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+                    [array addObject:msgReal];
+                }
+            }
+            else
+            {
+                TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+                [array addObject:msgReal];
+            }
+        }
+        
+        if (block)
+        {
+            __weak TSSafeMutableArray *wcl = _msgList;
+            CommonVoidBlock action = ^{
+                for (TSIMMsg *removemsg in array)
+                {
+                    [removemsg remove];
+                }
+                
+                [wcl removeObjectsInArray:array];
+            };
+            
+            
+            block(array, YES, action);
+        }
+        
+        return array;
+    }
+    
+    return nil;
+}
+
+- (NSArray *)revokeMsg:(TSIMMsg *)msg isRemote:(BOOL)isRemote completion:(RemoveMsgBlock)block {
+    if (msg)
+    {
+        NSMutableArray *array = [NSMutableArray array];
+        
+        NSInteger idx = [_msgList indexOfObject:msg];
+        
+        if (idx >= 0 && idx < _msgList.count)
+        {
+            NSInteger preIdx = idx - 1;
+            TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+            if (preIdx >= 0 && preIdx < _msgList.count)
+            {
+                TSIMMsg *preMsg = [_msgList objectAtIndex:preIdx];
+                
+                if (preMsg.type == TSIMMsgTypeTimeTip)
+                {
+                    if (idx == _msgList.count - 1)
+                    {
+                        // 最后两条消息
+                        [array addObject:preMsg];
+                        [array addObject:msgReal];
+                    }
+                    else
+                    {
+                        NSInteger nextIdx = idx + 1;
+                        
+                        if (nextIdx >= 0 && nextIdx < _msgList.count)
+                        {
+                            TSIMMsg *nextMsg = [_msgList objectAtIndex:nextIdx];
+                            if (nextMsg.type == TSIMMsgTypeTimeTip)
+                            {
+                                [array addObject:nextMsg];
+                                [array addObject:msgReal];
+                            }
+                            else
+                            {
+                                [array addObject:msgReal];
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+                    [array addObject:msgReal];
+                }
+            }
+            else
+            {
+                TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+                [array addObject:msgReal];
+            }
+        }
+        
+        if (block)
+        {
+            __weak TSSafeMutableArray *wcl = _msgList;
+            TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
+            NSUInteger index = [wcl indexOfObject:msgReal];
+            TSIMMsg *imamsg = [TSIMMsg msgWithRevoked:msgReal.msg.sender];
+            [wcl replaceObjectAtIndex:index withObject:imamsg];
+            
+            for (TSIMMsg *removemsg in array)
+            {
+                if (removemsg.type == TSIMMsgTypeTimeTip || removemsg.type == TSIMMsgTypeSaftyTip)
+                {
+                    // 属于自定义的类型，不在IMSDK数据库里面，不能调remove接口
+                    continue;
+                }
+                if (isRemote)
+                {
+                    block(array, YES, nil);
+                }
+                else
+                {
+                    [_conversation revokeMessage:removemsg.msg succ:^{
+                        NSLog(@"revoke succ");
+                        block(array, YES, nil);
+                    } fail:^(int code, NSString *msg) {
+                        NSLog(@"revoke fail");
+                        NSString *info = [NSString stringWithFormat:@"消息撤回失败,code=%d,msg=%@",code,msg];
+//                        [[HUDHelper sharedInstance] tipMessage:info delay:3];
+                        block(array, NO, nil);
+                    }];
+                }
+                break;
+            }
+            
+        }
+        return array;
+    }
+    return nil;
+}
+
 
 - (TSIMMsg *)vailedTopMsg
 {

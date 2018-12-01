@@ -8,6 +8,7 @@
 
 #import "TSChatBaseTableViewCell.h"
 #import "MicroVideoPlayView.h"
+#import "ImageTitleButton.h"
 
 @interface TSChatTextTableViewCell : TSChatBaseTableViewCell
 {
@@ -26,7 +27,9 @@
 @end
 
 @interface TSChatSoundTableViewCell : TSChatBaseTableViewCell
-
+{
+    @protected ImageTitleButton *_soundButton;
+}
 
 @end
 

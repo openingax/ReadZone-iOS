@@ -86,8 +86,6 @@
 		5F3E042421A5815900E3EAB8 /* NSObject+FBKVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042021A5815900E3EAB8 /* NSObject+FBKVOController.h */; };
 		5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042521A585E500E3EAB8 /* NSObject+CommonBlock.h */; };
 		5F3E042821A585E500E3EAB8 /* NSObject+CommonBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */; };
-		5F3E042B21A589C700E3EAB8 /* TSChatSoundRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042921A589C700E3EAB8 /* TSChatSoundRecorder.h */; };
-		5F3E042C21A589C700E3EAB8 /* TSChatSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E042A21A589C700E3EAB8 /* TSChatSoundRecorder.m */; };
 		5F3E045421A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */; };
 		5F3E045521A58F0A00E3EAB8 /* FTAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E043221A58F0A00E3EAB8 /* FTAnimation.h */; };
 		5F3E045621A58F0A00E3EAB8 /* FTAnimationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E043321A58F0A00E3EAB8 /* FTAnimationManager.h */; };
@@ -219,6 +217,19 @@
 		5F91495C2192CE3700148AAA /* TSIMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91495A2192CE3700148AAA /* TSIMUser.m */; };
 		5F91495F2192D0D900148AAA /* TSConversationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F91495D2192D0D900148AAA /* TSConversationManager.h */; };
 		5F9149602192D0D900148AAA /* TSConversationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91495E2192D0D900148AAA /* TSConversationManager.m */; };
+		5F9F33DB21B2569400A3C307 /* ImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33D921B2569400A3C307 /* ImageTitleButton.m */; };
+		5F9F33DC21B2569400A3C307 /* ImageTitleButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33DA21B2569400A3C307 /* ImageTitleButton.h */; };
+		5F9F33DF21B256BA00A3C307 /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33DD21B256BA00A3C307 /* MenuButton.m */; };
+		5F9F33E021B256BA00A3C307 /* MenuButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33DE21B256BA00A3C307 /* MenuButton.h */; };
+		5F9F33E421B2570B00A3C307 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33E121B2570A00A3C307 /* MenuItem.m */; };
+		5F9F33E521B2570B00A3C307 /* MenuAbleItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33E221B2570A00A3C307 /* MenuAbleItem.h */; };
+		5F9F33E621B2570B00A3C307 /* MenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33E321B2570B00A3C307 /* MenuItem.h */; };
+		5F9F33E921B2573200A3C307 /* UIImage+TintColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33E721B2573200A3C307 /* UIImage+TintColor.h */; };
+		5F9F33EA21B2573200A3C307 /* UIImage+TintColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33E821B2573200A3C307 /* UIImage+TintColor.m */; };
+		5F9F33ED21B258D800A3C307 /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33EB21B258D800A3C307 /* UIView+Glow.m */; };
+		5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33EC21B258D800A3C307 /* UIView+Glow.h */; };
+		5F9F33F121B2598800A3C307 /* ChatSoundRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33EF21B2598700A3C307 /* ChatSoundRecorder.h */; };
+		5F9F33F221B2598800A3C307 /* ChatSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33F021B2598700A3C307 /* ChatSoundRecorder.m */; };
 		5FBE396B21AB83AF009186F5 /* TSIMHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBE396921AB83AF009186F5 /* TSIMHost.h */; };
 		5FBE396C21AB83AF009186F5 /* TSIMHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE396A21AB83AF009186F5 /* TSIMHost.m */; };
 		5FBE466021ABECB9009186F5 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE463E21ABECB8009186F5 /* UIImage+WebP.m */; };
@@ -345,8 +356,6 @@
 		5F3E042021A5815900E3EAB8 /* NSObject+FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FBKVOController.h"; sourceTree = "<group>"; };
 		5F3E042521A585E500E3EAB8 /* NSObject+CommonBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CommonBlock.h"; sourceTree = "<group>"; };
 		5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CommonBlock.m"; sourceTree = "<group>"; };
-		5F3E042921A589C700E3EAB8 /* TSChatSoundRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatSoundRecorder.h; sourceTree = "<group>"; };
-		5F3E042A21A589C700E3EAB8 /* TSChatSoundRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatSoundRecorder.m; sourceTree = "<group>"; };
 		5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
 		5F3E043221A58F0A00E3EAB8 /* FTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
 		5F3E043321A58F0A00E3EAB8 /* FTAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAnimationManager.h; sourceTree = "<group>"; };
@@ -479,6 +488,19 @@
 		5F91495A2192CE3700148AAA /* TSIMUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMUser.m; sourceTree = "<group>"; };
 		5F91495D2192D0D900148AAA /* TSConversationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversationManager.h; sourceTree = "<group>"; };
 		5F91495E2192D0D900148AAA /* TSConversationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSConversationManager.m; sourceTree = "<group>"; };
+		5F9F33D921B2569400A3C307 /* ImageTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTitleButton.m; sourceTree = "<group>"; };
+		5F9F33DA21B2569400A3C307 /* ImageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTitleButton.h; sourceTree = "<group>"; };
+		5F9F33DD21B256BA00A3C307 /* MenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuButton.m; sourceTree = "<group>"; };
+		5F9F33DE21B256BA00A3C307 /* MenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuButton.h; sourceTree = "<group>"; };
+		5F9F33E121B2570A00A3C307 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
+		5F9F33E221B2570A00A3C307 /* MenuAbleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuAbleItem.h; sourceTree = "<group>"; };
+		5F9F33E321B2570B00A3C307 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		5F9F33E721B2573200A3C307 /* UIImage+TintColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TintColor.h"; sourceTree = "<group>"; };
+		5F9F33E821B2573200A3C307 /* UIImage+TintColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TintColor.m"; sourceTree = "<group>"; };
+		5F9F33EB21B258D800A3C307 /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		5F9F33EC21B258D800A3C307 /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
+		5F9F33EF21B2598700A3C307 /* ChatSoundRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSoundRecorder.h; sourceTree = "<group>"; };
+		5F9F33F021B2598700A3C307 /* ChatSoundRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSoundRecorder.m; sourceTree = "<group>"; };
 		5FBE396921AB83AF009186F5 /* TSIMHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMHost.h; sourceTree = "<group>"; };
 		5FBE396A21AB83AF009186F5 /* TSIMHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMHost.m; sourceTree = "<group>"; };
 		5FBE463E21ABECB8009186F5 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
@@ -611,12 +633,12 @@
 				5F3E041921A57FFD00E3EAB8 /* TSChatInputToolBar.m */,
 				5F3E041421A57F9D00E3EAB8 /* TSChatInputPanel.h */,
 				5F3E041521A57F9D00E3EAB8 /* TSChatInputPanel.m */,
-				5F3E042921A589C700E3EAB8 /* TSChatSoundRecorder.h */,
-				5F3E042A21A589C700E3EAB8 /* TSChatSoundRecorder.m */,
 				5F15190921A6592F00E83785 /* TSChatTextView.h */,
 				5F15190A21A6592F00E83785 /* TSChatTextView.m */,
 				5F15190D21A65C2A00E83785 /* TSChatInputTextView.h */,
 				5F15190E21A65C2A00E83785 /* TSChatInputTextView.m */,
+				5F9F33EF21B2598700A3C307 /* ChatSoundRecorder.h */,
+				5F9F33F021B2598700A3C307 /* ChatSoundRecorder.m */,
 			);
 			path = ChatInputPanel;
 			sourceTree = "<group>";
@@ -852,14 +874,18 @@
 				5F9149382192B38D00148AAA /* UIView+Toast.m */,
 				5F9148D5219283C400148AAA /* UIView+TS.h */,
 				5F9148CF219283C400148AAA /* UIView+TS.m */,
+				5F9F33EC21B258D800A3C307 /* UIView+Glow.h */,
+				5F9F33EB21B258D800A3C307 /* UIView+Glow.m */,
 				5F9148D4219283C400148AAA /* NSData+Common.h */,
 				5F9148D0219283C400148AAA /* NSData+Common.m */,
 				5F9148D1219283C400148AAA /* UIImage+Alpha.h */,
+				5F9148D7219283C400148AAA /* UIImage+Alpha.m */,
 				5F9148CE219283C400148AAA /* NSString+Common.h */,
 				5F9148D3219283C400148AAA /* NSString+Common.m */,
 				5F9148D2219283C400148AAA /* UIImage+Common.h */,
 				5F9148D6219283C400148AAA /* UIImage+Common.m */,
-				5F9148D7219283C400148AAA /* UIImage+Alpha.m */,
+				5F9F33E721B2573200A3C307 /* UIImage+TintColor.h */,
+				5F9F33E821B2573200A3C307 /* UIImage+TintColor.m */,
 				5F3E042521A585E500E3EAB8 /* NSObject+CommonBlock.h */,
 				5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */,
 				5F3E048321A5949900E3EAB8 /* UILabel+Common.h */,
@@ -1107,6 +1133,13 @@
 				5F3E03FC21A55D5300E3EAB8 /* TSRefreshAbleView.h */,
 				5F3E03FE21A55D9800E3EAB8 /* TSRefreshView.h */,
 				5F3E03FF21A55D9800E3EAB8 /* TSRefreshView.m */,
+				5F9F33DA21B2569400A3C307 /* ImageTitleButton.h */,
+				5F9F33D921B2569400A3C307 /* ImageTitleButton.m */,
+				5F9F33DE21B256BA00A3C307 /* MenuButton.h */,
+				5F9F33DD21B256BA00A3C307 /* MenuButton.m */,
+				5F9F33E221B2570A00A3C307 /* MenuAbleItem.h */,
+				5F9F33E321B2570B00A3C307 /* MenuItem.h */,
+				5F9F33E121B2570A00A3C307 /* MenuItem.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1140,6 +1173,7 @@
 				5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */,
 				5F24824821912C1400AC07FD /* TSManager.h in Headers */,
 				5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */,
+				5F9F33E521B2570B00A3C307 /* MenuAbleItem.h in Headers */,
 				5F3E046A21A58F0A00E3EAB8 /* UICollectionViewController+ADFlipTransition.h in Headers */,
 				5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */,
 				5F299F3921AFBFB600A0F1A0 /* TZGifPhotoPreviewController.h in Headers */,
@@ -1178,8 +1212,11 @@
 				5F299EFD21AF6C9000A0F1A0 /* IMALoginParam.h in Headers */,
 				5F299F3521AFBFB600A0F1A0 /* TZImagePickerController.h in Headers */,
 				5F299F3C21AFBFB600A0F1A0 /* TZImageCropManager.h in Headers */,
+				5F9F33E621B2570B00A3C307 /* MenuItem.h in Headers */,
 				5F299F0121AF71CB00A0F1A0 /* TSIMAConnectConversation.h in Headers */,
+				5F9F33F121B2598800A3C307 /* ChatSoundRecorder.h in Headers */,
 				5F3E042121A5815900E3EAB8 /* FBKVOController.h in Headers */,
+				5F9F33E921B2573200A3C307 /* UIImage+TintColor.h in Headers */,
 				5F299F2C21AFBFB600A0F1A0 /* TZPhotoPreviewCell.h in Headers */,
 				5F5D072121ACCF2A009B4A33 /* TSChatMsgShowHeader.h in Headers */,
 				5F3E040921A57D2C00E3EAB8 /* TSChatInputAbleView.h in Headers */,
@@ -1190,10 +1227,12 @@
 				5F15190F21A65C2A00E83785 /* TSChatInputTextView.h in Headers */,
 				5F9148FD219283C500148AAA /* PathUtility.h in Headers */,
 				5F3E046021A58F0A00E3EAB8 /* UICollectionViewController+ADScaleTransition.h in Headers */,
+				5F9F33E021B256BA00A3C307 /* MenuButton.h in Headers */,
 				5F9147B62191777300148AAA /* TSAPITencent.h in Headers */,
 				5FBE467721ABECB9009186F5 /* SDWebImageManager.h in Headers */,
 				5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */,
 				5F9148F4219283C500148AAA /* NSData+Common.h in Headers */,
+				5F9F33DC21B2569400A3C307 /* ImageTitleButton.h in Headers */,
 				5F299F4021AFBFB600A0F1A0 /* TZAssetModel.h in Headers */,
 				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
 				5F7C96A521A7F77B0017928F /* TSChatTimeTipTableViewCell.h in Headers */,
@@ -1269,7 +1308,7 @@
 				5FBE467021ABECB9009186F5 /* SDWebImageHeaders.h in Headers */,
 				5F299F4721AFBFB600A0F1A0 /* TZProgressView.h in Headers */,
 				5F5D072821ACE790009B4A33 /* TSChatHeaders.h in Headers */,
-				5F3E042B21A589C700E3EAB8 /* TSChatSoundRecorder.h in Headers */,
+				5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */,
 				5F3E03FD21A55D5300E3EAB8 /* TSRefreshAbleView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1381,7 +1420,6 @@
 				5F15192221A6902400E83785 /* TSIMMsg+UITableViewCell.m in Sources */,
 				5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */,
 				5F3E03EF21A5445200E3EAB8 /* TSAlertManager.m in Sources */,
-				5F3E042C21A589C700E3EAB8 /* TSChatSoundRecorder.m in Sources */,
 				5F9148F0219283C500148AAA /* NSData+Common.m in Sources */,
 				5FBE466521ABECB9009186F5 /* SDWebImageDecoder.m in Sources */,
 				5F15191021A65C2A00E83785 /* TSChatInputTextView.m in Sources */,
@@ -1407,6 +1445,7 @@
 				5F914904219283C500148AAA /* TSBaseViewController.m in Sources */,
 				5F299F3821AFBFB600A0F1A0 /* TZProgressView.m in Sources */,
 				5FBE467921ABECB9009186F5 /* UIImageView+WebCache.m in Sources */,
+				5F9F33F221B2598800A3C307 /* ChatSoundRecorder.m in Sources */,
 				5F7C96B321A805E20017928F /* TSIMAPlatform.m in Sources */,
 				5FBE467821ABECB9009186F5 /* NSData+ImageContentType.m in Sources */,
 				5F5D072621ACE6F4009B4A33 /* CustomElemCmd.m in Sources */,
@@ -1417,6 +1456,7 @@
 				5F5D073121ACE7F2009B4A33 /* JSONKit.m in Sources */,
 				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
 				5F299F3721AFBFB600A0F1A0 /* TZPhotoPreviewController.m in Sources */,
+				5F9F33DF21B256BA00A3C307 /* MenuButton.m in Sources */,
 				5F299F3321AFBFB600A0F1A0 /* NSBundle+TZImagePicker.m in Sources */,
 				5FBE466021ABECB9009186F5 /* UIImage+WebP.m in Sources */,
 				5F299F3021AFBFB600A0F1A0 /* TZAssetCell.m in Sources */,
@@ -1436,6 +1476,7 @@
 				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
 				5F9149402192B5C500148AAA /* TSIMMsg.m in Sources */,
 				5F7C968421A7DFB30017928F /* MBProgressHUD.m in Sources */,
+				5F9F33DB21B2569400A3C307 /* ImageTitleButton.m in Sources */,
 				5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */,
 				5F3E048621A5949900E3EAB8 /* UILabel+Common.m in Sources */,
 				5F9149482192BEE300148AAA /* TSConversation.m in Sources */,
@@ -1447,6 +1488,7 @@
 				5F3E045421A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m in Sources */,
 				5F299F4521AFBFB600A0F1A0 /* TZLocationManager.m in Sources */,
 				5F15192C21A693FB00E83785 /* TSIMMsg+Draft.m in Sources */,
+				5F9F33E421B2570B00A3C307 /* MenuItem.m in Sources */,
 				5F3E042821A585E500E3EAB8 /* NSObject+CommonBlock.m in Sources */,
 				5F9148F6219283C500148AAA /* UIImage+Common.m in Sources */,
 				5F3E046E21A58F0A00E3EAB8 /* UICollectionViewController+ADFlipTransition.m in Sources */,
@@ -1455,6 +1497,7 @@
 				5F299F0221AF71CB00A0F1A0 /* TSIMAConnectConversation.m in Sources */,
 				5FBE467C21ABECB9009186F5 /* UIView+WebCacheOperation.m in Sources */,
 				5FBE466D21ABECB9009186F5 /* SDWebImageCompat.m in Sources */,
+				5F9F33EA21B2573200A3C307 /* UIImage+TintColor.m in Sources */,
 				5F15193021A69BC300E83785 /* TSIMChatViewController.m in Sources */,
 				5FBE467521ABECB9009186F5 /* SDWebImageDownloaderOperation.m in Sources */,
 				5F299F3B21AFBFB600A0F1A0 /* TZImageManager.m in Sources */,
@@ -1483,6 +1526,7 @@
 				5F91493321928F9300148AAA /* TSUserManager.m in Sources */,
 				5FBE468021ABECB9009186F5 /* UIButton+WebCache.m in Sources */,
 				5F5D071721ABF677009B4A33 /* TSIMAPlatform+IMSDKCallBack.m in Sources */,
+				5F9F33ED21B258D800A3C307 /* UIView+Glow.m in Sources */,
 				5F3E040721A57CB400E3EAB8 /* TSChatInputBaseView.m in Sources */,
 				5F5D074421AD20D6009B4A33 /* TSRichChatViewController.m in Sources */,
 			);

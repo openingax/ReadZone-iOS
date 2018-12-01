@@ -7,7 +7,7 @@
 //
 
 #import "TSChatInputAbleView.h"
-#import "TSChatSoundRecorder.h"
+#import "ChatSoundRecorder.h"
 #import "TSBaseView.h"
 
 //chat toolbar

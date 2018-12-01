@@ -25,8 +25,8 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [TSChatSoundPlayer destory];
-    [TSChatSoundRecorder destory];
+    [ChatSoundPlayer destory];
+    [ChatSoundRecorder destory];
 }
 
 - (void)setInputText:(NSString *)text {
@@ -50,18 +50,19 @@
     // 语音按钮
     _audioPressedBtn = [[UIButton alloc] init];
     _audioPressedBtn.layer.cornerRadius = 6;
-    _audioPressedBtn.layer.borderColor = kGrayColor.CGColor;
+    _audioPressedBtn.layer.borderColor = RGBOF(0x00A3B4).CGColor;
     _audioPressedBtn.layer.shadowColor = kBlackColor.CGColor;
     _audioPressedBtn.layer.shadowOffset = CGSizeMake(1, 1);
     _audioPressedBtn.layer.borderWidth = 0.5;
     _audioPressedBtn.layer.masksToBounds = YES;
-    [_audioPressedBtn setBackgroundImage:[UIImage imageWithColor:RGBAOF(0xEEEEEE, 1)] forState:UIControlStateNormal];
+    [_audioPressedBtn setBackgroundImage:[UIImage imageWithColor:RGBAOF(0xFFFFFF, 1)] forState:UIControlStateNormal];
     [_audioPressedBtn setBackgroundImage:[UIImage imageWithColor:kLightGrayColor] forState:UIControlStateSelected];
     
     [_audioPressedBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
     [_audioPressedBtn setTitle:@"松开 结束" forState:UIControlStateSelected];
     
     _audioPressedBtn.titleLabel.font = kTimMiddleTextFont;
+    [_audioPressedBtn setTitleColor:RGBOF(0x1C1C1C) forState:UIControlStateNormal];
     
     [_audioPressedBtn addTarget:self action:@selector(onClickRecordTouchDown:) forControlEvents:UIControlEventTouchDown];
     [_audioPressedBtn addTarget:self action:@selector(onClickRecordDragExit:) forControlEvents:UIControlEventTouchDragExit];
@@ -100,10 +101,15 @@
     [self addSubview:_movieBtn];
 }
 
+- (void)setChatDelegate:(id<TSChatInputAbleViewDelegate>)chatDelegate {
+    _chatDelegate = chatDelegate;
+    [ChatSoundRecorder sharedInstance].recorderDelegate = chatDelegate;
+}
+
 #pragma mark - Action
 - (void)onClickAudio:(UIButton *)button {
 #warning 录音有问题，会报错，先屏蔽
-    return;
+//    return;
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressedBtn.hidden = !_audioBtn.selected;
     _textView.hidden = _audioBtn.selected;
@@ -138,18 +144,18 @@
 - (void)onClickRecordTouchDown:(UIButton *)button {
     DebugLog(@"======>>>>>>>");
     _audioPressedBtn.selected = YES;
-    [[TSChatSoundRecorder sharedInstance] startRecord];
+    [[ChatSoundRecorder sharedInstance] startRecord];
 }
 
 - (void)onClickRecordDragExit:(UIButton *)button {
     _audioPressedBtn.selected = YES;
     [_audioPressedBtn setTitle:@"按住 说话" forState:UIControlStateSelected];
-    [[TSChatSoundRecorder sharedInstance] willCancelRecord];
+    [[ChatSoundRecorder sharedInstance] willCancelRecord];
 }
 
 - (void)onClickRecordDragEnter:(UIButton *)button {
     // 通知界面
-    [[TSChatSoundRecorder sharedInstance] continueRecord];
+    [[ChatSoundRecorder sharedInstance] continueRecord];
 }
 
 - (void)onClickRecordTouchUpOutside:(UIButton *)button {
@@ -157,7 +163,7 @@
     [_audioPressedBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
     [_audioPressedBtn setTitle:@"松开 结束" forState:UIControlStateSelected];
     
-    [[TSChatSoundRecorder sharedInstance] stopRecord];
+    [[ChatSoundRecorder sharedInstance] stopRecord];
 }
 
 - (void)relayoutFrameOfSubViews

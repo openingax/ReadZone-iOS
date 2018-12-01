@@ -138,6 +138,34 @@
     [_inputView resignFirstResponder];
 }
 
+- (void)onChatInput:(UIView<TSChatInputAbleView> *)chatInput willSendMsg:(TSIMMsg *)msg {
+    if (msg)
+    {
+        [_tableView beginUpdates];
+        NSArray *newaddMsgs = [_conversation appendWillSendMsg:msg completion:nil];
+        
+        NSMutableArray *array = [NSMutableArray array];
+        for (TSIMMsg *newmsg in newaddMsgs)
+        {
+            NSInteger idx = [_messageList indexOfObject:newmsg];
+            NSLog(@"---->idx = %ld",(long)idx);
+            NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+            [array addObject:index];
+        }
+        [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView endUpdates];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSIndexPath *index = [NSIndexPath indexPathForRow:_messageList.count - 1 inSection:0];
+            
+#warning 调用 scrollToRowAtIndexPath:atScrollPosition:animated: 方法前先检查 indexPath 有没有越界
+            if (index.row > 0) {
+                [_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
+        });
+    }
+}
+
 - (void)onChatInput:(UIView<TSChatInputAbleView> *)chatInput sendMsg:(TSIMMsg *)msg {
     [self sendMsg:msg];
     NSMutableArray *elems = [NSMutableArray array];
@@ -148,6 +176,76 @@
     NSLog(@"%d", msg.msg.elemCount);
 }
 
+- (void)onChatInput:(UIView<TSChatInputAbleView> *)chatInput replaceWith:(TSIMMsg *)newMsg oldMsg:(TSIMMsg *)msg {
+    if (msg)
+    {
+        __weak TSIMChatViewController *ws = self;
+        [_conversation replaceWillSendMsg:msg with:newMsg completion:^(NSArray *imamsgList, BOOL succ) {
+            if (succ)
+            {
+                [ws onReplaceDelete:imamsgList];
+            }
+        }];
+    }
+}
+
+- (void)onChatInput:(UIView<TSChatInputAbleView> *)chatInput cancelSendMsg:(TSIMMsg *)msg {
+    if (msg) {
+        __weak TSIMChatViewController *ws = self;
+        [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removeingAction) {
+            if (succ) {
+                [ws onWillRemove:imamsgList withAction:removeingAction];
+            }
+        }];
+    }
+}
+
+- (void)onReplaceDelete:(NSArray *)replaceMsgs
+{
+    if (replaceMsgs.count)
+    {
+        [_tableView beginUpdates];
+        NSMutableArray *addIndexs = [NSMutableArray array];
+        for (TSIMMsg *msg in replaceMsgs)
+        {
+            NSInteger index = [_messageList indexOfObject:msg];
+            [addIndexs addObject:[NSIndexPath indexPathForRow:index inSection:0]];
+        }
+        // 说明只是替换最后一个
+        [_tableView reloadRowsAtIndexPaths:addIndexs withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView endUpdates];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSIndexPath *index = [NSIndexPath indexPathForRow:_messageList.count - 1 inSection:0];
+            [_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        });
+    }
+}
+
+- (void)onWillRemove:(NSArray *)imamsgList withAction:(CommonVoidBlock)action
+{
+    [_tableView beginUpdates];
+    
+    NSMutableArray *indexArray = [NSMutableArray array];
+    
+    for (TSIMMsg *removemsg in imamsgList)
+    {
+        NSInteger idx = [_messageList indexOfObject:removemsg];
+        NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+        [indexArray addObject:index];
+    }
+    
+    if (action)
+    {
+        action();
+    }
+    
+    [_tableView deleteRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
+    
+    [_tableView endUpdates];
+}
+
+#pragma mark - 照片&视频
 - (void)onChatInputSendImage:(UIView<TSChatInputAbleView> *)chatInput {
     [self moreViewPhotoAction];
 }

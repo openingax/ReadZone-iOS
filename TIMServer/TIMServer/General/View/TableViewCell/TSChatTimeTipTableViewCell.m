@@ -18,8 +18,11 @@
 - (instancetype)initWithC2CReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
         
-        self.contentView.backgroundColor = kClearColor;
-        self.backgroundColor = kClearColor;
+//        self.contentView.backgroundColor = kClearColor;
+//        self.backgroundColor = kClearColor;
+        self.layer.borderColor = kBlueColor.CGColor;
+        self.layer.borderWidth = 1.f;
+        
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.textLabel.numberOfLines = 0;
@@ -83,7 +86,7 @@
     TIMCustomElem *elem = (TIMCustomElem *)[msg.msg getElem:0];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [_msg tipFont];
-    self.textLabel.textColor = kLightGrayColor;
+    self.textLabel.textColor = kRedColor;
     self.textLabel.text = [elem timeTip];
 }
 

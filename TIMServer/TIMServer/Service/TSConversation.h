@@ -52,5 +52,9 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 - (void)onReceiveNewMessage:(TSIMMsg *)msg;
 
 - (NSArray *)sendMessage:(TSIMMsg *)msg completion:(HandleMsgCodeBlock)block;
+- (NSArray *)appendWillSendMsg:(TSIMMsg *)msg completion:(HandleMsgBlock)block;
+- (void)replaceWillSendMsg:(TSIMMsg *)msg with:(TSIMMsg *)newMsg completion:(HandleMsgBlock)block;
+- (NSArray *)removeMsg:(TSIMMsg *)msg completion:(RemoveMsgBlock)block;
+- (NSArray *)revokeMsg:(TSIMMsg *)msg isRemote:(BOOL)isRemote completion:(RemoveMsgBlock)block;
 
 @end

@@ -162,6 +162,27 @@
 
 @end
 
+
+@implementation TIMSoundElem (ShowAPIs)
+
+- (Class)showCellClassOf:(TSIMMsg *)msg {
+    return [TSChatSoundTableViewCell class];
+}
+
+- (CGSize)sizeInWidth:(CGFloat)width atMsg:(TSIMMsg *)packMsg {
+    NSInteger minWidth = 70;
+    NSInteger uni = (width - minWidth) / 60;
+    
+    NSInteger w = minWidth + self.second * uni;
+    if (w > width) {
+        w = width;
+    }
+    return CGSizeMake(w, kIMAMsgMinHeigth);
+}
+
+@end
+
+
 @implementation TIMUGCElem (ShowAPIs)
 
 - (Class)showCellClassOf:(TSIMMsg *)msg {

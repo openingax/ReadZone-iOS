@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, TSIMMsgStatus) {
 + (instancetype)msgWithImage:(UIImage *)img isOriginal:(BOOL)original;
 + (instancetype)msgWithImages:(NSArray <UIImage*>*)images isOriginal:(BOOL)original;
 + (instancetype)msgWithDate:(NSDate *)date;
-
++ (instancetype)msgWithRevoked:(NSString *)sender;
 + (instancetype)msgWithFilePath:(NSURL *)filePath;
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration;
 + (instancetype)msgWithEmptySound;

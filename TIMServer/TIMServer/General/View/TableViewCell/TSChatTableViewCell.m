@@ -7,6 +7,10 @@
 //
 
 #import "TSChatTableViewCell.h"
+#import "UIView+Glow.h"
+#import "ChatSoundRecorder.h"
+#import "PathUtility.h"
+#import "TIMServerHelper.h"
 
 @implementation TSChatTextTableViewCell
 
@@ -71,6 +75,127 @@
 @end
 
 @implementation TSChatSoundTableViewCell
+
+- (void)dealloc {
+    
+}
+
+- (UIView *)addElemContent {
+    _soundButton = [[ImageTitleButton alloc] init];
+    _soundButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [_soundButton addTarget:self action:@selector(onPlaySound) forControlEvents:UIControlEventTouchUpInside];
+    _soundButton.userInteractionEnabled = YES;
+    return _soundButton;
+}
+
+- (void)configSendingTips {
+    [super configSendingTips];
+    if (_msg.status == TSIMMsgStatusWillSending) {
+        _elemContentRef.hidden = YES;
+        [_contentBack startGlowing];
+    } else {
+        _elemContentRef.hidden = NO;
+        [_contentBack stopGlowing];
+    }
+}
+
+- (void)configContent {
+    [super configContent];
+    
+    [self stopPlaySound];
+    
+    // 停止上一次的播放
+    [_soundButton.imageView stopAnimating];
+    
+    BOOL isMine = [_msg isMineMsg];
+//    _soundButton.style = isMine ? ETitleLeftImageRight : EImageLeftTitleRight;
+    _soundButton.style = isMine ? EImageLeftTitleRight : EImageLeftTitleRight;
+    [_soundButton setImage:isMine ? [UIImage imageWithBundleAsset:@"other_voice3"] : [UIImage imageWithBundleAsset:@"other_voice3"] forState:UIControlStateNormal];
+    [_soundButton setTitleColor:[_msg textColor] forState:UIControlStateNormal];
+    
+    TIMSoundElem *elem = (TIMSoundElem *)[_msg.msg getElem:0];
+    [_soundButton setTitle:[NSString stringWithFormat:@"%d''", elem.second] forState:UIControlStateNormal];
+}
+
+- (void)startPlaySoundAnimating {
+    BOOL isMine = [_msg isMineMsg];
+    if (isMine)
+    {
+        _soundButton.imageView.animationImages = @[[UIImage imageWithBundleAsset:@"other_voice1"], [UIImage imageWithBundleAsset:@"other_voice2"], [UIImage imageWithBundleAsset:@"other_voice3"]];
+    }
+    else
+    {
+        _soundButton.imageView.animationImages = @[[UIImage imageWithBundleAsset:@"other_voice1"], [UIImage imageWithBundleAsset:@"other_voice2"], [UIImage imageWithBundleAsset:@"other_voice3"]];
+    }
+    
+    _soundButton.imageView.animationDuration = 0.5;
+    _soundButton.imageView.animationRepeatCount = 0;
+    [_soundButton.imageView startAnimating];
+}
+
+- (void)stopPlaySoundAnimating {
+    [_soundButton.imageView stopAnimating];
+    _soundButton.imageView.animationImages = nil;
+}
+
+- (void)startPlaySound {
+    [self startPlaySoundAnimating];
+    TIMSoundElem *elem = (TIMSoundElem *)[_msg.msg getElem:0];
+    __weak TSChatSoundTableViewCell *ws = self;
+    
+    NSString *cache = [PathUtility getCachePath];
+    NSString *loginId = [[TIMManager sharedInstance] getLoginUser];
+    NSString *audioDir = [NSString stringWithFormat:@"%@/%@",cache,loginId];
+    BOOL isDir = FALSE;
+    BOOL isDirExist = [[NSFileManager defaultManager] fileExistsAtPath:audioDir isDirectory:&isDir];
+    if (!(isDir && isDirExist))
+    {
+        BOOL isCreateDir = [PathUtility createDirectoryAtCache:loginId];
+        if (!isCreateDir) {
+            return;
+        }
+    }
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@",cache,loginId,elem.uuid];
+    if ([PathUtility isExistFile:path])
+    {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        [[ChatSoundPlayer sharedInstance] playWithUrl:url finish:^{
+            [ws stopPlaySoundAnimating];
+        }];
+    }
+    else
+    {
+        [elem getSound:path succ:^{
+            NSURL *url = [NSURL fileURLWithPath:path];
+            [[ChatSoundPlayer sharedInstance] playWithUrl:url finish:^{
+                [ws stopPlaySoundAnimating];
+            }];
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"path--->%@",path);
+//            [[HUDHelper sharedInstance] tipMessage:[NSString stringWithFormat:@"播放语音失败:%@，path=%@", IMALocalizedError(code, msg),path]];
+            NSLog(@"播放语音失败");
+        }];
+    }
+}
+
+- (void)stopPlaySound
+{
+    [self stopPlaySoundAnimating];
+    [[ChatSoundPlayer sharedInstance] stopPlay];
+}
+
+- (void)onPlaySound
+{
+    if (!_soundButton.imageView.isAnimating)
+    {
+        [self startPlaySound];
+    }
+    else
+    {
+        // 正在播放，再次点击，则停止播放
+        [self stopPlaySound];
+    }
+}
 
 @end
 

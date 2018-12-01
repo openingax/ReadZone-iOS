@@ -14,6 +14,8 @@
 #import "NSMutableDictionary+Json.h"
 #import "TSIMAdapter.h"
 #import <AVFoundation/AVFoundation.h>
+#import "PathUtility.h"
+#import <IMMessageExt/IMMessageExt.h>
 
 @interface TSIMMsg ()
 
@@ -173,6 +175,20 @@
     return imamsg;
 }
 
++ (instancetype)msgWithRevoked:(NSString *)sender
+{
+    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+    NSDictionary *dataDic = @{@"sender":sender, @"REVOKED":@1};
+    NSError *error = nil;
+    elem.data = [NSJSONSerialization dataWithJSONObject:dataDic options:NSJSONWritingPrettyPrinted error:&error];
+    
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    
+    TSIMMsg *imamsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeRevokedTip];
+    return imamsg;
+}
+
 + (instancetype)msgWithDate:(NSDate *)date {
     TIMCustomElem *elem = [[TIMCustomElem alloc] init];
     
@@ -222,13 +238,58 @@
 }
 
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration {
-#warning 要完善
-    return nil;
+    if (!data) {
+        return nil;
+    }
+    
+    NSString *cache = [PathUtility getCachePath];
+    NSString *loginId = [[TIMManager sharedInstance] getLoginUser];
+    
+    NSDate *date = [[NSDate alloc] init];
+    NSTimeInterval time = [date timeIntervalSince1970];
+    NSString *timeStr = [NSString stringWithFormat:@"%llu", (unsigned long long)time];
+    NSString *soundSaveDir = [NSString stringWithFormat:@"%@/%@/Audio", cache, loginId];
+    
+    if (![PathUtility isExistFile:soundSaveDir]) {
+        BOOL isCreateDir = [[NSFileManager defaultManager] createDirectoryAtPath:soundSaveDir withIntermediateDirectories:YES attributes:nil error:nil];
+        if (!isCreateDir)
+        {
+            return nil;
+        }
+    }
+    
+    NSString *soundSavePath = [NSString stringWithFormat:@"%@/%@",soundSaveDir,timeStr];
+    if (![PathUtility isExistFile:soundSavePath])
+    {
+        BOOL isCreate = [[NSFileManager defaultManager] createFileAtPath:soundSavePath contents:nil attributes:nil];
+        if (!isCreate)
+        {
+            return nil;
+        }
+    }
+    BOOL isWrite = [data writeToFile:soundSavePath atomically:YES];
+    if (!isWrite)
+    {
+        return nil;
+    }
+    
+    TIMSoundElem *elem = [[TIMSoundElem alloc] init];
+    elem.path = soundSavePath;
+    elem.second = (int)duration;
+    
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    
+    return [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeSound];
 }
 
 + (instancetype)msgWithEmptySound {
-#warning 要完善
-    return nil;
+
+    TIMSoundElem *elem = [[TIMSoundElem alloc] init];
+    TIMMessage *msg = [[TIMMessage alloc] init];
+    [msg addElem:elem];
+    
+    return [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeSound];
 }
 
 + (instancetype)msgWithVideoPath:(NSString *)videoPath {
@@ -299,6 +360,18 @@
             _status = status;
         }
     }
+}
+
+- (void)remove
+{
+    if (self.type == TSIMMsgTypeTimeTip || self.type == TSIMMsgTypeSaftyTip)
+    {
+        // 属于自定义的类型，不在IMSDK数据库里面，不能调remove接口
+        return;
+    }
+    
+    BOOL succ = [_msg remove];
+    DebugLog(@"删除成功：%d", succ);
 }
 
 - (NSString *)msgTime {
