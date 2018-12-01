@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0F7BCD197C382806D17B65DB /* Pods_ReadZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CC9625219505E16800D160 /* Pods_ReadZone.framework */; };
 		5F0657312110A32E0081D6A9 /* RZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0657302110A32E0081D6A9 /* RZUserModel.m */; };
+		5F06F5B521B21D05004419DC /* IMUGCExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F33D721B14DBE00A3C307 /* IMUGCExt.framework */; };
+		5F06F5B721B21D5A004419DC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5B621B21D59004419DC /* SystemConfiguration.framework */; };
+		5F06F5B921B21F79004419DC /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5B821B21F79004419DC /* libiconv.tbd */; };
+		5F06F5BB21B21F9D004419DC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5BA21B21F9D004419DC /* AssetsLibrary.framework */; };
+		5F06F5BD21B21FA8004419DC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5BC21B21FA8004419DC /* AudioToolbox.framework */; };
+		5F06F5BF21B21FC1004419DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5BE21B21FC1004419DC /* AVFoundation.framework */; };
+		5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C021B21FD0004419DC /* CoreGraphics.framework */; };
+		5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */; };
 		5F299F4921AFCD0200A0F1A0 /* TSImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
@@ -39,7 +47,6 @@
 		5F9F331421B0FA4F00A3C307 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F331321B0FA4F00A3C307 /* libc++.tbd */; };
 		5F9F331621B0FA6200A3C307 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F331521B0FA6200A3C307 /* libz.tbd */; };
 		5F9F339D21B146CE00A3C307 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F339C21B146CE00A3C307 /* Accelerate.framework */; };
-		5F9F339F21B147AF00A3C307 /* TXLiteAVSDK_Professional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F339E21B147AF00A3C307 /* TXLiteAVSDK_Professional.framework */; };
 		5F9F33D621B14D1E00A3C307 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F33D521B14D1D00A3C307 /* libresolv.tbd */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
@@ -94,6 +101,13 @@
 		4E4B76BB13017F3786959A5C /* Pods-ReadZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.release.xcconfig"; sourceTree = "<group>"; };
 		5F06572F2110A32E0081D6A9 /* RZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserModel.h; sourceTree = "<group>"; };
 		5F0657302110A32E0081D6A9 /* RZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZUserModel.m; sourceTree = "<group>"; };
+		5F06F5B621B21D59004419DC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5F06F5B821B21F79004419DC /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		5F06F5BA21B21F9D004419DC /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5F06F5BC21B21FA8004419DC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5F06F5BE21B21FC1004419DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5F06F5C021B21FD0004419DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = TIMServer/IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
 		5F24824D2191311100AC07FD /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
 		5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TSImagePickerController.bundle; sourceTree = "<group>"; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -257,9 +271,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F9F33D621B14D1E00A3C307 /* libresolv.tbd in Frameworks */,
-				5F9F339F21B147AF00A3C307 /* TXLiteAVSDK_Professional.framework in Frameworks */,
+				5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */,
+				5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */,
+				5F06F5BF21B21FC1004419DC /* AVFoundation.framework in Frameworks */,
 				5F9F339D21B146CE00A3C307 /* Accelerate.framework in Frameworks */,
+				5F06F5BD21B21FA8004419DC /* AudioToolbox.framework in Frameworks */,
+				5F06F5BB21B21F9D004419DC /* AssetsLibrary.framework in Frameworks */,
+				5F06F5B921B21F79004419DC /* libiconv.tbd in Frameworks */,
+				5F06F5B721B21D5A004419DC /* SystemConfiguration.framework in Frameworks */,
+				5F06F5B521B21D05004419DC /* IMUGCExt.framework in Frameworks */,
+				5F9F33D621B14D1E00A3C307 /* libresolv.tbd in Frameworks */,
 				5F9F331621B0FA6200A3C307 /* libz.tbd in Frameworks */,
 				5F9F331421B0FA4F00A3C307 /* libc++.tbd in Frameworks */,
 				5F9F32B421B0E32600A3C307 /* TLSSDK.framework in Frameworks */,
@@ -594,6 +615,13 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */,
+				5F06F5C021B21FD0004419DC /* CoreGraphics.framework */,
+				5F06F5BE21B21FC1004419DC /* AVFoundation.framework */,
+				5F06F5BC21B21FA8004419DC /* AudioToolbox.framework */,
+				5F06F5BA21B21F9D004419DC /* AssetsLibrary.framework */,
+				5F06F5B821B21F79004419DC /* libiconv.tbd */,
+				5F06F5B621B21D59004419DC /* SystemConfiguration.framework */,
 				5F9F33D721B14DBE00A3C307 /* IMUGCExt.framework */,
 				5F9F33D521B14D1D00A3C307 /* libresolv.tbd */,
 				5F9F339E21B147AF00A3C307 /* TXLiteAVSDK_Professional.framework */,
