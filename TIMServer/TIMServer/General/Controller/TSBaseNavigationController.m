@@ -97,11 +97,15 @@
 
 - (void)dismissVCAction {
     [[NSNotificationCenter defaultCenter] postNotificationName:kTIMServerExitNoti object:nil];
-    [[TSIMAPlatform sharedInstance] logout:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } fail:^(int code, NSString *msg) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+    
+    // 退出留言板时，先注销用户的 TIM 服务，再 dismissVC
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[TSIMAPlatform sharedInstance] logout:^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } fail:^(int code, NSString *msg) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+    });
 }
 
 @end

@@ -109,7 +109,7 @@
 #pragma mark - Pull to Refresh
 
 
-- (void)setHeaderView:(UIView<TSRefreshAbleView> *)aView
+- (void)setHeaderView:(UIView<RefreshAbleView> *)aView
 {
     if (!_refreshScrollView)
     {
@@ -214,7 +214,7 @@
 #pragma mark - Load More
 
 
-- (void)setFooterView:(UIView<TSRefreshAbleView> *)aView
+- (void)setFooterView:(UIView<RefreshAbleView> *)aView
 {
     if (!_refreshScrollView)
     {

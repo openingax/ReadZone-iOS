@@ -18,10 +18,8 @@
 - (instancetype)initWithC2CReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
         
-//        self.contentView.backgroundColor = kClearColor;
-//        self.backgroundColor = kClearColor;
-        self.layer.borderColor = kBlueColor.CGColor;
-        self.layer.borderWidth = 1.f;
+        self.contentView.backgroundColor = kClearColor;
+        self.backgroundColor = kClearColor;
         
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -86,7 +84,7 @@
     TIMCustomElem *elem = (TIMCustomElem *)[msg.msg getElem:0];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.font = [_msg tipFont];
-    self.textLabel.textColor = kRedColor;
+    self.textLabel.textColor = kLightGrayColor;
     self.textLabel.text = [elem timeTip];
 }
 
@@ -133,9 +131,26 @@
 @implementation TSChatSaftyTipTableViewCell
 
 
-
 @end
 
 @implementation TSRevokedTipTableViewCell
+
+- (void)configWith:(TSIMMsg *)msg
+{
+    _msg = msg;
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.textLabel.font = [_msg tipFont];
+    self.textLabel.textColor = kLightGrayColor;
+#warning loginParam 没保存，导致 selfId 为 nil
+    NSString *selfId = [TSIMAPlatform sharedInstance].host.loginParam.identifier;
+    TIMCustomElem *elem = (TIMCustomElem *)[_msg.msg getElem:0];
+    NSDictionary *info = [NSJSONSerialization JSONObjectWithData:elem.data options:NSJSONReadingMutableLeaves error:nil];
+    NSString *msgSender = [info objectForKey:@"sender"];
+    if ([selfId isEqualToString:msgSender]) {
+        self.textLabel.text = [NSString stringWithFormat:@"你撤回了一条消息"];
+    } else {
+        self.textLabel.text = [NSString stringWithFormat:@"\"%@\" 撤回了一条消息",msgSender];
+    }
+}
 
 @end

@@ -20,15 +20,18 @@ typedef NS_ENUM(NSInteger, TSIMMsgType) {
     TSIMMsgTypeImage,               // 图片
     TSIMMsgTypeFile,                // 文件
     TSIMMsgTypeSound,               // 语音
+    
     TSIMMsgTypeFace,                // 表情
     TSIMMsgTypeLocation,            // 定位
     TSIMMsgTypeVideo,               // 视频消息
     TSIMMsgTypeCustom,              // 自定义
+    
     TSIMMsgTypeTimeTip,             // 时间提醒标签
     TSIMMsgTypeGroupTips,           // 群提醒
     TSIMMsgTypeGroupSystem,         // 群系统消息
     TSIMMsgTypeSNSSystem,           // 关系链消息
     TSIMMsgTypeProfileSystem,       // 资料变更消息
+    
     TSIMMsgTypeInputStatus,         // 对方输入状态
     TSIMMsgTypeSaftyTip,            // 敏感词消息提醒标签
     TSIMMsgTypeRevokedTip           // 消息撤回

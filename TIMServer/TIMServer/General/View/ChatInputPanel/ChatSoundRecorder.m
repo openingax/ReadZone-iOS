@@ -601,7 +601,6 @@ static ChatSoundPlayer *_sharedPlayer = nil;
             _playCompletion();
         }
     }
-    
 }
 
 - (void)playWithUrl:(NSURL *)url finish:(CommonVoidBlock)completion

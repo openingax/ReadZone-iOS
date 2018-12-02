@@ -67,6 +67,9 @@
 //设置小视频消息封面图片
 - (void)setCoverImage
 {
+//    if (![[[_msg.msg getElem:0] class] isKindOfClass:[TIMUGCElem class]]) {
+//        return;
+//    }
     TIMUGCElem *elem = (TIMUGCElem *)[_msg.msg getElem:0];
 
     //将封面截图保存到 “Caches/视频id” 路径

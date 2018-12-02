@@ -7,8 +7,9 @@
 //
 
 #import "TSBaseViewController.h"
-#import "TSRefreshAbleView.h"
-#import "TSRefreshView.h"
+#import "RefreshAbleView.h"
+#import "RefreshView.h"
+#import "ChatHeadRefreshView.h"
 
 @interface TSScrollRefreshViewController : TSBaseViewController <UIScrollViewDelegate>
 {
@@ -24,16 +25,16 @@
     
     UIView *_noDataView;
     
-    UIView<TSRefreshAbleView>     *_headerView;
+    UIView<RefreshAbleView>     *_headerView;
     
-    UIView<TSRefreshAbleView>     *_footerView;
+    UIView<RefreshAbleView>     *_footerView;
 }
 
 // 下拉刷新
-@property (nonatomic, strong) UIView<TSRefreshAbleView> *headerView;
+@property (nonatomic, strong) UIView<RefreshAbleView> *headerView;
 @property (nonatomic, weak) UIScrollView *refreshScrollView;
 // 上拉加载更多
-@property (nonatomic, strong) UIView<TSRefreshAbleView> *footerView;
+@property (nonatomic, strong) UIView<RefreshAbleView> *footerView;
 
 @property (nonatomic, readonly) BOOL isDragging;         // 是否在drag
 @property (nonatomic, readonly) BOOL isRefreshing;       // 是否正在下拉刷新

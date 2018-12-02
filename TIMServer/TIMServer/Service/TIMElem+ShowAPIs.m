@@ -157,6 +157,11 @@
         tw = width;
     }
     
+    if (th == 0 || tw == 0) {
+        th = 87;
+        tw = 58;
+    }
+    
     return CGSizeMake(tw, th);
 }
 
@@ -184,6 +189,18 @@
 
 
 @implementation TIMUGCElem (ShowAPIs)
+
+- (Class)showCellClassOf:(TSIMMsg *)msg {
+    return [TSChatVideoTableViewCell class];
+}
+
+- (CGSize)sizeInWidth:(CGFloat)width atMsg:(TSIMMsg *)packMsg {
+    return CGSizeMake(150, 100);
+}
+
+@end
+
+@implementation TIMVideoElem (ShowAPIs)
 
 - (Class)showCellClassOf:(TSIMMsg *)msg {
     return [TSChatVideoTableViewCell class];

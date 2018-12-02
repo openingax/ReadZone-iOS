@@ -9,7 +9,6 @@
 #ifndef TSConstMarco_h
 #define TSConstMarco_h
 
-#define kDefaultMargin  10
 #define kTableViewCellBubbleMarginTop 20
 
 #define kTimLargeTextFont       [UIFont systemFontOfSize:16]
@@ -26,5 +25,7 @@
 
 // 默认TableViewCell高度
 #define kDefaultCellHeight 50
+#define kDefaultMargin 8
+#define kCellDefaultMargin 8
 
 #endif /* TSConstMarco_h */

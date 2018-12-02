@@ -7,13 +7,15 @@
 //
 
 #import "TSChatBaseTableViewCell.h"
+#import "MsgSendingTip.h"
 
 @implementation TSChatBaseTableViewCell
 
 // 只创建，外部统一添加
 - (UIView<TSElemSendingAbleView> *)addSendingTips
 {
-    return nil;
+    MsgSendingTip *tip = [[MsgSendingTip alloc] init];
+    return tip;
 }
 
 // 只创建，外部统一添加
@@ -22,6 +24,11 @@
     return nil;
 }
 
+//- (void)onPicked:(MenuButton *)btn
+//{
+//    btn.selected = !btn.selected;
+//    _msg.isPicked = btn.selected;
+//}
 
 - (void)configContent {
     UIEdgeInsets inset = [_msg contentBackInset];
@@ -48,7 +55,9 @@
 
 - (void)onClickUserIcon
 {
-    
+    [super configSendingTips];
+    TSIMMsgStatus state = [_msg status];
+    [_sendingTipRef setMsgStatus:state];
 }
 
 

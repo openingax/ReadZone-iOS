@@ -13,6 +13,7 @@
 
 @implementation TSIMMsg (UITableViewCell)
 
+#define kCellDefaultMargin 8
 //@dynamic showDraftMsgAttributedText;
 
 static NSString *const kIMAMsgShowHeightInChat = @"kIMAMsgShowHeightInChat";
@@ -135,10 +136,15 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     //    objc_setAssociatedObject(self, (__bridge const void *)kIMAMsgShowLastMsgAttributedText, showLastMsgAttributedText, OBJC_ASSOCIATION_RETAIN);
 }
 
-
 - (NSString *)msgCellReuseIndentifier
 {
-    return [NSString stringWithFormat:@"IMAMsgCell_%d", (int)_type];
+    if (_type == TSIMMsgTypeImage) {
+        TIMImageElem *elem = (TIMImageElem *)[_msg getElem:0];
+        uint32_t uploadId = elem.taskId;
+        return [NSString stringWithFormat:@"IMAMsgCell_%d_%d", (int)_type, uploadId];
+    } else {
+        return [NSString stringWithFormat:@"IMAMsgCell_%d", (int)_type];
+    }
 }
 
 - (Class)showCellClass
@@ -148,10 +154,12 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     return [elem showCellClassOf:self];
 }
 
-- (UITableViewCell<TSElemAbleCell> *)tableView:(UITableView *)tableView style:(TSElemCellStyle)style
+- (UITableViewCell<TSElemAbleCell> *)tableView:(UITableView *)tableView style:(TSElemCellStyle)style indexPath:(NSIndexPath *)indexPath
 {
     NSString *reuseid = [self msgCellReuseIndentifier];
+    
     TSElemBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseid];
+    
     if (!cell)
     {
         if (style == TSElemCellStyleC2C)
@@ -253,12 +261,12 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     {
         size.height += [self groupMsgTipHeight];
     }
-    size.height += kDefaultMargin;
+    size.height += kCellDefaultMargin;
     
     CGSize iconSize = [self userIconSize];
-    if (size.height < iconSize.height + kDefaultMargin)
+    if (size.height < iconSize.height + kCellDefaultMargin)
     {
-        size.height = iconSize.height + kDefaultMargin;
+        size.height = iconSize.height + kCellDefaultMargin;
     }
     
     size.height -= 8;
@@ -283,9 +291,9 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     if (self.type == TSIMMsgTypeText) {
         return UIEdgeInsetsMake(28, 20, 8, 20);
     } else if (self.type == TSIMMsgTypeImage) {
-        return UIEdgeInsetsMake(28, kDefaultMargin + 4, 8, kDefaultMargin/2 + 3);
+        return UIEdgeInsetsMake(28, kCellDefaultMargin + 4, 8, kCellDefaultMargin/2 + 3);
     } else {
-        return UIEdgeInsetsMake(28, kDefaultMargin + 2, 6, kDefaultMargin/2 + 1);
+        return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
     }
     
     //    }
@@ -311,7 +319,7 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 
 - (NSInteger)horMargin
 {
-    return kDefaultMargin;
+    return kCellDefaultMargin;
 }
 
 // 当正在Picked的时候

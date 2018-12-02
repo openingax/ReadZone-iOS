@@ -91,11 +91,11 @@
     NSMutableArray *array = [NSMutableArray array];
     
 #warning 暂时屏蔽时间提示
-//    TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
-//    // 时间提示
-//    if (timeTip) {
-//        [array addObject:timeTip];
-//    }
+    TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
+    // 时间提示
+    if (timeTip) {
+        [array addObject:timeTip];
+    }
     
     [array addObject:msg];
     
@@ -115,7 +115,7 @@
         
         NSTimeInterval timeInterval = [followDate timeIntervalSinceDate:lastDate];
 #warning 设置时间提醒时间间隔
-        if (timeInterval > 3 * 60) {
+        if (timeInterval > 5 * 60) {
             TSIMMsg *newMsg = [TSIMMsg msgWithDate:followDate];
             return newMsg;
         }
@@ -163,18 +163,18 @@
             }
             temp = msg;
             if (msg.status == TIM_MSG_STATUS_LOCAL_REVOKED) {//撤销
-//                TSIMMsg *imamsg = [TSIMMsg msgWithRevoked:msg.sender];
-//                if (imamsg)
-//                {
-//                    [array addObject:imamsg];
-//                }
+                TSIMMsg *imamsg = [TSIMMsg msgWithRevoked:msg.sender];
+                if (imamsg)
+                {
+                    [array addObject:imamsg];
+                }
             }
             else {
-//                TSIMMsg *imamsg = [TSIMMsg msgWith:msg];
-//                if (imamsg)
-//                {
-//                    [array addObject:imamsg];
-//                }
+                TSIMMsg *imamsg = [TSIMMsg msgWithMsg:msg];
+                if (imamsg)
+                {
+                    [array addObject:imamsg];
+                }
             }
             idx--;
         }

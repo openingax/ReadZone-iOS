@@ -51,8 +51,8 @@
     
 }
 
-- (NSString *)timeTextOfDate {
-    
+- (NSString *)shortTimeTextOfDate
+{
     NSDate *date = self;
     
     NSTimeInterval interval = [date timeIntervalSinceDate:[NSDate date]];
@@ -106,6 +106,68 @@
             [dateFormat setDateFormat:@"yy-MM-dd"];
             NSString *dateString = [dateFormat stringFromDate:date];
             return dateString;
+            
+        }
+    }
+    return nil;
+}
+
+- (NSString *)timeTextOfDate
+{
+    NSDate *date = self;
+    
+    NSTimeInterval interval = [date timeIntervalSinceDate:[NSDate date]];
+    
+    interval = -interval;
+    
+    // 今天的消息
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"aHH:mm"];
+    [dateFormat setAMSymbol:@"上午"];
+    [dateFormat setPMSymbol:@"下午"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    
+    if ([date isToday])
+    {
+        // 今天的消息
+        return dateString;
+    }
+    else if ([date isYesterday])
+    {
+        // 昨天
+        return [NSString stringWithFormat:@"昨天 %@", dateString];
+    }
+    else if (interval < kWeekTimeInterval)
+    {
+        // 最近一周
+        // 实例化一个NSDateFormatter对象
+        NSDateFormatter* weekFor = [[NSDateFormatter alloc] init];
+        weekFor.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+        [weekFor setDateFormat:@"ccc"];
+        NSString *weekStr = [weekFor stringFromDate:date];
+        return [NSString stringWithFormat:@"%@ %@", weekStr, dateString];
+    }
+    else
+    {
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];
+        
+        NSDateComponents *today = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:[NSDate date]];
+        
+        if ([components year] == [today year])
+        {
+            // 今年
+            NSDateFormatter *mdFor = [[NSDateFormatter alloc] init];
+            [mdFor setDateFormat:@"MM-dd"];
+            NSString *mdStr = [mdFor stringFromDate:date];
+            return [NSString stringWithFormat:@"%@ %@", mdStr, dateString];
+        }
+        else
+        {
+            // 往年
+            NSDateFormatter *ymdFormat = [[NSDateFormatter alloc] init];
+            [ymdFormat setDateFormat:@"yy-MM-dd"];
+            NSString *ymdString = [ymdFormat stringFromDate:date];
+            return [NSString stringWithFormat:@"%@ %@", ymdString, dateString];;
             
         }
     }

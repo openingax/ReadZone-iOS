@@ -15,6 +15,7 @@
 #import "TSConversationManager.h"
 #import "TSIMMsg.h"
 
+
 // Manager
 #import "TIMServerHelper.h"
 #import "IMALoginParam.h"
@@ -70,6 +71,15 @@ TLSRefreshTicketListener
             [self loginTIM];
         });
     }
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
+    
+    // 模拟 App 进入前台的动作
+    [[TIMManager sharedInstance] doForeground:^{
+        
+    } fail:^(int code, NSString *msg) {
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,6 +101,20 @@ TLSRefreshTicketListener
     [_loginParam saveToLocal];
 }
 
+// 退出留言板，做一些退出的操作
+- (void)didTIMServerExit {
+    //    [self.inputView endEditing:YES];
+    
+    [[TSIMAPlatform sharedInstance] saveToLocal];
+    
+    TIMBackgroundParam *param = [[TIMBackgroundParam alloc] init];
+    [param setC2cUnread:0];
+    [[TIMManager sharedInstance] doBackground:param succ:^{
+        
+    } fail:^(int code, NSString *msg) {
+        
+    }];
+}
 
 #pragma mark - Login
 

@@ -11,6 +11,8 @@
 #import "ChatSoundRecorder.h"
 #import "PathUtility.h"
 #import "TIMServerHelper.h"
+#import "ChatImageBrowserView.h"
+#import "UIView+RelativeCoordinate.h"
 
 @implementation TSChatTextTableViewCell
 
@@ -57,7 +59,14 @@
 
 - (void)onTapImage:(UITapGestureRecognizer *)tap
 {
-#warning 待完善
+    if (tap.state == UIGestureRecognizerStateEnded){
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+        
+        UIView *keyWindow = [UIApplication sharedApplication].keyWindow;
+        CGRect rect = [_chatImage relativePositionTo:keyWindow];
+        ChatImageBrowserView *view = [[ChatImageBrowserView alloc] initWithPicModel:_msg thumbnail:_chatImage.image fromRect:rect];
+        [keyWindow addSubview:view];
+    }
 }
 
 - (void)configContent

@@ -31,16 +31,70 @@
 }
 
 #pragma mark - Notification
-- (void)onRevokeMsg:(NSNotification *)noti {
-    
+- (void)onRevokeMsg:(NSNotification *)notify {
+    if ([notify.object isKindOfClass:[TSIMMsg class]])//本地撤销
+    {
+        TSIMMsg *msg = (TSIMMsg *)notify.object;
+        __weak typeof(self) ws = self;
+        [_conversation revokeMsg:msg isRemote:NO completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removeingAction) {
+            if (succ)
+            {
+                [ws onWillRefresh:imamsgList withAction:removeingAction];
+            }
+        }];
+    }
+    else if ([notify.object isKindOfClass:[TIMMessageLocator class]])//接收到撤销消息
+    {
+        TSIMMsg *msg = [self findMsg:(TIMMessageLocator *)notify.object];
+        if (!msg) {
+            return;
+        }
+        __weak typeof(self) ws = self;
+        [_conversation revokeMsg:msg isRemote:YES completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removeingAction) {
+            if (succ)
+            {
+                [ws onWillRefresh:imamsgList withAction:removeingAction];
+            }
+        }];
+    }
+}
+
+- (TSIMMsg *)findMsg:(TIMMessageLocator *)locator
+{
+    for (TSIMMsg *imaMsg in _messageList.safeArray)
+    {
+        if ([imaMsg.msg respondsToLocator:locator])
+        {
+            return imaMsg;
+        }
+    }
+    return nil;
 }
 
 - (void)onDeleteMsg:(NSNotification *)noti {
-    
+    TSIMMsg *msg = (TSIMMsg *)noti.object;
+    __weak TSIMChatViewController *ws = self;
+    [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
+        if (succ)
+        {
+            [ws onWillRemove:imamsgList withAction:removingAction];
+        }
+    }];
 }
 
 - (void)onResendMsg:(NSNotification *)noti {
+    TSIMMsg *msg = (TSIMMsg *)noti.object;
+    __weak TSIMChatViewController *ws = self;
+    [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
+        if (succ)
+        {
+            [ws onWillRemove:imamsgList withAction:removingAction];
+        }
+    }];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self sendMsg:msg];
+    });
 }
 
 - (void)onChangedMsg:(NSNotification *)noti {
@@ -128,10 +182,6 @@
     _tableView.frame = CGRectMake(0, 0, size.width, size.height - _inputView.contentHeight);
     
     [_inputView setFrameAndLayout:CGRectMake(0, size.height - _inputView.contentHeight, size.width, _inputView.contentHeight)];
-//    [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.left.right.equalTo(self.view);
-//        make.height.mas_equalTo(self->_inputView.contentHeight);
-//    }];
 }
 
 - (void)hiddenKeyBoard {
@@ -220,6 +270,24 @@
             [_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         });
     }
+}
+
+- (void)onWillRefresh:(NSArray *)imamsgList withAction:(CommonVoidBlock)action
+{
+    [_tableView beginUpdates];
+    
+    NSMutableArray *indexArray = [NSMutableArray array];
+    
+    for (TSIMMsg *removemsg in imamsgList)
+    {
+        NSInteger idx = [_messageList indexOfObject:removemsg];
+        NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
+        [indexArray addObject:index];
+    }
+    
+    [_tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationNone];
+    
+    [_tableView endUpdates];
 }
 
 - (void)onWillRemove:(NSArray *)imamsgList withAction:(CommonVoidBlock)action

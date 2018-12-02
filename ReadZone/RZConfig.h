@@ -17,6 +17,6 @@
 #endif
 
 //#define kBaseURL @"http://www.xieliying.com:3000"
-#define kBaseURL @"http://192.168.10.196:3000"
+#define kBaseURL @"http://192.168.0.100:3000"
 
 #endif /* RZConfig_h */

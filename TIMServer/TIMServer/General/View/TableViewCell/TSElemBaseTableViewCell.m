@@ -133,11 +133,22 @@
     [self.contentView addSubview:_remarkTip];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIImageView class]]) {
+            UIImageView *imgView = (UIImageView *)obj;
+            imgView.image = nil;
+        }
+    }];
+}
+
 - (void)relayoutC2CCellViews
 {
     CGRect rect = self.contentView.bounds;
     NSInteger hor = [_msg horMargin];
-    NSInteger ver = kDefaultMargin/2;
+    NSInteger ver = kCellDefaultMargin/2;
 //    if ([_msg isMineMsg])
 //    {
 //        if (self.isEditing)
@@ -237,7 +248,7 @@
 {
     CGRect rect = self.contentView.bounds;
     NSInteger hor = [_msg horMargin];
-    NSInteger ver = kDefaultMargin/2;
+    NSInteger ver = kCellDefaultMargin/2;
     if ([_msg isMineMsg])
     {
         // 与C2C消息一致
@@ -297,6 +308,29 @@
     }
 }
 
+- (void)configKVO
+{
+    [_msgKVO unobserveAll];
+    
+    if ([_msg isMineMsg])
+    {
+        __weak TSElemBaseTableViewCell *ws = self;
+        if (!_msgKVO)
+        {
+            _msgKVO = [FBKVOController controllerWithObserver:self];
+        }
+        [_msgKVO observe:_msg keyPath:@"status" options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
+            [ws configSendingTips];
+        }];
+    }
+    else
+    {
+        _msgKVO = nil;
+    }
+    
+    
+}
+
 - (void)configWith:(TSIMMsg *)msg {
     _msg = msg;
     
@@ -335,27 +369,64 @@
     
 }
 
-- (void)configKVO
+- (void)configSendingTips
 {
-    [_msgKVO unobserveAll];
-    
-    if ([_msg isMineMsg])
-    {
-        __weak TSElemBaseTableViewCell *ws = self;
-        if (!_msgKVO)
-        {
-            _msgKVO = [FBKVOController controllerWithObserver:self];
-        }
-        [_msgKVO observe:_msg keyPath:@"status" options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
-            [ws configSendingTips];
-        }];
+    _sendingTipRef.hidden = ![_msg isMineMsg];
+}
+
+- (void)showMenu {
+    NSArray *showMenus = [self showMenuItems];
+    if (showMenus.count) {
+        [self becomeFirstResponder];
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        [menu setMenuItems:showMenus];
+        [menu update];
+        [menu setTargetRect:_contentBack.frame inView:self.contentView];
+        [menu setMenuVisible:YES animated:YES];
     }
-    else
+}
+
+- (NSArray *)showMenuItems
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItem:)];
+    [array addObject:deleteItem];
+    
+    if ([_msg.msg isSelf])
     {
-        _msgKVO = nil;
+        UIMenuItem *revokeItem = [[UIMenuItem alloc] initWithTitle:@"撤销" action:@selector(revokeItem:)];
+        [array addObject:revokeItem];
     }
     
+    if (_msg.status == TSIMMsgStatusSendFail)
+    {
+        UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"重发" action:@selector(resendItem:)];
+        [array addObject:resendItem];
+    }
     
+    return array;
+}
+
+- (void)revokeItem:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kIMAMSG_RevokeNotification object:_msg];
+}
+
+- (void)deleteItem:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kIMAMSG_DeleteNotification object:_msg];
+}
+
+- (void)resendItem:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kIMAMSG_ResendNotification object:_msg];
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    BOOL can = ((action == @selector(deleteItem:)) || (action == @selector(resendItem:)) || (action == @selector(revokeItem:)));
+    return can;
 }
 
 @end

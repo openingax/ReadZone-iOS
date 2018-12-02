@@ -59,6 +59,10 @@
 
 @end
 
+@interface TIMVideoElem (ShowAPIs)
+
+@end
+
 @interface TIMCustomElem (ShowAPIs)
 
 @end

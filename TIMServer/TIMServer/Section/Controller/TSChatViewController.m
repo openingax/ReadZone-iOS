@@ -26,7 +26,12 @@
 #import "TZVideoPlayerController.h"
 #import "TZImageManager.h"
 
-@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate>
+// UGC 小视频
+#import "TCVideoRecordViewController.h"
+#import "TCNavigationController.h"
+//#import "TCVideoPreviewViewController.h"
+
+@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate, MicroVideoRecordDelegate>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
@@ -93,10 +98,6 @@
     }];
 }
 
-- (void)didTIMServerExit {
-    //    [self.inputView endEditing:YES];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -107,7 +108,6 @@
     [self.tableView addGestureRecognizer:tapAction];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationListUpdateComplete) name:kAsyncUpdateConversationListNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -134,7 +134,19 @@
 #pragma mark - Add View
 - (void)addHeaderView {
     // 添加头部视图
-    
+    self.headerView = [[ChatHeadRefreshView alloc] init];
+}
+
+- (void)onRefresh {
+    __weak TSChatViewController *ws = self;
+    [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+        if (succ) {
+            [ws onLoadRecentMessage:imMsgList complete:YES scrollToBottom:YES];
+        }
+        
+        [ws refreshCompleted];
+        [ws layoutHeaderRefreshView];
+    }];
 }
 
 - (void)addOwnViews {
@@ -164,22 +176,22 @@
 -(void)onLongPress:(UILongPressGestureRecognizer *)gesture
 {
     
-    //    if(gesture.state == UIGestureRecognizerStateBegan)
-    //    {
-    //        CGPoint point = [gesture locationInView:self.tableView];
-    //
-    //        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
-    //        UITableViewCell<TIMElemAbleCell> *cell = [_tableView cellForRowAtIndexPath:indexPath];
-    //        BOOL showMenu = [cell canShowMenu];
-    //
-    //        if (showMenu)
-    //        {
-    //            if ([cell canShowMenuOnTouchOf:gesture])
-    //            {
-    //                [cell showMenu];
-    //            }
-    //        }
-    //    }
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint point = [gesture locationInView:self.tableView];
+        
+        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
+        UITableViewCell<TSElemAbleCell> *cell = [_tableView cellForRowAtIndexPath:indexPath];
+        BOOL showMenu = [cell canShowMenu];
+        
+        if (showMenu)
+        {
+            if ([cell canShowMenuOnTouchOf:gesture])
+            {
+                [cell showMenu];
+            }
+        }
+    }
 }
 
 - (void)sendMsg:(TSIMMsg *)msg
@@ -225,9 +237,7 @@
     if (image)
     {
         TSIMMsg *msg = [TSIMMsg msgWithImage:image isOriginal:orignal];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self sendMsg:msg];
-        });
+        [self sendMsg:msg];
     }
 }
 
@@ -294,14 +304,26 @@
         [array addObject:index];
     }
     
-    [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
-    [_tableView endUpdates];
+#warning Terminating app due to uncaught exception 'NSInternalInconsistencyException'
+    /*
+     Invalid update: invalid number of rows in section 0.  The number of rows contained in an existing section after the update (17) must be equal to the number of rows contained in that section before the update (13), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
+     */
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    @try {
+        [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
+        [_tableView endUpdates];
         
-        NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
-        [self->_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
+            [self->_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        });
+    } @catch (NSException *exception) {
+        NSLog(@"!!!!!!!!!!!\ninvalid number of rows in section: %@\n!!!!!!!!!!", exception);
+    } @finally {
+        
+    }
+    
 }
 
 - (void)sendText:(NSString *)text
@@ -346,7 +368,7 @@
 {
     TSIMMsg *msg = [_messageList objectAtIndex:indexPath.row];
     
-    UITableViewCell<TSElemAbleCell> *cell = [msg tableView:tableView style:[_receiver isC2CType] ? TSElemCellStyleC2C : TSElemCellStyleGroup];
+    UITableViewCell<TSElemAbleCell> *cell = [msg tableView:tableView style:[_receiver isC2CType] ? TSElemCellStyleC2C : TSElemCellStyleGroup indexPath:indexPath];
     [cell configWith:msg];
     return cell;
 }
@@ -378,7 +400,7 @@
             
             if (scroll)
             {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
                     [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -392,7 +414,6 @@
 {
     if (msglist.count)
     {
-        
         NSInteger index = [_messageList indexOfObject:msglist.lastObject];
         [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     }
@@ -403,16 +424,12 @@
 - (void)moreViewPhotoAction {
     [self hiddenKeyBoard];
     
-    //    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    //    [self presentViewController:self.imagePicker animated:YES completion:nil];
-    
-    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:9 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
+    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
     
     imagePicker.isSelectOriginalPhoto = YES;
     imagePicker.allowTakePicture = YES;
-    imagePicker.allowTakeVideo = YES;
-    imagePicker.videoMaximumDuration = 15;
+    imagePicker.allowTakeVideo = NO;
+    //    imagePicker.videoMaximumDuration = 20;
     [imagePicker setUiImagePickerControllerSettingBlock:^(UIImagePickerController *imagePickerController) {
         imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
     }];
@@ -450,23 +467,6 @@
 
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
     
-    //    for (NSDictionary *info in infos) {
-    //        NSString *mediaType = info[UIImagePickerControllerMediaType];
-    //        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-    //
-    //            UIImage *image = [info[UIImagePickerControllerOriginalImage] fixOrientation];
-    //            NSData *data = UIImagePNGRepresentation(image);
-    //
-    //            if (data.length > 28*1024*1024) {
-    //                [self.view makeToast:@"发送的文件过大"];
-    //                return;
-    //            }
-    //
-    //            [self sendImage:image orignal:isSelectOriginalPhoto];
-    //
-    //        }
-    //    }
-    
     if (isSelectOriginalPhoto) {
         // 发送原图
         for (id item in assets) {
@@ -477,9 +477,7 @@
                 [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
                     BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
                     if (!isThumbImg) {
-//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [ws sendImage:photo orignal:YES];
-//                        });
                     }
                 }];
             }
@@ -495,9 +493,7 @@
                 return;
             }
             
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self sendImage:img orignal:YES];
-//            });
         }
     }
 }
@@ -508,178 +504,32 @@
     [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPresetHighestQuality success:^(NSString *outputPath) {
         [ws sendVideoWithPath:outputPath coverImage:coverImage];
     } failure:^(NSString *errorMessage, NSError *error) {
-        [self.view makeToast:@"视频导出失败"];
+        [self alertWithTitle:@"视频导出失败" message:@"请尝试用小视频录制喔" confirmBlock:nil];
     }];
 }
 
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    NSString *mediaType = info[UIImagePickerControllerMediaType];
-//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-//        UIImage *image = [info[UIImagePickerControllerOriginalImage] fixOrientation];
-//        NSData *data = UIImagePNGRepresentation(image);
-//
-//        if (data.length > 28 * 1024 * 1024) {
-//            [self.view makeToast:@"发送的文件过大"];
-//            return;
-//        }
-//
-//        TSImageThumbPickerViewController *vc = [[TSImageThumbPickerViewController alloc] initWith:image];
-//        __weak TSChatViewController *ws = self;
-//        vc.sendImageBlock = ^(TSImageThumbPickerViewController *svc, BOOL isOriginal) {
-//            [ws sendImage:svc.showImage orignal:isOriginal];
-//            ws.imagePicker = nil;
-//        };
-//
-//        [picker pushViewController:vc animated:YES];
-//    }
-//}
-//
-//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-//    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-//    _imagePicker = nil;
-//}
-
 #pragma mark - MovieAction
 - (void)moreVideVideoAction {
-    
-//    // 创建一个视图用于显示相机预览图片
-//    _videoRecordView = [[UIView alloc] initWithFrame:self.view.bounds];
-//    [self.view addSubview:_videoRecordView];
-//
-//    // 1. 配置录制参数
-//    TXUGCSimpleConfig * param = [[TXUGCSimpleConfig alloc] init];
-//    param.videoQuality = VIDEO_QUALITY_MEDIUM;
-//
-//    // 2. 启动预览, 设置参数与在哪个View上进行预览
-//    [[TXUGCRecord shareInstance] startCameraSimple:param preview:_videoRecordView];
-//
-//    // 3. 设置录制效果，这里以添加水印为例
-//    UIImage *watermarke = [UIImage imageNamed:@"watermarke"];
-//    [[TXUGCRecord shareInstance] setWaterMark:watermarke normalizationFrame:CGRectMake(0.01, 0.01, 0.1, 0)];
-//
-//    [self hiddenKeyBoard];
-//
-//    [TXUGCRecord shareInstance].recordDelegate = self;
-//    int result = [[TXUGCRecord shareInstance] startRecord];
-//    if(0 != result) {
-//        if(-3 == result) [self alert:@"启动录制失败" msg:@"请检查摄像头权限是否打开"];
-//        else if(-4 == result) [self alert:@"启动录制失败" msg:@"请检查麦克风权限是否打开"];
-//        else if(-5 == result) [self alert:@"启动录制失败" msg:@"licence 验证失败"];
-//    } else {
-//        // 启动成功
-//
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [[TXUGCRecord shareInstance] stopRecord];
-//        });
-//    }
-    
-    //    if ([[AVCaptureDevice class] respondsToSelector:@selector(authorizationStatusForMediaType:)])
-    //    {
-    //        AVAuthorizationStatus videoStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    //        if (videoStatus ==     AVAuthorizationStatusRestricted || videoStatus == AVAuthorizationStatusDenied)
-    //        {
-    //            // 没有权限
-    ////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" cancel:@"确定"];
-    //            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"中允许访问相机。" confirmBlock:^{
-    //
-    //            }];
-    //
-    //            return;
-    //        }
-    //
-    //        AVAuthorizationStatus audioStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-    //        if (audioStatus ==     AVAuthorizationStatusRestricted || audioStatus == AVAuthorizationStatusDenied)
-    //        {
-    //            // 没有权限
-    ////            [HUDHelper alertTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" cancel:@"确定"];
-    //            [self alertWithTitle:@"提示" message:@"请在设备的\"设置-隐私-麦克风\"中允许访问麦克风。" confirmBlock:^{
-    //
-    //            }];
-    //            return;
-    //        }
-    //        __weak TSChatViewController *ws = self;
-    //        if (videoStatus == AVAuthorizationStatusNotDetermined)
-    //        {
-    //            //请求相机权限
-    //            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
-    //
-    //
-    //                if(granted)
-    //                {
-    //                    AVAuthorizationStatus audio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-    //                    if (audio == AVAuthorizationStatusNotDetermined)
-    //                    {
-    //                        //请求麦克风权限
-    //                        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
-    //                            dispatch_async(dispatch_get_main_queue(), ^{
-    //                                if (granted)
-    //                                {
-    //                                    [ws addMicroVideoView];
-    //                                }
-    //                            });
-    //                        }];
-    //                    }
-    //                    else//这里一定是有麦克风权限了
-    //                    {
-    //                        dispatch_async(dispatch_get_main_queue(), ^{
-    //                            [ws addMicroVideoView];
-    //                        });
-    //                    }
-    //                }
-    //
-    //            }];
-    //        }
-    //        else//这里一定是有相机权限了
-    //        {
-    //            if (audioStatus == AVAuthorizationStatusNotDetermined)
-    //            {
-    //                //请求麦克风权限
-    //                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
-    //
-    //                    dispatch_async(dispatch_get_main_queue(), ^{
-    //                        if (granted)
-    //                        {
-    //                            [ws addMicroVideoView];
-    //                        }
-    //                    });
-    //
-    //                }];
-    //            }
-    //            else//这里一定是有麦克风权限了
-    //            {
-    //                [ws addMicroVideoView];
-    //            }
-    //
-    //        }
-    //    }
+    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
+    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+    videoRecordVC.delegate = self;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
-//- (void)onRecordComplete:(TXUGCRecordResult *)result {
-//    if (result.retCode == UGC_RECORD_RESULT_OK) {
-//
-//    } else {
-//
-//    }
-//}
-
-//-(void)alert:(NSString *)title msg:(NSString *)msg
-//{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//    [alert show];
-//}
-
-- (void)addMicroVideoView
+- (void)recordVideoPath:(NSString *)path
 {
-    //    CGFloat selfWidth  = self.view.bounds.size.width;
-    //    CGFloat selfHeight = self.view.bounds.size.height;
-    //    MicroVideoView *microVideoView = [[MicroVideoView alloc] initWithFrame:CGRectMake(0, selfHeight/3, selfWidth, selfHeight * 2/3)];
-    //    microVideoView.delegate = self;
-    //    [self.view addSubview:microVideoView];
-    
-    //    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
-    //    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
-    //    videoRecordVC.delegate = self;
-    //    [self presentViewController:nav animated:YES completion:nil];
+    NSError *err = nil;
+    NSData* data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:path] options:NSDataReadingMappedIfSafe error:&err];
+    //文件最大不超过28MB
+    if(data.length < 28 * 1024 * 1024)
+    {
+        TSIMMsg *msg = [TSIMMsg msgWithVideoPath:path];
+        [self sendMsg:msg];
+    }
+    else
+    {
+        [self alertWithTitle:@"提示" message:@"发送的文件过大" confirmBlock:nil];
+    }
 }
 
 

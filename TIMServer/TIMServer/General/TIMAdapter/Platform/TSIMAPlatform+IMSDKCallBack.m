@@ -102,7 +102,7 @@ static BOOL kIsAlertingForceOffline = NO;
 
 - (void)onRefresh {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.conversationMgr asyncConversationList];
+//        [self.conversationMgr asyncConversationList];
         [[TIMManager sharedInstance] addMessageListener:self.conversationMgr];
     });
 }

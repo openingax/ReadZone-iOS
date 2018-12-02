@@ -36,7 +36,7 @@
 
 - (void)addHeaderView
 {
-    self.headerView = [[TSHeadRefreshView alloc] init];
+    self.headerView = [[HeadRefreshView alloc] init];
 }
 
 - (void)pinHeaderAndRefesh

@@ -16,6 +16,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PathUtility.h"
 #import <IMMessageExt/IMMessageExt.h>
+#import "CustomElemCmd.h"
 
 @interface TSIMMsg ()
 
@@ -167,10 +168,10 @@
     
     TSIMMsg *imamsg = [[TSIMMsg alloc] initWithMsg:msg type:TSIMMsgTypeImage];
     
-//    [imamsg addInteger:picThumbHeight forKey:kIMAMSG_Image_ThumbHeight];
-//    [imamsg addInteger:picThumbWidth forKey:kIMAMSG_Image_ThumbWidth];
-//    [imamsg addString:filePath forKey:kIMAMSG_Image_OrignalPath];
-//    [imamsg addString:thumbPath forKey:kIMAMSG_Image_ThumbPath];
+    //    [imamsg addInteger:picThumbHeight forKey:kIMAMSG_Image_ThumbHeight];
+    //    [imamsg addInteger:picThumbWidth forKey:kIMAMSG_Image_ThumbWidth];
+    //    [imamsg addString:filePath forKey:kIMAMSG_Image_OrignalPath];
+    //    [imamsg addString:thumbPath forKey:kIMAMSG_Image_ThumbPath];
     
     return imamsg;
 }
@@ -191,6 +192,7 @@
 
 + (instancetype)msgWithDate:(NSDate *)date {
     TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+    [elem setFollowTime:date];
     
     TIMMessage *msg = [[TIMMessage alloc] init];
     [msg addElem:elem];
@@ -212,6 +214,12 @@
         type = TSIMMsgTypeText;
     } else if (eleCls == [TIMImageElem class]) {
         type = TSIMMsgTypeImage;
+    } else if (eleCls == [TIMUGCElem class]) {
+        type = TSIMMsgTypeVideo;
+    } else if (eleCls == [TIMSoundElem class]) {
+        type = TSIMMsgTypeSound;
+    } else if (eleCls == [TIMCustomElem class]) {
+        type = TSIMMsgTypeCustom;
     }
     
     TSIMMsg *imMsg = [[TSIMMsg alloc] initWithMsg:msg type:type];
@@ -225,16 +233,15 @@
 
 + (instancetype)msgWithCustom:(NSInteger)command param:(NSString *)param
 {
-    //    CustomElemCmd *cmd = [[CustomElemCmd alloc] initWith:command param:param];
-    //
-    //    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
-    //    elem.data = [cmd packToSendData];
-    //
-    //    TIMMessage *customMsg = [[TIMMessage alloc] init];
-    //    [customMsg addElem:elem];
-    //
-    //    return [[IMAMsg alloc] initWith:customMsg type:command];
-    return nil;
+    CustomElemCmd *cmd = [[CustomElemCmd alloc] initWith:command param:param];
+    
+    TIMCustomElem *elem = [[TIMCustomElem alloc] init];
+    elem.data = [cmd packToSendData];
+    
+    TIMMessage *customMsg = [[TIMMessage alloc] init];
+    [customMsg addElem:elem];
+    
+    return [[TSIMMsg alloc] initWithMsg:customMsg type:command];
 }
 
 + (instancetype)msgWithSound:(NSData *)data duration:(NSInteger)duration {
@@ -284,7 +291,7 @@
 }
 
 + (instancetype)msgWithEmptySound {
-
+    
     TIMSoundElem *elem = [[TIMSoundElem alloc] init];
     TIMMessage *msg = [[TIMMessage alloc] init];
     [msg addElem:elem];

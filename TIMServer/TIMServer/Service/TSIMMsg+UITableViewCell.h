@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSAttributedString *showLastMsgAttributedText;
 @property (nonatomic, strong) NSAttributedString *showDraftMsgAttributedText;
 
-- (UITableViewCell<TSElemAbleCell> *)tableView:(UITableView *)tableView style:(TSElemCellStyle)style;
+- (UITableViewCell<TSElemAbleCell> *)tableView:(UITableView *)tableView style:(TSElemCellStyle)style indexPath:(NSIndexPath *)indexPath;
 
 - (Class)showCellClass;
 

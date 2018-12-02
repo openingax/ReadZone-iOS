@@ -36,6 +36,8 @@
 #import "AnimationHeaders.h"
 #import "MBProgressHUD.h"
 
+#import "UIViewAdditions.h"
+
 /* Config */
 //#import "CommonLibraryConfig.h"
 
