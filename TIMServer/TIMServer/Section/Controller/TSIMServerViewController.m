@@ -105,7 +105,11 @@ TLSRefreshTicketListener
 - (void)didTIMServerExit {
     //    [self.inputView endEditing:YES];
     
+    [[TIMManager sharedInstance] removeMessageListener:[TSIMAPlatform sharedInstance].conversationMgr];
     [[TSIMAPlatform sharedInstance] saveToLocal];
+    
+    [[[TSIMAPlatform sharedInstance].conversationMgr conversationList] removeAllObjects];
+    [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
     
     TIMBackgroundParam *param = [[TIMBackgroundParam alloc] init];
     [param setC2cUnread:0];

@@ -7,11 +7,8 @@
 //
 
 #import "TSConversation.h"
+#import "IMAConversationShowAble.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface TSConversation (ShowAPIs)
+@interface TSConversation (ShowAPIs) <IMAConversationShowAble>
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -11,7 +11,7 @@
 #import "TSBaseView.h"
 
 //chat toolbar
-#define CHAT_BAR_MIN_H 36
+#define CHAT_BAR_MIN_H 32
 #define CHAT_BAR_MAX_H 72
 #define CHAT_BAR_HORIZONTAL_PADDING 8
 #define CHAT_BAR_VECTICAL_PADDING 5

@@ -39,7 +39,8 @@
     UIView *_videoRecordView;
 }
 
-//@property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
+@property(nonatomic,assign) NSInteger refreshIndex;
 
 @end
 
@@ -48,6 +49,7 @@
 - (instancetype)initWithUser:(TSIMUser *)user {
     if (self = [super init]) {
         _receiver = user;
+        self.refreshIndex = 0;
     }
     return self;
 }
@@ -59,13 +61,6 @@
     _receiver = user;
     
     [self setChatTitle];
-    //    __weak TSChatViewController *ws = self;
-    //
-    //    _receiverKVO = [FBKVOController controllerWithObserver:self];
-    //
-    //    [_receiverKVO observe:_receiver keyPaths:@[@"remark", @"nickName"] options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
-    //        [ws setChatTitle];
-    //    }];
     
     if (_conversation) {
         [_conversation releaseConversation];
@@ -76,25 +71,27 @@
 
 - (void)didLogin {
     
-    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     __weak TSChatViewController *ws = self;
     [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
-    _conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
-        [ws onReceiveNewMsg:imMsgList succ:succ];
-        [ws updateMessageList];
+    self.conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
+        __strong TSChatViewController *ss = ws;
+        [ss onReceiveNewMsg:imMsgList succ:succ];
+        [ss updateMessageList];
     };
-    
-    
-    //    });
 }
 
 - (void)conversationListUpdateComplete {
+    
+    if (self.refreshIndex == 1) return;
+    
+    __weak TSChatViewController *ws = self;
+    
     _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
     _messageList = _conversation.msgList;
     
-    __weak TSChatViewController *ws = self;
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
         [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+        ws.refreshIndex ++;
     }];
 }
 
@@ -138,14 +135,16 @@
 }
 
 - (void)onRefresh {
-    __weak TSChatViewController *ws = self;
+    
+    __weak typeof(self) weakSelf = self;
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         if (succ) {
-            [ws onLoadRecentMessage:imMsgList complete:YES scrollToBottom:YES];
+            [self onLoadRecentMessage:imMsgList complete:YES scrollToBottom:YES];
         }
         
-        [ws refreshCompleted];
-        [ws layoutHeaderRefreshView];
+        [strongSelf refreshCompleted];
+        [strongSelf layoutHeaderRefreshView];
     }];
 }
 
@@ -204,7 +203,10 @@
         __weak TSChatViewController *ws = self;
         DebugLog(@"will sendmessage");
         
+        __weak typeof(self) weakSelf = self;
         NSArray *newaddMsgs = [_conversation sendMessage:msg completion:^(NSArray *imamsglist, BOOL succ, int code) {
+            
+            __weak typeof(weakSelf) strongnSelf = weakSelf;
             
             DebugLog(@"sendmessage end");
             [ws updateOnSendMessage:imamsglist succ:succ];
@@ -214,15 +216,14 @@
                 if (code == 80001)
                 {
                     TSIMMsg *msg = [TSIMMsg msgWithCustom:TSIMMsgTypeSaftyTip];
-                    [self->_messageList addObject:msg];
+                    [strongnSelf.messageList addObject:msg];
                     
-                    [self showMsgs:@[msg]];
+                    [strongnSelf showMsgs:@[msg]];
                 } else if (code == 6004) {
-                    [self.view makeToast:@"登录已过期"];
+                    [strongnSelf.view makeToast:@"登录已过期"];
                     
-                    __weak TSChatViewController *ws = self;
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [ws dismissViewControllerAnimated:YES completion:nil];
+                        [strongnSelf dismissViewControllerAnimated:YES completion:nil];
                     });
                 }
             }
@@ -400,10 +401,10 @@
             
             if (scroll)
             {
+                __weak TSChatViewController *ws = self;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
-                    [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                        NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
+                        [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                 });
             }
         }

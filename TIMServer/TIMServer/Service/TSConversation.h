@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ImSDK/ImSDK.h>
+#import <IMMessageExt/IMMessageExt.h>
 #import "TSIMMsg.h"
 #import "TSSafeMutableArray.h"
 #import "CommonLibrary.h"
@@ -56,5 +57,11 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 - (void)replaceWillSendMsg:(TSIMMsg *)msg with:(TSIMMsg *)newMsg completion:(HandleMsgBlock)block;
 - (NSArray *)removeMsg:(TSIMMsg *)msg completion:(RemoveMsgBlock)block;
 - (NSArray *)revokeMsg:(TSIMMsg *)msg isRemote:(BOOL)isRemote completion:(RemoveMsgBlock)block;
+
+- (void)setReadAllMsg;
+- (NSInteger)unReadCount;
+
+- (void)setDraft:(TIMMessageDraft *)msgDraft;
+- (TIMMessageDraft *)getDraft;
 
 @end

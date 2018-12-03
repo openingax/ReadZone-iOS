@@ -248,6 +248,32 @@
 		5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33EC21B258D800A3C307 /* UIView+Glow.h */; };
 		5F9F33F121B2598800A3C307 /* ChatSoundRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9F33EF21B2598700A3C307 /* ChatSoundRecorder.h */; };
 		5F9F33F221B2598800A3C307 /* ChatSoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F33F021B2598700A3C307 /* ChatSoundRecorder.m */; };
+		5FA84AC721B5569800C53690 /* TSAPIUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84AC521B5569800C53690 /* TSAPIUser.h */; };
+		5FA84AC821B5569800C53690 /* TSAPIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AC621B5569800C53690 /* TSAPIUser.m */; };
+		5FA84ADF21B5576700C53690 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACA21B5576700C53690 /* AFSecurityPolicy.h */; };
+		5FA84AE021B5576700C53690 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACB21B5576700C53690 /* AFNetworkReachabilityManager.h */; };
+		5FA84AE121B5576700C53690 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACC21B5576700C53690 /* AFHTTPRequestOperation.h */; };
+		5FA84AE221B5576700C53690 /* AFDownloadRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACD21B5576700C53690 /* AFDownloadRequestOperation.h */; };
+		5FA84AE321B5576700C53690 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACE21B5576700C53690 /* AFHTTPRequestOperationManager.h */; };
+		5FA84AE421B5576700C53690 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ACF21B5576700C53690 /* AFURLSessionManager.h */; };
+		5FA84AE521B5576700C53690 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84AD021B5576700C53690 /* AFURLRequestSerialization.h */; };
+		5FA84AE621B5576700C53690 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84AD121B5576700C53690 /* AFURLConnectionOperation.h */; };
+		5FA84AE721B5576700C53690 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD221B5576700C53690 /* AFURLResponseSerialization.m */; };
+		5FA84AE821B5576700C53690 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD321B5576700C53690 /* AFHTTPSessionManager.m */; };
+		5FA84AE921B5576700C53690 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD421B5576700C53690 /* AFURLConnectionOperation.m */; };
+		5FA84AEA21B5576700C53690 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84AD521B5576700C53690 /* AFURLResponseSerialization.h */; };
+		5FA84AEB21B5576700C53690 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD621B5576700C53690 /* AFURLSessionManager.m */; };
+		5FA84AEC21B5576700C53690 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD721B5576700C53690 /* AFHTTPRequestOperationManager.m */; };
+		5FA84AED21B5576700C53690 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD821B5576700C53690 /* AFURLRequestSerialization.m */; };
+		5FA84AEE21B5576700C53690 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84AD921B5576700C53690 /* AFHTTPRequestOperation.m */; };
+		5FA84AEF21B5576700C53690 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84ADA21B5576700C53690 /* AFDownloadRequestOperation.m */; };
+		5FA84AF021B5576700C53690 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ADB21B5576700C53690 /* AFNetworking.h */; };
+		5FA84AF121B5576700C53690 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84ADC21B5576700C53690 /* AFNetworkReachabilityManager.m */; };
+		5FA84AF221B5576700C53690 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84ADD21B5576700C53690 /* AFSecurityPolicy.m */; };
+		5FA84AF321B5576700C53690 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA84ADE21B5576700C53690 /* AFHTTPSessionManager.h */; };
+		5FBABECC21B50AB3004288CB /* TSIMAPlatformHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBABECB21B50AB3004288CB /* TSIMAPlatformHeaders.h */; };
+		5FBABECE21B517F3004288CB /* IMAConversationShowAble.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBABECD21B517F3004288CB /* IMAConversationShowAble.h */; };
+		5FBABED021B51827004288CB /* IMAShowAble.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBABECF21B51827004288CB /* IMAShowAble.h */; };
 		5FBE396B21AB83AF009186F5 /* TSIMHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBE396921AB83AF009186F5 /* TSIMHost.h */; };
 		5FBE396C21AB83AF009186F5 /* TSIMHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE396A21AB83AF009186F5 /* TSIMHost.m */; };
 		5FBE466021ABECB9009186F5 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE463E21ABECB8009186F5 /* UIImage+WebP.m */; };
@@ -537,6 +563,32 @@
 		5F9F33EC21B258D800A3C307 /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
 		5F9F33EF21B2598700A3C307 /* ChatSoundRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSoundRecorder.h; sourceTree = "<group>"; };
 		5F9F33F021B2598700A3C307 /* ChatSoundRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSoundRecorder.m; sourceTree = "<group>"; };
+		5FA84AC521B5569800C53690 /* TSAPIUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAPIUser.h; sourceTree = "<group>"; };
+		5FA84AC621B5569800C53690 /* TSAPIUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAPIUser.m; sourceTree = "<group>"; };
+		5FA84ACA21B5576700C53690 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		5FA84ACB21B5576700C53690 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		5FA84ACC21B5576700C53690 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		5FA84ACD21B5576700C53690 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
+		5FA84ACE21B5576700C53690 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		5FA84ACF21B5576700C53690 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		5FA84AD021B5576700C53690 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		5FA84AD121B5576700C53690 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		5FA84AD221B5576700C53690 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		5FA84AD321B5576700C53690 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		5FA84AD421B5576700C53690 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		5FA84AD521B5576700C53690 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		5FA84AD621B5576700C53690 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		5FA84AD721B5576700C53690 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		5FA84AD821B5576700C53690 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		5FA84AD921B5576700C53690 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		5FA84ADA21B5576700C53690 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		5FA84ADB21B5576700C53690 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		5FA84ADC21B5576700C53690 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		5FA84ADD21B5576700C53690 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		5FA84ADE21B5576700C53690 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		5FBABECB21B50AB3004288CB /* TSIMAPlatformHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAPlatformHeaders.h; sourceTree = "<group>"; };
+		5FBABECD21B517F3004288CB /* IMAConversationShowAble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAConversationShowAble.h; sourceTree = "<group>"; };
+		5FBABECF21B51827004288CB /* IMAShowAble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAShowAble.h; sourceTree = "<group>"; };
 		5FBE396921AB83AF009186F5 /* TSIMHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMHost.h; sourceTree = "<group>"; };
 		5FBE396A21AB83AF009186F5 /* TSIMHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMHost.m; sourceTree = "<group>"; };
 		5FBE463E21ABECB8009186F5 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
@@ -879,6 +931,7 @@
 			isa = PBXGroup;
 			children = (
 				5F0317FA21B0D3010060B129 /* Contact */,
+				5FBABECB21B50AB3004288CB /* TSIMAPlatformHeaders.h */,
 				5F91495D2192D0D900148AAA /* TSConversationManager.h */,
 				5F91495E2192D0D900148AAA /* TSConversationManager.m */,
 				5F7C96B021A805E20017928F /* TSIMAPlatform.h */,
@@ -919,6 +972,8 @@
 			children = (
 				5F299EFF21AF71CB00A0F1A0 /* TSIMAConnectConversation.h */,
 				5F299F0021AF71CB00A0F1A0 /* TSIMAConnectConversation.m */,
+				5FBABECD21B517F3004288CB /* IMAConversationShowAble.h */,
+				5FBABECF21B51827004288CB /* IMAShowAble.h */,
 			);
 			path = TIMShow;
 			sourceTree = "<group>";
@@ -927,6 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				5F9148C9219283C400148AAA /* CommonLibrary.h */,
+				5FA84AC921B5576700C53690 /* AFNetworking */,
 				5F299F0F21AFBFB600A0F1A0 /* TZImagePickerController */,
 				5FBE463D21ABECB8009186F5 /* SDWebImage */,
 				5F7C967F21A7DF850017928F /* MBProgressHUD */,
@@ -1046,6 +1102,43 @@
 				5F91494A2192BF5500148AAA /* TSSafeMutableArray.m */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		5FA84AC421B5567600C53690 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5FA84AC521B5569800C53690 /* TSAPIUser.h */,
+				5FA84AC621B5569800C53690 /* TSAPIUser.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5FA84AC921B5576700C53690 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				5FA84ACA21B5576700C53690 /* AFSecurityPolicy.h */,
+				5FA84ACB21B5576700C53690 /* AFNetworkReachabilityManager.h */,
+				5FA84ACC21B5576700C53690 /* AFHTTPRequestOperation.h */,
+				5FA84ACD21B5576700C53690 /* AFDownloadRequestOperation.h */,
+				5FA84ACE21B5576700C53690 /* AFHTTPRequestOperationManager.h */,
+				5FA84ACF21B5576700C53690 /* AFURLSessionManager.h */,
+				5FA84AD021B5576700C53690 /* AFURLRequestSerialization.h */,
+				5FA84AD121B5576700C53690 /* AFURLConnectionOperation.h */,
+				5FA84AD221B5576700C53690 /* AFURLResponseSerialization.m */,
+				5FA84AD321B5576700C53690 /* AFHTTPSessionManager.m */,
+				5FA84AD421B5576700C53690 /* AFURLConnectionOperation.m */,
+				5FA84AD521B5576700C53690 /* AFURLResponseSerialization.h */,
+				5FA84AD621B5576700C53690 /* AFURLSessionManager.m */,
+				5FA84AD721B5576700C53690 /* AFHTTPRequestOperationManager.m */,
+				5FA84AD821B5576700C53690 /* AFURLRequestSerialization.m */,
+				5FA84AD921B5576700C53690 /* AFHTTPRequestOperation.m */,
+				5FA84ADA21B5576700C53690 /* AFDownloadRequestOperation.m */,
+				5FA84ADB21B5576700C53690 /* AFNetworking.h */,
+				5FA84ADC21B5576700C53690 /* AFNetworkReachabilityManager.m */,
+				5FA84ADD21B5576700C53690 /* AFSecurityPolicy.m */,
+				5FA84ADE21B5576700C53690 /* AFHTTPSessionManager.h */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		5FB30A5F219067520026A955 /* Controller */ = {
@@ -1177,6 +1270,7 @@
 		5FEDA4DE2188076200667A8A /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
+				5FA84AC421B5567600C53690 /* API */,
 				5F9148C8219283C400148AAA /* CommonLibrary */,
 				5FEDA52321882F8A00667A8A /* General */,
 				5F91493C2192B5AC00148AAA /* Service */,
@@ -1254,6 +1348,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA84AE521B5576700C53690 /* AFURLRequestSerialization.h in Headers */,
 				5F91493221928F9300148AAA /* TSUserManager.h in Headers */,
 				5F5D073521ACE7F2009B4A33 /* JSONKit.h in Headers */,
 				5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */,
@@ -1267,12 +1362,18 @@
 				5FBE466B21ABECB9009186F5 /* UIButton+WebCache.h in Headers */,
 				5F3E046F21A58F0A00E3EAB8 /* UIViewController+ADTransition.h in Headers */,
 				5F06F5E421B3E4B5004419DC /* MsgSendingTip.h in Headers */,
+				5FA84AF021B5576700C53690 /* AFNetworking.h in Headers */,
 				5F9148FE219283C500148AAA /* UIView+CustomAutoLayout.h in Headers */,
 				5FBE467A21ABECB9009186F5 /* SDWebImageOperation.h in Headers */,
+				5FA84AE621B5576700C53690 /* AFURLConnectionOperation.h in Headers */,
+				5FBABED021B51827004288CB /* IMAShowAble.h in Headers */,
 				5FBE466F21ABECB9009186F5 /* UIView+WebCacheOperation.h in Headers */,
+				5FA84AE321B5576700C53690 /* AFHTTPRequestOperationManager.h in Headers */,
+				5FA84AE121B5576700C53690 /* AFHTTPRequestOperation.h in Headers */,
 				5F299F4121AFBFB600A0F1A0 /* TZVideoPlayerController.h in Headers */,
 				5F7C96B221A805E20017928F /* TSIMAPlatform.h in Headers */,
 				5F7C969D21A7F7480017928F /* TSChatBaseTableViewCell.h in Headers */,
+				5FA84AC721B5569800C53690 /* TSAPIUser.h in Headers */,
 				5F15192B21A693FB00E83785 /* TSIMMsg+Draft.h in Headers */,
 				5F5D074321AD20D6009B4A33 /* TSRichChatViewController.h in Headers */,
 				5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */,
@@ -1297,7 +1398,9 @@
 				5FBE467D21ABECB9009186F5 /* SDWebImagePrefetcher.h in Headers */,
 				5FBE467621ABECB9009186F5 /* SDWebImageDecoder.h in Headers */,
 				5F299EFD21AF6C9000A0F1A0 /* IMALoginParam.h in Headers */,
+				5FBABECC21B50AB3004288CB /* TSIMAPlatformHeaders.h in Headers */,
 				5F299F3521AFBFB600A0F1A0 /* TZImagePickerController.h in Headers */,
+				5FA84AE421B5576700C53690 /* AFURLSessionManager.h in Headers */,
 				5F299F3C21AFBFB600A0F1A0 /* TZImageCropManager.h in Headers */,
 				5F9F33E621B2570B00A3C307 /* MenuItem.h in Headers */,
 				5F06F5CA21B3890E004419DC /* RefreshView.h in Headers */,
@@ -1311,6 +1414,7 @@
 				5F3E040921A57D2C00E3EAB8 /* TSChatInputAbleView.h in Headers */,
 				5F9148ED219283C500148AAA /* TSDebugMarco.h in Headers */,
 				5F9149572192C76400148AAA /* TSConversation+ShowAPIs.h in Headers */,
+				5FA84AEA21B5576700C53690 /* AFURLResponseSerialization.h in Headers */,
 				5F3E045B21A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.h in Headers */,
 				5F3E045921A58F0A00E3EAB8 /* FTUtils+NSObject.h in Headers */,
 				5F15190F21A65C2A00E83785 /* TSChatInputTextView.h in Headers */,
@@ -1318,11 +1422,13 @@
 				5F3E046021A58F0A00E3EAB8 /* UICollectionViewController+ADScaleTransition.h in Headers */,
 				5F9F33E021B256BA00A3C307 /* MenuButton.h in Headers */,
 				5F9147B62191777300148AAA /* TSAPITencent.h in Headers */,
+				5FA84AE221B5576700C53690 /* AFDownloadRequestOperation.h in Headers */,
 				5F06F5E121B3E016004419DC /* UIViewAdditions.h in Headers */,
 				5FBE467721ABECB9009186F5 /* SDWebImageManager.h in Headers */,
 				5F9147AE2191713000148AAA /* TSBaseNavigationController.h in Headers */,
 				5F9148F4219283C500148AAA /* NSData+Common.h in Headers */,
 				5F9F33DC21B2569400A3C307 /* ImageTitleButton.h in Headers */,
+				5FA84AF321B5576700C53690 /* AFHTTPSessionManager.h in Headers */,
 				5F299F4021AFBFB600A0F1A0 /* TZAssetModel.h in Headers */,
 				5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */,
 				5F7C96A521A7F77B0017928F /* TSChatTimeTipTableViewCell.h in Headers */,
@@ -1338,6 +1444,7 @@
 				5FC0A60921AE6BC300603B93 /* TSImageThumbPickerViewController.h in Headers */,
 				5F3E041A21A57FFD00E3EAB8 /* TSChatInputToolBar.h in Headers */,
 				5F3E03F621A5540600E3EAB8 /* TSScrollRefreshViewController.h in Headers */,
+				5FA84ADF21B5576700C53690 /* AFSecurityPolicy.h in Headers */,
 				5FBE467421ABECB9009186F5 /* UIImageView+HighlightedWebCache.h in Headers */,
 				5F06F5F221B41FDE004419DC /* TCVideoRecordViewController.h in Headers */,
 				5F9148FC219283C500148AAA /* PathHeaders.h in Headers */,
@@ -1399,12 +1506,14 @@
 				5F06F5FB21B43789004419DC /* TSExpendButton.h in Headers */,
 				5F15193421A69DB600E83785 /* TSIMAdapter.h in Headers */,
 				5F5D071F21ABFA94009B4A33 /* IMAPlatformConfig.h in Headers */,
+				5FA84AE021B5576700C53690 /* AFNetworkReachabilityManager.h in Headers */,
 				5F299F0D21AF7BCC00A0F1A0 /* TSIMAPlatform+Login.h in Headers */,
 				5F3E041621A57F9D00E3EAB8 /* TSChatInputPanel.h in Headers */,
 				5FBE467021ABECB9009186F5 /* SDWebImageHeaders.h in Headers */,
 				5F299F4721AFBFB600A0F1A0 /* TZProgressView.h in Headers */,
 				5F5D072821ACE790009B4A33 /* TSChatHeaders.h in Headers */,
 				5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */,
+				5FBABECE21B517F3004288CB /* IMAConversationShowAble.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,6 +1613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA84AE721B5576700C53690 /* AFURLResponseSerialization.m in Sources */,
 				5FC0A60A21AE6BC300603B93 /* TSImageThumbPickerViewController.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
 				5FBE467321ABECB9009186F5 /* SDImageCache.m in Sources */,
@@ -1514,6 +1624,7 @@
 				5F06F5C821B3890E004419DC /* RefreshView.m in Sources */,
 				5F91494C2192BF5500148AAA /* TSSafeMutableArray.m in Sources */,
 				5F3E045821A58F0A00E3EAB8 /* FTAnimation+UIView.m in Sources */,
+				5FA84AEB21B5576700C53690 /* AFURLSessionManager.m in Sources */,
 				5F15192221A6902400E83785 /* TSIMMsg+UITableViewCell.m in Sources */,
 				5F06F5D121B38A96004419DC /* ChatHeadRefreshView.m in Sources */,
 				5F9147C521917F9F00148AAA /* TSIMServerViewController.m in Sources */,
@@ -1524,11 +1635,13 @@
 				5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */,
 				5F9149582192C76400148AAA /* TSConversation+ShowAPIs.m in Sources */,
 				5F9149432192B6DA00148AAA /* NSDate+Common.m in Sources */,
+				5FA84AC821B5569800C53690 /* TSAPIUser.m in Sources */,
 				5F3E03F721A5540600E3EAB8 /* TSScrollRefreshViewController.m in Sources */,
 				5F3E046521A58F0A00E3EAB8 /* ADScaleTransition.m in Sources */,
 				5F06F5EF21B41FDE004419DC /* TCVideoRecordViewController.m in Sources */,
 				5F7C96A621A7F77B0017928F /* TSChatTimeTipTableViewCell.m in Sources */,
 				5F3E047721A5923400E3EAB8 /* TSIMManager.m in Sources */,
+				5FA84AE821B5576700C53690 /* AFHTTPSessionManager.m in Sources */,
 				5F06F5F021B41FDE004419DC /* TCNavigationController.m in Sources */,
 				5FBE396C21AB83AF009186F5 /* TSIMHost.m in Sources */,
 				5F7C96AA21A7F8860017928F /* TIMElem+ShowAPIs.m in Sources */,
@@ -1543,6 +1656,7 @@
 				5F3E045D21A58F0A00E3EAB8 /* FTUtils+NSObject.m in Sources */,
 				5F914904219283C500148AAA /* TSBaseViewController.m in Sources */,
 				5F299F3821AFBFB600A0F1A0 /* TZProgressView.m in Sources */,
+				5FA84AE921B5576700C53690 /* AFURLConnectionOperation.m in Sources */,
 				5FBE467921ABECB9009186F5 /* UIImageView+WebCache.m in Sources */,
 				5F9F33F221B2598800A3C307 /* ChatSoundRecorder.m in Sources */,
 				5F7C96B321A805E20017928F /* TSIMAPlatform.m in Sources */,
@@ -1555,14 +1669,18 @@
 				5F5D073121ACE7F2009B4A33 /* JSONKit.m in Sources */,
 				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
 				5F299F3721AFBFB600A0F1A0 /* TZPhotoPreviewController.m in Sources */,
+				5FA84AF221B5576700C53690 /* AFSecurityPolicy.m in Sources */,
 				5F9F33DF21B256BA00A3C307 /* MenuButton.m in Sources */,
 				5F299F3321AFBFB600A0F1A0 /* NSBundle+TZImagePicker.m in Sources */,
 				5FBE466021ABECB9009186F5 /* UIImage+WebP.m in Sources */,
 				5F299F3021AFBFB600A0F1A0 /* TZAssetCell.m in Sources */,
 				5F9148FF219283C500148AAA /* UIView+TSLayout.m in Sources */,
 				5F3E046421A58F0A00E3EAB8 /* UICollectionViewController+ADScaleTransition.m in Sources */,
+				5FA84AEC21B5576700C53690 /* AFHTTPRequestOperationManager.m in Sources */,
+				5FA84AED21B5576700C53690 /* AFURLRequestSerialization.m in Sources */,
 				5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */,
 				5F9147B72191777300148AAA /* TSAPITencent.m in Sources */,
+				5FA84AEF21B5576700C53690 /* AFDownloadRequestOperation.m in Sources */,
 				5F9148FB219283C500148AAA /* PathUtility.m in Sources */,
 				5F7C96AE21A7FE160017928F /* TSChatTableViewCell.m in Sources */,
 				5F5D073021ACE7F2009B4A33 /* NSMutableDictionary+Json.m in Sources */,
@@ -1577,6 +1695,7 @@
 				5F06F5F621B4203F004419DC /* UIImage+Additions.m in Sources */,
 				5F7C968421A7DFB30017928F /* MBProgressHUD.m in Sources */,
 				5F9F33DB21B2569400A3C307 /* ImageTitleButton.m in Sources */,
+				5FA84AF121B5576700C53690 /* AFNetworkReachabilityManager.m in Sources */,
 				5F06F5D721B3DCB1004419DC /* ChatImageBrowserView.m in Sources */,
 				5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */,
 				5F3E048621A5949900E3EAB8 /* UILabel+Common.m in Sources */,
@@ -1616,6 +1735,7 @@
 				5F3E041B21A57FFD00E3EAB8 /* TSChatInputToolBar.m in Sources */,
 				5F7C969E21A7F7480017928F /* TSChatBaseTableViewCell.m in Sources */,
 				5F3E046921A58F0A00E3EAB8 /* UIViewController+ADFlipTransition.m in Sources */,
+				5FA84AEE21B5576700C53690 /* AFHTTPRequestOperation.m in Sources */,
 				5F7C96A121A7F7670017928F /* TSRichChatTableViewCell.m in Sources */,
 				5F3E041721A57F9D00E3EAB8 /* TSChatInputPanel.m in Sources */,
 				5FBE466721ABECB9009186F5 /* UIImageView+HighlightedWebCache.m in Sources */,

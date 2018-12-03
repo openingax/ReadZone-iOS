@@ -75,7 +75,6 @@ static TSIMAPlatform *_sharedInstance = nil;
     //    userConfig.messageUpdateListener = self;//消息svr重写监听器（加载消息扩展包有效）
     //    userConfig.uploadProgressListener = self;//文件上传进度监听器
     //    userConfig.groupEventListener todo
-//    [[TIMManager sharedInstance] addMessageListener:self.conversationMgr];
     userConfig.messgeRevokeListener = self.conversationMgr;
     userConfig.friendshipListener = self;//关系链数据本地缓存监听器（加载好友扩展包、enableFriendshipProxy有效）
     userConfig.groupListener = self;//群组据本地缓存监听器（加载群组扩展包、enableGroupAssistant有效）

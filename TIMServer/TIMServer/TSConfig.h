@@ -15,4 +15,6 @@
 #define kTimIMQQAccountType     1
 #define kTimIMWXAccountType     2
 
+#define kBaseUrl @"https://ms.viomi.com.cn"
+
 #endif /* TSConfig_h */

@@ -13,6 +13,7 @@
 #import "TSChatHeaders.h"
 #import "TSIMAConnectConversation.h"
 #import "TSUserManager.h"
+#import "TSIMAPlatformHeaders.h"
 
 @interface TSConversationManager () <TIMMessageListener>
 
@@ -52,8 +53,17 @@
     _chattingConversation = nil;
 }
 
-- (void)asyncConversationList {
-    [self asyncUpdateConversationList];
+- (void)asyncUpdateConversationListComplete
+{
+    if (_refreshStyle == EIMARefresh_Wait) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self asyncConversationList];
+            self->_refreshStyle = EIMARefresh_None;
+        });
+    } else {
+        _refreshStyle = EIMARefresh_None;
+        [self updateOnLocalMsgComplete];
+    }
 }
 
 - (void)asyncUpdateConversationList {
@@ -84,15 +94,24 @@
     
     [self asyncUpdateConversationListComplete];
     [[NSNotificationCenter defaultCenter] postNotificationName:kAsyncUpdateConversationListNoti object:nil];
+    
+    if (unRead != _unReadMsgCount) {
+        self.unReadMsgCount = unRead;
+    }
+}
+
+- (void)asyncConversationList {
+    if (_refreshStyle == EIMARefresh_None) {
+        _refreshStyle = EIMARefresh_ING;
+        [self asyncUpdateConversationList];
+    } else {
+        _refreshStyle = EIMARefresh_Wait;
+    }
+    
 }
 
 - (void)asyncRefreshConversationList {
     
-}
-
-- (void)asyncUpdateConversationListComplete
-{
-    [self updateOnLocalMsgComplete];
 }
 
 - (void)updateOnAsyncLoadContactComplete
@@ -122,6 +141,15 @@
     if ([user isC2CType]) {
         conv = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[user userId]];
     }
+    
+    
+    self.unReadMsgCount -= [conv getUnReadMessageNum];
+    
+    [conv setReadMessage:nil succ:^{
+        
+    } fail:^(int code, NSString *msg) {
+        
+    }];
     
     if (conv) {
         TSConversation *temp = [[TSConversation alloc] initWithConversation:conv];
@@ -158,14 +186,12 @@
             return;
         }
         
-//        BOOL updateSucc = NO;
+        BOOL updateSucc = NO;
         
         for (int i = 0; i < [_conversationList count]; i++) {
             TSConversation *imaconv = [_conversationList objectAtIndex:i];
             NSString *imaconvReceiver = [imaconv receiver];
             if (imaconv.type == [conv getType] && [imaconvReceiver isEqualToString:[conv getReceiver]]) {
-                
-                NSLog(@"SA;DFJSADKADKAS;DFKA;DFJKA;DFKSA;D\n%ld", (long)imaconv.type);
                 
                 if (imaconv == _chattingConversation) {
                 
@@ -194,8 +220,27 @@
                             [_chattingConversation onReceiveNewMessage:imMsg];
                         }
                     }
+                } else {
+                    TIMElem *elem = [msg getElem:0];
+                    CustomElemCmd *elemCmd = [self isOnlineMsg:elem];
+                    if (!elemCmd) {
+                        imaconv.lastMessage = imMsg;
+                        
+                        if (![imMsg isMineMsg]) {
+                            self.unReadMsgCount ++;
+                        }
+                        
+                        [self updateOnChat:imaconv moveFromIndex:i];
+                    }
                 }
+                
+                updateSucc = YES;
+                break;
             }
+        }
+        
+        if (!updateSucc && _refreshStyle == EIMARefresh_None) {
+            
         }
     }
 }
@@ -211,6 +256,10 @@
         }
     }
     return nil;
+}
+
+- (void)updateOnChat:(TSConversation *)conv moveFromIndex:(NSUInteger)index {
+    
 }
 
 @end

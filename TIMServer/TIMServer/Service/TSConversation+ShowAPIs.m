@@ -8,8 +8,25 @@
 
 #import "TSConversation+ShowAPIs.h"
 #import "TSIMMsg.h"
+#import "TSIMMsg+UITableViewCell.h"
 
 @implementation TSConversation (ShowAPIs)
+
+- (Class)showCellClass {
+    return nil;
+}
+
+- (NSInteger)showHeight {
+    return 65;
+}
+
+- (NSString *)showReuseIndentifier {
+    return @"IMAConversation_ReuseIndentifier";
+}
+
+- (NSString *)showTitle {
+    return @"";
+}
 
 - (NSString *)lastMsg
 {
@@ -17,6 +34,13 @@
         [self asyncLoadLocalLastMsg:nil];
     }
     return [_lastMessage msgTip];
+}
+
+- (NSAttributedString *)lastAttributedMsg {
+    if (_lastMessage == nil) {
+        [self asyncLoadLocalLastMsg:nil];
+    }
+    return [_lastMessage showLastMsgAttributedText];
 }
 
 @end

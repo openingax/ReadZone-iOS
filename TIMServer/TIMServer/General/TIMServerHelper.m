@@ -26,7 +26,7 @@ NSString * TIMLocalizedString(NSString *key, NSString *comment)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSBundle *bundleForClass = [NSBundle bundleForClass:[self class]];
-        NSString *stringsBundlePath = [bundleForClass pathForResource:@"TIMServerLocalizable" ofType:@"bundle"];
+        NSString *stringsBundlePath = [bundleForClass pathForResource:@"TIMServer" ofType:@"bundle"];
         bundle = [NSBundle bundleWithPath:stringsBundlePath] ?: bundleForClass;
     });
     

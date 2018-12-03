@@ -17,7 +17,6 @@
 		5F06F5BF21B21FC1004419DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5BE21B21FC1004419DC /* AVFoundation.framework */; };
 		5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C021B21FD0004419DC /* CoreGraphics.framework */; };
 		5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */; };
-		5F299F4921AFCD0200A0F1A0 /* TSImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
 		5F372622219871F600A1078D /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F372621219871F600A1078D /* YMCommon.bundle */; };
@@ -63,7 +62,6 @@
 		5FBF588020F8842700CC15A2 /* RZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF587F20F8842700CC15A2 /* RZSettingViewController.m */; };
 		5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588220F8892900CC15A2 /* RZSettingCell.m */; };
 		5FBF588920F8BAF800CC15A2 /* RZAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */; };
-		5FC4EA2021899DDE007A487E /* TIMServerLocalizable.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */; };
 		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
@@ -108,8 +106,6 @@
 		5F06F5BE21B21FC1004419DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5F06F5C021B21FD0004419DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = TIMServer/IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
-		5F24824D2191311100AC07FD /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "Build/Products/Debug-iphonesimulator/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
-		5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TSImagePickerController.bundle; sourceTree = "<group>"; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
@@ -196,7 +192,6 @@
 		5FBF588220F8892900CC15A2 /* RZSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZSettingCell.m; sourceTree = "<group>"; };
 		5FBF588720F8BAF800CC15A2 /* RZAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZAboutViewController.h; sourceTree = "<group>"; };
 		5FBF588820F8BAF800CC15A2 /* RZAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZAboutViewController.m; sourceTree = "<group>"; };
-		5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServerLocalizable.bundle; sourceTree = "<group>"; };
 		5FD82CC2217E26BE00D1779A /* RZBaseWebKitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZBaseWebKitController.h; sourceTree = "<group>"; };
 		5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZBaseWebKitController.m; sourceTree = "<group>"; };
 		5FD82CCB217E27A200D1779A /* RZWebServerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZWebServerManager.h; sourceTree = "<group>"; };
@@ -558,9 +553,6 @@
 		5FC4EA2121899E28007A487E /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
-				5F24824D2191311100AC07FD /* TIMServer.framework */,
-				5F299F4821AFCD0200A0F1A0 /* TSImagePickerController.bundle */,
-				5FC4EA1F21899DDE007A487E /* TIMServerLocalizable.bundle */,
 				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
 			);
 			path = TIMServer;
@@ -1105,8 +1097,6 @@
 				5F403D4A2101EFDA00050FEB /* InfoPlist.strings in Resources */,
 				B2F14D4720C3FA98005DF168 /* AdobeSongStd-Light.otf in Resources */,
 				5F372622219871F600A1078D /* YMCommon.bundle in Resources */,
-				5FC4EA2021899DDE007A487E /* TIMServerLocalizable.bundle in Resources */,
-				5F299F4921AFCD0200A0F1A0 /* TSImagePickerController.bundle in Resources */,
 				B2F14D1D20C3EE81005DF168 /* LaunchScreen.storyboard in Resources */,
 				B2D2187220F3B97600331F4C /* RZInternalStrings.bundle in Resources */,
 				5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */,
@@ -1133,7 +1123,7 @@
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",

@@ -8,6 +8,7 @@
 
 #import "TSConversation.h"
 #import <IMMessageExt/IMMessageExt.h>
+#import "TSIMAPlatform.h"
 
 #define kSaftyWordsCode 80001
 
@@ -41,7 +42,10 @@
     _receiveMsg = conv.receiveMsg;
 }
 
-// 主要用于启动的时候加载本地数据
+/*
+ 主要用于启动的时候加载本地数据
+ 要在启动后能加载未读消息，需要在 TIMRefreshListener 代理的 onRefresh 方法里刷新数据
+ */
 - (void)asyncLoadLocalLastMsg:(CommonVoidBlock)block {
     NSArray *msgs = [_conversation getLastMsgs:20];
     NSMutableArray *lastMsgs = [[NSMutableArray alloc] init];
@@ -51,6 +55,10 @@
             if (imMsg) {
                 [lastMsgs addObject:[imMsg msgTip]];
                 self.lastMessage = imMsg;
+                if (block) {
+                    block();
+                }
+                return;
             }
         }
     }
@@ -114,7 +122,7 @@
         NSDate *followDate = [msg.msg timestamp];
         
         NSTimeInterval timeInterval = [followDate timeIntervalSinceDate:lastDate];
-#warning 设置时间提醒时间间隔
+
         if (timeInterval > 5 * 60) {
             TSIMMsg *newMsg = [TSIMMsg msgWithDate:followDate];
             return newMsg;
@@ -478,6 +486,18 @@
         return array;
     }
     return nil;
+}
+
+#pragma mark - 消息处理
+
+- (void)setReadAllMsg {
+    [TSIMAPlatform sharedInstance].conversationMgr.unReadMsgCount -= [_conversation getUnReadMessageNum];
+    [_conversation setReadMessage:nil succ:nil fail:nil];
+}
+
+- (NSInteger)unReadCount {
+    NSInteger count = [_conversation getUnReadMessageNum];
+    return count;
 }
 
 @end

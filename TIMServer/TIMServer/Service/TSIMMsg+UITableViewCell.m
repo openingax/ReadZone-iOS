@@ -290,8 +290,8 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
     if (self.type == TSIMMsgTypeText) {
         return UIEdgeInsetsMake(28, 20, 8, 20);
-    } else if (self.type == TSIMMsgTypeImage) {
-        return UIEdgeInsetsMake(28, kCellDefaultMargin + 4, 8, kCellDefaultMargin/2 + 3);
+    } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
+        return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
     } else {
         return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
     }
