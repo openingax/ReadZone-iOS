@@ -17,6 +17,7 @@
 		5F06F5BF21B21FC1004419DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5BE21B21FC1004419DC /* AVFoundation.framework */; };
 		5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C021B21FD0004419DC /* CoreGraphics.framework */; };
 		5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */; };
+		5F06F5FF21B58ACE004419DC /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06F5FD21B589A2004419DC /* IMFriendshipExt.framework */; };
 		5F2CF71D2119E58700B85798 /* RZLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */; };
 		5F2D8F74217FFA460045D8B6 /* asset in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D8F73217FFA460045D8B6 /* asset */; };
 		5F372622219871F600A1078D /* YMCommon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F372621219871F600A1078D /* YMCommon.bundle */; };
@@ -106,6 +107,7 @@
 		5F06F5BE21B21FC1004419DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5F06F5C021B21FD0004419DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = TIMServer/IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
+		5F06F5FD21B589A2004419DC /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMFriendshipExt.framework; path = TIMServer/IMFrameworks/IMFriendshipExt.framework; sourceTree = "<group>"; };
 		5F2CF71B2119E58600B85798 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CF71C2119E58700B85798 /* RZLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginTextField.swift; sourceTree = "<group>"; };
 		5F2D8F73217FFA460045D8B6 /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = asset; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F06F5FF21B58ACE004419DC /* IMFriendshipExt.framework in Frameworks */,
 				5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */,
 				5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */,
 				5F06F5BF21B21FC1004419DC /* AVFoundation.framework in Frameworks */,
@@ -607,6 +610,7 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F06F5FD21B589A2004419DC /* IMFriendshipExt.framework */,
 				5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */,
 				5F06F5C021B21FD0004419DC /* CoreGraphics.framework */,
 				5F06F5BE21B21FC1004419DC /* AVFoundation.framework */,

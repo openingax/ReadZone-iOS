@@ -18,6 +18,7 @@
 #import <Masonry/Masonry.h>
 #import "TSIMAPlatform.h"
 #import "TSImageThumbPickerViewController.h"
+#import <IMFriendshipExt/IMFriendshipExt.h>
 //#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 // 照片选择器
@@ -40,6 +41,8 @@
 }
 
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
+
+@property(nonatomic,assign) BOOL isValidFriend;
 @property(nonatomic,assign) NSInteger refreshIndex;
 
 @end
@@ -49,6 +52,8 @@
 - (instancetype)initWithUser:(TSIMUser *)user {
     if (self = [super init]) {
         _receiver = user;
+        
+        self.isValidFriend = NO;
         self.refreshIndex = 0;
     }
     return self;
@@ -71,6 +76,79 @@
 
 - (void)didLogin {
     
+    __weak typeof(self) weakSelf = self;
+    void(^succBlock)(NSArray *friends) = ^(NSArray *friends) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        BOOL isFriend = NO;
+        
+        for (TIMUserProfile *friend in friends) {
+            if ([friend.identifier isEqualToString:strongSelf->_receiver.userId]) {
+                isFriend = YES;
+                break;
+            }
+        }
+        
+        if (!isFriend) {
+            
+            TIMAddFriendRequest *addFriendReq = [[TIMAddFriendRequest alloc] init];
+            addFriendReq.identifier = _receiver.userId;
+            addFriendReq.remark = _receiver.remark;
+            
+            __weak typeof(self) weakSelf = self;
+            [[TIMFriendshipManager sharedInstance] addFriend:@[addFriendReq] succ:^(NSArray *friends) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                
+                strongSelf.isValidFriend = YES;
+                strongSelf.conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
+                strongSelf->_messageList = strongSelf->_conversation.msgList;
+                
+                __weak typeof(self) weakSelf = self;
+                [self.conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    
+                    [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+                    strongSelf.refreshIndex ++;
+                }];
+                
+            } fail:^(int code, NSString *msg) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                
+                // 6011，对方用户不存在，此时要去注册用户
+                [strongSelf.view makeToast:@"对方不是有效用户"];
+            }];
+            
+        } else {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            
+            strongSelf.isValidFriend = YES;
+            strongSelf->_conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
+            strongSelf->_messageList = strongSelf->_conversation.msgList;
+            
+            __weak typeof(self) weakSelf = self;
+            [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+                strongSelf.refreshIndex ++;
+            }];
+        }
+        
+    };
+    
+    void(^failBlock)(int code, NSString *msg) = ^(int code, NSString *message) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        [strongSelf.view makeToast:@"刷新列表失败"];
+    };
+    
+    [[TIMFriendshipManager sharedInstance] getFriendList:^(NSArray *friends) {
+        succBlock(friends);
+    } fail:^(int code, NSString *msg) {
+        failBlock(code, msg);
+    }];
+    
+    
+    
     __weak TSChatViewController *ws = self;
     [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
     self.conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
@@ -82,17 +160,58 @@
 
 - (void)conversationListUpdateComplete {
     
-    if (self.refreshIndex == 1) return;
+    if (self.refreshIndex == 1 || !self.isValidFriend) return;
     
-    __weak TSChatViewController *ws = self;
+//
+//    TSSafeMutableArray *convList = [TSIMAPlatform sharedInstance].conversationMgr.conversationList;
+//
+//
+//    for (int i=0; i < convList.count; i++) {
+//        TSConversation *conv = (TSConversation *)[convList objectAtIndex:i];
+//        if ([[conv.conversation getReceiver] isEqualToString:_receiver.userId]) {
+////            isFriend = YES;
+//            break;
+//        }
+//    }
     
-    _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
-    _messageList = _conversation.msgList;
-    
-    [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-        [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-        ws.refreshIndex ++;
-    }];
+//    if (!isFriend) {
+//
+//        TIMAddFriendRequest *addFriendReq = [[TIMAddFriendRequest alloc] init];
+//        addFriendReq.identifier = _receiver.userId;
+//        addFriendReq.remark = _receiver.remark;
+//
+//        TIMFriendshipManager *friendShipManager = [[TIMFriendshipManager alloc] init];
+//
+//        __weak typeof(self) weakSelf = self;
+//        [friendShipManager addFriend:@[addFriendReq] succ:^(NSArray *friends) {
+//            __strong typeof(weakSelf) strongSelf = weakSelf;
+//
+//            strongSelf.conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
+//            strongSelf->_messageList = strongSelf->_conversation.msgList;
+//
+//            __weak typeof(self) weakSelf = self;
+//            [self.conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+//                __strong typeof(weakSelf) strongSelf = weakSelf;
+//
+//                [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+//                strongSelf.refreshIndex ++;
+//            }];
+//
+//        } fail:^(int code, NSString *msg) {
+//
+//
+//        }];
+//    } else {
+        _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
+        _messageList = _conversation.msgList;
+
+        __weak typeof(self) weakSelf = self;
+        [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+            strongSelf.refreshIndex ++;
+        }];
+//    }
 }
 
 - (void)viewDidLoad {

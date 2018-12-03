@@ -141,7 +141,7 @@ static CGFloat marginHorizon = 24;
     NSString *password = self.passwordTF.text;
     NSString *authCode = self.authCodeTF.text;
     
-    if ([NSString isEmptyString:account] || [NSString isEmptyString:password] || [NSString isEmptyString:authCode]) return;
+    if ([NSString isEmptyString:account] || [NSString isEmptyString:password]) return;
     
     AVUser *newUser = [AVUser user];
     newUser.username = account;

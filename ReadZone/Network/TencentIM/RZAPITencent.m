@@ -20,9 +20,7 @@
     
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager GET:@"/sig" parameters:@{@"account" : account} progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:@"/sig" parameters:@{@"account" : account} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *sig = (NSDictionary *)responseObject;
         block(YES, [sig notNullObjectForKey:@"sig"]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

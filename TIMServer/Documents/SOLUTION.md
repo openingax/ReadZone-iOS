@@ -138,4 +138,26 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 ### 在 TIMServer 工程里集成小视频发送功能，在会话里发送小视频时，报了 `code: 6224 msg: lack ugc ext lib` 的错误
 
+原因分析：
+未正确添加 UGC 相关的 Framework
 
+解决方法：重新添加 IMUGCExt.framework 和 TXRTMPSDK.framework 后，能正常工作了。
+
+
+******************************************
+
+### 在添加新增好友功能模块时，跑工程时报了错
+``
+ld: warning: directory not found for option '-F/Users/xieliying/MyCode/ReadZone-iOS/TIMServer/Build/Products/Debug-iphonesimulator'
+ld: warning: directory not found for option '-F/Users/xieliying/MyCode/ReadZone-iOS/Build/Products/Debug-iphonesimulator'
+ld: warning: directory not found for option '-F/Users/xieliying/MyCode/ReadZone-iOS/IMFrameworks'
+Undefined symbols for architecture arm64:
+"_OBJC_CLASS_$_TIMAddFriendRequest", referenced from:
+objc-class-ref in TIMServer(TSChatViewController.o)
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+``
+
+原因分析： TIMAddFriendRequest 未定义，怀疑编译器没找到 TIMAddFriendRequest 相关的代码或 Framework
+
+解决方法：在 Linked Frameworks and Libraries 里添加 IMFriendshipExt.framework 库

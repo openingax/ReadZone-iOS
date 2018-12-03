@@ -16,7 +16,7 @@
 #define Develop 0
 #endif
 
-//#define kBaseURL @"http://www.xieliying.com:3000"
-#define kBaseURL @"http://192.168.10.128:3000"
+#define kBaseURL @"http://www.xieliying.com:3000"
+//#define kBaseURL @"http://192.168.0.100:3000"
 
 #endif /* RZConfig_h */

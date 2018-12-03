@@ -129,7 +129,7 @@
         [_tsManager showMsgVCWithParams:@{
                                           @"account": [RZUserManager shareInstance].account,
                                           @"sig": [RZUserManager shareInstance].sig,
-                                          @"receiver": @"86-18814098638"
+                                          @"receiver": @"13412341234"
                                           } controller:self];
     }
 }

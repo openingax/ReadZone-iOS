@@ -15,7 +15,15 @@
 #import "TSIMAPlatform.h"
 #import "TSIMManager.h"
 #import "IMAPlatformConfig.h"
+
+#import "TSAPIUser.h"
 //#import <TXLiteAVSDK_Professional/TXUGCBase.h>
+
+@interface TSManager ()
+
+@property(nonatomic,assign) TSAPIUser *userAPI;
+
+@end
 
 @implementation TSManager
 
@@ -38,6 +46,8 @@
     
     [TSIMManager shareInstance].navigationController = navVC;
     [TSIMManager shareInstance].topViewController = chatVC;
+    
+    
 }
 
 @end

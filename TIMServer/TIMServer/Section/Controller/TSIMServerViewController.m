@@ -179,6 +179,7 @@ TLSRefreshTicketListener
 
 - (void)OnRefreshTicketFail:(TLSErrInfo *)errInfo
 {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     _loginParam.tokenTime = 0;
     [self loginTIM];
 }
@@ -186,6 +187,7 @@ TLSRefreshTicketListener
 
 - (void)OnRefreshTicketTimeout:(TLSErrInfo *)errInfo
 {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self OnRefreshTicketFail:errInfo];
 }
 
