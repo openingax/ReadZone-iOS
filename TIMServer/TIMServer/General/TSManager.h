@@ -9,19 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+static NSString * kTIMLoginSuccEvent = @"kTIMLoginSuccEvent";
+static NSString * kTIMNewMsgEvent = @"kTIMNewMsgEvent";
 
 @interface TSManager : NSObject
-
 
 /**
  显示留言板视图控制器
 
- @param params 参数
+ @param deviceID 设备 did
  @param controller 宿主控制器
  */
-- (void)showMsgVCWithParams:(NSDictionary *)params controller:(UIViewController *)controller;
+- (void)showMsgVCWithAccount:(NSString *)account
+                    nickName:(NSString *)nickName
+                     faceURL:(NSString *)faceURL
+                    deviceID:(NSString *)deviceID
+                  controller:(UIViewController *)controller;
+- (void)loginTIM;
+- (void)logoutTIM;
 
 @end
-
-NS_ASSUME_NONNULL_END

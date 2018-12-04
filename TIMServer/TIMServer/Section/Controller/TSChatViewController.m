@@ -19,20 +19,22 @@
 #import "TSIMAPlatform.h"
 #import "TSImageThumbPickerViewController.h"
 #import <IMFriendshipExt/IMFriendshipExt.h>
+#import <IMGroupExt/IMGroupExt.h>
 //#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 // 照片选择器
-#import "TZImagePickerController.h"
-#import "TZPhotoPreviewController.h"
-#import "TZVideoPlayerController.h"
-#import "TZImageManager.h"
+#import <TZImagePickerController/TZImagePickerController.h>
+#import <TZImagePickerController/TZPhotoPreviewController.h>
+#import <TZImagePickerController/TZVideoPlayerController.h>
+#import <TZImagePickerController/TZImageManager.h>
+#import <TZImagePickerController/UIView+Layout.h>
 
 // UGC 小视频
 #import "TCVideoRecordViewController.h"
 #import "TCNavigationController.h"
 //#import "TCVideoPreviewViewController.h"
 
-@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate, MicroVideoRecordDelegate>
+@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
@@ -75,6 +77,63 @@
 }
 
 - (void)didLogin {
+    if ([_receiver.userId hasPrefix:@"Viomi"]) {
+        [self dealC2CConfig];
+    } else if ([_receiver.userId hasPrefix:@"viot"]) {
+        [self dealGroupConfig];
+    }
+    
+    __weak TSChatViewController *ws = self;
+    [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
+    _conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
+        
+        // 发送收到新消息的通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
+        
+        [ws onReceiveNewMsg:imMsgList succ:succ];
+        [ws updateMessageList];
+    };
+    
+}
+
+- (void)chatWithReceiver:(TSIMUser *)user {
+    
+    _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:user];
+    _conversation.delegate = self;
+    _messageList = _conversation.msgList;
+    [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+        NSMutableArray *list = [NSMutableArray arrayWithArray:imMsgList];
+        
+        // 有问题，应该有更好的处理方式，不要采取这种方式
+//        // 拉取历史数据时，移除未知信息
+//        BOOL hasUnknowItem = NO;
+//        TSIMMsg *unknowItem = [[TSIMMsg alloc] init];
+//        for (TSIMMsg *msg in list) {
+//            if (msg.type == TSIMMsgTypeUnknow) {
+//                hasUnknowItem = YES;
+//                unknowItem = msg;
+//                [list removeObject:msg];
+//            }
+//        }
+//
+//        if (hasUnknowItem) {
+//            [_messageList removeObject:unknowItem];
+//        }
+        
+        [self onLoadRecentMessage:list complete:succ scrollToBottom:YES];
+        self.refreshIndex ++;
+    }];
+}
+
+- (void)conversation:(TSConversation *)conv didReceiveNewMsg:(NSArray *)msgList succ:(BOOL)succ {
+    // 发送收到新消息的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
+    
+    [self onReceiveNewMsg:msgList succ:succ];
+    [self updateMessageList];
+}
+
+- (void)dealC2CConfig {
     
     __weak typeof(self) weakSelf = self;
     void(^succBlock)(NSArray *friends) = ^(NSArray *friends) {
@@ -95,21 +154,10 @@
             addFriendReq.identifier = _receiver.userId;
             addFriendReq.remark = _receiver.remark;
             
-            __weak typeof(self) weakSelf = self;
             [[TIMFriendshipManager sharedInstance] addFriend:@[addFriendReq] succ:^(NSArray *friends) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
                 
-                strongSelf.isValidFriend = YES;
-                strongSelf.conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
-                strongSelf->_messageList = strongSelf->_conversation.msgList;
-                
-                __weak typeof(self) weakSelf = self;
-                [self.conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-                    __strong typeof(weakSelf) strongSelf = weakSelf;
-                    
-                    [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-                    strongSelf.refreshIndex ++;
-                }];
+                self.isValidFriend = YES;
+                [self chatWithReceiver:_receiver];
                 
             } fail:^(int code, NSString *msg) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -119,20 +167,10 @@
             }];
             
         } else {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
             
-            strongSelf.isValidFriend = YES;
-            strongSelf->_conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
-            strongSelf->_messageList = strongSelf->_conversation.msgList;
-            
-            __weak typeof(self) weakSelf = self;
-            [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-                strongSelf.refreshIndex ++;
-            }];
+            self.isValidFriend = YES;
+            [self chatWithReceiver:_receiver];
         }
-        
     };
     
     void(^failBlock)(int code, NSString *msg) = ^(int code, NSString *message) {
@@ -146,72 +184,72 @@
     } fail:^(int code, NSString *msg) {
         failBlock(code, msg);
     }];
-    
-    
-    
-    __weak TSChatViewController *ws = self;
-    [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
-    self.conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
-        __strong TSChatViewController *ss = ws;
-        [ss onReceiveNewMsg:imMsgList succ:succ];
-        [ss updateMessageList];
-    };
 }
 
+- (void)dealGroupConfig {
+    
+    
+    void (^succBlock)(NSArray *arr) = ^(NSArray *arr) {
+        
+        if (self.isValidFriend) return;
+        
+        BOOL isGroupExit = NO;
+        for (TIMGroupInfo *group in arr) {
+            if ([group.group isEqualToString:_receiver.userId]) {
+                [[TSUserManager shareInstance] saveGroupID:group.group];
+                isGroupExit = YES;
+                break;
+            }
+        }
+        
+        // 存在这个群，就直接进入聊天
+        if (isGroupExit) {
+            
+            self.isValidFriend = YES;
+            [self chatWithReceiver:_receiver];
+            
+        } else {
+            // 列表里没有这个群，则先加入群
+            [[TIMGroupManager sharedInstance] joinGroup:[_receiver userId]  msg:@"" succ:^{
+                
+                self.isValidFriend = YES;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self chatWithReceiver:_receiver];
+                });
+                
+            } fail:^(int code, NSString *msg) {
+                
+                DebugLog(@"加群失败 code: %d msg: %@", code, msg);
+                
+            }];
+        }
+    };
+    
+    void (^failBlock)(int code, NSString *msg) = ^(int code, NSString *msg) {
+        
+    };
+    
+    [[TIMGroupManager sharedInstance] getGroupList:^(NSArray *arr) {
+        succBlock(arr);
+    } fail:^(int code, NSString *msg) {
+        failBlock(code, msg);
+    }];
+}
+
+
 - (void)conversationListUpdateComplete {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     if (self.refreshIndex == 1 || !self.isValidFriend) return;
     
-//
-//    TSSafeMutableArray *convList = [TSIMAPlatform sharedInstance].conversationMgr.conversationList;
-//
-//
-//    for (int i=0; i < convList.count; i++) {
-//        TSConversation *conv = (TSConversation *)[convList objectAtIndex:i];
-//        if ([[conv.conversation getReceiver] isEqualToString:_receiver.userId]) {
-////            isFriend = YES;
-//            break;
-//        }
-//    }
+    _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
+    _messageList = _conversation.msgList;
     
-//    if (!isFriend) {
-//
-//        TIMAddFriendRequest *addFriendReq = [[TIMAddFriendRequest alloc] init];
-//        addFriendReq.identifier = _receiver.userId;
-//        addFriendReq.remark = _receiver.remark;
-//
-//        TIMFriendshipManager *friendShipManager = [[TIMFriendshipManager alloc] init];
-//
-//        __weak typeof(self) weakSelf = self;
-//        [friendShipManager addFriend:@[addFriendReq] succ:^(NSArray *friends) {
-//            __strong typeof(weakSelf) strongSelf = weakSelf;
-//
-//            strongSelf.conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:strongSelf->_receiver];
-//            strongSelf->_messageList = strongSelf->_conversation.msgList;
-//
-//            __weak typeof(self) weakSelf = self;
-//            [self.conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-//                __strong typeof(weakSelf) strongSelf = weakSelf;
-//
-//                [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-//                strongSelf.refreshIndex ++;
-//            }];
-//
-//        } fail:^(int code, NSString *msg) {
-//
-//
-//        }];
-//    } else {
-        _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
-        _messageList = _conversation.msgList;
-
-        __weak typeof(self) weakSelf = self;
-        [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-            strongSelf.refreshIndex ++;
-        }];
-//    }
+    __weak TSChatViewController *ws = self;
+    [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
+        [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+        ws.refreshIndex ++;
+    }];
 }
 
 - (void)viewDidLoad {
@@ -234,7 +272,6 @@
     _tableView.delegate = nil;
     _tableView.dataSource = nil;
     [_receiverKVO unobserveAll];
-    _conversation.receiveMsg = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -287,7 +324,6 @@
 - (void)layoutRefreshScrollView {
     
     CGFloat kToolbarY = CGRectGetMaxY(self.view.bounds) - CHAT_BAR_MIN_H - 2*CHAT_BAR_VECTICAL_PADDING;
-    // do nothing
     _tableView.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMinY(self.view.bounds), CGRectGetWidth(self.view.bounds), kToolbarY);
 }
 
@@ -430,14 +466,16 @@
      */
     
     @try {
-        [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
-        [_tableView endUpdates];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (_messageList && _messageList.count > 0) {
+            [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
+            [_tableView endUpdates];
             
-            NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
-            [self->_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-        });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
+                [_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            });
+        }
     } @catch (NSException *exception) {
         NSLog(@"!!!!!!!!!!!\ninvalid number of rows in section: %@\n!!!!!!!!!!", exception);
     } @finally {
@@ -522,8 +560,8 @@
             {
                 __weak TSChatViewController *ws = self;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
-                        [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                    NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
+                    [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                 });
             }
         }

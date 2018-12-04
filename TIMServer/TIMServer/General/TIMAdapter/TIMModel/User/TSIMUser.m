@@ -30,7 +30,7 @@
 
 #pragma mark -
 
-- (NSURL *)showIconURL {
+- (NSURL *)showIconUrl {
     NSString *icon = [self icon];
     if ([NSString isEmpty:icon]) {
         return nil;
@@ -44,10 +44,16 @@
 }
 
 - (BOOL)isC2CType {
+//    if ([[self userId] hasPrefix:@"viot"]) {
+//        return NO;
+//    }
     return YES;
 }
 
 - (BOOL)isGroupType {
+//    if ([[self userId] hasPrefix:@"viot"]) {
+//        return YES;
+//    }
     return NO;
 }
 

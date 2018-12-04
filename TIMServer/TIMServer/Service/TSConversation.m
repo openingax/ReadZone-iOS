@@ -98,7 +98,6 @@
 - (void)onReceiveNewMessage:(TSIMMsg *)msg {
     NSMutableArray *array = [NSMutableArray array];
     
-#warning 暂时屏蔽时间提示
     TSIMMsg *timeTip = [self timeTipOnNewMessage:msg];
     // 时间提示
     if (timeTip) {
@@ -108,11 +107,9 @@
     [array addObject:msg];
     
     [_msgList addObjectsFromArray:array];
-    if (_receiveMsg) {
-        _receiveMsg(array, YES);
-    } else {
-        // 如果 _receiveMsg 不存在，检查用户登录状态
-        [[TIMManager sharedInstance] getLoginStatus];
+    
+    if ([_delegate respondsToSelector:@selector(conversation:didReceiveNewMsg:succ:)]) {
+        [_delegate conversation:self didReceiveNewMsg:array succ:YES];
     }
 }
 

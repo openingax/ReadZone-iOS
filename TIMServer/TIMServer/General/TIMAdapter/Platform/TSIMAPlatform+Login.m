@@ -10,6 +10,8 @@
 #import "TSDebugMarco.h"
 #import "TIMServerHelper.h"
 #import "TSIMManager.h"
+#import "TSUserManager.h"
+#import "TSRichChatViewController.h"
 
 @implementation TSIMAPlatform (Login)
 
@@ -48,9 +50,11 @@
         if (code == kEachKickErrorCode) {
             [ws offlineKicked:param succ:succ fail:fail];
         } else {
+            
             if (fail) {
                 fail(code, msg);
             }
+            
         }
         
     }];

@@ -140,6 +140,8 @@
     TIMConversation *conv = nil;
     if ([user isC2CType]) {
         conv = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:[user userId]];
+    } else {
+        conv = [[TIMManager sharedInstance] getConversation:TIM_GROUP receiver:[user userId]];
     }
     
     

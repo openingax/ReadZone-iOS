@@ -8,6 +8,7 @@
 
 #import "TSIMAPlatform.h"
 #import "TSIMAPlatform+IMSDKCallBack.h"
+#import "TSUserManager.h"
 
 @implementation TSIMAPlatform
 

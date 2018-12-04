@@ -15,6 +15,10 @@
 #define kTimIMQQAccountType     1
 #define kTimIMWXAccountType     2
 
+#ifdef DEBUG
 #define kBaseUrl @"https://ms.viomi.com.cn"
+#else
+#define kBaseUrl @"https://ms.viomi.com.cn"
+#endif
 
 #endif /* TSConfig_h */

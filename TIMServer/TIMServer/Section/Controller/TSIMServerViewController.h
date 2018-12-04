@@ -9,8 +9,12 @@
 /* 服务层，只用于初始化 SDK 与登录相关的事务 */
 
 #import "TSTableRefreshViewController.h"
+#import "TSManager.h"
+#import "TSUserManager.h"
 
 @interface TSIMServerViewController : TSTableRefreshViewController
+
+- (void)loginNotiFromRN;
 
 - (void)didLogin;
 - (void)didTIMServerExit;

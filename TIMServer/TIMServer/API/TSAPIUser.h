@@ -6,9 +6,9 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
-#import <YMCommon/YMCommon.h>
+#import <Foundation/Foundation.h>
 
-@interface TSAPIUser : YMCBaseAPIManager
+@interface TSAPIUser : NSObject
 
 - (void)registerWithAccount:(NSString *)account
                    userIcon:(NSString *)userIcon

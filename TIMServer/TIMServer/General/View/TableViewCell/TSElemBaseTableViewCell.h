@@ -12,11 +12,12 @@
 #import "TSIMUser.h"
 #import "CommonLibrary.h"
 #import "TSIMMsg+UITableViewCell.h"
-#import "SDWebImageHeaders.h"
+#import <SDWebImage/UIButton+WebCache.h>
 #import "TIMServerHelper.h"
 #import "TSChatMsgShowHeader.h"
 #import "TSIMAPlatform.h"
 #import "TIMElem+ShowDescription.h"
+#import "IMAShowAble.h"
 
 @interface TSElemBaseTableViewCell : UITableViewCell <TSElemAbleCell>
 {

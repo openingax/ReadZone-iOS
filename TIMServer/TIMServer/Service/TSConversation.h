@@ -13,11 +13,17 @@
 #import "TSSafeMutableArray.h"
 #import "CommonLibrary.h"
 
-@class TSIMUser;
+@class TSIMUser, TSConversation;
 
 typedef void(^HandleMsgBlock)(NSArray *imMsgList, BOOL succ);
 typedef void (^HandleMsgCodeBlock)(NSArray *imamsgList, BOOL succ, int code);
 typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock removeingAction);
+
+@protocol TSConversationDelegate <NSObject>
+
+- (void)conversation:(TSConversation *)conv didReceiveNewMsg:(NSArray *)msgList succ:(BOOL)succ;
+
+@end
 
 @interface TSConversation : NSObject
 {
@@ -26,6 +32,8 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
     TSSafeMutableArray  *_msgList;
     TSIMMsg             *_lastMessage;
 }
+
+@property(nonatomic,weak) id <TSConversationDelegate> delegate;
 
 @property(nonatomic,strong) TIMConversation *conversation;
 @property(nonatomic,readonly) TSSafeMutableArray *msgList;

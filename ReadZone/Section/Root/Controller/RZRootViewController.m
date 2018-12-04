@@ -126,12 +126,13 @@
         _tsManager = [[TSManager alloc] init];
     }
     if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
-        [_tsManager showMsgVCWithParams:@{
-                                          @"account": [RZUserManager shareInstance].account,
-                                          @"sig": [RZUserManager shareInstance].sig,
-                                          @"receiver": @"13412341234"
-                                          } controller:self];
+//        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account deviceID:@"viot85396846" controller:self];
+        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_tsManager loginTIM];
+    });
 }
 
 - (void)moreAction {

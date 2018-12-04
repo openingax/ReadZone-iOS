@@ -29,7 +29,6 @@
 
 /* UIView */
 #import "UIViewController+Layout.h"
-#import "UIView+Layout.h"
 #import "UIView+TSLayout.h"
 #import "UIView+Toast.h"
 #import "UIView+CustomAutoLayout.h"

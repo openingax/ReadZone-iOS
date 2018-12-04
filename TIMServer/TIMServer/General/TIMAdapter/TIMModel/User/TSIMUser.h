@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <ImSDK/ImSDK.h>
+#import "IMAShowAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TSIMUser : NSObject
+@interface TSIMUser : NSObject <IMAShowAble>
 {
 @protected
     NSString *_userId;

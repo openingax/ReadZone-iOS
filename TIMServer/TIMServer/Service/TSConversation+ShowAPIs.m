@@ -9,6 +9,7 @@
 #import "TSConversation+ShowAPIs.h"
 #import "TSIMMsg.h"
 #import "TSIMMsg+UITableViewCell.h"
+#import "TSUserManager.h"
 
 @implementation TSConversation (ShowAPIs)
 
@@ -25,6 +26,10 @@
 }
 
 - (NSString *)showTitle {
+//    NSString *receive = [_conversation getReceiver];
+//    TIMConversationType type = self.type;
+//    TSIMUser *user = nil;
+
     return @"";
 }
 

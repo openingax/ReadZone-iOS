@@ -26,6 +26,7 @@
 {
     
 @protected
+    
     TSConversation                  *_conversation;
     TSIMUser                        *_receiver;
     

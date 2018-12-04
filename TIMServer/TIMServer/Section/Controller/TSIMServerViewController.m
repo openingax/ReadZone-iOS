@@ -10,11 +10,11 @@
 #import "TSConfig.h"
 #import <ImSDK/ImSDK.h>
 #import "TSAPITencent.h"
-#import "TSUserManager.h"
 #import "UIView+Toast.h"
 #import "TSConversationManager.h"
 #import "TSIMMsg.h"
-
+#import "TSAPIUser.h"
+#import <YMCommon/NSDictionary+ymc.h>
 
 // Manager
 #import "TIMServerHelper.h"
@@ -38,6 +38,7 @@ TLSRefreshTicketListener
 @property(nonatomic,assign) BOOL hasInitSDK;
 @property(nonatomic,assign) BOOL hasLogin;
 @property(nonatomic,strong) TLSUserInfo *userInfo;
+@property(nonatomic,strong) TSAPIUser *userAPI;
 
 @end
 
@@ -54,32 +55,6 @@ TLSRefreshTicketListener
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    BOOL isAutoLogin = [TSIMAPlatform isAutoLogin];
-    if (isAutoLogin) {
-        _loginParam = [IMALoginParam loadFromLocal];
-    } else {
-        _loginParam = [[IMALoginParam alloc] init];
-    }
-    
-    if (isAutoLogin && [_loginParam isVailed]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self autoLogin];
-        });
-    } else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self loginTIM];
-        });
-    }
-    
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
-    
-    // 模拟 App 进入前台的动作
-    [[TIMManager sharedInstance] doForeground:^{
-        
-    } fail:^(int code, NSString *msg) {
-        
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -122,22 +97,86 @@ TLSRefreshTicketListener
 
 #pragma mark - Login
 
-- (void)autoLogin {
-    if ([_loginParam isExpired]) {
-        // 刷新票据
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[TLSHelper getInstance] TLSRefreshTicket:_loginParam.identifier andTLSRefreshTicketListener:self];
+- (void)loginNotiFromRN {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    BOOL isAutoLogin = [TSIMAPlatform isAutoLogin];
+    if (isAutoLogin) {
+        _loginParam = [IMALoginParam loadFromLocal];
     } else {
-        [self loginTIM];
+        _loginParam = [[IMALoginParam alloc] init];
     }
+    
+    if (isAutoLogin && [_loginParam isVailed]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self autoLogin];
+        });
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self loginTIM];
+        });
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
+    
+    // 模拟 App 进入前台的动作
+    [[TIMManager sharedInstance] doForeground:^{
+        
+    } fail:^(int code, NSString *msg) {
+        
+    }];
 }
 
-- (void)loginIMSDK {
-    
+- (void)autoLogin {
+//    if ([_loginParam isExpired]) {
+//        // 刷新票据
+//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        [[TLSHelper getInstance] TLSRefreshTicket:_loginParam.identifier andTLSRefreshTicketListener:self];
+//    } else {
+        [self loginTIM];
+//    }
 }
 
 - (void)loginTIM {
     
+    // 这里加多一步判断，如果 userSig 不存在，就先获取 userSig 后再登录
+    if ([NSString isEmpty:[TSUserManager shareInstance].userSig]) {
+        if (!self.userAPI) {
+            self.userAPI = [[TSAPIUser alloc] init];
+        }
+        
+        __weak typeof(self) weakSelf = self;
+        void (^succBlock)(BOOL isSucc, NSString *message, NSDictionary *dict) = ^(BOOL isSucc, NSString *message, NSDictionary *dict) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (isSucc) {
+//                int code = [[dict notNullObjectForKey:@"code"] intValue];
+                
+                __weak typeof(self) weakSelf = self;
+                [self.userAPI loginWithAccount:[TSUserManager shareInstance].account complete:^(BOOL isSuccess, NSString *message, NSDictionary *data) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    
+                    if (isSuccess) {
+                        NSString *userSig = [[data notNullObjectForKey:@"result"] notNullObjectForKey:@"userSign"];
+                        [[TSUserManager shareInstance] saveUserSig:userSig];
+                        [strongSelf login];
+                    }
+                }];
+                
+            } else {
+                [strongSelf.view makeToast:@"登录失败"];
+            }
+        };
+        
+        [self.userAPI registerWithAccount:[TSUserManager shareInstance].account userIcon:nil complete:^(BOOL isSucc, NSString *message, NSDictionary *dict) {
+            succBlock(isSucc, message, dict);
+        }];
+        
+    } else {
+        [self login];
+    }
+}
+
+- (void)login {
     TIMLoginParam *param = [[TIMLoginParam alloc] init];
     param.identifier = [NSString stringWithFormat:@"%@", [TSUserManager shareInstance].account];
     
@@ -153,12 +192,21 @@ TLSRefreshTicketListener
         if ([self respondsToSelector:@selector(didLogin)]) {
             [self didLogin];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent object:nil userInfo:@{@"status": @(YES), @"msg": @""}];
         
     } fail:^(int code, NSString *msg) {
-        [TSAlertManager showMessage:[NSString stringWithFormat:@"留言板登录失败\n%d: %@", code, msg]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self dismissViewControllerAnimated:YES completion:nil];
-        });
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (code == 70013) {
+            [[TSUserManager shareInstance] deleteUserSig];
+            [self loginNotiFromRN];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent object:nil userInfo:@{@"status": @(NO), @"msg": [NSString stringWithFormat:@"code: %d  msg: %@", code, msg]}];
+            [TSAlertManager showMessage:[NSString stringWithFormat:@"留言板登录失败\n%d: %@", code, msg]];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
     }];
 }
 

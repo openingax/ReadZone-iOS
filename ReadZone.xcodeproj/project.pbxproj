@@ -49,6 +49,8 @@
 		5F9F339D21B146CE00A3C307 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F339C21B146CE00A3C307 /* Accelerate.framework */; };
 		5F9F33D621B14D1E00A3C307 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F33D521B14D1D00A3C307 /* libresolv.tbd */; };
 		5FA3BCFF20F6F31A00A1958A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */; };
+		5FA84AF721B6098A00C53690 /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA84AF621B6098A00C53690 /* TIMServer.framework */; };
+		5FA84B0321B63D3A00C53690 /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA84B0221B63D3A00C53690 /* IMGroupExt.framework */; };
 		5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93220F4AA8D00AEBCF0 /* RZUserTextField.m */; };
 		5FB6B93620F4B0B000AEBCF0 /* RZUserButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB6B93520F4B0B000AEBCF0 /* RZUserButton.m */; };
 		5FBAEA22211333AD0002C2B5 /* QCMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAEA21211333AD0002C2B5 /* QCMethod.m */; };
@@ -164,6 +166,9 @@
 		5F9F33D521B14D1D00A3C307 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		5F9F33D721B14DBE00A3C307 /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = TIMServer/IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
 		5FA3BCFE20F6F31A00A1958A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FA84AF621B6098A00C53690 /* TIMServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMServer.framework; path = "Build/Products/Debug-iphoneos/TIMServer.framework"; sourceTree = SOURCE_ROOT; };
+		5FA84B0221B63D3A00C53690 /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMGroupExt.framework; path = TIMServer/IMFrameworks/IMGroupExt.framework; sourceTree = "<group>"; };
+		5FA84B6621B6A31800C53690 /* libPods-TIMServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-TIMServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB40C38218B005700E464DE /* CategoryMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryMarco.h; sourceTree = "<group>"; };
 		5FB6B92C20F4A91D00AEBCF0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5FB6B93120F4AA8D00AEBCF0 /* RZUserTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZUserTextField.h; sourceTree = "<group>"; };
@@ -268,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA84B0321B63D3A00C53690 /* IMGroupExt.framework in Frameworks */,
 				5F06F5FF21B58ACE004419DC /* IMFriendshipExt.framework in Frameworks */,
 				5F06F5C321B21FED004419DC /* TXRTMPSDK.framework in Frameworks */,
 				5F06F5C121B21FD0004419DC /* CoreGraphics.framework in Frameworks */,
@@ -281,6 +287,7 @@
 				5F9F33D621B14D1E00A3C307 /* libresolv.tbd in Frameworks */,
 				5F9F331621B0FA6200A3C307 /* libz.tbd in Frameworks */,
 				5F9F331421B0FA4F00A3C307 /* libc++.tbd in Frameworks */,
+				5FA84AF721B6098A00C53690 /* TIMServer.framework in Frameworks */,
 				5F9F32B421B0E32600A3C307 /* TLSSDK.framework in Frameworks */,
 				5F9F32B521B0E32600A3C307 /* IMMessageExt.framework in Frameworks */,
 				5F9F32B621B0E32600A3C307 /* QALSDK.framework in Frameworks */,
@@ -556,6 +563,7 @@
 		5FC4EA2121899E28007A487E /* TIMServer */ = {
 			isa = PBXGroup;
 			children = (
+				5FA84AF621B6098A00C53690 /* TIMServer.framework */,
 				5FEDA52021882F5800667A8A /* TIMServer.bundle */,
 			);
 			path = TIMServer;
@@ -610,6 +618,8 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FA84B6621B6A31800C53690 /* libPods-TIMServer.a */,
+				5FA84B0221B63D3A00C53690 /* IMGroupExt.framework */,
 				5F06F5FD21B589A2004419DC /* IMFriendshipExt.framework */,
 				5F06F5C221B21FED004419DC /* TXRTMPSDK.framework */,
 				5F06F5C021B21FD0004419DC /* CoreGraphics.framework */,
@@ -1119,17 +1129,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking-framework/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD-framework/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry-framework/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage-framework/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController-framework/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
@@ -1138,17 +1148,17 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
@@ -1408,6 +1418,7 @@
 					"$(PROJECT_DIR)/IMFrameworks",
 					"$(PROJECT_DIR)/TIMServer/IMFrameworks",
 					"$(PROJECT_DIR)/ReadZone/Vendor/YMCommon",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
@@ -1415,7 +1426,11 @@
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/IMFrameworks",
+				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
@@ -1453,6 +1468,7 @@
 					"$(PROJECT_DIR)/YMFraneworks",
 					"$(PROJECT_DIR)/TIMServer/IMFrameworks",
 					"$(PROJECT_DIR)/ReadZone/Vendor/YMCommon",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "${SRCROOT}/ReadZone/RZPrefixHeader.pch";
@@ -1460,7 +1476,10 @@
 				INFOPLIST_FILE = ReadZone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/IMFrameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
