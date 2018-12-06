@@ -356,14 +356,12 @@
     
     [_msg getSender];
     
-    [_icon sd_setImageWithURL:[user showIconUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
+    [_icon sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
     
     if (_remarkTip) {
-//        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
-        _remarkTip.hidden = YES;
+        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
         _remarkTip.font = [_msg tipFont];
         _remarkTip.textColor = [_msg tipTextColor];
-        _remarkTip.text = [user showTitle];
     }
     
     [self configContent];

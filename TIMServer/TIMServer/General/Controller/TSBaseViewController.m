@@ -7,8 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
-#import "UIViewController+Layout.h"
 #import "TSDevice.h"
+#import <objc/runtime.h>
 
 @interface TSBaseViewController ()
 
@@ -26,7 +26,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGB(247, 247, 247);
+    self.view.backgroundColor = RGB(245, 245, 245);
+    
+//    u_int count;
+//
+//    Method *methodList = class_copyMethodList([self class], &count);
+//
+//    NSMutableArray *methodsArray = [[NSMutableArray alloc] init];
+//
+//    for (int i=0; i < count; i++) {
+//        Method temp = methodList[i];
+//        IMP imp = method_getImplementation(temp);
+//        SEL name_f = method_getName(temp);
+//        const char* name_s =sel_getName(method_getName(temp));
+//        int arguments = method_getNumberOfArguments(temp);
+//        const char* encoding =method_getTypeEncoding(temp);
+//        NSLog(@"方法名：%@,参数个数：%d,编码方式：%@",[NSString stringWithUTF8String:name_s],
+//              arguments,
+//              [NSString stringWithUTF8String:encoding]);
+//        [methodsArray addObject:[NSString stringWithUTF8String:name_s]];
+//
+//        NSLog(@"方法%d: %@", i, methodsArray[i]);
+//    }
+    
+//    free(methodList);
     
     [self addOwnViews];
     [self configOwnViews];

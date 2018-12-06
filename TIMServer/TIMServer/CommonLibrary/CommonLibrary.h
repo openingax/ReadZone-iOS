@@ -10,7 +10,9 @@
 #define CommonLibrary_h
 
 /* Vendor */
-#import "NSObject+FBKVOController.h"
+#import <KVOController.h>
+#import <NSObject+FBKVOController.h>
+#import <libextobjc/EXTScope.h>
 
 /* Debug */
 #import "TSDebugMarco.h"

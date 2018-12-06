@@ -68,7 +68,6 @@
 		5FD82CC4217E26BE00D1779A /* RZBaseWebKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CC3217E26BE00D1779A /* RZBaseWebKitController.m */; };
 		5FD82CCD217E27A200D1779A /* RZWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CCC217E27A200D1779A /* RZWebServerManager.m */; };
 		5FD82CD2217E2EFB00D1779A /* RZDevelopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD82CD1217E2EFB00D1779A /* RZDevelopViewController.m */; };
-		5FE12A8021B0E2C900364130 /* TIMServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A7F21B0E2C900364130 /* TIMServer.framework */; };
 		5FE12A8221B0E2E100364130 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8121B0E2E100364130 /* ImSDK.framework */; };
 		5FE12A8421B0E2EF00364130 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8321B0E2EF00364130 /* libsqlite3.tbd */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
@@ -293,7 +292,6 @@
 				5F9F32B621B0E32600A3C307 /* QALSDK.framework in Frameworks */,
 				5FE12A8421B0E2EF00364130 /* libsqlite3.tbd in Frameworks */,
 				5FE12A8221B0E2E100364130 /* ImSDK.framework in Frameworks */,
-				5FE12A8021B0E2C900364130 /* TIMServer.framework in Frameworks */,
 				0F7BCD197C382806D17B65DB /* Pods_ReadZone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1057,7 +1055,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RZ;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "谢立颖";
 				TargetAttributes = {
 					B2F14D0C20C3EE7F005DF168 = {
@@ -1130,39 +1128,39 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking-framework/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/KVOController-framework/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD-framework/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry-framework/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage-framework/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController-framework/TZImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/libextobjc-framework/libextobjc.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
-				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast/Toast.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
-				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libextobjc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1430,7 +1428,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/IMFrameworks",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";

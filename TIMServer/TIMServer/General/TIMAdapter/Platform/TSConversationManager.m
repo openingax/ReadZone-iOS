@@ -14,6 +14,7 @@
 #import "TSIMAConnectConversation.h"
 #import "TSUserManager.h"
 #import "TSIMAPlatformHeaders.h"
+#import "TSManager.h"
 
 @interface TSConversationManager () <TIMMessageListener>
 
@@ -155,13 +156,13 @@
     
     if (conv) {
         TSConversation *temp = [[TSConversation alloc] initWithConversation:conv];
-//        NSInteger index = [_conversationList indexOfObject:temp];
-//        if (index >= 0 && index < _conversationList.count) {
-//            TSConversation *ret = [_conversationList objectAtIndex:index];
-//            _chattingConversation = ret;
-//            _chattingConversation.lastMessage = _chattingConversation.lastMessage;
-//            return ret;
-//        }
+        //        NSInteger index = [_conversationList indexOfObject:temp];
+        //        if (index >= 0 && index < _conversationList.count) {
+        //            TSConversation *ret = [_conversationList objectAtIndex:index];
+        //            _chattingConversation = ret;
+        //            _chattingConversation.lastMessage = _chattingConversation.lastMessage;
+        //            return ret;
+        //        }
         
         for (int i=0; i<_conversationList.count; i++) {
             TSConversation *ret = [_conversationList objectAtIndex:i];
@@ -193,46 +194,59 @@
         for (int i = 0; i < [_conversationList count]; i++) {
             TSConversation *imaconv = [_conversationList objectAtIndex:i];
             NSString *imaconvReceiver = [imaconv receiver];
-            if (imaconv.type == [conv getType] && [imaconvReceiver isEqualToString:[conv getReceiver]]) {
+            //            if (imaconv.type == [conv getType] && [imaconvReceiver isEqualToString:[conv getReceiver]]) {
+            if ([imaconvReceiver isEqualToString:[conv getReceiver]]) {
+                // 发送收到新消息的通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
                 
-                if (imaconv == _chattingConversation) {
-                
-                    //如果是c2c会话，则更新“对方正在输入...”状态
-                    BOOL isInputStatus = NO;
+                if (!_chattingConversation) {
                     
-                    if (!msg.isSelf) {
+                    /* _chattingConversation 还不存在的话，说明还没进入到留言板界面，此时需要在这里发送收到新消息的通知 */
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
+                } else {
+                    
+                    if (imaconv == _chattingConversation) {
                         
-                        if (_chattingConversation.type == TIM_C2C) {
+                        //如果是c2c会话，则更新“对方正在输入...”状态
+                        BOOL isInputStatus = NO;
+                        
+                        if (!msg.isSelf) {
                             
-                            // 过滤掉聊天输入状态的消息
-                            int elemCount = [imMsg.msg elemCount];
-                            for (int i = 0; i < elemCount; i++) {
-                                TIMElem *elem = [msg getElem:i];
-                                CustomElemCmd *elemCmd = [self isOnlineMsg:elem];
+                            if (_chattingConversation.type == TIM_C2C) {
                                 
-                                if (elemCmd) {
-                                    isInputStatus = YES;
-//                                    [[NSNotificationCenter defaultCenter] postNotificationName:kUserInputStatus object:elemCmd];
+                                // 过滤掉聊天输入状态的消息
+                                int elemCount = [imMsg.msg elemCount];
+                                for (int i = 0; i < elemCount; i++) {
+                                    TIMElem *elem = [msg getElem:i];
+                                    CustomElemCmd *elemCmd = [self isOnlineMsg:elem];
+                                    
+                                    if (elemCmd) {
+                                        isInputStatus = YES;
+                                        //                                    [[NSNotificationCenter defaultCenter] postNotificationName:kUserInputStatus object:elemCmd];
+                                    }
                                 }
                             }
+                            
+                            if (!isInputStatus) {
+                                imaconv.lastMessage = imMsg;
+                                [_chattingConversation onReceiveNewMessage:imMsg];
+                                
+                                /* _chattingConversation 存在的情况下，说明已经在留言板的界面中了，此时在这里发送收到新消息的通知 */
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
+                            }
                         }
-                        
-                        if (!isInputStatus) {
+                    } else {
+                        TIMElem *elem = [msg getElem:0];
+                        CustomElemCmd *elemCmd = [self isOnlineMsg:elem];
+                        if (!elemCmd) {
                             imaconv.lastMessage = imMsg;
-                            [_chattingConversation onReceiveNewMessage:imMsg];
+                            
+                            if (![imMsg isMineMsg]) {
+                                self.unReadMsgCount ++;
+                            }
+                            
+                            [self updateOnChat:imaconv moveFromIndex:i];
                         }
-                    }
-                } else {
-                    TIMElem *elem = [msg getElem:0];
-                    CustomElemCmd *elemCmd = [self isOnlineMsg:elem];
-                    if (!elemCmd) {
-                        imaconv.lastMessage = imMsg;
-                        
-                        if (![imMsg isMineMsg]) {
-                            self.unReadMsgCount ++;
-                        }
-                        
-                        [self updateOnChat:imaconv moveFromIndex:i];
                     }
                 }
                 

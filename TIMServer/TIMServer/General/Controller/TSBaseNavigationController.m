@@ -10,6 +10,7 @@
 #import "CommonLibrary.h"
 #import "TIMServerHelper.h"
 #import "TSIMAPlatform.h"
+//#import <MLeaksFinder/NSObject+MemoryLeak.h>
 
 @interface TSBaseNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -40,6 +41,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+//- (BOOL)willDealloc {
+//    if (![super willDealloc]) {
+//        return NO;
+//    }
+//    
+//    MLCheck(self.viewControllers);
+//    return YES;
+//}
 
 //解决用leftbarbuttonitem自定义返回按钮，ios系统自带的右滑返回失效
 #pragma mark - Override
@@ -98,8 +108,9 @@
 - (void)dismissVCAction {
     [[NSNotificationCenter defaultCenter] postNotificationName:kTIMServerExitNoti object:nil];
     
-    // 退出留言板时，先注销用户的 TIM 服务，再 dismissVC
+    @weakify(self);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
          [self dismissViewControllerAnimated:YES completion:nil];
     });
 }

@@ -10,10 +10,9 @@
 #import "TSAlertManager.h"
 #import "TSDebugMarco.h"
 #import "TSColorMarco.h"
-#import "UIView+TSLayout.h"
-#import "UIViewController+Layout.h"
 #import <CoreServices/CoreServices.h>
 #import <Masonry.h>
+#import "CommonLibrary.h"
 
 @interface TSBaseViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

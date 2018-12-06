@@ -161,3 +161,45 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 原因分析： TIMAddFriendRequest 未定义，怀疑编译器没找到 TIMAddFriendRequest 相关的代码或 Framework
 
 解决方法：在 Linked Frameworks and Libraries 里添加 IMFriendshipExt.framework 库
+
+
+******************************************
+
+
+### Masonry.h not found 等第三方库找不到的问题（在 #import <xxxxxx.h> 时会有智能提示，但想点进去时报问号，无法跳转）
+
+解决方法：点开 WaterPurifier -> Project -> 选中 WaterPurifier -> Info -> Configurations -> 把对应 的 Debug 和 Release 里的参数设为 Pods-xxxxxx.Debug / Pods-xxxxxx.Release（原先应该是 None，怀疑 CocoaPods 在安装第三方库时没正确设置这个参数）
+重新编译，应该能成功了
+
+
+******************************************
+
+
+### 把 TIMServer 工程合并到主工程时，TSRichChatViewController 调 UIViewController 分类方法 `configOwnViews` 报错
+
+错误：`[TSRichChatViewController configOwnViews]: unrecognized selector sent to instance 0x10b1db200`
+
+分析：TSRichChatViewController 没能调起 UIViewController+Layout.h 里的 `configOwnViews` 方法
+
+解决方法：
+1、在主工程与 YMDevice 工程里引入 TIMServer.framework；
+2、在主工程与 YMDevice 里，在 Other Linker Flags 添加 -ObjC 标志。
+
+重新编译并执行，能正常调用分类的方法了。
+Done！
+
+
+******************************************
+
+
+### 发送新消息时，执行 tableView 的 `scrollToRowAtIndexPath` 方法滚动到底部，会触发断言，导致程序崩溃
+
+错误分析：错误提示说明 tableView 滚动到了一个 indexPath 还不存在的 cell，造成越界行为
+
+解决方法：在调 tableView 的 `scrollToRowAtIndexPath` 时，用GCD 加一个延时（工程里设为 0.25 秒）再执行此方法
+
+``
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+});
+``

@@ -37,11 +37,13 @@
     
     NSString *url = [NSString stringWithFormat:@"%@/device/im/user/register", kBaseUrl];
     
-    [_manager POST:url parameters:@{
+    [self.manager POST:url parameters:@{
                                     @"identifier" : account,
                                     @"password" : @"",
                                     @"nickname" : @"",
                                     @"faceUrl" : [NSString isEmpty:userIcon] ? @"" : userIcon
+                                    } progress:^(NSProgress * _Nonnull uploadProgress) {
+                                        
                                     } success:^(NSURLSessionDataTask *task, id responseObject) {
                                         NSDictionary *result = (NSDictionary *)responseObject;
                                         NSDictionary *data = [result notNullObjectForKey:@"mobBaseRes"];
@@ -58,9 +60,11 @@
 - (void)loginWithAccount:(NSString *)account complete:(void (^)(BOOL isSuccess, NSString *message, NSDictionary *data))block {
     NSString *url = [NSString stringWithFormat:@"%@/device/im/user/login", kBaseUrl];
     
-    [_manager POST:url parameters:@{
+    [self.manager POST:url parameters:@{
                                     @"identifier" : account,
                                     @"password" : @""
+                                    } progress:^(NSProgress * _Nonnull uploadProgress) {
+                                        
                                     } success:^(NSURLSessionDataTask *task, id responseObject) {
                                         NSDictionary *result = (NSDictionary *)responseObject;
                                         NSDictionary *data = [result notNullObjectForKey:@"mobBaseRes"];

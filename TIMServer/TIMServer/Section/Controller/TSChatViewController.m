@@ -71,9 +71,9 @@
     
     if (_conversation) {
         [_conversation releaseConversation];
-        _messageList = nil;
         [self reloadData];
     }
+    _messageList = nil;
 }
 
 - (void)didLogin {
@@ -83,17 +83,7 @@
         [self dealGroupConfig];
     }
     
-    __weak TSChatViewController *ws = self;
     [[TSIMAPlatform sharedInstance].conversationMgr asyncConversationList];
-    _conversation.receiveMsg = ^(NSArray *imMsgList, BOOL succ) {
-        
-        // 发送收到新消息的通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
-        
-        [ws onReceiveNewMsg:imMsgList succ:succ];
-        [ws updateMessageList];
-    };
-    
 }
 
 - (void)chatWithReceiver:(TSIMUser *)user {
@@ -101,48 +91,31 @@
     _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:user];
     _conversation.delegate = self;
     _messageList = _conversation.msgList;
+    
+    @weakify(self);
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-        NSMutableArray *list = [NSMutableArray arrayWithArray:imMsgList];
+        @strongify(self);
         
-        // 有问题，应该有更好的处理方式，不要采取这种方式
-//        // 拉取历史数据时，移除未知信息
-//        BOOL hasUnknowItem = NO;
-//        TSIMMsg *unknowItem = [[TSIMMsg alloc] init];
-//        for (TSIMMsg *msg in list) {
-//            if (msg.type == TSIMMsgTypeUnknow) {
-//                hasUnknowItem = YES;
-//                unknowItem = msg;
-//                [list removeObject:msg];
-//            }
-//        }
-//
-//        if (hasUnknowItem) {
-//            [_messageList removeObject:unknowItem];
-//        }
-        
-        [self onLoadRecentMessage:list complete:succ scrollToBottom:YES];
+        [self onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
         self.refreshIndex ++;
     }];
 }
 
 - (void)conversation:(TSConversation *)conv didReceiveNewMsg:(NSArray *)msgList succ:(BOOL)succ {
-    // 发送收到新消息的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil];
-    
     [self onReceiveNewMsg:msgList succ:succ];
     [self updateMessageList];
 }
 
 - (void)dealC2CConfig {
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
     void(^succBlock)(NSArray *friends) = ^(NSArray *friends) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
+        @strongify(self);
         
         BOOL isFriend = NO;
         
         for (TIMUserProfile *friend in friends) {
-            if ([friend.identifier isEqualToString:strongSelf->_receiver.userId]) {
+            if ([friend.identifier isEqualToString:self->_receiver.userId]) {
                 isFriend = YES;
                 break;
             }
@@ -151,19 +124,20 @@
         if (!isFriend) {
             
             TIMAddFriendRequest *addFriendReq = [[TIMAddFriendRequest alloc] init];
-            addFriendReq.identifier = _receiver.userId;
-            addFriendReq.remark = _receiver.remark;
+            addFriendReq.identifier = self->_receiver.userId;
+            addFriendReq.remark = self->_receiver.remark;
             
+            @weakify(self);
             [[TIMFriendshipManager sharedInstance] addFriend:@[addFriendReq] succ:^(NSArray *friends) {
-                
+                @strongify(self);
                 self.isValidFriend = YES;
                 [self chatWithReceiver:_receiver];
                 
             } fail:^(int code, NSString *msg) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
+                @strongify(self);
                 
                 // 6011，对方用户不存在，此时要去注册用户
-                [strongSelf.view makeToast:@"对方不是有效用户"];
+                [self.view makeToast:@"对方不是有效用户"];
             }];
             
         } else {
@@ -173,10 +147,10 @@
         }
     };
     
+    
     void(^failBlock)(int code, NSString *msg) = ^(int code, NSString *message) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        
-        [strongSelf.view makeToast:@"刷新列表失败"];
+        @strongify(self);
+        [self.view makeToast:@"刷新列表失败"];
     };
     
     [[TIMFriendshipManager sharedInstance] getFriendList:^(NSArray *friends) {
@@ -188,9 +162,9 @@
 
 - (void)dealGroupConfig {
     
-    
+    @weakify(self);
     void (^succBlock)(NSArray *arr) = ^(NSArray *arr) {
-        
+        @strongify(self);
         if (self.isValidFriend) return;
         
         BOOL isGroupExit = NO;
@@ -210,15 +184,17 @@
             
         } else {
             // 列表里没有这个群，则先加入群
+            
+            @weakify(self);
             [[TIMGroupManager sharedInstance] joinGroup:[_receiver userId]  msg:@"" succ:^{
-                
+                @strongify(self);
                 self.isValidFriend = YES;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self chatWithReceiver:_receiver];
                 });
                 
             } fail:^(int code, NSString *msg) {
-                
+                @strongify(self);
                 DebugLog(@"加群失败 code: %d msg: %@", code, msg);
                 
             }];
@@ -245,10 +221,11 @@
     _conversation = [[TSIMAPlatform sharedInstance].conversationMgr chatWith:_receiver];
     _messageList = _conversation.msgList;
     
-    __weak TSChatViewController *ws = self;
+    @weakify(self);
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-        [ws onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
-        ws.refreshIndex ++;
+        @strongify(self);
+        [self onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
+        self.refreshIndex ++;
     }];
 }
 
@@ -257,11 +234,12 @@
     
     [self configWithUser:_receiver];
     
-    self.view.backgroundColor = kWhiteColor;
+    self.view.backgroundColor = RGB(245,245,245);
     UITapGestureRecognizer *tapAction = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
     [self.tableView addGestureRecognizer:tapAction];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationListUpdateComplete) name:kAsyncUpdateConversationListNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -273,6 +251,14 @@
     _tableView.dataSource = nil;
     [_receiverKVO unobserveAll];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didTIMServerExit {
+    [super didTIMServerExit];
+    if (_conversation) {
+        [_conversation releaseConversation];
+    }
+    [_messageList removeAllObjects];
 }
 
 - (void)hiddenKeyBoard {
@@ -290,17 +276,18 @@
     self.headerView = [[ChatHeadRefreshView alloc] init];
 }
 
+// 下拉刷新更多数据
 - (void)onRefresh {
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
+        @strongify(self);
         if (succ) {
             [self onLoadRecentMessage:imMsgList complete:YES scrollToBottom:YES];
         }
         
-        [strongSelf refreshCompleted];
-        [strongSelf layoutHeaderRefreshView];
+        [self refreshCompleted];
+        [self layoutHeaderRefreshView];
     }];
 }
 
@@ -355,30 +342,30 @@
         //        _isSendMsg = YES;
         [_tableView beginUpdates];
         
-        __weak TSChatViewController *ws = self;
         DebugLog(@"will sendmessage");
         
-        __weak typeof(self) weakSelf = self;
+        @weakify(self);
         NSArray *newaddMsgs = [_conversation sendMessage:msg completion:^(NSArray *imamsglist, BOOL succ, int code) {
-            
-            __weak typeof(weakSelf) strongnSelf = weakSelf;
+            @strongify(self);
             
             DebugLog(@"sendmessage end");
-            [ws updateOnSendMessage:imamsglist succ:succ];
+            [self updateOnSendMessage:imamsglist succ:succ];
             
             if (!succ)
             {
                 if (code == 80001)
                 {
                     TSIMMsg *msg = [TSIMMsg msgWithCustom:TSIMMsgTypeSaftyTip];
-                    [strongnSelf.messageList addObject:msg];
+                    [self.messageList addObject:msg];
                     
-                    [strongnSelf showMsgs:@[msg]];
+                    [self showMsgs:@[msg]];
                 } else if (code == 6004) {
-                    [strongnSelf.view makeToast:@"登录已过期"];
+                    [self.view makeToast:@"登录已过期"];
                     
+                    @weakify(self);
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [strongnSelf dismissViewControllerAnimated:YES completion:nil];
+                        @strongify(self);
+                        [self dismissViewControllerAnimated:YES completion:nil];
                     });
                 }
             }
@@ -431,8 +418,9 @@
     [_tableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationBottom];
     [_tableView endUpdates];
     
-    
+    @weakify(self);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
         [self updateOnSendMessage:imamsgList succ:YES];
     });
 }
@@ -455,33 +443,22 @@
     NSMutableArray *array = [NSMutableArray array];
     for (TSIMMsg *msg in msgs)
     {
-        NSInteger idx = [_messageList indexOfObject:msg];
+        NSInteger idx = [self.messageList indexOfObject:msg];
         NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
         [array addObject:index];
     }
+
+    [self.tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
     
-#warning Terminating app due to uncaught exception 'NSInternalInconsistencyException'
-    /*
-     Invalid update: invalid number of rows in section 0.  The number of rows contained in an existing section after the update (17) must be equal to the number of rows contained in that section before the update (13), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).
-     */
+    [self.tableView endUpdates];
     
-    @try {
-        if (_messageList && _messageList.count > 0) {
-            [_tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
-            [_tableView endUpdates];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                NSIndexPath *index = [NSIndexPath indexPathForRow:self->_messageList.count - 1 inSection:0];
-                [_tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-            });
-        }
-    } @catch (NSException *exception) {
-        NSLog(@"!!!!!!!!!!!\ninvalid number of rows in section: %@\n!!!!!!!!!!", exception);
-    } @finally {
-        
-    }
-    
+    @weakify(self);
+    // 加 0.25 秒延时是为了保证 tableView 加载新数据且重新绘制后，再滚动到底部，否则会触发 index 越界的 Exception
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
+        NSIndexPath *index = [NSIndexPath indexPathForRow:self.messageList.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    });
 }
 
 - (void)sendText:(NSString *)text
@@ -514,7 +491,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TSIMMsg *msg = [_messageList objectAtIndex:indexPath.row];
-    return [msg heightInWidth:tableView.bounds.size.width inStyle:_conversation.type == TIM_GROUP];
+    return [msg heightInWidth:tableView.bounds.size.width inStyle:_conversation.type == TIM_C2C];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -544,8 +521,12 @@
     {
         if (imamsgList.count > 0)
         {
+            //            [_tableView beginUpdates];
+            //
+            //
+            //
+            //            [_tableView endUpdates];
             [_tableView beginUpdates];
-            
             NSMutableArray *ar = [NSMutableArray array];
             for (NSInteger i = 0; i < imamsgList.count; i++)
             {
@@ -555,10 +536,8 @@
             [_tableView insertRowsAtIndexPaths:ar withRowAnimation:UITableViewRowAnimationTop];
             
             [_tableView endUpdates];
-            
             if (scroll)
             {
-                __weak TSChatViewController *ws = self;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
                     [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -573,7 +552,11 @@
     if (msglist.count)
     {
         NSInteger index = [_messageList indexOfObject:msglist.lastObject];
-        [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        @weakify(self);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            @strongify(self);
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        });
     }
 }
 

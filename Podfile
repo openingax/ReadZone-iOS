@@ -11,11 +11,14 @@ target 'TIMServer' do
     
     project 'TIMServer/TIMServer.project'
     
-    pod 'TZImagePickerController', '~> 3.1.0'
+    pod 'TZImagePickerController', '3.1.0'
     pod 'AFNetworking','3.1.0'
     pod 'MBProgressHUD', '1.0.0'
     pod 'SDWebImage', '3.7.6'
     pod 'Masonry', '1.0.0'
+    pod 'JSONKit-NoWarning', '1.2'
+    pod 'KVOController', '1.2.0'
+    pod 'libextobjc', '0.4.1'
     
 end
 
@@ -33,16 +36,16 @@ target 'ReadZone' do
     pod 'YYModel', '~> 1.0.4'
     pod 'AVOSCloud', '~> 10.0.2'
     #  pod 'AVOSCloudIM', '~> 10.0.2'
-    pod 'libextobjc', '~> 0.4.1'
+    pod 'libextobjc', '0.4.1'
     pod 'SDWebImage', '3.7.6'
     pod 'AFNetworking','3.1.0'
     #  pod 'SDCycleScrollView', '~> 1.75'
     pod 'MBProgressHUD', '1.0.0'
     pod 'MJExtension', '~> 3.0.15.1'
-#    pod 'IQKeyboardManager', '~> 6.0.4'
+    pod 'IQKeyboardManager', '~> 6.0.4'
     pod 'FDFullscreenPopGesture', '~> 1.1'
     pod 'TZImagePickerController', '~> 3.1.0'
-    pod 'KVOController', '~> 1.2.0'
+    pod 'KVOController', '1.2.0'
     
     #  pod 'Material', '~> 2.16.4'
     
@@ -51,8 +54,8 @@ target 'ReadZone' do
     pod 'WebViewJavascriptBridge', '~> 6.0.3'
     
     # DEBUG
-    pod 'Reveal-SDK', :configurations => ['Debug']
-    
+#    pod 'Reveal-SDK', :configurations => ['Debug']
+
 end
 
 

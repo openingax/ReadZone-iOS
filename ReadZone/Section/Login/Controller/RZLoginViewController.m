@@ -167,14 +167,14 @@ static CGFloat marginHorizon = 24;
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
             
-            [self.timAPI fetchSigWithAccount:[NSString stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:self.accountTF.text] complete:^(BOOL isSuccess, NSString *sig) {
-                if (isSuccess) {
+//            [self.timAPI fetchSigWithAccount:[NSString stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:self.accountTF.text] complete:^(BOOL isSuccess, NSString *sig) {
+//                if (isSuccess) {
                     // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
                     [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
                         if (!error) {
                             [RZUser shared].userInfo = userInfo;
                             
-                            [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text sig:sig];
+                            [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text sig:nil];
                             
                             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
                             [self dismissViewControllerAnimated:YES completion:nil];
@@ -183,12 +183,12 @@ static CGFloat marginHorizon = 24;
                             [self.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
                         }
                     }];
-                } else {
-                    // 获取 sig 失败
-                    [[RZUserManager shareInstance] logout];
-                    [self.animatedView makeToast:[NSString stringWithFormat:@"获取 sig 失败：%@", error] duration:2.5 position:CSToastPositionBottom];
-                }
-            }];
+//                } else {
+//                    // 获取 sig 失败
+//                    [[RZUserManager shareInstance] logout];
+//                    [self.animatedView makeToast:[NSString stringWithFormat:@"获取 sig 失败：%@", error] duration:2.5 position:CSToastPositionBottom];
+//                }
+//            }];
             
             
         } else {

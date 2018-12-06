@@ -25,31 +25,14 @@
     BOOL                            _cameraPreviewing;
     BOOL                            _videoRecording;
     UIView *                        _videoRecordView;
-//    UIButton *                      _btnStartRecord;
     UIButton *                      _btnCamera;
     UIButton *                      _btnLamp;
-    UIButton *                      _btnBeauty;
-    UIProgressView *                _progressView;
     UILabel *                       _recordTimeLabel;
     int                             _currentRecordTime;
     
     BOOL                            _navigationBarHidden;
     BOOL                            _statusBarHidden;
     BOOL                            _appForeground;
-    
-    UIButton              *_motionBtn;
-
-    UIView                *_tmplBar;
-    UIButton              *_greenBtn;
-    
-    UILabel               *_beautyLabel;
-    UILabel               *_whiteLabel;
-    UILabel               *_bigEyeLabel;
-    UILabel               *_slimFaceLabel;
-    
-    
-    UISlider              *_sdBigEye;
-    UISlider              *_sdSlimFace;
     
     int    _filterType;
     int    _greenIndex;;
@@ -73,7 +56,6 @@
     {
         _cameraFront = YES;
         _lampOpened = NO;
-        _bottomViewShow = NO;
         
         _beautyDepth = 6.3;
         _whitenDepth = 2.7;

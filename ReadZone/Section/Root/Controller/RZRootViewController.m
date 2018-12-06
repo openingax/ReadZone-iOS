@@ -46,6 +46,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLoginNoti) name:kLoginSuccessNotification object:nil];
     if ([AVUser currentUser]) [self fetchData];
+    
+    self.tsManager = [[TSManager alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerLogin:) name:kTIMLoginSuccEvent object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,6 +65,9 @@
     if (!_tsManager) {
         [self searchAction];
     }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tsManager loginTIM];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +76,13 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didTIMServerLogin:(NSNotification *)noti {
+    BOOL hasLogin = [[noti.userInfo objectForKey:@"status"] boolValue];
+    if (hasLogin) {
+        [self.tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:nil deviceID:@"viot85396846" controller:self];
+    }
 }
 
 #pragma mark - Draw
@@ -122,9 +136,6 @@
 }
 
 - (void)searchAction {
-    if (!_tsManager) {
-        _tsManager = [[TSManager alloc] init];
-    }
     if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
 //        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account deviceID:@"viot85396846" controller:self];
         [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];

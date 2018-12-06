@@ -78,10 +78,10 @@
 // 用于顶部下拉加载更多历史消息
 - (void)asyncLoadRecentMessage:(NSInteger)count from:(TSIMMsg *)msg completion:(HandleMsgBlock)block
 {
-    __weak TSConversation *ws = self;
-    [_conversation getMessage:(int)count last:msg.msg succ:^(NSArray *array) {
-        
-        NSArray *recentIMAMsg = [ws onLoadRecentMessageSucc:array];
+    @weakify(self);
+    [self.conversation getMessage:(int)count last:msg.msg succ:^(NSArray *array) {
+        @strongify(self);
+        NSArray *recentIMAMsg = [self onLoadRecentMessageSucc:array];
         if (block)
         {
             block(recentIMAMsg, recentIMAMsg.count != 0);
@@ -173,13 +173,9 @@
                 {
                     [array addObject:imamsg];
                 }
-            }
-            else {
+            } else {
                 TSIMMsg *imamsg = [TSIMMsg msgWithMsg:msg];
-                if (imamsg)
-                {
-                    [array addObject:imamsg];
-                }
+                [array addObject:imamsg];
             }
             idx--;
         }

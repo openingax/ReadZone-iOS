@@ -32,9 +32,10 @@
 {
     if (self = [self init])
     {
-        
-        [self.KVOController unobserve:_toolBar keyPath:@"contentHeight"];
-        [_toolBar removeFromSuperview];
+        if (_toolBar) {
+            [self.KVOController unobserve:_toolBar keyPath:@"contentHeight"];
+            [_toolBar removeFromSuperview];
+        }
         
         _toolBar = [[TSRichChatInputToolBar alloc] init];
         _toolBar.toolBarDelegate = self;

@@ -12,6 +12,7 @@
 #import "TSIMMsg.h"
 #import "TSSafeMutableArray.h"
 #import "CommonLibrary.h"
+#import <libextobjc/EXTScope.h>
 
 @class TSIMUser, TSConversation;
 

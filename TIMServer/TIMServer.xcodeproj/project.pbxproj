@@ -44,6 +44,13 @@
 		5F15192F21A69BC300E83785 /* TSIMChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15192D21A69BC300E83785 /* TSIMChatViewController.h */; };
 		5F15193021A69BC300E83785 /* TSIMChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192E21A69BC300E83785 /* TSIMChatViewController.m */; };
 		5F15193421A69DB600E83785 /* TSIMAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15193321A69DB600E83785 /* TSIMAdapter.h */; };
+		5F1EA07721B7CEF200CB4BBE /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07021B7CEF200CB4BBE /* TLSSDK.framework */; };
+		5F1EA07821B7CEF200CB4BBE /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */; };
+		5F1EA07921B7CEF200CB4BBE /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07221B7CEF200CB4BBE /* ImSDK.framework */; };
+		5F1EA07A21B7CEF200CB4BBE /* TXRTMPSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07321B7CEF200CB4BBE /* TXRTMPSDK.framework */; };
+		5F1EA07B21B7CEF200CB4BBE /* IMUGCExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07421B7CEF200CB4BBE /* IMUGCExt.framework */; };
+		5F1EA07C21B7CEF200CB4BBE /* IMFriendshipExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07521B7CEF200CB4BBE /* IMFriendshipExt.framework */; };
+		5F1EA07D21B7CEF200CB4BBE /* IMGroupExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07621B7CEF200CB4BBE /* IMGroupExt.framework */; };
 		5F24824021912B9E00AC07FD /* TSFriendListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */; };
 		5F24824121912B9E00AC07FD /* TSFriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */; };
 		5F24824821912C1400AC07FD /* TSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F24824621912C1400AC07FD /* TSManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,10 +77,6 @@
 		5F3E041721A57F9D00E3EAB8 /* TSChatInputPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E041521A57F9D00E3EAB8 /* TSChatInputPanel.m */; };
 		5F3E041A21A57FFD00E3EAB8 /* TSChatInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E041821A57FFD00E3EAB8 /* TSChatInputToolBar.h */; };
 		5F3E041B21A57FFD00E3EAB8 /* TSChatInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E041921A57FFD00E3EAB8 /* TSChatInputToolBar.m */; };
-		5F3E042121A5815900E3EAB8 /* FBKVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E041D21A5815900E3EAB8 /* FBKVOController.h */; };
-		5F3E042221A5815900E3EAB8 /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E041E21A5815900E3EAB8 /* NSObject+FBKVOController.m */; };
-		5F3E042321A5815900E3EAB8 /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E041F21A5815900E3EAB8 /* FBKVOController.m */; };
-		5F3E042421A5815900E3EAB8 /* NSObject+FBKVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042021A5815900E3EAB8 /* NSObject+FBKVOController.h */; };
 		5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E042521A585E500E3EAB8 /* NSObject+CommonBlock.h */; };
 		5F3E042821A585E500E3EAB8 /* NSObject+CommonBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */; };
 		5F3E045421A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */; };
@@ -121,11 +124,9 @@
 		5F5D072621ACE6F4009B4A33 /* CustomElemCmd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D072421ACE6F3009B4A33 /* CustomElemCmd.m */; };
 		5F5D072821ACE790009B4A33 /* TSChatHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5D072721ACE790009B4A33 /* TSChatHeaders.h */; };
 		5F5D073021ACE7F2009B4A33 /* NSMutableDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D072A21ACE7F1009B4A33 /* NSMutableDictionary+Json.m */; };
-		5F5D073121ACE7F2009B4A33 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D072B21ACE7F1009B4A33 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5F5D073221ACE7F2009B4A33 /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D072C21ACE7F1009B4A33 /* NSObject+Json.m */; };
 		5F5D073321ACE7F2009B4A33 /* NSMutableDictionary+Json.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5D072D21ACE7F1009B4A33 /* NSMutableDictionary+Json.h */; };
 		5F5D073421ACE7F2009B4A33 /* NSObject+Json.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5D072E21ACE7F1009B4A33 /* NSObject+Json.h */; };
-		5F5D073521ACE7F2009B4A33 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5D072F21ACE7F1009B4A33 /* JSONKit.h */; };
 		5F5D074321AD20D6009B4A33 /* TSRichChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5D074121AD20D6009B4A33 /* TSRichChatViewController.h */; };
 		5F5D074421AD20D6009B4A33 /* TSRichChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D074221AD20D6009B4A33 /* TSRichChatViewController.m */; };
 		5F5D074A21AD2EE3009B4A33 /* TSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D074921AD2EE3009B4A33 /* TSManager.m */; };
@@ -271,6 +272,13 @@
 		5F15192D21A69BC300E83785 /* TSIMChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMChatViewController.h; sourceTree = "<group>"; };
 		5F15192E21A69BC300E83785 /* TSIMChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMChatViewController.m; sourceTree = "<group>"; };
 		5F15193321A69DB600E83785 /* TSIMAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAdapter.h; sourceTree = "<group>"; };
+		5F1EA07021B7CEF200CB4BBE /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TLSSDK.framework; path = IMFrameworks/TLSSDK.framework; sourceTree = "<group>"; };
+		5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMMessageExt.framework; path = IMFrameworks/IMMessageExt.framework; sourceTree = "<group>"; };
+		5F1EA07221B7CEF200CB4BBE /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
+		5F1EA07321B7CEF200CB4BBE /* TXRTMPSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXRTMPSDK.framework; path = IMFrameworks/TXRTMPSDK.framework; sourceTree = "<group>"; };
+		5F1EA07421B7CEF200CB4BBE /* IMUGCExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMUGCExt.framework; path = IMFrameworks/IMUGCExt.framework; sourceTree = "<group>"; };
+		5F1EA07521B7CEF200CB4BBE /* IMFriendshipExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMFriendshipExt.framework; path = IMFrameworks/IMFriendshipExt.framework; sourceTree = "<group>"; };
+		5F1EA07621B7CEF200CB4BBE /* IMGroupExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMGroupExt.framework; path = IMFrameworks/IMGroupExt.framework; sourceTree = "<group>"; };
 		5F24823E21912B9E00AC07FD /* TSFriendListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSFriendListViewController.h; sourceTree = "<group>"; };
 		5F24823F21912B9E00AC07FD /* TSFriendListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSFriendListViewController.m; sourceTree = "<group>"; };
 		5F24824621912C1400AC07FD /* TSManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSManager.h; sourceTree = "<group>"; };
@@ -297,10 +305,6 @@
 		5F3E041521A57F9D00E3EAB8 /* TSChatInputPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatInputPanel.m; sourceTree = "<group>"; };
 		5F3E041821A57FFD00E3EAB8 /* TSChatInputToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatInputToolBar.h; sourceTree = "<group>"; };
 		5F3E041921A57FFD00E3EAB8 /* TSChatInputToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatInputToolBar.m; sourceTree = "<group>"; };
-		5F3E041D21A5815900E3EAB8 /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
-		5F3E041E21A5815900E3EAB8 /* NSObject+FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FBKVOController.m"; sourceTree = "<group>"; };
-		5F3E041F21A5815900E3EAB8 /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
-		5F3E042021A5815900E3EAB8 /* NSObject+FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FBKVOController.h"; sourceTree = "<group>"; };
 		5F3E042521A585E500E3EAB8 /* NSObject+CommonBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CommonBlock.h"; sourceTree = "<group>"; };
 		5F3E042621A585E500E3EAB8 /* NSObject+CommonBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CommonBlock.m"; sourceTree = "<group>"; };
 		5F3E043121A58F0A00E3EAB8 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
@@ -348,11 +352,9 @@
 		5F5D072421ACE6F3009B4A33 /* CustomElemCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomElemCmd.m; sourceTree = "<group>"; };
 		5F5D072721ACE790009B4A33 /* TSChatHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatHeaders.h; sourceTree = "<group>"; };
 		5F5D072A21ACE7F1009B4A33 /* NSMutableDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Json.m"; sourceTree = "<group>"; };
-		5F5D072B21ACE7F1009B4A33 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5F5D072C21ACE7F1009B4A33 /* NSObject+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Json.m"; sourceTree = "<group>"; };
 		5F5D072D21ACE7F1009B4A33 /* NSMutableDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Json.h"; sourceTree = "<group>"; };
 		5F5D072E21ACE7F1009B4A33 /* NSObject+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Json.h"; sourceTree = "<group>"; };
-		5F5D072F21ACE7F1009B4A33 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		5F5D074121AD20D6009B4A33 /* TSRichChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSRichChatViewController.h; sourceTree = "<group>"; };
 		5F5D074221AD20D6009B4A33 /* TSRichChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSRichChatViewController.m; sourceTree = "<group>"; };
 		5F5D074921AD2EE3009B4A33 /* TSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSManager.m; sourceTree = "<group>"; };
@@ -470,6 +472,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1EA07721B7CEF200CB4BBE /* TLSSDK.framework in Frameworks */,
+				5F1EA07821B7CEF200CB4BBE /* IMMessageExt.framework in Frameworks */,
+				5F1EA07921B7CEF200CB4BBE /* ImSDK.framework in Frameworks */,
+				5F1EA07A21B7CEF200CB4BBE /* TXRTMPSDK.framework in Frameworks */,
+				5F1EA07B21B7CEF200CB4BBE /* IMUGCExt.framework in Frameworks */,
+				5F1EA07C21B7CEF200CB4BBE /* IMFriendshipExt.framework in Frameworks */,
+				5F1EA07D21B7CEF200CB4BBE /* IMGroupExt.framework in Frameworks */,
 				3AF65A1FE32D2434659EE283 /* libPods-TIMServer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,17 +581,6 @@
 			path = ChatInputPanel;
 			sourceTree = "<group>";
 		};
-		5F3E041C21A5815900E3EAB8 /* FBKVOController */ = {
-			isa = PBXGroup;
-			children = (
-				5F3E041D21A5815900E3EAB8 /* FBKVOController.h */,
-				5F3E041F21A5815900E3EAB8 /* FBKVOController.m */,
-				5F3E042021A5815900E3EAB8 /* NSObject+FBKVOController.h */,
-				5F3E041E21A5815900E3EAB8 /* NSObject+FBKVOController.m */,
-			);
-			path = FBKVOController;
-			sourceTree = "<group>";
-		};
 		5F3E042F21A58F0A00E3EAB8 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,12 +664,10 @@
 		5F5D072921ACE7F1009B4A33 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				5F5D072A21ACE7F1009B4A33 /* NSMutableDictionary+Json.m */,
-				5F5D072B21ACE7F1009B4A33 /* JSONKit.m */,
-				5F5D072C21ACE7F1009B4A33 /* NSObject+Json.m */,
 				5F5D072D21ACE7F1009B4A33 /* NSMutableDictionary+Json.h */,
+				5F5D072A21ACE7F1009B4A33 /* NSMutableDictionary+Json.m */,
 				5F5D072E21ACE7F1009B4A33 /* NSObject+Json.h */,
-				5F5D072F21ACE7F1009B4A33 /* JSONKit.h */,
+				5F5D072C21ACE7F1009B4A33 /* NSObject+Json.m */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -763,7 +759,6 @@
 			children = (
 				5F9148C9219283C400148AAA /* CommonLibrary.h */,
 				5F5D072921ACE7F1009B4A33 /* JSON */,
-				5F3E041C21A5815900E3EAB8 /* FBKVOController */,
 				5F9148CA219283C400148AAA /* DebugMacro */,
 				5F9148CD219283C400148AAA /* Category */,
 				5F9148D8219283C400148AAA /* Color */,
@@ -1034,6 +1029,13 @@
 		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F1EA07521B7CEF200CB4BBE /* IMFriendshipExt.framework */,
+				5F1EA07621B7CEF200CB4BBE /* IMGroupExt.framework */,
+				5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */,
+				5F1EA07221B7CEF200CB4BBE /* ImSDK.framework */,
+				5F1EA07421B7CEF200CB4BBE /* IMUGCExt.framework */,
+				5F1EA07021B7CEF200CB4BBE /* TLSSDK.framework */,
+				5F1EA07321B7CEF200CB4BBE /* TXRTMPSDK.framework */,
 				3D7CB8F3D8F7B5746048C63D /* libPods-TIMServer.a */,
 			);
 			name = Frameworks;
@@ -1056,7 +1058,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F91493221928F9300148AAA /* TSUserManager.h in Headers */,
-				5F5D073521ACE7F2009B4A33 /* JSONKit.h in Headers */,
 				5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */,
 				5F24824821912C1400AC07FD /* TSManager.h in Headers */,
 				5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */,
@@ -1078,7 +1079,6 @@
 				5F7C96AD21A7FE160017928F /* TSChatTableViewCell.h in Headers */,
 				5F3E040621A57CB400E3EAB8 /* TSChatInputBaseView.h in Headers */,
 				5F5D071621ABF677009B4A33 /* TSIMAPlatform+IMSDKCallBack.h in Headers */,
-				5F3E042421A5815900E3EAB8 /* NSObject+FBKVOController.h in Headers */,
 				5F3E046C21A58F0A00E3EAB8 /* UIViewController+ADFlipTransition.h in Headers */,
 				5F9149472192BEE300148AAA /* TSConversation.h in Headers */,
 				5F3E046121A58F0A00E3EAB8 /* UITableViewController+ADScaleTransition.h in Headers */,
@@ -1096,7 +1096,6 @@
 				5F06F5D621B3DCB1004419DC /* ChatImageBrowserView.h in Headers */,
 				5F299F0121AF71CB00A0F1A0 /* TSIMAConnectConversation.h in Headers */,
 				5F9F33F121B2598800A3C307 /* ChatSoundRecorder.h in Headers */,
-				5F3E042121A5815900E3EAB8 /* FBKVOController.h in Headers */,
 				5F9F33E921B2573200A3C307 /* UIImage+TintColor.h in Headers */,
 				5F5D072121ACCF2A009B4A33 /* TSChatMsgShowHeader.h in Headers */,
 				5F3E040921A57D2C00E3EAB8 /* TSChatInputAbleView.h in Headers */,
@@ -1302,7 +1301,6 @@
 				5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */,
 				5F9149542192C19B00148AAA /* TIMElem+ShowDescription.m in Sources */,
 				5F06F5E521B3E4B5004419DC /* MsgSendingTip.m in Sources */,
-				5F3E042321A5815900E3EAB8 /* FBKVOController.m in Sources */,
 				5F06F5C821B3890E004419DC /* RefreshView.m in Sources */,
 				5F91494C2192BF5500148AAA /* TSSafeMutableArray.m in Sources */,
 				5F3E045821A58F0A00E3EAB8 /* FTAnimation+UIView.m in Sources */,
@@ -1336,7 +1334,6 @@
 				5F5D072621ACE6F4009B4A33 /* CustomElemCmd.m in Sources */,
 				5F9148F8219283C500148AAA /* UIColor+MLPFlatColors.m in Sources */,
 				5F9148F3219283C500148AAA /* NSString+Common.m in Sources */,
-				5F5D073121ACE7F2009B4A33 /* JSONKit.m in Sources */,
 				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
 				5F9F33DF21B256BA00A3C307 /* MenuButton.m in Sources */,
 				5F9148FF219283C500148AAA /* UIView+TSLayout.m in Sources */,
@@ -1389,7 +1386,6 @@
 				5F06F5FC21B43789004419DC /* TSExpendButton.m in Sources */,
 				5F3E046721A58F0A00E3EAB8 /* ADFlipTransition.m in Sources */,
 				5F3E03F321A5450B00E3EAB8 /* TSBaseView.m in Sources */,
-				5F3E042221A5815900E3EAB8 /* NSObject+FBKVOController.m in Sources */,
 				5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */,
 				5F91493321928F9300148AAA /* TSUserManager.m in Sources */,
 				5F5D071721ABF677009B4A33 /* TSIMAPlatform+IMSDKCallBack.m in Sources */,
@@ -1556,7 +1552,7 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

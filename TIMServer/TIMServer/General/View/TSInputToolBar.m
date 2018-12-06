@@ -197,7 +197,6 @@
             
             [UIView animateWithDuration:duration animations:^{
                 self.frame = rect;
-                //                self.contentHeight = contentHeight;
             }];
         }
     }

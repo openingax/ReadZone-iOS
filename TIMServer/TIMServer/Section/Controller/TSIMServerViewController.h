@@ -14,8 +14,6 @@
 
 @interface TSIMServerViewController : TSTableRefreshViewController
 
-- (void)loginNotiFromRN;
-
 - (void)didLogin;
 - (void)didTIMServerExit;
 

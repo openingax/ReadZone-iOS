@@ -2350,9 +2350,39 @@ exitNow:
     return(returnObject);
 }
 
+static id ts_NSStringObjectFromJSONString(NSString *jsonString, JKParseOptionFlags parseOptionFlags, NSError **error, BOOL mutableCollection) {
+    id                returnObject = NULL;
+    CFMutableDataRef  mutableData  = NULL;
+    JSONDecoder      *decoder      = NULL;
+    
+    CFIndex    stringLength     = CFStringGetLength((CFStringRef)jsonString);
+    NSUInteger stringUTF8Length = [jsonString lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    
+    if((mutableData = (CFMutableDataRef)[(id)CFDataCreateMutable(NULL, (NSUInteger)stringUTF8Length) autorelease]) != NULL) {
+        UInt8   *utf8String = CFDataGetMutableBytePtr(mutableData);
+        CFIndex  usedBytes  = 0L, convertedCount = 0L;
+        
+        convertedCount = CFStringGetBytes((CFStringRef)jsonString, CFRangeMake(0L, stringLength), kCFStringEncodingUTF8, '?', NO, utf8String, (NSUInteger)stringUTF8Length, &usedBytes);
+        if(JK_EXPECT_F(convertedCount != stringLength) || JK_EXPECT_F(usedBytes < 0L)) { if(error != NULL) { *error = [NSError errorWithDomain:@"JKErrorDomain" code:-1L userInfo:[NSDictionary dictionaryWithObject:@"An error occurred converting the contents of a NSString to UTF8." forKey:NSLocalizedDescriptionKey]]; } goto exitNow; }
+        
+        if(mutableCollection == NO) { returnObject = [(decoder = [JSONDecoder decoderWithParseOptions:parseOptionFlags])        objectWithUTF8String:(const unsigned char *)utf8String length:(size_t)usedBytes error:error]; }
+        else                        { returnObject = [(decoder = [JSONDecoder decoderWithParseOptions:parseOptionFlags]) mutableObjectWithUTF8String:(const unsigned char *)utf8String length:(size_t)usedBytes error:error]; }
+    }
+    
+exitNow:
+    if(mutableData != NULL) { CFDataSetLength(mutableData, 0L); }
+    if(decoder     != NULL) { _JSONDecoderCleanup(decoder);     }
+    return(returnObject);
+}
+
 - (id)objectFromJSONString
 {
     return([self objectFromJSONStringWithParseOptions:JKParseOptionStrict error:NULL]);
+}
+
+- (id)ts_objectFromJSONString
+{
+    return([self ts_objectFromJSONStringWithParseOptions:JKParseOptionStrict error:NULL]);
 }
 
 - (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags
@@ -2365,6 +2395,10 @@ exitNow:
     return(_NSStringObjectFromJSONString(self, parseOptionFlags, error, NO));
 }
 
+- (id)ts_objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error
+{
+    return(ts_NSStringObjectFromJSONString(self, parseOptionFlags, error, NO));
+}
 
 - (id)mutableObjectFromJSONString
 {

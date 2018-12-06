@@ -9,7 +9,7 @@
 #import "NSObject+Json.h"
 #import <objc/runtime.h>
 
-#import "JSONKit.h"
+#import <JSONKit.h>
 
 //#import "IOSDeviceConfig.h"
 #import "ARCCompile.h"

@@ -177,6 +177,7 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 
 @interface NSString (JSONKitDeserializing)
 - (id)objectFromJSONString;
+- (id)ts_objectFromJSONString;
 - (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
 - (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error;
 - (id)mutableObjectFromJSONString;

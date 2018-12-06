@@ -20,6 +20,8 @@ PODS:
   - GCDWebServer (3.4.2):
     - GCDWebServer/Core (= 3.4.2)
   - GCDWebServer/Core (3.4.2)
+  - IQKeyboardManager (6.0.6)
+  - JSONKit-NoWarning (1.2)
   - KVOController (1.2.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -60,7 +62,6 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.15.1)
   - pop (1.0.12)
-  - Reveal-SDK (19)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -75,15 +76,17 @@ DEPENDENCIES:
   - Bugly (~> 2.5.0)
   - FDFullscreenPopGesture (~> 1.1)
   - GCDWebServer (~> 3.4.2)
-  - KVOController (~> 1.2.0)
-  - libextobjc (~> 0.4.1)
+  - IQKeyboardManager (~> 6.0.4)
+  - JSONKit-NoWarning (= 1.2)
+  - KVOController (= 1.2.0)
+  - libextobjc (= 0.4.1)
   - Masonry (= 1.0.0)
   - MBProgressHUD (= 1.0.0)
   - MJExtension (~> 3.0.15.1)
   - pop (~> 1.0.10)
-  - Reveal-SDK
   - SDWebImage (= 3.7.6)
   - Toast (~> 4.0.0)
+  - TZImagePickerController (= 3.1.0)
   - TZImagePickerController (~> 3.1.0)
   - WebViewJavascriptBridge (~> 6.0.3)
   - YYModel (~> 1.0.4)
@@ -95,13 +98,14 @@ SPEC REPOS:
     - Bugly
     - FDFullscreenPopGesture
     - GCDWebServer
+    - IQKeyboardManager
+    - JSONKit-NoWarning
     - KVOController
     - libextobjc
     - Masonry
     - MBProgressHUD
     - MJExtension
     - pop
-    - Reveal-SDK
     - SDWebImage
     - Toast
     - TZImagePickerController
@@ -114,19 +118,20 @@ SPEC CHECKSUMS:
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  IQKeyboardManager: 6b4ecd3e59cf55a26133d802d4678721d7f88499
+  JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
-  Reveal-SDK: 9f0d2c6c12eb7507921e5454ac165b7aa21140a4
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TZImagePickerController: c9584b67b97d5a20b4dbbb58505fa0b6be590255
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9cd2299ed46981639cfe558a6dcf50d7f5f06521
+PODFILE CHECKSUM: a2b3d335c38dcd4018ea0eb2dbaf70a4d18a8e18
 
 COCOAPODS: 1.5.3
