@@ -89,4 +89,17 @@ static NSString * const kTSGroupIDKey = @"ts_group_id_key";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)clearUserData {
+    _account = nil;
+    _userSig = nil;
+    _receiver = nil;
+    _deviceID = nil;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_account];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_userSig];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_receiver];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:_deviceID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

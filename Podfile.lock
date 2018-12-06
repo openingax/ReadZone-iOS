@@ -87,7 +87,6 @@ DEPENDENCIES:
   - SDWebImage (= 3.7.6)
   - Toast (~> 4.0.0)
   - TZImagePickerController (= 3.1.0)
-  - TZImagePickerController (~> 3.1.0)
   - WebViewJavascriptBridge (~> 6.0.3)
   - YYModel (~> 1.0.4)
 
@@ -132,6 +131,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a2b3d335c38dcd4018ea0eb2dbaf70a4d18a8e18
+PODFILE CHECKSUM: 0434017a6592417843c988d469b5f396d099f790
 
 COCOAPODS: 1.5.3

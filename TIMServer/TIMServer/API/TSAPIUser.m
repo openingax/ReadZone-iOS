@@ -8,7 +8,7 @@
 
 #import "TSAPIUser.h"
 #import "TSConfig.h"
-#import "AFNetworking.h"
+#import <AFNetworking/AFNetworking.h>
 #import "NSString+Common.h"
 #import <YMCommon/NSDictionary+ymc.h>
 

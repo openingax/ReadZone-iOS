@@ -131,15 +131,23 @@
 
 - (NSArray *)onLoadRecentMessageSucc:(NSArray *)timmsgList
 {
-    if (timmsgList.count > 0)
+    NSMutableArray <TIMMessage *>*filterArr = [NSMutableArray array];
+    // 过滤掉群提示
+    for (TIMMessage *msg in timmsgList) {
+        if (![[msg getElem:0] isKindOfClass:[TIMGroupTipsElem class]]) {
+            [filterArr addObject:msg];
+        }
+    }
+    
+    if (filterArr.count > 0)
     {
         NSMutableArray *array = [NSMutableArray array];
         
-        NSInteger idx = timmsgList.count - 1;
+        NSInteger idx = filterArr.count - 1;
         TIMMessage *temp = nil;
         do
         {
-            TIMMessage *msg = timmsgList[idx];
+            TIMMessage *msg = filterArr[idx];
             //            if (msg.status == TIM_MSG_STATUS_HAS_DELETED)
             //            {
             //                idx--;
@@ -147,7 +155,7 @@
             //            }
             
             NSDate *date = [msg timestamp];
-            if (idx == timmsgList.count - 1)
+            if (idx == filterArr.count - 1)
             {
                 // 插入标签
                 TSIMMsg *timeTip = [TSIMMsg msgWithDate:date];

@@ -25,7 +25,12 @@ static NSString * kTIMNewMsgEvent = @"kTIMNewMsgEvent";
                      faceURL:(NSString *)faceURL
                     deviceID:(NSString *)deviceID
                   controller:(UIViewController *)controller;
-- (void)loginTIM;
+
+- (void)showTIMWithController:(UIViewController *)controller;
+- (void)loginTIMWithAccount:(NSString *)account
+                   nickName:(NSString *)nickName
+                    faceURL:(NSString *)faceURL
+                   deviceID:(NSString *)deviceID;
 - (void)logoutTIM;
 
 @end

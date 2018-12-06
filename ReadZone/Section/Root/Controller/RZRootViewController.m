@@ -62,12 +62,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if (!_tsManager) {
-        [self searchAction];
-    }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tsManager loginTIM];
-    });
+//    if (!_tsManager) {
+    [self searchAction];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +78,8 @@
 - (void)didTIMServerLogin:(NSNotification *)noti {
     BOOL hasLogin = [[noti.userInfo objectForKey:@"status"] boolValue];
     if (hasLogin) {
-        [self.tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:nil deviceID:@"viot85396846" controller:self];
+//        [self.tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:nil deviceID:@"viot85396846" controller:self];
+        [self.tsManager showTIMWithController:self];
     }
 }
 
@@ -136,14 +134,16 @@
 }
 
 - (void)searchAction {
-    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
+//    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
 //        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account deviceID:@"viot85396846" controller:self];
-        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];
-    }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tsManager loginTIMWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:nil deviceID:@"viot85396846"];
+        });
+//    }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_tsManager loginTIM];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [_tsManager loginTIM];
+//    });
 }
 
 - (void)moreAction {

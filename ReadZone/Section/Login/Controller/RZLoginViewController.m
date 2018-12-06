@@ -63,9 +63,6 @@ static CGFloat marginHorizon = 24;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.accountTF.text = @"18814098638";
-    self.passwordTF.text = @"AZaz1108";
-    [self accountValueChange:self.accountTF];
 }
 
 - (void)dealloc {

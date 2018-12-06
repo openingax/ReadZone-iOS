@@ -28,5 +28,6 @@
 - (BOOL)isLogin;
 
 - (void)deleteUserSig;
+- (void)clearUserData;
 
 @end
