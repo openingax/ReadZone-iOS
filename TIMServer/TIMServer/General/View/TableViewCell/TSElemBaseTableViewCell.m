@@ -292,8 +292,8 @@
         CGSize contentBackSize = [_msg contentBackSizeInWidth:rect.size.width];
         [_contentBack sizeWith:contentBackSize];
         [_contentBack layoutToRightOf:_icon margin:hor];
-        [_contentBack layoutBelow:_remarkTip];
-        [_contentBack alignParentBottomWithMargin:ver];
+        [_contentBack layoutBelow:_remarkTip margin:2];
+//        [_contentBack alignParentBottomWithMargin:ver];
         
         
         UIEdgeInsets inset = [_msg contentBackInset];
@@ -362,6 +362,7 @@
         _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
         _remarkTip.font = [_msg tipFont];
         _remarkTip.textColor = [_msg tipTextColor];
+        _remarkTip.text = [user showTitle];
     }
     
     [self configContent];

@@ -37,6 +37,9 @@
 }
 - (NSString *)icon
 {
+    if (_profile.faceURL) {
+        return _profile.faceURL;
+    }
     return nil;
 }
 - (NSString *)remark

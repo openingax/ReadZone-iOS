@@ -269,7 +269,11 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         size.height = iconSize.height + kCellDefaultMargin;
     }
     
-    size.height -= 8;
+    if ([self isMineMsg]) {
+        size.height += 8;
+    } else {
+        size.height += 36;
+    }
     if (size.height < 64) {
         size.height = 64;
     }
@@ -281,22 +285,40 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 - (UIEdgeInsets)contentBackInset
 {
     
-    //    if (self.isMineMsg)
-    //    {
-    //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
-    //    }
-    //    else
-    //    {
-    //        return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
-    if (self.type == TSIMMsgTypeText) {
-        return UIEdgeInsetsMake(28, 20, 8, 20);
-    } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
-        return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
-    } else {
-        return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
-    }
+//        if (self.isMineMsg)
+//        {
+//            return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
+//        }
+//        else
+//        {
+//            return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
+//    if (self.type == TSIMMsgTypeText) {
+//        return UIEdgeInsetsMake(28, 20, 8, 20);
     
-    //    }
+    if (self.isMineMsg) {
+        if (self.type == TSIMMsgTypeText) {
+            return UIEdgeInsetsMake(28, 20, 8, 20);
+        } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
+            return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
+        } else {
+            return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
+        }
+    } else {
+        if (self.type == TSIMMsgTypeText) {
+        return UIEdgeInsetsMake(8, 20, 8, 20);
+        } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
+            return UIEdgeInsetsMake(10, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
+        } else {
+            return UIEdgeInsetsMake(8, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
+        }
+    }
+//    } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
+//        return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
+//    } else {
+//        return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
+//    }
+    
+//        }
 }
 
 - (NSInteger)pickedViewWidth

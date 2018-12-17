@@ -12,6 +12,7 @@
 #import "TSUserManager.h"
 #import "TSRichChatViewController.h"
 #import "TSIMUser.h"
+#import "TSIMGroup.h"
 #import "TSIMAPlatform.h"
 #import "TSIMManager.h"
 #import "IMAPlatformConfig.h"
@@ -48,9 +49,16 @@
     profile.nickname = self.nickName;
     profile.faceURL = self.faceURL;
     
-    TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
+    if ([profile.identifier hasPrefix:@"Viomi"]) {
+        // 单聊
+        TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
+        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+    } else if ([profile.identifier hasPrefix:@"viot"]) {
+        // 群聊
+        TSIMGroup *receiver = [[TSIMGroup alloc] initWithUserInfo:profile];
+        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+    }
     
-    self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     self.navVC = [[TSBaseNavigationController alloc] initWithRootViewController:self.chatVC];
     
     self.navVC.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -168,10 +176,11 @@
         });
         
         TIMFriendProfileOption *option = [[TIMFriendProfileOption alloc] init];
-        option.friendFlags = TIM_PROFILE_FLAG_NICK | TIM_PROFILE_FLAG_FACE_URL;
+        option.friendFlags = 0xffff;
         option.friendCustom = nil;
         option.userCustom = nil;
         TIMUserProfile *profile = [[TIMUserProfile alloc] init];
+        profile.allowType = TIM_FRIEND_ALLOW_ANY;
         profile.faceURL = self.faceURL;
         profile.nickname = self.nickName;
         
@@ -180,7 +189,6 @@
         } fail:^(int code, NSString *msg) {
             
         }];
-        
         
         
     } fail:^(int code, NSString *msg) {
