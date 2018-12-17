@@ -6,6 +6,11 @@
 //  Copyright © 2016年 AlexiChen. All rights reserved.
 //
 
+#import "TSSafeMutableArray.h"
+#import "IMAModelGroup.h"
+#import "TSIMUser.h"
+#import "TSSafeMutableArray.h"
+
 typedef NS_OPTIONS(NSUInteger, IMAContactChangedNotifyType) {
     // 联系人列表事件
     EIMAContact_AddNewSubGroup   =    0x0001 ,            // 新建分组
@@ -40,7 +45,7 @@ typedef NS_OPTIONS(NSUInteger, IMAContactChangedNotifyType) {
 
 @property (nonatomic, assign) IMAContactChangedNotifyType type;     // 类型
 @property (nonatomic, strong) IMASubGroup *subGroup;                // 被操作的分组
-@property (nonatomic, strong) IMAUser     *user;                    // 被操作的用户
+@property (nonatomic, strong) TSIMUser    *user;                    // 被操作的用户
 @property (nonatomic, assign) NSUInteger  index;                    // 被操对象的index
 
 @property (nonatomic, strong) IMAContactChangedNotifyItem *toItem;  // 只在移动分组时使用
@@ -63,20 +68,20 @@ typedef void (^IMASubGroupCompletion)(IMASubGroup *sg);
 {
 @protected
     // 好友分组IMASubGroup列表
-    CLSafeMutableArray      *_subGroupList;
+    TSSafeMutableArray      *_subGroupList;
     
     
 @protected
     // 群列表IMAGroup
-    CLSafeMutableArray      *_groupList;
+    TSSafeMutableArray      *_groupList;
     
     // 黑名单列表
-    CLSafeMutableArray      *_blackList;
+    TSSafeMutableArray      *_blackList;
 }
 
-@property (nonatomic, readonly) CLSafeMutableArray *subGroupList;
-@property (nonatomic, readonly) CLSafeMutableArray *groupList;
-@property (nonatomic, readonly) CLSafeMutableArray *blackList;
+@property (nonatomic, readonly) TSSafeMutableArray *subGroupList;
+@property (nonatomic, readonly) TSSafeMutableArray *groupList;
+@property (nonatomic, readonly) TSSafeMutableArray *blackList;
 
 @property (nonatomic, copy) IMAContactChangedCompletion contactChangedCompletion;
 
@@ -93,7 +98,7 @@ typedef void (^IMASubGroupCompletion)(IMASubGroup *sg);
 - (void)asyncConfigGroup;
 
 // 添空上次选中标记后的subGroupList
-- (CLSafeMutableArray *)clearPickedSubGroupList;
+- (TSSafeMutableArray *)clearPickedSubGroupList;
 
 // 通过分组旬查询分组
 - (IMASubGroup *)getSubGroupOf:(NSString *)sgNAme;
@@ -101,43 +106,43 @@ typedef void (^IMASubGroupCompletion)(IMASubGroup *sg);
 // 查询用户的分组
 // 若user为C2CType，查找对应的分组，找到返回，未找到返回为空
 // 若user为Group，直接返回空(分组只处理好友，不处理群组)
-- (IMASubGroup *)subgroupOf:(IMAUser *)user;
+- (IMASubGroup *)subgroupOf:(TSIMUser *)user;
 
 // 查询user对应内存的中对象
 // 若user为C2CType，返回_subGroupList中的分组与user.userid相同的对象，未找到返回空
 // 若user为Group，返回_groupList中与user.userid相同的对象，未找到返回为空
-- (IMAUser *)isContainUser:(IMAUser *)user;
+- (TSIMUser *)isContainUser:(TSIMUser *)user;
 
 // 按用户id查找对应内存的中对象
-- (IMAUser *)getUserByUserId:(NSString *)userID;
+- (TSIMUser *)getUserByUserId:(NSString *)userID;
 
 // 按群id查找对应内存的中对象
-- (IMAUser *)getUserByGroupId:(NSString *)groupID;
+- (TSIMUser *)getUserByGroupId:(NSString *)groupID;
 
 // user是否为我的好友，YES，是, NO，则为陌生人
-- (BOOL)isMyFriend:(IMAUser *)user;
+- (BOOL)isMyFriend:(TSIMUser *)user;
 
 // 用户是否在黑名单内
 - (BOOL)isInBlackListByID:(NSString *)userID;
-- (BOOL)isInBlackList:(IMAUser *)user;
+- (BOOL)isInBlackList:(TSIMUser *)user;
 
 // 删除用户，并删除对应的会话
 // 若user为C2CType，删除_subGroupList中的对象，并删除相关的会话
 // 若user为Group，删除_groupList中的对象，并删除相关的会话
-- (void)removeUser:(IMAUser *)user;
+- (void)removeUser:(TSIMUser *)user;
 
 
 // 删除用户，并删除对应的会话，并将其移到黑名单中
-- (void)removeUserToBlackList:(IMAUser *)user;
+- (void)removeUserToBlackList:(TSIMUser *)user;
 
 // 将用户从黑名单中移除
-- (void)removeUserOutBlackList:(IMAUser *)user;
+- (void)removeUserOutBlackList:(TSIMUser *)user;
 
 // 添加用户到分组
-- (void)addUser:(IMAUser *)user toSubGroup:(IMASubGroup *)sg;
+- (void)addUser:(TSIMUser *)user toSubGroup:(IMASubGroup *)sg;
 
 // 添加用户到默认分组
-- (void)addUserToDefaultSubGroup:(IMAUser *)user;
+- (void)addUserToDefaultSubGroup:(TSIMUser *)user;
 
 // 添加事件监听
 - (void)addContactChangedObserver:(id)observer handler:(SEL)selector forEvent:(NSUInteger)eventID;
@@ -162,22 +167,22 @@ typedef void (^IMASubGroupCompletion)(IMASubGroup *sg);
 // 删除分组后，调用此方法
 - (void)onDeleteSubGroup:(IMASubGroup *)group;
 // 添加用户到分组后，调用此方法
-- (void)onAddUser:(IMAUser *)user toSubGroup:(IMASubGroup *)group;
+- (void)onAddUser:(TSIMUser *)user toSubGroup:(IMASubGroup *)group;
 // 删除好友后，调用此方法
-- (void)onDeleteFriend:(IMAUser *)user;
+- (void)onDeleteFriend:(TSIMUser *)user;
 // 用户信息更新后，调用此方法
-- (void)onFriendInfoChanged:(IMAUser *)user remark:(NSString *)remark;
+- (void)onFriendInfoChanged:(TSIMUser *)user remark:(NSString *)remark;
 // 默认分组加载完毕后调用（目前已废弃）
 - (void)onLoadDefaultSubGroup:(IMASubGroup *)group;
 
 // 添加到黑名单后调用
-- (void)onAddToBlackList:(IMAUser *)user;
+- (void)onAddToBlackList:(TSIMUser *)user;
 // 移除黑名单调用
-- (void)onRemoveOutBlackList:(IMAUser *)user;
+- (void)onRemoveOutBlackList:(TSIMUser *)user;
 // 移动分组后调用
-- (void)onMove:(IMAUser *)user from:(IMASubGroup *)fromG to:(IMASubGroup *)toG;
+- (void)onMove:(TSIMUser *)user from:(IMASubGroup *)fromG to:(IMASubGroup *)toG;
 // 添加群后调用
-- (void)onAddGroup:(IMAGroup *)group;
+- (void)onAddGroup:(TSIMUser *)group;
 
 @end
 

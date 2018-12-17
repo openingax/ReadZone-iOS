@@ -4,7 +4,6 @@ platform :ios, '9.0'
 workspace 'ReadZone'
 
 project 'TIMServer/TIMServer.project'
-
 project 'ReadZone.project'
 
 target 'TIMServer' do

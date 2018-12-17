@@ -44,6 +44,12 @@
 		5F15192F21A69BC300E83785 /* TSIMChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15192D21A69BC300E83785 /* TSIMChatViewController.h */; };
 		5F15193021A69BC300E83785 /* TSIMChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15192E21A69BC300E83785 /* TSIMChatViewController.m */; };
 		5F15193421A69DB600E83785 /* TSIMAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15193321A69DB600E83785 /* TSIMAdapter.h */; };
+		5F15CD2921C777A100AB2EDF /* TSIMGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15CD2721C777A100AB2EDF /* TSIMGroupMember.h */; };
+		5F15CD2A21C777A100AB2EDF /* TSIMGroupMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15CD2821C777A100AB2EDF /* TSIMGroupMember.m */; };
+		5F15CD5021C7795000AB2EDF /* IMAContactDrawerShowAble.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15CD4F21C7795000AB2EDF /* IMAContactDrawerShowAble.h */; };
+		5F15CD5221C77D3600AB2EDF /* IMAUserShowAble.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15CD5121C77D3600AB2EDF /* IMAUserShowAble.h */; };
+		5F15CD5F21C7BC5500AB2EDF /* TSIMGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15CD5D21C7BC5500AB2EDF /* TSIMGroup.h */; };
+		5F15CD6021C7BC5500AB2EDF /* TSIMGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15CD5E21C7BC5500AB2EDF /* TSIMGroup.m */; };
 		5F1EA07721B7CEF200CB4BBE /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07021B7CEF200CB4BBE /* TLSSDK.framework */; };
 		5F1EA07821B7CEF200CB4BBE /* IMMessageExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */; };
 		5F1EA07921B7CEF200CB4BBE /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EA07221B7CEF200CB4BBE /* ImSDK.framework */; };
@@ -272,6 +278,12 @@
 		5F15192D21A69BC300E83785 /* TSIMChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMChatViewController.h; sourceTree = "<group>"; };
 		5F15192E21A69BC300E83785 /* TSIMChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMChatViewController.m; sourceTree = "<group>"; };
 		5F15193321A69DB600E83785 /* TSIMAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMAdapter.h; sourceTree = "<group>"; };
+		5F15CD2721C777A100AB2EDF /* TSIMGroupMember.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMGroupMember.h; sourceTree = "<group>"; };
+		5F15CD2821C777A100AB2EDF /* TSIMGroupMember.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMGroupMember.m; sourceTree = "<group>"; };
+		5F15CD4F21C7795000AB2EDF /* IMAContactDrawerShowAble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAContactDrawerShowAble.h; sourceTree = "<group>"; };
+		5F15CD5121C77D3600AB2EDF /* IMAUserShowAble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAUserShowAble.h; sourceTree = "<group>"; };
+		5F15CD5D21C7BC5500AB2EDF /* TSIMGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMGroup.h; sourceTree = "<group>"; };
+		5F15CD5E21C7BC5500AB2EDF /* TSIMGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMGroup.m; sourceTree = "<group>"; };
 		5F1EA07021B7CEF200CB4BBE /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TLSSDK.framework; path = IMFrameworks/TLSSDK.framework; sourceTree = "<group>"; };
 		5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IMMessageExt.framework; path = IMFrameworks/IMMessageExt.framework; sourceTree = "<group>"; };
 		5F1EA07221B7CEF200CB4BBE /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
@@ -486,13 +498,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F0317FA21B0D3010060B129 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Contact;
-			sourceTree = "<group>";
-		};
 		5F06F5C421B388B3004419DC /* RefreshView */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,7 +711,6 @@
 		5F7C96AF21A805C60017928F /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				5F0317FA21B0D3010060B129 /* Contact */,
 				5FBABECB21B50AB3004288CB /* TSIMAPlatformHeaders.h */,
 				5F91495D2192D0D900148AAA /* TSConversationManager.h */,
 				5F91495E2192D0D900148AAA /* TSConversationManager.m */,
@@ -746,10 +750,12 @@
 		5F7C96B621A8070A0017928F /* TIMShow */ = {
 			isa = PBXGroup;
 			children = (
+				5F15CD4F21C7795000AB2EDF /* IMAContactDrawerShowAble.h */,
 				5F299EFF21AF71CB00A0F1A0 /* TSIMAConnectConversation.h */,
 				5F299F0021AF71CB00A0F1A0 /* TSIMAConnectConversation.m */,
 				5FBABECD21B517F3004288CB /* IMAConversationShowAble.h */,
 				5FBABECF21B51827004288CB /* IMAShowAble.h */,
+				5F15CD5121C77D3600AB2EDF /* IMAUserShowAble.h */,
 			);
 			path = TIMShow;
 			sourceTree = "<group>";
@@ -937,6 +943,10 @@
 				5F91495A2192CE3700148AAA /* TSIMUser.m */,
 				5FBE396921AB83AF009186F5 /* TSIMHost.h */,
 				5FBE396A21AB83AF009186F5 /* TSIMHost.m */,
+				5F15CD5D21C7BC5500AB2EDF /* TSIMGroup.h */,
+				5F15CD5E21C7BC5500AB2EDF /* TSIMGroup.m */,
+				5F15CD2721C777A100AB2EDF /* TSIMGroupMember.h */,
+				5F15CD2821C777A100AB2EDF /* TSIMGroupMember.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1086,6 +1096,8 @@
 				5F3E045F21A58F0A00E3EAB8 /* ADScaleTransition.h in Headers */,
 				5F9148F9219283C500148AAA /* TSColorMarco.h in Headers */,
 				5F91495B2192CE3700148AAA /* TSIMUser.h in Headers */,
+				5F15CD5021C7795000AB2EDF /* IMAContactDrawerShowAble.h in Headers */,
+				5F15CD5221C77D3600AB2EDF /* IMAUserShowAble.h in Headers */,
 				5F3E045621A58F0A00E3EAB8 /* FTAnimationManager.h in Headers */,
 				5F91495F2192D0D900148AAA /* TSConversationManager.h in Headers */,
 				5F3E03FA21A5562500E3EAB8 /* TSTableRefreshViewController.h in Headers */,
@@ -1106,6 +1118,7 @@
 				5F15190F21A65C2A00E83785 /* TSChatInputTextView.h in Headers */,
 				5F9148FD219283C500148AAA /* PathUtility.h in Headers */,
 				5F3E046021A58F0A00E3EAB8 /* UICollectionViewController+ADScaleTransition.h in Headers */,
+				5F15CD2921C777A100AB2EDF /* TSIMGroupMember.h in Headers */,
 				5F9F33E021B256BA00A3C307 /* MenuButton.h in Headers */,
 				5F9147B62191777300148AAA /* TSAPITencent.h in Headers */,
 				5F06F5E121B3E016004419DC /* UIViewAdditions.h in Headers */,
@@ -1174,6 +1187,7 @@
 				5F299F0D21AF7BCC00A0F1A0 /* TSIMAPlatform+Login.h in Headers */,
 				5F3E041621A57F9D00E3EAB8 /* TSChatInputPanel.h in Headers */,
 				5F5D072821ACE790009B4A33 /* TSChatHeaders.h in Headers */,
+				5F15CD5F21C7BC5500AB2EDF /* TSIMGroup.h in Headers */,
 				5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */,
 				5FBABECE21B517F3004288CB /* IMAConversationShowAble.h in Headers */,
 			);
@@ -1257,7 +1271,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TIMServer/Pods-TIMServer-resources.sh",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1268,7 +1282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TIMServer/Pods-TIMServer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		39B59CAF444E1A245E91C640 /* [CP] Check Pods Manifest.lock */ = {
@@ -1298,6 +1312,7 @@
 			files = (
 				5FC0A60A21AE6BC300603B93 /* TSImageThumbPickerViewController.m in Sources */,
 				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
+				5F15CD2A21C777A100AB2EDF /* TSIMGroupMember.m in Sources */,
 				5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */,
 				5F9149542192C19B00148AAA /* TIMElem+ShowDescription.m in Sources */,
 				5F06F5E521B3E4B5004419DC /* MsgSendingTip.m in Sources */,
@@ -1385,6 +1400,7 @@
 				5F914900219283C500148AAA /* UIViewController+Layout.m in Sources */,
 				5F06F5FC21B43789004419DC /* TSExpendButton.m in Sources */,
 				5F3E046721A58F0A00E3EAB8 /* ADFlipTransition.m in Sources */,
+				5F15CD6021C7BC5500AB2EDF /* TSIMGroup.m in Sources */,
 				5F3E03F321A5450B00E3EAB8 /* TSBaseView.m in Sources */,
 				5F9147BF21917CF400148AAA /* TSChatViewController.m in Sources */,
 				5F91493321928F9300148AAA /* TSUserManager.m in Sources */,
@@ -1531,7 +1547,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",
@@ -1573,7 +1589,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IMFrameworks",

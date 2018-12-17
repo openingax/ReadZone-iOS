@@ -37,6 +37,7 @@
 {
     CGSize size = [self.text textSizeIn:CGSizeMake(width, HUGE_VAL) font:[packMsg textFont]];
     
+    
     if (size.height < kIMAMsgMinHeigth) {
         size.height = kIMAMsgMinHeigth;
     }

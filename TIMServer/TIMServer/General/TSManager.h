@@ -14,18 +14,6 @@ static NSString * kTIMNewMsgEvent = @"kTIMNewMsgEvent";
 
 @interface TSManager : NSObject
 
-/**
- 显示留言板视图控制器
-
- @param deviceID 设备 did
- @param controller 宿主控制器
- */
-- (void)showMsgVCWithAccount:(NSString *)account
-                    nickName:(NSString *)nickName
-                     faceURL:(NSString *)faceURL
-                    deviceID:(NSString *)deviceID
-                  controller:(UIViewController *)controller;
-
 - (void)showTIMWithController:(UIViewController *)controller;
 - (void)loginTIMWithAccount:(NSString *)account
                    nickName:(NSString *)nickName

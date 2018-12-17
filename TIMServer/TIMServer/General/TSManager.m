@@ -38,6 +38,11 @@
 @implementation TSManager
 
 - (void)showTIMWithController:(UIViewController *)controller {
+    TIMLoginStatus status = [[TIMManager sharedInstance] getLoginStatus];
+    if (status == TIM_STATUS_LOGOUT) {// 检查登录状态，如果没登录，再重新登录一次
+        [self loginTIMWithAccount:self.account nickName:self.nickName faceURL:self.faceURL deviceID:self.deviceID];
+    }
+    
     TIMUserProfile *profile = [[TIMUserProfile alloc] init];
     profile.identifier = [TSUserManager shareInstance].deviceID;
     profile.nickname = self.nickName;
@@ -52,59 +57,9 @@
     [controller presentViewController:self.navVC animated:YES completion:^{
         
     }];
-    
     [TSIMManager shareInstance].navigationController = self.navVC;
     [TSIMManager shareInstance].topViewController = self.chatVC;
 }
-
-- (void)showMsgVCWithAccount:(NSString *)account
-                    nickName:(NSString *)nickName
-                     faceURL:(NSString *)faceURL
-                    deviceID:(NSString *)deviceID
-                  controller:(UIViewController *)controller
-{
-    
-    if (!self.userAPI) {
-        self.userAPI = [[TSAPIUser alloc] init];
-    }
-//    [self.userAPI registerWithAccount:params[@"account"] userIcon:@"" complete:^(BOOL isSucc, NSString *message, NSDictionary *dict) {
-//
-//    }];
-    
-    
-//    [[TSUserManager shareInstance] saveUserAccount:params[@"account"] userSig:params[@"sig"] receiver:params[@"receiver"]];
-    if ([deviceID containsString:@"Viomi"]) {
-        // C2C 会话
-    } else if ([deviceID containsString:@"Viot"]){
-        // Group 会话
-    }
-    if ([NSString isEmpty:account] || [NSString isEmpty:deviceID]) {
-        NSLog(@"无效账户或无效设备id");
-        return;
-    }
-    [[TSUserManager shareInstance] saveDeviceID:deviceID];
-    [[TSUserManager shareInstance] saveAccount:account];
-    
-//    TSIMUser *receiver = [[TSIMUser alloc] initWithUserId:deviceID];
-    TIMUserProfile *profile = [[TIMUserProfile alloc] init];
-    profile.identifier = deviceID;
-    profile.nickname = @"";
-    profile.faceURL = @"";
-    
-    TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
-    
-    self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
-    self.navVC = [[TSBaseNavigationController alloc] initWithRootViewController:self.chatVC];
-    
-    self.navVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [controller presentViewController:self.navVC animated:YES completion:^{
-        
-    }];
-    
-    [TSIMManager shareInstance].navigationController = self.navVC;
-    [TSIMManager shareInstance].topViewController = self.chatVC;
-}
-
 
 #pragma mark - 登录 & 注销
 
@@ -196,58 +151,6 @@
     }
 }
 
-//- (void)loginTIM {
-//    
-//    [TSIMAPlatform config];
-//    
-//    // 这里加多一步判断，如果 userSig 不存在，就先获取 userSig 后再登录
-//    if ([NSString isEmpty:[TSUserManager shareInstance].userSig]) {
-//        if (!self.userAPI) {
-//            self.userAPI = [[TSAPIUser alloc] init];
-//        }
-//        
-//        @weakify(self);
-//        void (^succBlock)(BOOL isSucc, NSString *message, NSDictionary *dict) = ^(BOOL isSucc, NSString *message, NSDictionary *dict) {
-//            @strongify(self);
-//            if (isSucc) {
-//                //                int code = [[dict notNullObjectForKey:@"code"] intValue];
-//                
-//                @weakify(self);
-//                [self.userAPI loginWithAccount:[TSUserManager shareInstance].account complete:^(BOOL isSuccess, NSString *message, NSDictionary *data) {
-//                    @strongify(self);
-//                    
-//                    if (isSuccess) {
-//                        NSString *userSig = [[data notNullObjectForKey:@"result"] notNullObjectForKey:@"userSign"];
-//                        [[TSUserManager shareInstance] saveUserSig:userSig];
-//                        
-//                        
-//                        @weakify(self);
-//                        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-//                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), queue, ^{
-//                            @strongify(self);
-//                            [self login];
-//                        });
-//                    }
-//                }];
-//            }
-//        };
-//        
-//        [self.userAPI registerWithAccount:[TSUserManager shareInstance].account userIcon:nil complete:^(BOOL isSucc, NSString *message, NSDictionary *dict) {
-//            succBlock(isSucc, message, dict);
-//        }];
-//        
-//    } else {
-//        
-//        @weakify(self);
-//        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), queue, ^{
-//            @strongify(self);
-//            [self login];
-//        });
-//    }
-//    
-//}
-
 - (void)login {
     
     TIMLoginParam *param = [[TIMLoginParam alloc] init];
@@ -263,6 +166,22 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent object:nil userInfo:@{@"status": @(YES), @"msg": @""}];
         });
+        
+        TIMFriendProfileOption *option = [[TIMFriendProfileOption alloc] init];
+        option.friendFlags = TIM_PROFILE_FLAG_NICK | TIM_PROFILE_FLAG_FACE_URL;
+        option.friendCustom = nil;
+        option.userCustom = nil;
+        TIMUserProfile *profile = [[TIMUserProfile alloc] init];
+        profile.faceURL = self.faceURL;
+        profile.nickname = self.nickName;
+        
+        [[TIMFriendshipManager sharedInstance] modifySelfProfile:option profile:profile succ:^{
+            [[TSIMAPlatform sharedInstance] configOnLoginSucc:param];
+        } fail:^(int code, NSString *msg) {
+            
+        }];
+        
+        
         
     } fail:^(int code, NSString *msg) {
         @strongify(self);

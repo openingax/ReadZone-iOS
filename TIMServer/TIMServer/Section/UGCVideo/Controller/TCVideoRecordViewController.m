@@ -270,7 +270,6 @@
     _shapeLayer.path = circle.CGPath;
     [self.view.layer addSublayer:_shapeLayer];
     
-    //第四步，用一个定时器进行测试，每一秒，进度加10%
     [_shapeLayer setAffineTransform:CGAffineTransformMakeRotation(-M_PI/2.f)];
 }
 

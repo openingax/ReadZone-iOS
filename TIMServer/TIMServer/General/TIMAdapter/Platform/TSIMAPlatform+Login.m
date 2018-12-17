@@ -87,5 +87,19 @@
     [[TSIMManager shareInstance].topViewController presentViewController:alertController animated:YES completion:nil];
 }
 
+- (void)configHost:(TIMLoginParam *)param {
+    if (!_host) {
+        _host = [[TSIMHost alloc] init];
+    }
+    
+    _host.loginParam = param;
+    [_host asyncProfile];
+}
+
+- (void)configOnLoginSucc:(TIMLoginParam *)param {
+    
+    
+    [self configHost:param];
+}
 
 @end

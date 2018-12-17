@@ -10,11 +10,13 @@
 #import <QALSDK/QalSDKProxy.h>
 #import <ImSDK/ImSDK.h>
 #import <TLSSDK/TLSHelper.h>
-#import "TSIMHost.h"
 #import "TSConversationManager.h"
 #import "IMAPlatformConfig.h"
 #import "TSConfig.h"
 #import "TSIMManager.h"
+#import "TSIMHost.h"
+
+//#import "IMAContactManager.h"
 
 // TIMServer IM 服务的业务逻辑入口，
 typedef EQALNetworkType TCQALNetwork;
@@ -49,6 +51,8 @@ typedef EQALNetworkType TCQALNetwork;
 // 被踢下线后，再重新登录
 - (void)offlineLogin;
 - (void)logout:(TIMLoginSucc)succ fail:(TIMFail)fail;
+
+- (void)configHost:(TIMLoginParam *)param;
 
 - (void)changeToNetwork:(TCQALNetwork)work;
 

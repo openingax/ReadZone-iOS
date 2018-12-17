@@ -1126,7 +1126,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking-framework/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/KVOController-framework/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD-framework/MBProgressHUD.framework",
@@ -1165,7 +1165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReadZone/Pods-ReadZone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D3B2ED02A65B7385CAAD61 /* [CP] Check Pods Manifest.lock */ = {

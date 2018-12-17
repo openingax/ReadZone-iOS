@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <ImSDK/ImSDK.h>
-#import "TSIMUser.h"
+#import "TSIMGroupMember.h"
 
 /**
  * 消息类型

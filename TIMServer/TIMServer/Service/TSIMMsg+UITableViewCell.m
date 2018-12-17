@@ -336,6 +336,13 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
     else
     {
         // 在非勾选状态下
+        if ([[_msg getElem:0] isKindOfClass:[TIMTextElem class]]) {
+            TIMTextElem *textElem = (TIMTextElem *)[_msg getElem:0];
+            if (textElem.text.length > 15) {
+                
+            }
+        }
+        
         size.width -= horMargin + [self sendingTipWidth] + horMargin + horMargin + [self userIconSize].width + horMargin;
         size = [self contentSizeInWidth:size.width];
     }

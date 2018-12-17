@@ -13,6 +13,7 @@
 @implementation TSIMAPlatform
 
 static TSIMAPlatform *_sharedInstance = nil;
+static Class kHostClass = Nil;
 
 + (instancetype)config {
     static dispatch_once_t onceToken;
@@ -21,6 +22,14 @@ static TSIMAPlatform *_sharedInstance = nil;
         [_sharedInstance configIMSDK];
     });
     return _sharedInstance;
+}
+
++ (void)configHostClass:(Class)hostCls {
+    if (![hostCls isSubclassOfClass:[TSIMHost class]]) {
+        DebugLog(@"%@ 必须是 TSIMHost 的子类", hostCls);
+    } else {
+        kHostClass = hostCls;
+    }
 }
 
 + (instancetype)sharedInstance {
@@ -140,6 +149,18 @@ static TSIMAPlatform *_sharedInstance = nil;
     
     [TSIMAPlatform setAutoLogin:NO];
     _host = nil;
+}
+
+- (void)configHost:(TIMLoginParam *)param {
+    if (!_host) {
+        if (kHostClass == Nil) {
+            kHostClass = [TSIMHost class];
+        }
+        _host = [[kHostClass alloc] init];
+    }
+    
+    _host.loginParam = param;
+    [_host asyncProfile];
 }
 
 - (void)changeToNetwork:(TCQALNetwork)work

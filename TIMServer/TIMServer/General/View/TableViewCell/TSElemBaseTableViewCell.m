@@ -349,14 +349,14 @@
     
     TSIMUser *user = nil;
     if ([_msg isMineMsg]) {
-//        user = [TSIMAPlatform sharedInstance].host;
+        user = [TSIMAPlatform sharedInstance].host;
     } else {
         user = [_msg getSender];
     }
     
     [_msg getSender];
     
-    [_icon sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
+    [_icon sd_setImageWithURL:[user showIconUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
     
     if (_remarkTip) {
         _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);

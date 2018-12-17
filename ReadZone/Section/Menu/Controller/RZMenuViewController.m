@@ -255,7 +255,7 @@ static CGFloat containerWidth;
     }
     if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
 //        [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
-        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];
+//        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];
     }
 }
 

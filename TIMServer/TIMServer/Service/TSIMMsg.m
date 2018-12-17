@@ -409,7 +409,24 @@
 }
 
 - (TSIMUser *)getSender {
-    return [[TSIMUser alloc] initWithUserId:[_msg sender]];
+    if ([[_msg getConversation] getType] == TIM_C2C) {
+        TSIMUser *user = [[TSIMUser alloc] initWithUserId:[_msg sender]];
+        return user;
+    } else if ([[_msg getConversation] getType] == TIM_GROUP) {
+        TSIMGroupMember *member = [[TSIMGroupMember alloc] initWithMemberInfo:[_msg getSenderGroupMemberProfile]];
+        if (member) {
+            TSIMUser *user = [[TSIMUser alloc] initWithUserInfo:[_msg getSenderProfile]];
+            [member setIcon:user.icon];
+            
+            if (member.memberInfo.nameCard.length <= 0) {
+                [member setNickName:[user showTitle]];
+            }
+        }
+        
+        return member;
+    }
+    
+    return nil;
 }
 
 - (NSInteger)status {

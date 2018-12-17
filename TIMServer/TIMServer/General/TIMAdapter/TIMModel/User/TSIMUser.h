@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ImSDK/ImSDK.h>
 #import "IMAShowAble.h"
+#import "TSDebugMarco.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

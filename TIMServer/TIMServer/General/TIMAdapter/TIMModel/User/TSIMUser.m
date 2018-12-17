@@ -44,16 +44,10 @@
 }
 
 - (BOOL)isC2CType {
-//    if ([[self userId] hasPrefix:@"viot"]) {
-//        return NO;
-//    }
     return YES;
 }
 
 - (BOOL)isGroupType {
-//    if ([[self userId] hasPrefix:@"viot"]) {
-//        return YES;
-//    }
     return NO;
 }
 
