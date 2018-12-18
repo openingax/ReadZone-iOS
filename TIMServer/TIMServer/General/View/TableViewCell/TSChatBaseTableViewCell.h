@@ -8,6 +8,7 @@
 
 #import "TSElemBaseTableViewCell.h"
 
+@class TSChatImageTableViewCell, TSChatVideoTableViewCell;
 @interface TSChatBaseTableViewCell : TSElemBaseTableViewCell
 
 @end

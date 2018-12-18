@@ -36,6 +36,7 @@
 #import "UIView+CustomAutoLayout.h"
 #import "AnimationHeaders.h"
 #import "MBProgressHUD.h"
+#import "TSAlertManager.h"
 
 #import "UIViewAdditions.h"
 

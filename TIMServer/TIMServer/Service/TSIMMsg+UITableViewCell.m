@@ -242,6 +242,10 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         return self.showHeightInChat;
     }
     
+    if (self.type == TSIMMsgTypeRevokedTip) {
+        return 50;
+    }
+    
     if (self.type == TSIMMsgTypeTimeTip || self.type == TSIMMsgTypeSaftyTip)
     {
         // 时间标签显示20
@@ -257,8 +261,11 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         return size.height;
     }
     
-    if (isGroup && ![self isMineMsg])
-    {
+//    if (isGroup && ![self isMineMsg])
+//    {
+//        size.height += [self groupMsgTipHeight];
+//    }
+    if (isGroup) {
         size.height += [self groupMsgTipHeight];
     }
     size.height += kCellDefaultMargin;
@@ -269,11 +276,7 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
         size.height = iconSize.height + kCellDefaultMargin;
     }
     
-    if ([self isMineMsg]) {
-        size.height += 8;
-    } else {
-        size.height += 36;
-    }
+    size.height += 36;
     if (size.height < 64) {
         size.height = 64;
     }
@@ -284,41 +287,11 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 
 - (UIEdgeInsets)contentBackInset
 {
-    
-//        if (self.isMineMsg)
-//        {
-//            return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin/2, kDefaultMargin/2 + 1, kDefaultMargin + 1);
-//        }
-//        else
-//        {
-//            return UIEdgeInsetsMake(kDefaultMargin/2 + 1, kDefaultMargin + 2, kDefaultMargin/2 + 1, kDefaultMargin/2 + 1);
-//    if (self.type == TSIMMsgTypeText) {
-//        return UIEdgeInsetsMake(28, 20, 8, 20);
-    
-    if (self.isMineMsg) {
-        if (self.type == TSIMMsgTypeText) {
-            return UIEdgeInsetsMake(28, 20, 8, 20);
-        } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
-            return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
-        } else {
-            return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
-        }
+    if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
+        return UIEdgeInsetsMake(29, 15, 8, 9);
     } else {
-        if (self.type == TSIMMsgTypeText) {
-        return UIEdgeInsetsMake(8, 20, 8, 20);
-        } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
-            return UIEdgeInsetsMake(10, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
-        } else {
-            return UIEdgeInsetsMake(8, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
-        }
+        return UIEdgeInsetsMake(30, 20, 8, 16);
     }
-//    } else if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
-//        return UIEdgeInsetsMake(30, kCellDefaultMargin + 7, 9, kCellDefaultMargin/2 + 5);
-//    } else {
-//        return UIEdgeInsetsMake(28, kCellDefaultMargin + 2, 6, kCellDefaultMargin/2 + 1);
-//    }
-    
-//        }
 }
 
 - (NSInteger)pickedViewWidth

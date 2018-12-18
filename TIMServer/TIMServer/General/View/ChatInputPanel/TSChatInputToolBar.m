@@ -99,6 +99,12 @@
     [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
     [_movieBtn addTarget:self action:@selector(onClickMovie:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
+    
+//    if (kIsiPhoneX) {
+//        _placeHolderView = [[UIView alloc] init];
+//        _placeHolderView.backgroundColor = self.backgroundColor;
+//        [self addSubview:_placeHolderView];
+//    }
 }
 
 - (void)setChatDelegate:(id<TSChatInputAbleViewDelegate>)chatDelegate {
@@ -126,9 +132,9 @@
         }
         // 语音模式
         NSInteger toh = kButtonSize + 3 * kVerMargin;
-        if (kIsiPhoneX) {
-            toh = kButtonSize + 3 * kVerMargin + 34;
-        }
+//        if (kIsiPhoneX) {
+//            toh = kButtonSize + 3 * kVerMargin + 34;
+//        }
         if (toh != _contentHeight)
         {
             self.contentHeight = toh;
@@ -168,8 +174,20 @@
 
 - (void)relayoutFrameOfSubViews
 {
+//    if (kIsiPhoneX) {
+//        [_placeHolderView alignParentBottom];
+//        [_placeHolderView setSize:CGSizeMake(kScreenWidth, 34)];
+//        [_placeHolderView layoutParentHorizontalCenter];
+//    }
+    
     [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
-    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
+//    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
+//    if (kIsiPhoneX) {
+//        [_audioBtn alignBottom:_placeHolderView margin:1.5 * kVerMargin];
+//    } else {
+        [_audioBtn alignParentBottomWithMargin:1.5 * kVerMargin];
+//    }
+    
     [_audioBtn alignParentLeftWithMargin:kDefaultMargin/2];
     
     [_movieBtn sameWith:_audioBtn];
@@ -184,16 +202,18 @@
     [_audioPressedBtn layoutToRightOf:_audioBtn margin:kDefaultMargin];
     [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kDefaultMargin];
     
+    
+    
     CGRect rect = self.bounds;
     CGRect apframe = _audioPressedBtn.frame;
     
     rect.origin.x = apframe.origin.x;
     rect.origin.y = kVerMargin;
-    if (kIsiPhoneX) {
-        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
-    } else {
+//    if (kIsiPhoneX) {
+//        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
+//    } else {
         rect.size.height -= 2 * kVerMargin;
-    }
+//    }
     rect.size.width = apframe.size.width;
     _textView.frame = rect;
 }
@@ -249,9 +269,9 @@
     
     // 如果是 iPX，要在 conHeight 里多加 34 的高度
     NSInteger conHeight = textViewToHeight + 3 * kVerMargin;
-    if (kIsiPhoneX) {
-        conHeight = textViewToHeight + 3 * kVerMargin + 34;
-    }
+//    if (kIsiPhoneX) {
+//        conHeight = textViewToHeight + 3 * kVerMargin + 34;
+//    }
     if (_contentHeight != conHeight)
     {
         self.contentHeight = conHeight;

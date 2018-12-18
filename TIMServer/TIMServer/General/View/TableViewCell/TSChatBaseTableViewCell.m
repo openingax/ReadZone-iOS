@@ -38,13 +38,19 @@
 //    }
 //    else
 //    {
+//    if ([self isKindOfClass:[TSChatVideoTableViewCell class]] || [self isKindOfClass:[TSChatImageTableViewCell class]]) {
+//        _contentBack.image = [[UIImage imageWithBundleAsset:@"bubble_gray"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 8, 20) resizingMode:UIImageResizingModeStretch];
+//    } else {
         _contentBack.image = [[UIImage imageWithBundleAsset:@"bubble_gray"] resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+//    }
 //    }
 }
 
 - (void)configSendingTips
 {
-    
+    [super configSendingTips];
+    TSIMMsgStatus state = [_msg status];
+    [_sendingTipRef setMsgStatus:state];
 }
 
 - (void)addC2CCellViews

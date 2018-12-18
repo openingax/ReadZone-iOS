@@ -37,7 +37,7 @@
 
 #pragma mark - Notification
 - (void)onRevokeMsg:(NSNotification *)notify {
-    if ([notify.object isKindOfClass:[TSIMMsg class]])//本地撤销
+    if ([notify.object isKindOfClass:[TSIMMsg class]])//本地撤回
     {
         TSIMMsg *msg = (TSIMMsg *)notify.object;
         __weak typeof(self) ws = self;
@@ -48,7 +48,7 @@
             }
         }];
     }
-    else if ([notify.object isKindOfClass:[TIMMessageLocator class]])//接收到撤销消息
+    else if ([notify.object isKindOfClass:[TIMMessageLocator class]])//接收到撤回消息
     {
         TSIMMsg *msg = [self findMsg:(TIMMessageLocator *)notify.object];
         if (!msg) {
@@ -136,6 +136,12 @@
 
 - (void)onInputViewContentHeightChanged:(NSDictionary *)change
 {
+    /*
+     当 _messageList 不存在时，可能已经退出留言板，此时不再刷新 tableView，避免崩溃
+     解决的问题：输入框输入文字后，没有点击发送，返回冰箱主页，app闪退
+    */
+    if (!_messageList || _messageList.count <= 0) return;
+    
     NSInteger nv = [change[NSKeyValueChangeNewKey] integerValue];
     NSInteger ov = [change[NSKeyValueChangeOldKey] integerValue];
     if (nv != ov)

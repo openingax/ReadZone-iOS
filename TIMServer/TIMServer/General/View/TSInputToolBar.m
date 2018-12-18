@@ -35,7 +35,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         // iPX 89，其余 55
-        _contentHeight = kIsiPhoneX ? 90 : 56;
+//        _contentHeight = kIsiPhoneX ? 90 : 56;
+        _contentHeight = 50;
         self.backgroundColor = RGB(230, 234, 235);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -189,10 +190,12 @@
         CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         
-        CGFloat contentHeight = kIsiPhoneX ? (endFrame.size.height + _contentHeight - 34) : (endFrame.size.height + _contentHeight);
+//        CGFloat contentHeight = kIsiPhoneX ? (endFrame.size.height + _contentHeight - 34) : (endFrame.size.height + _contentHeight);
+        CGFloat contentHeight = endFrame.size.height + _contentHeight;
         if (contentHeight != _contentHeight) {
             CGRect rect = self.frame;
-            rect.origin.y = kIsiPhoneX ? (endFrame.origin.y - _contentHeight + 34 - kNavTotalHeight) : (endFrame.origin.y - _contentHeight - kNavTotalHeight);
+//            rect.origin.y = kIsiPhoneX ? (endFrame.origin.y - _contentHeight + 34 - kNavTotalHeight) : (endFrame.origin.y - _contentHeight - kNavTotalHeight);
+            rect.origin.y = endFrame.origin.y - _contentHeight - kNavTotalHeight;
             rect.size.height = contentHeight;
             
             [UIView animateWithDuration:duration animations:^{
@@ -208,7 +211,8 @@
     
     CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
-    NSInteger contentHeight = kIsiPhoneX ? 84 : 50;
+//    NSInteger contentHeight = kIsiPhoneX ? 84 : 50;
+    NSInteger contentHeight = 50;
     
     CGRect rect = self.frame;
     rect.origin.y = kScreenHeight - contentHeight - kNavTotalHeight;

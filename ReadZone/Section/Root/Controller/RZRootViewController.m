@@ -65,6 +65,10 @@
 //    if (!_tsManager) {
 //    [self searchAction];
 //    }
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.tsManager logoutTIM];
+//    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,9 +140,11 @@
 - (void)searchAction {
 //    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
 //        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account deviceID:@"viot85396846" controller:self];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
-        });
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396840"];
+    });
+//        });
 //    }
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

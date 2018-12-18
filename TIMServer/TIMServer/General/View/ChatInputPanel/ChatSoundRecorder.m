@@ -324,7 +324,6 @@ static ChatSoundRecorder *_sharedInstance = nil;
         
         [_recordTipView layoutParentCenter];
         [_recordTipView move:CGPointMake(0, -32)];
-    
     }
     
     //禁用导航栏上右侧按钮

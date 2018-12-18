@@ -258,7 +258,7 @@
     if (_conversation) {
         [_conversation releaseConversation];
     }
-    [_messageList removeAllObjects];
+//    [_messageList removeAllObjects];
 }
 
 - (void)hiddenKeyBoard {

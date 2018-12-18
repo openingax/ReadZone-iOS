@@ -105,6 +105,9 @@
     if (_sendingTipRef)
     {
         [self.contentView addSubview:_sendingTipRef];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resendMsg)];
+        [_sendingTipRef addGestureRecognizer:tap];
     }
     
     _pickedViewRef = [self addPickedView];
@@ -230,7 +233,7 @@
         [_contentBack layoutToRightOf:_icon margin:hor];
         [_contentBack alignTop:_icon];
         
-        
+#warning handler contentBackInset
         UIEdgeInsets inset = [_msg contentBackInset];
         inset.top -= kTableViewCellBubbleMarginTop;
         contentBackSize.width -= inset.left + inset.right;
@@ -259,17 +262,17 @@
 {
     CGRect rect = self.contentView.bounds;
     NSInteger hor = [_msg horMargin];
-    NSInteger ver = kCellDefaultMargin/2;
-    if ([_msg isMineMsg])
-    {
-        // 与C2C消息一致
-        [self relayoutC2CCellViews];
-    }
-    else
-    {
+//    NSInteger ver = kCellDefaultMargin/2;
+//    if ([_msg isMineMsg])
+//    {
+//        // 与C2C消息一致
+//        [self relayoutC2CCellViews];
+//    }
+//    else
+//    {
         // 对方的Group消息
         [_icon sizeWith:[_msg userIconSize]];
-        [_icon alignParentTopWithMargin:ver];
+        [_icon alignParentTopWithMargin:24];
         
         if (_pickedViewRef && !_pickedViewRef.hidden)
         {
@@ -290,13 +293,15 @@
         [_remarkTip scaleToParentRightWithMargin:hor];
         
         CGSize contentBackSize = [_msg contentBackSizeInWidth:rect.size.width];
+        contentBackSize.height -= kTableViewCellBubbleMarginTop;
         [_contentBack sizeWith:contentBackSize];
         [_contentBack layoutToRightOf:_icon margin:hor];
         [_contentBack layoutBelow:_remarkTip margin:2];
 //        [_contentBack alignParentBottomWithMargin:ver];
         
-        
+#warning handler contentBackInset
         UIEdgeInsets inset = [_msg contentBackInset];
+        inset.top -= kTableViewCellBubbleMarginTop;
         contentBackSize.width -= inset.left + inset.right;
         contentBackSize.height -= inset.top + inset.bottom;
         
@@ -310,13 +315,14 @@
         
         if (_sendingTipRef)
         {
-            _sendingTipRef.hidden = YES;
+//            _sendingTipRef.hidden = YES;
             NSInteger width = [_msg sendingTipWidth];
-            [_sendingTipRef sizeWith:CGSizeMake(width, rect.size.height)];
+            [_sendingTipRef sizeWith:CGSizeMake(width, _contentBack.size.height)];
+            [_sendingTipRef alignTop:_contentBack];
             [_sendingTipRef layoutToRightOf:_contentBack margin:hor];
             [_sendingTipRef relayoutFrameOfSubViews];
         }
-    }
+//    }
 }
 
 - (void)configKVO
@@ -359,7 +365,8 @@
     [_icon sd_setImageWithURL:[user showIconUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
     
     if (_remarkTip) {
-        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
+//        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
+        _remarkTip.hidden = ![_msg isGroupMsg];
         _remarkTip.font = [_msg tipFont];
         _remarkTip.textColor = [_msg tipTextColor];
         _remarkTip.text = [user showTitle];
@@ -369,6 +376,10 @@
     
     if (_elemContentRef) {
         [self configElemContent];
+    }
+    
+    if (_sendingTipRef) {
+        [self configSendingTips];
     }
 }
 
@@ -384,6 +395,19 @@
 - (void)configSendingTips
 {
     _sendingTipRef.hidden = ![_msg isMineMsg];
+}
+
+- (void)resendMsg {
+    if (_msg.status == TSIMMsgStatusSendFail) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"重发该消息？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"重发" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kIMAMSG_ResendNotification object:_msg];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:confirmAction];
+        [alert addAction:cancelAction];
+        [[[UIApplication sharedApplication].keyWindow.rootViewController presentedViewController] presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (void)showMenu {
@@ -405,9 +429,9 @@
     UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItem:)];
     [array addObject:deleteItem];
     
-    if ([_msg.msg isSelf])
+    if ([_msg.msg isSelf] )
     {
-        UIMenuItem *revokeItem = [[UIMenuItem alloc] initWithTitle:@"撤销" action:@selector(revokeItem:)];
+        UIMenuItem *revokeItem = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(revokeItem:)];
         [array addObject:revokeItem];
     }
     

@@ -175,7 +175,7 @@
                 }
             }
             temp = msg;
-            if (msg.status == TIM_MSG_STATUS_LOCAL_REVOKED) {//撤销
+            if (msg.status == TIM_MSG_STATUS_LOCAL_REVOKED) {//撤回
                 TSIMMsg *imamsg = [TSIMMsg msgWithRevoked:msg.sender];
                 if (imamsg)
                 {
@@ -281,6 +281,11 @@
 - (NSArray *)removeMsg:(TSIMMsg *)msg completion:(RemoveMsgBlock)block {
     if (msg)
     {
+        if (!_msgList || _msgList.count <= 0) {
+            block(nil, NO, nil);
+            return nil;
+        }
+        
         NSMutableArray *array = [NSMutableArray array];
         
         NSInteger idx = [_msgList indexOfObject:msg];
@@ -412,6 +417,10 @@
         
         if (block)
         {
+            if (idx < 0 || idx > _msgList.count) {
+                [TSAlertManager showMessage:@"消息撤回失败"];
+                return nil;
+            }
             __weak TSSafeMutableArray *wcl = _msgList;
             TSIMMsg *msgReal = [_msgList objectAtIndex:idx];
             NSUInteger index = [wcl indexOfObject:msgReal];
@@ -436,8 +445,13 @@
                         block(array, YES, nil);
                     } fail:^(int code, NSString *msg) {
                         NSLog(@"revoke fail");
-                        NSString *info = [NSString stringWithFormat:@"消息撤回失败,code=%d,msg=%@",code,msg];
-//                        [[HUDHelper sharedInstance] tipMessage:info delay:3];
+//                        NSString *info = [NSString stringWithFormat:@"消息撤回失败,code=%d,msg=%@",code,msg];
+                        // 报 6223 时，提示用户发出消息超过2分钟，无法撤回
+                        if (code == 6623) {
+                            [TSAlertManager showMessage:@"撤回消息需2分钟内"];
+                        } else {
+                            [TSAlertManager showMessage:@"消息撤回失败"];
+                        }
                         block(array, NO, nil);
                     }];
                 }

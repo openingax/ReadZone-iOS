@@ -462,7 +462,9 @@
 
 
 - (BOOL)isValiedType {
-    return self.type != TSIMMsgTypeTimeTip && self.type != TSIMMsgTypeSaftyTip;
+#warning 这里处理哪些信息是合法有效的，否则会造成下拉刷新出错
+    /* 在原 Demo 的基础上，加多一个判断 self.type > 0，即不会出现那种 self.status 为 -1 的初始化状态信息 */
+    return self.type != TSIMMsgTypeTimeTip && self.status > 0 && self.type != TSIMMsgTypeSaftyTip;
 }
 
 - (BOOL)isMultiMsg

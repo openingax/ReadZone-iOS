@@ -32,6 +32,9 @@
     UIButton                *_movieBtn;
     
 @protected
+    UIView                  *_placeHolderView;
+    
+@protected
     NSTimer                 *_inputStatusTimer;
     BOOL                    _isInLoop;//每3秒执行一次，如果在3秒之内，则不发送输入状态
     
