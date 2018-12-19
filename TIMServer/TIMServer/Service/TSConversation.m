@@ -515,4 +515,12 @@
     return count;
 }
 
+- (void)setLocalDraft:(TIMMessageDraft *)msgDraft {
+    [_conversation setDraft:msgDraft];
+}
+
+- (TIMMessageDraft *)getLocalDraft {
+    return [_conversation getDraft];
+}
+
 @end

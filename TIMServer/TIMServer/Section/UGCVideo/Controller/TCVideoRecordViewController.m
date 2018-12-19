@@ -109,6 +109,11 @@
     [self stopCameraPreview];
 }
 
+- (BOOL)willDealloc
+{
+    return NO;
+}
+
 -(void)onAudioSessionEvent:(NSNotification*)notification
 {
     NSDictionary *info = notification.userInfo;
@@ -154,8 +159,8 @@
 //    _btnStartRecord = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_RECORD_SIZE, BUTTON_RECORD_SIZE)];
     CGFloat btnMarginBottom = kIsiPhoneX ? self.view.frame.size.height - BUTTON_RECORD_SIZE : self.view.frame.size.height - BUTTON_RECORD_SIZE + 10;
 //    _btnStartRecord.center = CGPointMake(self.view.frame.size.width / 2, btnMarginBottom);
-//    [_btnStartRecord setImage:[UIImage imageWithBundleAsset:@"startrecord"] forState:UIControlStateNormal];
-//    [_btnStartRecord setImage:[UIImage imageWithBundleAsset:@"startrecord_press"] forState:UIControlStateSelected];
+//    [_btnStartRecord setImage:[UIImage tim_imageWithBundleAsset:@"startrecord"] forState:UIControlStateNormal];
+//    [_btnStartRecord setImage:[UIImage tim_imageWithBundleAsset:@"startrecord_press"] forState:UIControlStateSelected];
 //    [_btnStartRecord addTarget:self action:@selector(onBtnRecordStartClicked) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_btnStartRecord];
     
@@ -183,7 +188,7 @@
     UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeCustom];
     btnClose.bounds = CGRectMake(0, 0, BUTTON_CONTROL_SIZE, BUTTON_CONTROL_SIZE);
     btnClose.center = CGPointMake(_recordBtn.center.x/2, _recordBtn.center.y);
-    [btnClose setImage:[UIImage imageWithBundleAsset:@"kickout"] forState:UIControlStateNormal];
+    [btnClose setImage:[UIImage tim_imageWithBundleAsset:@"kickout"] forState:UIControlStateNormal];
     [btnClose addTarget:self action:@selector(onBtnCloseClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnClose];
     
@@ -191,7 +196,7 @@
     _btnCamera = [UIButton buttonWithType:UIButtonTypeCustom];
     _btnCamera.bounds = CGRectMake(0, 0, BUTTON_CONTROL_SIZE, BUTTON_CONTROL_SIZE);
     _btnCamera.center = CGPointMake(self.view.frame.size.width * 3 / 4 , _recordBtn.center.y);
-    [_btnCamera setImage:[UIImage imageWithBundleAsset:@"cameraex"] forState:UIControlStateNormal];
+    [_btnCamera setImage:[UIImage tim_imageWithBundleAsset:@"cameraex"] forState:UIControlStateNormal];
     [_btnCamera addTarget:self action:@selector(onBtnCameraClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_btnCamera];
     
@@ -200,7 +205,7 @@
 //    _btnLamp.bounds = CGRectMake(0, 0, BUTTON_CONTROL_SIZE, BUTTON_CONTROL_SIZE);
 ////    _btnLamp.center = CGPointMake(offsetX - BUTTON_CONTROL_SIZE * 2 , centerY);
 //    _btnLamp.center = CGPointMake(kScreenWidth * 5 / 6, kIsiPhoneX ? 64 : 40);
-//    [_btnLamp setImage:[UIImage imageWithBundleAsset:@"lamp"] forState:UIControlStateNormal];
+//    [_btnLamp setImage:[UIImage tim_imageWithBundleAsset:@"lamp"] forState:UIControlStateNormal];
 //    [_btnLamp addTarget:self action:@selector(onBtnLampClicked) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_btnLamp];
 }
@@ -347,9 +352,9 @@
     _cameraFront = !_cameraFront;
     
     if (_cameraFront) {
-        [_btnCamera setImage:[UIImage imageWithBundleAsset:@"cameraex"] forState:UIControlStateNormal];
+        [_btnCamera setImage:[UIImage tim_imageWithBundleAsset:@"cameraex"] forState:UIControlStateNormal];
     } else {
-        [_btnCamera setImage:[UIImage imageWithBundleAsset:@"cameraex_press"] forState:UIControlStateNormal];
+        [_btnCamera setImage:[UIImage tim_imageWithBundleAsset:@"cameraex_press"] forState:UIControlStateNormal];
     }
     
     [[TXUGCRecord shareInstance] switchCamera:_cameraFront];
@@ -365,9 +370,9 @@
     }
     
     if (_lampOpened) {
-        [_btnLamp setImage:[UIImage imageWithBundleAsset:@"lamp_press"] forState:UIControlStateNormal];
+        [_btnLamp setImage:[UIImage tim_imageWithBundleAsset:@"lamp_press"] forState:UIControlStateNormal];
     } else {
-        [_btnLamp setImage:[UIImage imageWithBundleAsset:@"lamp"] forState:UIControlStateNormal];
+        [_btnLamp setImage:[UIImage tim_imageWithBundleAsset:@"lamp"] forState:UIControlStateNormal];
     }
 }
 

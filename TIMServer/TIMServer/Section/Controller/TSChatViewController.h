@@ -59,4 +59,6 @@
 - (void)moreViewPhotoAction;
 - (void)moreVideVideoAction;
 
+- (void)didConversationExist;
+
 @end

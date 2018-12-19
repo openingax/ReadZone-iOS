@@ -162,7 +162,7 @@
 {
     CGRect rect = self.contentView.bounds;
     NSInteger hor = [_msg horMargin];
-    NSInteger ver = kCellDefaultMargin/2;
+    NSInteger ver = 6;
 //    if ([_msg isMineMsg])
 //    {
 //        if (self.isEditing)
@@ -262,7 +262,7 @@
 {
     CGRect rect = self.contentView.bounds;
     NSInteger hor = [_msg horMargin];
-//    NSInteger ver = kCellDefaultMargin/2;
+    //    NSInteger ver = 6;
 //    if ([_msg isMineMsg])
 //    {
 //        // 与C2C消息一致
@@ -362,7 +362,7 @@
     
     [_msg getSender];
     
-    [_icon sd_setImageWithURL:[user showIconUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageWithBundleAsset:@"default_user"]];
+    [_icon sd_setImageWithURL:[user showIconUrl] forState:UIControlStateNormal placeholderImage:[UIImage tim_imageWithBundleAsset:@"default_user"]];
     
     if (_remarkTip) {
 //        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
@@ -399,6 +399,12 @@
 
 - (void)resendMsg {
     if (_msg.status == TSIMMsgStatusSendFail) {
+        
+        /*
+         [18-12-19 15:18:12.36][DEBUG][qr_task.cc:54][AddEvent][IMCore]add event: eventId=2, code=114000, desc=init Transaction failed, start=1545203892006, end=1545203892036
+         
+         图片无法重新发送，报 114000 的错误，怀疑是退出聊天时图片保存失败
+         */
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"重发该消息？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"重发" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kIMAMSG_ResendNotification object:_msg];
@@ -406,7 +412,7 @@
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:confirmAction];
         [alert addAction:cancelAction];
-        [[[UIApplication sharedApplication].keyWindow.rootViewController presentedViewController] presentViewController:alert animated:YES completion:nil];
+        [[TSIMManager shareInstance].topViewController  presentViewController:alert animated:YES completion:nil];
     }
 }
 

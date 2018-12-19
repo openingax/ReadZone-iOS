@@ -6,7 +6,6 @@
 //  Copyright © 2018 Viomi. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 /**
@@ -26,13 +25,13 @@ FOUNDATION_EXPORT NSString * TIMLocalizedString(NSString *key, NSString *comment
  
  @return The NSBundle object for returning localized strings.
  */
-+ (NSBundle *)bundleForStrings;
++ (NSBundle *)tim_bundleForStrings;
 
 @end
 
 
 @interface UIImage (Bundle)
 
-+ (UIImage *)imageWithBundleAsset:(NSString *)assetName;
++ (UIImage *)tim_imageWithBundleAsset:(NSString *)assetName;
 
 @end

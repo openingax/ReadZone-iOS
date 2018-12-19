@@ -90,7 +90,7 @@
     }
     
     dispatch_async( dispatch_get_main_queue(), ^{
-        _loading.hidden = YES;
+         _loading.hidden = YES;
         if ([_indicator isAnimating])
         {
             [_indicator stopAnimating];

@@ -57,8 +57,7 @@
  messages. The animation framework _does not_ retain *delegate*. If it is `nil`, 
  neither message will be sent.
  @param startSelector A selector to be messaged on *delegate* right before the start 
- of the animation. This parameter can be `nil`.
- @param startSelector A selector to be messaged on *delegate* after the animation has
+ of the animation. This parameter can be `nil`. / A selector to be messaged on *delegate* after the animation has
  finished normally or been cancelled. This parameter can be `nil`.
 */
 - (void)slideInFrom:(FTAnimationDirection)direction duration:(NSTimeInterval)duration delegate:(id)delegate 
@@ -83,8 +82,7 @@
  messages. The animation framework _does not_ retain *delegate*. If it is `nil`, 
  neither message will be sent.
  @param startSelector A selector to be messaged on *delegate* right before the start 
- of the animation. This parameter can be `nil`.
- @param startSelector A selector to be messaged on *delegate* after the animation has
+ of the animation. This parameter can be `nil`. / A selector to be messaged on *delegate* after the animation has
  finished normally or been cancelled. This parameter can be `nil`.
 */
 - (void)slideOutTo:(FTAnimationDirection)direction duration:(NSTimeInterval)duration delegate:(id)delegate 
@@ -119,8 +117,7 @@
  messages. The animation framework _does not_ retain *delegate*. If it is `nil`, 
  neither message will be sent.
  @param startSelector A selector to be messaged on *delegate* right before the start 
- of the animation. This parameter can be `nil`.
- @param startSelector A selector to be messaged on *delegate* after the animation has
+ of the animation. This parameter can be `nil`. / A selector to be messaged on *delegate* after the animation has
  finished normally or been cancelled. This parameter can be `nil`.
 */
 - (void)backOutTo:(FTAnimationDirection)direction withFade:(BOOL)fade duration:(NSTimeInterval)duration delegate:(id)delegate 
@@ -147,8 +144,7 @@
  messages. The animation framework _does not_ retain *delegate*. If it is `nil`, 
  neither message will be sent.
  @param startSelector A selector to be messaged on *delegate* right before the start 
- of the animation. This parameter can be `nil`.
- @param startSelector A selector to be messaged on *delegate* after the animation has
+ of the animation. This parameter can be `nil`. / A selector to be messaged on *delegate* after the animation has
  finished normally or been cancelled. This parameter can be `nil`.
 */
 - (void)backInFrom:(FTAnimationDirection)direction withFade:(BOOL)fade duration:(NSTimeInterval)duration delegate:(id)delegate 

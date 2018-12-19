@@ -26,6 +26,6 @@ FOUNDATION_EXPORT NSString * RZLocalizedString(NSString *key, NSString *comment)
 
  @return The NSBundle object for returning localized strings.
  */
-+ (NSBundle *)bundleForStrings;
++ (NSBundle *)tim_bundleForStrings;
 
 @end

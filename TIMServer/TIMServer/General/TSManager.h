@@ -19,6 +19,7 @@ static NSString * kTIMNewMsgEvent = @"kTIMNewMsgEvent";
                    nickName:(NSString *)nickName
                     faceURL:(NSString *)faceURL
                    deviceID:(NSString *)deviceID;
+- (void)clearVC;
 - (void)logoutTIM;
 
 @end

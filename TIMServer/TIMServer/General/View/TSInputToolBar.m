@@ -60,9 +60,9 @@
     }];
     
     _audioBtn = [[UIButton alloc] init];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
-//    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_press"] forState:UIControlStateHighlighted];
-//    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
+    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
+//    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_press"] forState:UIControlStateHighlighted];
+//    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
     [_audioBtn addTarget:self action:@selector(onAudioBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_audioBtn];
     
@@ -106,15 +106,15 @@
     
     // photo 按钮
     _photoBtn = [[UIButton alloc] init];
-    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
-//    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
+    [_photoBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
+//    [_photoBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_smile_press"] forState:UIControlStateHighlighted];
     [_photoBtn addTarget:self action:@selector(onPhotoBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_photoBtn];
     
     // movie 按钮
     _movieBtn = [[UIButton alloc] init];
-    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
-//    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_more_press"] forState:UIControlStateHighlighted];
+    [_movieBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
+//    [_movieBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_more_press"] forState:UIControlStateHighlighted];
     [_movieBtn addTarget:self action:@selector(onMovieBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
 }

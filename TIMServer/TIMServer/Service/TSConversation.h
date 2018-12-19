@@ -70,7 +70,7 @@ typedef void (^RemoveMsgBlock)(NSArray *imamsgList, BOOL succ, CommonVoidBlock r
 - (void)setReadAllMsg;
 - (NSInteger)unReadCount;
 
-- (void)setDraft:(TIMMessageDraft *)msgDraft;
-- (TIMMessageDraft *)getDraft;
+- (void)setLocalDraft:(TIMMessageDraft *)msgDraft;
+- (TIMMessageDraft *)getLocalDraft;
 
 @end

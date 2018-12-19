@@ -14,7 +14,7 @@
 - (void)addOwnViews
 {
     _sendFailed = [[UIImageView alloc] init];
-    _sendFailed.image = [UIImage imageWithBundleAsset:@"sending_failed"];
+    _sendFailed.image = [UIImage tim_imageWithBundleAsset:@"sending_failed"];
     _sendFailed.hidden = YES;
     [self addSubview:_sendFailed];
     

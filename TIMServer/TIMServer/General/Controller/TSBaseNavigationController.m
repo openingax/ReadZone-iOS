@@ -51,6 +51,10 @@
 //    return YES;
 //}
 
+- (void)dealloc {
+    NSLog(@"TSBaseNavigationController dealloc");
+}
+
 //解决用leftbarbuttonitem自定义返回按钮，ios系统自带的右滑返回失效
 #pragma mark - Override
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -75,12 +79,12 @@
     
     if (root != viewController) {
         if (!viewController.navigationItem.leftBarButtonItem) {
-            UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+            UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage tim_imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
             viewController.navigationItem.leftBarButtonItem = itemleft;
         }
     } else {
         if (!viewController.navigationItem.leftBarButtonItem) {
-            UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissVCAction)];
+            UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage tim_imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissVCAction)];
             viewController.navigationItem.leftBarButtonItem = itemleft;
         }
     }

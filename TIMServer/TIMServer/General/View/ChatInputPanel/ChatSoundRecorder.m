@@ -34,7 +34,7 @@
 
 - (void)addOwnViews
 {
-    self.image = [UIImage imageWithBundleAsset:@"sound_record"];
+    self.image = [UIImage tim_imageWithBundleAsset:@"sound_record"];
     
     _countdownTip = [[UILabel alloc] init];
     _countdownTip.font = [UIFont boldSystemFontOfSize:20];
@@ -56,7 +56,7 @@
 
 - (void)configOwnViews
 {
-    _imageTip.image = [UIImage imageWithBundleAsset:@"microphone1"];
+    _imageTip.image = [UIImage tim_imageWithBundleAsset:@"microphone1"];
     _imageTip.contentMode = UIViewContentModeScaleToFill;
     
     _countdownTip.text = nil;
@@ -108,7 +108,7 @@
 //        NSString *tip = [NSString stringWithFormat:@"microphone%d", (int)peaker];
         NSString *tip = @"microphone1";
         DebugLog(@"=--=-=-=-=-=-=-=-=-=-=-=");
-        _imageTip.image = [UIImage imageWithBundleAsset:tip];
+        _imageTip.image = [UIImage tim_imageWithBundleAsset:tip];
     });
 }
 
@@ -131,7 +131,7 @@
                 [self onRecorderPeakChanged:rec];
                 
                 _tip.text = @"手指上滑，取消发送";
-                _imageTip.image = [UIImage imageWithBundleAsset:@"sound_record_cancel"];
+                _imageTip.image = [UIImage tim_imageWithBundleAsset:@"sound_record_cancel"];
                 _imageTip.contentMode = UIViewContentModeScaleToFill;
                 _tip.backgroundColor = kClearColor;
             }
@@ -140,7 +140,7 @@
             {
                 _tip.text = @"松开手指，取消发送";
 //                _tip.backgroundColor = kRedColor;
-                _imageTip.image = [UIImage imageWithBundleAsset:@"sound_record_cancel"];
+                _imageTip.image = [UIImage tim_imageWithBundleAsset:@"sound_record_cancel"];
                 _imageTip.contentMode = UIViewContentModeCenter;
                 _tip.backgroundColor = kClearColor;
             }
@@ -149,7 +149,7 @@
             {
                 _imageTip.hidden = YES;
                 _countdownTip.text = [NSString stringWithFormat:@"%d", (int)(kChatRecordMaxDuration - rec.recordDuration)];
-                _imageTip.image = [UIImage imageWithBundleAsset:@"sound_record"];
+                _imageTip.image = [UIImage tim_imageWithBundleAsset:@"sound_record"];
                 _imageTip.contentMode = UIViewContentModeScaleToFill;
                 _countdownTip.hidden = NO;
             }

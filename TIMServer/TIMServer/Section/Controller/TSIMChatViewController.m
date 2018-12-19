@@ -22,6 +22,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeleteMsg:) name:kIMAMSG_DeleteNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResendMsg:) name:kIMAMSG_ResendNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChangedMsg:) name:kIMAMSG_ChangedNotification object:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -30,9 +31,27 @@
 }
 
 - (void)dealloc {
-    
     [self.KVOController unobserveAll];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didConversationExist {
+    [super didConversationExist];
+    
+    // 处理草稿
+    TSIMMsg *draftMsg = [TSIMMsg msgWithDraft:[_conversation getLocalDraft]];
+    [_inputView setMsgDraft:draftMsg];
+}
+
+- (void)didTIMServerExit {
+    TSIMMsg *draft = [_inputView getMsgDraft];
+    if (draft) {
+        [_conversation setLocalDraft:draft.msgDraft];
+    } else {
+        [_conversation setLocalDraft:nil];
+    }
+    
+    [super didTIMServerExit];
 }
 
 #pragma mark - Notification

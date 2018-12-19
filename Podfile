@@ -26,7 +26,7 @@ target 'ReadZone' do
     use_frameworks!
     
     # develop tools
-    #  pod 'MLeaksFinder', '~> 1.0.0'
+    pod 'MLeaksFinder', '~> 1.0.0'
     pod 'Bugly', '~> 2.5.0'
     
     pod 'pop', '~> 1.0.10'

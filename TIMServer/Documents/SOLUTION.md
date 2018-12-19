@@ -212,6 +212,9 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)),
 error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: can't locate file for: -lPods-TIMServer
 error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: -lPods-TIMServer is not an object file (not allowed in a library)
 
+分析：
+各个 target 的 Build Active Architecture Only 设置不一致。 
+
 解决方法：
 1、检查工程的所有 Target 的 Build Active Architecture Only 是否为 NO，是的话把它改为 YES；
 2、检查 Enable Bitcode 的设置，把它设为 NO。

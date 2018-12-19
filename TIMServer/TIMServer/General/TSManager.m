@@ -49,24 +49,33 @@
     profile.nickname = self.nickName;
     profile.faceURL = self.faceURL;
     
+    
+    TSRichChatViewController *chatVC = nil;
+    
     if ([profile.identifier hasPrefix:@"Viomi"]) {
         // 单聊
         TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
-        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+//        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+        chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     } else if ([profile.identifier hasPrefix:@"viot"]) {
         // 群聊
         TSIMGroup *receiver = [[TSIMGroup alloc] initWithUserInfo:profile];
-        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+//        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
+        chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     }
     
-    self.navVC = [[TSBaseNavigationController alloc] initWithRootViewController:self.chatVC];
+//    self.navVC = [[TSBaseNavigationController alloc] initWithRootViewController:self.chatVC];
+    TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:chatVC];
     
-    self.navVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [controller presentViewController:self.navVC animated:YES completion:^{
+//    self.navVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    navVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [controller presentViewController:navVC animated:YES completion:^{
         
     }];
-    [TSIMManager shareInstance].navigationController = self.navVC;
-    [TSIMManager shareInstance].topViewController = self.chatVC;
+    [TSIMManager shareInstance].navigationController = navVC;
+    //self.navVC;
+    [TSIMManager shareInstance].topViewController = chatVC;
+    //self.chatVC;
 }
 
 #pragma mark - 登录 & 注销
@@ -205,17 +214,24 @@
     }];
 }
 
+- (void)clearVC {
+    [TSIMManager shareInstance].navigationController = nil;
+    [TSIMManager shareInstance].topViewController = nil;
+}
 
 - (void)logoutTIM {
     [[TSUserManager shareInstance] deleteUserSig];
     
     [[TSIMAPlatform sharedInstance] logout:^{
-        
+        NSLog(@"TIM 退出成功");
     } fail:^(int code, NSString *msg) {
-        
+        NSLog(@"TIM 退出失败");
     }];
 }
 
+- (void)dealloc {
+    NSLog(@"TSManager dealloc");
+}
 
 
 @end

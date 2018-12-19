@@ -99,7 +99,7 @@
 }
 
 + (instancetype)msgWithImage:(UIImage *)img isOriginal:(BOOL)original {
-    CGFloat scale = 1;
+    CGFloat scale = 2;
     scale = MIN(kChatPicThumbMaxHeight/img.size.height, kChatPicThumbMaxWidth/img.size.width);
     
     CGFloat picHeight = img.size.height;

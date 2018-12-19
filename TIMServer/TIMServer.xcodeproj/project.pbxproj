@@ -31,6 +31,7 @@
 		5F06F5FC21B43789004419DC /* TSExpendButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06F5FA21B43789004419DC /* TSExpendButton.m */; };
 		5F0E84E421A24829004DBF08 /* TSIMErrorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */; };
 		5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */; };
+		5F14363521C9F0570053577F /* YMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F14363421C9F0570053577F /* YMCommon.framework */; };
 		5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15190921A6592F00E83785 /* TSChatTextView.h */; };
 		5F15190C21A6592F00E83785 /* TSChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F15190A21A6592F00E83785 /* TSChatTextView.m */; };
 		5F15190F21A65C2A00E83785 /* TSChatInputTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F15190D21A65C2A00E83785 /* TSChatInputTextView.h */; };
@@ -265,6 +266,7 @@
 		5F06F5FA21B43789004419DC /* TSExpendButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSExpendButton.m; sourceTree = "<group>"; };
 		5F0E84E221A24829004DBF08 /* TSIMErrorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIMErrorManager.h; sourceTree = "<group>"; };
 		5F0E84E321A24829004DBF08 /* TSIMErrorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIMErrorManager.m; sourceTree = "<group>"; };
+		5F14363421C9F0570053577F /* YMCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YMCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F15190921A6592F00E83785 /* TSChatTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatTextView.h; sourceTree = "<group>"; };
 		5F15190A21A6592F00E83785 /* TSChatTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChatTextView.m; sourceTree = "<group>"; };
 		5F15190D21A65C2A00E83785 /* TSChatInputTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChatInputTextView.h; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F14363521C9F0570053577F /* YMCommon.framework in Frameworks */,
 				5F1EA07721B7CEF200CB4BBE /* TLSSDK.framework in Frameworks */,
 				5F1EA07821B7CEF200CB4BBE /* IMMessageExt.framework in Frameworks */,
 				5F1EA07921B7CEF200CB4BBE /* ImSDK.framework in Frameworks */,
@@ -1039,6 +1042,7 @@
 		B6446FCC6A07244B3AA0D9BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F14363421C9F0570053577F /* YMCommon.framework */,
 				5F1EA07521B7CEF200CB4BBE /* IMFriendshipExt.framework */,
 				5F1EA07621B7CEF200CB4BBE /* IMGroupExt.framework */,
 				5F1EA07121B7CEF200CB4BBE /* IMMessageExt.framework */,

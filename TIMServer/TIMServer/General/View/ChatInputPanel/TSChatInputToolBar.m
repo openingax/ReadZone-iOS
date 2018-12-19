@@ -41,9 +41,9 @@
 - (void)addOwnViews
 {
     _audioBtn = [[UIButton alloc] init];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateHighlighted];
-    [_audioBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
+    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
+    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateHighlighted];
+    [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_keyboard_nor"] forState:UIControlStateSelected];
     [_audioBtn addTarget:self action:@selector(onClickAudio:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_audioBtn];
     
@@ -89,14 +89,14 @@
     [self addSubview:_textView];
     
     _photoBtn = [[UIButton alloc] init];
-    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
-    [_photoBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateHighlighted];
+    [_photoBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateNormal];
+    [_photoBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_photo_nor"] forState:UIControlStateHighlighted];
     [_photoBtn addTarget:self action:@selector(onClikPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_photoBtn];
     
     _movieBtn = [[UIButton alloc] init];
-    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
-    [_movieBtn setImage:[UIImage imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
+    [_movieBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateNormal];
+    [_movieBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
     [_movieBtn addTarget:self action:@selector(onClickMovie:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
     
@@ -114,8 +114,7 @@
 
 #pragma mark - Action
 - (void)onClickAudio:(UIButton *)button {
-#warning 录音有问题，会报错，先屏蔽
-//    return;
+    
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressedBtn.hidden = !_audioBtn.selected;
     _textView.hidden = _audioBtn.selected;
@@ -132,9 +131,9 @@
         }
         // 语音模式
         NSInteger toh = kButtonSize + 3 * kVerMargin;
-//        if (kIsiPhoneX) {
-//            toh = kButtonSize + 3 * kVerMargin + 34;
-//        }
+        if (kIsiPhoneX) {
+            toh = kButtonSize + 3 * kVerMargin + 34;
+        }
         if (toh != _contentHeight)
         {
             self.contentHeight = toh;
@@ -174,35 +173,22 @@
 
 - (void)relayoutFrameOfSubViews
 {
-//    if (kIsiPhoneX) {
-//        [_placeHolderView alignParentBottom];
-//        [_placeHolderView setSize:CGSizeMake(kScreenWidth, 34)];
-//        [_placeHolderView layoutParentHorizontalCenter];
-//    }
-    
     [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
     [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
-//    if (kIsiPhoneX) {
-//        [_audioBtn alignBottom:_placeHolderView margin:1.5 * kVerMargin];
-//    } else {
-//        [_audioBtn alignParentBottomWithMargin:1.5 * kVerMargin];
-//    }
 
-    [_audioBtn alignParentLeftWithMargin:kDefaultMargin/2];
+    [_audioBtn alignParentLeftWithMargin:kToolBarDefaultMargin/2];
     
     [_movieBtn sameWith:_audioBtn];
-    [_movieBtn alignParentRightWithMargin:kDefaultMargin/2];
+    [_movieBtn alignParentRightWithMargin:kToolBarDefaultMargin/2];
     
     [_photoBtn sameWith:_movieBtn];
-    [_photoBtn layoutToLeftOf:_movieBtn margin:kDefaultMargin];
+    [_photoBtn layoutToLeftOf:_movieBtn margin:kToolBarDefaultMargin];
     
     [_audioPressedBtn sameWith:_audioBtn];
     [_audioPressedBtn marginParentTop:kVerMargin];
     [_audioPressedBtn setHeight:kButtonSize + kVerMargin];
-    [_audioPressedBtn layoutToRightOf:_audioBtn margin:kDefaultMargin];
-    [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kDefaultMargin];
-    
-    
+    [_audioPressedBtn layoutToRightOf:_audioBtn margin:kToolBarDefaultMargin];
+    [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kToolBarDefaultMargin];
     
     CGRect rect = self.bounds;
     CGRect apframe = _audioPressedBtn.frame;
@@ -338,7 +324,7 @@
     {
         return kButtonSize;
     }
-    return (NSInteger)(textView.contentSize.height + 1);
+    return (NSInteger)(textView.contentSize.height - 4);
 }
 
 

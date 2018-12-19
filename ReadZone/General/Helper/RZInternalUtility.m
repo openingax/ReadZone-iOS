@@ -10,12 +10,12 @@
 
 NSString * RZLocalizedString(NSString *key, NSString *comment)
 {
-    return [[[RZInternalUtility class] bundleForStrings] localizedStringForKey:key value:key table:@"RZInternal"];
+    return [[[RZInternalUtility class] tim_bundleForStrings] localizedStringForKey:key value:key table:@"RZInternal"];
 }
 
 @implementation RZInternalUtility
 
-+ (NSBundle *)bundleForStrings
++ (NSBundle *)tim_bundleForStrings
 {
     static NSBundle *bundle;
     

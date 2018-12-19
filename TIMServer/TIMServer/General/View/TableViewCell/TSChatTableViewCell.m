@@ -77,7 +77,7 @@
     
     __weak UIImageView *wci = _chatImage;
     [elem asyncThumbImage:^(NSString *path, UIImage *image, BOOL succ, BOOL isAsync) {
-        wci.image = image ? image : [UIImage imageWithBundleAsset:@"default_image"];
+        wci.image = image ? image : [UIImage tim_imageWithBundleAsset:@"default_image"];
     } inMsg:_msg];
 }
 
@@ -119,7 +119,7 @@
     BOOL isMine = [_msg isMineMsg];
 //    _soundButton.style = isMine ? ETitleLeftImageRight : EImageLeftTitleRight;
     _soundButton.style = isMine ? EImageLeftTitleRight : EImageLeftTitleRight;
-    [_soundButton setImage:isMine ? [UIImage imageWithBundleAsset:@"other_voice3"] : [UIImage imageWithBundleAsset:@"other_voice3"] forState:UIControlStateNormal];
+    [_soundButton setImage:isMine ? [UIImage tim_imageWithBundleAsset:@"other_voice3"] : [UIImage tim_imageWithBundleAsset:@"other_voice3"] forState:UIControlStateNormal];
     [_soundButton setTitleColor:[_msg textColor] forState:UIControlStateNormal];
     
     TIMSoundElem *elem = (TIMSoundElem *)[_msg.msg getElem:0];
@@ -130,11 +130,11 @@
     BOOL isMine = [_msg isMineMsg];
     if (isMine)
     {
-        _soundButton.imageView.animationImages = @[[UIImage imageWithBundleAsset:@"other_voice1"], [UIImage imageWithBundleAsset:@"other_voice2"], [UIImage imageWithBundleAsset:@"other_voice3"]];
+        _soundButton.imageView.animationImages = @[[UIImage tim_imageWithBundleAsset:@"other_voice1"], [UIImage tim_imageWithBundleAsset:@"other_voice2"], [UIImage tim_imageWithBundleAsset:@"other_voice3"]];
     }
     else
     {
-        _soundButton.imageView.animationImages = @[[UIImage imageWithBundleAsset:@"other_voice1"], [UIImage imageWithBundleAsset:@"other_voice2"], [UIImage imageWithBundleAsset:@"other_voice3"]];
+        _soundButton.imageView.animationImages = @[[UIImage tim_imageWithBundleAsset:@"other_voice1"], [UIImage tim_imageWithBundleAsset:@"other_voice2"], [UIImage tim_imageWithBundleAsset:@"other_voice3"]];
     }
     
     _soundButton.imageView.animationDuration = 0.5;

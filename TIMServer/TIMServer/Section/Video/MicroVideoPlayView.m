@@ -59,8 +59,8 @@
     _playerLayer.masksToBounds = YES;
     
     [_playerBtn setBackgroundColor:[UIColor clearColor]];
-    [_playerBtn setBackgroundImage:[UIImage imageWithBundleAsset:@"record_playbutton"] forState:UIControlStateNormal];
-    [_playerBtn setBackgroundImage:[UIImage imageWithBundleAsset:@"record_errorbutton"] forState:UIControlStateDisabled];
+    [_playerBtn setBackgroundImage:[UIImage tim_imageWithBundleAsset:@"record_playbutton"] forState:UIControlStateNormal];
+    [_playerBtn setBackgroundImage:[UIImage tim_imageWithBundleAsset:@"record_errorbutton"] forState:UIControlStateDisabled];
     [_playerBtn addTarget:self action:@selector(onPlay:) forControlEvents:UIControlEventTouchUpInside];
 }
 

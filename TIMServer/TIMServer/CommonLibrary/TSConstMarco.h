@@ -25,7 +25,6 @@
 
 // 默认TableViewCell高度
 #define kDefaultCellHeight 50
-#define kDefaultMargin 8
-#define kCellDefaultMargin 12
+#define kToolBarDefaultMargin 8
 
 #endif /* TSConstMarco_h */

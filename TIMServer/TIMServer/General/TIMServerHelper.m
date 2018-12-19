@@ -10,7 +10,7 @@
 
 NSString * TIMLocalizedString(NSString *key, NSString *comment)
 {
-    return [[[TIMServerHelper class] bundleForStrings] localizedStringForKey:key value:key table:@"Localizable"];
+    return [[[TIMServerHelper class] tim_bundleForStrings] localizedStringForKey:key value:key table:@"Localizable"];
 }
 
 @implementation TIMServerHelper
@@ -19,7 +19,7 @@ NSString * TIMLocalizedString(NSString *key, NSString *comment)
     return [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"TIMServer" ofType:@"bundle"]];
 }
 
-+ (NSBundle *)bundleForStrings
++ (NSBundle *)tim_bundleForStrings
 {
     static NSBundle *bundle;
     
@@ -38,7 +38,7 @@ NSString * TIMLocalizedString(NSString *key, NSString *comment)
 
 @implementation UIImage (Bundle)
 
-+ (UIImage *)imageWithBundleAsset:(NSString *)assetName {
++ (UIImage *)tim_imageWithBundleAsset:(NSString *)assetName {
     NSBundle *timServerBundle = [TIMServerHelper timServerBundle];
     
     if (timServerBundle && assetName) {

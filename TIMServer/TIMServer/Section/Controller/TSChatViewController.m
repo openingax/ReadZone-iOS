@@ -92,6 +92,11 @@
     _conversation.delegate = self;
     _messageList = _conversation.msgList;
     
+    // 处理草稿
+    if (_conversation) {
+        [self didConversationExist];
+    }
+    
     @weakify(self);
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
         @strongify(self);
@@ -227,6 +232,10 @@
         [self onLoadRecentMessage:imMsgList complete:succ scrollToBottom:YES];
         self.refreshIndex ++;
     }];
+}
+
+- (void)didConversationExist {
+    
 }
 
 - (void)viewDidLoad {
@@ -621,6 +630,16 @@
                 [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
                     BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
                     if (!isThumbImg) {
+                        
+                        // 用 UIImageJPEGRepresentation 压缩，如果用 PNG 无损压缩，得出的数值会很大，这与照片选择器标示的原图大小也不符
+//                        NSData *data = UIImageJPEGRepresentation(photo, 0);
+                        NSData *data = UIImagePNGRepresentation(photo);
+                        if (data.length > 18 * 1024 * 1024) {
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                            [alert show];
+                            return;
+                        }
+                        
                         [ws sendImage:photo orignal:YES];
                     }
                 }];
@@ -630,10 +649,11 @@
     } else {
         // 发送普通图片
         for (UIImage *img in photos) {
+//            NSData *data = UIImageJPEGRepresentation(img, 0);
             NSData *data = UIImagePNGRepresentation(img);
-            
-            if (data.length > 28*1024*1024) {
-                [self.view makeToast:@"发送的图片过大"];
+            if (data.length > 18 * 1024 * 1024) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                [alert show];
                 return;
             }
             
