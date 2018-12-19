@@ -84,7 +84,7 @@
     _textView.layer.borderWidth = 0.6;
     _textView.layer.cornerRadius = 6;
     _textView.font = kTimLargeTextFont;
-    _textView.textContainerInset = UIEdgeInsetsMake(6, 6, 6, 6);
+    _textView.textContainerInset = UIEdgeInsetsMake(6, 6, 0, 6);
     
     [self addSubview:_textView];
     
@@ -181,13 +181,13 @@
 //    }
     
     [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
-//    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
+    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
 //    if (kIsiPhoneX) {
 //        [_audioBtn alignBottom:_placeHolderView margin:1.5 * kVerMargin];
 //    } else {
-        [_audioBtn alignParentBottomWithMargin:1.5 * kVerMargin];
+//        [_audioBtn alignParentBottomWithMargin:1.5 * kVerMargin];
 //    }
-    
+
     [_audioBtn alignParentLeftWithMargin:kDefaultMargin/2];
     
     [_movieBtn sameWith:_audioBtn];
@@ -209,11 +209,11 @@
     
     rect.origin.x = apframe.origin.x;
     rect.origin.y = kVerMargin;
-//    if (kIsiPhoneX) {
-//        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
-//    } else {
+    if (kIsiPhoneX) {
+        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
+    } else {
         rect.size.height -= 2 * kVerMargin;
-//    }
+    }
     rect.size.width = apframe.size.width;
     _textView.frame = rect;
 }
@@ -269,9 +269,9 @@
     
     // 如果是 iPX，要在 conHeight 里多加 34 的高度
     NSInteger conHeight = textViewToHeight + 3 * kVerMargin;
-//    if (kIsiPhoneX) {
-//        conHeight = textViewToHeight + 3 * kVerMargin + 34;
-//    }
+    if (kIsiPhoneX) {
+        conHeight = textViewToHeight + 3 * kVerMargin + 34;
+    }
     if (_contentHeight != conHeight)
     {
         self.contentHeight = conHeight;
