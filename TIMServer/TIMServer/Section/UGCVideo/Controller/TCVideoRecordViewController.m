@@ -7,6 +7,7 @@
 #import "TIMServerHelper.h"
 #import "CommonLibrary.h"
 #import "TSExpendButton.h"
+#import <Masonry.h>
 
 #define BUTTON_RECORD_SIZE          65
 #define BUTTON_CONTROL_SIZE         40
@@ -25,6 +26,7 @@
     BOOL                            _cameraPreviewing;
     BOOL                            _videoRecording;
     UIView *                        _videoRecordView;
+    UIButton *                      _btnClose;
     UIButton *                      _btnCamera;
     UIButton *                      _btnLamp;
     UILabel *                       _recordTimeLabel;
@@ -97,7 +99,79 @@
     _statusBarHidden = [UIApplication sharedApplication].statusBarHidden;
     [self.navigationController setNavigationBarHidden:YES];
     
-    [self startCameraPreview];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AVAuthorizationStatus authorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        
+        switch (authorizationStatus) {
+            case AVAuthorizationStatusNotDetermined: {
+                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler: ^(BOOL granted) {
+                    if (granted) {
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self startCameraPreview];
+                        });
+                    } else {
+                        NSLog(@"%@", @"访问受限");
+                        [self showError];
+                    }
+                }];
+                break;
+            }
+            case AVAuthorizationStatusAuthorized: {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self startCameraPreview];
+                });
+                break;
+            }
+            case AVAuthorizationStatusRestricted:
+            case AVAuthorizationStatusDenied: {
+                NSLog(@"%@", @"访问受限");
+                [self showError];
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    });
+}
+
+- (void)showError
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //      [YMCAlertView showMessage:@"请在iPhone的“设置-隐私－相机”选项中，允许微信访问你的相机"];
+        self.view.backgroundColor = [UIColor darkGrayColor];
+        self->_btnClose.hidden = YES;
+        self->_recordBtn.hidden = YES;
+        self->_btnCamera.hidden = YES;
+        
+        UILabel *errorLabel = [[UILabel alloc] init];
+        errorLabel.textAlignment = NSTextAlignmentCenter;
+        errorLabel.numberOfLines = 0;
+        errorLabel.text = @"请在iPhone的“设置-隐私－相机”选项中，允许云米商城访问你的相机";
+        errorLabel.font = [UIFont systemFontOfSize:14];
+        errorLabel.textColor = [UIColor whiteColor];
+        [self.view addSubview:errorLabel];
+        [errorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view).with.offset(30);
+            make.right.equalTo(self.view).with.offset(-30);
+            make.centerY.equalTo(self.view);
+        }];
+        
+        UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"退出" attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+        [exitBtn setAttributedTitle:str forState:UIControlStateNormal];
+        [exitBtn addTarget:self action:@selector(onBtnCloseClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:exitBtn];
+        [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view);
+            make.top.equalTo(errorLabel.mas_bottom).with.offset(20);
+        }];
+    });
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -109,9 +183,8 @@
     [self stopCameraPreview];
 }
 
-- (BOOL)willDealloc
-{
-    return NO;
+- (void)dealloc {
+    NSLog(@"TCVideoRecordViewController dealloc");
 }
 
 -(void)onAudioSessionEvent:(NSNotification*)notification
@@ -185,12 +258,12 @@
     longGes.minimumPressDuration = 0.2;
     [_recordBtn addGestureRecognizer:longGes];
 
-    UIButton *btnClose = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnClose.bounds = CGRectMake(0, 0, BUTTON_CONTROL_SIZE, BUTTON_CONTROL_SIZE);
-    btnClose.center = CGPointMake(_recordBtn.center.x/2, _recordBtn.center.y);
-    [btnClose setImage:[UIImage tim_imageWithBundleAsset:@"kickout"] forState:UIControlStateNormal];
-    [btnClose addTarget:self action:@selector(onBtnCloseClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnClose];
+    _btnClose = [UIButton buttonWithType:UIButtonTypeCustom];
+    _btnClose.bounds = CGRectMake(0, 0, BUTTON_CONTROL_SIZE, BUTTON_CONTROL_SIZE);
+    _btnClose.center = CGPointMake(_recordBtn.center.x/2, _recordBtn.center.y);
+    [_btnClose setImage:[UIImage tim_imageWithBundleAsset:@"kickout"] forState:UIControlStateNormal];
+    [_btnClose addTarget:self action:@selector(onBtnCloseClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_btnClose];
     
     // 切换前后摄像头的按钮
     _btnCamera = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -305,7 +378,9 @@
         param.videoResolution =  VIDEO_RESOLUTION_540_960;
         param.videoFPS = 25;
         param.videoBitratePIN = 1200;
-        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_videoRecordView];
+        __weak typeof(_videoRecordView) _weakVideoRecordView = _videoRecordView;
+//        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_videoRecordView];
+        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_weakVideoRecordView];
         
         // 美颜
         [[TXUGCRecord shareInstance] setBeautyDepth:_beautyDepth WhiteningDepth:_whitenDepth];

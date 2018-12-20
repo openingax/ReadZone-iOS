@@ -26,6 +26,7 @@
 
 // Controller
 #import "RZRootViewController.h"
+#import "RZTIMViewController.h"
 
 @interface RZRootViewController ()
 
@@ -48,8 +49,6 @@
     if ([AVUser currentUser]) [self fetchData];
     
     self.tsManager = [[TSManager alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerLogin:) name:kTIMLoginSuccEvent object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,13 +61,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    if (!_tsManager) {
-//    [self searchAction];
-//    }
-//    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self.tsManager logoutTIM];
-//    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,14 +69,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)didTIMServerLogin:(NSNotification *)noti {
-    BOOL hasLogin = [[noti.userInfo objectForKey:@"status"] boolValue];
-    if (hasLogin) {
-//        [self.tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:nil deviceID:@"viot85396846" controller:self];
-        [self.tsManager showTIMWithController:self];
-    }
 }
 
 #pragma mark - Draw
@@ -138,18 +122,8 @@
 }
 
 - (void)searchAction {
-//    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
-//        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account deviceID:@"viot85396846" controller:self];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396840"];
-    });
-//        });
-//    }
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [_tsManager loginTIM];
-//    });
+    RZTIMViewController *vc = [[RZTIMViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)moreAction {

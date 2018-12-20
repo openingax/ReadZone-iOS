@@ -20,7 +20,19 @@
 #import <YMCommon/NSDictionary+ymc.h>
 #import <libextobjc/EXTScope.h>
 #import "TSAPIUser.h"
-//#import <TXLiteAVSDK_Professional/TXUGCBase.h>
+
+// TIM server login succ or fail noti.
+NSNotificationName const TIMLoginSuccNotification = @"TIMLoginSuccNotification";
+// TIM server new msg noti.
+NSNotificationName const TIMNewMsgNotification = @"TIMNewMsgNotification";
+
+// NSNumber of BOOL, YES mean login succ, No mean login fail.
+NSString *const TIMLoginSuccStatusUserInfoKey = @"tim_login_status";
+// NSString Value, login succ with an empty string, fail with message you need.
+NSString *const TIMLoginSuccMessageUserInfoKey = @"tim_login_message";
+// NSString Value, YES mean has new msg, NO is used to noti you clear new msg status.
+NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
+
 
 @interface TSManager ()
 
@@ -55,27 +67,19 @@
     if ([profile.identifier hasPrefix:@"Viomi"]) {
         // 单聊
         TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
-//        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
         chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     } else if ([profile.identifier hasPrefix:@"viot"]) {
         // 群聊
         TSIMGroup *receiver = [[TSIMGroup alloc] initWithUserInfo:profile];
-//        self.chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
         chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
     }
     
-//    self.navVC = [[TSBaseNavigationController alloc] initWithRootViewController:self.chatVC];
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:chatVC];
-    
-//    self.navVC.modalPresentationStyle = UIModalPresentationFullScreen;
     navVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [controller presentViewController:navVC animated:YES completion:^{
         
     }];
-    [TSIMManager shareInstance].navigationController = navVC;
-    //self.navVC;
     [TSIMManager shareInstance].topViewController = chatVC;
-    //self.chatVC;
 }
 
 #pragma mark - 登录 & 注销
@@ -89,19 +93,19 @@
     [TSIMAPlatform config];
     
     if ([NSString isEmpty:account]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent
+        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification
                                                             object:nil
                                                           userInfo:@{
-                                                                     @"status": @(NO),
-                                                                     @"message": @"用户账户 account 为空，请检查"}];
+                                                                     TIMLoginSuccStatusUserInfoKey: @(NO),
+                                                                     TIMLoginSuccMessageUserInfoKey: @"用户账户 account 为空，请检查"}];
         return;
     }
     if ([NSString isEmpty:deviceID]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent
+        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification
                                                             object:nil
                                                           userInfo:@{
-                                                                     @"status": @(NO),
-                                                                     @"message": @"设备 did 为空，请检查"}];
+                                                                     TIMLoginSuccStatusUserInfoKey: @(NO),
+                                                                     TIMLoginSuccMessageUserInfoKey: @"设备 did 为空，请检查"}];
         return;
     }
     
@@ -133,19 +137,19 @@
                         });
                     } else {
                         NSLog(@"获取 userSig 失败，请尝试重试登录TIM");
-                        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent
+                        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification
                                                                             object:nil
-                                                                          userInfo:@{@"status": @(NO),
-                                                                                     @"message": @"获取 userSig 失败，请尝试重试登录TIM"}];
+                                                                          userInfo:@{TIMLoginSuccStatusUserInfoKey: @(NO),
+                                                                                     TIMLoginSuccMessageUserInfoKey: @"获取 userSig 失败，请尝试重试登录TIM"}];
                         return;
                     }
                 }];
             } else {
                 NSLog(@"检查账户注册状态失败，请尝试重新登录TIM");
-                [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent
+                [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification
                                                                     object:nil
-                                                                  userInfo:@{@"status": @(NO),
-                                                                             @"message": @"检查账户注册状态失败，请尝试重新登录TIM"}];
+                                                                  userInfo:@{TIMLoginSuccStatusUserInfoKey: @(NO),
+                                                                             TIMLoginSuccMessageUserInfoKey: @"检查账户注册状态失败，请尝试重新登录TIM"}];
                 return;
             }
         };
@@ -171,18 +175,15 @@
 - (void)login {
     
     TIMLoginParam *param = [[TIMLoginParam alloc] init];
+    
     param.identifier = [NSString stringWithFormat:@"%@", [TSUserManager shareInstance].account];
-    
     param.userSig = [TSUserManager shareInstance].userSig;
-    
     param.appidAt3rd = kTimIMSdkAppId;
     
     @weakify(self);
     [[TSIMAPlatform sharedInstance] login:param succ:^{
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent object:nil userInfo:@{@"status": @(YES), @"msg": @""}];
-        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification object:nil userInfo:@{TIMLoginSuccStatusUserInfoKey: @(YES), TIMLoginSuccMessageUserInfoKey: @""}];
         
         TIMFriendProfileOption *option = [[TIMFriendProfileOption alloc] init];
         option.friendFlags = 0xffff;
@@ -208,7 +209,7 @@
             
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:kTIMLoginSuccEvent object:nil userInfo:@{@"status": @(NO), @"msg": [NSString stringWithFormat:@"code: %d  msg: %@", code, msg]}];
+                [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification object:nil userInfo:@{TIMLoginSuccStatusUserInfoKey: @(NO), TIMLoginSuccMessageUserInfoKey: [NSString stringWithFormat:@"code: %d  msg: %@", code, msg]}];
             });
         }
     }];

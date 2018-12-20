@@ -92,10 +92,18 @@ static BOOL kIsAlertingForceOffline = NO;
         
         DebugLog(@"踢下线通知");
         
+        void (^logoutBlock)(int code, NSString *msg) = ^(int code, NSString *msg) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:TIMKickedOfflineNotification
+                                                                object:nil
+                                                              userInfo:@{TIMKickedOfflineCodeUserInfoKey : @(code),
+                                                                         TIMKickedOfflineMessageUserInfoKey: msg}
+             ];
+        };
+        
         [self logout:^{
-            [[TSIMManager shareInstance].topViewController dismissViewControllerAnimated:YES completion:nil];
+            logoutBlock(0, @"退出成功");
         } fail:^(int code, NSString *msg) {
-            [[TSIMManager shareInstance].topViewController dismissViewControllerAnimated:YES completion:nil];
+            logoutBlock(code, msg);
         }];
     }
 }

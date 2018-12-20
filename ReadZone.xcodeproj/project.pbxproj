@@ -71,6 +71,7 @@
 		5FE12A8221B0E2E100364130 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8121B0E2E100364130 /* ImSDK.framework */; };
 		5FE12A8421B0E2EF00364130 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8321B0E2EF00364130 /* libsqlite3.tbd */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
+		5FF3612A21CB3966002C1434 /* RZTIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF3612921CB3966002C1434 /* RZTIMViewController.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
 		B2D2184B20F1FD1100331F4C /* UIColor+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2184A20F1FD1100331F4C /* UIColor+RZ.m */; };
@@ -210,6 +211,8 @@
 		5FE12A8121B0E2E100364130 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = TIMServer/IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
 		5FE12A8321B0E2EF00364130 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
+		5FF3612821CB3966002C1434 /* RZTIMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZTIMViewController.h; sourceTree = "<group>"; };
+		5FF3612921CB3966002C1434 /* RZTIMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZTIMViewController.m; sourceTree = "<group>"; };
 		78CC9625219505E16800D160 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05D0AEB4686FF3CA87D576B /* Pods-ReadZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadZone/Pods-ReadZone.debug.xcconfig"; sourceTree = "<group>"; };
 		B2003AB020D4BEF000AEA413 /* ReadZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadZone.entitlements; sourceTree = "<group>"; };
@@ -666,6 +669,8 @@
 				B2BF658220D75DCF003059AE /* Books */,
 				B2BF658320D75DDF003059AE /* Library */,
 				B2BF658020D75B6C003059AE /* Login */,
+				5FF3612821CB3966002C1434 /* RZTIMViewController.h */,
+				5FF3612921CB3966002C1434 /* RZTIMViewController.m */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -1198,6 +1203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7012B520F58DF300088216 /* RZAPIResponse.m in Sources */,
+				5FF3612A21CB3966002C1434 /* RZTIMViewController.m in Sources */,
 				5FB6B93320F4AA8D00AEBCF0 /* RZUserTextField.m in Sources */,
 				5F7012BE20F5DC7C00088216 /* RZAPILogin.m in Sources */,
 				5F50FE732110698800499F1E /* RZAPIUser.m in Sources */,
@@ -1432,7 +1438,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/IMFrameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";

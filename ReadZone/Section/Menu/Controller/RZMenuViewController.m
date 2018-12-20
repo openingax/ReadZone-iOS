@@ -29,6 +29,7 @@ static CGFloat containerWidth;
 @property(nonatomic,assign) BOOL isEnterNextVC;         // 是否进入了下一级页面
 
 @property(nonatomic,strong) TSManager *tsManager;
+@property(nonatomic,assign) BOOL hasLoginTIM;
 
 @end
 
@@ -41,6 +42,7 @@ static CGFloat containerWidth;
     [self drawView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginEvent:) name:kLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerLogin:) name:TIMLoginSuccNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +60,13 @@ static CGFloat containerWidth;
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     self.isEnterNextVC = NO;
+    
+    if (!_tsManager) {
+        _tsManager = [[TSManager alloc] init];
+    }
+    if (!self.hasLoginTIM) {
+        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -68,6 +77,10 @@ static CGFloat containerWidth;
     }
 }
 
+- (void)dealloc {
+    [self.tsManager logoutTIM];
+}
+
 #pragma mark - Event
 - (void)loginEvent:(NSNotification *)noti {
     RZUserModel *userModel = noti.object;
@@ -75,6 +88,13 @@ static CGFloat containerWidth;
     [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:userModel.userAvatar]];
 }
 
+- (void)didTIMServerLogin:(NSNotification *)noti {
+    BOOL hasLogin = [noti.userInfo[TIMLoginSuccStatusUserInfoKey] boolValue];
+    if (hasLogin) {
+        self.hasLoginTIM = YES;
+        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C"]];
+    }
+}
 
 #pragma mark - DrawView
 - (void)drawNavBar {
@@ -249,13 +269,9 @@ static CGFloat containerWidth;
 }
 
 - (void)msgBtnAction {
-    self.isEnterNextVC = YES;
-    if (!_tsManager) {
-        _tsManager = [[TSManager alloc] init];
-    }
-    if (![NSString isEmptyString:[RZUserManager shareInstance].account] && ![NSString isEmptyString:[RZUserManager shareInstance].sig]) {
-//        [_tsManager showMsgVCWithParams:@{@"account": [RZUserManager shareInstance].account, @"sig": [RZUserManager shareInstance].sig} controller:self];
-//        [_tsManager showMsgVCWithAccount:[RZUserManager shareInstance].account nickName:[RZUserManager shareInstance].account faceURL:@"" deviceID:@"viot85396846" controller:self];
+//    self.isEnterNextVC = YES;
+    if (self.hasLoginTIM) {
+        [self.tsManager showTIMWithController:self];
     }
 }
 

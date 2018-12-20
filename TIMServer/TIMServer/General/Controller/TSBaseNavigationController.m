@@ -42,15 +42,6 @@
     [super didReceiveMemoryWarning];
 }
 
-//- (BOOL)willDealloc {
-//    if (![super willDealloc]) {
-//        return NO;
-//    }
-//    
-//    MLCheck(self.viewControllers);
-//    return YES;
-//}
-
 - (void)dealloc {
     NSLog(@"TSBaseNavigationController dealloc");
 }

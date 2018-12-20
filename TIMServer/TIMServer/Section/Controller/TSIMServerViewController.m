@@ -55,6 +55,10 @@ TLSRefreshTicketListener
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 注册被踢下线的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerKickedOfflineNotification:) name:TIMKickedOfflineNotification object:nil];
+    
     [[TIMManager sharedInstance] doForeground:^{
         
     } fail:^(int code, NSString *msg) {
@@ -75,11 +79,24 @@ TLSRefreshTicketListener
     [_loginParam saveToLocal];
 }
 
+- (void)didTIMServerKickedOfflineNotification:(NSNotification *)noti {
+    NSDictionary *userInfo = noti.userInfo;
+    
+//    int code = [userInfo[TIMKickedOfflineCodeUserInfoKey] intValue];
+//    NSString *message = userInfo[TIMKickedOfflineMessageUserInfoKey];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 // 退出留言板，做一些退出的操作
 - (void)didTIMServerExit {
     //    [self.inputView endEditing:YES];
     
+    [TSIMManager shareInstance].topViewController = nil;
+    
+    // 不能移除这个监听
 //    [[TIMManager sharedInstance] removeMessageListener:[TSIMAPlatform sharedInstance].conversationMgr];
+    
     [[TSIMAPlatform sharedInstance] saveToLocal];
     
     [[[TSIMAPlatform sharedInstance].conversationMgr conversationList] removeAllObjects];

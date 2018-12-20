@@ -18,6 +18,12 @@
 
 //#import "IMAContactManager.h"
 
+// 被踢下线后退出登录的通知
+UIKIT_EXTERN NSNotificationName const TIMKickedOfflineNotification;
+
+UIKIT_EXTERN NSString * const TIMKickedOfflineCodeUserInfoKey;
+UIKIT_EXTERN NSString * const TIMKickedOfflineMessageUserInfoKey;
+
 // TIMServer IM 服务的业务逻辑入口，
 typedef EQALNetworkType TCQALNetwork;
 

@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     // 发送没有新消息的通知，消息冰箱 RN 界面的小红点
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil userInfo:@{@"status" : @(NO)}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TIMNewMsgNotification object:nil userInfo:@{TIMNewMsgStatusUserInfoKey : @(NO)}];
 }
 
 - (void)dealloc {

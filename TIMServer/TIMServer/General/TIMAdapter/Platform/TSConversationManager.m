@@ -201,10 +201,10 @@
                 if (!_chattingConversation) {
                     
                     /* _chattingConversation 还不存在的话，说明还没进入到留言板界面，此时需要在这里发送收到新消息的通知 */
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil userInfo:@{@"status" : @(YES)}];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TIMNewMsgNotification object:nil userInfo:@{TIMNewMsgStatusUserInfoKey : @(YES)}];
                 } else {
                     // 发送收到新消息的通知
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil userInfo:@{@"status" : @(YES)}];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TIMNewMsgNotification object:nil userInfo:@{TIMNewMsgStatusUserInfoKey : @(YES)}];
 
                     if (imaconv == _chattingConversation) {
                         
@@ -233,7 +233,7 @@
                                 [_chattingConversation onReceiveNewMessage:imMsg];
                                 
                                 /* _chattingConversation 存在的情况下，说明已经在留言板的界面中了，此时在这里发送收到新消息的通知 */
-                                [[NSNotificationCenter defaultCenter] postNotificationName:kTIMNewMsgEvent object:nil userInfo:@{@"status" : @(YES)}];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:TIMNewMsgNotification object:nil userInfo:@{TIMNewMsgStatusUserInfoKey : @(YES)}];
                             }
                         }
                     } else {

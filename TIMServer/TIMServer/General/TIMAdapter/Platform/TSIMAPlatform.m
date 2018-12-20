@@ -10,6 +10,10 @@
 #import "TSIMAPlatform+IMSDKCallBack.h"
 #import "TSUserManager.h"
 
+NSNotificationName const TIMKickedOfflineNotification = @"TIMKickedOfflineNotification";
+NSString * const TIMKickedOfflineCodeUserInfoKey = @"TIMKickedOfflineCodeUserInfoKey";
+NSString * const TIMKickedOfflineMessageUserInfoKey = @"TIMKickedOfflineMessageUserInfoKey";
+
 @implementation TSIMAPlatform
 
 static TSIMAPlatform *_sharedInstance = nil;
