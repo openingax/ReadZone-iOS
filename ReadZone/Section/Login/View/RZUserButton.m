@@ -7,6 +7,7 @@
 //
 
 #import "RZUserButton.h"
+#import <MLeaksFinder/MLeaksFinder.h>
 
 typedef void(^OnPressBlock)(void);
 

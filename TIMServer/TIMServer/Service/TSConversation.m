@@ -418,7 +418,7 @@
         if (block)
         {
             if (idx < 0 || idx > _msgList.count) {
-                [TSAlertManager showMessage:@"消息撤回失败"];
+                [TSAlertManager showMessage:@"消息撤回失败。"];
                 return nil;
             }
             __weak TSSafeMutableArray *wcl = _msgList;
@@ -447,10 +447,10 @@
                         NSLog(@"revoke fail");
 //                        NSString *info = [NSString stringWithFormat:@"消息撤回失败,code=%d,msg=%@",code,msg];
                         // 报 6223 时，提示用户发出消息超过2分钟，无法撤回
-                        if (code == 6623) {
-                            [TSAlertManager showMessage:@"撤回消息需2分钟内"];
+                        if (code == 6223 || code == 10031) {
+                            [TSAlertManager showMessage:@"发送时间超过2分钟的消息，不能被撤回。"];
                         } else {
-                            [TSAlertManager showMessage:@"消息撤回失败"];
+                            [TSAlertManager showMessage:@"消息撤回失败。"];
                         }
                         block(array, NO, nil);
                     }];

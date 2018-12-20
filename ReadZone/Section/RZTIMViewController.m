@@ -16,6 +16,7 @@
 @property(nonatomic,strong) UIImageView *imgView;
 @property(nonatomic,strong) UIButton *showTIMBtn;
 @property(nonatomic,strong) TSManager *tsManager;
+@property(nonatomic,assign) BOOL hasLoginTIM;
 @property(nonatomic,assign) BOOL isEnterTIM;
 
 @end
@@ -32,15 +33,14 @@
     [self addOwnViews];
     
     self.tsManager = [[TSManager alloc] init];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396840"];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.isEnterTIM = NO;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396840"];
-    });
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -54,7 +54,7 @@
 
 - (void)addOwnViews {
     _imgView = [[UIImageView alloc] init];
-    _imgView.contentMode = UIViewContentModeCenter;
+    _imgView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:_imgView];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -88,8 +88,11 @@
 - (void)didTIMServerLogin:(NSNotification *)noti {
     BOOL hasLogin = [noti.userInfo[TIMLoginSuccStatusUserInfoKey] boolValue];
     if (hasLogin) {
-        [_imgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C"]];
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/8958b8980432e685b4d1.JPG"]];
         _showTIMBtn.hidden = NO;
+    } else {
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C"]];
+        _showTIMBtn.hidden = YES;
     }
 }
 

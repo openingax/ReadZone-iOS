@@ -119,7 +119,7 @@ static Class kHostClass = Nil;
 
 - (void)offlineLogin
 {
-    // 被踢下线，则清空单例中的数据，再登录后再重新创建
+    // 被踢下线，则清空单例中的数据，重新登录后再创建
     [self saveToLocal];
     
 //    _contactMgr = nil;

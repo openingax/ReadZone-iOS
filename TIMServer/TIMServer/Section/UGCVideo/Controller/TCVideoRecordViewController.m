@@ -375,12 +375,10 @@
         //        [[TXUGCRecord shareInstance] startCameraSimple:param preview:_videoRecordView];
         //自定义设置
         TXUGCCustomConfig * param = [[TXUGCCustomConfig alloc] init];
-        param.videoResolution =  VIDEO_RESOLUTION_540_960;
+        param.videoResolution =  VIDEO_RESOLUTION_720_1280;
         param.videoFPS = 25;
         param.videoBitratePIN = 1200;
-        __weak typeof(_videoRecordView) _weakVideoRecordView = _videoRecordView;
-//        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_videoRecordView];
-        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_weakVideoRecordView];
+        [[TXUGCRecord shareInstance] startCameraCustom:param preview:_videoRecordView];
         
         // 美颜
         [[TXUGCRecord shareInstance] setBeautyDepth:_beautyDepth WhiteningDepth:_whitenDepth];
@@ -415,7 +413,6 @@
     [TXUGCRecord shareInstance].recordDelegate = nil;
     
     [self stopCameraPreview];
-    [self stopVideoRecord];
     
     [self dismissViewControllerAnimated:YES completion:^{
         

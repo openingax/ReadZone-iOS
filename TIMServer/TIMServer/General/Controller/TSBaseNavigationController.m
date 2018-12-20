@@ -57,8 +57,6 @@
 
 #pragma mark - ============ UINavigationControllerDelegate ============
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    //    UIBarButtonItem *backitem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithContentsOfFile:[YMCBundleHelper getBundlePath:@"ym_nav_back1"]] style:UIBarButtonItemStylePlain target:nil action:nil];
-    //    viewController.navigationItem.backBarButtonItem = backitem;
     
     if ([viewController respondsToSelector:@selector(YMHiddenNavigatorBar)]) {
         [self setNavigationBarHidden:YES animated:YES];
@@ -101,13 +99,7 @@
 }
 
 - (void)dismissVCAction {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMServerExitNoti object:nil];
-    
-    @weakify(self);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        @strongify(self);
-         [self dismissViewControllerAnimated:YES completion:nil];
-    });
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -261,4 +261,27 @@
     }];
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    //textfield在iOS11 内存泄漏。没有执行dealloc，据说是私有变量provider的问题
+    [super willMoveToSuperview:newSuperview];
+    if (@available(iOS 11.0, *)) {//a temp solution to fix { UITextField private-var retaincycle.}
+        if (!newSuperview) {
+            NSString *keyPath = @"textContentView.provider";
+            [self setValue:nil forKeyPath:keyPath];
+        }
+    }
+}
+
+- (BOOL)willDealloc
+{
+    //密码框存在内存问题，(这个内存问题不是很严重，因为只要下一次遇到textfield获取焦点，就会释放)
+    //没有好的办法处理这个问题
+    //一个办法：在离开页面时，remove掉就可以，但是在dealloc里remove不行，逻辑处理麻烦。
+    if (self.secureTextEntry) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
 @end

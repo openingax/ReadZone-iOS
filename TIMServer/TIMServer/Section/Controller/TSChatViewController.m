@@ -248,7 +248,6 @@
     [self.tableView addGestureRecognizer:tapAction];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationListUpdateComplete) name:kAsyncUpdateConversationListNoti object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerExit) name:kTIMServerExitNoti object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -374,7 +373,7 @@
                     @weakify(self);
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         @strongify(self);
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        [self didTIMServerExit];
                     });
                 }
             }

@@ -21,16 +21,11 @@
 #import <libextobjc/EXTScope.h>
 #import "TSAPIUser.h"
 
-// TIM server login succ or fail noti.
 NSNotificationName const TIMLoginSuccNotification = @"TIMLoginSuccNotification";
-// TIM server new msg noti.
 NSNotificationName const TIMNewMsgNotification = @"TIMNewMsgNotification";
 
-// NSNumber of BOOL, YES mean login succ, No mean login fail.
 NSString *const TIMLoginSuccStatusUserInfoKey = @"tim_login_status";
-// NSString Value, login succ with an empty string, fail with message you need.
 NSString *const TIMLoginSuccMessageUserInfoKey = @"tim_login_message";
-// NSString Value, YES mean has new msg, NO is used to noti you clear new msg status.
 NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
 
 
@@ -51,6 +46,7 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
 @implementation TSManager
 
 - (void)showTIMWithController:(UIViewController *)controller {
+    
     TIMLoginStatus status = [[TIMManager sharedInstance] getLoginStatus];
     if (status == TIM_STATUS_LOGOUT) {// 检查登录状态，如果没登录，再重新登录一次
         [self loginTIMWithAccount:self.account nickName:self.nickName faceURL:self.faceURL deviceID:self.deviceID];
@@ -76,9 +72,9 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
     
     TSBaseNavigationController *navVC = [[TSBaseNavigationController alloc] initWithRootViewController:chatVC];
     navVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [controller presentViewController:navVC animated:YES completion:^{
-        
-    }];
+    [controller presentViewController:navVC animated:YES completion:nil];
+    
+    // 把当前控制器保存起来，在退出留言板时需要置为 nil，否则会导致内存泄漏
     [TSIMManager shareInstance].topViewController = chatVC;
 }
 
@@ -112,7 +108,7 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
     [[TSUserManager shareInstance] saveAccount:account];
     [[TSUserManager shareInstance] saveDeviceID:deviceID];
     
-    // 如果获取不到 userSig
+    // 如果获取不到 userSig，需请求云米后台接口重新获取
     if ([NSString isEmpty:[TSUserManager shareInstance].userSig]) {
         if (!self.userAPI) self.userAPI = [[TSAPIUser alloc] init];
         
@@ -183,8 +179,10 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
     @weakify(self);
     [[TSIMAPlatform sharedInstance] login:param succ:^{
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification object:nil userInfo:@{TIMLoginSuccStatusUserInfoKey: @(YES), TIMLoginSuccMessageUserInfoKey: @""}];
+        // 发送登录成功的通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification object:nil userInfo:@{TIMLoginSuccStatusUserInfoKey: @(YES), TIMLoginSuccMessageUserInfoKey: @"登录成功"}];
         
+        // 设置当前用户的个人资料
         TIMFriendProfileOption *option = [[TIMFriendProfileOption alloc] init];
         option.friendFlags = 0xffff;
         option.friendCustom = nil;
@@ -197,13 +195,15 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
         [[TIMFriendshipManager sharedInstance] modifySelfProfile:option profile:profile succ:^{
             [[TSIMAPlatform sharedInstance] configOnLoginSucc:param];
         } fail:^(int code, NSString *msg) {
-            
+            DebugLog(@"修改个人资料失败");
         }];
         
         
     } fail:^(int code, NSString *msg) {
         @strongify(self);
         if (code == 70013) {
+            
+            // 70013 为 userSig 失效，清空 userSig 后重新登录一次即可
             [[TSUserManager shareInstance] deleteUserSig];
             [self loginTIMWithAccount:self.account nickName:self.nickName faceURL:self.faceURL deviceID:self.deviceID];
             
@@ -215,23 +215,19 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
     }];
 }
 
-- (void)clearVC {
-    [TSIMManager shareInstance].navigationController = nil;
-    [TSIMManager shareInstance].topViewController = nil;
-}
-
 - (void)logoutTIM {
+    
     [[TSUserManager shareInstance] deleteUserSig];
     
     [[TSIMAPlatform sharedInstance] logout:^{
         NSLog(@"TIM 退出成功");
     } fail:^(int code, NSString *msg) {
-        NSLog(@"TIM 退出失败");
+        NSLog(@"TIM 退出失败，请注意日活可能超限");
     }];
 }
 
 - (void)dealloc {
-    NSLog(@"TSManager dealloc");
+    DebugLog(@"TSManager dealloc");
 }
 
 

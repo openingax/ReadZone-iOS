@@ -14,11 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,readonly,copy) NSString *account;
 @property(nonatomic,readonly,copy) NSString *password;
-@property(nonatomic,readonly,copy) NSString *sig;
 
 + (RZUserManager *)shareInstance;
 
-- (void)saveUserAccout:(NSString *)account password:(NSString *)password sig:(NSString *)sig;
+- (void)saveUserAccout:(NSString *)account password:(NSString *)password;
 
 - (BOOL)isLogin;
 

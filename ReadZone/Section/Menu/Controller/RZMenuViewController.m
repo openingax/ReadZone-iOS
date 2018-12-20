@@ -42,7 +42,6 @@ static CGFloat containerWidth;
     [self drawView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginEvent:) name:kLoginSuccessNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerLogin:) name:TIMLoginSuccNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,18 +54,11 @@ static CGFloat containerWidth;
     if (!self.isEnterNextVC) {
         // 如果没进入下一级页面
         [self showAnimation];
-        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[RZUser shared].userInfo.userAvatar] placeholderImage:nil];
+        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C"] placeholderImage:nil];
     } else {
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     self.isEnterNextVC = NO;
-    
-    if (!_tsManager) {
-        _tsManager = [[TSManager alloc] init];
-    }
-    if (!self.hasLoginTIM) {
-        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
-    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -86,14 +78,6 @@ static CGFloat containerWidth;
     RZUserModel *userModel = noti.object;
     self.userName = userModel.userName;
     [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:userModel.userAvatar]];
-}
-
-- (void)didTIMServerLogin:(NSNotification *)noti {
-    BOOL hasLogin = [noti.userInfo[TIMLoginSuccStatusUserInfoKey] boolValue];
-    if (hasLogin) {
-        self.hasLoginTIM = YES;
-        [self.avatarImgView sd_setImageWithURL:[NSURL URLWithString:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C"]];
-    }
 }
 
 #pragma mark - DrawView
@@ -269,10 +253,7 @@ static CGFloat containerWidth;
 }
 
 - (void)msgBtnAction {
-//    self.isEnterNextVC = YES;
-    if (self.hasLoginTIM) {
-        [self.tsManager showTIMWithController:self];
-    }
+    self.isEnterNextVC = YES;
 }
 
 - (void)noteBtnAction {

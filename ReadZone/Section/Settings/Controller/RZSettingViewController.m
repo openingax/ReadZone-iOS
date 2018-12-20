@@ -205,12 +205,14 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CANCEL", @"设置页【取消】") style:UIAlertActionStyleCancel handler:nil];
+        
+        __weak typeof(self) ws = self;
         UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:RZLocalizedString(@"SETTING_CELL_LOGOUT", @"设置页【登出】") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [RZUser shared].userInfo = nil;         // 清空用户数据
             [[RZUserManager shareInstance] logout]; // 清空用户数据
             RZLoginViewController *loginVC = [[RZLoginViewController alloc] init];
             RZBaseNavigationController *navVC = [[RZBaseNavigationController alloc] initWithRootViewController:loginVC];
-            [self presentViewController:navVC animated:YES completion:nil];
+            [ws presentViewController:navVC animated:YES completion:nil];
         }];
         
         [alert addAction:logoutAction];

@@ -68,44 +68,33 @@
 
 - (void)registNotification
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
-    }
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 
 #pragma mark - TIMUserStatusListener
 
-static BOOL kIsAlertingForceOffline = NO;
-
 // 被踢下线了
 - (void)onForceOffline {
     
-    if (!kIsAlertingForceOffline) {
-        kIsAlertingForceOffline = YES;
-        
-        DebugLog(@"踢下线通知");
-        
-        void (^logoutBlock)(int code, NSString *msg) = ^(int code, NSString *msg) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:TIMKickedOfflineNotification
-                                                                object:nil
-                                                              userInfo:@{TIMKickedOfflineCodeUserInfoKey : @(code),
-                                                                         TIMKickedOfflineMessageUserInfoKey: msg}
-             ];
-        };
-        
-        [self logout:^{
-            logoutBlock(0, @"退出成功");
-        } fail:^(int code, NSString *msg) {
-            logoutBlock(code, msg);
-        }];
-    }
+    DebugLog(@"踢下线通知");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:TIMLoginSuccNotification object:@{TIMLoginSuccStatusUserInfoKey : @(NO)}];
+    
+    void (^logoutBlock)(int code, NSString *msg) = ^(int code, NSString *msg) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:TIMKickedOfflineNotification
+                                                            object:nil
+                                                          userInfo:@{TIMKickedOfflineCodeUserInfoKey : @(code),
+                                                                     TIMKickedOfflineMessageUserInfoKey: msg}
+         ];
+    };
+    
+    [self logout:^{
+        logoutBlock(0, @"退出成功");
+    } fail:^(int code, NSString *msg) {
+        logoutBlock(code, msg);
+    }];
 }
 
 - (void)onRefresh {

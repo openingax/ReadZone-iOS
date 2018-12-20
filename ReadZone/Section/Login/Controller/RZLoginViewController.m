@@ -48,6 +48,12 @@ static CGFloat marginHorizon = 24;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawView];
+    
+//    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [closeBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+//    [closeBtn setFrame:CGRectMake(100, 300, 80, 30)];
+//    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
+//    [self.view addSubview:closeBtn];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,17 +77,17 @@ static CGFloat marginHorizon = 24;
 
 #pragma mark - DrawView
 - (void)drawNavBar {
-    [super drawNavBar];
-    self.navBar.hidenBackItem = YES;
+//    [super drawNavBar];
+//    self.navBar.hidenBackItem = YES;
 }
 - (void)drawView {
     self.view.backgroundColor = [UIColor colorWithHex:@"#ffffff"];
-    
+
     self.animatedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     [self.view addSubview:self.animatedView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     [self.animatedView addGestureRecognizer:tap];
-    
+
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = RZLocalizedString(@"LOGIN_LABEL_TITLE", @"登录页的大标题【登录】");
     titleLabel.textColor = [UIColor blackColor];
@@ -91,7 +97,7 @@ static CGFloat marginHorizon = 24;
         make.left.equalTo(self.animatedView).with.offset(marginHorizon);
         make.top.equalTo(self.animatedView).with.offset(40+kNavTotalHeight);
     }];
-    
+
     self.accountTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypeAccount];
     [self.accountTF addTarget:self action:@selector(accountValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.animatedView addSubview:self.accountTF];
@@ -101,7 +107,7 @@ static CGFloat marginHorizon = 24;
         make.right.equalTo(self.animatedView).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
-    
+
     self.passwordTF = [[RZUserTextField alloc] initWithType:RZUserTextFieldTypePassword];
     [self.passwordTF addTarget:self action:@selector(passwordValueChange:) forControlEvents:UIControlEventEditingChanged];
     [self.animatedView addSubview:self.passwordTF];
@@ -111,9 +117,10 @@ static CGFloat marginHorizon = 24;
         make.right.equalTo(self.animatedView).with.offset(-marginHorizon);
         make.height.mas_equalTo(40);
     }];
-    
+
+    __weak typeof(self) ws = self;
     self.loginBtn = [[RZUserButton alloc] initWithTitle:RZLocalizedString(@"LOGIN_BTN_LOGIN", @"登录页登录按钮的标题【登录】") titleColor:[UIColor whiteColor] backgroundColor:[UIColor colorWithHex:kColorUserBtnBg] onPressBlock:^{
-        [self loginAction];
+        [ws loginAction];
     }];
     [self.animatedView addSubview:self.loginBtn];
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -122,7 +129,7 @@ static CGFloat marginHorizon = 24;
         make.top.equalTo(self.passwordTF.mas_bottom).with.offset(30);
         make.height.mas_equalTo(45);
     }];
-    
+
     UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     NSString *registerStr = RZLocalizedString(@"LOGIN_BTN_REGISTER", @"登录页未注册按钮的标题【还未注册？】");
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:registerStr];
@@ -163,31 +170,22 @@ static CGFloat marginHorizon = 24;
     
     [AVUser logInWithUsernameInBackground:self.accountTF.text password:self.passwordTF.text block:^(AVUser * _Nullable user, NSError * _Nullable error) {
         if (user && !error) {
-            
-//            [self.timAPI fetchSigWithAccount:[NSString stringByCuttingEdgeWhiteSpaceAndNewlineCharacterSet:self.accountTF.text] complete:^(BOOL isSuccess, NSString *sig) {
-//                if (isSuccess) {
-                    // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
-                    [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
-                        if (!error) {
-                            [RZUser shared].userInfo = userInfo;
-                            
-                            [[RZUserManager shareInstance] saveUserAccout:self.accountTF.text password:self.passwordTF.text sig:nil];
-                            
-                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
-                            [self dismissViewControllerAnimated:YES completion:nil];
-                        } else {
-                            [[RZUserManager shareInstance] logout];
-                            [self.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
-                        }
-                    }];
-//                } else {
-//                    // 获取 sig 失败
-//                    [[RZUserManager shareInstance] logout];
-//                    [self.animatedView makeToast:[NSString stringWithFormat:@"获取 sig 失败：%@", error] duration:2.5 position:CSToastPositionBottom];
-//                }
-//            }];
-            
-            
+            // 登录成功后，用当前用户的 objectId 查询 UserInfoModel 类的值
+
+            __weak typeof(self) ws = self;
+            [self.userAPI fetchUserInfoWithBlock:^(RZUserModel *userInfo, NSError *error) {
+                if (!error) {
+                    [RZUser shared].userInfo = userInfo;
+
+                    [[RZUserManager shareInstance] saveUserAccout:ws.accountTF.text password:ws.passwordTF.text];
+
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:userInfo];
+                    [ws dismissViewControllerAnimated:YES completion:nil];
+                } else {
+                    [[RZUserManager shareInstance] logout];
+                    [ws.view makeToast:@"查询不到用户信息" duration:1.5 position:CSToastPositionBottom];
+                }
+            }];
         } else {
             // 登录失败
             [self.animatedView makeToast:[NSString stringWithFormat:@"AVUser 登录失败：%@", error] duration:2.5 position:CSToastPositionBottom];
@@ -196,12 +194,8 @@ static CGFloat marginHorizon = 24;
 }
 
 - (void)registerAction {
-    //    RZLoginViewController_Swift *loginVC_Swift = [[RZLoginViewController_Swift alloc] init];
-    //    RZRegisterViewController_Swift *registerVC = [[RZRegisterViewController_Swift alloc] init];
-    //    [self.navigationController pushViewController:registerVC animated:YES];
     RZRegisterViewController *registerVC = [[RZRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVC animated:YES];
-    //    [loginVC_Swift swiftMethodTest];
 }
 
 - (void)tapAction {

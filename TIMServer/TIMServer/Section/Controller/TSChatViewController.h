@@ -15,11 +15,6 @@
 #import "TSIMMsg+UITableViewCell.h"
 #import "TSIMAPlatform.h"
 
-// Video
-//#import "TCVideoRecordViewController.h"
-//#import "TCNavigationController.h"
-//#import "MicroVideoView.h"
-
 @class TSConversation;
 
 @interface TSChatViewController : TSIMServerViewController

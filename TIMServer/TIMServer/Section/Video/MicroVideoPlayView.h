@@ -17,7 +17,7 @@
     UIImage *_coverImage;
     
     UIButton        *_playerBtn;
-    
+    UILabel         *_timeLabel;
     AVPlayerItem    *_playItem;
     AVPlayer        *_player;
     AVPlayerLayer   *_playerLayer;

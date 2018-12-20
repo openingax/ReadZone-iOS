@@ -7,14 +7,15 @@
 //
 
 #import "TSAlertManager.h"
+#import "TSIMManager.h"
 
 @implementation TSAlertManager
 
 + (void)showMessage:(NSString *)msg {
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:msg message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:msg message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:action];
-    [[[UIApplication sharedApplication].keyWindow.rootViewController presentedViewController] presentViewController:alertController animated:YES completion:nil];
+    [[TSIMManager shareInstance].topViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

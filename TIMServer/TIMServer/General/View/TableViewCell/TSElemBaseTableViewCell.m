@@ -366,7 +366,8 @@
     
     if (_remarkTip) {
 //        _remarkTip.hidden = !([_msg isGroupMsg] && ![msg isMineMsg]);
-        _remarkTip.hidden = ![_msg isGroupMsg];
+//        _remarkTip.hidden = ![_msg isGroupMsg];
+        _remarkTip.hidden = NO;
         _remarkTip.font = [_msg tipFont];
         _remarkTip.textColor = [_msg tipTextColor];
         _remarkTip.text = [user showTitle];

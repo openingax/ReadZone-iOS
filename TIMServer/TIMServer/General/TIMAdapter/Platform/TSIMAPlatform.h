@@ -13,6 +13,7 @@
 #import "TSConversationManager.h"
 #import "IMAPlatformConfig.h"
 #import "TSConfig.h"
+#import "TSManager.h"
 #import "TSIMManager.h"
 #import "TSIMHost.h"
 

@@ -339,18 +339,18 @@
     //创建 TIMUGCElem
     TIMUGCVideo* video = [[TIMUGCVideo alloc] init];
     video.type = @"mp4";
-    video.duration = (int)urlAsset.duration.value/urlAsset.duration.timescale;
+    video.duration = 1000 * (int)urlAsset.duration.value/urlAsset.duration.timescale;   // 安卓以毫秒为单位，这里先乘 1000 再做除法
     
-    TIMUGCCover *corver = [[TIMUGCCover alloc] init];
-    corver.type = @"jpg";
-    corver.width = scaledImage.size.width;
-    corver.height = scaledImage.size.height;
+    TIMUGCCover *cover = [[TIMUGCCover alloc] init];
+    cover.type = @"jpg";
+    cover.width = scaledImage.size.width;
+    cover.height = scaledImage.size.height;
     
     TIMUGCElem* elem = [[TIMUGCElem alloc] init];
     elem.video = video;
     elem.videoPath = videoPath;
     elem.coverPath = snapshotPath;
-    elem.cover = corver;
+    elem.cover = cover;
     
     TIMMessage* msg = [[TIMMessage alloc] init];
     [msg addElem:elem];

@@ -23,12 +23,35 @@ UIKIT_EXTERN NSString *const TIMNewMsgStatusUserInfoKey;
 
 @interface TSManager : NSObject
 
-- (void)showTIMWithController:(UIViewController *)controller;
+
+/**
+ 登录 TIM 留言板服务
+
+ @param account 用户账号
+ @param nickName 用户呢称
+ @param faceURL 用户头像
+ @param deviceID 当前冰箱设备 did
+ */
 - (void)loginTIMWithAccount:(NSString *)account
                    nickName:(NSString *)nickName
                     faceURL:(NSString *)faceURL
                    deviceID:(NSString *)deviceID;
-- (void)clearVC;
+
+
+/**
+ 显示 TIM 留言板
+
+ @param controller 用户弹出留言板的 VC（云米商城里是 RN 插件的控制器 YMDeviceDetailViewController）
+ */
+- (void)showTIMWithController:(UIViewController *)controller;
+
+
+/**
+ 退出留言板
+ 
+ @discuss 当退出 RN 插件控制器时，再调 logoutTIM 方法退出留言板
+ 在 RN 插件控制器里，添加 hasShowTIM 变量去记录是否显示了留言板，并在 viewWillDisappear: 方法里判断这个变量，以决定是否退出留言板
+ */
 - (void)logoutTIM;
 
 @end

@@ -19,7 +19,6 @@
 // Manager
 #import "TIMServerHelper.h"
 #import "IMALoginParam.h"
-#import "TSIMAPlatform.h"
 #import "TSIMAPlatform+Login.h"
 
 @interface TSIMServerViewController ()
@@ -44,7 +43,6 @@ TLSRefreshTicketListener
 
 @implementation TSIMServerViewController
 
-#define kIMAAutoLoginParam @"kIMAAutoLoginParam"
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -56,8 +54,11 @@ TLSRefreshTicketListener
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *itemleft = [[UIBarButtonItem alloc] initWithImage:[UIImage tim_imageWithBundleAsset:@"ym_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(didTIMServerExit)];
+    self.navigationItem.leftBarButtonItem = itemleft;
+    
     // 注册被踢下线的通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerKickedOfflineNotification:) name:TIMKickedOfflineNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didOnlineKickedOfflineNotification:) name:TIMKickedOfflineNotification object:nil];
     
     [[TIMManager sharedInstance] doForeground:^{
         
@@ -77,24 +78,28 @@ TLSRefreshTicketListener
 
 - (void)dealloc {
     [_loginParam saveToLocal];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didTIMServerKickedOfflineNotification:(NSNotification *)noti {
-    NSDictionary *userInfo = noti.userInfo;
+/*
+ 留言板在线状态被强制踢下线
+ */
+- (void)didOnlineKickedOfflineNotification:(NSNotification *)noti {
     
-//    int code = [userInfo[TIMKickedOfflineCodeUserInfoKey] intValue];
-//    NSString *message = userInfo[TIMKickedOfflineMessageUserInfoKey];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"下线通知" message:@"你的账号于其它设备登录" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self didTIMServerExit];
+    }];
+    [alert addAction:confirmAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 // 退出留言板，做一些退出的操作
 - (void)didTIMServerExit {
-    //    [self.inputView endEditing:YES];
     
     [TSIMManager shareInstance].topViewController = nil;
     
-    // 不能移除这个监听
+    // 不能移除这个监听，否则在退出留言板又回到留言板时无法接收消息
 //    [[TIMManager sharedInstance] removeMessageListener:[TSIMAPlatform sharedInstance].conversationMgr];
     
     [[TSIMAPlatform sharedInstance] saveToLocal];
@@ -104,16 +109,19 @@ TLSRefreshTicketListener
     
     TIMBackgroundParam *param = [[TIMBackgroundParam alloc] init];
     [param setC2cUnread:0];
+    
+    __weak typeof(self) ws = self;  // 弱引用，防止循环引用
     [[TIMManager sharedInstance] doBackground:param succ:^{
-        
+        [ws dismissViewControllerAnimated:YES completion:nil];
     } fail:^(int code, NSString *msg) {
-        
+        NSLog(@"TIMManager doBackground fail: %d %@", code, msg);
+        [ws dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
 #pragma mark - Login
 
-// 子类继承这个方法，以接收 IM 服务登录成功的通知
+// 子类继承这个方法，以接收 IM 服务登录成功的动作
 - (void)didLogin {
     
 }
@@ -124,7 +132,6 @@ TLSRefreshTicketListener
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     _userInfo = userInfo;
-//    [self loginTIM];
 }
 
 
@@ -132,7 +139,6 @@ TLSRefreshTicketListener
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     _loginParam.tokenTime = 0;
-//    [self loginTIM];
 }
 
 

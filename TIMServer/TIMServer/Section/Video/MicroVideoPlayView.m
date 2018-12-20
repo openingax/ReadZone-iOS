@@ -51,6 +51,12 @@
     
      _playerBtn = [[UIButton alloc] init];
     [self addSubview:_playerBtn];
+    
+    _timeLabel = [[UILabel alloc] init];
+    _timeLabel.textAlignment = NSTextAlignmentRight;
+    _timeLabel.textColor = [UIColor whiteColor];
+    _timeLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
+    [self addSubview:_timeLabel];
 }
 
 - (void)configSubviews
@@ -115,6 +121,28 @@
             }];
         }
     }
+    
+    _timeLabel.text = [self videoTimeStrWithDuration:elem.video.duration/1000];
+}
+
+- (NSString *)videoTimeStrWithDuration:(int)duration {
+    int minute = duration / 60;
+    NSString *minutes = nil;
+    if (minute > 10) {
+        minutes = [NSString stringWithFormat:@"%d", minute];
+    } else {
+        minutes = [NSString stringWithFormat:@"0%d", minute];
+    }
+    
+    int second = duration % 60;
+    NSString *seconds = nil;
+    if (second > 10) {
+        seconds = [NSString stringWithFormat:@"%d", second];
+    } else {
+        seconds = [NSString stringWithFormat:@"0%d", second];
+    }
+    
+    return [NSString stringWithFormat:@"%@:%@", minutes, seconds];
 }
 
 - (void)downloadVideo:(TIMSucc)succ fail:(TIMFail)fail
@@ -247,6 +275,8 @@
     _playerLayer.frame = self.bounds;
     
     _playerBtn.frame = CGRectMake(selfWidth/2 - 30, selfHeight/2 - 30, 60, 60);
+    
+    _timeLabel.frame = CGRectMake(selfWidth/2, selfHeight - 20, 70, 20);
 }
 
 - (void)dealloc

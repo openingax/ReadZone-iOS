@@ -103,30 +103,12 @@
 
 #pragma makr -
 - (void)callImagePickerActionSheet {
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"相册", nil];
-//    actionSheet.cancelButtonIndex = 2;
-//    [actionSheet showInView:self.view];
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:imagePicker animated:YES completion:nil];
-    
-//    UIAlertAction *action0 = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        [self presentViewController:imagePicker animated:YES completion:nil];
-//    }];
-//    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        [self presentViewController:imagePicker animated:YES completion:nil];
-//    }];
-//    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-//    [alertController addAction:action0];
-//    [alertController addAction:action1];
-//    [alertController addAction:action2];
-//    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)addTapBlankToHideKeyboardGesture {
