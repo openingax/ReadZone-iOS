@@ -150,56 +150,89 @@
 
 - (void)onInputViewContentHeightChanged:(NSDictionary *)change
 {
-    /*
-     当 _messageList 不存在时，可能已经退出留言板，此时不再刷新 tableView，避免崩溃
-     解决的问题：输入框输入文字后，没有点击发送，返回冰箱主页，app闪退
-    */
-    if (!_messageList || _messageList.count <= 0) return;
+    NSInteger newValue = [change[NSKeyValueChangeNewKey] integerValue];
+    NSInteger oldValue = [change[NSKeyValueChangeOldKey] integerValue];
     
-    NSInteger nv = [change[NSKeyValueChangeNewKey] integerValue];
-    NSInteger ov = [change[NSKeyValueChangeOldKey] integerValue];
-    if (nv != ov)
-    {
-        // nv > ov 说明是展开，否则是缩回
-        // TODO：界面消息较少时，下面的做法将顶部消息顶出去，可根据内容显示再作显示优化
-        NSInteger off = nv - ov;
-        if (_tableView.contentSize.height + off <= _tableView.bounds.size.height)
-        {
-            CGRect rect = _tableView.frame;
+    if (newValue != oldValue) {
+        NSInteger off = newValue - oldValue;
+        CGRect rect = self.tableView.frame;
+        //        rect.origin.y -= off;
+        
+        if (rect.origin.y == 0) {
             rect.size.height -= off;
             _tableView.frame = rect;
+        } else {
+            rect.origin.y -= off;
+            _tableView.frame = rect;
         }
-        else
-        {
-            CGRect rect = _tableView.frame;
-            if (rect.origin.y == 0)
-            {
-                rect.size.height -= off;
-                _tableView.frame = rect;
+        
+        
+        if (off > 0) {
+            // 弹出键盘
+            if (kIsiPhoneX) {
+                _tableView.contentOffset = CGPointMake(0, _tableView.contentSize.height - (kScreenHeight - 84));
+            } else {
+                _tableView.contentOffset = CGPointMake(0, _tableView.contentSize.height - (kScreenHeight - 50));
             }
-            else
-            {
-                rect.origin.y -= off;
-                _tableView.frame = rect;
-            }
-            if (off > 0)
-            {
-                NSInteger toff = _tableView.contentSize.height - _tableView.frame.size.height;
-                if (toff < off )
-                {
-                    if (toff > 0)
-                    {
-                        _tableView.contentOffset = CGPointMake(_tableView.contentOffset.x, _tableView.contentOffset.y + toff);
-                    }
-                }
-                else
-                {
-                    _tableView.contentOffset = CGPointMake(_tableView.contentOffset.x, _tableView.contentOffset.y + off);
-                }
-            }
+            
+        } else {
+            // 收起键盘
         }
     }
 }
+
+//- (void)onInputViewContentHeightChanged:(NSDictionary *)change
+//{
+//    /*
+//     当 _messageList 不存在时，可能已经退出留言板，此时不再刷新 tableView，避免崩溃
+//     解决的问题：输入框输入文字后，没有点击发送，返回冰箱主页，app闪退
+//    */
+//    if (!_messageList || _messageList.count <= 0) return;
+//
+//    NSInteger nv = [change[NSKeyValueChangeNewKey] integerValue];
+//    NSInteger ov = [change[NSKeyValueChangeOldKey] integerValue];
+//    if (nv != ov)
+//    {
+//        // nv > ov 说明是展开，否则是缩回
+//        // TODO：界面消息较少时，下面的做法将顶部消息顶出去，可根据内容显示再作显示优化
+//        NSInteger off = nv - ov;
+//        if (_tableView.contentSize.height + off <= _tableView.bounds.size.height)
+//        {
+//            CGRect rect = _tableView.frame;
+//            rect.size.height -= off;
+//            _tableView.frame = rect;
+//        }
+//        else
+//        {
+//            CGRect rect = _tableView.frame;
+//            if (rect.origin.y == 0)
+//            {
+//                rect.size.height -= off;
+//                _tableView.frame = rect;
+//            }
+//            else
+//            {
+//                rect.origin.y -= off;
+//                _tableView.frame = rect;
+//            }
+//            if (off > 0)
+//            {
+//                NSInteger toff = _tableView.contentSize.height - _tableView.frame.size.height;
+//                if (toff < off )
+//                {
+//                    if (toff > 0)
+//                    {
+//                        _tableView.contentOffset = CGPointMake(_tableView.contentOffset.x, _tableView.contentOffset.y + toff);
+//                    }
+//                }
+//                else
+//                {
+//                    _tableView.contentOffset = CGPointMake(_tableView.contentOffset.x, _tableView.contentOffset.y + off);
+//                }
+//            }
+//        }
+//    }
+//}
 
 - (void)layoutRefreshScrollView {
 

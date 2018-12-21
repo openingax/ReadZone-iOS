@@ -107,7 +107,7 @@
 //                                [[HUDHelper sharedInstance] tipMessage:@"图片uuid为空"];
                                 break;
                             }
-                            [_activityIndicator startAnimating];
+                            [self.activityIndicator startAnimating];
                             
                             NSFileManager *fileManager = [NSFileManager defaultManager];
                             NSString *nsTmpDir = NSTemporaryDirectory();
@@ -121,7 +121,7 @@
                                 if (data)
                                 {
                                     self.imageView.image = [UIImage imageWithData:data];
-                                    [_activityIndicator stopAnimating];
+                                    [self.activityIndicator stopAnimating];
                                 }
                             }
                             else
@@ -131,7 +131,7 @@
                                     if (data)
                                     {
                                         self.imageView.image = [UIImage imageWithData:data];
-                                        [_activityIndicator stopAnimating];
+                                        [self.activityIndicator stopAnimating];
                                     }
                                     else
                                     {
