@@ -24,26 +24,14 @@
     return nil;
 }
 
-//- (void)onPicked:(MenuButton *)btn
-//{
-//    btn.selected = !btn.selected;
-//    _msg.isPicked = btn.selected;
-//}
-
 - (void)configContent {
     UIEdgeInsets inset = [_msg contentBackInset];
-//    if ([_msg isMineMsg])
-//    {
-//        _contentBack.image = [[UIImage tim_imageWithBundleAsset:@"bubble_blue"] resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
-//    }
-//    else
-//    {
-//    if ([self isKindOfClass:[TSChatVideoTableViewCell class]] || [self isKindOfClass:[TSChatImageTableViewCell class]]) {
-//        _contentBack.image = [[UIImage tim_imageWithBundleAsset:@"bubble_gray"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 8, 20) resizingMode:UIImageResizingModeStretch];
-//    } else {
+    
+    if (_msg.type == TSIMMsgTypeImage || _msg.type == TSIMMsgTypeVideo) {
+        
+    } else {
         _contentBack.image = [[UIImage tim_imageWithBundleAsset:@"bubble_gray"] resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
-//    }
-//    }
+    }
 }
 
 - (void)configSendingTips

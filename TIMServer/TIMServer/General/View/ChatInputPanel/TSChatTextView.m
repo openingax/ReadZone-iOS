@@ -18,10 +18,10 @@
         self.editable = NO;
         self.scrollEnabled = NO;
         self.selectable = NO;
-        self.contentInset = UIEdgeInsetsZero;
-        self.textContainerInset = UIEdgeInsetsZero;
-        self.scrollIndicatorInsets = UIEdgeInsetsZero;
-        self.textContainer.lineFragmentPadding = 0;
+//        self.contentInset = UIEdgeInsetsZero;
+//        self.textContainerInset = UIEdgeInsetsZero;
+//        self.scrollIndicatorInsets = UIEdgeInsetsZero;
+//        self.textContainer.lineFragmentPadding = 0;
     }
     return self;
 }

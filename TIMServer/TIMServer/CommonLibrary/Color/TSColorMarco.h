@@ -67,8 +67,6 @@ alpha:a]
 #define kNavBarThemeColor             RGB(128, 64, 122)
 #define kNavBarHighlightThemeColor    RGB(161, 92, 154)
 
-// 默认TableViewCell高度
-#define kDefaultCellHeight 50
 // 默认界面之间的间距
 
 // 默认的字体颜色

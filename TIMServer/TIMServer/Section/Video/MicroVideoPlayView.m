@@ -55,7 +55,7 @@
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.textColor = [UIColor whiteColor];
-    _timeLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
+    _timeLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightMedium];
     [self addSubview:_timeLabel];
 }
 
@@ -276,7 +276,7 @@
     
     _playerBtn.frame = CGRectMake(selfWidth/2 - 30, selfHeight/2 - 30, 60, 60);
     
-    _timeLabel.frame = CGRectMake(selfWidth/2, selfHeight - 20, 70, 20);
+    _timeLabel.frame = CGRectMake(selfWidth/2 + 20, selfHeight - 20, 50, 20);
 }
 
 - (void)dealloc

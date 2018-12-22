@@ -288,7 +288,8 @@ static NSString *const kIMAMsgShowChatAttributedText = @"kIMAMsgShowChatAttribut
 - (UIEdgeInsets)contentBackInset
 {
     if (self.type == TSIMMsgTypeImage || self.type == TSIMMsgTypeVideo) {
-        return UIEdgeInsetsMake(29, 15, 8, 9);
+//        return UIEdgeInsetsMake(29, 15, 8, 9);
+        return UIEdgeInsetsMake(20, 0, 8, 9);
     } else {
         return UIEdgeInsetsMake(30, 20, 8, 16);
     }

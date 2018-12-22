@@ -41,7 +41,7 @@ target 'ReadZone' do
     #  pod 'SDCycleScrollView', '~> 1.75'
     pod 'MBProgressHUD', '1.0.0'
     pod 'MJExtension', '~> 3.0.15.1'
-    pod 'IQKeyboardManager', '~> 6.0.4'
+#    pod 'IQKeyboardManager', '~> 6.0.4'
     pod 'FDFullscreenPopGesture', '~> 1.1'
     pod 'TZImagePickerController', '3.1.0'
     pod 'KVOController', '1.2.0'

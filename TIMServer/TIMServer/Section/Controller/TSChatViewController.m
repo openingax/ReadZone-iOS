@@ -7,7 +7,7 @@
 //
 
 #import "TSChatViewController.h"
-#import "TSInputToolBar.h"
+//#import "TSInputToolBar.h"
 #import "TSConstMarco.h"
 #import "UIView+CustomAutoLayout.h"
 #import "UIView+Toast.h"
@@ -34,7 +34,7 @@
 #import "TCNavigationController.h"
 //#import "TCVideoPreviewViewController.h"
 
-@interface TSChatViewController () <TSInputToolBarDelegate, TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
+@interface TSChatViewController () <TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
@@ -291,7 +291,7 @@
     [_conversation asyncLoadRecentMessage:10 completion:^(NSArray *imMsgList, BOOL succ) {
         @strongify(self);
         if (succ) {
-            [self onLoadRecentMessage:imMsgList complete:YES scrollToBottom:YES];
+            [self onLoadRecentMessage:imMsgList complete:YES scrollToBottom:NO];
         }
         
         [self refreshCompleted];
@@ -521,9 +521,9 @@
 
 #pragma mark -
 
-- (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content {
-    
-}
+//- (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content {
+//
+//}
 
 #pragma mark - Load Message
 - (void)onLoadRecentMessage:(NSArray *)imamsgList complete:(BOOL)succ scrollToBottom:(BOOL)scroll
@@ -543,7 +543,7 @@
             {
                 [ar addObject:[NSIndexPath indexPathForItem:i inSection:0]];
             }
-            
+
             [_tableView insertRowsAtIndexPaths:ar withRowAnimation:UITableViewRowAnimationTop];
             
             [_tableView endUpdates];

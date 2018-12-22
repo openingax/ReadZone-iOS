@@ -99,8 +99,6 @@
 
 - (void)onKeyboardWillShow:(NSNotification *)notification {
     
-    NSLog(@"1: onKeyboardWillShow");
-    
     NSDictionary *userInfo = notification.userInfo;
     CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
@@ -108,7 +106,7 @@
     
     CGRect rect = _toolBar.frame;
     
-    rect.origin.y = kScreenHeight - endFrame.size.height - 50 + kNavBarHeight;
+    rect.origin.y = kScreenHeight - endFrame.size.height - 50;
     rect.size.height = endFrame.size.height + 50;
     
     if (self.contentHeight != rect.size.height) {
@@ -118,70 +116,22 @@
             self.contentHeight = rect.size.height;
         }];
     }
-    
-//    if ([_toolBar isEditing]) {
-//        NSDictionary *userInfo = notification.userInfo;
-//
-//        CGRect beginFrame = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//        CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//        CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-//
-//
-//        CGFloat contentHeight = endFrame.size.height + 50;
-////        if (contentHeight != _contentHeight) {
-//            CGRect rect = self.frame;
-//
-//            rect.origin.y = endFrame.origin.y - 88 - 50;
-//            rect.size.height = contentHeight;
-//
-//        NSLog(@"\n\n\n\n\nkeyboard endFrame\ny: %f height: %f\ntoolBar rect\ny: %f height: %f \n\n\n\n\n", endFrame.origin.y, endFrame.size.height, rect.origin.y, rect.size.height);
-//
-//            [UIView animateWithDuration:duration animations:^{
-//                self.frame = rect;
-//                self.contentHeight = contentHeight;
-//            }];
-////        }
-//    }
 }
 
 - (void)onKeyboardWillHide:(NSNotification *)notification {
     if ([TSIMManager shareInstance].topViewController == nil) return;
     
-    NSLog(@"3: onKeyboardWillHide");
-    
     NSDictionary *userInfo = notification.userInfo;
-    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     NSInteger duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     CGRect rect = _toolBar.frame;
-    rect.origin.y = kIsiPhoneX ? (kScreenHeight - 84 - kNavTotalHeight) : (kScreenHeight - 50 - kNavTotalHeight);
+    rect.origin.y = kIsiPhoneX ? (kScreenHeight - 84) : (kScreenHeight - 50);
     rect.size.height = kIsiPhoneX ? 84 : 50;
     [UIView animateWithDuration:duration animations:^{
         self.frame = rect;
         self.contentHeight = rect.size.height;
     }];
-    
-//    NSDictionary *userInfo = notification.userInfo;
-//
-//    CGRect beginFrame = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//    CGRect endFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    CGFloat duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-//
-//    CGFloat contentHeight = [_toolBar contentHeight];
-//    if (contentHeight != _contentHeight) {
-//        CGRect rect = self.frame;
-//
-//        rect.origin.y = endFrame.origin.y - kNavTotalHeight - contentHeight;
-//        rect.size.height = contentHeight;
-//
-//        NSLog(@"\n\n\n\n\nkeyboard endFrame\ny: %f height: %f\ntoolBar rect\ny: %f height: %f \n\n\n\n\n", endFrame.origin.y, endFrame.size.height, rect.origin.y, rect.size.height);
-//
-//        [UIView animateWithDuration:duration animations:^{
-//            self.frame = rect;
-//            self.contentHeight = contentHeight;
-//        }];
-//    }
 }
 
 - (void)onKeyboardDidShow:(NSNotification *)notification

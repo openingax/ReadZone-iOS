@@ -21,14 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.translucent = NO;
     self.delegate = self;
     
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(10, 10)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    // 设置导航栏透明（当 setBackgroundImage 的 Image 有 alpha 小于 1 时，即透明），以避免整个 ViewController 下移一个导航栏的高度（2018.12.22）
+    //    self.navigationBar.translucent = YES;
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:255 green:255 blue:255 alpha:0.98] size:CGSizeMake(10, 10)] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:[UIImage imageWithColor:RGBOF(0xE3E2EE) size:CGSizeMake(1, 1)]];
     [self.navigationBar setTintColor:RGBOF(0x333333)];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:RGBOF(0x333333),NSForegroundColorAttributeName, nil]];
-    [self.navigationBar setTranslucent:NO];
     
     __weak TSBaseNavigationController *weakSelf = self;
     

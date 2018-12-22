@@ -238,8 +238,6 @@
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
 		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA54121887A5D00667A8A /* TSInputToolBar.h */; };
-		5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDA54221887A5D00667A8A /* TSInputToolBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -477,8 +475,6 @@
 		5FEDA4DC2188076200667A8A /* TIMServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TIMServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEDA4DF2188076200667A8A /* TIMServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServer.h; sourceTree = "<group>"; };
 		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FEDA54121887A5D00667A8A /* TSInputToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSInputToolBar.h; sourceTree = "<group>"; };
-		5FEDA54221887A5D00667A8A /* TSInputToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSInputToolBar.m; sourceTree = "<group>"; };
 		C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1027,8 +1023,6 @@
 				5F06F5C421B388B3004419DC /* RefreshView */,
 				5F7C968821A7EEAD0017928F /* TableViewCell */,
 				5F3E040321A57C8B00E3EAB8 /* ChatInputPanel */,
-				5FEDA54121887A5D00667A8A /* TSInputToolBar.h */,
-				5FEDA54221887A5D00667A8A /* TSInputToolBar.m */,
 				5F3E03F021A5450B00E3EAB8 /* TSBaseView.h */,
 				5F3E03F121A5450B00E3EAB8 /* TSBaseView.m */,
 				5F9F33DA21B2569400A3C307 /* ImageTitleButton.h */,
@@ -1091,7 +1085,6 @@
 				5F15192B21A693FB00E83785 /* TSIMMsg+Draft.h in Headers */,
 				5F5D074321AD20D6009B4A33 /* TSRichChatViewController.h in Headers */,
 				5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */,
-				5FEDA54321887A5D00667A8A /* TSInputToolBar.h in Headers */,
 				5F9148FA219283C500148AAA /* UIColor+MLPFlatColors.h in Headers */,
 				5F7C96AD21A7FE160017928F /* TSChatTableViewCell.h in Headers */,
 				5F3E040621A57CB400E3EAB8 /* TSChatInputBaseView.h in Headers */,
@@ -1319,7 +1312,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FC0A60A21AE6BC300603B93 /* TSImageThumbPickerViewController.m in Sources */,
-				5FEDA54421887A5D00667A8A /* TSInputToolBar.m in Sources */,
 				5F15CD2A21C777A100AB2EDF /* TSIMGroupMember.m in Sources */,
 				5F914902219283C500148AAA /* UIView+CustomAutoLayout.m in Sources */,
 				5F9149542192C19B00148AAA /* TIMElem+ShowDescription.m in Sources */,

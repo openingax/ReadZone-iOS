@@ -48,6 +48,10 @@
     _chatImage = [[UIImageView alloc] init];
     _chatImage.backgroundColor = [UIColor flatGrayColor];
     _chatImage.userInteractionEnabled = YES;
+    _chatImage.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1].CGColor;
+    _chatImage.layer.borderWidth = 0.4;
+    _chatImage.layer.cornerRadius = 4;
+    _chatImage.layer.masksToBounds = YES;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapImage:)];
     tap.numberOfTapsRequired = 1;
@@ -216,11 +220,27 @@
 
 - (UIView *)addElemContent {
     _videoPanel = [[MicroVideoPlayView alloc] initWithFrame:CGRectMake(0, 0, 150, 100)];
+    _videoPanel.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1].CGColor;
+    _videoPanel.layer.borderWidth = 0.4;
+    _videoPanel.layer.cornerRadius = 4;
+    _videoPanel.layer.masksToBounds = YES;
     return _videoPanel;
 }
 
 - (void)configContent {
     [super configContent];
+    
+//    TIMUGCElem *elem = (TIMUGCElem *)[_msg.msg getElem:0];
+//    if (elem.cover) {
+//        CGFloat width = elem.cover.width;
+//        CGFloat height = elem.cover.height;
+//        
+//        CGFloat scale = MIN(kChatPicThumbMaxWidth/width, kChatPicThumbMaxHeight/height);
+//        
+//        _videoPanel.frame = CGRectMake(0, 0, width * scale, height * scale);
+//        [self relayoutGroupCellViews];
+//        [_videoPanel relayoutSubViews];
+//    }
     
     [_videoPanel setMessage:_msg];
 }

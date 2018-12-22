@@ -40,6 +40,10 @@
 
 - (void)addOwnViews
 {
+    UIView *topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, 0.5)];
+    topLine.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.15];
+    [self addSubview:topLine];
+    
     _audioBtn = [[UIButton alloc] init];
     [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateNormal];
     [_audioBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_voice_nor"] forState:UIControlStateHighlighted];
@@ -74,7 +78,7 @@
     [self addSubview:_audioPressedBtn];
     
     _textView = [self inputTextView];
-    _textView.frame = CGRectMake(0, 0, self.frame.size.width, CHAT_BAR_MIN_H);
+    _textView.frame = CGRectMake(0, 0, self.frame.size.width, kTextViewHeight);
     _textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     _textView.scrollEnabled = YES;
     _textView.returnKeyType = UIReturnKeySend;
@@ -84,7 +88,7 @@
     _textView.layer.borderWidth = 0.6;
     _textView.layer.cornerRadius = 6;
     _textView.font = kTimLargeTextFont;
-    _textView.textContainerInset = UIEdgeInsetsMake(6, 6, 0, 6);
+    _textView.textContainerInset = UIEdgeInsetsMake(10, 6, 10, 6);
     
     [self addSubview:_textView];
     
@@ -99,12 +103,6 @@
     [_movieBtn setImage:[UIImage tim_imageWithBundleAsset:@"chat_toolbar_video_nor"] forState:UIControlStateHighlighted];
     [_movieBtn addTarget:self action:@selector(onClickMovie:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_movieBtn];
-    
-//    if (kIsiPhoneX) {
-//        _placeHolderView = [[UIView alloc] init];
-//        _placeHolderView.backgroundColor = self.backgroundColor;
-//        [self addSubview:_placeHolderView];
-//    }
 }
 
 - (void)setChatDelegate:(id<TSChatInputAbleViewDelegate>)chatDelegate {
@@ -130,9 +128,9 @@
             [_textView resignFirstResponder];
         }
         // 语音模式
-        NSInteger toh = kButtonSize + 3 * kVerMargin;
+        NSInteger toh = kTextViewHeight + 10;
         if (kIsiPhoneX) {
-            toh = kButtonSize + 3 * kVerMargin + 34;
+            toh = kTextViewHeight + 10 + 34;
         }
         if (toh != _contentHeight)
         {
@@ -174,7 +172,7 @@
 - (void)relayoutFrameOfSubViews
 {
     [_audioBtn sizeWith:CGSizeMake(kButtonSize, kButtonSize)];
-    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? 1.5 * kVerMargin + 34 : 1.5 * kVerMargin];
+    [_audioBtn alignParentBottomWithMargin:kIsiPhoneX ? (9 + 34) : (9)];
 
     [_audioBtn alignParentLeftWithMargin:kToolBarDefaultMargin/2];
     
@@ -185,20 +183,20 @@
     [_photoBtn layoutToLeftOf:_movieBtn margin:kToolBarDefaultMargin];
     
     [_audioPressedBtn sameWith:_audioBtn];
-    [_audioPressedBtn marginParentTop:kVerMargin];
-    [_audioPressedBtn setHeight:kButtonSize + kVerMargin];
+    [_audioPressedBtn marginParentTop:5];
+    [_audioPressedBtn setHeight:kTextViewHeight];
     [_audioPressedBtn layoutToRightOf:_audioBtn margin:kToolBarDefaultMargin];
     [_audioPressedBtn scaleToLeftOf:_photoBtn margin:kToolBarDefaultMargin];
     
     CGRect rect = self.bounds;
     CGRect apframe = _audioPressedBtn.frame;
-    
+
     rect.origin.x = apframe.origin.x;
-    rect.origin.y = kVerMargin;
+    rect.origin.y = apframe.origin.y;
     if (kIsiPhoneX) {
-        rect.size.height = rect.size.height - 2 * kVerMargin - 34;
+        rect.size.height = rect.size.height - 10 - 34;
     } else {
-        rect.size.height -= 2 * kVerMargin;
+        rect.size.height -= 10;
     }
     rect.size.width = apframe.size.width;
     _textView.frame = rect;
@@ -242,21 +240,22 @@
 - (void)willShowInputTextViewToHeight:(CGFloat)toHeight
 {
     CGFloat textViewToHeight = toHeight;
-    
-    if (toHeight < kButtonSize)
+
+    if (toHeight < kTextViewHeight)
     {
-        textViewToHeight = kButtonSize;
+        textViewToHeight = kTextViewHeight;
     }
-    
+
     if (toHeight > kTextViewMaxHeight)
     {
         textViewToHeight = kTextViewMaxHeight;
     }
     
     // 如果是 iPX，要在 conHeight 里多加 34 的高度
-    NSInteger conHeight = textViewToHeight + 3 * kVerMargin;
+//    NSInteger conHeight = textViewToHeight + 3 * kVerMargin;
+    NSInteger conHeight = textViewToHeight + 10;
     if (kIsiPhoneX) {
-        conHeight = textViewToHeight + 3 * kVerMargin + 34;
+        conHeight = textViewToHeight + 10 + 34;
     }
     if (_contentHeight != conHeight)
     {
@@ -322,7 +321,7 @@
 {
     if (textView.text.length == 0)
     {
-        return kButtonSize;
+        return kTextViewHeight;
     }
     return (NSInteger)(textView.contentSize.height - 4);
 }

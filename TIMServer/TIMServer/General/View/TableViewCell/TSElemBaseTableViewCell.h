@@ -18,6 +18,7 @@
 #import "TSIMAPlatform.h"
 #import "TIMElem+ShowDescription.h"
 #import "IMAShowAble.h"
+#import <ImSDK/ImSDK.h>
 
 @interface TSElemBaseTableViewCell : UITableViewCell <TSElemAbleCell>
 {

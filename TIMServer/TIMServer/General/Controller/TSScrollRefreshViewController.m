@@ -358,15 +358,12 @@
                 scrollView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
                 
                 [_footerView willLoading];
-                
             }
             else
             {
                 [_footerView releaseLoading];
             }
         }
-        
-        
     }
 }
 
