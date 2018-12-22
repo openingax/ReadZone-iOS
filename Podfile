@@ -27,7 +27,7 @@ target 'ReadZone' do
     
     # develop tools
     pod 'MLeaksFinder', '~> 1.0.0'
-#    pod 'Bugly', '~> 2.5.0'
+    pod 'Bugly', '~> 2.5.0'
 
     pod 'pop', '~> 1.0.10'
     pod 'Toast', '~> 4.0.0'

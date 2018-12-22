@@ -89,6 +89,8 @@
 - (void)addC2CCellViews
 {
     _icon = [[UIButton alloc] init];
+    _icon.layer.cornerRadius = 3.f;
+    _icon.layer.masksToBounds = YES;
     [self.contentView addSubview:_icon];
     
     _contentBack = [[UIImageView alloc] init];
@@ -99,7 +101,6 @@
     {
         [_contentBack addSubview:_elemContentRef];
     }
-    
     
     _sendingTipRef = [self addSendingTips];
     if (_sendingTipRef)

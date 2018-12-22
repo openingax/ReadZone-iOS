@@ -1438,7 +1438,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/IMFrameworks",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";

@@ -25,6 +25,10 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (void)dealloc {
     [self.KVOController unobserveAll];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -234,6 +238,7 @@
 //    }
 //}
 
+// 对会话的 tableView 与输入框做布局
 - (void)layoutRefreshScrollView {
 
     CGSize size = self.view.bounds.size;

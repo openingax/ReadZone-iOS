@@ -69,6 +69,7 @@
 		5F299F0E21AF7BCC00A0F1A0 /* TSIMAPlatform+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F0C21AF7BCC00A0F1A0 /* TSIMAPlatform+Login.m */; };
 		5F299F5B21B017DD00A0F1A0 /* MicroVideoPlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */; };
 		5F299F5D21B017E400A0F1A0 /* MicroVideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */; };
+		5F38A1D121CD4941006B65A1 /* ISSUES.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F38A1D021CD4941006B65A1 /* ISSUES.md */; };
 		5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E03EC21A5445200E3EAB8 /* TSAlertManager.h */; };
 		5F3E03EF21A5445200E3EAB8 /* TSAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E03ED21A5445200E3EAB8 /* TSAlertManager.m */; };
 		5F3E03F221A5450B00E3EAB8 /* TSBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3E03F021A5450B00E3EAB8 /* TSBaseView.h */; };
@@ -304,6 +305,7 @@
 		5F299F0C21AF7BCC00A0F1A0 /* TSIMAPlatform+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TSIMAPlatform+Login.m"; sourceTree = "<group>"; };
 		5F299F5A21B017DC00A0F1A0 /* MicroVideoPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicroVideoPlayView.h; sourceTree = "<group>"; };
 		5F299F5C21B017E400A0F1A0 /* MicroVideoPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicroVideoPlayView.m; sourceTree = "<group>"; };
+		5F38A1D021CD4941006B65A1 /* ISSUES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ISSUES.md; sourceTree = "<group>"; };
 		5F3E03EC21A5445200E3EAB8 /* TSAlertManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAlertManager.h; sourceTree = "<group>"; };
 		5F3E03ED21A5445200E3EAB8 /* TSAlertManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAlertManager.m; sourceTree = "<group>"; };
 		5F3E03F021A5450B00E3EAB8 /* TSBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseView.h; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				5F70A77921903B56001FA8FF /* API_README.md */,
 				5F70A77A21903B56001FA8FF /* README.md */,
 				5F9147A121916D0300148AAA /* SOLUTION.md */,
+				5F38A1D021CD4941006B65A1 /* ISSUES.md */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -1260,6 +1263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F70A77C21903B56001FA8FF /* README.md in Resources */,
+				5F38A1D121CD4941006B65A1 /* ISSUES.md in Resources */,
 				5F70A77B21903B56001FA8FF /* API_README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1572,7 +1576,7 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viomi.TIMServer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

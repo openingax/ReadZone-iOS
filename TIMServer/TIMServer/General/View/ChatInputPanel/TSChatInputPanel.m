@@ -108,13 +108,16 @@
     
     CGRect rect = _toolBar.frame;
     
-    rect.origin.y = kScreenHeight - endFrame.size.height - 16;
+    rect.origin.y = kScreenHeight - endFrame.size.height - 50 + kNavBarHeight;
     rect.size.height = endFrame.size.height + 50;
     
-    [UIView animateWithDuration:duration animations:^{
-        self.frame = rect;
-        self.contentHeight = rect.size.height;
-    }];
+    if (self.contentHeight != rect.size.height) {
+    
+        [UIView animateWithDuration:duration animations:^{
+            self.frame = rect;
+            self.contentHeight = rect.size.height;
+        }];
+    }
     
 //    if ([_toolBar isEditing]) {
 //        NSDictionary *userInfo = notification.userInfo;
