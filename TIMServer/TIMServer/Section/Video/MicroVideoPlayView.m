@@ -128,7 +128,7 @@
 - (NSString *)videoTimeStrWithDuration:(int)duration {
     int minute = duration / 60;
     NSString *minutes = nil;
-    if (minute > 10) {
+    if (minute >= 10) {
         minutes = [NSString stringWithFormat:@"%d", minute];
     } else {
         minutes = [NSString stringWithFormat:@"0%d", minute];
@@ -136,7 +136,7 @@
     
     int second = duration % 60;
     NSString *seconds = nil;
-    if (second > 10) {
+    if (second >= 10) {
         seconds = [NSString stringWithFormat:@"%d", second];
     } else {
         seconds = [NSString stringWithFormat:@"0%d", second];
