@@ -48,7 +48,6 @@
         return YES;
     }
     return NO;
-    
 }
 
 - (NSString *)shortTimeTextOfDate
@@ -123,8 +122,8 @@
     // 今天的消息
     NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"aHH:mm"];
-    [dateFormat setAMSymbol:@"上午"];
-    [dateFormat setPMSymbol:@"下午"];
+    [dateFormat setAMSymbol:@"上午 "];
+    [dateFormat setPMSymbol:@"下午 "];
     NSString *dateString = [dateFormat stringFromDate:date];
     
     if ([date isToday])
@@ -137,16 +136,16 @@
         // 昨天
         return [NSString stringWithFormat:@"昨天 %@", dateString];
     }
-    else if (interval < kWeekTimeInterval)
-    {
-        // 最近一周
-        // 实例化一个NSDateFormatter对象
-        NSDateFormatter* weekFor = [[NSDateFormatter alloc] init];
-        weekFor.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-        [weekFor setDateFormat:@"ccc"];
-        NSString *weekStr = [weekFor stringFromDate:date];
-        return [NSString stringWithFormat:@"%@ %@", weekStr, dateString];
-    }
+//    else if (interval < kWeekTimeInterval)
+//    {
+//        // 最近一周
+//        // 实例化一个NSDateFormatter对象
+//        NSDateFormatter* weekFor = [[NSDateFormatter alloc] init];
+//        weekFor.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+//        [weekFor setDateFormat:@"ccc"];
+//        NSString *weekStr = [weekFor stringFromDate:date];
+//        return [NSString stringWithFormat:@"%@ %@", weekStr, dateString];
+//    }
     else
     {
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];

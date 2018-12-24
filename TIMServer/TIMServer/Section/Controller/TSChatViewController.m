@@ -521,9 +521,6 @@
 
 #pragma mark -
 
-//- (void)toolBar:(TSInputToolBar *)toolBar didClickSendButton:(NSString *)content {
-//
-//}
 
 #pragma mark - Load Message
 - (void)onLoadRecentMessage:(NSArray *)imamsgList complete:(BOOL)succ scrollToBottom:(BOOL)scroll
@@ -532,23 +529,16 @@
     {
         if (imamsgList.count > 0)
         {
-            //            [_tableView beginUpdates];
-            //
-            //
-            //
-            //            [_tableView endUpdates];
             [_tableView beginUpdates];
             NSMutableArray *ar = [NSMutableArray array];
-            for (NSInteger i = 0; i < imamsgList.count; i++)
-            {
+            for (NSInteger i = 0; i < imamsgList.count; i++) {
                 [ar addObject:[NSIndexPath indexPathForItem:i inSection:0]];
             }
 
             [_tableView insertRowsAtIndexPaths:ar withRowAnimation:UITableViewRowAnimationTop];
             
             [_tableView endUpdates];
-            if (scroll)
-            {
+            if (scroll) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     NSIndexPath *last = [NSIndexPath indexPathForRow:imamsgList.count-1 inSection:0];
                     [self.tableView scrollToRowAtIndexPath:last atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -620,10 +610,11 @@
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
     
     if (isSelectOriginalPhoto) {
+        
         // 发送原图
-        for (id item in assets) {
-            if ([item isKindOfClass:[PHAsset class]]) {
-                PHAsset *asset = (PHAsset *)item;
+        [assets enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[PHAsset class]]) {
+                PHAsset *asset = (PHAsset *)obj;
                 
                 __weak TSChatViewController *ws = self;
                 [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
@@ -631,9 +622,9 @@
                     if (!isThumbImg) {
                         
                         // 用 UIImageJPEGRepresentation 压缩，如果用 PNG 无损压缩，得出的数值会很大，这与照片选择器标示的原图大小也不符
-//                        NSData *data = UIImageJPEGRepresentation(photo, 0);
+                        //                        NSData *data = UIImageJPEGRepresentation(photo, 0);
                         NSData *data = UIImagePNGRepresentation(photo);
-                        if (data.length > 18 * 1024 * 1024) {
+                        if (data.length > 27 * 1024 * 1024) {
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                             [alert show];
                             return;
@@ -643,14 +634,39 @@
                     }
                 }];
             }
-        }
+        }];
+        
+        // 发送原图
+//        for (id item in assets) {
+//            if ([item isKindOfClass:[PHAsset class]]) {
+//                PHAsset *asset = (PHAsset *)item;
+//
+//                __weak TSChatViewController *ws = self;
+//                [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
+//                    BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
+//                    if (!isThumbImg) {
+//
+//                        // 用 UIImageJPEGRepresentation 压缩，如果用 PNG 无损压缩，得出的数值会很大，这与照片选择器标示的原图大小也不符
+////                        NSData *data = UIImageJPEGRepresentation(photo, 0);
+//                        NSData *data = UIImagePNGRepresentation(photo);
+//                        if (data.length > 27 * 1024 * 1024) {
+//                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//                            [alert show];
+//                            return;
+//                        }
+//
+//                        [ws sendImage:photo orignal:YES];
+//                    }
+//                }];
+//            }
+//        }
         
     } else {
         // 发送普通图片
         for (UIImage *img in photos) {
 //            NSData *data = UIImageJPEGRepresentation(img, 0);
             NSData *data = UIImagePNGRepresentation(img);
-            if (data.length > 18 * 1024 * 1024) {
+            if (data.length > 27 * 1024 * 1024) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
                 return;

@@ -13,6 +13,7 @@
 #import "TIMServerHelper.h"
 #import "ChatImageBrowserView.h"
 #import "UIView+RelativeCoordinate.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation TSChatTextTableViewCell
 
@@ -105,7 +106,8 @@
     [super configSendingTips];
     if (_msg.status == TSIMMsgStatusWillSending) {
         _elemContentRef.hidden = YES;
-        [_contentBack startGlowing];
+//        [_contentBack startGlowing];
+        [_contentBack startGlowingWithColor:[UIColor redColor] intensity:0.6];
     } else {
         _elemContentRef.hidden = NO;
         [_contentBack stopGlowing];

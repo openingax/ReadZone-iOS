@@ -50,17 +50,20 @@
     _tip.textColor = kWhiteColor;
     _tip.font = kTimSmallTextFont;
     _tip.textAlignment = NSTextAlignmentCenter;
-    _tip.layer.cornerRadius = 2;
+    _tip.layer.cornerRadius = 4;
+    _tip.layer.masksToBounds = YES;
     [self addSubview:_tip];
 }
 
 - (void)configOwnViews
 {
     _imageTip.image = [UIImage tim_imageWithBundleAsset:@"microphone1"];
-    _imageTip.contentMode = UIViewContentModeScaleToFill;
+    _imageTip.contentMode = UIViewContentModeLeft;
     
     _countdownTip.text = nil;
     _countdownTip.hidden = YES;
+    _countdownTip.font = [UIFont systemFontOfSize:76 weight:UIFontWeightMedium];
+    _countdownTip.textColor = [UIColor whiteColor];
     _countdownTip.textAlignment = NSTextAlignmentCenter;
     
     _tip.backgroundColor = kClearColor;
@@ -105,9 +108,8 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSInteger peaker = rec.recordPeak;
-//        NSString *tip = [NSString stringWithFormat:@"microphone%d", (int)peaker];
-        NSString *tip = @"microphone1";
-        DebugLog(@"=--=-=-=-=-=-=-=-=-=-=-=");
+        NSString *tip = [NSString stringWithFormat:@"microphone%d", (int)peaker];
+        DebugLog(@"=--=-=-=-=-\n%d\n=-=-=-=-=-=-=", peaker);
         _imageTip.image = [UIImage tim_imageWithBundleAsset:tip];
     });
 }
@@ -119,8 +121,7 @@
         {
             case EChatRecorder_Stoped:
             {
-//                [self fadeOut:0.2 delegate:nil];
-                [UIView animateWithDuration:0.2 animations:^{
+                [UIView animateWithDuration:0.1 animations:^{
                     self.alpha = 0;
                 }];
             }
@@ -129,7 +130,7 @@
             {
                 _imageTip.hidden = NO;
                 [self onRecorderPeakChanged:rec];
-                
+
                 _tip.text = @"手指上滑，取消发送";
                 _imageTip.image = [UIImage tim_imageWithBundleAsset:@"sound_record_cancel"];
                 _imageTip.contentMode = UIViewContentModeScaleToFill;
@@ -139,10 +140,9 @@
             case EChatRecorder_RelaseCancel:
             {
                 _tip.text = @"松开手指，取消发送";
-//                _tip.backgroundColor = kRedColor;
+                _tip.backgroundColor = RGBA(255, 0, 0, 0.5);
                 _imageTip.image = [UIImage tim_imageWithBundleAsset:@"sound_record_cancel"];
                 _imageTip.contentMode = UIViewContentModeCenter;
-                _tip.backgroundColor = kClearColor;
             }
                 break;
             case EChatRecorder_Countdown:
