@@ -117,7 +117,16 @@
             if (![NSString isEmpty:filePath])
             {
                 // NSString *filePath = [NSString stringWithFormat:@"%@uploadFile%3.f_Size_%d_%d", nsTmpDIr, [NSDate timeIntervalSinceReferenceDate], (int)picThumbWidth, (int)picThumbHeight];
+                
                 // 检查本地是否存储了
+                
+                if ([filePath hasPrefix:@"/private/var/mobile/Containers/Data/Application/"]) {
+                    filePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [filePath substringFromIndex:[PathUtility getTemporaryPath].length]];
+                    self.path = filePath;
+                }
+                
+//                NSString *newFilePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [filePath substringFromIndex:[PathUtility getTemporaryPath].length]];
+                
                 BOOL exist = [PathUtility isExistFile:filePath];
                 if (exist)
                 {
