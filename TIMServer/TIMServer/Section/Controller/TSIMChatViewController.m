@@ -7,6 +7,7 @@
 //
 
 #import "TSIMChatViewController.h"
+#import "PathUtility.h"
 
 @interface TSIMChatViewController ()
 
@@ -107,17 +108,75 @@
 
 - (void)onResendMsg:(NSNotification *)noti {
     TSIMMsg *msg = (TSIMMsg *)noti.object;
-    __weak TSIMChatViewController *ws = self;
-    [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
-        if (succ)
-        {
-            [ws onWillRemove:imamsgList withAction:removingAction];
-        }
-    }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self sendMsg:msg];
-    });
+    if (msg.type == TSIMMsgTypeImage) {
+        TIMImageElem *elem = (TIMImageElem *)[msg.msg getElem:0];
+        elem.path = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.path substringFromIndex:[PathUtility getTemporaryPath].length]];
+        
+        TIMImageElem *newElem = [[TIMImageElem alloc] init];
+        newElem.path = elem.path;
+        newElem.level = elem.level;
+        
+        TIMMessage *timMsg = [[TIMMessage alloc] init];
+        [timMsg addElem:newElem];
+        
+        TSIMMsg *newMsg = [TSIMMsg msgWithMsg:timMsg];
+        
+        __weak TSIMChatViewController *ws = self;
+        [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
+            if (succ)
+            {
+                [ws onWillRemove:imamsgList withAction:removingAction];
+            }
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self sendMsg:newMsg];
+        });
+        
+    } else if (msg.type == TSIMMsgTypeVideo) {
+        
+        TIMUGCElem *elem = (TIMUGCElem *)[msg.msg getElem:0];
+        elem.videoPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.videoPath substringFromIndex:[PathUtility getTemporaryPath].length]];
+        elem.coverPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.coverPath substringFromIndex:[PathUtility getTemporaryPath].length]];
+        
+        TIMUGCElem *newElem = [[TIMUGCElem alloc] init];
+        newElem.video = elem.video;
+        newElem.videoPath = elem.videoPath;
+        newElem.cover = elem.cover;
+        newElem.coverPath = elem.coverPath;
+        
+        TIMMessage *timMsg = [[TIMMessage alloc] init];
+        [timMsg addElem:newElem];
+        
+        TSIMMsg *newMsg = [TSIMMsg msgWithMsg:timMsg];
+        
+        __weak TSIMChatViewController *ws = self;
+        [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
+            if (succ)
+            {
+                [ws onWillRemove:imamsgList withAction:removingAction];
+            }
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self sendMsg:newMsg];
+        });
+        
+    } else {
+        
+        __weak TSIMChatViewController *ws = self;
+        [_conversation removeMsg:msg completion:^(NSArray *imamsgList, BOOL succ, CommonVoidBlock removingAction) {
+            if (succ)
+            {
+                [ws onWillRemove:imamsgList withAction:removingAction];
+            }
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self sendMsg:msg];
+        });
+    }
 }
 
 - (void)onChangedMsg:(NSNotification *)noti {
@@ -180,7 +239,7 @@
 
 // 对会话的 tableView 与输入框做布局
 - (void)layoutRefreshScrollView {
-
+    
     CGSize size = self.view.bounds.size;
     _tableView.frame = CGRectMake(0, 0, size.width, size.height - _inputView.contentHeight);
     

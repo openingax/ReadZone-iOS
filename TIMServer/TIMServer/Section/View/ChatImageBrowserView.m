@@ -18,6 +18,7 @@
 #import "UIViewAdditions.h"
 #import "TSConstMarco.h"
 #import "TIMServerHelper.h"
+#import "PathUtility.h"
 
 @interface ChatImageBrowserView() <UIScrollViewDelegate>
 
@@ -156,6 +157,10 @@
                     NSFileManager *fileManager = [NSFileManager defaultManager];
                     NSString *imagePath = elem.path;
                     BOOL isDirectory;
+                    
+                    if ([imagePath hasPrefix:@"/private/var/mobile/Containers/Data/Application/"]) {
+                        imagePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [imagePath substringFromIndex:[PathUtility getTemporaryPath].length]];
+                    }
                     
                     if ([fileManager fileExistsAtPath:imagePath isDirectory:&isDirectory]
                         && isDirectory == NO)
