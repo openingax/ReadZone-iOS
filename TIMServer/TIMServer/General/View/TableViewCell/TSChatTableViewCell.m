@@ -106,8 +106,8 @@
     [super configSendingTips];
     if (_msg.status == TSIMMsgStatusWillSending) {
         _elemContentRef.hidden = YES;
-//        [_contentBack startGlowing];
-        [_contentBack startGlowingWithColor:[UIColor redColor] intensity:0.6];
+        [_contentBack startGlowing];
+//        [_contentBack startGlowingWithColor:[UIColor lightGrayColor] intensity:0.6];
     } else {
         _elemContentRef.hidden = NO;
         [_contentBack stopGlowing];

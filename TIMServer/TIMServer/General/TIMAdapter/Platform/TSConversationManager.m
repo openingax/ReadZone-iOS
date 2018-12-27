@@ -15,6 +15,7 @@
 #import "TSUserManager.h"
 #import "TSIMAPlatformHeaders.h"
 #import "TSManager.h"
+#import "TSIMAPlatform.h"
 
 @interface TSConversationManager () <TIMMessageListener>
 
@@ -294,6 +295,161 @@
         [_conversationList removeObject:conv];
         [self updateOnDelete:conv atIndex:index];
     }
+}
+
+- (void)onDisConnect
+{
+    // 插入一个网络断开的fake conversation
+    TSIMAConnectConversation *conv = [[TSIMAConnectConversation alloc] init];
+    NSInteger index = [_conversationList indexOfObject:conv];
+    if (!(index >= 0 && index < [_conversationList count]))
+    {
+        [_conversationList insertObject:conv atIndex:0];
+        [self updateOnNewConversation:conv];
+    }
+}
+
+- (void)updateOnChat:(TSConversation *)conv moveFromIndex:(NSUInteger)index
+{
+    NSInteger toindex = [self insertPosition];
+    
+    if (index != toindex)
+    {
+        [_conversationList removeObjectAtIndex:index];
+        
+        [_conversationList insertObject:conv atIndex:toindex];
+        
+        
+        // 更新界面
+        TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeBecomeActiveTop];
+        item.conversation = conv;
+        item.index = index;
+        item.toIndex = toindex;
+        
+        if (_conversationChangedCompletion)
+        {
+            _conversationChangedCompletion(item);
+        }
+        
+        [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+    }
+    
+    
+}
+
+- (void)updateOnDelete:(TSConversation *)conv atIndex:(NSUInteger)index
+{
+    // 更新界面
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeDeleteConversation];
+    item.conversation = conv;
+    item.index = index;
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+- (void)updateOnAsyncLoadContactComplete
+{
+    // 通知更新界面
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeSyncLocalConversation];
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+- (void)updateOnLocalMsgComplete
+{
+    // 更新界面
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeSyncLocalConversation];
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+
+- (void)updateOnLastMessageChanged:(TSConversation *)conv
+{
+    if ([_chattingConversation isEqual:conv])
+    {
+        NSInteger index = [_conversationList indexOfObject:conv];
+        NSInteger toindex = [self insertPosition];
+        if (index > 0 && index < [_conversationList count])
+        {
+            [_conversationList removeObject:conv];
+            [_conversationList insertObject:conv atIndex:toindex];
+            [self updateOnChat:conv moveFromIndex:index toIndex:toindex];
+        }
+        else if (index < 0 || index > [_conversationList count])
+        {
+            [_conversationList insertObject:conv atIndex:[self insertPosition]];
+            [self updateOnNewConversation:conv];
+        }
+        else
+        {
+            // index == 0 不作处理
+        }
+    }
+}
+
+- (void)updateOnChat:(TSConversation *)conv moveFromIndex:(NSUInteger)index toIndex:(NSInteger)toIdx
+{
+    // 更新界面
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeBecomeActiveTop];
+    item.conversation = conv;
+    item.index = index;
+    item.toIndex = toIdx;
+    
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+- (void)updateOnNewConversation:(TSConversation *)conv
+{
+    // 更新界面
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeNewConversation];
+    item.conversation = conv;
+    item.index = [_conversationList indexOfObject:conv];
+    
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+- (void)updateOnConversationChanged:(TSConversation *)conv
+{
+    TSConversationChangedNotifyItem *item = [[TSConversationChangedNotifyItem alloc] initWithType:TSConversationChangedNotifyTypeConversationChanged];
+    item.conversation = conv;
+    item.index = [_conversationList indexOfObject:conv];
+    
+    if (_conversationChangedCompletion)
+    {
+        _conversationChangedCompletion(item);
+    }
+    [[NSNotificationQueue defaultQueue] enqueueNotification:[item changedNotification] postingStyle:NSPostWhenIdle];
+}
+
+- (NSInteger)insertPosition
+{
+    TSIMAPlatform *mp = [TSIMAPlatform sharedInstance];
+    if (!mp.isConnected)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 @end

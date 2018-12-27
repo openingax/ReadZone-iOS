@@ -15,4 +15,6 @@
 
 - (NSString *)timeTextOfDate;
 
++ (NSTimeInterval)currentTimestamp;
+
 @end

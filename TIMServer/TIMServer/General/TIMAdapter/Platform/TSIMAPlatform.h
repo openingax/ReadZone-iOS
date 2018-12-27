@@ -25,6 +25,8 @@ UIKIT_EXTERN NSNotificationName const TIMKickedOfflineNotification;
 UIKIT_EXTERN NSString * const TIMKickedOfflineCodeUserInfoKey;
 UIKIT_EXTERN NSString * const TIMKickedOfflineMessageUserInfoKey;
 
+UIKIT_EXTERN NSString * const TIMRootViewWillDisappearNotification;
+
 // TIMServer IM 服务的业务逻辑入口，
 typedef EQALNetworkType TCQALNetwork;
 
@@ -39,7 +41,7 @@ typedef EQALNetworkType TCQALNetwork;
 @property(nonatomic,readonly) TSIMHost *host;
 @property(nonatomic,readonly) TSConversationManager *conversationMgr;
 @property(nonatomic,assign) BOOL isConnected;
-//
+@property(nonatomic,readonly) TCQALNetwork networkType;
 
 + (instancetype)config;
 

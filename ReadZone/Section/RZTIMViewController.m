@@ -14,6 +14,7 @@
 @interface RZTIMViewController ()
 
 @property(nonatomic,strong) UIImageView *imgView;
+@property(nonatomic,strong) UILabel *msgLabel;
 @property(nonatomic,strong) UIButton *showTIMBtn;
 @property(nonatomic,strong) TSManager *tsManager;
 @property(nonatomic,assign) BOOL hasLoginTIM;
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTIMServerLogin:) name:TIMLoginSuccNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiverNewMsg:) name:TIMNewMsgNotification object:nil];
     
     self.view.backgroundColor = [UIColor darkGrayColor];
     
@@ -34,7 +36,7 @@
     
     self.tsManager = [[TSManager alloc] init];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396840"];
+        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
     });
 }
 
@@ -52,12 +54,31 @@
     }
 }
 
+- (void)didReceiverNewMsg:(NSNotification *)noti {
+    BOOL hasNewMsg = [noti.userInfo[TIMNewMsgStatusUserInfoKey] boolValue];
+    if (hasNewMsg) {
+        _msgLabel.text = @"有新消息喔";
+    } else {
+        _msgLabel.text = @"";
+    }
+}
+
+
 - (void)addOwnViews {
     _imgView = [[UIImageView alloc] init];
     _imgView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:_imgView];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+    
+    _msgLabel = [[UILabel alloc] init];
+    _msgLabel.textColor = [UIColor redColor];
+    _msgLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:_msgLabel];
+    [_msgLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).with.offset(kNavTotalHeight + 18);
+        make.right.equalTo(self.view).with.offset(-20);
     }];
     
     _showTIMBtn = [UIButton buttonWithType:UIButtonTypeCustom];

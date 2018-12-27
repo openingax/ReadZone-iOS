@@ -7,6 +7,8 @@
 //
 
 #import "TSChatInputToolBar.h"
+#import <CoreTelephony/CTCallCenter.h>
+#import <CoreTelephony/CTCall.h>
 
 #define kButtonSize 32
 #define kTextViewHeight 40
@@ -14,13 +16,45 @@
 #define kHorMargin 8
 #define kVerMargin 7
 
+@interface TSChatInputToolBar ()
+
+@property(nonatomic, strong) CTCallCenter *callCenter;
+
+@end
+
 @implementation TSChatInputToolBar
 
 - (instancetype)init {
     if (self = [super init]) {
         self.backgroundColor = RGBAOF(0xEEEEEE, 1);
+        
+        self.callCenter = [[CTCallCenter alloc] init];
+        
+        @weakify(self); // 弱引用，否则会造成循环引用
+        self.callCenter.callEventHandler = ^(CTCall * _Nonnull call) {
+            
+            if (call.callState == CTCallStateDialing || call.callState == CTCallStateIncoming) {
+                // 当来电时，停止录音，语音是否发送取决于其录音时长
+                [[ChatSoundRecorder sharedInstance] stopRecord];
+            } else if (call.callState == CTCallStateDisconnected) {
+                // 当电话结束时，再回到主线程更新 UI 视图
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    @strongify(self);
+                    self->_audioPressedBtn.selected = NO;
+                    [self->_audioPressedBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
+                    [self->_audioPressedBtn setTitle:@"松开 结束" forState:UIControlStateSelected];
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+                });
+            }
+        };
     }
     return self;
+}
+
+// 手机收到来电
+- (void)onPhoneCalling {
+    [self onClickRecordTouchUpOutside:_audioPressedBtn];
 }
 
 - (void)dealloc {
@@ -147,6 +181,8 @@
 - (void)onClickRecordTouchDown:(UIButton *)button {
     DebugLog(@"======>>>>>>>");
     _audioPressedBtn.selected = YES;
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [[ChatSoundRecorder sharedInstance] startRecord];
 }
 
@@ -167,6 +203,7 @@
     [_audioPressedBtn setTitle:@"松开 结束" forState:UIControlStateSelected];
     
     [[ChatSoundRecorder sharedInstance] stopRecord];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 - (void)relayoutFrameOfSubViews

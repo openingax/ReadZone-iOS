@@ -173,4 +173,11 @@
     return nil;
 }
 
++ (NSTimeInterval)currentTimestamp
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval time = [date timeIntervalSince1970]*1000;
+    return time;
+}
+
 @end

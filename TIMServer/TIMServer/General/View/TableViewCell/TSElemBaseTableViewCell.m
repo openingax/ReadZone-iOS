@@ -437,10 +437,16 @@
     UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItem:)];
     [array addObject:deleteItem];
     
-    if ([_msg.msg isSelf] )
+    
+    
+    if ([_msg.msg isSelf])
     {
-        UIMenuItem *revokeItem = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(revokeItem:)];
-        [array addObject:revokeItem];
+        NSTimeInterval msgTime = [NSDate currentTimestamp] - [_msg.msg.timestamp timeIntervalSince1970]*1000;
+        // 如果消息发送时间超过2分钟，不显示撤回按钮
+        if ((msgTime/1000) < 120) {
+            UIMenuItem *revokeItem = [[UIMenuItem alloc] initWithTitle:@"撤回" action:@selector(revokeItem:)];
+            [array addObject:revokeItem];
+        }
     }
     
     if (_msg.status == TSIMMsgStatusSendFail)

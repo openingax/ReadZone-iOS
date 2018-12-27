@@ -151,6 +151,7 @@
 		5F7012C120F5DE5400088216 /* RZDTOLogin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZDTOLogin.m; sourceTree = "<group>"; };
 		5F7012CE20F6160100088216 /* RZRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZRootViewController.h; sourceTree = "<group>"; };
 		5F7012CF20F6160100088216 /* RZRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZRootViewController.m; sourceTree = "<group>"; };
+		5F76219A21D38DD3002D3B0C /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		5F83FBBC2122F2E900FF9AD4 /* ReadZone-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ReadZone-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F83FBBF2122F46700FF9AD4 /* RZLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZLoginViewController.swift; sourceTree = "<group>"; };
 		5F83FBC12122F50100FF9AD4 /* RZRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZRegisterViewController.swift; sourceTree = "<group>"; };
@@ -619,6 +620,7 @@
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F76219A21D38DD3002D3B0C /* CoreML.framework */,
 				5FA84B6621B6A31800C53690 /* libPods-TIMServer.a */,
 				5FA84B0221B63D3A00C53690 /* IMGroupExt.framework */,
 				5F06F5FD21B589A2004419DC /* IMFriendshipExt.framework */,
@@ -1077,6 +1079,9 @@
 							com.apple.Push = {
 								enabled = 0;
 							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
 							com.apple.VPNLite = {
 								enabled = 0;
 							};
@@ -1411,6 +1416,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CODE_SIGN_ENTITLEMENTS = ReadZone/ReadZone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -1436,7 +1442,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/IMFrameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiely.readzone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6bf50141-87b1-4c51-9c91-eb4600b7504d";
@@ -1458,6 +1464,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CODE_SIGN_ENTITLEMENTS = ReadZone/ReadZone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;

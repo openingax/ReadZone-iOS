@@ -14,48 +14,48 @@
 
 #pragma mark - TIMConnListener
 
-///**
-// *  网络连接成功
-// */
-//- (void)onConnSucc
-//{
-//    self.isConnected = YES;
-//
-//    TCQALNetwork net = [[QalSDKProxy sharedInstance] getNetType];
-//    [self changeToNetwork:net];
-//    NSString *qalVersion = [[QalSDKProxy sharedInstance] getSDKVer];
-//    [self.conversationMgr onConnect];
-//}
-//
-///**
-// *  网络连接失败
-// *
-// *  @param code 错误码
-// *  @param err  错误描述
-// */
-//- (void)onConnFailed:(int)code err:(NSString*)err
-//{
-//
-//    self.isConnected = NO;
-//    [self.conversationMgr onDisConnect];
-//
-//    DebugLog(@"网络连接失败");
-//}
-//
-///**
-// *  网络连接断开
-// *
-// *  @param code 错误码
-// *  @param err  错误描述
-// */
-//- (void)onDisconnect:(int)code err:(NSString*)err
-//{
-//
-//    self.isConnected = NO;
-//    [self.conversationMgr onDisConnect];
-//
-//    DebugLog(@"网络连接断开 code = %d, err = %@", code, err);
-//}
+/**
+ *  网络连接成功
+ */
+- (void)onConnSucc
+{
+    self.isConnected = YES;
+
+    TCQALNetwork net = [[QalSDKProxy sharedInstance] getNetType];
+    [self changeToNetwork:net];
+    NSString *qalVersion = [[QalSDKProxy sharedInstance] getSDKVer];
+    [self.conversationMgr onConnect];
+}
+
+/**
+ *  网络连接失败
+ *
+ *  @param code 错误码
+ *  @param err  错误描述
+ */
+- (void)onConnFailed:(int)code err:(NSString*)err
+{
+
+    self.isConnected = NO;
+    [self.conversationMgr onDisConnect];
+
+    DebugLog(@"网络连接失败");
+}
+
+/**
+ *  网络连接断开
+ *
+ *  @param code 错误码
+ *  @param err  错误描述
+ */
+- (void)onDisconnect:(int)code err:(NSString*)err
+{
+
+    self.isConnected = NO;
+    [self.conversationMgr onDisConnect];
+
+    DebugLog(@"网络连接断开 code = %d, err = %@", code, err);
+}
 
 
 /**

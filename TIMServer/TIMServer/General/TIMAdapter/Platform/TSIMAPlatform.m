@@ -13,6 +13,13 @@
 NSNotificationName const TIMKickedOfflineNotification = @"TIMKickedOfflineNotification";
 NSString * const TIMKickedOfflineCodeUserInfoKey = @"TIMKickedOfflineCodeUserInfoKey";
 NSString * const TIMKickedOfflineMessageUserInfoKey = @"TIMKickedOfflineMessageUserInfoKey";
+NSNotificationName const TIMRootViewWillDisappearNotification = @"TIMRootViewWillDisappearNotification";
+
+@interface TSIMAPlatform ()
+
+@property(nonatomic,assign) TCQALNetwork networkType;
+
+@end
 
 @implementation TSIMAPlatform
 
@@ -169,17 +176,17 @@ static Class kHostClass = Nil;
 
 - (void)changeToNetwork:(TCQALNetwork)work
 {
-//    if (work > EQALNetworkType_ReachableViaWWAN)
-//    {
-//        // 不处理这些
-//        work = EQALNetworkType_ReachableViaWWAN;
-//    }
-//    DebugLog(@"网络切换到(-1:未知 0:无网 1:wifi 2:移动网):%d", work);
-//    //    if (work != _networkType)
-//    //    {
-//    self.networkType = work;
-//    
-//    //    }
+    if (work > EQALNetworkType_ReachableViaWWAN)
+    {
+        // 不处理这些
+        work = EQALNetworkType_ReachableViaWWAN;
+    }
+    DebugLog(@"网络切换到(-1:未知 0:无网 1:wifi 2:移动网):%d", work);
+    //    if (work != _networkType)
+    //    {
+    self.networkType = work;
+    
+    //    }
 }
 
 

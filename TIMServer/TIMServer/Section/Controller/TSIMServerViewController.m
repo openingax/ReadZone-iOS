@@ -69,6 +69,7 @@ TLSRefreshTicketListener
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TIMRootViewWillDisappearNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

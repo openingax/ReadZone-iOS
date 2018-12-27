@@ -121,8 +121,11 @@
                 // 检查本地是否存储了
                 
                 if ([filePath hasPrefix:@"/private/var/mobile/Containers/Data/Application/"]) {
-                    filePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [filePath substringFromIndex:[PathUtility getTemporaryPath].length]];
-                    self.path = filePath;
+                    if (TARGET_IPHONE_SIMULATOR) {
+                        
+                    } else {
+                        filePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [filePath substringFromIndex:[PathUtility getTemporaryPath].length]];
+                    }
                 }
                 
 //                NSString *newFilePath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [filePath substringFromIndex:[PathUtility getTemporaryPath].length]];
