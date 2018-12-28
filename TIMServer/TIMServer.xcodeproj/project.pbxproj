@@ -22,9 +22,7 @@
 		5F06F5E421B3E4B5004419DC /* MsgSendingTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F06F5E221B3E4B5004419DC /* MsgSendingTip.h */; };
 		5F06F5E521B3E4B5004419DC /* MsgSendingTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06F5E321B3E4B5004419DC /* MsgSendingTip.m */; };
 		5F06F5EE21B41FDE004419DC /* TCNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F06F5E821B41FDE004419DC /* TCNavigationController.h */; };
-		5F06F5EF21B41FDE004419DC /* TCVideoRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06F5E921B41FDE004419DC /* TCVideoRecordViewController.m */; };
 		5F06F5F021B41FDE004419DC /* TCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06F5EA21B41FDE004419DC /* TCNavigationController.m */; };
-		5F06F5F221B41FDE004419DC /* TCVideoRecordViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F06F5EC21B41FDE004419DC /* TCVideoRecordViewController.h */; };
 		5F06F5F621B4203F004419DC /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F06F5F421B4203E004419DC /* UIImage+Additions.m */; };
 		5F06F5F721B4203F004419DC /* UIImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F06F5F521B4203F004419DC /* UIImage+Additions.h */; };
 		5F06F5FB21B43789004419DC /* TSExpendButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F06F5F921B43789004419DC /* TSExpendButton.h */; };
@@ -140,6 +138,18 @@
 		5F5D074A21AD2EE3009B4A33 /* TSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D074921AD2EE3009B4A33 /* TSManager.m */; };
 		5F70A77B21903B56001FA8FF /* API_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77921903B56001FA8FF /* API_README.md */; };
 		5F70A77C21903B56001FA8FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F70A77A21903B56001FA8FF /* README.md */; };
+		5F7621D021D5CEC3002D3B0C /* IDFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621CC21D5CEC2002D3B0C /* IDFileManager.h */; };
+		5F7621D121D5CEC3002D3B0C /* IDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621CD21D5CEC2002D3B0C /* IDFileManager.m */; };
+		5F7621D221D5CEC3002D3B0C /* IDPermissionsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621CE21D5CEC2002D3B0C /* IDPermissionsManager.h */; };
+		5F7621D321D5CEC3002D3B0C /* IDPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621CF21D5CEC3002D3B0C /* IDPermissionsManager.m */; };
+		5F7621DC21D5CF1B002D3B0C /* IDAssetWriterCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621D621D5CF1A002D3B0C /* IDAssetWriterCoordinator.h */; };
+		5F7621DD21D5CF1B002D3B0C /* IDCaptureSessionAssetWriterCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621D721D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.m */; };
+		5F7621DE21D5CF1B002D3B0C /* IDCaptureSessionAssetWriterCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621D821D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.h */; };
+		5F7621DF21D5CF1B002D3B0C /* IDCaptureSessionCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621D921D5CF1A002D3B0C /* IDCaptureSessionCoordinator.h */; };
+		5F7621E021D5CF1B002D3B0C /* IDAssetWriterCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621DA21D5CF1A002D3B0C /* IDAssetWriterCoordinator.m */; };
+		5F7621E121D5CF1B002D3B0C /* IDCaptureSessionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621DB21D5CF1A002D3B0C /* IDCaptureSessionCoordinator.m */; };
+		5F7621E421D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7621E221D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m */; };
+		5F7621E521D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7621E321D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h */; };
 		5F7C968B21A7EEE30017928F /* TSElemBaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C968921A7EEE30017928F /* TSElemBaseTableViewCell.h */; };
 		5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7C968A21A7EEE30017928F /* TSElemBaseTableViewCell.m */; };
 		5F7C968E21A7EF170017928F /* TSElemAbleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F7C968D21A7EF170017928F /* TSElemAbleCell.h */; };
@@ -256,9 +266,7 @@
 		5F06F5E221B3E4B5004419DC /* MsgSendingTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgSendingTip.h; sourceTree = "<group>"; };
 		5F06F5E321B3E4B5004419DC /* MsgSendingTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgSendingTip.m; sourceTree = "<group>"; };
 		5F06F5E821B41FDE004419DC /* TCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNavigationController.h; sourceTree = "<group>"; };
-		5F06F5E921B41FDE004419DC /* TCVideoRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVideoRecordViewController.m; sourceTree = "<group>"; };
 		5F06F5EA21B41FDE004419DC /* TCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNavigationController.m; sourceTree = "<group>"; };
-		5F06F5EC21B41FDE004419DC /* TCVideoRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVideoRecordViewController.h; sourceTree = "<group>"; };
 		5F06F5F421B4203E004419DC /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		5F06F5F521B4203F004419DC /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		5F06F5F921B43789004419DC /* TSExpendButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSExpendButton.h; sourceTree = "<group>"; };
@@ -374,6 +382,18 @@
 		5F5D074921AD2EE3009B4A33 /* TSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSManager.m; sourceTree = "<group>"; };
 		5F70A77921903B56001FA8FF /* API_README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = API_README.md; sourceTree = "<group>"; };
 		5F70A77A21903B56001FA8FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5F7621CC21D5CEC2002D3B0C /* IDFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDFileManager.h; sourceTree = "<group>"; };
+		5F7621CD21D5CEC2002D3B0C /* IDFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDFileManager.m; sourceTree = "<group>"; };
+		5F7621CE21D5CEC2002D3B0C /* IDPermissionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPermissionsManager.h; sourceTree = "<group>"; };
+		5F7621CF21D5CEC3002D3B0C /* IDPermissionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPermissionsManager.m; sourceTree = "<group>"; };
+		5F7621D621D5CF1A002D3B0C /* IDAssetWriterCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAssetWriterCoordinator.h; sourceTree = "<group>"; };
+		5F7621D721D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCaptureSessionAssetWriterCoordinator.m; sourceTree = "<group>"; };
+		5F7621D821D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCaptureSessionAssetWriterCoordinator.h; sourceTree = "<group>"; };
+		5F7621D921D5CF1A002D3B0C /* IDCaptureSessionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCaptureSessionCoordinator.h; sourceTree = "<group>"; };
+		5F7621DA21D5CF1A002D3B0C /* IDAssetWriterCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAssetWriterCoordinator.m; sourceTree = "<group>"; };
+		5F7621DB21D5CF1A002D3B0C /* IDCaptureSessionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCaptureSessionCoordinator.m; sourceTree = "<group>"; };
+		5F7621E221D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCaptureSessionPipelineViewController.m; sourceTree = "<group>"; };
+		5F7621E321D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCaptureSessionPipelineViewController.h; sourceTree = "<group>"; };
 		5F7C968921A7EEE30017928F /* TSElemBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSElemBaseTableViewCell.h; sourceTree = "<group>"; };
 		5F7C968A21A7EEE30017928F /* TSElemBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSElemBaseTableViewCell.m; sourceTree = "<group>"; };
 		5F7C968D21A7EF170017928F /* TSElemAbleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSElemAbleCell.h; sourceTree = "<group>"; };
@@ -523,6 +543,7 @@
 		5F06F5E621B41F4E004419DC /* UGCVideo */ = {
 			isa = PBXGroup;
 			children = (
+				5F7621C721D5CE7C002D3B0C /* Manager */,
 				5F06F5F821B434AB004419DC /* View */,
 				5F06F5E721B41F81004419DC /* Controller */,
 			);
@@ -534,8 +555,8 @@
 			children = (
 				5F06F5E821B41FDE004419DC /* TCNavigationController.h */,
 				5F06F5EA21B41FDE004419DC /* TCNavigationController.m */,
-				5F06F5EC21B41FDE004419DC /* TCVideoRecordViewController.h */,
-				5F06F5E921B41FDE004419DC /* TCVideoRecordViewController.m */,
+				5F7621E321D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h */,
+				5F7621E221D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -687,6 +708,39 @@
 				5F38A1D021CD4941006B65A1 /* ISSUES.md */,
 			);
 			path = Documents;
+			sourceTree = "<group>";
+		};
+		5F7621C721D5CE7C002D3B0C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5F7621C921D5CE8E002D3B0C /* AVFoundation */,
+				5F7621C821D5CE87002D3B0C /* Utilities */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5F7621C821D5CE87002D3B0C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5F7621CC21D5CEC2002D3B0C /* IDFileManager.h */,
+				5F7621CD21D5CEC2002D3B0C /* IDFileManager.m */,
+				5F7621CE21D5CEC2002D3B0C /* IDPermissionsManager.h */,
+				5F7621CF21D5CEC3002D3B0C /* IDPermissionsManager.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5F7621C921D5CE8E002D3B0C /* AVFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				5F7621D621D5CF1A002D3B0C /* IDAssetWriterCoordinator.h */,
+				5F7621DA21D5CF1A002D3B0C /* IDAssetWriterCoordinator.m */,
+				5F7621D821D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.h */,
+				5F7621D721D5CF1A002D3B0C /* IDCaptureSessionAssetWriterCoordinator.m */,
+				5F7621D921D5CF1A002D3B0C /* IDCaptureSessionCoordinator.h */,
+				5F7621DB21D5CF1A002D3B0C /* IDCaptureSessionCoordinator.m */,
+			);
+			path = AVFoundation;
 			sourceTree = "<group>";
 		};
 		5F7C968821A7EEAD0017928F /* TableViewCell */ = {
@@ -1072,6 +1126,7 @@
 				5F3E042721A585E500E3EAB8 /* NSObject+CommonBlock.h in Headers */,
 				5F24824821912C1400AC07FD /* TSManager.h in Headers */,
 				5F3E03EE21A5445200E3EAB8 /* TSAlertManager.h in Headers */,
+				5F7621DE21D5CF1B002D3B0C /* IDCaptureSessionAssetWriterCoordinator.h in Headers */,
 				5F9F33E521B2570B00A3C307 /* MenuAbleItem.h in Headers */,
 				5F3E046A21A58F0A00E3EAB8 /* UICollectionViewController+ADFlipTransition.h in Headers */,
 				5F15190B21A6592F00E83785 /* TSChatTextView.h in Headers */,
@@ -1085,6 +1140,7 @@
 				5F15192B21A693FB00E83785 /* TSIMMsg+Draft.h in Headers */,
 				5F5D074321AD20D6009B4A33 /* TSRichChatViewController.h in Headers */,
 				5F9148EB219283C500148AAA /* CommonLibrary.h in Headers */,
+				5F7621DF21D5CF1B002D3B0C /* IDCaptureSessionCoordinator.h in Headers */,
 				5F9148FA219283C500148AAA /* UIColor+MLPFlatColors.h in Headers */,
 				5F7C96AD21A7FE160017928F /* TSChatTableViewCell.h in Headers */,
 				5F3E040621A57CB400E3EAB8 /* TSChatInputBaseView.h in Headers */,
@@ -1099,6 +1155,7 @@
 				5F15CD5021C7795000AB2EDF /* IMAContactDrawerShowAble.h in Headers */,
 				5F15CD5221C77D3600AB2EDF /* IMAUserShowAble.h in Headers */,
 				5F3E045621A58F0A00E3EAB8 /* FTAnimationManager.h in Headers */,
+				5F7621D221D5CEC3002D3B0C /* IDPermissionsManager.h in Headers */,
 				5F91495F2192D0D900148AAA /* TSConversationManager.h in Headers */,
 				5F3E03FA21A5562500E3EAB8 /* TSTableRefreshViewController.h in Headers */,
 				5F299EFD21AF6C9000A0F1A0 /* IMALoginParam.h in Headers */,
@@ -1107,6 +1164,7 @@
 				5F06F5CA21B3890E004419DC /* RefreshView.h in Headers */,
 				5F06F5D621B3DCB1004419DC /* ChatImageBrowserView.h in Headers */,
 				5F299F0121AF71CB00A0F1A0 /* TSIMAConnectConversation.h in Headers */,
+				5F7621D021D5CEC3002D3B0C /* IDFileManager.h in Headers */,
 				5F9F33F121B2598800A3C307 /* ChatSoundRecorder.h in Headers */,
 				5F9F33E921B2573200A3C307 /* UIImage+TintColor.h in Headers */,
 				5F5D072121ACCF2A009B4A33 /* TSChatMsgShowHeader.h in Headers */,
@@ -1137,7 +1195,6 @@
 				5FC0A60921AE6BC300603B93 /* TSImageThumbPickerViewController.h in Headers */,
 				5F3E041A21A57FFD00E3EAB8 /* TSChatInputToolBar.h in Headers */,
 				5F3E03F621A5540600E3EAB8 /* TSScrollRefreshViewController.h in Headers */,
-				5F06F5F221B41FDE004419DC /* TCVideoRecordViewController.h in Headers */,
 				5F9148FC219283C500148AAA /* PathHeaders.h in Headers */,
 				5F7C968E21A7EF170017928F /* TSElemAbleCell.h in Headers */,
 				5F914905219283C500148AAA /* UIViewController+Layout.h in Headers */,
@@ -1168,6 +1225,7 @@
 				5F3E046821A58F0A00E3EAB8 /* UITableViewController+ADFlipTransition.h in Headers */,
 				5F9148F5219283C500148AAA /* UIView+TS.h in Headers */,
 				5F5D073321ACE7F2009B4A33 /* NSMutableDictionary+Json.h in Headers */,
+				5F7621E521D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h in Headers */,
 				5F3E047321A58F0A00E3EAB8 /* AnimationHeaders.h in Headers */,
 				5F914907219283C500148AAA /* TSDevice.h in Headers */,
 				5F914901219283C500148AAA /* TSBaseViewController.h in Headers */,
@@ -1188,6 +1246,7 @@
 				5F3E041621A57F9D00E3EAB8 /* TSChatInputPanel.h in Headers */,
 				5F5D072821ACE790009B4A33 /* TSChatHeaders.h in Headers */,
 				5F15CD5F21C7BC5500AB2EDF /* TSIMGroup.h in Headers */,
+				5F7621DC21D5CF1B002D3B0C /* IDAssetWriterCoordinator.h in Headers */,
 				5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */,
 				5FBABECE21B517F3004288CB /* IMAConversationShowAble.h in Headers */,
 			);
@@ -1331,7 +1390,6 @@
 				5FA84AC821B5569800C53690 /* TSAPIUser.m in Sources */,
 				5F3E03F721A5540600E3EAB8 /* TSScrollRefreshViewController.m in Sources */,
 				5F3E046521A58F0A00E3EAB8 /* ADScaleTransition.m in Sources */,
-				5F06F5EF21B41FDE004419DC /* TCVideoRecordViewController.m in Sources */,
 				5F7C96A621A7F77B0017928F /* TSChatTimeTipTableViewCell.m in Sources */,
 				5F3E047721A5923400E3EAB8 /* TSIMManager.m in Sources */,
 				5F06F5F021B41FDE004419DC /* TCNavigationController.m in Sources */,
@@ -1351,15 +1409,18 @@
 				5F9148F3219283C500148AAA /* NSString+Common.m in Sources */,
 				5F9148EF219283C500148AAA /* UIView+TS.m in Sources */,
 				5F9F33DF21B256BA00A3C307 /* MenuButton.m in Sources */,
+				5F7621E121D5CF1B002D3B0C /* IDCaptureSessionCoordinator.m in Sources */,
 				5F9148FF219283C500148AAA /* UIView+TSLayout.m in Sources */,
 				5F3E046421A58F0A00E3EAB8 /* UICollectionViewController+ADScaleTransition.m in Sources */,
 				5F0E84E521A24829004DBF08 /* TSIMErrorManager.m in Sources */,
 				5F9147B72191777300148AAA /* TSAPITencent.m in Sources */,
 				5F9148FB219283C500148AAA /* PathUtility.m in Sources */,
+				5F7621D321D5CEC3002D3B0C /* IDPermissionsManager.m in Sources */,
 				5F7C96AE21A7FE160017928F /* TSChatTableViewCell.m in Sources */,
 				5F5D073021ACE7F2009B4A33 /* NSMutableDictionary+Json.m in Sources */,
 				5F5D073221ACE7F2009B4A33 /* NSObject+Json.m in Sources */,
 				5F15190C21A6592F00E83785 /* TSChatTextView.m in Sources */,
+				5F7621D121D5CEC3002D3B0C /* IDFileManager.m in Sources */,
 				5F3E045A21A58F0A00E3EAB8 /* FTAnimationManager.m in Sources */,
 				5F3E046621A58F0A00E3EAB8 /* ADTransition.m in Sources */,
 				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
@@ -1368,6 +1429,7 @@
 				5F9F33DB21B2569400A3C307 /* ImageTitleButton.m in Sources */,
 				5F06F5D721B3DCB1004419DC /* ChatImageBrowserView.m in Sources */,
 				5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */,
+				5F7621E421D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m in Sources */,
 				5F3E048621A5949900E3EAB8 /* UILabel+Common.m in Sources */,
 				5F9149482192BEE300148AAA /* TSConversation.m in Sources */,
 				5F3E046321A58F0A00E3EAB8 /* UITableViewController+ADScaleTransititon.m in Sources */,
@@ -1381,6 +1443,7 @@
 				5F3E046E21A58F0A00E3EAB8 /* UICollectionViewController+ADFlipTransition.m in Sources */,
 				5F91493A2192B38E00148AAA /* UIView+Toast.m in Sources */,
 				5F3E047221A58F0A00E3EAB8 /* UIViewController+ADTransition.m in Sources */,
+				5F7621E021D5CF1B002D3B0C /* IDAssetWriterCoordinator.m in Sources */,
 				5F299F0221AF71CB00A0F1A0 /* TSIMAConnectConversation.m in Sources */,
 				5F9F33EA21B2573200A3C307 /* UIImage+TintColor.m in Sources */,
 				5F15193021A69BC300E83785 /* TSIMChatViewController.m in Sources */,
@@ -1391,6 +1454,7 @@
 				5F5D074A21AD2EE3009B4A33 /* TSManager.m in Sources */,
 				5F3E03FB21A5562500E3EAB8 /* TSTableRefreshViewController.m in Sources */,
 				5F9149602192D0D900148AAA /* TSConversationManager.m in Sources */,
+				5F7621DD21D5CF1B002D3B0C /* IDCaptureSessionAssetWriterCoordinator.m in Sources */,
 				5F15192621A6914300E83785 /* TIMElem+ChatAttachment.m in Sources */,
 				5F3E041B21A57FFD00E3EAB8 /* TSChatInputToolBar.m in Sources */,
 				5F7C969E21A7F7480017928F /* TSChatBaseTableViewCell.m in Sources */,

@@ -1,6 +1,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TCVideoRecordViewController.h"
+#import "TCVideoPreviewViewController.h"
 #import "TXRTMPSDK/TXUGCRecord.h"
 #import "TCVideoPreviewViewController.h"
 #import <AVFoundation/AVFoundation.h>
@@ -470,10 +471,10 @@
         if (_currentRecordTime >= MIN_RECORD_TIME) {
             if (result.retCode == RECORD_RESULT_OK) {
                 [self.delegate recordVideoPath:result.videoPath];
-//                TCVideoPreviewViewController *vc = [[TCVideoPreviewViewController alloc] initWith:kRecordType_Camera  coverImage:result.coverImage RecordResult:result];
-//                vc.delegate = self;
-//                [self.navigationController pushViewController:vc animated:YES];
-                [self onBtnCloseClicked];
+                TCVideoPreviewViewController *vc = [[TCVideoPreviewViewController alloc] initWith:kRecordType_Camera  coverImage:result.coverImage RecordResult:result];
+                vc.delegate = self;
+                [self.navigationController pushViewController:vc animated:YES];
+//                [self onBtnCloseClicked];
             } else {
                 [self toastTip:@"录制失败"];
             }

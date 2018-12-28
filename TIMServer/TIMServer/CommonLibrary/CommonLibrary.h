@@ -49,5 +49,6 @@
 #import "NSDate+Common.h"
 #import "NSString+Common.h"
 #import "NSObject+Json.h"
+#import "TIMServerHelper.h"
 
 #endif /* CommonLibrary_h */

@@ -30,11 +30,14 @@
 #import <TZImagePickerController/UIView+Layout.h>
 
 // UGC 小视频
-#import "TCVideoRecordViewController.h"
-#import "TCNavigationController.h"
+//#import "TCVideoRecordViewController.h"
+//#import "TCNavigationController.h"
+//#import "TSVideoRecordViewController.h"
 //#import "TCVideoPreviewViewController.h"
+#import "IDCaptureSessionPipelineViewController.h"
 
-@interface TSChatViewController () <TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
+//@interface TSChatViewController () <TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
+@interface TSChatViewController () <TZImagePickerControllerDelegate>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
@@ -689,10 +692,13 @@
 
 #pragma mark - MovieAction
 - (void)moreVideVideoAction {
-    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
-    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
-    videoRecordVC.delegate = self;
-    [self presentViewController:nav animated:YES completion:nil];
+//    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
+//    TSVideoRecordViewController *videoRecordVC = [[TSVideoRecordViewController alloc] init];
+//    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+//    videoRecordVC.delegate = self;
+//    [self presentViewController:videoRecordVC animated:YES completion:nil];
+    IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
+    [self presentViewController:videoRecordVC animated:YES completion:nil];
 }
 
 - (void)recordVideoPath:(NSString *)path

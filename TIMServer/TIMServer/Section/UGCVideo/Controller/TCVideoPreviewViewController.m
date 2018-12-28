@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TCVideoPreviewViewController.h"
-#import "TXRTMPSDK/TXUGCRecord.h"
+#import <TXRTMPSDK/TXUGCRecord.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <TXRTMPSDK/TXLivePlayer.h>
 
