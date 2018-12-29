@@ -37,7 +37,7 @@
 #import "IDCaptureSessionPipelineViewController.h"
 
 //@interface TSChatViewController () <TZImagePickerControllerDelegate, MicroVideoRecordDelegate, TSConversationDelegate>
-@interface TSChatViewController () <TZImagePickerControllerDelegate>
+@interface TSChatViewController () <TZImagePickerControllerDelegate, IDCaptureSessionPipelineViewControllerDelegaate>
 {
     NSMutableArray *_selectedPhotos;
     BOOL isSelectedOriginalPhoto;
@@ -683,8 +683,9 @@
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingVideo:(UIImage *)coverImage sourceAssets:(PHAsset *)asset {
     
     __weak TSChatViewController *ws = self;
-    [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPresetHighestQuality success:^(NSString *outputPath) {
-        [ws sendVideoWithPath:outputPath coverImage:coverImage];
+    [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPreset1280x720 success:^(NSString *outputPath) {
+//        [ws sendVideoWithPath:outputPath coverImage:coverImage];
+        [ws recordVideoPath:outputPath];
     } failure:^(NSString *errorMessage, NSError *error) {
         [self alertWithTitle:@"视频导出失败" message:@"请尝试用小视频录制喔" confirmBlock:nil];
     }];
@@ -698,6 +699,7 @@
 //    videoRecordVC.delegate = self;
 //    [self presentViewController:videoRecordVC animated:YES completion:nil];
     IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
+    videoRecordVC.delegate = self;
     [self presentViewController:videoRecordVC animated:YES completion:nil];
 }
 
@@ -706,7 +708,7 @@
     NSError *err = nil;
     NSData* data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:path] options:NSDataReadingMappedIfSafe error:&err];
     //文件最大不超过28MB
-    if(data.length < 28 * 1024 * 1024)
+    if(data.length < 28 * 1000 * 1000)
     {
         TSIMMsg *msg = [TSIMMsg msgWithVideoPath:path];
         [self sendMsg:msg];

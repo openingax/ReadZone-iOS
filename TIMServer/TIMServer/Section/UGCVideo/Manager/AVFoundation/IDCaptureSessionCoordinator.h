@@ -33,6 +33,8 @@
 
 - (void)swapFrontAndBackCamera;
 
+- (void)setFrameRateWithDuration:(CMTime)frameDuration OnCaptureDevice:(AVCaptureDevice *)device;
+
 @end
 
 @protocol IDCaptureSessionCoordinatorDelegate <NSObject>

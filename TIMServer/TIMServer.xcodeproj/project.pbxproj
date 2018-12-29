@@ -248,6 +248,8 @@
 		5FC4EA10218994E1007A487E /* TIMServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC4EA0E218994E1007A487E /* TIMServerHelper.m */; };
 		5FC4EA232189A691007A487E /* TSConstMarco.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC4EA222189A691007A487E /* TSConstMarco.h */; };
 		5FEDA4ED2188076200667A8A /* TIMServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEDA4DF2188076200667A8A /* TIMServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FEF756021D77702005FBA88 /* TSUGCVideoPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEF755E21D77702005FBA88 /* TSUGCVideoPreviewViewController.h */; };
+		5FEF756121D77702005FBA88 /* TSUGCVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF755F21D77702005FBA88 /* TSUGCVideoPreviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -495,6 +497,8 @@
 		5FEDA4DC2188076200667A8A /* TIMServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TIMServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEDA4DF2188076200667A8A /* TIMServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMServer.h; sourceTree = "<group>"; };
 		5FEDA4E02188076200667A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEF755E21D77702005FBA88 /* TSUGCVideoPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSUGCVideoPreviewViewController.h; sourceTree = "<group>"; };
+		5FEF755F21D77702005FBA88 /* TSUGCVideoPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSUGCVideoPreviewViewController.m; sourceTree = "<group>"; };
 		C2532EA618D1647424F42A3D /* Pods-TIMServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF4FC18FE5AF62C87BFBDDEC /* Pods-TIMServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMServer.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TIMServer/Pods-TIMServer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -557,6 +561,8 @@
 				5F06F5EA21B41FDE004419DC /* TCNavigationController.m */,
 				5F7621E321D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.h */,
 				5F7621E221D5CF3E002D3B0C /* IDCaptureSessionPipelineViewController.m */,
+				5FEF755E21D77702005FBA88 /* TSUGCVideoPreviewViewController.h */,
+				5FEF755F21D77702005FBA88 /* TSUGCVideoPreviewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -888,9 +894,9 @@
 		5F9148DC219283C400148AAA /* Path */ = {
 			isa = PBXGroup;
 			children = (
-				5F9148DD219283C400148AAA /* PathUtility.m */,
 				5F9148DE219283C400148AAA /* PathHeaders.h */,
 				5F9148DF219283C400148AAA /* PathUtility.h */,
+				5F9148DD219283C400148AAA /* PathUtility.m */,
 			);
 			path = Path;
 			sourceTree = "<group>";
@@ -1249,6 +1255,7 @@
 				5F7621DC21D5CF1B002D3B0C /* IDAssetWriterCoordinator.h in Headers */,
 				5F9F33EE21B258D800A3C307 /* UIView+Glow.h in Headers */,
 				5FBABECE21B517F3004288CB /* IMAConversationShowAble.h in Headers */,
+				5FEF756021D77702005FBA88 /* TSUGCVideoPreviewViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1426,6 +1433,7 @@
 				5F9147AF2191713000148AAA /* TSBaseNavigationController.m in Sources */,
 				5F9149402192B5C500148AAA /* TSIMMsg.m in Sources */,
 				5F06F5F621B4203F004419DC /* UIImage+Additions.m in Sources */,
+				5FEF756121D77702005FBA88 /* TSUGCVideoPreviewViewController.m in Sources */,
 				5F9F33DB21B2569400A3C307 /* ImageTitleButton.m in Sources */,
 				5F06F5D721B3DCB1004419DC /* ChatImageBrowserView.m in Sources */,
 				5F7C968C21A7EEE30017928F /* TSElemBaseTableViewCell.m in Sources */,

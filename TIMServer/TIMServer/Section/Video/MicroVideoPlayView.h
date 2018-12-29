@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TSIMMsg.h"
 
+@class MicroVideoFullScreenPlayView;
+
 @interface MicroVideoPlayView : UIView
 {
     TSIMMsg *_msg;

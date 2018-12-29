@@ -40,7 +40,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEndPlay:)name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onScaling:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onScaling)];
     [self addGestureRecognizer:tap];
 }
 
@@ -170,10 +170,29 @@
         }
         return;
     }
-
-    NSString *videoPath = [NSString stringWithFormat:@"%@/video_%@.%@", hostCachesPath, elem.videoId, elem.video.type];
-
+    
+    /*
+     加载小视频文件的缓存策略：
+     
+     1、第一步先判断 /tmp 目录有没有视频文件，有的话直接播放；（如果视频为本人发送，且没清空缓存目录时，文件会存在）
+     2、/tmp 没有视频文件的话，就去检查当前登录用户的文件夹有没有视频文件，有的话直接播放；（如果用户通过第3步下载过视频在用户文件夹，则文件会存在）
+     3、用户文件夹如果没有视频，就根据 videoPath 去下载，下载完成后播放。此时下载好的视频会保存在用户文件夹里，下次再播放时能直接播放。
+     */
+    
     NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    NSString *tmpVideoPath = elem.videoPath;
+    
+    // 1、先检查 /tmp 目录有没有视频文件
+    if ([fileMgr fileExistsAtPath:tmpVideoPath isDirectory:nil]) {
+        _videoURL = [NSURL fileURLWithPath:tmpVideoPath];
+        [self initPlayer];
+        if (succ) succ();
+        return;
+    }
+
+    // 2、去检查用户目录有没有视频文件
+    NSString *videoPath = [NSString stringWithFormat:@"%@/video_%@.%@", hostCachesPath, elem.videoId, elem.video.type];
 
     if ([fileMgr fileExistsAtPath:videoPath isDirectory:nil])
     {
@@ -234,12 +253,16 @@
 
 - (void)onPlay:(UIButton *)button
 {
-    [self downloadVideo:^{
-        
-        [_player play];
-        button.hidden = YES;
-        
-    } fail:nil];
+    if ([self isKindOfClass:[MicroVideoFullScreenPlayView class]]) {
+        [self downloadVideo:^{
+            
+            [_player play];
+            button.hidden = YES;
+            
+        } fail:nil];
+    } else {
+        [self onScaling];
+    }
 }
 
 -(void)onEndPlay:(NSNotification *)notification
@@ -252,13 +275,8 @@
     }
 }
 
-- (void)onScaling:(UITapGestureRecognizer *)tap
+- (void)onScaling
 {
-    if (tap.state != UIGestureRecognizerStateEnded)
-    {
-        return;
-    }
-    
     CGRect screen = [UIScreen mainScreen].bounds;
     MicroVideoFullScreenPlayView *fullScreen = [[MicroVideoFullScreenPlayView alloc] initWithFrame:screen];
     [fullScreen setMessage:_msg];
@@ -296,7 +314,7 @@
 /////////////////////////////////////////////////////
 @implementation MicroVideoFullScreenPlayView
 
-- (void)onScaling:(UITapGestureRecognizer *)tap
+- (void)onScaling
 {
     [self removeFromSuperview];
 }
@@ -307,8 +325,12 @@
     CGFloat selfHeight = self.bounds.size.height;
     
     CGRect screen = [UIScreen mainScreen].bounds;
+    CGFloat width = screen.size.width;
+    CGFloat height = screen.size.width * 16 / 9;
     
-    _playerLayer.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    CGFloat marginTop = (screen.size.height - height) / 2;
+    
+    _playerLayer.frame = CGRectMake(0, marginTop, width, screen.size.width * 16 / 9);
     
     _playerBtn.frame = CGRectMake(selfWidth/2 - 30, selfHeight/2 - 30, 60, 60);
 }

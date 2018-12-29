@@ -224,7 +224,7 @@ typedef NS_ENUM( NSInteger, RecordingStatus )
     _recordingStatus = newStatus;
     
     if (newStatus != oldStatus){
-        if (error && (newStatus == RecordingStatusIdle)){
+        if (error && (newStatus == RecordingStatusIdle)) {
             dispatch_async( self.delegateCallbackQueue, ^{
                 @autoreleasepool
                 {

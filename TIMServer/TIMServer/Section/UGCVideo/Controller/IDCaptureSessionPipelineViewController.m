@@ -36,6 +36,15 @@
 @property (nonatomic, assign) BOOL dismissing;
 @property (nonatomic, assign) BOOL cameraFont;
 
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
+
+@property (nonatomic, assign) NSInteger recordDuration;
+@property (nonatomic, assign) CGFloat recordPeakTime;
+@property (nonatomic, strong) NSTimer *recorderTimer;
+@property (nonatomic, strong) NSTimer *recorderPeakerTimer;
+
+@property (nonatomic, strong) NSString *filePath;
+
 @end
 
 @implementation IDCaptureSessionPipelineViewController
@@ -52,6 +61,10 @@
     [_captureSessionCoordinator setDelegate:self callbackQueue:dispatch_get_main_queue()];
     
     [self configureInterface];
+}
+
+- (void)dealloc {
+    DebugLog(@"IDCaptureSessionPipelineViewController dealloc");
 }
 
 #pragma mark - Private methods
@@ -98,6 +111,10 @@
     [_btnCamera addTarget:self action:@selector(btnCameraAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_btnCamera];
     
+    _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.hidesWhenStopped = YES;
+    _indicator.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    [self.view addSubview:_indicator];
 }
 
 - (void)layoutSubviewsFrame
@@ -132,6 +149,17 @@
 
 - (void)stopRecordAction
 {
+    [_recorderTimer invalidate];
+    _recorderTimer = nil;
+    
+    [_recorderPeakerTimer invalidate];
+    _recorderPeakerTimer = nil;
+    
+    _recordDuration = 0;
+    _recordPeakTime = 0;
+    
+    [self refreshRecordTime:0];
+    
     [_captureSessionCoordinator stopRecording];
 }
 
@@ -143,12 +171,17 @@
     [self.captureSessionCoordinator swapFrontAndBackCamera];
 }
 
-
 /**
  关闭
  */
 - (void)closeAction
 {
+    [_recorderTimer invalidate];
+    _recorderTimer = nil;
+    
+    [_recorderPeakerTimer invalidate];
+    _recorderPeakerTimer = nil;
+    
     //TODO: tear down pipeline
     if(_recording){
         _dismissing = YES;
@@ -158,7 +191,8 @@
     }
 }
 
-- (void)recordBtnLongPress:(UILongPressGestureRecognizer *)ges {
+- (void)recordBtnLongPress:(UILongPressGestureRecognizer *)ges
+{
     CGFloat btnMarginBottom = kIsiPhoneX ? self.view.frame.size.height - BUTTON_RECORD_SIZE - 76 : self.view.frame.size.height - BUTTON_RECORD_SIZE + 10;
     if (ges.state == UIGestureRecognizerStateBegan) {
         
@@ -192,10 +226,13 @@
             _recordSubview.layer.cornerRadius = 24;
             
         }];
+    } else {
+        
     }
 }
 
-- (void)circleAnimate {
+- (void)circleAnimate
+{
     //第一步，通过UIBezierPath设置圆形的矢量路径
     UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 84, 84)];
     
@@ -226,6 +263,19 @@
     [_shapeLayer setAffineTransform:CGAffineTransformMakeRotation(-M_PI/2.f)];
 }
 
+// 刷新录像时间
+-(void)refreshRecordTime:(CGFloat)second
+{
+    if (second == 0) {
+        _shapeLayer.hidden = YES;
+    } else {
+        if (_shapeLayer.isHidden == YES) {
+            _shapeLayer.hidden = NO;
+        }
+    }
+    _recordPeakTime = second;
+    _shapeLayer.strokeEnd = (CGFloat)_recordPeakTime / MAX_RECORD_TIME;
+}
 
 - (void)stopPipelineAndDismiss
 {
@@ -249,12 +299,36 @@
     }];
 }
 
+#pragma mark - Timer
+
+- (void)onRecording
+{
+    _recordDuration ++;
+    DebugLog(@"录像时间：%ld", (long)_recordDuration);
+    
+    if (_recordDuration == MAX_RECORD_TIME) {
+        [_recorderTimer invalidate];
+        _recorderTimer = nil;
+        
+        [_recorderPeakerTimer invalidate];
+        _recorderPeakerTimer = nil;
+    }
+}
+
+- (void)onRecordPeak
+{
+    DebugLog(@"peak 时间：%f", (CGFloat)_recordPeakTime);
+    _recordPeakTime += 0.1;
+    [self refreshRecordTime:(CGFloat)_recordPeakTime];
+}
+
 #pragma mark = IDCaptureSessionCoordinatorDelegate methods
 
 // 开始摄像
 - (void)coordinatorDidBeginRecording:(IDCaptureSessionCoordinator *)coordinator
 {
-    
+    _recorderTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onRecording) userInfo:nil repeats:YES];
+    _recorderPeakerTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onRecordPeak) userInfo:nil repeats:YES];
 }
 
 - (void)coordinator:(IDCaptureSessionCoordinator *)coordinator didFinishRecordingToOutputFileURL:(NSURL *)outputFileURL error:(NSError *)error
@@ -262,10 +336,21 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     _recording = NO;
+    [_indicator startAnimating];
+    
     
     //Do something useful with the video file available at the outputFileURL
-//    IDFileManager *fm = [IDFileManager new];
-//    [fm copyFileToCameraRoll:outputFileURL];
+    IDFileManager *fm = [IDFileManager new];
+    __weak typeof(self) ws = self;
+    [fm convertMovToMP4WithSource:outputFileURL complete:^(AVAssetExportSessionStatus status, NSString *outputPath) {
+        [ws.indicator stopAnimating];
+        [fm removeFile:outputFileURL];
+        
+        if (status == AVAssetExportSessionStatusCompleted) {
+            [ws.delegate recordVideoPath:outputPath];
+            [ws dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
     
     //Dismiss camera (when user taps cancel while camera is recording)
     if(_dismissing){

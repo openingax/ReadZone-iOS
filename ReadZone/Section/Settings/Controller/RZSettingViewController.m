@@ -13,6 +13,7 @@
 
 // Manager
 #import "AppDelegate.h"
+#import "RZPathUtility.h"
 
 // View
 #import "RZSettingCell.h"
@@ -143,7 +144,10 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                 case 4: cell.title = RZLocalizedString(@"SETTING_CELL_HELP", @"设置页_帮助【帮助】");
                     break;
                 case 5: cell.title = RZLocalizedString(@"SETTING_CELL_FEEDBACK", @"设置页_反馈【反馈】"); break;
-                case 6: cell.title = RZLocalizedString(@"SETTING_CELL_CLEARCACHE", @"设置页_清除缓存【清除缓存】"); break;
+                case 6: {
+                    cell.title = RZLocalizedString(@"SETTING_CELL_CLEARCACHE", @"设置页_清除缓存【清除缓存】");
+                    cell.detail = [NSString stringWithFormat:@"%lluM", [RZPathUtility folderSize:[RZPathUtility getTemporaryPath]] / 1000000];
+                } break;
                 case 7: cell.title = RZLocalizedString(@"SETTING_CELL_DEVELOP", @"设置页_开发入口【开发】"); break;
             }
         }
@@ -178,7 +182,10 @@ static NSString * const kSettingCellIdentifier = @"kRZSettingCellIdentifier";
                 break;
             case 4: break;
             case 5: break;
-            case 6: [AVFile clearAllPersistentCache]; break;
+            case 6: {
+                [[NSFileManager defaultManager] removeItemAtPath:[RZPathUtility getTemporaryPath] error:nil];
+                [self.tableView reloadData];
+            } break;
             case 7: {
                 RZDevelopViewController *developVC = [[RZDevelopViewController alloc] init];
                 [self.navigationController pushViewController:developVC animated:YES];

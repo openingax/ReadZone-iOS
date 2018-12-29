@@ -8,6 +8,14 @@
 
 #import "TSBaseViewController.h"
 
+@protocol IDCaptureSessionPipelineViewControllerDelegaate <NSObject>
+
+- (void)recordVideoPath:(NSString *)path;
+
+@end
+
 @interface IDCaptureSessionPipelineViewController : TSBaseViewController
+
+@property(nonatomic,weak) id <IDCaptureSessionPipelineViewControllerDelegaate> delegate;
 
 @end

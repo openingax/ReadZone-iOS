@@ -71,6 +71,7 @@
 		5FE12A8221B0E2E100364130 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8121B0E2E100364130 /* ImSDK.framework */; };
 		5FE12A8421B0E2EF00364130 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE12A8321B0E2EF00364130 /* libsqlite3.tbd */; };
 		5FEDA52121882F5900667A8A /* TIMServer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5FEDA52021882F5800667A8A /* TIMServer.bundle */; };
+		5FEF754521D721AC005FBA88 /* RZPathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF754421D721AB005FBA88 /* RZPathUtility.m */; };
 		5FF3612A21CB3966002C1434 /* RZTIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF3612921CB3966002C1434 /* RZTIMViewController.m */; };
 		B20AC21620EBC9DB008043C7 /* NSString+RZ.m in Sources */ = {isa = PBXBuildFile; fileRef = B20AC21520EBC9DB008043C7 /* NSString+RZ.m */; };
 		B2509DBA20F0ED10009B5F5F /* RZRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2509DB920F0ED10009B5F5F /* RZRegisterViewController.m */; };
@@ -212,6 +213,8 @@
 		5FE12A8121B0E2E100364130 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = TIMServer/IMFrameworks/ImSDK.framework; sourceTree = "<group>"; };
 		5FE12A8321B0E2EF00364130 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5FEDA52021882F5800667A8A /* TIMServer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMServer.bundle; sourceTree = "<group>"; };
+		5FEF754321D721A6005FBA88 /* RZPathUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZPathUtility.h; sourceTree = "<group>"; };
+		5FEF754421D721AB005FBA88 /* RZPathUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RZPathUtility.m; sourceTree = "<group>"; };
 		5FF3612821CB3966002C1434 /* RZTIMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RZTIMViewController.h; sourceTree = "<group>"; };
 		5FF3612921CB3966002C1434 /* RZTIMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RZTIMViewController.m; sourceTree = "<group>"; };
 		78CC9625219505E16800D160 /* Pods_ReadZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -617,6 +620,15 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
+		5FEF754221D7217F005FBA88 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5FEF754321D721A6005FBA88 /* RZPathUtility.h */,
+				5FEF754421D721AB005FBA88 /* RZPathUtility.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		B2003A8C20D41A1900AEA413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +663,7 @@
 		B2BF657A20D75B08003059AE /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5FEF754221D7217F005FBA88 /* Utilities */,
 				B2D2186020F3B13F00331F4C /* Helper */,
 				B2D2185620F20CE200331F4C /* Marco */,
 				B2D2184E20F2058200331F4C /* Component */,
@@ -1234,6 +1247,7 @@
 				5F83FBC02122F46700FF9AD4 /* RZLoginViewController.swift in Sources */,
 				5F7012B820F58E0400088216 /* RZAPIError.m in Sources */,
 				5FBAEA30211556E30002C2B5 /* RZHomePageModel.m in Sources */,
+				5FEF754521D721AC005FBA88 /* RZPathUtility.m in Sources */,
 				5FBF588320F8892900CC15A2 /* RZSettingCell.m in Sources */,
 				5FBAEA2721154C000002C2B5 /* RZAPIBase.m in Sources */,
 				5FBF580B20F72E0000CC15A2 /* RZMenuManager.m in Sources */,

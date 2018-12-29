@@ -137,8 +137,11 @@
     } else if (msg.type == TSIMMsgTypeVideo) {
         
         TIMUGCElem *elem = (TIMUGCElem *)[msg.msg getElem:0];
-        elem.videoPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.videoPath substringFromIndex:[PathUtility getTemporaryPath].length]];
-        elem.coverPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.coverPath substringFromIndex:[PathUtility getTemporaryPath].length]];
+        if (!TARGET_IPHONE_SIMULATOR) {
+            // 在替换缓存路径时，要注意路径是否正确，注意 NSTemporaryDirectory() 与 NSHomeDirectory() 的区别
+            elem.videoPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.videoPath substringFromIndex:[PathUtility getTemporaryPath].length]];
+            elem.coverPath = [NSString stringWithFormat:@"%@%@", [PathUtility getTemporaryPath], [elem.coverPath substringFromIndex:[PathUtility getTemporaryPath].length]];
+        }
         
         TIMUGCElem *newElem = [[TIMUGCElem alloc] init];
         newElem.video = elem.video;
