@@ -292,7 +292,7 @@
     
     _playerLayer.frame = self.bounds;
     
-    _playerBtn.frame = CGRectMake(selfWidth/2 - 30, selfHeight/2 - 30, 60, 60);
+    _playerBtn.frame = CGRectMake(selfWidth/2 - 23, selfHeight/2 - 23, 46, 46);
     
     _timeLabel.frame = CGRectMake(selfWidth/2 + 20, selfHeight - 20, 50, 20);
 }

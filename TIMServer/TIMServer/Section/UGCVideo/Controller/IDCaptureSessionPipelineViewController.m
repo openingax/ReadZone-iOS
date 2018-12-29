@@ -8,6 +8,8 @@
 
 #import "IDCaptureSessionPipelineViewController.h"
 #import "IDCaptureSessionAssetWriterCoordinator.h"
+#import "TSUGCVideoPreviewViewController.h"
+
 #import "IDFileManager.h"
 #import "IDPermissionsManager.h"
 
@@ -18,7 +20,7 @@
 
 //TODO: add backgrounding stuff
 
-@interface IDCaptureSessionPipelineViewController () <IDCaptureSessionCoordinatorDelegate>
+@interface IDCaptureSessionPipelineViewController () <IDCaptureSessionCoordinatorDelegate, TSUGCVideoPreviewViewControllerDelegate>
 
 @property (nonatomic, strong) IDCaptureSessionCoordinator *captureSessionCoordinator;
 
@@ -35,6 +37,7 @@
 @property (nonatomic, assign) BOOL recording;
 @property (nonatomic, assign) BOOL dismissing;
 @property (nonatomic, assign) BOOL cameraFont;
+@property (nonatomic, assign) BOOL isActive;
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
 
@@ -54,6 +57,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     [self checkPermissions];
     
@@ -63,8 +70,33 @@
     [self configureInterface];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.isActive = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.isActive = NO;
+}
+
 - (void)dealloc {
     DebugLog(@"IDCaptureSessionPipelineViewController dealloc");
+}
+
+#pragma mark - Process
+
+- (void)applicationDidBecomeActive:(NSNotification *)noti
+{
+    self.isActive = YES;
+}
+
+- (void)applicationWillResignActive:(NSNotification *)noti
+{
+    if (self.isActive) {
+        [self stopRecordAction];
+        [self stopPipelineAndDismiss];
+    }
 }
 
 #pragma mark - Private methods
@@ -144,6 +176,14 @@
         [self.captureSessionCoordinator startRecording];
         
         _recording = YES;
+    }
+}
+
+- (void)cancelRecordAction
+{
+    if (_recording) {
+        [_captureSessionCoordinator cancelRecording];
+        _recording = NO;
     }
 }
 
@@ -342,13 +382,14 @@
     //Do something useful with the video file available at the outputFileURL
     IDFileManager *fm = [IDFileManager new];
     __weak typeof(self) ws = self;
-    [fm convertMovToMP4WithSource:outputFileURL complete:^(AVAssetExportSessionStatus status, NSString *outputPath) {
+    [fm convertMovToMP4WithSource:outputFileURL complete:^(AVAssetExportSessionStatus status, NSString *outputPath, UIImage *coverImg) {
         [ws.indicator stopAnimating];
         [fm removeFile:outputFileURL];
         
         if (status == AVAssetExportSessionStatusCompleted) {
-            [ws.delegate recordVideoPath:outputPath];
-            [ws dismissViewControllerAnimated:YES completion:nil];
+            TSUGCVideoPreviewViewController *previewVC = [[TSUGCVideoPreviewViewController alloc] initWithVideoPath:outputPath coverImg:coverImg];
+            previewVC.delegate = self;
+            [ws.navigationController pushViewController:previewVC animated:YES];
         }
     }];
     
@@ -356,6 +397,12 @@
     if(_dismissing){
         [self stopPipelineAndDismiss];
     }
+}
+
+#pragma mark TSUGCVideoPreviewViewControllerDelegate
+
+- (void)previewVideoPath:(NSString *)path {
+    [self.delegate recordVideoPath:path];
 }
 
 @end

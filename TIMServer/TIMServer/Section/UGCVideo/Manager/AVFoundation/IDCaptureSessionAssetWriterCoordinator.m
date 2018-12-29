@@ -91,6 +91,17 @@ typedef NS_ENUM( NSInteger, RecordingStatus )
     [_assetWriterCoordinator prepareToRecord]; // asynchronous, will call us back with recorderDidFinishPreparing: or recorder:didFailWithError: when done
 }
 
+- (void)cancelRecording
+{
+    @synchronized (self)
+    {
+        if (_recordingStatus != RecordingStatusRecording){
+            return;
+        }
+        [self transitionToRecordingStatus:RecordingStatusStoppingRecording error:nil];
+    }
+}
+
 - (void)stopRecording
 {
     @synchronized(self)

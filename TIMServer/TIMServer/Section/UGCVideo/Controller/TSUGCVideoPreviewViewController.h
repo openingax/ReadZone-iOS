@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,weak) id <TSUGCVideoPreviewViewControllerDelegate> delegate;
 
-- (instancetype)initWithVideoPath:(NSString *)videoPath coverImgPath:(NSString *)coverImgPath;
+- (instancetype)initWithVideoPath:(NSString *)videoPath coverImg:(UIImage *)coverImg;
 
 @end
 

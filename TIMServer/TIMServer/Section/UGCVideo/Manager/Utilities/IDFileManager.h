@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Infoding. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface IDFileManager : NSObject
@@ -15,6 +15,6 @@
 - (void) removeFile:(NSURL *)outputFileURL;
 - (void) copyFileToDocuments:(NSURL *)fileURL;
 - (void) copyFileToCameraRoll:(NSURL *)fileURL;
-- (void)convertMovToMP4WithSource:(NSURL *)source complete:(void(^)(AVAssetExportSessionStatus status, NSString *outputPath))block;
+- (void)convertMovToMP4WithSource:(NSURL *)source complete:(void(^)(AVAssetExportSessionStatus status, NSString *outputPath, UIImage *coverImg))block;
 
 @end

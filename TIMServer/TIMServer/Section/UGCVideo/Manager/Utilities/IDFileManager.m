@@ -10,6 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 #import "PathUtility.h"
+#import "TSDebugMarco.h"
 
 @implementation IDFileManager
 
@@ -82,7 +83,7 @@
 
 #pragma mark - Convert
 
-- (void)convertMovToMP4WithSource:(NSURL *)source complete:(void(^)(AVAssetExportSessionStatus status, NSString *outputPath))block
+- (void)convertMovToMP4WithSource:(NSURL *)source complete:(void(^)(AVAssetExportSessionStatus status, NSString *outputPath, UIImage *coverImg))block
 {
     AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:source options:nil];
     NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAsset];
@@ -129,18 +130,26 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 switch ([exportSession status]) {
                     case AVAssetExportSessionStatusFailed: {
-                        NSLog(@"Export failed: %@", [[exportSession error] localizedDescription]);
-                        if (block) block(AVAssetExportSessionStatusFailed, nil);
+                        DebugLog(@"Export failed: %@", [[exportSession error] localizedDescription]);
+                        if (block) block(AVAssetExportSessionStatusFailed, nil, nil);
                     } break;
                         
                     case AVAssetExportSessionStatusCancelled: {
-                        NSLog(@"Export cancelled!");
-                        if (block) block(AVAssetExportSessionStatusCancelled, nil);
+                        DebugLog(@"Export cancelled!");
+                        if (block) block(AVAssetExportSessionStatusCancelled, nil, nil);
                     }break;
                         
                     case AVAssetExportSessionStatusCompleted: {
-                        NSLog(@"转换成功");
-                        if (block) block(AVAssetExportSessionStatusCompleted, exportPath);
+                        DebugLog(@"转换成功");
+                        
+                        // 转换成功，截取一张封面图
+                        AVAssetImageGenerator *imgGenerator = [[AVAssetImageGenerator alloc] initWithAsset:avAsset];
+                        imgGenerator.appliesPreferredTrackTransform = YES;
+                        CMTime time = CMTimeMakeWithSeconds(0, 1);
+                        CGImageRef cgImg = [imgGenerator copyCGImageAtTime:time actualTime:nil error:nil];
+                        UIImage *image = [UIImage imageWithCGImage:cgImg];
+                        
+                        if (block) block(AVAssetExportSessionStatusCompleted, exportPath, image);
                     } break;
                         
                     default:

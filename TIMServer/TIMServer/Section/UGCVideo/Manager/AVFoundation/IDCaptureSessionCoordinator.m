@@ -72,6 +72,11 @@
     //overwritten by subclass
 }
 
+- (void)cancelRecording
+{
+    //overwritten by subclass
+}
+
 - (void)stopRecording
 {
     //overwritten by subclass

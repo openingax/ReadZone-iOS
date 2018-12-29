@@ -31,7 +31,7 @@
 
 // UGC 小视频
 //#import "TCVideoRecordViewController.h"
-//#import "TCNavigationController.h"
+#import "TCNavigationController.h"
 //#import "TSVideoRecordViewController.h"
 //#import "TCVideoPreviewViewController.h"
 #import "IDCaptureSessionPipelineViewController.h"
@@ -522,8 +522,6 @@
     return cell;
 }
 
-#pragma mark -
-
 
 #pragma mark - Load Message
 - (void)onLoadRecentMessage:(NSArray *)imamsgList complete:(BOOL)succ scrollToBottom:(BOOL)scroll
@@ -695,12 +693,15 @@
 - (void)moreVideVideoAction {
 //    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
 //    TSVideoRecordViewController *videoRecordVC = [[TSVideoRecordViewController alloc] init];
-//    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
 //    videoRecordVC.delegate = self;
 //    [self presentViewController:videoRecordVC animated:YES completion:nil];
+    
     IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
+    
+    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+    
     videoRecordVC.delegate = self;
-    [self presentViewController:videoRecordVC animated:YES completion:nil];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)recordVideoPath:(NSString *)path
