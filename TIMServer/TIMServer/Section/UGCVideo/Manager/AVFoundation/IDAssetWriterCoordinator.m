@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, WriterStatus){
 @property (nonatomic) NSURL *URL;
 
 @property (nonatomic) AVAssetWriter *assetWriter;
+
 @property (nonatomic) BOOL haveStartedSession;
 
 @property (nonatomic) CMFormatDescriptionRef audioTrackSourceFormatDescription;
@@ -368,7 +369,7 @@ typedef NS_ENUM(NSInteger, WriterStatus){
             
             AVAssetWriterInput *input = ( mediaType == AVMediaTypeVideo ) ? _videoInput : _audioInput;
             
-            if(input.readyForMoreMediaData){
+            if(input.readyForMoreMediaData) {
                 BOOL success = [input appendSampleBuffer:sampleBuffer];
                 if (!success){
                     NSError *error = _assetWriter.error;

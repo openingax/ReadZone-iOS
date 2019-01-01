@@ -64,7 +64,7 @@ NSString *const TIMNewMsgStatusUserInfoKey = @"tim_new_msg_status";
         // 单聊
         TSIMUser *receiver = [[TSIMUser alloc] initWithUserInfo:profile];
         chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];
-    } else if ([profile.identifier hasPrefix:@"viot"]) {
+    } else if ([profile.identifier hasPrefix:@"viot"] || [profile.identifier isEqualToString:@"@TGS#2CVADKTFD"]) {
         // 群聊
         TSIMGroup *receiver = [[TSIMGroup alloc] initWithUserInfo:profile];
         chatVC = [[TSRichChatViewController alloc] initWithUser:receiver];

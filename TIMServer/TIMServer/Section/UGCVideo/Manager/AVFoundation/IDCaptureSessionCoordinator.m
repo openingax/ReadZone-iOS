@@ -183,25 +183,36 @@
     NSArray *inputs = self.captureSession.inputs;
     for (AVCaptureDeviceInput *input in inputs ) {
         AVCaptureDevice *device = input.device;
-        if ( [device hasMediaType:AVMediaTypeVideo] ) {
+        if ([device hasMediaType:AVMediaTypeVideo] ) {
             AVCaptureDevicePosition position = device.position;
             AVCaptureDevice *newCamera =nil;
             AVCaptureDeviceInput *newInput =nil;
             
-            if (position ==AVCaptureDevicePositionFront)
+            if (position ==AVCaptureDevicePositionFront) {
                 newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
-            else
+            } else {
                 newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            }
+            
             newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error:nil];
             
             // beginConfiguration ensures that pending changes are not applied immediately
             [self.captureSession beginConfiguration];
             
             [self.captureSession removeInput:input];
-            [self.captureSession addInput:newInput];
             
-            // Changes take effect once the outermost commitConfiguration is invoked.
-            [self.captureSession commitConfiguration];
+            if (position == AVCaptureDevicePositionFront) {
+                if ([self addCameraAtPosition:AVCaptureDevicePositionBack toCaptureSession:self.captureSession]) {
+                    // Changes take effect once the outermost commitConfiguration is invoked.
+                    [self.captureSession commitConfiguration];
+                }
+            } else {
+                if ([self addCameraAtPosition:AVCaptureDevicePositionFront toCaptureSession:self.captureSession]) {
+                    // Changes take effect once the outermost commitConfiguration is invoked.
+                    [self.captureSession commitConfiguration];
+                }
+            }
+            
             break;
         }
     }

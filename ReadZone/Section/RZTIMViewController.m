@@ -36,7 +36,8 @@
     
     self.tsManager = [[TSManager alloc] init];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
+//        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"viot85396846"];
+        [self.tsManager loginTIMWithAccount:[@"" stringByAppendingString:[RZUserManager shareInstance].account] nickName:[RZUserManager shareInstance].account faceURL:@"http://lc-2qF4yFo6.cn-n1.lcfile.com/QTeHivAJVIyEAT0wjv6kN2C" deviceID:@"@TGS#2CVADKTFD"];
     });
 }
 

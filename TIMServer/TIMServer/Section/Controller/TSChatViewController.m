@@ -82,7 +82,7 @@
 - (void)didLogin {
     if ([_receiver.userId hasPrefix:@"Viomi"]) {
         [self dealC2CConfig];
-    } else if ([_receiver.userId hasPrefix:@"viot"]) {
+    } else if ([_receiver.userId hasPrefix:@"viot"] || [_receiver.userId isEqualToString:@"@TGS#2CVADKTFD"]) {
         [self dealGroupConfig];
     }
     
@@ -202,9 +202,7 @@
                 });
                 
             } fail:^(int code, NSString *msg) {
-                @strongify(self);
                 DebugLog(@"加群失败 code: %d msg: %@", code, msg);
-                
             }];
         }
     };

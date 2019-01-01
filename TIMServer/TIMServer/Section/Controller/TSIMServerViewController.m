@@ -15,6 +15,7 @@
 #import "TSIMMsg.h"
 #import "TSAPIUser.h"
 #import <YMCommon/NSDictionary+ymc.h>
+#import <IMGroupExt/IMGroupExt.h>
 
 // Manager
 #import "TIMServerHelper.h"
@@ -65,6 +66,13 @@ TLSRefreshTicketListener
     } fail:^(int code, NSString *msg) {
         
     }];
+    
+    // Create a public group in order to test
+//    [[TIMGroupManager sharedInstance] createPublicGroup:@[@"18814098638", @"13265028638"] groupName:@"viotlocaltest" succ:^(NSString *groupId) {
+//        
+//    } fail:^(int code, NSString *msg) {
+//        
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

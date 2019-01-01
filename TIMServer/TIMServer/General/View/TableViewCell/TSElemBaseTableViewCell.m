@@ -439,7 +439,7 @@
     
     
     
-    if ([_msg.msg isSelf])
+    if ([_msg.msg isSelf] && _msg.status != TSIMMsgStatusSendFail)
     {
         NSTimeInterval msgTime = [NSDate currentTimestamp] - [_msg.msg.timestamp timeIntervalSince1970]*1000;
         // 如果消息发送时间超过2分钟，不显示撤回按钮

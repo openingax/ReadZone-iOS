@@ -48,6 +48,9 @@
     
     // 本地存在
     NSString *thumpPath = [msg stringForKey:kIMAMSG_Image_ThumbPath];
+    if ([thumpPath hasPrefix:@"/private/var/mobile/Containers/Data/Application/"]) {
+        thumpPath = [NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), [thumpPath substringFromIndex:NSTemporaryDirectory().length]];
+    }
     if ([PathUtility isExistFile:thumpPath])
     {
         UIImage *img = [[UIImage alloc] initWithContentsOfFile:thumpPath];
@@ -156,6 +159,9 @@
 
 - (UIImage *)getThumbImageInMsg:(TSIMMsg *)msg {
     NSString *thumpPath = [msg stringForKey:kIMAMSG_Image_ThumbPath];
+    if ([thumpPath hasPrefix:@"/private/var/mobile/Containers/Data/Application/"]) {
+        thumpPath = [NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), [thumpPath substringFromIndex:NSTemporaryDirectory().length]];
+    }
     if ([PathUtility isExistFile:thumpPath])
     {
         UIImage *img = [[UIImage alloc] initWithContentsOfFile:thumpPath];

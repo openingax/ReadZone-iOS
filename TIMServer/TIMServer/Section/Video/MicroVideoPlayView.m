@@ -148,8 +148,28 @@
 - (void)downloadVideo:(TIMSucc)succ fail:(TIMFail)fail
 {
     TIMUGCElem *elem = (TIMUGCElem *)[_msg.msg getElem:0];
-
-//    if (!(elem.video.uuid && elem.video.uuid.length > 0))
+    
+    /*
+     加载小视频文件的缓存策略：
+     
+     1、第一步先判断 /tmp 目录有没有视频文件，有的话直接播放；（如果视频为本人发送，且没清空缓存目录时，文件会存在）
+     2、/tmp 没有视频文件的话，就去检查当前登录用户的文件夹有没有视频文件，有的话直接播放；（如果用户通过第3步下载过视频在用户文件夹，则文件会存在）
+     3、用户文件夹如果没有视频，就根据 videoPath 去下载，下载完成后播放。此时下载好的视频会保存在用户文件夹里，下次再播放时能直接播放。
+     */
+    
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    NSString *tmpVideoPath = elem.videoPath;
+    tmpVideoPath = [NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), [tmpVideoPath substringFromIndex:NSTemporaryDirectory().length]];
+    
+    // 1、先检查 /tmp 目录有没有视频文件
+    if ([fileMgr fileExistsAtPath:tmpVideoPath isDirectory:nil]) {
+        _videoURL = [NSURL fileURLWithPath:tmpVideoPath];
+        [self initPlayer];
+        if (succ) succ();
+        return;
+    }
+    
     if (!(elem.videoId && elem.videoId.length > 0))
     {
         DebugLog(@"小视频ID为空");
@@ -168,26 +188,6 @@
         {
             fail(-2, @"获取本地路径出错");
         }
-        return;
-    }
-    
-    /*
-     加载小视频文件的缓存策略：
-     
-     1、第一步先判断 /tmp 目录有没有视频文件，有的话直接播放；（如果视频为本人发送，且没清空缓存目录时，文件会存在）
-     2、/tmp 没有视频文件的话，就去检查当前登录用户的文件夹有没有视频文件，有的话直接播放；（如果用户通过第3步下载过视频在用户文件夹，则文件会存在）
-     3、用户文件夹如果没有视频，就根据 videoPath 去下载，下载完成后播放。此时下载好的视频会保存在用户文件夹里，下次再播放时能直接播放。
-     */
-    
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    NSString *tmpVideoPath = elem.videoPath;
-    
-    // 1、先检查 /tmp 目录有没有视频文件
-    if ([fileMgr fileExistsAtPath:tmpVideoPath isDirectory:nil]) {
-        _videoURL = [NSURL fileURLWithPath:tmpVideoPath];
-        [self initPlayer];
-        if (succ) succ();
         return;
     }
 
