@@ -147,6 +147,15 @@
 #pragma mark - Action
 - (void)onClickAudio:(UIButton *)button {
     
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"语音暂不支持模拟器" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:confirmAction];
+        [[TSIMManager shareInstance].topViewController presentViewController:alert animated:NO completion:nil];
+        
+        return;
+    }
+    
     _audioBtn.selected = !_audioBtn.selected;
     _audioPressedBtn.hidden = !_audioBtn.selected;
     _textView.hidden = _audioBtn.selected;

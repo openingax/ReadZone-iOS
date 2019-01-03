@@ -267,7 +267,7 @@
     if (_conversation) {
         [_conversation releaseConversation];
     }
-//    [_messageList removeAllObjects];
+    //    [_messageList removeAllObjects];
 }
 
 - (void)hiddenKeyBoard {
@@ -456,12 +456,12 @@
         NSIndexPath *index = [NSIndexPath indexPathForRow:idx inSection:0];
         [array addObject:index];
     }
-
+    
     [self.tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationBottom];
     
 #warning crash
-//    Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Invalid update: invalid number of rows in section 0.  The number of rows contained in an existing section after the update (3) must be equal to the number of rows contained in that section before the update (0), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).'
-//    *** First throw call stack:
+    //    Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Invalid update: invalid number of rows in section 0.  The number of rows contained in an existing section after the update (3) must be equal to the number of rows contained in that section before the update (0), plus or minus the number of rows inserted or deleted from that section (1 inserted, 0 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out).'
+    //    *** First throw call stack:
     [self.tableView endUpdates];
     
     @weakify(self);
@@ -533,7 +533,7 @@
             for (NSInteger i = 0; i < imamsgList.count; i++) {
                 [ar addObject:[NSIndexPath indexPathForItem:i inSection:0]];
             }
-
+            
             [_tableView insertRowsAtIndexPaths:ar withRowAnimation:UITableViewRowAnimationTop];
             
             [_tableView endUpdates];
@@ -636,34 +636,34 @@
         }];
         
         // 发送原图
-//        for (id item in assets) {
-//            if ([item isKindOfClass:[PHAsset class]]) {
-//                PHAsset *asset = (PHAsset *)item;
-//
-//                __weak TSChatViewController *ws = self;
-//                [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
-//                    BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
-//                    if (!isThumbImg) {
-//
-//                        // 用 UIImageJPEGRepresentation 压缩，如果用 PNG 无损压缩，得出的数值会很大，这与照片选择器标示的原图大小也不符
-////                        NSData *data = UIImageJPEGRepresentation(photo, 0);
-//                        NSData *data = UIImagePNGRepresentation(photo);
-//                        if (data.length > 27 * 1024 * 1024) {
-//                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//                            [alert show];
-//                            return;
-//                        }
-//
-//                        [ws sendImage:photo orignal:YES];
-//                    }
-//                }];
-//            }
-//        }
+        //        for (id item in assets) {
+        //            if ([item isKindOfClass:[PHAsset class]]) {
+        //                PHAsset *asset = (PHAsset *)item;
+        //
+        //                __weak TSChatViewController *ws = self;
+        //                [[TZImageManager manager] getOriginalPhotoWithAsset:asset completion:^(UIImage *photo, NSDictionary *info) {
+        //                    BOOL isThumbImg = [info[PHImageResultIsDegradedKey] boolValue];
+        //                    if (!isThumbImg) {
+        //
+        //                        // 用 UIImageJPEGRepresentation 压缩，如果用 PNG 无损压缩，得出的数值会很大，这与照片选择器标示的原图大小也不符
+        ////                        NSData *data = UIImageJPEGRepresentation(photo, 0);
+        //                        NSData *data = UIImagePNGRepresentation(photo);
+        //                        if (data.length > 27 * 1024 * 1024) {
+        //                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        //                            [alert show];
+        //                            return;
+        //                        }
+        //
+        //                        [ws sendImage:photo orignal:YES];
+        //                    }
+        //                }];
+        //            }
+        //        }
         
     } else {
         // 发送普通图片
         for (UIImage *img in photos) {
-//            NSData *data = UIImageJPEGRepresentation(img, 0);
+            //            NSData *data = UIImageJPEGRepresentation(img, 0);
             NSData *data = UIImagePNGRepresentation(img);
             if (data.length > 27 * 1024 * 1024) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发送图片过大" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -680,7 +680,7 @@
     
     __weak TSChatViewController *ws = self;
     [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPreset1280x720 success:^(NSString *outputPath) {
-//        [ws sendVideoWithPath:outputPath coverImage:coverImage];
+        //        [ws sendVideoWithPath:outputPath coverImage:coverImage];
         [ws recordVideoPath:outputPath];
     } failure:^(NSString *errorMessage, NSError *error) {
         [self alertWithTitle:@"视频导出失败" message:@"请尝试用小视频录制喔" confirmBlock:nil];
@@ -689,17 +689,26 @@
 
 #pragma mark - MovieAction
 - (void)moreVideVideoAction {
-//    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
-//    TSVideoRecordViewController *videoRecordVC = [[TSVideoRecordViewController alloc] init];
-//    videoRecordVC.delegate = self;
-//    [self presentViewController:videoRecordVC animated:YES completion:nil];
+    //    TCVideoRecordViewController *videoRecordVC = [[TCVideoRecordViewController alloc] init];
+    //    TSVideoRecordViewController *videoRecordVC = [[TSVideoRecordViewController alloc] init];
+    //    videoRecordVC.delegate = self;
+    //    [self presentViewController:videoRecordVC animated:YES completion:nil];
     
-    IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
-    
-    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
-    
-    videoRecordVC.delegate = self;
-    [self presentViewController:nav animated:YES completion:nil];
+    if (TARGET_IPHONE_SIMULATOR) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"小视频暂不支持模拟器" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:confirmAction];
+        [self presentViewController:alert animated:NO completion:nil];
+        
+    } else {
+        
+        IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
+        TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+        
+        videoRecordVC.delegate = self;
+        [self presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (void)recordVideoPath:(NSString *)path
