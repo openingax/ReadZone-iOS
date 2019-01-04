@@ -8,11 +8,8 @@
 
 #import "IDPermissionsManager.h"
 #import <AVFoundation/AVFoundation.h>
-#import <UIKit/UIKit.h>
 
-
-@interface IDPermissionsManager () <UIAlertViewDelegate>
-
+@interface IDPermissionsManager ()
 
 @end
 
@@ -22,16 +19,21 @@
 {
     NSString *mediaType = AVMediaTypeAudio;
     [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
-    if(!granted){
+        if(!granted){
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Microphone Disabled"
-                                                   message:@"To enable sound recording with your video please go to the Settings app > Privacy > Microphone and enable access."
-                                                  delegate:self
-                                         cancelButtonTitle:@"OK"
-                                         otherButtonTitles:@"Settings", nil];
-                alert.delegate = self;
-                [alert show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Microphone Disabled" message:@"To enable sound recording with your video please go to the Settings app > Privacy > Microphone and enable access." preferredStyle:UIAlertControllerStyleAlert];
+                
+                __weak typeof(self) ws = self;
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [ws.rootVC dismissViewControllerAnimated:YES completion:nil];
+                }];
+                UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }];
+                [alert addAction:cancelAction];
+                [alert addAction:confirmAction];
+                [self.rootVC presentViewController:alert animated:NO completion:nil];
             });
         }
         if(block != nil)
@@ -42,33 +44,30 @@
 
 - (void)checkCameraAuthorizationStatusWithBlock:(void(^)(BOOL granted))block
 {
-	NSString *mediaType = AVMediaTypeVideo;
+    NSString *mediaType = AVMediaTypeVideo;
     [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
         if (!granted){
             //Not granted access to mediaType
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Camera disabled"
-                                                                message:@"This app doesn't have permission to use the camera, please go to the Settings app > Privacy > Camera and enable access."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:@"Settings", nil];
-                alert.delegate = self;
-                [alert show];
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Camera disabled" message:@"This app doesn't have permission to use the camera, please go to the Settings app > Privacy > Camera and enable access." preferredStyle:UIAlertControllerStyleAlert];
+                
+                __weak typeof(self) ws = self;
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [ws.rootVC dismissViewControllerAnimated:YES completion:nil];
+                }];
+                UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }];
+                [alert addAction:cancelAction];
+                [alert addAction:confirmAction];
+                [self.rootVC presentViewController:alert animated:NO completion:nil];
+                
             });
         }
         if(block)
             block(granted);
     }];
 }
-
-#pragma mark - UIAlertViewDelegate methods
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == 1){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-    }
-}
-
 
 @end

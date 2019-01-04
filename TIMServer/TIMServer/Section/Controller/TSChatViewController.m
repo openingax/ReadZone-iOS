@@ -696,7 +696,7 @@
     
     IDCaptureSessionPipelineViewController *videoRecordVC = [[IDCaptureSessionPipelineViewController alloc] init];
     
-    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:videoRecordVC];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:videoRecordVC];
     
     videoRecordVC.delegate = self;
     [self presentViewController:nav animated:YES completion:nil];

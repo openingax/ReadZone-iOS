@@ -7,7 +7,8 @@
 //
 
 #import "IDCaptureSessionPipelineViewController.h"
-#import "IDCaptureSessionAssetWriterCoordinator.h"
+//#import "IDCaptureSessionAssetWriterCoordinator.h"
+#import "IDCaptureSessionMovieFileOutputCoordinator.h"
 #import "TSUGCVideoPreviewViewController.h"
 
 #import "IDFileManager.h"
@@ -27,6 +28,8 @@
 @property (nonatomic, strong) UIView *recordBtn;
 @property (nonatomic, strong) UIView *recordSubview;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
+@property (nonatomic, strong) UIBezierPath *circle;
+@property (nonatomic, strong) CAShapeLayer *bgLayer;
 
 @property (nonatomic, strong) UIButton *btnClose;
 @property (nonatomic, strong) UIButton *btnCamera;
@@ -38,6 +41,7 @@
 @property (nonatomic, assign) BOOL dismissing;
 @property (nonatomic, assign) BOOL cameraFont;
 @property (nonatomic, assign) BOOL isActive;
+@property (nonatomic, assign) BOOL isValidVideo;
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
 
@@ -64,7 +68,7 @@
     
     [self checkPermissions];
     
-    _captureSessionCoordinator = [IDCaptureSessionAssetWriterCoordinator new];
+    _captureSessionCoordinator = [IDCaptureSessionMovieFileOutputCoordinator new];
     [_captureSessionCoordinator setDelegate:self callbackQueue:dispatch_get_main_queue()];
     
     [self configureInterface];
@@ -173,6 +177,7 @@
         // Disable the idle timer while recording
         [UIApplication sharedApplication].idleTimerDisabled = YES;
         
+        self.isValidVideo = YES;
         [self.captureSessionCoordinator startRecording];
         
         _recording = YES;
@@ -195,9 +200,12 @@
     [_recorderPeakerTimer invalidate];
     _recorderPeakerTimer = nil;
     
+    if (_recordDuration < 5) {
+        _isValidVideo = NO;
+    }
+    
     _recordDuration = 0;
     _recordPeakTime = 0;
-    
     [self refreshRecordTime:0];
     
     [_captureSessionCoordinator stopRecording];
@@ -231,10 +239,19 @@
     }
 }
 
+- (void)stopPipelineAndDismiss
+{
+    [_captureSessionCoordinator stopRunning];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _dismissing = NO;
+}
+
 - (void)recordBtnLongPress:(UILongPressGestureRecognizer *)ges
 {
     CGFloat btnMarginBottom = kIsiPhoneX ? self.view.frame.size.height - BUTTON_RECORD_SIZE - 76 : self.view.frame.size.height - BUTTON_RECORD_SIZE + 10;
     if (ges.state == UIGestureRecognizerStateBegan) {
+        
+        [self recordingAction];
         
         [UIView animateWithDuration:0.3 animations:^{
             _recordBtn.bounds = CGRectMake(0, 0, 90, 90);
@@ -246,17 +263,14 @@
             _recordSubview.layer.cornerRadius = 17.5;
             
         } completion:^(BOOL finished) {
-            
             [self circleAnimate];
-            [self recordingAction];
-            
         }];
         
     } else if (ges.state == UIGestureRecognizerStateEnded) {
         
         [self stopRecordAction];
         
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             _recordBtn.bounds = CGRectMake(0, 0, BUTTON_RECORD_SIZE, BUTTON_RECORD_SIZE);
             _recordBtn.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2.f, btnMarginBottom);
             _recordBtn.layer.cornerRadius = BUTTON_RECORD_SIZE/2.f;
@@ -265,40 +279,48 @@
             _recordSubview.center = CGPointMake(BUTTON_RECORD_SIZE/2.f, BUTTON_RECORD_SIZE/2.f);
             _recordSubview.layer.cornerRadius = 24;
             
+        } completion:^(BOOL finished) {
+            
         }];
     } else {
-        
+        // 长按中
     }
 }
 
 - (void)circleAnimate
 {
     //第一步，通过UIBezierPath设置圆形的矢量路径
-    UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 84, 84)];
+    if (!_circle) {
+        _circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 84, 84)];
+    }
     
     //第二步，用CAShapeLayer沿着第一步的路径画一个完整的环（颜色灰色，起始点0，终结点1）
-    CAShapeLayer *bgLayer = [CAShapeLayer layer];
-    bgLayer.frame = CGRectMake(0, 0, 84, 84);//设置Frame
-    bgLayer.position = _recordBtn.center;//居中显示
-    bgLayer.fillColor = [UIColor clearColor].CGColor;//填充颜色=透明色
-    bgLayer.lineWidth = 6.f;//线条大小
-    bgLayer.strokeColor = [UIColor clearColor].CGColor;//线条颜色
-    bgLayer.strokeStart = 0.f;//路径开始位置
-    bgLayer.strokeEnd = 1.f;//路径结束位置
-    bgLayer.path = circle.CGPath;//设置bgLayer的绘制路径为circle的路径
-    [self.view.layer addSublayer:bgLayer];//添加到屏幕上
+    if (!_bgLayer) {
+        _bgLayer = [CAShapeLayer layer];
+        _bgLayer.frame = CGRectMake(0, 0, 84, 84);//设置Frame
+        _bgLayer.position = _recordBtn.center;//居中显示
+        _bgLayer.fillColor = [UIColor clearColor].CGColor;//填充颜色=透明色
+        _bgLayer.lineWidth = 6.f;//线条大小
+        _bgLayer.strokeColor = [UIColor clearColor].CGColor;//线条颜色
+        _bgLayer.strokeStart = 0.f;//路径开始位置
+        _bgLayer.strokeEnd = 1.f;//路径结束位置
+        _bgLayer.path = _circle.CGPath;//设置bgLayer的绘制路径为circle的路径
+        [self.view.layer addSublayer:_bgLayer];//添加到屏幕上
+    }
     
     //第三步，用CAShapeLayer沿着第一步的路径画一个红色的环形进度条，但是起始点=终结点=0，所以开始不可见
-    _shapeLayer = [CAShapeLayer layer];
-    _shapeLayer.frame = CGRectMake(0, 0, 84, 84);
-    _shapeLayer.position = _recordBtn.center;
-    _shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    _shapeLayer.lineWidth = 6.f;
-    _shapeLayer.strokeColor = [UIColor colorWithRed:0 green:163/255.f blue:180/255.f alpha:1].CGColor;
-    _shapeLayer.strokeStart = 0;
-    _shapeLayer.strokeEnd = 0;
-    _shapeLayer.path = circle.CGPath;
-    [self.view.layer addSublayer:_shapeLayer];
+    if (!_shapeLayer) {
+        _shapeLayer = [CAShapeLayer layer];
+        _shapeLayer.frame = CGRectMake(0, 0, 84, 84);
+        _shapeLayer.position = _recordBtn.center;
+        _shapeLayer.fillColor = [UIColor clearColor].CGColor;
+        _shapeLayer.lineWidth = 6.f;
+        _shapeLayer.strokeColor = [UIColor colorWithRed:0 green:163/255.f blue:180/255.f alpha:1].CGColor;
+        _shapeLayer.strokeStart = 0;
+        _shapeLayer.strokeEnd = 0;
+        _shapeLayer.path = _circle.CGPath;
+        [self.view.layer addSublayer:_shapeLayer];
+    }
     
     [_shapeLayer setAffineTransform:CGAffineTransformMakeRotation(-M_PI/2.f)];
 }
@@ -317,16 +339,12 @@
     _shapeLayer.strokeEnd = (CGFloat)_recordPeakTime / MAX_RECORD_TIME;
 }
 
-- (void)stopPipelineAndDismiss
-{
-    [_captureSessionCoordinator stopRunning];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    _dismissing = NO;
-}
+
 
 - (void)checkPermissions
 {
     IDPermissionsManager *pm = [IDPermissionsManager new];
+    pm.rootVC = self;
     [pm checkCameraAuthorizationStatusWithBlock:^(BOOL granted) {
         if(!granted){
             NSLog(@"we don't have permission to use the camera");
@@ -376,11 +394,21 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     _recording = NO;
+    
+    IDFileManager *fm = [IDFileManager new];
+    
+    // 视频录制需大于5秒
+    if (!_isValidVideo) {
+        [self.view makeToast:@"录制时间不能小于5秒" duration:1 position:CSToastPositionCenter];
+        [fm removeFile:outputFileURL];
+        return;
+    }
+    
     [_indicator startAnimating];
     
     
     //Do something useful with the video file available at the outputFileURL
-    IDFileManager *fm = [IDFileManager new];
+    
     __weak typeof(self) ws = self;
     [fm convertMovToMP4WithSource:outputFileURL complete:^(AVAssetExportSessionStatus status, NSString *outputPath, UIImage *coverImg) {
         [ws.indicator stopAnimating];

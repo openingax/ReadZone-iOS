@@ -12,7 +12,7 @@
 #define kButtonSize 70
 #define kButtonMarginBottom 50
 
-@interface TSUGCVideoPreviewViewController ()
+@interface TSUGCVideoPreviewViewController () <UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong) NSString *videoPath;
 @property(nonatomic,strong) UIImage *coverImg;
@@ -70,6 +70,13 @@
     [super viewWillDisappear:animated];
     [_player pause];
     [_player seekToTime:CMTimeMake(0, 1)];
+}
+
+#pragma mark -
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
 }
 
 #pragma mark - Process

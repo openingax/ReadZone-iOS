@@ -327,10 +327,10 @@ typedef NS_ENUM(NSInteger, WriterStatus){
                                              AVVideoMaxKeyFrameIntervalKey : @(30) };
     
     return @{ AVVideoCodecKey : AVVideoCodecH264,
-                       AVVideoWidthKey : @(dimensions.width),
-                       AVVideoHeightKey : @(dimensions.height),
-                       AVVideoCompressionPropertiesKey : compressionProperties };
-
+              AVVideoWidthKey : @(dimensions.width),
+              AVVideoHeightKey : @(dimensions.height),
+              AVVideoCompressionPropertiesKey : compressionProperties };
+    
 }
 
 - (void)appendSampleBuffer:(CMSampleBufferRef)sampleBuffer ofMediaType:(NSString *)mediaType
