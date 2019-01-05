@@ -41,7 +41,7 @@ UIKIT_EXTERN NSString *const TIMNewMsgStatusUserInfoKey;
 /**
  显示 TIM 留言板
 
- @param controller 用户弹出留言板的 VC（云米商城里是 RN 插件的控制器 YMDeviceDetailViewController）
+ @param controller 用户弹出留言板的 VC
  */
 - (void)showTIMWithController:(UIViewController *)controller;
 

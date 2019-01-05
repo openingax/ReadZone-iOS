@@ -9,16 +9,9 @@
 #ifndef TSConfig_h
 #define TSConfig_h
 
-#define kTimIMTLSAppId          @"1400157786"
-#define kTimIMSdkAppId          @"1400157786"
+#define kTimIMSdkAppId          @"1400153322"
 #define kTimIMSdkAccountType    @"36862"
-#define kTimIMQQAccountType     1
-#define kTimIMWXAccountType     2
 
-#ifdef DEBUG
-#define kBaseUrl @"https://ms.viomi.com.cn"
-#else
-#define kBaseUrl @"https://ms.viomi.com.cn"
-#endif
+#define kBaseUrl @"https://www.xieliying.com:3000/"
 
 #endif /* TSConfig_h */
